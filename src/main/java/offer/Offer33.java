@@ -10,6 +10,10 @@ import java.util.Stack;
  */
 public class Offer33 {
 
+    public static void main(String[] args) {
+        System.out.println(new Offer33().verifyPostorder(new int[]{1, 3, 2, 6, 5}));
+    }
+
     public boolean verifyPostorder(int[] postorder) {
         Stack<Integer> stack = new Stack<>();
         int root = Integer.MAX_VALUE;

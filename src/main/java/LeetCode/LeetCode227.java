@@ -31,7 +31,7 @@ public class LeetCode227 {
                     case '-':
                         stack.push(-num);
                         break;
-                    //富豪优先级
+                    //符号优先级
                     case '*':
                         stack.push(stack.pop() * num);
                         break;

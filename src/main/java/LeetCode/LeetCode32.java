@@ -16,10 +16,6 @@ public class LeetCode32 {
         dp[0] = 0;
         dp[1] = 1;
 
-        for (int i = 0; i < s.toCharArray(); i++) {
-
-        }
-
         return 0;
 
     }
