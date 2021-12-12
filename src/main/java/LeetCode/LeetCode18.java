@@ -6,7 +6,7 @@ import java.util.List;
 
 /**
  * @author jingxinwu
- * @date 2021-06-24 12:15 上午
+ * @date 2021-06-18 1:37 上午
  */
 public class LeetCode18 {
 
@@ -62,5 +62,4 @@ public class LeetCode18 {
         return quadruplets;
 
     }
-
 }
