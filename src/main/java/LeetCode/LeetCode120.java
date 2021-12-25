@@ -12,7 +12,8 @@ public class LeetCode120 {
         for (int i = triangle.size() - 2; i >= 0; i--) {
             List<Integer> cur = triangle.get(i);
             for (int j = 0; j <= i; j++) {
-                cur.set(j, Math.min(triangle.get(i).get(j + 1), triangle.get(i).get(j)) + cur.get(j));
+                cur.set(j, Math.min(triangle.get(i + 1).get(j + 1),
+                        triangle.get(i + 1).get(j)) + cur.get(j));
             }
         }
         return triangle.get(0).get(0);

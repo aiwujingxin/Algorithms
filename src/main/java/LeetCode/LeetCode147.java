@@ -17,7 +17,7 @@ public class LeetCode147 {
         ListNode curr = head;
         ListNode temp = null;
         ListNode prev = null;
-        while (curr != null && curr.next != null) {
+        while (curr.next != null) {
             if (curr.val <= curr.next.val) {
                 curr = curr.next;
             } else {

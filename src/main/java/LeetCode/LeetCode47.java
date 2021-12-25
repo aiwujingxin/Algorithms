@@ -13,7 +13,7 @@ public class LeetCode47 {
 
     public static void main(String[] args) {
         LeetCode47 leetCode47 = new LeetCode47();
-        System.out.println(leetCode47.permuteUnique(new int[]{1, 1, 2}));
+        System.out.println(leetCode47.permuteUnique(new int[]{1, 2, 2, 2}));
     }
 
     public List<List<Integer>> permuteUnique(int[] nums) {
@@ -40,15 +40,16 @@ public class LeetCode47 {
                 continue;
             }
 
-            if (i > 0 && nums[i] == nums[i - 1] && !visited.contains(i - 1)) {
+            if (i > 0) {
                 continue;
             }
-
-            temp.add(nums[i]);
-            visited.add(i);
-            helper(res, nums, visited, temp);
-            temp.remove(temp.size() - 1);
-            visited.remove(i);
+            if (nums[i] != nums[i - 1] || visited.contains(i - 1)) {
+                temp.add(nums[i]);
+                visited.add(i);
+                helper(res, nums, visited, temp);
+                temp.remove(temp.size() - 1);
+                visited.remove(i);
+            }
         }
     }
 
