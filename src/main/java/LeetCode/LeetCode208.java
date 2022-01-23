@@ -8,17 +8,6 @@ public class LeetCode208 {
 
     class Trie {
 
-        class Node {
-
-            Node[] childs;
-            boolean isEnd;
-
-            Node() {
-                childs = new Node[26];
-                isEnd = false;
-            }
-        }
-
         final private Node root;
 
         public Trie() {
@@ -38,7 +27,6 @@ public class LeetCode208 {
             curr.isEnd = true;
         }
 
-
         public boolean search(String word) {
             Node curr = root;
             for (int i = 0; i < word.length(); i++) {
@@ -52,7 +40,6 @@ public class LeetCode208 {
             return curr.isEnd;
         }
 
-
         public boolean startsWith(String prefix) {
             Node curr = root;
             for (int i = 0; i < prefix.length(); i++) {
@@ -64,6 +51,17 @@ public class LeetCode208 {
             }
 
             return true;
+        }
+
+        class Node {
+
+            Node[] childs;
+            boolean isEnd;
+
+            Node() {
+                childs = new Node[26];
+                isEnd = false;
+            }
         }
     }
 }

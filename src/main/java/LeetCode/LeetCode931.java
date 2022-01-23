@@ -46,7 +46,7 @@ public class LeetCode931 {
                 }
             }
         }
-        for (int j = 0; j < dp[0].length ; j++) {
+        for (int j = 0; j < dp[0].length; j++) {
             min = Math.min(dp[dp.length - 1][j], min);
         }
         return min;

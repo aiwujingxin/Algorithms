@@ -22,7 +22,9 @@ public class LeetCode1292 {
             boolean flag = false;
             for (int i = 1; i + mid <= row + 1; ++i) {
                 for (int j = 1; j + mid <= col + 1; ++j) {
-                    int temp = prefix[i + mid - 1][j + mid - 1] - prefix[i + mid - 1][j - 1] - prefix[i - 1][j + mid - 1] + prefix[i - 1][j - 1];
+                    int temp =
+                            prefix[i + mid - 1][j + mid - 1] - prefix[i + mid - 1][j - 1] - prefix[i - 1][j + mid - 1]
+                                    + prefix[i - 1][j - 1];
                     if (temp <= threshold) {
                         flag = true;
                     }

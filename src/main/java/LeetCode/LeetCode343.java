@@ -74,8 +74,8 @@ public class LeetCode343 {
         if (n - timesOf3 * 3 == 2) {
             timesOf3 = 1;
         }
-        int timesOf2 = (n - timesOf3  * 3) /2;
-        return (int) Math.pow(3, timesOf3) * (int)  Math.pow(2, timesOf2);
+        int timesOf2 = (n - timesOf3 * 3) / 2;
+        return (int) Math.pow(3, timesOf3) * (int) Math.pow(2, timesOf2);
     }
 
     public int integerBreakV2(int n) {

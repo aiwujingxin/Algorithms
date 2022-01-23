@@ -8,6 +8,12 @@ import java.util.Arrays;
  */
 public class LeetCode556 {
 
+    public static void swap(int[] arr, int i, int j) {
+        int temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
+    }
+
     public int nextGreaterElement(int n) {
 
         char[] digits = String.valueOf(n).toCharArray();
@@ -51,11 +57,5 @@ public class LeetCode556 {
             return -1;
         }
         return (int) sum;
-    }
-
-    public static void swap(int[] arr, int i, int j) {
-        int temp = arr[i];
-        arr[i] = arr[j];
-        arr[j] = temp;
     }
 }

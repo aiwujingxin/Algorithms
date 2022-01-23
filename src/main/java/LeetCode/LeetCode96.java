@@ -18,6 +18,8 @@ public class LeetCode96 {
         return res;
     }
 
+
+    //DP
     public int numTrees2(int n) {
         int[] G = new int[n + 1];
         G[0] = 1;

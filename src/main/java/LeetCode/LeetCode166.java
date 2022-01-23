@@ -8,6 +8,7 @@ import java.util.Map;
  * @date 2021-08-10 12:25 上午
  */
 public class LeetCode166 {
+
     public String fractionToDecimal(int numerator, int denominator) {
         if (numerator == 0) {
             return "0";

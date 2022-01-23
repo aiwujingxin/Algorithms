@@ -10,7 +10,6 @@ import java.util.LinkedList;
 public class LeetCode150 {
 
 
-
     public int evalRPN(String[] tokens) {
         Deque<Integer> stack = new LinkedList<>();
         for (String token : tokens) {

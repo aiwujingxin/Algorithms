@@ -9,6 +9,16 @@ import java.util.LinkedList;
  */
 public class LeetCode146 {
 
+    private int capacity;
+    private int size;
+    private LinkedList<CacheEntry> list;
+    private HashMap<Integer, CacheEntry> map;
+    public LeetCode146(int capacity) {
+        this.capacity = capacity;
+        map = new HashMap<>();
+        list = new LinkedList<>();
+    }
+
     public static void main(String[] args) {
         LeetCode146 leetCode146 = new LeetCode146(2);
         leetCode146.put(1, 1);
@@ -20,18 +30,6 @@ public class LeetCode146 {
         leetCode146.get(1);
         leetCode146.get(3);
         leetCode146.get(4);
-    }
-
-    private int capacity;
-    private int size;
-    private LinkedList<CacheEntry> list;
-    private HashMap<Integer, CacheEntry> map;
-
-
-    public LeetCode146(int capacity) {
-        this.capacity = capacity;
-        map = new HashMap<>();
-        list = new LinkedList<>();
     }
 
     public int get(int key) {

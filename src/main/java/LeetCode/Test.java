@@ -7,7 +7,7 @@ package LeetCode;
 public class Test {
 
     public static void main(String[] args) {
-        int[] nums = new int[]{2,3,-2,4};
+        int[] nums = new int[]{2, 3, -2, 4};
         int res = nums[0];
         int max = nums[0];
         int min = nums[0];

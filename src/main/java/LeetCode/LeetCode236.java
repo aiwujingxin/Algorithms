@@ -22,8 +22,8 @@ public class LeetCode236 {
         if (root == null) {
             return null;
         }
-        int x1 =p.val;
-        int x2 =q.val;
+        int x1 = p.val;
+        int x2 = q.val;
         if (root.val == x1 || root.val == x2) {
             return root;
         }

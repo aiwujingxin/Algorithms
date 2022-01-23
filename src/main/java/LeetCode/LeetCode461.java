@@ -8,7 +8,6 @@ public class LeetCode461 {
 
     public int hammingDistance(int x, int y) {
 
-
         return 0;
     }
 

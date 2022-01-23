@@ -7,8 +7,9 @@ package LeetCode;
 public class LeetCode1038 {
 
     int sum = 0;
+
     public TreeNode bstToGst(TreeNode root) {
-        if(root != null) {
+        if (root != null) {
             bstToGst(root.right);
             sum += root.val;
             root.val = sum;

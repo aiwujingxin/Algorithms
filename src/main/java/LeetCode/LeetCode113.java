@@ -16,6 +16,8 @@ public class LeetCode113 {
 
     List<List<Integer>> ret = new LinkedList<>();
     Map<TreeNode, TreeNode> map = new HashMap<>();
+    List<List<Integer>> ret1 = new LinkedList<>();
+    Deque<Integer> path = new LinkedList<>();
 
     public List<List<Integer>> pathSum(TreeNode root, int targetSum) {
         if (root == null) {
@@ -61,10 +63,6 @@ public class LeetCode113 {
         Collections.reverse(temp);
         ret.add(new LinkedList<>(temp));
     }
-
-
-    List<List<Integer>> ret1 = new LinkedList<>();
-    Deque<Integer> path = new LinkedList<>();
 
     public List<List<Integer>> pathSum2(TreeNode root, int targetSum) {
         dfs(root, targetSum);

@@ -10,6 +10,8 @@ import java.util.Map;
 public class LeetCode106 {
 
 
+    Map<Integer, Integer> map;
+
     public TreeNode buildTree(int[] inorder, int[] postorder) {
 
         return buildTreeHelper(postorder, 0, postorder.length - 1, inorder, 0, inorder.length - 1);
@@ -42,9 +44,6 @@ public class LeetCode106 {
         return root;
     }
 
-
-
-    Map<Integer, Integer> map;
     public TreeNode buildTreev2(int[] inorder, int[] postorder) {
         map = new HashMap<>();
         int[] postIndex = new int[]{postorder.length - 1};
