@@ -6,6 +6,24 @@ package LeetCode;
  */
 public class LeetCode98 {
 
+
+    public static void main(String[] args) {
+
+        TreeNode root = new TreeNode(5);
+        TreeNode one = new TreeNode(4);
+        TreeNode two = new TreeNode(6);
+        root.left = one;
+        root.right = two;
+
+        TreeNode three = new TreeNode(3);
+        TreeNode four = new TreeNode(7);
+        two.left = three;
+        two.right = four;
+
+        System.out.println(new LeetCode98().isValidBST(root));
+
+    }
+
     public boolean isValidBST(TreeNode root) {
 
         return isValidBST(root, null, null);

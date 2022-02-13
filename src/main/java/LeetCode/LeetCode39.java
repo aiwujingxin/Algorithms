@@ -19,27 +19,22 @@ public class LeetCode39 {
         if (candidates == null || candidates.length == 0) {
             return res;
         }
-        helper(res, candidates, 0, target, new ArrayList<>());
+        helper(res, candidates, target, new ArrayList<>(), 0);
         return res;
     }
 
-    private void helper(ArrayList<List<Integer>> res, int[] candidates, int index, int target,
-            ArrayList<Integer> combine) {
-
-        if (index == candidates.length) {
+    private void helper(List<List<Integer>> ans, int[] candidates, int target, ArrayList<Integer> temp, int start) {
+        if (target < 0) {
             return;
         }
         if (target == 0) {
-            res.add(new ArrayList<>(combine));
+            ans.add(new ArrayList<>(temp));
             return;
         }
-        // 直接跳过
-        helper(res, candidates, index + 1, target, combine);
-        // 选择当前数
-        if (target - candidates[index] >= 0) {
-            combine.add(candidates[index]);
-            helper(res, candidates, index, target - candidates[index], combine);
-            combine.remove(combine.size() - 1);
+        for (int i = start; i < candidates.length; i++) {
+            temp.add(candidates[i]);
+            helper(ans, candidates, target - candidates[i], temp, i + 1);
+            temp.remove(temp.size() - 1);
         }
     }
 }

@@ -25,4 +25,20 @@ public class LeetCode503 {
 
     }
 
+    public int[] nextGreaterElementsV2(int[] nums) {
+        Stack<Integer> stack = new Stack<>();
+        int[] res = new int[nums.length];
+        for (int i = (nums.length << 1) - 1; i >= 0; i--) {
+            int num = nums[i % nums.length];
+            while (!stack.isEmpty() && stack.peek() <= num) {
+                stack.pop();
+            }
+            if (i <= nums.length - 1) {
+                res[i] = stack.isEmpty() ? -1 : stack.peek();
+            }
+            stack.push(num);
+        }
+        return res;
+    }
+
 }

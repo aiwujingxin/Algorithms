@@ -18,7 +18,6 @@ public class LeetCode47 {
 
     public List<List<Integer>> permuteUnique(int[] nums) {
         List<List<Integer>> res = new ArrayList<>();
-
         if (nums == null || nums.length == 0) {
             return res;
         }
@@ -29,27 +28,22 @@ public class LeetCode47 {
 
     private void helper(List<List<Integer>> res, int[] nums, HashSet<Integer> visited,
             ArrayList<Integer> temp) {
-
         if (temp.size() == nums.length) {
             res.add(new ArrayList<>(temp));
             return;
         }
-
         for (int i = 0; i < nums.length; i++) {
             if (visited.contains(i)) {
                 continue;
             }
-
-            if (i > 0) {
+            if (i > 0 && nums[i] == nums[i - 1] && !visited.contains(i - 1)) {
                 continue;
             }
-            if (nums[i] != nums[i - 1] || visited.contains(i - 1)) {
-                temp.add(nums[i]);
-                visited.add(i);
-                helper(res, nums, visited, temp);
-                temp.remove(temp.size() - 1);
-                visited.remove(i);
-            }
+            temp.add(nums[i]);
+            visited.add(i);
+            helper(res, nums, visited, temp);
+            temp.remove(temp.size() - 1);
+            visited.remove(i);
         }
     }
 
