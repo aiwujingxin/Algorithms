@@ -18,7 +18,12 @@ public class LeetCode347 {
             occurrences.put(num, occurrences.getOrDefault(num, 0) + 1);
         }
         // int[] 的第一个元素代表数组的值，第二个元素代表了该值出现的次数
-        PriorityQueue<int[]> queue = new PriorityQueue<>(Comparator.comparingInt(m -> m[1]));
+        PriorityQueue<int[]> queue = new PriorityQueue<>(new Comparator<int[]>() {
+            @Override
+            public int compare(int[] o1, int[] o2) {
+                return o1[1] - o2[1];
+            }
+        });
         for (Map.Entry<Integer, Integer> entry : occurrences.entrySet()) {
             int num = entry.getKey(), count = entry.getValue();
             if (queue.size() == k) {

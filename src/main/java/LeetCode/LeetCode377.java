@@ -8,7 +8,7 @@ public class LeetCode377 {
 
     public static void main(String[] args) {
 //        System.out.println(new LeetCode377().combinationSum4(new int[]{1, 2, 3}, 4));
-        System.out.println(new LeetCode377().combinationSum4(new int[]{1, 2, 4}, 32));
+        System.out.println(new LeetCode377().combinationSum4v2(new int[]{1, 2, 4}, 4));
     }
 
     private static int dfs(int[] arr, int target) {

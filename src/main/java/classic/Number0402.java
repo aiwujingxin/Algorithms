@@ -1,6 +1,6 @@
 package classic;
 
-import java.util.Arrays;
+import common.TreeNode;
 
 /**
  * @author jingxinwu
