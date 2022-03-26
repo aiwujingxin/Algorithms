@@ -1,5 +1,7 @@
 package LeetCode;
 
+import common.Node;
+
 /**
  * @author jingxinwu
  * @date 2021-07-08 1:43 上午

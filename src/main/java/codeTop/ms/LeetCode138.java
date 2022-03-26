@@ -1,6 +1,6 @@
 package codeTop.ms;
 
-import LeetCode.Node;
+import common.Node;
 import java.util.HashMap;
 
 /**

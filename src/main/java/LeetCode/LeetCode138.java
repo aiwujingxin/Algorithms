@@ -1,5 +1,6 @@
 package LeetCode;
 
+import common.Node;
 import java.util.HashMap;
 
 /**

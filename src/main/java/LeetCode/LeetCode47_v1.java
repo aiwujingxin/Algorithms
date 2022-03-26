@@ -34,12 +34,12 @@ public class LeetCode47_v1 {
             res.add(new ArrayList<>(temp));
             return;
         }
-//        HashSet<Integer> visited = new HashSet<>();
+        HashSet<Integer> visited = new HashSet<>();
         for (int i = depth; i < nums.length; i++) {
-//            if (visited.contains(nums[i])) {
-//                continue;
-//            }
-//            visited.add(nums[i]);
+            if (visited.contains(nums[i])) {
+                continue;
+            }
+            visited.add(nums[i]);
 
             swap(nums, depth, i);
             helper(depth + 1, res, nums);

@@ -1,5 +1,6 @@
 package LeetCode;
 
+import java.util.Comparator;
 import java.util.PriorityQueue;
 
 /**
@@ -13,7 +14,12 @@ public class LeetCode239 {
         if (nums == null || k == 0) {
             return new int[]{};
         }
-        PriorityQueue<int[]> queue = new PriorityQueue<>((o1, o2) -> o1[0] != o2[0] ? o2[0] - o1[0] : o2[1] - o1[1]);
+        PriorityQueue<int[]> queue = new PriorityQueue<>(new Comparator<int[]>() {
+            public int compare(int[] pair1, int[] pair2) {
+                return pair1[0] != pair2[0] ? pair2[0] - pair1[0] : pair2[1] - pair1[1];
+            }
+        });
+        //init
         int[] ans = new int[nums.length - k + 1];
         for (int i = 0; i < k; i++) {
             queue.offer(new int[]{nums[i], i});

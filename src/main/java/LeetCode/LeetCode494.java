@@ -1,5 +1,8 @@
 package LeetCode;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * @author jingxinwu
  * @date 2021-12-12 10:53 PM
@@ -24,4 +27,5 @@ public class LeetCode494 {
             backtrack(nums, target, index + 1, sum - nums[index]);
         }
     }
+
 }

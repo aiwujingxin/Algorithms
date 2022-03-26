@@ -1,6 +1,6 @@
 package offer;
 
-import LeetCode.Node;
+import common.Node;
 import java.util.HashMap;
 
 /**
@@ -10,7 +10,7 @@ import java.util.HashMap;
 public class Offer35 {
 
     //https://www.youtube.com/watch?v=UWt3qmjx8qo、
-    public LeetCode.Node copyRandomListV2(Node head) {
+    public Node copyRandomListV2(Node head) {
         //老节点 新节点 的映射
         HashMap<Node, Node> map = new HashMap<>();
 

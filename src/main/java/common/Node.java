@@ -1,4 +1,4 @@
-package LeetCode;
+package common;
 
 /**
  * @author jingxinwu
