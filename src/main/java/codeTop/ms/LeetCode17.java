@@ -3,6 +3,7 @@ package codeTop.ms;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author jingxinwu
@@ -15,7 +16,7 @@ public class LeetCode17 {
             return new ArrayList<>();
         }
 
-        HashMap<Character, String> map = new HashMap<>() {{
+        HashMap<Character, String> map = new HashMap<Character, String>() {{
             put('2', "abc");
             put('3', "def");
             put('4', "ghi");

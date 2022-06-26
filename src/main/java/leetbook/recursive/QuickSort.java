@@ -2,13 +2,11 @@ package leetbook.recursive;
 
 import java.util.Random;
 
-
 /**
  * @author jingxinwu
  * @date 2022-01-31 2:17 PM
  */
 public class QuickSort {
-
 
     /**
      * 随机化是为了防止递归树偏斜的操作，此处不展开叙述
@@ -42,7 +40,6 @@ public class QuickSort {
 
         // 3. 递归完成以后没有「合」的操作，这是由「快速排序」partition 的逻辑决定的
     }
-
 
     /**
      * 将数组 nums[left..right] 分区，返回下标 pivot，
