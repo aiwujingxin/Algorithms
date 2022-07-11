@@ -6,7 +6,8 @@ package LeetCode;
  */
 public class LeetCode121 {
 
-    public int maxProfit(int prices[]) {
+    //https://www.youtube.com/watch?v=helrhutBYnk&t=59s
+    public int maxProfit(int[] prices) {
         int minprice = Integer.MAX_VALUE;
         int maxprofit = 0;
         for (int price : prices) {
@@ -53,8 +54,31 @@ public class LeetCode121 {
             dp[i][0] = Math.max(dp[i - 1][0], dp[i - 1][1] + prices[i]);
 
             //fix dp[0][0] - prices[i]
+            //  - prices[i]这里可以理解为dp[0][0] - prices[i]，这里为什么是dp[0][0] - prices[i]，因为只有这样才能保证只买一次，所以需要用一开始初始化的未持股的现金dp[0][0]减去当天的股价
             dp[i][1] = Math.max(dp[i - 1][1], dp[0][0] - prices[i]);
         }
         return dp[len - 1][0];
+    }
+
+    /*
+        说明：空间优化只看状态转移方程。
+        状态转移方程里下标为 i 的行只参考下标为 i - 1 的行（即只参考上一行），并且：
+        下标为 i 的行并且状态为 0 的行参考了上一行状态为 0 和 1 的行；
+        下标为 i 的行并且状态为 1 的行只参考了上一行状态为 1 的行。
+      */
+    public int maxProfitV4(int[] prices) {
+        int len = prices.length;
+        if (len < 2) {
+            return 0;
+        }
+
+        int[] dp = new int[2];
+        dp[0] = 0;
+        dp[1] = -prices[0];
+        for (int i = 1; i < len; i++) {
+            dp[0] = Math.max(dp[0], dp[1] + prices[i]);
+            dp[1] = Math.max(dp[1], -prices[i]);
+        }
+        return dp[0];
     }
 }
