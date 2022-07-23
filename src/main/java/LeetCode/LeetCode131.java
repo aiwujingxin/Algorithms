@@ -1,5 +1,7 @@
 package LeetCode;
 
+import utils.PrintUtil;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -10,12 +12,15 @@ import java.util.List;
  */
 public class LeetCode131 {
 
+    public static void main(String[] args) {
+        System.out.println(new LeetCode131().partition("aabbccpoopc"));
+    }
+
 
     boolean[][] dp;
     int n;
     List<List<String>> res = new ArrayList<>();
     List<String> ans = new ArrayList<>();
-
 
     public List<List<String>> partition(String s) {
 
@@ -30,12 +35,15 @@ public class LeetCode131 {
             Arrays.fill(dp[i], true);
         }
 
+        // init
+        //为什么i要倒序遍历？因为dp[i][j] 需要用到dp[i + 1][j - 1]的结果，前提是dp[i + 1][j - 1]已经被处理过。
         for (int i = n - 1; i >= 0; i--) {
             for (int j = i + 1; j < n; j++) {
+                //  dp[i + 1][j - 1] 去掉了头尾字符串的子串
                 dp[i][j] = s.charAt(i) == s.charAt(j) && dp[i + 1][j - 1];
             }
         }
-
+        PrintUtil.print(dp);
         dfs(s, 0);
         return res;
     }

@@ -11,7 +11,13 @@ public class LeetCode46 {
 
     public static void main(String[] args) {
         LeetCode46 leetCode46 = new LeetCode46();
-        System.out.println(leetCode46.permute(new int[]{1, 2, 3}));
+        List<List<Integer>> list = leetCode46.permute(new int[]{1, 2, 3, 4, 5});
+
+        for (List<Integer> item : list) {
+            System.out.print(item);
+            System.out.print("  ");
+            System.out.println();
+        }
     }
 
     public List<List<Integer>> permute(int[] nums) {

@@ -6,7 +6,7 @@ import java.util.*;
  * @author aiwujingxin@gmail.com
  * @date 2022/6/14 17:48
  */
-public class LeetCode126 {
+public class LeetCode126_TLE {
 
     public List<List<String>> findLadders(String beginWord, String endWord, List<String> wordList) {
         List<String> path = new ArrayList<>();

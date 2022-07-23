@@ -12,7 +12,6 @@ public class LeetCode149 {
     public int maxPoints(int[][] points) {
         if (points == null) return 0;
         if (points.length <= 2) return points.length;
-
         Map<Integer, Map<Integer, Integer>> map = new HashMap<>();
         int result = 0;
         for (int i = 0; i < points.length; i++) {
@@ -47,10 +46,7 @@ public class LeetCode149 {
             result = Math.max(result, max + overlap + 1);
         }
         return result;
-
-
     }
-
     private int generateGCD(int a, int b) {
 
         if (b == 0) return a;

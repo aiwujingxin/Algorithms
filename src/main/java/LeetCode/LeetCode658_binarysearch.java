@@ -1,42 +1,17 @@
 package LeetCode;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
-import java.util.PriorityQueue;
 
 /**
- * @author jingxinwu
- * @date 2021-11-21 10:30 下午
+ * @author aiwujingxin@gmail.com
+ * @date 2022/7/23 14:56
  */
-public class LeetCode658 {
+public class LeetCode658_binarysearch {
 
 
+    // todo
     public List<Integer> findClosestElements(int[] arr, int k, int x) {
-        //custom sort function
-        PriorityQueue<Integer> queue = new PriorityQueue<>((a, b) -> {
-            if (Math.abs(a - x) == Math.abs(b - x)) {
-                return a - b;
-            } else {
-                return Math.abs(a - x) - Math.abs(b - x);
-            }
-        });
-
-        for (int j : arr) {
-            queue.add(j);
-        }
-
-        List<Integer> lst = new ArrayList<>();
-        while (k > 0) {
-            lst.add(queue.remove());
-            k--;
-        }
-        Collections.sort(lst);
-        return lst;
-    }
-
-
-    public List<Integer> findClosestElementsV2(int[] arr, int k, int x) {
         List<Integer> list = new ArrayList<>();  // A list to store the resultant subarray
         int low = 0;                                    // A var to point at the left half of the array
         int high = arr.length - 1;                      // A var to point at the right half of the array
@@ -64,5 +39,4 @@ public class LeetCode658 {
 
         return list;                                    // Finally, return the resultant list
     }
-
 }
