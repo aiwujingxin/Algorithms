@@ -1,22 +1,34 @@
 package sort;
 
+import java.util.Arrays;
+
 /**
  * @author jingxinwu
  * @date 2021-06-06 1:46 下午
  */
 public class MergeSort {
 
+    public static void main(String[] args) {
+        int[] arr = new int[]{3, 5, 4, 3, 7, 8, 4, 5, 2, 1, 0, 9};
+        new MergeSort().mergeSort(arr);
+        System.out.println(Arrays.toString(arr));
+    }
+
+    public void mergeSort(int[] arr) {
+        mergeSort(arr, 0, arr.length - 1);
+    }
+
 
     // Main function that sorts arr[l..r] using
     // merge()
-    void MergeSort(int[] arr, int l, int r) {
+    public void mergeSort(int[] arr, int l, int r) {
         if (l < r) {
             // Find the middle point
             int m = l + (r - l) / 2;
 
             // Sort first and second halves
-            MergeSort(arr, l, m);
-            MergeSort(arr, m + 1, r);
+            mergeSort(arr, l, m);
+            mergeSort(arr, m + 1, r);
 
             // Merge the sorted halves
             merge(arr, l, m, r);
@@ -24,13 +36,13 @@ public class MergeSort {
     }
 
     void merge(int[] arr, int l, int m, int r) {
-        // Find sizes of two subarrays to be merged
+        // Find sizes of two sub arrays to be merged
         int n1 = m - l + 1;
         int n2 = r - m;
 
         /* Create temp arrays */
-        int L[] = new int[n1];
-        int R[] = new int[n2];
+        int[] L = new int[n1];
+        int[] R = new int[n2];
 
         /*Copy data to temp arrays*/
         for (int i = 0; i < n1; ++i) {

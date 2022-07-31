@@ -9,7 +9,7 @@ import java.util.Map;
  * @author aiwujingxin@gmail.com
  * @date 2022/6/25 10:41
  */
-public class LeetCode13334_bfs {
+public class LeetCode1334_bfs {
 
     public int findTheCity(int n, int[][] edges, int distanceThreshold) {
         //bfs

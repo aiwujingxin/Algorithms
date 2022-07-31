@@ -7,7 +7,7 @@ import java.util.List;
  * @author jingxinwu
  * @date 2021-08-01 3:25 下午
  */
-public class LeetCode139 {
+public class LeetCode139_dp {
 
     public boolean wordBreak(String s, List<String> wordDict) {
         HashSet<String> set = new HashSet<>(wordDict);
