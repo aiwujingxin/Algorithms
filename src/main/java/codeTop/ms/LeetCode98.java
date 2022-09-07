@@ -22,12 +22,12 @@ public class LeetCode98 {
         }
 
         //fix 注意比较符号
-        if (min != null && root.val >= min.val) {
+        if (min != null && root.val <= min.val) {
             return false;
 
         }
         //fix 注意比较符号
-        if (max != null && root.val <= max.val) {
+        if (max != null && root.val >= max.val) {
             return false;
 
         }

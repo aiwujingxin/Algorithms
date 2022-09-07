@@ -5,7 +5,7 @@ package interview.jove;
  * @date 2021-12-23 7:07 PM
  */
 
-import leetCode.problems.TreeNode;
+import leetcode.problems.TreeNode;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
