@@ -1,31 +1,15 @@
 package leetcode.problems;
 
 import java.util.ArrayList;
-import java.util.*;
+import java.util.Collections;
+import java.util.List;
+import java.util.PriorityQueue;
 
 /**
  * @author aiwujingxin@gmail.com
  * @date 2022/8/1 21:56
  */
 public class LeetCode218 {
-
-    static class Pair implements Comparable<Pair> {
-        int point;
-        int height;
-
-        Pair(int p, int h) {
-            this.point = p;
-            this.height = h;
-        }
-
-        public int compareTo(Pair p) {
-            if (this.point == p.point) {
-                return p.height - this.height;
-            } else {
-                return this.point - p.point;
-            }
-        }
-    }
 
     public List<List<Integer>> getSkyline(int[][] buildings) {
         ArrayList<Pair> list = new ArrayList<>();
@@ -54,5 +38,23 @@ public class LeetCode218 {
         }
 
         return ans;
+    }
+
+    static class Pair implements Comparable<Pair> {
+        int point;
+        int height;
+
+        Pair(int p, int h) {
+            this.point = p;
+            this.height = h;
+        }
+
+        public int compareTo(Pair p) {
+            if (this.point == p.point) {
+                return p.height - this.height;
+            } else {
+                return this.point - p.point;
+            }
+        }
     }
 }

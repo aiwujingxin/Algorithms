@@ -12,15 +12,14 @@ import java.util.List;
  */
 public class LeetCode131 {
 
-    public static void main(String[] args) {
-        System.out.println(new LeetCode131().partition("aabbccpoopc"));
-    }
-
-
     boolean[][] dp;
     int n;
     List<List<String>> res = new ArrayList<>();
     List<String> ans = new ArrayList<>();
+
+    public static void main(String[] args) {
+        System.out.println(new LeetCode131().partition("aabbccpoopc"));
+    }
 
     public List<List<String>> partition(String s) {
 

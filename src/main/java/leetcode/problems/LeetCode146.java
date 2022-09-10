@@ -13,6 +13,7 @@ public class LeetCode146 {
     private int size;
     private LinkedList<CacheEntry> list;
     private HashMap<Integer, CacheEntry> map;
+
     public LeetCode146(int capacity) {
         this.capacity = capacity;
         map = new HashMap<>();

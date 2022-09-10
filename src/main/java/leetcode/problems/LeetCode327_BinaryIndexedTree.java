@@ -25,7 +25,7 @@ public class LeetCode327_BinaryIndexedTree {
 
         for (int i = m + 1; i <= r; i++) {
             sum += nums[i];
-            arr[i - (m + 1)] = sum;	// compute the prefix array
+            arr[i - (m + 1)] = sum;    // compute the prefix array
         }
 
         Arrays.sort(arr);  // sort the prefix array

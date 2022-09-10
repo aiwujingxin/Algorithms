@@ -8,7 +8,12 @@ import java.util.*;
  */
 public class LeetCode218_seg_tree {
 
-//https://leetcode.cn/problems/the-skyline-problem/solution/javaxian-duan-shu-jie-fa-by-vigilant-her-uc45/
+    public List<List<Integer>> getSkyline(int[][] buildings) {
+        if (buildings == null || buildings.length == 0) return new ArrayList<>();
+        return new SegmentTree(buildings).getSkyline();
+    }
+
+    //https://leetcode.cn/problems/the-skyline-problem/solution/javaxian-duan-shu-jie-fa-by-vigilant-her-uc45/
     public static class SegmentTree {
         //buildings 房子数据
         int[][] buildings;
@@ -131,10 +136,5 @@ public class LeetCode218_seg_tree {
                 change[it] = 0;
             }
         }
-    }
-
-    public List<List<Integer>> getSkyline(int[][] buildings) {
-        if (buildings == null || buildings.length == 0) return new ArrayList<>();
-        return new SegmentTree(buildings).getSkyline();
     }
 }

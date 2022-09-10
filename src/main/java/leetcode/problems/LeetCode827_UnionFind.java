@@ -9,6 +9,7 @@ import java.util.*;
 public class LeetCode827_UnionFind {
 
     UnionFind uf;
+    int[][] dirs = {{0, 1}, {1, 0}, {0, -1}, {-1, 0}};
 
     public int largestIsland(int[][] grid) {
         int n = grid.length;
@@ -53,8 +54,6 @@ public class LeetCode827_UnionFind {
         }
         return ans;
     }
-
-    int[][] dirs = {{0, 1}, {1, 0}, {0, -1}, {-1, 0}};
 
     List<Integer> neighbors(int[][] grid, int i, int j) {
         int n = grid.length;

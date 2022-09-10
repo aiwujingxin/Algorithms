@@ -9,20 +9,8 @@ import java.util.Stack;
  */
 public class LeetCode1206 {
     class Skiplist {
-        class Node {
-            int val;
-            Node next, down;
-
-            public Node(int val, Node next, Node down) {
-                this.val = val;
-                this.next = next;
-                this.down = down;
-            }
-        }
-
         Node head = new Node(-1, null, null);
         Random rand = new Random();
-
         public Skiplist() {
 
         }
@@ -74,6 +62,17 @@ public class LeetCode1206 {
                 cur = cur.down;
             }
             return found;
+        }
+
+        class Node {
+            int val;
+            Node next, down;
+
+            public Node(int val, Node next, Node down) {
+                this.val = val;
+                this.next = next;
+                this.down = down;
+            }
         }
     }
 

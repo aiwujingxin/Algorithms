@@ -9,16 +9,6 @@ import java.util.List;
  */
 public class LeetCode1928_dfs_dp {
 
-    class Edge {
-        int src, nbr, wt;
-
-        public Edge(int src, int nbr, int wt) {
-            this.src = src;
-            this.nbr = nbr;
-            this.wt = wt;
-        }
-    }
-
     public int minCost(int maxTime, int[][] edges, int[] passingFees) {
         int n = passingFees.length;
         List<Edge>[] graph = new ArrayList[n];
@@ -49,5 +39,15 @@ public class LeetCode1928_dfs_dp {
         if (min == -1)
             return (dp[src][remTime] = -1);
         return (dp[src][remTime] = min + passingFees[src]);
+    }
+
+    class Edge {
+        int src, nbr, wt;
+
+        public Edge(int src, int nbr, int wt) {
+            this.src = src;
+            this.nbr = nbr;
+            this.wt = wt;
+        }
     }
 }

@@ -10,9 +10,9 @@ public class LeetCode752 {
 
     public static void main(String[] args) {
 
-        System.out.println(new LeetCode752().openLock(new String[] { "0201", "0101", "0102", "1212", "2002" }, "0202"));
+        System.out.println(new LeetCode752().openLock(new String[]{"0201", "0101", "0102", "1212", "2002"}, "0202"));
 
-        System.out.println(new LeetCode752().openLock(new String[] { "0000" }, "8888"));
+        System.out.println(new LeetCode752().openLock(new String[]{"0000"}, "8888"));
     }
 
     public int openLock(String[] deadends, String target) {

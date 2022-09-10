@@ -7,7 +7,7 @@ import java.util.Queue;
  * @author wujingxinit@outlook.com
  * @date 2022/9/7 23:09
  */
-public class LeetCode207 {
+public class LeetCode207_bfs {
 
     //20
     //[[0,10],[3,18],[5,5],[6,11],[11,14],[13,1],[15,1],[17,4]]

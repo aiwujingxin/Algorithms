@@ -27,7 +27,7 @@ public class LeetCode47 {
     }
 
     private void helper(List<List<Integer>> res, int[] nums, HashSet<Integer> visited,
-            ArrayList<Integer> temp) {
+                        ArrayList<Integer> temp) {
         if (temp.size() == nums.length) {
             res.add(new ArrayList<>(temp));
             return;

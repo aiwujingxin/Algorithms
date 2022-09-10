@@ -37,7 +37,7 @@ public class LeetCode207 {
                     continue;
                 }
 
-             //   [5,3]    3
+                //   [5,3]    3
                 if (pair[1] == cur) {
                     arr[pair[0]]--;
                 }

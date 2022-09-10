@@ -1,7 +1,6 @@
 package leetcode.problems;
 
 import java.util.*;
-import java.util.Map;
 
 /**
  * @author aiwujingxin@gmail.com

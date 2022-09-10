@@ -6,7 +6,7 @@ import java.util.Arrays;
  * @author wujingxinit@outlook.com
  * @date 2022/9/5 15:37
  */
-public class LeetCode322 {
+public class LeetCode322_dp {
 
     public int coinChange(int[] coins, int amount) {
         if (coins == null || coins.length == 0) {

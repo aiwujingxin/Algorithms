@@ -35,19 +35,6 @@ public class LeetCode327_SegmentTree {
         return ans;
     }
 
-    static class SegmentTreeNode {
-        SegmentTreeNode left;
-        SegmentTreeNode right;
-        int count;
-        long min;
-        long max;
-
-        public SegmentTreeNode(long min, long max) {
-            this.min = min;
-            this.max = max;
-        }
-    }
-
     private SegmentTreeNode buildSegmentTree(Long[] valArr, int low, int high) {
         if (low > high) {
             return null;
@@ -88,5 +75,18 @@ public class LeetCode327_SegmentTree {
         }
 
         return getCount(stn.left, min, max) + getCount(stn.right, min, max);
+    }
+
+    static class SegmentTreeNode {
+        SegmentTreeNode left;
+        SegmentTreeNode right;
+        int count;
+        long min;
+        long max;
+
+        public SegmentTreeNode(long min, long max) {
+            this.min = min;
+            this.max = max;
+        }
     }
 }

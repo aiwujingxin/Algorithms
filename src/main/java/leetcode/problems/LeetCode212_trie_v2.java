@@ -12,15 +12,6 @@ import java.util.Set;
  */
 public class LeetCode212_trie_v2 {
 
-    public class TrieNode {
-        public boolean isWord = false;
-        public TrieNode[] child = new TrieNode[26];
-
-        public TrieNode() {
-
-        }
-    }
-
     TrieNode root = new TrieNode();
     boolean[][] flag;
 
@@ -76,5 +67,14 @@ public class LeetCode212_trie_v2 {
         search(board, i, j + 1, node, word + board[i][j], result);
 
         flag[i][j] = false;
+    }
+
+    public class TrieNode {
+        public boolean isWord = false;
+        public TrieNode[] child = new TrieNode[26];
+
+        public TrieNode() {
+
+        }
     }
 }

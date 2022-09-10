@@ -9,12 +9,12 @@ import java.util.List;
  */
 public class LeetCode494_v1 {
 
+    int count = 0;
+
     public static void main(String[] args) {
         System.out.println(new LeetCode494_v1().findTargetSumWays(
                 new int[]{44, 20, 38, 6, 2, 47, 18, 50, 41, 38, 32, 24, 38, 38, 30, 5, 26, 15, 37, 35}, 44));
     }
-
-    int count = 0;
 
     public int findTargetSumWays(int[] nums, int target) {
         if (nums == null || nums.length == 0) {

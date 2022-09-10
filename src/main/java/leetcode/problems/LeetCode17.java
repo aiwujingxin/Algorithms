@@ -35,7 +35,7 @@ public class LeetCode17 {
     }
 
     private void backtrack(HashMap<Character, String> phoneMap, String digits, Integer index, List<String> res,
-            StringBuilder sb) {
+                           StringBuilder sb) {
         if (index == digits.length()) {
             res.add(sb.toString());
         } else {

@@ -25,6 +25,22 @@ public class LeetCode321_monostack {
     [6, 7, 6, 0, 4]
     */
 
+    private static boolean findMax(int[] arr1, int[] arr2, int p1, int p2) {
+        while (p1 < arr1.length && p2 < arr2.length) {
+            if (arr1[p1] < arr2[p2]) {
+                return false;
+            } else if (arr1[p1] > arr2[p2]) {
+                return true;
+            } else {
+                p1++;
+                p2++;
+            }
+        }
+        // when p1 is empty returns true, so that in merges function it picks up values of arr2
+        // when p1==arr1.length, then returns false, so that we keep pn picking arr2 elements
+        return p1 != arr1.length; // tricky
+    }
+
     public int[] maxNumber(int[] nums1, int[] nums2, int k) {
         int len1 = nums1.length;
         int len2 = nums2.length;
@@ -43,7 +59,6 @@ public class LeetCode321_monostack {
         }
         return maxRes;
     }
-
 
     public int[] findLexMax(int[] nums, int k) {
         int n = nums.length;
@@ -94,21 +109,5 @@ public class LeetCode321_monostack {
         }
 
         return res;
-    }
-
-    private static boolean findMax(int[] arr1, int[] arr2, int p1, int p2) {
-        while (p1 < arr1.length && p2 < arr2.length) {
-            if (arr1[p1] < arr2[p2]) {
-                return false;
-            } else if (arr1[p1] > arr2[p2]) {
-                return true;
-            } else {
-                p1++;
-                p2++;
-            }
-        }
-        // when p1 is empty returns true, so that in merges function it picks up values of arr2
-        // when p1==arr1.length, then returns false, so that we keep pn picking arr2 elements
-        return p1 != arr1.length; // tricky
     }
 }

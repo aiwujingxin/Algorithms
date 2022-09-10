@@ -14,6 +14,7 @@ public class LeetCode212_fast {
     int m, n;
     HashSet<String> set;
     private int[][] directions = new int[][]{{-1, 0}, {0, 1}, {1, 0}, {0, -1}};
+
     public List<String> findWords(char[][] board, String[] words) {
         root = new TrieNode();
         set = new HashSet<>();
@@ -84,6 +85,7 @@ public class LeetCode212_fast {
         private TrieNode[] next;
         private boolean isEnd;
         private int cnt;
+
         public TrieNode() {
             this.next = new TrieNode[26];
             this.isEnd = false;

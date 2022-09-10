@@ -30,50 +30,9 @@ public class LeetCode327_AVLTree {
     }
 
     static class BalancedTree {
-        private static class BalancedNode {
-            long val;
-            long seed;
-            int count;
-            int size;
-            BalancedNode left;
-            BalancedNode right;
-
-            BalancedNode(long val, long seed) {
-                this.val = val;
-                this.seed = seed;
-                this.count = 1;
-                this.size = 1;
-                this.left = null;
-                this.right = null;
-            }
-
-            BalancedNode leftRotate() {
-                int prevSize = size;
-                int currSize = (left != null ? left.size : 0) + (right.left != null ? right.left.size : 0) + count;
-                BalancedNode root = right;
-                right = root.left;
-                root.left = this;
-                root.size = prevSize;
-                size = currSize;
-                return root;
-            }
-
-            BalancedNode rightRotate() {
-                int prevSize = size;
-                int currSize = (right != null ? right.size : 0) + (left.right != null ? left.right.size : 0) + count;
-                BalancedNode root = left;
-                left = root.right;
-                root.right = this;
-                root.size = prevSize;
-                size = currSize;
-                return root;
-            }
-        }
-
+        private final Random rand;
         private BalancedNode root;
         private int size;
-        private final Random rand;
-
         public BalancedTree() {
             this.root = null;
             this.size = 0;
@@ -156,6 +115,46 @@ public class LeetCode327_AVLTree {
                 ++node.count;
             }
             return node;
+        }
+
+        private static class BalancedNode {
+            long val;
+            long seed;
+            int count;
+            int size;
+            BalancedNode left;
+            BalancedNode right;
+
+            BalancedNode(long val, long seed) {
+                this.val = val;
+                this.seed = seed;
+                this.count = 1;
+                this.size = 1;
+                this.left = null;
+                this.right = null;
+            }
+
+            BalancedNode leftRotate() {
+                int prevSize = size;
+                int currSize = (left != null ? left.size : 0) + (right.left != null ? right.left.size : 0) + count;
+                BalancedNode root = right;
+                right = root.left;
+                root.left = this;
+                root.size = prevSize;
+                size = currSize;
+                return root;
+            }
+
+            BalancedNode rightRotate() {
+                int prevSize = size;
+                int currSize = (right != null ? right.size : 0) + (left.right != null ? left.right.size : 0) + count;
+                BalancedNode root = left;
+                left = root.right;
+                root.right = this;
+                root.size = prevSize;
+                size = currSize;
+                return root;
+            }
         }
     }
 }

@@ -11,6 +11,17 @@ import java.util.List;
  */
 public class LeetCode500 {
 
+    static String[] ss = new String[]{"qwertyuiop", "asdfghjkl", "zxcvbnm"};
+    static int[] hash = new int[26];
+
+    static {
+        for (int i = 0; i < ss.length; i++) {
+            for (char c : ss[i].toCharArray()) {
+                hash[c - 'a'] = i;
+            }
+        }
+    }
+
     public static void main(String[] args) {
         System.out.println(
                 Arrays.toString(new LeetCode500().findWords(new String[]{"Hello", "Alaska", "Dad", "Peace"})));
@@ -67,19 +78,6 @@ public class LeetCode500 {
         }
         return false;
     }
-
-
-    static String[] ss = new String[]{"qwertyuiop", "asdfghjkl", "zxcvbnm"};
-    static int[] hash = new int[26];
-
-    static {
-        for (int i = 0; i < ss.length; i++) {
-            for (char c : ss[i].toCharArray()) {
-                hash[c - 'a'] = i;
-            }
-        }
-    }
-
 
     //妙
     public String[] findWordsV2(String[] words) {

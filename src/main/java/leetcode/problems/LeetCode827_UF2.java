@@ -8,61 +8,6 @@ import java.util.HashSet;
  */
 public class LeetCode827_UF2 {
 
-    static class UnionFind {
-        int[] parents;
-        int[] rank;
-        int[] clusterSize;
-
-        public UnionFind(int size) {
-            parents = new int[size];
-            rank = new int[size];
-            clusterSize = new int[size];
-
-            for (int i = 0; i < size; i++) {
-                rank[i] = 1;
-                parents[i] = i;
-                clusterSize[i] = 1;
-            }
-        }
-
-        public int find(int x) {
-            if (x == parents[x]) {
-                return x;
-            }
-
-            parents[x] = find(parents[x]);
-            return parents[x];
-        }
-
-        public void union(int x, int y) {
-            int rootX = find(x);
-            int rootY = find(y);
-
-            if (rootX == rootY) {
-                return;
-            }
-
-            int rankX = rank[rootX];
-            int rankY = rank[rootY];
-
-            if (rankX > rankY) {
-                parents[rootY] = rootX;
-                clusterSize[rootX] += clusterSize[rootY];
-            } else if (rankY > rankX) {
-                parents[rootX] = rootY;
-                clusterSize[rootY] += clusterSize[rootX];
-            } else {
-                parents[rootY] = rootX;
-                rank[rootX]++;
-                clusterSize[rootX] += clusterSize[rootY];
-            }
-        }
-
-        public int getClusterSize(int x) {
-            return clusterSize[x];
-        }
-    }
-
     public int largestIsland(int[][] grid) {
         int n = grid.length;
         int[][] directions = {{1, 0}, {-1, 0}, {0, 1}, {0, -1}};
@@ -119,5 +64,60 @@ public class LeetCode827_UF2 {
         }
 
         return maxIslandSize;
+    }
+
+    static class UnionFind {
+        int[] parents;
+        int[] rank;
+        int[] clusterSize;
+
+        public UnionFind(int size) {
+            parents = new int[size];
+            rank = new int[size];
+            clusterSize = new int[size];
+
+            for (int i = 0; i < size; i++) {
+                rank[i] = 1;
+                parents[i] = i;
+                clusterSize[i] = 1;
+            }
+        }
+
+        public int find(int x) {
+            if (x == parents[x]) {
+                return x;
+            }
+
+            parents[x] = find(parents[x]);
+            return parents[x];
+        }
+
+        public void union(int x, int y) {
+            int rootX = find(x);
+            int rootY = find(y);
+
+            if (rootX == rootY) {
+                return;
+            }
+
+            int rankX = rank[rootX];
+            int rankY = rank[rootY];
+
+            if (rankX > rankY) {
+                parents[rootY] = rootX;
+                clusterSize[rootX] += clusterSize[rootY];
+            } else if (rankY > rankX) {
+                parents[rootX] = rootY;
+                clusterSize[rootY] += clusterSize[rootX];
+            } else {
+                parents[rootY] = rootX;
+                rank[rootX]++;
+                clusterSize[rootX] += clusterSize[rootY];
+            }
+        }
+
+        public int getClusterSize(int x) {
+            return clusterSize[x];
+        }
     }
 }

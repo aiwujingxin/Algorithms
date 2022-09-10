@@ -4,10 +4,11 @@ package leetcode.hot100;
  * @author wujingxinit@outlook.com
  * @date 2022/9/4 17:13
  */
-public class LeetCode279 {
+public class
+LeetCode279_dp {
 
     public static void main(String[] args) {
-        System.out.println(new LeetCode279().numSquares(13));
+        System.out.println(new LeetCode279_dp().numSquares(13));
     }
 
     public int numSquares(int n) {

@@ -13,16 +13,6 @@ public class LeetCode336_v1 {
 
     //https://www.youtube.com/watch?v=WPASktChEA4
 
-    static class TrieNode {
-        TrieNode[] children = new TrieNode[26];
-        int wordIndex = -1;
-        List<Integer> restIsPalindrome;
-
-        TrieNode() {
-            restIsPalindrome = new ArrayList<>();
-        }
-    }
-
     TrieNode root = new TrieNode();
     int n;
     List<List<Integer>> res = new ArrayList<>();
@@ -94,5 +84,15 @@ public class LeetCode336_v1 {
         }
 
         return true;
+    }
+
+    static class TrieNode {
+        TrieNode[] children = new TrieNode[26];
+        int wordIndex = -1;
+        List<Integer> restIsPalindrome;
+
+        TrieNode() {
+            restIsPalindrome = new ArrayList<>();
+        }
     }
 }

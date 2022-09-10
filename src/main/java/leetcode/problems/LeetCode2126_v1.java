@@ -27,6 +27,7 @@ public class LeetCode2126_v1 {
         }
         return true;
     }
+
     //获得二进制有几位，从0开始
     public int getH(int x) {
         int cnt = 0;
