@@ -1,14 +1,10 @@
-package leetcode.problems;
+package leetcode.hot100;
 
 /**
- * @author jingxinwu
- * @date 2021-12-19 7:08 PM
+ * @author aiwujingxin@gmail.com
+ * @date 2022/9/12 00:10
  */
 public class LeetCode394 {
-
-    public static void main(String[] args) {
-        System.out.println(new LeetCode394().decodeString("3[a2[c]]"));
-    }
 
     public String decodeString(String s) {
         if (s == null || s.length() == 0) {
@@ -25,6 +21,7 @@ public class LeetCode394 {
             if (Character.isDigit(c)) {
                 sum = sum * 10 + Integer.parseInt(String.valueOf(s.charAt(i)));
             } else if (c == '[') {
+                // 遇到[, 即可拆分成子问题， 定义好返回值，基于子问题的返回值继续求解
                 String[] temp = dfs(s, i + 1);
                 i = Integer.parseInt(temp[0]);
                 while (sum > 0) {

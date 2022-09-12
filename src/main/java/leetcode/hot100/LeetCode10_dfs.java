@@ -1,58 +1,38 @@
 package leetcode.hot100;
 
 /**
- * @author wujingxinit@outlook.com
- * @date 2022/9/3 21:07
+ * @author aiwujingxin@gmail.com
+ * @date 2022/9/12 00:23
  */
 public class LeetCode10_dfs {
-
-    //https://www.youtube.com/watch?v=7M-dShnqqEI
-
-    //https://leetcode.com/problems/regular-expression-matching/discuss/2200029/JAVA-or-Recursion-with-memoization-or-Beats-100
+    //https://leetcode.com/problems/regular-expression-matching/discuss/1873060/Java-solutions-using-recursive-and-DP
     public boolean isMatch(String s, String p) {
-        Boolean[][] memo = new Boolean[s.length() + 1][p.length() + 1];
-        return find(s, p, 0, 0, memo);
+        return solve(s.length() - 1, p.length() - 1, s, p);
     }
 
-    private boolean find(String s, String p, int i, int j, Boolean[][] memo) {
-
-        if (memo[i][j] != null) {
-            return memo[i][j];
+    //其实就是分情况讨论
+    //基于各种情况，可以构造出转移方程，进而使用dp求解
+    public boolean solve(int i, int j, String s, String p) {
+        if (j < 0) {
+            return (i < 0);
         }
-
-        if (i >= s.length() || j >= p.length()) {
-            // p没了, s 还在
-            if (i < s.length()) {
-                return false;
-            }
-
-            // s没了 , p 还在
-            for (; j < p.length(); j++) {
-                if (j < p.length() - 1 && p.charAt(j + 1) == '*') {
-                    continue;
-                }
-                if (p.charAt(j) != '*') {
-                    return false;
-                }
-            }
-            return true;
+        if (i < 0) {
+            return (p.charAt(j) == '*') && solve(i, j - 2, s, p);
         }
-
-        boolean isMatch = s.charAt(i) == p.charAt(j) || p.charAt(j) == '.';
-
-        if (j < p.length() - 1 && p.charAt(j + 1) == '*') {
-            if (isMatch) {
-                memo[i][j] = find(s, p, i + 1, j, memo) || find(s, p, i, j + 2, memo);
-            } else {
-                memo[i][j] = find(s, p, i, j + 2, memo);
-            }
-        } else {
-            if (isMatch) {
-                memo[i][j] = find(s, p, i + 1, j + 1, memo);
-            } else {
-                memo[i][j] = false;
-            }
+        //simple char matching
+        //if s char matches with p char, or it can be '.'
+        if (s.charAt(i) == p.charAt(j) || p.charAt(j) == '.') {
+            return solve(i - 1, j - 1, s, p);
         }
-        return memo[i][j];
+        if (p.charAt(j) == '*') {
+            //if s char matches with p char, or it can be '.'
+            if (s.charAt(i) == p.charAt(j - 1) || p.charAt(j - 1) == '.') {
+                //using * we can take one char, or we can ignore *
+                return solve(i - 1, j, s, p) || solve(i, j - 2, s, p);
+            }
+            // if s char not match with p char
+            return solve(i, j - 2, s, p);
+        }
+        return false;
     }
 }
