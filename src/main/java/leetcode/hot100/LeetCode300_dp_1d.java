@@ -5,14 +5,14 @@ package leetcode.hot100;
  * @author wujingxinit@outlook.com
  * @date 2022/9/5 11:05
  */
-public class LeetCode300 {
+public class LeetCode300_dp_1d {
 
     public static void main(String[] args) {
-        System.out.println(new LeetCode300().lengthOfLIS(new int[]{10, 9, 2, 5, 3, 7, 101, 18}));
-        System.out.println(new LeetCode300().lengthOfLIS(new int[]{0, 1, 0, 3, 2, 3}));
-        System.out.println(new LeetCode300().lengthOfLIS(new int[]{7, 7, 7, 7, 7, 7, 7}));
+        System.out.println(new LeetCode300_dp_1d().lengthOfLIS(new int[]{10, 9, 2, 5, 3, 7, 101, 18}));
+        System.out.println(new LeetCode300_dp_1d().lengthOfLIS(new int[]{0, 1, 0, 3, 2, 3}));
+        System.out.println(new LeetCode300_dp_1d().lengthOfLIS(new int[]{7, 7, 7, 7, 7, 7, 7}));
         //fix case
-        System.out.println(new LeetCode300().lengthOfLIS(new int[]{1, 3, 6, 7, 9, 4, 10, 5, 6}));
+        System.out.println(new LeetCode300_dp_1d().lengthOfLIS(new int[]{1, 3, 6, 7, 9, 4, 10, 5, 6}));
     }
 
     public int lengthOfLIS(int[] nums) {

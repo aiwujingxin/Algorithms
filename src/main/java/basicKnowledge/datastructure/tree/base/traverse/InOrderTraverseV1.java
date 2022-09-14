@@ -10,27 +10,7 @@ import java.util.Stack;
  * @author wujingxinit@outlook.com
  * @date 2022/9/7 11:49
  */
-public class InOrderTraverse implements Traverse {
-
-    List<Integer> list = new ArrayList<>();
-
-    @Override
-    public List<Integer> traverseByDFS(TreeNode root) {
-        if (root == null) {
-            return list;
-        }
-        dfs(root);
-        return list;
-    }
-
-    private void dfs(TreeNode root) {
-        if (root == null) {
-            return;
-        }
-        dfs(root.left);
-        list.add(root.val);
-        dfs(root.right);
-    }
+public class InOrderTraverseV1 extends InOrder implements Traverse {
 
     @Override
     public List<Integer> traverseByIteration(TreeNode root) {

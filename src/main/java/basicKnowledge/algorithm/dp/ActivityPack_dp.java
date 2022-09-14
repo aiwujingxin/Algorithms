@@ -1,4 +1,6 @@
-package basicKnowledge.algorithm.greedy;
+package basicKnowledge.algorithm.dp;
+
+import basicKnowledge.problems.ActivityPack;
 
 import java.util.Arrays;
 
@@ -6,15 +8,11 @@ import java.util.Arrays;
  * @author aiwujingxin@gmail.com
  * @date 2022/7/3 11:31
  */
-public class ActivityPack_dp {
+public class ActivityPack_dp implements ActivityPack {
 
     //https://www.cs.princeton.edu/~wayne/cs423/lectures/dynamic-programming-4up.pdf
 
-
-    public static void main(String[] args) {
-        System.out.println(new ActivityPack_dp().pack(new int[][]{{2, 13}, {8, 12}, {5, 9}, {4, 9}, {1, 4}, {2, 6}, {3, 5}, {5, 7}, {6, 10}, {8, 11}}));
-    }
-
+    @Override
     public int pack(int[][] periods) {
         int[] s = new int[periods.length];
         for (int i = 0; i < periods.length; i++) {

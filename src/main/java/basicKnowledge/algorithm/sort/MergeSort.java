@@ -1,20 +1,14 @@
 package basicKnowledge.algorithm.sort;
 
-import java.util.Arrays;
-
 /**
  * @author jingxinwu
  * @date 2021-06-06 1:46 下午
  */
-public class MergeSort {
+public class MergeSort implements Sort {
 
-    public static void main(String[] args) {
-        int[] arr = new int[]{3, 5, 4, 3, 7, 8, 4, 5, 2, 1, 0, 9};
-        new MergeSort().mergeSort(arr);
-        System.out.println(Arrays.toString(arr));
-    }
 
-    public void mergeSort(int[] arr) {
+    @Override
+    public void sort(int[] arr) {
         mergeSort(arr, 0, arr.length - 1);
     }
 

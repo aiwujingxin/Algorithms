@@ -4,7 +4,7 @@ package leetcode.problems;
  * @author jingxinwu
  * @date 2021-08-18 2:02 上午
  */
-public class LeetCode300 {
+public class LeetCode300_dp {
 
 
     public int lengthOfLIS(int[] nums) {

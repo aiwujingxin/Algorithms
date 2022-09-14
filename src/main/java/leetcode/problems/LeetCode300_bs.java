@@ -6,7 +6,7 @@ import java.util.Arrays;
  * @author aiwujingxin@gmail.com
  * @date 2022/7/25 23:00
  */
-public class LeetCode300_v2 {
+public class LeetCode300_bs {
 
     public int lengthOfLIS(int[] nums) {
         if (nums.length == 0) {

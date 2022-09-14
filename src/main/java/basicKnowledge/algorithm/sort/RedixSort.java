@@ -6,22 +6,17 @@ import java.util.Arrays;
  * @author aiwujingxin@gmail.com
  * @date 2022/6/13 23:15
  */
-public class RedixSort {
+public class RedixSort implements Sort {
 
-    public static void main(String[] args) {
-        int[] arr = new int[]{1, 4, 6, 2, 8, 9, 3, 6, 8, 2};
-        radixsort(arr);
-        System.out.println(Arrays.toString(arr));
-    }
-
-    public static void radixsort(int[] arr) {
+    @Override
+    public void sort(int[] arr) {
         radixsort(arr, arr.length);
     }
 
 
     // The main function to that sorts arr[] of size n using
     // Radix Sort
-    static void radixsort(int[] arr, int n) {
+    private void radixsort(int[] arr, int n) {
         // Find the maximum number to know number of digits
         int m = getMax(arr, n);
         // Do counting sort for every digit. Note that

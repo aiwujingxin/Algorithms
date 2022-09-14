@@ -1,5 +1,7 @@
 package basicKnowledge.algorithm.greedy;
 
+import basicKnowledge.problems.ActivityPack;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
@@ -9,11 +11,7 @@ import java.util.List;
  * @author aiwujingxin@gmail.com
  * @date 2022/7/3 11:21
  */
-public class ActivityPack_Greedy {
-
-    public static void main(String[] args) {
-        System.out.println(new ActivityPack_Greedy().pack(new int[][]{{2, 13}, {8, 12}, {5, 9}, {4, 9}, {1, 4}, {2, 6}, {3, 5}, {5, 7}, {6, 10}, {8, 11}}));
-    }
+public class ActivityPack_Greedy implements ActivityPack {
 
     public int pack(int[][] periods) {
 
