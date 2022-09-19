@@ -4,7 +4,7 @@ package leetcode.hot100;
  * @author aiwujingxin@gmail.com
  * @date 2022/9/12 23:33
  */
-public class LeetCode215 {
+public class LeetCode215_quicksort {
 
 
     //https://leetcode.cn/problems/kth-largest-element-in-an-array/solution/shu-zu-zhong-de-di-kge-zui-da-yuan-su-by-leetcode-/

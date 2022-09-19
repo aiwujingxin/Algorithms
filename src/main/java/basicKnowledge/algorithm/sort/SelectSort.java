@@ -4,21 +4,24 @@ package basicKnowledge.algorithm.sort;
  * @author wujingxinit@outlook.com
  * @date 2022/9/14 14:14
  */
-public class SelectSort implements Sort {
+public class SelectSort implements ArraySort {
 
     @Override
-    public void sort(int[] nums) {
-        for (int i = 0; i < nums.length - 1; i++) {
-            int index = i;
-            int temp = nums[index];
-            for (int j = index; j < nums.length; j++) {
-                if (nums[j] < temp) {
-                    index = j;
+    public int[] sortArray(int[] nums) {
+        int n = nums.length;
+        // One by one lmove boundary of unsorted subarray
+        for (int i = 0; i < n - 1; i++) {
+            // Find the minimum element in unsorted array
+            int min_idx = i;
+            for (int j = i + 1; j < n; j++) {
+                if (nums[j] < nums[min_idx]) {
+                    min_idx = j;
                 }
             }
-            int n = nums[index];
-            nums[i] = nums[index];
-            nums[index] = n;
+            int temp = nums[min_idx];
+            nums[min_idx] = nums[i];
+            nums[i] = temp;
         }
+        return nums;
     }
 }

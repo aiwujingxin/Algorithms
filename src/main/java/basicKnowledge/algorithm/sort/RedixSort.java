@@ -6,13 +6,13 @@ import java.util.Arrays;
  * @author aiwujingxin@gmail.com
  * @date 2022/6/13 23:15
  */
-public class RedixSort implements Sort {
+public class RedixSort implements ArraySort {
 
     @Override
-    public void sort(int[] arr) {
-        radixsort(arr, arr.length);
+    public int[] sortArray(int[] nums) {
+        radixsort(nums, nums.length);
+        return nums;
     }
-
 
     // The main function to that sorts arr[] of size n using
     // Radix Sort

@@ -24,9 +24,11 @@ public class LeetCode148_insertsort {
                 sorted = sorted.next;
             } else {
                 ListNode pre = dummy;
+                // 寻找正确插入的位置
                 while (pre.next.val < curr.val) {
                     pre = pre.next;
                 }
+                // 断开 + 插入
                 sorted.next = curr.next;
                 curr.next = pre.next;
                 pre.next = curr;

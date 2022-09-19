@@ -4,12 +4,13 @@ package basicKnowledge.algorithm.sort;
  * @author jingxinwu
  * @date 2021-06-06 1:46 下午
  */
-public class MergeSort implements Sort {
+public class MergeSort implements ArraySort {
 
 
     @Override
-    public void sort(int[] arr) {
-        mergeSort(arr, 0, arr.length - 1);
+    public int[] sortArray(int[] nums) {
+        mergeSort(nums, 0, nums.length - 1);
+        return nums;
     }
 
 

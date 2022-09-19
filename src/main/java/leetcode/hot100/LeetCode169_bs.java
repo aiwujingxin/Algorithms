@@ -4,7 +4,7 @@ package leetcode.hot100;
  * @author aiwujingxin@gmail.com
  * @date 2022/9/12 21:51
  */
-public class LeetCode169 {
+public class LeetCode169_bs {
 
     public int majorityElement(int[] nums) {
         return majorityElementRec(nums, 0, nums.length - 1);
