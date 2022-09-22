@@ -1,4 +1,4 @@
-package leetcode.study.recursive;
+package leetbook.recursive;
 
 import java.util.Random;
 
