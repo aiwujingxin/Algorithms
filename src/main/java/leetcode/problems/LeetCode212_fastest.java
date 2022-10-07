@@ -9,6 +9,7 @@ import java.util.List;
  * @date 2022/7/6 22:28
  */
 public class LeetCode212_fastest {
+
     public List<String> findWords(char[][] board, String[] words) {
         Node root = new Node();
         for (String word : words) {
@@ -72,7 +73,7 @@ public class LeetCode212_fastest {
         cur.end = word;
     }
 
-    class Node {
+    static class Node {
         Node[] nexts = new Node[26];
         int pass = 0;
         String end;

@@ -10,16 +10,6 @@ public class LeetCode169_bs {
         return majorityElementRec(nums, 0, nums.length - 1);
     }
 
-    private int countInRange(int[] nums, int num, int lo, int hi) {
-        int count = 0;
-        for (int i = lo; i <= hi; i++) {
-            if (nums[i] == num) {
-                count++;
-            }
-        }
-        return count;
-    }
-
     private int majorityElementRec(int[] nums, int lo, int hi) {
         // base case; the only element in an array of size 1 is the majority element.
         if (lo == hi) {
@@ -37,5 +27,15 @@ public class LeetCode169_bs {
         int leftCount = countInRange(nums, left, lo, hi);
         int rightCount = countInRange(nums, right, lo, hi);
         return leftCount > rightCount ? left : right;
+    }
+
+    private int countInRange(int[] nums, int num, int lo, int hi) {
+        int count = 0;
+        for (int i = lo; i <= hi; i++) {
+            if (nums[i] == num) {
+                count++;
+            }
+        }
+        return count;
     }
 }

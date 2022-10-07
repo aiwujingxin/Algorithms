@@ -8,7 +8,8 @@ public class LeetCode416_dp {
 
     //https://www.youtube.com/watch?v=z_VLFGzQQtk
 
-    //和零钱兑换类似 322
+    //如果是0-1背包，即数组中的元素不可重复使用：target层循环倒序；
+    //如果是完全背包，即数组中的元素可重复使用：target层循环正序； 零钱兑换322 零钱兑换II 518
 
     public boolean canPartition(int[] nums) {
         int sum = 0;

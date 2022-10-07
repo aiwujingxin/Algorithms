@@ -4,56 +4,65 @@ import java.util.*;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2022/9/10 16:41
+ * @date 2022/9/10 16:42
  */
 public class LeetCode301_bfs {
 
-    //https://leetcode.com/problems/remove-invalid-parentheses/discuss/2306346/Java-or-BFS-or-clean-code
-
     public List<String> removeInvalidParentheses(String s) {
-        List<String> result = new ArrayList<>();
-        HashSet<String> set = new HashSet<>();     // To Avoid duplicate
-        boolean isValidFound = false;
-
+        List<String> res = new ArrayList<>();
+        // sanity check
+        if (s == null) {
+            return res;
+        }
+        Set<String> visited = new HashSet<>();
         Queue<String> queue = new LinkedList<>();
+        // initialize
         queue.add(s);
+        visited.add(s);
+        boolean found = false;
+        while (!queue.isEmpty()) {
+            s = queue.poll();
+            if (isValid(s)) {
+                // found an answer, add to the result
+                res.add(s);
+                found = true;
+            }
+            if (found) {
+                continue;
+            }
 
-        while (!queue.isEmpty() && !isValidFound) {
-            int size = queue.size();
-            for (int i = 0; i < size; i++) {
-                String cur = queue.poll();
-                if (isValid(cur)) {
-                    isValidFound = true;
-                    result.add(cur);
-                } else if (!isValidFound) {
-                    for (int j = 0; j < cur.length(); j++) {
-                        if (Character.isLetter(cur.charAt(j))) {
-                            continue;
-                        }
-                        //remove j
-                        String new_str = cur.substring(0, j) + cur.substring(j + 1);
-                        if (!set.contains(new_str)) {
-                            queue.add(new_str);
-                            set.add(new_str);
-                        }
-                    }
+            // generate all possible states
+            for (int i = 0; i < s.length(); i++) {
+                // we only try to remove left or right paren
+                if (s.charAt(i) != '(' && s.charAt(i) != ')') {
+                    continue;
+                }
+
+                String t = s.substring(0, i) + s.substring(i + 1);
+
+                if (!visited.contains(t)) {
+                    // for each state, if it's not visited, add it to the queue
+                    queue.add(t);
+                    visited.add(t);
                 }
             }
         }
-        return result;
+
+        return res;
     }
 
-    public boolean isValid(String str) {
-        Stack<Character> stack = new Stack<>();
-        for (int i = 0; i < str.length(); i++) {
-            if (str.charAt(i) == '(') {
-                stack.add('(');
-            } else if (stack.isEmpty() && str.charAt(i) == ')') {
+    // helper function checks if string s contains valid parantheses
+    boolean isValid(String s) {
+        int count = 0;
+
+        for (int i = 0; i < s.length(); i++) {
+            char c = s.charAt(i);
+            if (c == '(') count++;
+            if (c == ')' && count-- == 0) {
                 return false;
-            } else if (str.charAt(i) == ')') {
-                stack.pop();
             }
         }
-        return stack.isEmpty();
+
+        return count == 0;
     }
 }

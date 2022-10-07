@@ -32,7 +32,9 @@ public class LeetCode212_trie {
     }
 
     public void dfs(char[][] board, boolean[][] visited, String str, int x, int y, Trie trie) {
-        if (x < 0 || x >= board.length || y < 0 || y >= board[0].length) return;
+        if (x < 0 || x >= board.length || y < 0 || y >= board[0].length) {
+            return;
+        }
         if (visited[x][y]) {
             return;
         }

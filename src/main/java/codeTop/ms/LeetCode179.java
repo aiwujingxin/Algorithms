@@ -16,7 +16,7 @@ public class LeetCode179 {
         }
         //fix
         //有思路，但是具体的排序没写出来
-        Arrays.sort(numsToWord, (o1, o2) -> (o1 + o2).compareTo(o2 + o1));
+        Arrays.sort(numsToWord, (o1, o2) -> (o2 + o1).compareTo(o1 + o2));
         StringBuilder sb = new StringBuilder();
 
         for (String s : numsToWord) {

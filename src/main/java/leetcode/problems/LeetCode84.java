@@ -29,14 +29,19 @@ public class LeetCode84 {
             stack.push(i);
         }
 
-        while (!stack.isEmpty()) stack.pop();
+        while (!stack.isEmpty()) {
+            stack.pop();
+        }
 
         for (int i = N - 1; i >= 0; i--) {
             while (!stack.isEmpty() && heights[i] <= heights[stack.peek()]) {
                 stack.pop();
             }
-            if (stack.isEmpty()) right[i] = N - 1;
-            else right[i] = stack.peek() - 1;
+            if (stack.isEmpty()) {
+                right[i] = N - 1;
+            } else {
+                right[i] = stack.peek() - 1;
+            }
             stack.push(i);
         }
 

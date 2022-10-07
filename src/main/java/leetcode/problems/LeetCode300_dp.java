@@ -15,6 +15,7 @@ public class LeetCode300_dp {
         dp[0] = 1;
         int maxans = 1;
         for (int i = 1; i < nums.length; i++) {
+            //fix
             dp[i] = 1;
             for (int j = 0; j < i; j++) {
                 if (nums[i] > nums[j]) {

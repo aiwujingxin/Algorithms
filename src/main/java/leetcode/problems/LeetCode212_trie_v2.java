@@ -69,7 +69,7 @@ public class LeetCode212_trie_v2 {
         flag[i][j] = false;
     }
 
-    public class TrieNode {
+    public static class TrieNode {
         public boolean isWord = false;
         public TrieNode[] child = new TrieNode[26];
 

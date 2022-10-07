@@ -13,23 +13,23 @@ public class LeetCode245_opt {
 
     /**
      * 最短单词距离 III
-     *
+     * <p>
      * 给定一个字符串数组wordsDict 和两个字符串 word1 和 word2 ，返回列表中这两个单词之间的最短距离。
-     *
+     * <p>
      * 注意：word1 和 word2是有可能相同的，并且它们将分别表示为列表中 两个独立的单词 。
-     *
+     * <p>
      * 示例 1：
-     *
+     * <p>
      * 输入：wordsDict = ["practice", "makes", "perfect", "coding", "makes"], word1 = "makes", word2 = "coding"
      * 输出：1
      * 示例 2：
-     *
+     * <p>
      * 输入：wordsDict = ["practice", "makes", "perfect", "coding", "makes"], word1 = "makes", word2 = "makes"
      * 输出：3
-     *
-     *
+     * <p>
+     * <p>
      * 提示：
-     *
+     * <p>
      * 1 <= wordsDict.length <= 105
      * 1 <= wordsDict[i].length <= 10
      * wordsDict[i] 由小写英文字母组成
@@ -40,7 +40,7 @@ public class LeetCode245_opt {
     public static void main(String[] args) {
         System.out.println(
                 new LeetCode245_opt().shortestWordDistance(
-                        new String[]{"practice", "makes", "perfect", "coding", "makes" },
+                        new String[]{"practice", "makes", "perfect", "coding", "makes"},
                         "makes", "makes"));
     }
 

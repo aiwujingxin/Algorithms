@@ -6,6 +6,7 @@ package leetcode.topinterview;
  */
 public class LeetCode7 {
 
+    //copy
     public int reverse(int x) {
         int rev = 0, rem;
         while (x != 0) {

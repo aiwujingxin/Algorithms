@@ -34,8 +34,8 @@ public class LeetCode103 {
             }
             if (flag) {
                 Collections.reverse(level);
-                res.add(level);
             }
+            res.add(level);
             flag = !flag;
         }
         return res;

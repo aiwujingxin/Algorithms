@@ -11,6 +11,6 @@ public class LeetCode326 {
         if (n <= 2) {
             return false;
         }
-        return n > 0 && 1162261467 % n == 0;
+        return 1162261467 % n == 0;
     }
 }

@@ -1,7 +1,6 @@
 package leetcode.problems;
 
-import java.util.Deque;
-import java.util.LinkedList;
+import java.util.Stack;
 
 /**
  * @author jingxinwu
@@ -11,23 +10,25 @@ public class LeetCode150 {
 
 
     public int evalRPN(String[] tokens) {
-        Deque<Integer> stack = new LinkedList<>();
-        for (String token : tokens) {
-            switch (token) {
-                case "+":
-                    stack.push(stack.pop() + stack.pop());
-                    break;
-                case "-":
-                    stack.push(stack.pop() - stack.pop());
-                    break;
-                case "*":
-                    stack.push(stack.pop() * stack.pop());
-                    break;
-                case "/":
-                    stack.push(stack.pop() / stack.pop());
-                    break;
-                default:
-                    stack.push(Integer.parseInt(token));
+        if (tokens == null || tokens.length == 0) {
+            return 0;
+        }
+        Stack<Integer> stack = new Stack<>();
+        for (String s : tokens) {
+            switch (s) {
+                case "+" -> stack.push(stack.pop() + stack.pop());
+                case "-" -> {
+                    Integer one = stack.pop();
+                    Integer two = stack.pop();
+                    stack.push(two - one);
+                }
+                case "*" -> stack.push(stack.pop() * stack.pop());
+                case "/" -> {
+                    Integer a = stack.pop();
+                    Integer b = stack.pop();
+                    stack.push(b / a);
+                }
+                default -> stack.push(Integer.valueOf(s));
             }
         }
         return stack.pop();

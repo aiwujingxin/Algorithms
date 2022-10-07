@@ -12,14 +12,14 @@ public class LeetCode244 {
 
     /**
      * 最短单词距离 II
-     *
+     * <p>
      * 请设计一个类，使该类的构造函数能够接收一个单词列表。然后再实现一个方法，
      * 该方法能够分别接收两个单词 word1和word2，并返回列表中这两个单词之间的最短距离。
      * 您的方法将被以不同的参数调用多次。
-     *
+     * <p>
      * 示例:
      * 假设 words = ["practice", "makes", "perfect", "coding", "makes"]
-     *
+     * <p>
      * 输入: word1 = “coding”, word2 = “practice”
      * 输出: 3
      * 输入: word1 = "makes", word2 = "coding"
@@ -29,7 +29,7 @@ public class LeetCode244 {
      **/
 
     public static void main(String[] args) {
-        System.out.println(new LeetCode244(new String[]{"practice", "makes", "perfect", "coding", "makes" }).shortest("coding","practice"));
+        System.out.println(new LeetCode244(new String[]{"practice", "makes", "perfect", "coding", "makes"}).shortest("coding", "practice"));
     }
 
 

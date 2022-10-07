@@ -1,11 +1,8 @@
 package codeTop.ms;
 
 import common.TreeNode;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Queue;
+
+import java.util.*;
 
 /**
  * @author jingxinwu
@@ -26,11 +23,10 @@ public class LeetCode103 {
         boolean flag = false;
         while (!queue.isEmpty()) {
 
-            TreeNode node = queue.poll();
             List<Integer> level = new ArrayList<>();
             int size = queue.size();
             while (size > 0) {
-
+                TreeNode node = queue.poll();
                 level.add(node.val);
 
                 if (node.left != null) {

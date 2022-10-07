@@ -32,10 +32,21 @@ public class LeetCode301_backtrack {
         for (int i = 0; i < s.length(); ++i) {
             char ch1 = s.charAt(i); // from left
             char ch2 = s.charAt(s.length() - i - 1); // from right
-            if (ch1 == '(') L1 += 1; // remember to skip other letters
-            if (ch1 == ')') R1 += 1;
-            if (ch2 == '(') L2 += 1;
-            if (ch2 == ')') R2 += 1;
+            if (ch1 == '(') {
+                L1 += 1;
+            } // remember to skip other letters
+
+            if (ch1 == ')') {
+                R1 += 1;
+            }
+
+            if (ch2 == '(') {
+                L2 += 1;
+            }
+            if (ch2 == ')') {
+                R2 += 1;
+            }
+
             rightCount = Math.max(rightCount, R1 - L1);
             leftCount = Math.max(leftCount, L2 - R2);
         }

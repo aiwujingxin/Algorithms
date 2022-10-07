@@ -9,28 +9,23 @@ import java.util.Random;
  */
 public class LeetCode384 {
 
-    private Random r = new Random();
-    private int[] nums;
-    private int[] orign;
+    private final Random r = new Random();
+    private final int[] nums;
+    private final int[] orign;
 
     public LeetCode384(int[] nums) {
         this.nums = nums;
         this.orign = Arrays.copyOf(nums, nums.length);
     }
 
-    /**
-     * Resets the array to its original configuration and return it.
-     */
     public int[] reset() {
         return orign;
     }
 
     /**
      * Returns a random shuffling of the array.
-     *
-     * https://www.youtube.com/watch?v=8DHwp1Rtp0Q ,4分10秒
-     *
-     *
+     * <p>
+     * <a href="https://www.youtube.com/watch?v=8DHwp1Rtp0Q">video</a> ,4分10秒
      */
 
     public int[] shuffle() {

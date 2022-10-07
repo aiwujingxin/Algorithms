@@ -44,8 +44,9 @@ public class LeetCode140_dp {
 
         for (int i = start + 1; i <= s.length(); i++) {
             String word = s.substring(start, i);
-            if (!dict.contains(word)) continue;
-
+            if (!dict.contains(word)) {
+                continue;
+            }
             int sbBeforeAdd = sb.length();
             sb.append(" ").append(word);
 
