@@ -125,7 +125,7 @@ public class SegmentTree {
     }
 
     // Driver program to test above functions
-    public static void main(String args[]) {
+    public static void main(String[] args) {
         int[] arr = {1, 3, 5, 7, 9, 11};
         int n = arr.length;
         SegmentTree tree = new SegmentTree(arr, n);

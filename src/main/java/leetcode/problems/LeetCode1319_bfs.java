@@ -12,6 +12,7 @@ import java.util.Queue;
  * <p>
  * Time: O(n+m), m is the length of connections
  * Space: O(n)
+ * <a href="https://leetcode.com/problems/number-of-operations-to-make-network-connected/discuss/1395262/java-clean-bfs-solution-easy-to-understand">...</a>
  */
 public class LeetCode1319_bfs {
 

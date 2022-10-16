@@ -20,7 +20,7 @@ public class LeetCode918 {
             dpMax[i] = Math.max(dpMax[i - 1] + nums[i], nums[i]);
             dpMin[i] = Math.min(dpMin[i - 1] + nums[i], nums[i]);
             max = Math.max(max, dpMax[i]);
-            min = Math.min(dpMin[i], min);
+            min = Math.min(min, dpMin[i]);
             sum += nums[i];
         }
         if (max < 0) {

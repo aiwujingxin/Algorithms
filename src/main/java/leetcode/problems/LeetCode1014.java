@@ -24,7 +24,7 @@ public class LeetCode1014 {
 
         int[] dp2 = new int[values.length];
         for (int j = 1; j < values.length; j++) {
-            dp2[j] = Math.max(dp2[j - 1], values[j] - j);
+            dp2[j] = values[j] - j;
         }
 
         int res = Integer.MIN_VALUE;
@@ -32,21 +32,5 @@ public class LeetCode1014 {
             res = Math.max(res, dp2[i] + dp1[i - 1]);
         }
         return res;
-    }
-
-
-    //timeout
-    public int maxScoreSightseeingPairV2(int[] values) {
-        if (values == null || values.length == 0) {
-            return 0;
-        }
-        int max = 0;
-        for (int i = 0; i < values.length; i++) {
-            for (int j = i + 1; j < values.length; j++) {
-                int temp = values[j] + values[i] + i - j;
-                max = Math.max(max, temp);
-            }
-        }
-        return max;
     }
 }

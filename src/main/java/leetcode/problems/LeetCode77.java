@@ -15,7 +15,7 @@ public class LeetCode77 {
         }
         List<List<Integer>> res = new ArrayList<>();
 
-        helper(n, k, res, 0, new ArrayList<>());
+        helper(n, k, res, 1, new ArrayList<>());
 
         return res;
     }
@@ -26,7 +26,7 @@ public class LeetCode77 {
             res.add(new ArrayList<>(temp));
         }
 
-        for (int i = index; i < n; i++) {
+        for (int i = index; i <= n; i++) {
             temp.add(i);
             helper(n, k, res, i + 1, temp);
             temp.remove(temp.size() - 1);

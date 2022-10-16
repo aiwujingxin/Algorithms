@@ -24,7 +24,7 @@ public class LeetCode40 {
             return ans;
         }
 
-        /**
+        /*
          * [10,1,2,7,6,1,5]
          * 8
          *
@@ -51,7 +51,7 @@ public class LeetCode40 {
 
         for (int i = start; i < candidates.length; i++) {
             //本层不能有重复的数字
-            /**
+            /*
              * [10,1,2,7,6,1,5]
              * 8
              *

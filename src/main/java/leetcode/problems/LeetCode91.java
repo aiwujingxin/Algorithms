@@ -6,7 +6,10 @@ package leetcode.problems;
  */
 public class LeetCode91 {
 
-    //226
+    public static void main(String[] args) {
+        System.out.println(new LeetCode91().numDecodings("106"));
+    }
+
     public int numDecodings(String s) {
         if (s == null || s.length() == 0 || s.charAt(0) == '0') {
             return 0;

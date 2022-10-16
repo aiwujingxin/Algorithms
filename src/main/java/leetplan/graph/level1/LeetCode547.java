@@ -1,31 +1,34 @@
-package leetcode.problems;
+package leetplan.graph.level1;
 
 /**
- * @author aiwujingxin@gmail.com
- * @date 2022/6/19 21:18
+ * @author wujingxinit@outlook.com
+ * @date 2022/10/16 20:23
  */
 public class LeetCode547 {
 
     public int findCircleNum(int[][] isConnected) {
+        if (isConnected == null || isConnected.length == 0) {
+            return 0;
+        }
+
+        int ans = 0;
         int[] visited = new int[isConnected.length];
-        int res = 0;
         for (int i = 0; i < isConnected.length; i++) {
             if (visited[i] == 0) {
-                dfs(i, isConnected, visited);
-                res++;
+                dfs(isConnected, i, visited);
+                ans++;
             }
         }
-        return res;
+        return ans;
     }
 
-    public void dfs(int v, int[][] isConnected, int[] visited) {
+    private void dfs(int[][] isConnected, int v, int[] visited) {
         if (visited[v] == 0) {
             visited[v] = 1;
         }
-
         for (int i = 0; i < isConnected.length; i++) {
             if (visited[i] == 0 && isConnected[v][i] == 1) {
-                dfs(i, isConnected, visited);
+                dfs(isConnected, i, visited);
             }
         }
     }
