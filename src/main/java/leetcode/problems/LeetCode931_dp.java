@@ -4,11 +4,11 @@ package leetcode.problems;
  * @author jingxinwu
  * @date 2021-12-16 1:22 AM
  */
-public class LeetCode931 {
+public class LeetCode931_dp {
 
     public static void main(String[] args) {
 //        System.out.println(new LeetCode931().minFallingPathSum(new int[][]{{2, 1, 3}, {6, 5, 4}, {7, 8, 9}}));
-        System.out.println(new LeetCode931().minFallingPathSum(new int[][]{{-48}}));
+        System.out.println(new LeetCode931_dp().minFallingPathSum(new int[][]{{-48}}));
     }
 
     public int minFallingPathSum(int[][] matrix) {

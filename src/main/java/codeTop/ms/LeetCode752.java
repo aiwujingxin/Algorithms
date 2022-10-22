@@ -1,11 +1,6 @@
 package codeTop.ms;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Queue;
-import java.util.Set;
+import java.util.*;
 
 /**
  * @author jingxinwu
@@ -21,10 +16,7 @@ public class LeetCode752 {
             return 0;
         }
 
-        Set<String> dead = new HashSet<>();
-        for (String deadend : deadends) {
-            dead.add(deadend);
-        }
+        Set<String> dead = new HashSet<>(Arrays.asList(deadends));
         if (dead.contains("0000")) {
             return -1;
         }

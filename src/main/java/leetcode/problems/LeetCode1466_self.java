@@ -11,11 +11,11 @@ import java.util.Map;
  */
 public class LeetCode1466_self {
 
-    int count = 0;
-
     public static void main(String[] args) {
         System.out.println(new LeetCode1466_self().minReorder(3, new int[][]{{1, 2}, {2, 0}}));
     }
+
+    int count = 0;
 
     public int minReorder(int n, int[][] connections) {
 
