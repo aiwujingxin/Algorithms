@@ -7,11 +7,11 @@ package leetcode.hot100;
 public class LeetCode4_binarysearch {
     //https://www.youtube.com/watch?v=ScCg9v921ns&t=604s
     /*
-                  L1  R1
-       A 2  4  6  7  10
+                   L1  R1
+       A: 2  4  6  7  10
 
-                L2  R2
-       B 1  3   5   8  9  11  12  13  14
+                 L2  R2
+       B: 1  3   5   8  9  11  12  13  14
        */
     // L1 <= R2
     // L2 <= R1

@@ -73,7 +73,7 @@ public class LeetCode399_bfs {
         return ans;
     }
 
-    class Pair {
+    static class Pair {
         int index;
         double value;
 

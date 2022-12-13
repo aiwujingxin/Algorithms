@@ -18,8 +18,8 @@ public class LeetCode287 {
         while (left < right) {
             int mid = (left + right) / 2;
             int cnt = 0;
-            for (int i = 0; i < nums.length; i++) {
-                if (nums[i] <= mid) {
+            for (int num : nums) {
+                if (num <= mid) {
                     cnt++;
                 }
             }

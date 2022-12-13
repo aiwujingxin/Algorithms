@@ -17,24 +17,4 @@ public class LeetCode236 {
         }
         return left != null ? left : right;
     }
-
-    public TreeNode lowestCommonAncestorV2(TreeNode root, TreeNode p, TreeNode q) {
-        if (root == null) {
-            return null;
-        }
-        int x1 = p.val;
-        int x2 = q.val;
-        if (root.val == x1 || root.val == x2) {
-            return root;
-        }
-        TreeNode left = lowestCommonAncestorV2(root.left, p, q);
-        TreeNode right = lowestCommonAncestorV2(root.right, p, q);
-        if (left == null && right == null) {
-            return null;
-        }
-        if (left != null && right != null) {
-            return root;
-        }
-        return left == null ? right : left;
-    }
 }

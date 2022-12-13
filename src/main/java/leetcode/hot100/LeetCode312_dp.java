@@ -25,9 +25,7 @@ public class LeetCode312_dp {
                 }
                 int maxi = Integer.MIN_VALUE;
                 for (int k = i; k <= j; k++) {
-                    int coins = arr[i - 1] * arr[k] * arr[j + 1]
-                            + dp[i][k - 1]
-                            + dp[k + 1][j];
+                    int coins = arr[i - 1] * arr[k] * arr[j + 1] + dp[i][k - 1] + dp[k + 1][j];
                     maxi = Math.max(maxi, coins);
                 }
                 dp[i][j] = maxi;

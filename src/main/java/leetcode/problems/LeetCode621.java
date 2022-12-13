@@ -6,11 +6,24 @@ package leetcode.problems;
  */
 public class LeetCode621 {
 
+    //https://www.jiakaobo.com/leetcode/621.%20Task%20Scheduler.html
     public int leastInterval(char[] tasks, int n) {
-
-        //TODO
-        return 0;
-
+        int[] dict = new int[26];
+        for (char task : tasks) {
+            dict[task - 'A']++;
+        }
+        int maxCount = 0;
+        int maxCountSame = 0;
+        for (int num : dict) {
+            if (num > maxCount) {
+                maxCount = num;
+                maxCountSame = 1;
+            } else if (num == maxCount) {
+                maxCountSame++;
+            }
+        }
+        int res = (maxCount - 1) * (n + 1) + maxCountSame;
+        return Math.max(res, tasks.length);
     }
 
 }

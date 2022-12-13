@@ -13,13 +13,15 @@ public class LeetCode85_dp {
 
     //https://leetcode.com/problems/maximal-rectangle/discuss/403093/Java-Simple-DP-Solution-with-state-table
     public int maximalRectangle(char[][] matrix) {
-        if (matrix.length <= 0) return 0;
-        int n = matrix.length;
-        int m = matrix[0].length;
-        int[][] dp = new int[n][m];
+        if (matrix.length == 0) {
+            return 0;
+        }
+        int row = matrix.length;
+        int col = matrix[0].length;
+        int[][] dp = new int[row][col];
         int maxArea = 0;
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < m; j++) {
+        for (int i = 0; i < row; i++) {
+            for (int j = 0; j < col; j++) {
                 if (i == 0) {
                     dp[i][j] = matrix[i][j] == '1' ? 1 : 0;
                 } else {
@@ -27,7 +29,9 @@ public class LeetCode85_dp {
                 }
                 int min = dp[i][j];
                 for (int k = j; k >= 0; k--) {
-                    if (min == 0) break;
+                    if (min == 0) {
+                        break;
+                    }
                     if (dp[i][k] < min) {
                         min = dp[i][k];
                     }

@@ -10,6 +10,7 @@ public class LeetCode399_dfs {
 
     //https://leetcode.com/problems/evaluate-division/discuss/2043629/Java-Union-Find-or-BFS-or-DFS
 
+    //https://www.youtube.com/watch?v=berj4Xm_YTY
     public double[] calcEquation(List<List<String>> equations, double[] values, List<List<String>> queries) {
         Map<String, Map<String, Double>> adj = toAdj(equations, values);
 

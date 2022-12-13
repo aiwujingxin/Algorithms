@@ -1,5 +1,7 @@
 package leetcode.topinterview;
 
+import java.util.Arrays;
+
 /**
  * @author wujingxinit@outlook.com
  * @date 2022/9/21 01:23
@@ -9,6 +11,11 @@ public class LeetCode28 {
     //https://www.ruanyifeng.com/blog/2013/05/Knuth%E2%80%93Morris%E2%80%93Pratt_algorithm.html
     //"部分匹配值"就是"前缀"和"后缀"的最长的共有元素的长度。
     //移动位数 = 已匹配的字符数 - 对应的部分匹配值
+    // BBC ABCDAB ABCDABCDABDE
+    //                 /|
+    //                / |
+    //               /  |
+    //            ABCDABD
 
 
     //https://leetcode.com/problems/find-the-index-of-the-first-occurrence-in-a-string/discuss/2268683/Java-or-Using-KMP
@@ -32,13 +39,20 @@ public class LeetCode28 {
         }
         if (i == m) {
             return j - i;
-        } else {
-            return -1;
         }
+        return -1;
     }
 
+    public static void main(String[] args) {
+        String needle = "abababaac";
+        int m = needle.length();
+        int[] prefix = new int[m];
+        makePrefix(prefix, needle);
+        System.out.println(Arrays.toString(prefix));
+    }
 
-    public void makePrefix(int[] prefix, String needle) {
+    //prefix[i]表示对应的部分匹配值, s[i - prefix[i]] : i] == s[0: prefix[i]]
+    public static void makePrefix(int[] prefix, String needle) {
         int i = 0, j = 1;
         while (j < needle.length()) {
             if (needle.charAt(i) == needle.charAt(j)) {

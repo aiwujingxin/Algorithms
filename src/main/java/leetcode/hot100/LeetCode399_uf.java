@@ -10,8 +10,8 @@ import java.util.Map;
  */
 public class LeetCode399_uf {
 
-    // UNKNOW
-
+    //处理有传递性关系的问题，可以使用「并查集」
+    //一边查询一边修改结点指向是并查集的特色。
     public double[] calcEquation(List<List<String>> equations, double[] values, List<List<String>> queries) {
         int equationsSize = equations.size();
 

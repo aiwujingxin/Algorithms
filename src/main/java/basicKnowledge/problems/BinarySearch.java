@@ -10,6 +10,8 @@ public interface BinarySearch {
     //35. 搜索插入位置 https://leetcode.cn/problems/search-insert-position/?envType=study-plan&id=binary-search-beginner&plan=binary-search&plan_progress=s4b8jr2
     //81. 搜索旋转排序数组 II https://leetcode.cn/problems/search-in-rotated-sorted-array-ii/
     // 搜索左/右边界
+
+    // 209. 长度最小的子数组 https://leetcode.cn/problems/minimum-size-subarray-sum/?envType=study-plan&id=binary-search-basic&plan=binary-search&plan_progress=47rf0us
     int search(int[] nums, int target);
 
     //1539. 第 k 个缺失的正整数 https://leetcode.cn/problems/kth-missing-positive-number/?envType=study-plan&id=binary-search-beginner&plan=binary-search&plan_progress=s4b8jr2

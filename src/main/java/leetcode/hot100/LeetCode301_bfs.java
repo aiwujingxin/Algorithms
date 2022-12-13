@@ -54,15 +54,15 @@ public class LeetCode301_bfs {
     // helper function checks if string s contains valid parantheses
     boolean isValid(String s) {
         int count = 0;
-
         for (int i = 0; i < s.length(); i++) {
             char c = s.charAt(i);
-            if (c == '(') count++;
+            if (c == '(') {
+                count++;
+            }
             if (c == ')' && count-- == 0) {
                 return false;
             }
         }
-
         return count == 0;
     }
 }

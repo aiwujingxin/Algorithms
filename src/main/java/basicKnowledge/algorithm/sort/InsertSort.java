@@ -7,6 +7,9 @@ package basicKnowledge.algorithm.sort;
  */
 public class InsertSort implements ArraySort {
 
+
+    //将数组分为已排序区间和未排序区间两部分，
+    // 从未排序区间中依次取元素跟已排序区间的元素一一对比，找到适合插入的位置。
     @Override
     public int[] sortArray(int[] nums) {
         for (int i = 1; i < nums.length; i++) {

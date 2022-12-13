@@ -21,6 +21,8 @@ public class LeetCode416_dp {
         }
         int target = sum / 2;
         boolean[] dp = new boolean[target + 1];
+        //【import fix】
+        dp[0] = true;
         for (int num : nums) {
             // 为什么从后往前遍历
             // 硬币只能用一次，从左往右遍历，会重复拿硬币，后面的结果会受到前面的影响

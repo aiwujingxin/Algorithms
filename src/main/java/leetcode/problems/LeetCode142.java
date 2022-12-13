@@ -13,26 +13,22 @@ public class LeetCode142 {
         if (head == null || head.next == null) {
             return null;
         }
-
         ListNode slow = head;
         ListNode fast = head;
-
-        while (slow != null && fast.next != null) {
+        while (fast != null && fast.next != null) {
             slow = slow.next;
             fast = fast.next.next;
             if (slow == fast) {
                 fast = head;
                 while (slow != null && fast != null) {
-                    slow = slow.next;
-                    fast = fast.next;
                     if (slow == fast) {
                         return slow;
                     }
+                    slow = slow.next;
+                    fast = fast.next;
                 }
             }
         }
-
         return null;
     }
-
 }

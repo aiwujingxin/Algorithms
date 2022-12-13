@@ -13,7 +13,7 @@ public class LeetCode31 {
         if (nums == null || nums.length <= 1) {
             return;
         }
-        //找到第一个降序
+        //从后向前查找，第一个降序的下标
         int i = nums.length - 2;
         while (i >= 0 && nums[i] >= nums[i + 1]) {
             i--;   // Now we are finding the breakpoint.
@@ -22,7 +22,7 @@ public class LeetCode31 {
             Arrays.sort(nums);
             return;
         }
-        // 找到比AX大的数
+        // 从后向前查找，找到比AX大的数
         if (i >= 0) {  // if that number exists we will just swap it with the next greater number in the right side of the array;
             int j = nums.length - 1;
             while (nums[i] >= nums[j]) {

@@ -25,13 +25,18 @@ public class QuickSort implements ArraySort {
     private int partition(int[] nums, int left, int right) {
         int pivot = nums[left];
         while (left < right) {
+            //从后向前找比基准小的数
             while (right > left && nums[right] > pivot) {
                 right--;
             }
+            //把比基准小的数移到低端
             nums[left] = nums[right];
+
+            //从前向后找比基准大的数
             while (left <= right && nums[left] < pivot) {
                 left++;
             }
+            //把比基准大的数移到高端
             nums[right] = nums[left];
         }
         nums[left] = pivot;

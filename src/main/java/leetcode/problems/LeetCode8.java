@@ -19,8 +19,8 @@ public class LeetCode8 {
         for (int i = 0; i < s.length(); i++) {
             int temp = s.charAt(i) - '0';
 
+            // 非法字符
             if ((temp < 0 || temp > 9)) {
-
                 if (s.charAt(i) != '-' && s.charAt(i) != ' ') {
                     return 0;
                 }
@@ -52,60 +52,5 @@ public class LeetCode8 {
             factor = factor * 10;
         }
         return flag ? -1 * res : res;
-    }
-
-    public int myAtoi2(String str) {
-        if (str == null || str.length() == 0) {
-            return 0;
-        }
-        str = str.trim();
-        if (str.isEmpty() || Character.isAlphabetic(str.charAt(0))) {
-            return 0;
-        }
-
-        // 正负号
-        boolean minus = false;
-        if (str.charAt(0) == '-') {
-            minus = true;
-        }
-
-        StringBuilder build = new StringBuilder();
-        for (int i = 0; i < str.length(); i++) {
-            char ch = str.charAt(i);
-            if (Character.isDigit(ch)) {
-                build.append(ch);
-                if ("0".equals(build.toString())) {
-                    build = new StringBuilder();
-                }
-            } else {
-                if (i == 0 && (ch == '-' || ch == '+')) {
-                    continue;
-                } else {
-                    break;
-                }
-            }
-        }
-        if (build.length() == 0) {
-            return 0;
-        }
-        if (build.length() > 12) {
-            if (minus) {
-                return Integer.MIN_VALUE;
-            } else {
-                return Integer.MAX_VALUE;
-            }
-        }
-        long number = Long.parseLong(build.toString());
-        number = minus ? number * -1 : number;
-
-        if (number > Integer.MAX_VALUE) {
-            return Integer.MAX_VALUE;
-        }
-
-        if (number < Integer.MIN_VALUE) {
-            return Integer.MIN_VALUE;
-        }
-
-        return (int) number;
     }
 }

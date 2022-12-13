@@ -17,7 +17,7 @@ public class LeetCode141 {
         ListNode fast = head.next;
 
         //fix
-        while (fast.next != null && fast.next.next != null) {
+        while (fast != null && fast.next != null) {
 
             if (slow == fast) {
                 return true;
