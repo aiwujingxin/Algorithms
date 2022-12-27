@@ -49,13 +49,12 @@ public class LeetCode315_MergeSort {
                 tempIndex[p] = index[i];
                 ans[index[i]] += (j - mid - 1);
                 ++i;
-                ++p;
             } else {
                 temp[p] = a[j];
                 tempIndex[p] = index[j];
                 ++j;
-                ++p;
             }
+            ++p;
         }
         while (i <= mid) {
             temp[p] = a[i];

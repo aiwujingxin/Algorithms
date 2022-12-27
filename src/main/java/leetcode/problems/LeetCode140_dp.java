@@ -25,20 +25,20 @@ public class LeetCode140_dp {
             return rst;
         }
 
-        boolean[] canBreak = new boolean[s.length()];
-        Arrays.fill(canBreak, true);
+        boolean[] dp = new boolean[s.length()];
+        Arrays.fill(dp, true);
         StringBuilder sb = new StringBuilder();
-        dfs(rst, sb, s, new HashSet<>(wordDict), canBreak, 0);
+        dfs(rst, sb, s, new HashSet<>(wordDict), dp, 0);
         return rst;
     }
 
-    private void dfs(List<String> rst, StringBuilder sb, String s, Set<String> dict, boolean[] canBreak, int start) {
+    private void dfs(List<String> rst, StringBuilder sb, String s, Set<String> dict, boolean[] dp, int start) {
         if (start == s.length()) {
             rst.add(sb.substring(1));
             return;
         }
 
-        if (!canBreak[start]) {
+        if (!dp[start]) {
             return;
         }
 
@@ -51,9 +51,9 @@ public class LeetCode140_dp {
             sb.append(" ").append(word);
 
             int rstBeforeDFS = rst.size();
-            dfs(rst, sb, s, dict, canBreak, i);
+            dfs(rst, sb, s, dict, dp, i);
             if (rst.size() == rstBeforeDFS) {
-                canBreak[i] = false;
+                dp[i] = false;
             }
             sb.delete(sbBeforeAdd, sb.length());
         }

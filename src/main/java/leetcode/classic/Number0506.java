@@ -13,6 +13,7 @@ public class Number0506 {
         int temp = A ^ B, count = 0;
         while (temp != 0) {
             //temp&(temp -1) 可以把temp最右边的1置0，其余位不变
+            //https://www.quora.com/What-does-A-1-do-to-the-bits-in-A-in-this-example-A-A-A-1-What-is-its-explanation
             //这样，这个操作执行了几次，就是有几位要转换
             temp = temp & (temp - 1);
             count++;

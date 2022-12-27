@@ -6,6 +6,8 @@ package leetcode.topinterview;
  */
 public class LeetCode44 {
 
+    //https://leetcode.com/problems/wildcard-matching/solutions/1662953/dfs-without-memo/
+
     // study half
     public boolean isMatch(String s, String p) {
         return dfs(s, p, 0, 0) == 1;

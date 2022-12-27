@@ -31,6 +31,7 @@ public class LeetCode131 {
         dp = new boolean[n][n];
 
         for (int i = 0; i < n; i++) {
+            // 为什么要都设置为true
             Arrays.fill(dp[i], true);
         }
 

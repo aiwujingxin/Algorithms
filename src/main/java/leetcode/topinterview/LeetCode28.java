@@ -44,7 +44,7 @@ public class LeetCode28 {
     }
 
     public static void main(String[] args) {
-        String needle = "abababaac";
+        String needle = "AABAAA";
         int m = needle.length();
         int[] prefix = new int[m];
         makePrefix(prefix, needle);

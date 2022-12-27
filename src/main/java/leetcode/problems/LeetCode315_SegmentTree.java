@@ -42,8 +42,12 @@ public class LeetCode315_SegmentTree {
     }
 
     private int query(int[] tree, int node, int start, int end, int low, int high) {
-        if (high < start || end < low) return 0;
-        if (start >= low && end <= high) return tree[node];
+        if (high < start || end < low) {
+            return 0;
+        }
+        if (start >= low && end <= high) {
+            return tree[node];
+        }
         int mid = start + (end - start) / 2;
         int queryLeft = query(tree, node * 2, start, mid, low, high);
         int queryRight = query(tree, node * 2 + 1, mid + 1, end, low, high);
@@ -52,15 +56,21 @@ public class LeetCode315_SegmentTree {
     }
 
     private void update(int[] tree, int currNode, int start, int end, int num) {
-        if (start > end) return;
+        if (start > end) {
+            return;
+        }
+
         if (start == end) {
             tree[currNode]++;
             return;
         }
 
         int mid = start + (end - start) / 2;
-        if (num <= mid) update(tree, currNode * 2, start, mid, num);
-        else update(tree, currNode * 2 + 1, mid + 1, end, num);
+        if (num <= mid) {
+            update(tree, currNode * 2, start, mid, num);
+        } else {
+            update(tree, currNode * 2 + 1, mid + 1, end, num);
+        }
 
         tree[currNode] = tree[currNode * 2] + tree[currNode * 2 + 1];
     }
