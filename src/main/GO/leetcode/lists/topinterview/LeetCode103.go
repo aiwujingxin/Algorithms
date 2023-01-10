@@ -25,8 +25,8 @@ func zigzagLevelOrder(root *TreeNode) [][]int {
 		}
 		if flag {
 			Reverse(level, 0, len(level)-1)
-			flag = !flag
 		}
+		flag = !flag
 		res = append(res, level)
 	}
 	return res

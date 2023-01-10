@@ -2,34 +2,14 @@ package leetcode.offer;
 
 import java.util.Deque;
 import java.util.LinkedList;
-import java.util.Stack;
 
 /**
- * @author jingxinwu
- * @date 2021-11-21 9:10 下午
+ * @author wujingxinit@outlook.com
+ * @date 2023/1/3 19:09
  */
-public class Offer33 {
-
-    public static void main(String[] args) {
-        System.out.println(new Offer33().verifyPostorder(new int[]{1, 3, 2, 6, 5}));
-    }
+public class Offer33_stack {
 
     public boolean verifyPostorder(int[] postorder) {
-        Stack<Integer> stack = new Stack<>();
-        int root = Integer.MAX_VALUE;
-        for (int i = postorder.length - 1; i >= 0; i--) {
-            if (postorder[i] > root) {
-                return false;
-            }
-            while (!stack.isEmpty() && stack.peek() > postorder[i]) {
-                root = stack.pop();
-            }
-            stack.add(postorder[i]);
-        }
-        return true;
-    }
-
-    public boolean verifyPostorderV2(int[] postorder) {
         // 单调栈使用，单调递增的单调栈
         Deque<Integer> stack = new LinkedList<>();
         int pervElem = Integer.MAX_VALUE;

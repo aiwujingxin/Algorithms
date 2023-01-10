@@ -12,6 +12,9 @@ public class Offer62 {
     public static void main(String[] args) {
         System.out.println(new Offer62().lastRemaining(5, 3));
         System.out.println(new Offer62().lastRemaining(10, 17));
+
+        //case
+        System.out.println(new Offer62().lastRemaining(71989, 111059));
     }
 
     public int lastRemaining(int n, int m) {

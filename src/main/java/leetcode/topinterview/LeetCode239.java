@@ -16,6 +16,9 @@ public class LeetCode239 {
         ArrayDeque<Integer> queue = new ArrayDeque<>();
         for (int i = 0; i < nums.length; i++) {
             //比较队尾元素和将要进来的值，如果小的话就都移除
+            // maintain monotonic decreasing.
+            // all elements in the deque smaller than the current one
+            // have no chance of being the maximum, so get rid of them
             // queue 单调递减队列 大--->小
             while (!queue.isEmpty() && nums[i] > nums[queue.getLast()]) {
                 queue.removeLast();

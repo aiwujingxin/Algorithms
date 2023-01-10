@@ -6,8 +6,7 @@ package leetcode.offer;
  */
 public class Offer56_2 {
 
-
-    //todo
+    //https://leetcode.cn/problems/shu-zu-zhong-shu-zi-chu-xian-de-ci-shu-ii-lcof/solution/mian-shi-ti-56-ii-shu-zu-zhong-shu-zi-chu-xian-d-4/
     public int singleNumber(int[] nums) {
         int ones = 0, twos = 0;
         for (int num : nums) {

@@ -54,6 +54,7 @@ public class LeetCode912 {
     public int[] heapSort(int[] nums) {
 
         int n = nums.length;
+        //从最后一个非叶子节点开始，依次向下调整
         for (int i = n / 2 - 1; i >= 0; i--) {
             heapify(nums, n, i);
         }
@@ -67,6 +68,7 @@ public class LeetCode912 {
 
     }
 
+    //向下调整
     private static void heapify(int[] nums, int n, int i) {
 
         int l = 2 * i + 1;

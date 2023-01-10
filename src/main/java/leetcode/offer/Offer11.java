@@ -15,10 +15,9 @@ public class Offer11 {
         int pi = 0;
         while (l <= r) {
             pi = (r - l) / 2 + l;
-            int t = numbers[pi];
-            if (t < numbers[r]) {
+            if (numbers[pi] < numbers[r]) {
                 r = pi;
-            } else if (t > numbers[r]) {
+            } else if (numbers[pi] > numbers[r]) {
                 l = pi + 1;
             } else {
                 r--;

@@ -15,6 +15,7 @@ public class LeftBound_NoExited implements BinarySearch {
 //        System.out.println(new LeftBound_NoExited().search(new int[]{1, 1, 1, 1, 1, 1, 1, 1, 1, 11}, 11));
 //        System.out.println(new LeftBound_NoExited().search(new int[]{12, 12, 12, 12, 12, 12, 12, 12, 12, 12}, 11));
         System.out.println(new LeftBound_NoExited().search(new int[]{0, 1, 2, 3, 4, 5, 6, 7, 8}, 11));
+        System.out.println(new LeftBound_NoExited().search(new int[]{5, 7, 7, 8, 8, 10}, 6));
 
     }
 
