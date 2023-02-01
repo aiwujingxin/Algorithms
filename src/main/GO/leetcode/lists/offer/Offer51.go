@@ -5,6 +5,7 @@ package offer
  * @date 2023/1/10 16:16
  */
 
+//https://www.youtube.com/watch?v=tmzg_XGg5dw
 func reversePairs(nums []int) int {
 	var res = 0
 	tmp := make([]int, len(nums))

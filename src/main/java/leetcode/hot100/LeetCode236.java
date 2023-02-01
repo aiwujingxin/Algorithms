@@ -24,7 +24,7 @@ public class LeetCode236 {
         if (left != null && right != null) {
             return root;
         }
-        if (left != null && right == null) {
+        if (left != null) {
             return left;
         }
         return right;

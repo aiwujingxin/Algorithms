@@ -33,7 +33,10 @@ public class LeetCode1319_uf3 {
     }
 
     private int findParent(int[] parent, int i) {
-        if (i == parent[i]) return i;
+        if (i == parent[i]) {
+            return i;
+        }
+
         return parent[i] = findParent(parent, parent[i]); // Path compression
     }
 }

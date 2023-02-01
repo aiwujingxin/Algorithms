@@ -21,7 +21,6 @@ public class LeetCode416_dfs_memo {
             return false;
         }
 
-        Arrays.sort(nums);
         cache = new Boolean[nums.length][sum / 2 + 1];
         return canPartition(nums, 0, sum / 2);
     }

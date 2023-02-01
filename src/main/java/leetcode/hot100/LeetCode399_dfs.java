@@ -12,7 +12,7 @@ public class LeetCode399_dfs {
 
     //https://www.youtube.com/watch?v=berj4Xm_YTY
     public double[] calcEquation(List<List<String>> equations, double[] values, List<List<String>> queries) {
-        Map<String, Map<String, Double>> adj = toAdj(equations, values);
+        Map<String, Map<String, Double>> adj = buildGraph(equations, values);
 
         int querySize = queries.size();
         double[] res = new double[querySize];
@@ -26,7 +26,7 @@ public class LeetCode399_dfs {
         return res;
     }
 
-    public Map<String, Map<String, Double>> toAdj(List<List<String>> equations, double[] values) {
+    public Map<String, Map<String, Double>> buildGraph(List<List<String>> equations, double[] values) {
         Map<String, Map<String, Double>> adj = new HashMap<>();
         for (int i = 0; i < values.length; i++) {
             String u = equations.get(i).get(0);

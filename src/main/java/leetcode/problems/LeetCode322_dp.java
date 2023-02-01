@@ -22,4 +22,20 @@ public class LeetCode322_dp {
         }
         return dp[amount] > amount ? -1 : dp[amount];
     }
+
+    //为什么这个快一些？
+    public int coinChange_for_fast(int[] coins, int amount) {
+        int max = amount + 1;
+        int[] dp = new int[amount + 1];
+        Arrays.fill(dp, max);
+        dp[0] = 0;
+        for (int coin : coins) {
+            for (int i = 1; i <= amount; i++) {
+                if (coin <= i) {
+                    dp[i] = Math.min(dp[i - coin] + 1, dp[i]);
+                }
+            }
+        }
+        return dp[amount] > amount ? -1 : dp[amount];
+    }
 }

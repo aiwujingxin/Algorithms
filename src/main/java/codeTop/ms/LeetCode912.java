@@ -1,10 +1,21 @@
 package codeTop.ms;
 
+import java.util.Arrays;
+
 /**
  * @author jingxinwu
  * @date 2022-02-17 10:12 PM
  */
 public class LeetCode912 {
+
+    public static void main(String[] args) {
+        int[] nums = new int[]{2, 3, 1, 4};
+        System.out.println(part(nums, 0, nums.length - 1));
+        System.out.println(Arrays.toString(nums));
+        int[] nums1 = new int[]{1, 2, 4, 2, 6, 9, 8};
+        System.out.println(part(nums1, 0, nums1.length - 1));
+        System.out.println(Arrays.toString(nums1));
+    }
 
 
     public int[] sortArray(int[] nums) {
@@ -31,21 +42,25 @@ public class LeetCode912 {
         quickSort(nums, index + 1, j);
     }
 
-    private int part(int[] nums, int lo, int hi) {
+    private static int part(int[] nums, int lo, int hi) {
         int pi = nums[lo];
         while (lo < hi) {
             while (lo < hi && nums[hi] >= pi) {
                 hi--;
             }
             //fix
+            // hi 一定会找出比pi小的数，来放到lo的位置上
+            // 严格确保hi右边的数（不包括hi）大于pi
             nums[lo] = nums[hi];
 
+            // 严格确保lo左边的数（不包括lo）小于pi
             while (lo < hi && nums[lo] <= pi) {
                 lo++;
             }
             nums[hi] = nums[lo];
 
         }
+        //当循环终止时，lo和hi指向同一个位置
         nums[lo] = pi;
         return lo;
     }

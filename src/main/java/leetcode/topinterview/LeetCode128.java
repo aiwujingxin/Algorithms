@@ -25,10 +25,10 @@ public class LeetCode128 {
         }
 
         int res = 0;
-        for (int i = 0; i < nums.length; i++) {
-            if (!set.contains(nums[i] - 1)) {
+        for (int j : nums) {
+            if (!set.contains(j - 1)) {
                 int temp = 0;
-                int num = nums[i];
+                int num = j;
                 while (set.contains(num)) {
                     temp++;
                     num++;

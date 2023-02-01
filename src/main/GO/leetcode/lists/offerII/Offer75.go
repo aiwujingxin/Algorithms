@@ -1,0 +1,28 @@
+package offerII
+
+import "sort"
+
+/**
+ * @author wujingxinit@outlook.com
+ * @date 2023/1/29 22:20
+ */
+
+func relativeSortArray(arr1 []int, arr2 []int) []int {
+	rank := map[int]int{}
+	for i, v := range arr2 {
+		rank[v] = i
+	}
+	sort.Slice(arr1, func(i, j int) bool {
+		x, y := arr1[i], arr1[j]
+		rankX, hasX := rank[x]
+		rankY, hasY := rank[y]
+		if hasX && hasY {
+			return rankX < rankY
+		}
+		if hasX || hasY {
+			return hasX
+		}
+		return x < y
+	})
+	return arr1
+}
