@@ -1,7 +1,5 @@
 package leetcode.problems;
 
-import utils.PrintUtil;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -43,7 +41,6 @@ public class LeetCode131 {
                 dp[i][j] = s.charAt(i) == s.charAt(j) && dp[i + 1][j - 1];
             }
         }
-        PrintUtil.print(dp);
         dfs(s, 0);
         return res;
     }
