@@ -33,6 +33,7 @@ func minSubArrayLen(target int, nums []int) int {
 	}
 	return min
 }
+
 func findIndex(nums []int, value int) int {
 	left, right := 0, len(nums)-1
 	for left <= right {
@@ -47,4 +48,22 @@ func findIndex(nums []int, value int) int {
 		}
 	}
 	return right
+}
+
+// 滑动窗口
+func minSubArrayLenSD(target int, nums []int) int {
+	left, sum := 0, 0
+	minLength := math.MaxInt32
+	for right := 0; right < len(nums); right++ {
+		sum += nums[right]
+		for left <= right && sum >= target {
+			minLength = Min(minLength, right-left+1)
+			sum -= nums[left]
+			left++
+		}
+	}
+	if minLength == math.MaxInt32 {
+		return 0
+	}
+	return minLength
 }

@@ -1,7 +1,5 @@
 package offerII
 
-import "fmt"
-
 func alienOrder(words []string) string {
 
 	if len(words) == 0 {
@@ -39,8 +37,8 @@ func alienOrder(words []string) string {
 			return ""
 		}
 	}
-	fmt.Println(inDegrees)
-	fmt.Println(graph)
+	//fmt.Println(inDegrees)
+	//fmt.Println(graph)
 
 	var q []uint8
 	// 入度为0的点入队，注意要迭代邻接表而非入度表，否则会遗漏孤点

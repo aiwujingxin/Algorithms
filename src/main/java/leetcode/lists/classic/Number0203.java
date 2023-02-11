@@ -1,5 +1,7 @@
 package leetcode.lists.classic;
 
+import common.ListNode;
+
 /**
  * @author jingxinwu
  * @date 2021-12-05 2:27 下午

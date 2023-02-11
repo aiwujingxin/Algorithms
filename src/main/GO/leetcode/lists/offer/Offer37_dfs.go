@@ -1,7 +1,6 @@
 package offer
 
 import (
-	"fmt"
 	"strconv"
 	"strings"
 )
@@ -31,7 +30,7 @@ func (Codec) serialize(root *TreeNode) string {
 		dfs(node.Right)
 	}
 	dfs(root)
-	fmt.Print(sb.String())
+	//fmt.Print(sb.String())
 	return sb.String()
 }
 

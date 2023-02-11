@@ -23,3 +23,21 @@ func lengthOfLongestSubstring(s string) int {
 	}
 	return max
 }
+
+//====V2====
+func lengthOfLongestSubstringSD(s string) int {
+	mp := make(map[byte]int)
+	left, right, res := 0, 0, 0
+	for right < len(s) {
+		c := s[right]
+		mp[c]++
+		right++
+		for mp[c] > 1 {
+			d := s[left]
+			left++
+			mp[d]--
+		}
+		res = Max(res, right-left)
+	}
+	return res
+}

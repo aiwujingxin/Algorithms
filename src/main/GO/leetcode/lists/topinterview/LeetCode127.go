@@ -1,10 +1,8 @@
 package topinterview
 
-import "fmt"
-
-//"ymain"
-//"oecij"
-//["ymann","yycrj","oecij","ymcnj","yzcrj","yycij","xecij","yecij","ymanj","yzcnj","ymain"]
+// "ymain"
+// "oecij"
+// ["ymann","yycrj","oecij","ymcnj","yzcrj","yycij","xecij","yecij","ymanj","yzcnj","ymain"]
 func ladderLength(beginWord string, endWord string, wordList []string) int {
 	q := make([]string, 0)
 	q = append(q, beginWord)
@@ -27,8 +25,8 @@ func ladderLength(beginWord string, endWord string, wordList []string) int {
 				return step
 			}
 			nexts := getNext(cur, wordMp)
-			fmt.Print(cur)
-			fmt.Println(nexts)
+			//fmt.Print(cur)
+			//fmt.Println(nexts)
 			for _, next := range nexts {
 				if visited[next] {
 					continue

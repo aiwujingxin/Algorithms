@@ -1,6 +1,6 @@
 package leetcode.problems;
 
-public class LeetCode5_dp {
+public class LeetCode5_dp_2d {
 
     public String longestPalindrome(String s) {
         int n = s.length();

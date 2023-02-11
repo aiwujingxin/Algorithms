@@ -1,7 +1,6 @@
 package offerII
 
 import (
-	"fmt"
 	"math"
 	"sort"
 	"strconv"
@@ -29,7 +28,7 @@ func findMinDifference(timePoints []string) int {
 		arr = append(arr, []int{h, m})
 	}
 	sort.Sort(times(arr))
-	fmt.Println(timePoints)
+	//fmt.Println(timePoints)
 	diff := func(s1, s2 []int) int {
 		flag := 0
 		mD := 0
@@ -45,8 +44,8 @@ func findMinDifference(timePoints []string) int {
 			mD = m1 - m2
 		}
 		hD = h1 - h2 + flag
-		fmt.Println(hD)
-		fmt.Println(mD)
+		//fmt.Println(hD)
+		//fmt.Println(mD)
 		return hD*60 + mD
 	}
 

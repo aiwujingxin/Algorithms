@@ -11,7 +11,6 @@ import java.util.Set;
  */
 public class LeetCode140_dfs {
 
-    //study
     TrieNode root;
 
     public List<String> wordBreak(String s, List<String> wordDict) {

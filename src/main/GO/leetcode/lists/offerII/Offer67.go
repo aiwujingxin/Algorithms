@@ -1,7 +1,6 @@
 package offerII
 
 import (
-	"fmt"
 	"math"
 )
 
@@ -50,7 +49,6 @@ func findMaximumXOR(nums []int) int {
 					node = node.children[0]
 				}
 			} else {
-				fmt.Print(1 << 6)
 				if node.children[0] != nil {
 					sum += 1 << index
 					node = node.children[0]

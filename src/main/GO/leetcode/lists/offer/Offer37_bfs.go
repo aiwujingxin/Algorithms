@@ -41,7 +41,6 @@ func (this *CodecQ) serialize(node *TreeNode) string {
 
 // Deserializes your encoded data to tree.
 func (this *CodecQ) deserialize(data string) *TreeNode {
-	//fmt.Println(s)
 	data = data[1 : len(data)-1]
 	if data == "null" {
 		return nil

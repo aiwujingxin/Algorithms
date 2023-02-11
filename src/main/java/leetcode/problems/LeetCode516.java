@@ -7,7 +7,9 @@ package leetcode.problems;
 public class LeetCode516 {
 
     public int longestPalindromeSubseq(String s) {
-        if (s.length() <= 1) return s.length();
+        if (s.length() <= 1) {
+            return s.length();
+        }
 
         char[] chars = s.toCharArray();
 

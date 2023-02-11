@@ -1,7 +1,5 @@
 package offerII
 
-import "fmt"
-
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/1/25 11:36
@@ -17,7 +15,6 @@ func minimumTotal(triangle [][]int) int {
 		for j := 0; j < len(level); j++ {
 			dp[j] = Min(dp[i], dp[i+1]) + level[j]
 		}
-		fmt.Println(dp)
 	}
 	return dp[0]
 }

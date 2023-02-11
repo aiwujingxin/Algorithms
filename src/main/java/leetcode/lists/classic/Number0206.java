@@ -1,5 +1,7 @@
 package leetcode.lists.classic;
 
+import common.ListNode;
+
 import java.util.ArrayList;
 import java.util.List;
 

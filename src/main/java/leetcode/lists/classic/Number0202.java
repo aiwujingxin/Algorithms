@@ -1,16 +1,12 @@
 package leetcode.lists.classic;
 
+import common.ListNode;
+
 /**
  * @author jingxinwu
  * @date 2021-12-05 2:23 下午
  */
 public class Number0202 {
-
-    public static void main(String[] args) {
-
-
-
-    }
 
     public int kthToLast(ListNode head, int k) {
         if (head == null) {

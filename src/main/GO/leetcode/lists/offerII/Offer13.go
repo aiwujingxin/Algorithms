@@ -1,7 +1,5 @@
 package offerII
 
-import "fmt"
-
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/1/13 15:11
@@ -28,7 +26,6 @@ func ConstructorNumMatrix(matrix [][]int) NumMatrix {
 			sumMatrix[row][col] += sumMatrix[row-1][col]
 		}
 	}
-	fmt.Print(sumMatrix)
 	return NumMatrix{
 		matrix:    matrix,
 		sumMatrix: sumMatrix,
