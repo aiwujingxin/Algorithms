@@ -7,7 +7,7 @@ import java.util.PriorityQueue;
  * @author wujingxinit@outlook.com
  * @date 2022/10/6 23:51
  */
-public class LeetCode295_two_q {
+public class LeetCode295_Q {
 
     class MedianFinder {
 
@@ -22,6 +22,7 @@ public class LeetCode295_two_q {
             queMax = new PriorityQueue<>(Comparator.comparingInt(a -> a));
         }
 
+        //queMin 中的数的数量比 queMax 多一个
         public void addNum(int num) {
             if (queMin.isEmpty() || num < queMin.peek()) {
                 queMin.offer(num);

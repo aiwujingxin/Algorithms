@@ -10,7 +10,7 @@ type CQueue struct {
 	stack2 []int
 }
 
-func Constructor() CQueue {
+func ConstructorCQueue() CQueue {
 	return CQueue{
 		stack1: make([]int, 0),
 		stack2: make([]int, 0),

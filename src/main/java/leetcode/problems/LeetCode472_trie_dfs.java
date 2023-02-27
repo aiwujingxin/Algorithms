@@ -15,8 +15,7 @@ public class LeetCode472_trie_dfs {
     public List<String> findAllConcatenatedWordsInADict(String[] words) {
         List<String> ans = new ArrayList<>();
         Arrays.sort(words, (a, b) -> a.length() - b.length());
-        for (int i = 0; i < words.length; i++) {
-            String word = words[i];
+        for (String word : words) {
             if (word.length() == 0) {
                 continue;
             }

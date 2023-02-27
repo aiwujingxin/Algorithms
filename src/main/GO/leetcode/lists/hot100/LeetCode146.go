@@ -36,7 +36,7 @@ func (this *LRUCache) addToFront(node *CacheNode) {
 	this.addNode(node)
 }
 
-func Constructor(capacity int) LRUCache {
+func ConstructorLRUCache(capacity int) LRUCache {
 	obj := LRUCache{
 		capacity: capacity,
 		cache:    make(map[int]*CacheNode),

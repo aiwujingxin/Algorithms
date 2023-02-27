@@ -30,8 +30,9 @@ public class LeetCode472_dp {
         dp[0] = true;
         for (int i = 0; i <= len; i++) {
             for (int j = i - 1; j >= 0; j--) { // running this loop in the backwards direction saves time
-                if (i == len && j == 0) // we can't consider the string to be made up of itself i.e. we ignore s.substring(0, len)
+                if (i == len && j == 0) { // we can't consider the string to be made up of itself i.e. we ignore s.substring(0, len)
                     continue;
+                }
                 if (dp[j] && set.contains(s.substring(j, i))) {
                     dp[i] = true;
                     break;

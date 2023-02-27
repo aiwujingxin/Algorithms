@@ -20,7 +20,7 @@ public class LeetCode472_fast {
             if (dfs(word, 0)) {
                 res.add(word);
             } else {
-                trie.addWord(word);
+                trie.insert(word);
             }
 
         }
@@ -58,7 +58,7 @@ public class LeetCode472_fast {
             tree = new Trie[26];
         }
 
-        public void addWord(String s) {
+        public void insert(String s) {
             Trie t = this;
             for (int i = 0; i < s.length(); i++) {
                 int k = s.charAt(i) - 'a';

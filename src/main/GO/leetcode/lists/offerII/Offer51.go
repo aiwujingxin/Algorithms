@@ -17,10 +17,10 @@ func maxPathSum(root *TreeNode) int {
 		if node == nil {
 			return 0
 		}
-		leftMax := dfs(node.Left)
-		rightMax := dfs(node.Right)
-		max = Max(Max(Max(Max(node.Val+leftMax, node.Val+rightMax), node.Val), node.Val+leftMax+rightMax), max)
-		return Max(Max(leftMax+node.Val, rightMax+node.Val), node.Val)
+		leftMax := Max(0, dfs(node.Left))
+		rightMax := Max(0, dfs(node.Right))
+		max = Max(Max(Max(Max(node.Val+leftMax, node.Val+rightMax), node.Val+leftMax+rightMax), node.Val), max)
+		return Max(leftMax, rightMax) + node.Val
 	}
 	dfs(root)
 	return max

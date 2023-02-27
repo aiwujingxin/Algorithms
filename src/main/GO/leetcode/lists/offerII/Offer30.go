@@ -12,7 +12,7 @@ type RandomizedSet struct {
 	mp   map[int]int
 }
 
-func Constructor() RandomizedSet {
+func ConstructorRandomizedSet() RandomizedSet {
 	return RandomizedSet{[]int{}, map[int]int{}}
 }
 

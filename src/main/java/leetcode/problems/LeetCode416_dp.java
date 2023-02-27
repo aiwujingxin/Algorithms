@@ -5,6 +5,7 @@ package leetcode.problems;
  * @date 2021-12-13 1:07 AM
  */
 public class LeetCode416_dp {
+    //https://leetcode.com/problems/partition-equal-subset-sum/solutions/1624101/java-memoization-to-optimized-dp-detailed-explanation/
 
     public static void main(String[] args) {
         System.out.println(new LeetCode416_dp().canPartition(new int[]{1, 5, 11, 5}));

@@ -17,7 +17,7 @@ func (this NestedInteger) GetList() []*NestedInteger {
 	return nil
 }
 
-func Constructor(nestedList []*NestedInteger) *NestedIterator {
+func ConstructorNestedInteger(nestedList []*NestedInteger) *NestedIterator {
 	var vals []int
 	var dfs func([]*NestedInteger)
 	dfs = func(nestedList []*NestedInteger) {

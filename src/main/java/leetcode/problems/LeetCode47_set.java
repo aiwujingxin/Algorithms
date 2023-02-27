@@ -8,10 +8,10 @@ import java.util.List;
  * @author jingxinwu
  * @date 2021-06-21 11:55 下午
  */
-public class LeetCode47_v1 {
+public class LeetCode47_set {
 
     public static void main(String[] args) {
-        LeetCode47_v1 leetCode47 = new LeetCode47_v1();
+        LeetCode47_set leetCode47 = new LeetCode47_set();
         System.out.println(leetCode47.permuteUnique(new int[]{1, 2, 2}));
     }
 
