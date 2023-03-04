@@ -1,23 +1,10 @@
 package leetcode.plan.algorithm.level1;
 
-import java.util.Arrays;
-
 /**
  * @author wujingxinit@outlook.com
  * @date 2022/10/7 21:41
  */
 public class LeetCode283 {
-
-    public static void main(String[] args) {
-        int[] nums = new int[]{1, 3, 6, 0, 6, 9, 12};
-        int[] nums1 = new int[]{0, 1, 0, 3, 12};
-        //fix case
-        int[] nums2 = new int[]{2, 1};
-        //fix case
-        int[] nums3 = new int[]{0, 0, 1};
-        new LeetCode283().moveZeroes(nums3);
-        System.out.println(Arrays.toString(nums3));
-    }
 
     public void moveZeroes(int[] nums) {
         if (nums == null || nums.length == 1) {

@@ -10,7 +10,7 @@ import java.util.Stack;
  * @author wujingxinit@outlook.com
  * @date 2022/9/7 12:52
  */
-public class PostOrderIteration_single_stack_v1 extends PostOrder implements Traverse {
+public class PostOrderIteration_single_stack_v1 extends PostOrder {
 
 
     @Override

@@ -10,7 +10,7 @@ import java.util.Stack;
  * @author wujingxinit@outlook.com
  * @date 2022/9/14 14:17
  */
-public class InOrderTraverseV2 extends InOrder implements Traverse {
+public class InOrderTraverseV2 extends InOrder {
 
     @Override
     public List<Integer> traverseByIteration(TreeNode root) {

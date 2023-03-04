@@ -11,6 +11,10 @@ import "strconv"
 func numberOf2sInRange(n int) int {
 	s := strconv.Itoa(n)
 	length := len(s)
+
+	//表示表示构造到从左往右第 i 位，已经出现了  cnt2 个 2
+	//dp 数组的含义就变成在不受到约束时的合法方案数，
+	//所以要在 !isLimit 成立时才去记忆化。
 	dp := make([][]int, length)
 	for i := range dp {
 		dp[i] = make([]int, length)

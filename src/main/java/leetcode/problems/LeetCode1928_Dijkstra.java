@@ -14,18 +14,18 @@ public class LeetCode1928_Dijkstra {
         Integer[] timeHold = new Integer[n];
         Arrays.fill(timeHold, Integer.MAX_VALUE);
 
-        Map<Integer, List<int[]>> graph = new HashMap();
+        Map<Integer, List<int[]>> graph = new HashMap<>();
         for (int[] edge : edges) {
             int src = edge[0];
             int dst = edge[1];
             int time = edge[2];
-            graph.putIfAbsent(src, new ArrayList());
-            graph.putIfAbsent(dst, new ArrayList());
+            graph.putIfAbsent(src, new ArrayList<>());
+            graph.putIfAbsent(dst, new ArrayList<>());
             graph.get(src).add(new int[]{dst, time});
             graph.get(dst).add(new int[]{src, time});
         }
 
-        PriorityQueue<int[]> pq = new PriorityQueue<int[]>((a, b) -> a[1] - b[1]); //a[0] = city, a[1] = cost, a[2] = time
+        PriorityQueue<int[]> pq = new PriorityQueue<>((a, b) -> a[1] - b[1]); //a[0] = city, a[1] = cost, a[2] = time
         pq.offer(new int[]{source, passingFees[source], 0});
         timeHold[0] = 0;
         while (!pq.isEmpty()) {

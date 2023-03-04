@@ -15,6 +15,7 @@ public class LeetCode912 {
         int[] nums1 = new int[]{1, 2, 4, 2, 6, 9, 8};
         System.out.println(part(nums1, 0, nums1.length - 1));
         System.out.println(Arrays.toString(nums1));
+        System.out.println(Arrays.toString(new LeetCode912().quickSort(nums1)));
     }
 
 

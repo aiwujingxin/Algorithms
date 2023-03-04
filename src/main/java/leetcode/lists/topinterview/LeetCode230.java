@@ -2,8 +2,6 @@ package leetcode.lists.topinterview;
 
 import common.TreeNode;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Stack;
 
 /**

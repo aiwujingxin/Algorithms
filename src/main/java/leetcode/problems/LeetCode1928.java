@@ -6,6 +6,5 @@ package leetcode.problems;
  */
 public class LeetCode1928 {
     //TODO
-    //TODO
 
 }

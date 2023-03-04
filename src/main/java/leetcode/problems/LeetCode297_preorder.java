@@ -12,7 +12,7 @@ public class LeetCode297_preorder {
 
 
     //https://leetcode.com/problems/serialize-and-deserialize-binary-tree/discuss/2332009/Java-Easy-Pre-Order
-    public class Codec {
+    public static class Codec {
         final String spliter = ",";
         final String nan = "X";
 

@@ -16,8 +16,8 @@ public class LeetCode169 {
             return 0;
         }
 
-        int max = Integer.MIN_VALUE;
-        int res = nums[0];
+        // int max = Integer.MIN_VALUE;
+        // int res = nums[0];
         HashMap<Integer, Integer> map = new HashMap<>();
         for (int n : nums) {
             if (map.containsKey(n)) {
