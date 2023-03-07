@@ -3,47 +3,39 @@ package leetcode.problems;
 import java.util.List;
 
 /**
- * @author wujingxinit@outlook.com
- * @date 2023/3/7 22:53
+ * @author aiwujingxin@gmail.com
+ * @date 2022/7/9 13:04
  */
-public class LeetCode139_trie {
+public class LeetCode139_trie_TEL {
+
     public boolean wordBreak(String s, List<String> wordDict) {
         Trie trie = new Trie();
 
         for (String word : wordDict) {
             trie.insert(word.toCharArray());
         }
+
         return trie.find(s, 0);
     }
 
-    static class TrieNode {
-        public TrieNode[] children = new TrieNode[26];
-        public boolean isEnd = false;
-
-        public TrieNode() {
-
-        }
-    }
-
     static class Trie {
-        private final TrieNode root = new TrieNode();
-        boolean[] failed = new boolean[301]; // s.length <= 300
+
+        private final TrieNode root = new TrieNode('/');
 
         public void insert(char[] text) {
             TrieNode p = root;
             for (char c : text) {
-                if (p.children[c - 'a'] == null) {
-                    p.children[c - 'a'] = new TrieNode();
+                int index = c - 'a';
+                if (p.children[index] == null) {
+                    TrieNode newNode = new TrieNode(c);
+                    p.children[index] = newNode;
                 }
-                p = p.children[c - 'a'];
+                p = p.children[index];
             }
-            p.isEnd = true;
+            p.isEndingChar = true;
         }
 
         public boolean find(String s, int i) {
-            if (failed[i]) {
-                return false;
-            }
             if (i >= s.length()) {
                 return true;
             }
@@ -54,14 +46,24 @@ public class LeetCode139_trie {
                     return false;
                 }
                 p = p.children[index];
-                if (p.isEnd) {
+                if (p.isEndingChar) {
                     if (find(s, i + 1)) {
                         return true;
                     }
-                    failed[i + 1] = true;
                 }
             }
             return false;
+        }
+
+    }
+
+    static class TrieNode {
+        public char data;
+        public TrieNode[] children = new TrieNode[26]; // 使用数组保存结果
+        public boolean isEndingChar = false;
+
+        public TrieNode(char data) {
+            this.data = data;
         }
     }
 }

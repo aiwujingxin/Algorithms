@@ -24,6 +24,8 @@ public class LeetCode518 {
         return dp[amount];
     }
 
+
+    // 排列数
     public int method(int[] coins, int target) {
         if (coins == null || coins.length == 0 || target <= 0) {
             return 0;
