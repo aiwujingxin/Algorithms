@@ -9,7 +9,7 @@ import java.util.Map;
  * @author aiwujingxin@gmail.com
  * @date 2022/6/27 19:30
  */
-public class LeetCode787_dfs {
+public class LeetCode787_dfs_TEL {
 
     int ans_dfs;
 

@@ -7,7 +7,7 @@ import java.util.Comparator;
  * @author aiwujingxin@gmail.com
  * @date 2022/7/25 22:19
  */
-public class LeetCode354_dp_TLE {
+public class LeetCode354_dp_TEL {
 
     //https://leetcode.cn/problems/russian-doll-envelopes/solution/e-luo-si-tao-wa-xin-feng-wen-ti-by-leetc-wj68/
 

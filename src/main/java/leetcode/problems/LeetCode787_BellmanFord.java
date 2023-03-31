@@ -6,7 +6,7 @@ import java.util.Arrays;
  * @author aiwujingxin@gmail.com
  * @date 2022/6/27 19:35
  */
-public class LeetCode787_bf {
+public class LeetCode787_BellmanFord {
 
     public int findCheapestPrice(int n, int[][] flights, int src, int dst, int K) {
 

@@ -6,7 +6,7 @@ import java.util.*;
  * @author aiwujingxin@gmail.com
  * @date 2022/6/27 19:36
  */
-public class LeetCode787_Dijkstra {
+public class LeetCode787_Dijkstra_TEL {
 
     public int findCheapestPrice(int n, int[][] flights, int src, int dst, int K) {
 

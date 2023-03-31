@@ -15,9 +15,9 @@ public class LeetCode64_dfs {
     public int find(int[][] grid, int m, int n) {
         if (m < 0 || n < 0)
             return Integer.MAX_VALUE;
-        if (m == 0 && n == 0)
+        if (m == 0 && n == 0) {
             return grid[0][0];
-
+        }
         return grid[m][n] + Math.min(find(grid, m - 1, n), find(grid, m, n - 1));
     }
 }

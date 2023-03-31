@@ -3,44 +3,33 @@ package leetcode.problems;
 import java.util.*;
 
 /**
- * @author aiwujingxin@gmail.com
- * @date 2022/6/27 19:35
+ * @author wujingxinit@outlook.com
+ * @date 2023/3/21 22:21
  */
 public class LeetCode787_bfs {
-
-
-    public int findCheapestPrice(int n, int[][] flights, int src, int dst, int K) {
-        Map<Integer, List<int[]>> map = new HashMap<>();
-        for (int[] i : flights) {
-            map.putIfAbsent(i[0], new ArrayList<>());
-            map.get(i[0]).add(new int[]{i[1], i[2]});
+    public int findCheapestPrice(int n, int[][] flights, int src, int dst, int k) {
+        Queue<int[]> queue = new LinkedList<>();
+        List<int[]>[] edge = new List[n];
+        int[] prices = new int[n];
+        for(int i = 0; i < n; ++i){
+            edge[i] = new ArrayList<>();
+            prices[i] = Integer.MAX_VALUE;
         }
-        int step = 0;
-        Queue<int[]> q = new LinkedList<>();
-        q.offer(new int[]{src, 0});
-        int ans = Integer.MAX_VALUE;
-        while (!q.isEmpty()) {
-            int size = q.size();
-            for (int i = 0; i < size; i++) {
-                int[] curr = q.poll();
-                if (curr[0] == dst) {
-                    ans = Math.min(ans, curr[1]);
-                }
-                if (!map.containsKey(curr[0])) {
-                    continue;
-                }
-                for (int[] f : map.get(curr[0])) {
-                    if (curr[1] + f[1] > ans) { // 剪枝
-                        continue;
-                    }
-
-                    q.offer(new int[]{f[0], curr[1] + f[1]});
+        for(int[] flight : flights){
+            edge[flight[0]].add(new int[]{flight[1], flight[2]});
+        }
+        prices[src] = 0;
+        queue.add(new int[]{src, 0, prices[src]});
+        while(!queue.isEmpty()){
+            int[] poll = queue.poll();
+            if(poll[1] > k) break;
+            for(int[] next : edge[poll[0]]){
+                if(prices[next[0]] > poll[2] + next[1]){
+                    prices[next[0]] = poll[2] + next[1];
+                    queue.add(new int[]{next[0], poll[1] + 1, prices[next[0]]});
                 }
             }
-            if (step++ > K) {
-                break;
-            }
         }
-        return ans == Integer.MAX_VALUE ? -1 : ans;
+        return prices[dst] == Integer.MAX_VALUE ? -1 : prices[dst];
     }
 }

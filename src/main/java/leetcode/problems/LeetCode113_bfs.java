@@ -6,12 +6,10 @@ import java.util.*;
  * @author jingxinwu
  * @date 2021-07-06 12:23 上午
  */
-public class LeetCode113 {
+public class LeetCode113_bfs {
 
     List<List<Integer>> ret = new LinkedList<>();
     Map<TreeNode, TreeNode> map = new HashMap<>();
-    List<List<Integer>> ret1 = new LinkedList<>();
-    Deque<Integer> path = new LinkedList<>();
 
     public List<List<Integer>> pathSum(TreeNode root, int targetSum) {
         if (root == null) {
@@ -56,24 +54,5 @@ public class LeetCode113 {
         }
         Collections.reverse(temp);
         ret.add(new LinkedList<>(temp));
-    }
-
-    public List<List<Integer>> pathSum2(TreeNode root, int targetSum) {
-        dfs(root, targetSum);
-        return ret1;
-    }
-
-    public void dfs(TreeNode root, int targetSum) {
-        if (root == null) {
-            return;
-        }
-        path.offerLast(root.val);
-        targetSum -= root.val;
-        if (root.left == null && root.right == null && targetSum == 0) {
-            ret1.add(new LinkedList<>(path));
-        }
-        dfs(root.left, targetSum);
-        dfs(root.right, targetSum);
-        path.pollLast();
     }
 }
