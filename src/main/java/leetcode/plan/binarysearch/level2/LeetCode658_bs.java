@@ -33,11 +33,12 @@ public class LeetCode658_bs {
             if (x - arr[mid] > arr[mid + k] - x) {
                 left = mid + 1; //尽可能的将错误的部分排除
             } else if (x - arr[mid] == arr[mid + k] - x) {
-                right = mid - 1;
-                //right = mid - 1 时的 bad case
-                //[1,2,3,4,4,4,4,5,5]
-                //3
-                //3
+                right = mid;
+                /*right = mid - 1 时的 bad case
+                [1,2,3,4,4,4,4,5,5]
+                3
+                3
+                */
             } else if (x - arr[mid] < arr[mid + k] - x) {
                 right = mid;
                 //right = mid - 1;时的 bad case

@@ -1,6 +1,6 @@
 package basic.algorithm.dp;
 
-import basic.problems.ActivityPack;
+import basic.template.problems.ActivityPack;
 
 import java.util.Arrays;
 

@@ -1,7 +1,7 @@
 package basic.algorithm.dp;
 
 
-import basic.problems.BackPack;
+import basic.template.problems.BackPack;
 
 public class Backpack_dp_2d implements BackPack {
 

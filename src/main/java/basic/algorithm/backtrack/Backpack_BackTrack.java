@@ -1,7 +1,7 @@
 package basic.algorithm.backtrack;
 
 
-import basic.problems.BackPack;
+import basic.template.problems.BackPack;
 
 public class Backpack_BackTrack implements BackPack {
 

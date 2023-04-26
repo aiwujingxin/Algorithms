@@ -1,31 +1,17 @@
 package leetcode.problems;
 
+import common.TreeNode;
+
 /**
  * @author jingxinwu
- * @date 2021-07-04 8:34 下午
+ * @date 2022-02-16 3:11 PM
  */
 public class LeetCode98 {
 
-
-    public static void main(String[] args) {
-
-        TreeNode root = new TreeNode(5);
-        TreeNode one = new TreeNode(4);
-        TreeNode two = new TreeNode(6);
-        root.left = one;
-        root.right = two;
-
-        TreeNode three = new TreeNode(3);
-        TreeNode four = new TreeNode(7);
-        two.left = three;
-        two.right = four;
-
-        System.out.println(new LeetCode98().isValidBST(root));
-
-    }
-
     public boolean isValidBST(TreeNode root) {
-
+        if (root == null) {
+            return true;
+        }
         return isValidBST(root, null, null);
     }
 
@@ -34,14 +20,20 @@ public class LeetCode98 {
         if (root == null) {
             return true;
         }
+
+        //fix 注意比较符号
         if (min != null && root.val <= min.val) {
             return false;
+
         }
+        //fix 注意比较符号
         if (max != null && root.val >= max.val) {
             return false;
+
         }
 
         return isValidBST(root.left, min, root) && isValidBST(root.right, root, max);
+
     }
 
 }

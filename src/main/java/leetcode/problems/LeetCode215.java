@@ -2,48 +2,46 @@ package leetcode.problems;
 
 /**
  * @author jingxinwu
- * @date 2021-06-06 5:31 下午
+ * @date 2022-02-16 4:26 PM
  */
 public class LeetCode215 {
 
-    public static void main(String[] args) {
-        LeetCode215 leetCode215 = new LeetCode215();
-        int[] b = new int[]{3, 2, 1, 5, 6, 4};
-        System.out.println(leetCode215.findKthLargest(b, 2));
-    }
-
     public int findKthLargest(int[] nums, int k) {
+
         if (nums == null || nums.length == 0) {
-            return 0;
+            return -1;
         }
-        int low = 0;
-        int hi = nums.length - 1;
-        while (true) {
-            int pos = helper(nums, low, hi);
-            if (pos + 1 == k) {
-                return nums[pos];
-            } else if (pos + 1 > k) {
-                hi = pos - 1;
+
+        int left = 0;
+        int right = nums.length - 1;
+        while (left <= right) {
+            int index = part(nums, left, right);
+            if (index + 1 == k) {
+                return nums[index];//fix
+            } else if (index + 1 < k) {
+                left = index + 1;//fix
             } else {
-                low = pos + 1;
+                right = index - 1;//fix
             }
-
         }
+        return -1;
     }
 
-    private int helper(int[] nums, int low, int hi) {
-        int pi = nums[low];
-        while (low < hi) {
-            while (low < hi && nums[hi] <= pi) {
-                hi--;
+    private int part(int[] nums, int i, int j) {
+        int pi = nums[i];
+        while (i < j) {
+
+            while (i < j && nums[j] <= pi) {
+                j--;
             }
-            nums[low] = nums[hi];
-            while (low < hi && nums[low] >= pi) {
-                low++;
+            nums[i] = nums[j];
+            while (i < j && nums[i] >= pi) {
+                i++;
             }
-            nums[hi] = nums[low];
+            nums[j] = nums[i];
         }
-        nums[low] = pi;
-        return low;
+        nums[i] = pi;
+        return i;
     }
+
 }

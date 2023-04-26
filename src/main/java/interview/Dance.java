@@ -12,7 +12,7 @@ public class Dance {
     public static void main(String[] args) {
 //        System.out.println(new Dance().search(new int[]{8, 7, 6, 5, 3, 3, 2, 1}, 3));
 
-//        System.out.println(new Dance().find(new int[]{9, 7, 6, 5, 2, 2}, 22));
+        System.out.println(new Dance().find(new int[]{9, 7, 6, 5, 2, 2}, 22));
         System.out.println(new Dance().find(new int[]{5, 4, 3, 2, 1}, 10));
         System.out.println(new Dance().find(new int[]{5, 4, 3, 3, 1}, 11));
         System.out.println(new Dance().find(new int[]{10, 10, 3, 2, 1}, 14));

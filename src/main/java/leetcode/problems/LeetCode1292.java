@@ -27,6 +27,7 @@ public class LeetCode1292 {
                                     + prefix[i - 1][j - 1];
                     if (temp <= threshold) {
                         flag = true;
+                        break;
                     }
                 }
             }

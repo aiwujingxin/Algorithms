@@ -81,4 +81,34 @@ public class LevelTree {
         return Math.max(high(root.left), high(root.right)) + 1;
     }
 
+    public String cal_v2(Node root) {
+        if (root == null) {
+            return "_";
+        }
+        StringBuilder res = new StringBuilder();
+        boolean isCanContinue = true;
+        Queue<Node> q = new LinkedList<>();
+        q.offer(root);
+        while (!q.isEmpty() && isCanContinue) {
+            isCanContinue = false;
+            int size = q.size();
+            while (size > 0) {
+                Node cur = q.poll();
+                if (cur != null) {
+                    res.append(cur.value);
+                    q.offer(cur.left);
+                    q.offer(cur.right);
+                    if (cur.left != null || cur.right != null) {
+                        isCanContinue = true;
+                    }
+                } else {
+                    res.append("_");
+                    q.offer(null);
+                    q.offer(null);
+                }
+                size--;
+            }
+        }
+        return res.toString();
+    }
 }

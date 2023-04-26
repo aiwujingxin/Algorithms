@@ -1,55 +1,65 @@
 package leetcode.problems;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Queue;
 
 /**
  * @author jingxinwu
- * @date 2021-12-18 8:36 PM
+ * @date 2022-02-17 7:37 PM
  */
 public class LeetCode210 {
 
-    public int[] findOrder(int numCourses, int[][] prerequisites) {
-        if (numCourses == 0 || prerequisites == null || prerequisites.length == 0) {
-            return new int[0];
-        }
 
-        int[] indegree = new int[numCourses];
-        int[] res = new int[numCourses];
-        int k = 0;
-        for (int[] pair : prerequisites) {
-            indegree[pair[0]]++;
+    public int[] findOrder(int numCourses, int[][] prerequisites) {
+
+        List<Integer> list = new ArrayList<>();
+
+        int[] arr = new int[numCourses];
+
+        for (int[] ints : prerequisites) {
+            arr[ints[0]]++;
         }
 
         Queue<Integer> queue = new LinkedList<>();
 
-        for (int i = 0; i < indegree.length; i++) {
-            if (indegree[i] == 0) {
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] == 0) {
                 queue.add(i);
-                res[k++] = i;
+                list.add(i);
             }
+
         }
-
         while (!queue.isEmpty()) {
-            Integer cur = queue.poll();
 
-            for (int[] pair : prerequisites) {
+            int cur = queue.poll();
 
-                if (indegree[pair[0]] == 0) {
+            //fix
+            for (int[] prerequisite : prerequisites) {
+
+                if (arr[prerequisite[0]] == 0) {
                     continue;
                 }
-
-                if (pair[1] == cur) {
-                    indegree[pair[0]]--;
+                if (prerequisite[1] == cur) {
+                    arr[prerequisite[0]]--;
                 }
-
-                if (indegree[pair[0]] == 0) {
-                    queue.add(pair[0]);
-                    res[k++] = pair[0];
+                if (arr[prerequisite[0]] == 0) {
+                    queue.add(prerequisite[0]);
+                    list.add(prerequisite[0]);
                 }
             }
         }
 
-        return k == numCourses ? res : new int[0];
+        //fix
+        if (list.size() != numCourses) {
+            return new int[]{};
+        }
+        int[] res = new int[list.size()];
+        for (int i = 0; i < list.size(); i++) {
+            res[i] = list.get(i);
+        }
+        return res;
+
     }
 }
