@@ -1,6 +1,5 @@
 package leetcode.lists.classic;
 
-import java.util.HashSet;
 
 /**
  * @author jingxinwu
@@ -9,22 +8,17 @@ import java.util.HashSet;
 public class Number0101 {
 
     public boolean isUnique(String astr) {
-
         if (astr == null || astr.length() == 0) {
             return true;
         }
-
-        HashSet<Character> s = new HashSet<>();
-
+        int checker = 0;
         for (Character c : astr.toCharArray()) {
-            if (s.contains(c)) {
-                return false;
+            int index = c - 'a';
+            if ((checker & (1 << index)) > 0) {
+                return true;
             }
-            s.add(c);
+            checker |= (1 << index);
         }
-
         return false;
-
     }
-
 }

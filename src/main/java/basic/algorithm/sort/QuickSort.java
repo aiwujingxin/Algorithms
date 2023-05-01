@@ -1,5 +1,9 @@
 package basic.algorithm.sort;
 
+import basic.problems.array.*;
+
+import java.util.*;
+
 /**
  * @author wujingxinit@outlook.com
  * @date 2022/9/14 22:47
@@ -21,25 +25,28 @@ public class QuickSort implements ArraySort {
         quickSort(nums, pIndex + 1, right);
     }
 
+    private int partition(int[] nums, int i, int j) {
+        int ri = new Random().nextInt(j - i + 1) + i; // 随机选一个作为我们的主元
+        swap(nums, ri, i);
 
-    private int partition(int[] nums, int left, int right) {
-        int pivot = nums[left];
-        while (left < right) {
-            //从后向前找比基准小的数
-            while (right > left && nums[right] > pivot) {
-                right--;
+        int pi = nums[i];
+        while (i < j) {
+            while (i < j && nums[j] >= pi) {
+                j--;
             }
-            //把比基准小的数移到低端
-            nums[left] = nums[right];
-
-            //从前向后找比基准大的数
-            while (left <= right && nums[left] < pivot) {
-                left++;
+            nums[i] = nums[j];
+            while (i < j && nums[i] <= pi) {
+                i++;
             }
-            //把比基准大的数移到高端
-            nums[right] = nums[left];
+            nums[j] = nums[i];
         }
-        nums[left] = pivot;
-        return left;
+        nums[i] = pi;
+        return i;
+    }
+
+    private void swap(int[] nums, int ri, int i) {
+        int temp = nums[i];
+        nums[i] = nums[ri];
+        nums[ri] = temp;
     }
 }

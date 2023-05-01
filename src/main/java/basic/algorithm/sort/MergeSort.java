@@ -1,82 +1,57 @@
 package basic.algorithm.sort;
 
+import basic.problems.array.*;
+
 /**
  * @author jingxinwu
  * @date 2021-06-06 1:46 下午
  */
 public class MergeSort implements ArraySort {
 
+    int[] arr;
 
     @Override
     public int[] sortArray(int[] nums) {
+        arr = new int[nums.length];
         mergeSort(nums, 0, nums.length - 1);
         return nums;
     }
 
-
-    // Main function that sorts arr[l..r] using
-    // merge()
-    public void mergeSort(int[] arr, int l, int r) {
-        if (l < r) {
-            // Find the middle point
-            int m = l + (r - l) / 2;
-
-            // Sort first and second halves
-            mergeSort(arr, l, m);
-            mergeSort(arr, m + 1, r);
-
-            // Merge the sorted halves
-            merge(arr, l, m, r);
+    private void mergeSort(int[] nums, int left, int right) {
+        if (left >= right) {
+            return;
         }
+        int mid = (right - left) / 2 + left;
+        mergeSort(nums, left, mid);
+        mergeSort(nums, mid + 1, right);
+        merge(nums, left, mid, right);
     }
 
-    void merge(int[] arr, int l, int m, int r) {
-        // Find sizes of two sub arrays to be merged
-        int n1 = m - l + 1;
-        int n2 = r - m;
-
-        /* Create temp arrays */
-        int[] L = new int[n1];
-        int[] R = new int[n2];
-
-        /*Copy data to temp arrays*/
-        for (int i = 0; i < n1; ++i) {
-            L[i] = arr[l + i];
-        }
-        for (int j = 0; j < n2; ++j) {
-            R[j] = arr[m + 1 + j];
-        }
-
-        /* Merge the temp arrays */
-
-        // Initial indexes of first and second subarrays
-        int i = 0, j = 0;
-
-        // Initial index of merged subarry array
-        int k = l;
-        while (i < n1 && j < n2) {
-            if (L[i] <= R[j]) {
-                arr[k] = L[i];
+    private void merge(int[] nums, int left, int mid, int right) {
+        int i = left, j = mid + 1;
+        int k = left;
+        while (i <= mid && j <= right) {
+            if (nums[i] <= nums[j]) {
+                arr[k] = nums[i];
                 i++;
             } else {
-                arr[k] = R[j];
+                arr[k] = nums[j];
                 j++;
             }
             k++;
         }
-
-        /* Copy remaining elements of L[] if any */
-        while (i < n1) {
-            arr[k] = L[i];
+        while (i <= mid) {
+            arr[k] = nums[i];
             i++;
             k++;
         }
-
-        /* Copy remaining elements of R[] if any */
-        while (j < n2) {
-            arr[k] = R[j];
+        while (j <= right) {
+            arr[k] = nums[j];
             j++;
             k++;
+        }
+        for (int n = left; n <= right; n++) {
+            nums[n] = arr[n];
         }
     }
 }

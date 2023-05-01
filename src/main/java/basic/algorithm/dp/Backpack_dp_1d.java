@@ -1,6 +1,6 @@
 package basic.algorithm.dp;
 
-import basic.template.problems.BackPack;
+import basic.problems.dp.BackPack;
 
 /**
  * @author wujingxinit@outlook.com

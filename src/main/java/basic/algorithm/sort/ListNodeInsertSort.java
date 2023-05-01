@@ -1,12 +1,13 @@
 package basic.algorithm.sort;
 
+import basic.problems.list.*;
 import common.ListNode;
 
 /**
  * @author jingxinwu
  * @date 2021-12-21 8:48 PM
  */
-public class ListNodeInsertSort implements ListNodeSort {
+public class ListNodeInsertSort implements ListSort {
     //
     //          1       3        6          2        9
     //   dummy head

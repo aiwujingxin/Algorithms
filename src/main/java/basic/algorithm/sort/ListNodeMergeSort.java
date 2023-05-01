@@ -1,12 +1,13 @@
 package basic.algorithm.sort;
 
+import basic.problems.list.*;
 import common.ListNode;
 
 /**
  * @author wujingxinit@outlook.com
  * @date 2022/9/14 22:59
  */
-public class ListNodeMergeSort implements ListNodeSort {
+public class ListNodeMergeSort implements ListSort {
     @Override
     public ListNode sortList(ListNode head) {
         if (head == null || head.next == null) {

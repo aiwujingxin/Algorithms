@@ -1,7 +1,7 @@
 package basic.algorithm.greedy;
 
 
-import basic.template.problems.BackPack;
+import basic.problems.dp.BackPack;
 
 import java.util.ArrayList;
 import java.util.Comparator;
