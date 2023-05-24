@@ -8,6 +8,7 @@ public class Offer51 {
 
 
     int count;
+
     int[] nums, tmp;
 
     public int reversePairs(int[] nums) {
@@ -17,8 +18,7 @@ public class Offer51 {
         return count;
     }
 
-    int MergeSort(int[] arr, int l, int r) {
-        int res = 0;
+    private void MergeSort(int[] arr, int l, int r) {
         if (l < r) {
             // Find the middle point
             int m = l + (r - l) / 2;
@@ -29,7 +29,6 @@ public class Offer51 {
             // Merge the sorted halves
             merge(arr, l, m, r);
         }
-        return res;
     }
 
     void merge(int[] arr, int l, int m, int r) {

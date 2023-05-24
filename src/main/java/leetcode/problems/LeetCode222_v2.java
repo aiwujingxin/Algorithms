@@ -1,7 +1,5 @@
 package leetcode.problems;
 
-import common.TreeNode;
-
 /**
  * @author jingxinwu
  * @date 2022-02-23 1:33 PM

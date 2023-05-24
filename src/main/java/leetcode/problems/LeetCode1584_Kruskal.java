@@ -36,7 +36,7 @@ public class LeetCode1584_Kruskal {
         return Math.abs(points[a][0] - points[b][0]) + Math.abs(points[a][1] - points[b][1]);
     }
 
-    class UnionFind {
+    static class UnionFind {
         int[] parent;
 
         UnionFind(int n) {
@@ -49,7 +49,9 @@ public class LeetCode1584_Kruskal {
         }
 
         public int find(int x) {
-            if (parent[x] != x) parent[x] = find(parent[x]);
+            if (parent[x] != x) {
+                parent[x] = find(parent[x]);
+            }
             return parent[x];
         }
     }

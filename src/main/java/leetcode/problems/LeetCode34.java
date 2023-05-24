@@ -14,48 +14,46 @@ public class LeetCode34 {
     }
 
     public int[] searchRange(int[] nums, int target) {
-        int[] res = new int[]{-1, -1};
         if (nums == null || nums.length == 0) {
-            return res;
+            return new int[]{-1, -1};
         }
-        if (nums.length == 1) {
-            if (nums[0] != target) {
-                return res;
+        int left = bsearch_1(nums, target);
+        int right = bsearch_2(nums, target);
+        if (left == nums.length || nums[left] != target) {
+            left = -1;
+        }
+        if (nums[right] != target) {
+            right = -1;
+        }
+        return new int[]{left, right};
+    }
+
+
+    int bsearch_1(int[] nums, int target) {
+        int l = 0;
+        int r = nums.length;
+        while (l < r) {
+            int mid = l + r >> 1;
+            if (nums[mid] >= target) {
+                r = mid;
             } else {
-                return new int[2];
+                l = mid + 1;
             }
         }
-        int left = 0;
-        int right = nums.length - 1;
-        while (left <= right) {
+        return l;
+    }
 
-            int mid = (right - left) / 2 + left;
-
-            if (nums[mid] == target) {
-
-                int i = mid;
-                int j = mid;
-
-                while (i > 0 && nums[i - 1] == nums[mid]) {
-                    i--;
-                }
-                res[0] = i;
-                while (j < nums.length - 1 && nums[j + 1] == nums[mid]) {
-                    j++;
-                }
-                res[1] = j;
-
-                return res;
-
-            } else if (nums[mid] < target) {
-
-                left = mid + 1;
-
+    int bsearch_2(int[] nums, int target) {
+        int l = 0;
+        int r = nums.length - 1;
+        while (l < r) {
+            int mid = l + r + 1 >> 1;
+            if (nums[mid] <= target) {
+                l = mid;
             } else {
-                right = mid - 1;
+                r = mid - 1;
             }
-
         }
-        return res;
+        return l;
     }
 }

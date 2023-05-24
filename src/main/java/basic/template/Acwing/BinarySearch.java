@@ -5,9 +5,10 @@ package basic.template.Acwing;
  * @date 2023/5/1 13:02
  * <a href="https://leetcode.cn/problems/find-first-and-last-position-of-element-in-sorted-array/">...</a>
  */
-public class BinarySearch {
+public class BinarySearch implements basic.algorithm.binarySearch.BSearch {
 
     //34. 在排序数组中查找元素的第一个和最后一个位置
+    @Override
     public int[] searchRange(int[] nums, int target) {
         if (nums == null || nums.length == 0) {
             return new int[]{-1, -1};
@@ -23,7 +24,8 @@ public class BinarySearch {
         return new int[]{left, right};
     }
 
-    int bsearch_1(int[] nums, int target) {
+    // 第一个大于等于target的数
+    public int bsearch_1(int[] nums, int target) {
         int l = 0;
         int r = nums.length - 1;
         while (l < r) {
@@ -37,7 +39,8 @@ public class BinarySearch {
         return l;
     }
 
-    int bsearch_2(int[] nums, int target) {
+    // 最后一个小于等于target的数
+    public int bsearch_2(int[] nums, int target) {
         int l = 0;
         int r = nums.length - 1;
         while (l < r) {

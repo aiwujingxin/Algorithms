@@ -13,29 +13,29 @@ public class LeetCode611_bs {
         Arrays.sort(nums);
         int ans = 0;
         for (int i = 0; i < nums.length; i++) {
-            for (int j = i + 1; j < nums.length; j++) {
+            for (int j = i + 1; j < nums.length - 1; j++) {
                 int pos = binarySearch(nums, j + 1, nums.length - 1, nums[i] + nums[j] - 1);
-                if (pos != -1) {
-                    ans += pos - j;
+                if (pos >= nums.length || (pos == j + 1 && nums[i] + nums[j] <= nums[pos])) {
+                    continue;
                 }
+                ans += pos - j;
             }
         }
-
         return ans;
     }
 
-    public int binarySearch(int[] nums, int start, int end, int target) {
-        int ans = -1;
-        while (start <= end) {
-            int mid = start + (end - start) / 2;
 
+    public int binarySearch(int[] nums, int start, int end, int target) {
+        int l = start;
+        int r = end;
+        while (l < r) {
+            int mid = l + r + 1 >> 1;
             if (nums[mid] <= target) {
-                ans = mid;
-                start = mid + 1;
+                l = mid;
             } else {
-                end = mid - 1;
+                r = mid - 1;
             }
         }
-        return ans;
+        return l;
     }
 }

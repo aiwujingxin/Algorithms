@@ -5,7 +5,7 @@ import java.util.*;
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/3/12 16:23
- * {@Link Classic1618}
+ * {@Link Classic1618.go}
  */
 //https://leetcode.cn/problems/word-pattern-ii/solution/291-dan-ci-gui-lu-ii-by-klb/
 public class LeetCode291 {

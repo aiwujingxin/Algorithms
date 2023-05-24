@@ -2,7 +2,9 @@ package leetcode.lists.hot100;
 
 import common.TreeNode;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Stack;
 
 /**
  * @author wujingxinit@outlook.com

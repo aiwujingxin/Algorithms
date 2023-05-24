@@ -1,1 +1,0 @@
-https://coolcao.com/2019/10/29/decrease-divide/

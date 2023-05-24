@@ -155,7 +155,7 @@ public class Dijkstra {
         graph.addNode(nodeE);
         graph.addNode(nodeF);
 
-        graph = Dijkstra.calculateShortestPathFromSource(graph, nodeA);
+        Dijkstra.calculateShortestPathFromSource(graph, nodeA);
         System.out.println(graph);
     }
 }

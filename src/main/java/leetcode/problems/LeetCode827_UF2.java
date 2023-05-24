@@ -84,11 +84,9 @@ public class LeetCode827_UF2 {
         }
 
         public int find(int x) {
-            if (x == parents[x]) {
-                return x;
+            if (parents[x] != x) {
+                parents[x] = find(parents[x]);
             }
-
-            parents[x] = find(parents[x]);
             return parents[x];
         }
 

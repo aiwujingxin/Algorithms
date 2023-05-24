@@ -1,7 +1,5 @@
 package leetcode.lists.hot200;
 
-import java.util.*;
-
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/3/24 18:17
@@ -17,7 +15,6 @@ public class LeetCode370 {
             }
         }
         int[] res = new int[length];
-        System.out.println(Arrays.toString(diff));
         res[0] = diff[0];
         for (int i = 1; i < diff.length; i++) {
             res[i] = res[i - 1] + diff[i];

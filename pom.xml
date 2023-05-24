@@ -46,7 +46,7 @@
                             <goal>repackage</goal>
                         </goals>
                         <configuration>
-                            <mainClass>com.study.StudyApplication</mainClass>
+                            <mainClass>com.main.StudyApplication</mainClass>
                         </configuration>
                     </execution>
                 </executions>

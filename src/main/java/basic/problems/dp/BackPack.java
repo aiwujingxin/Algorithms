@@ -1,6 +1,6 @@
 package basic.problems.dp;
 
-import basic.algorithm.backtrack.Backpack_BackTrack;
+import basic.algorithm.backtrack.Backpack;
 import basic.algorithm.dp.Backpack_dp_1d;
 import basic.algorithm.dp.Backpack_dp_2d;
 import basic.algorithm.greedy.Backpack_Greedy;
@@ -45,7 +45,7 @@ public interface BackPack {
     static void main(String[] args) {
         System.out.println(new Backpack_dp_2d().Backpack(goodsValue05, weight05, packageWeight05) == targetValue05);
         System.out.println(new Backpack_dp_1d().Backpack(goodsValue05, weight05, packageWeight05) == targetValue05);
-        System.out.println(new Backpack_BackTrack().Backpack(goodsValue05, weight05, packageWeight05) == targetValue05);
+        System.out.println(new Backpack().Backpack(goodsValue05, weight05, packageWeight05) == targetValue05);
         System.out.println(new Backpack_Greedy().Backpack(goodsValue05, weight05, packageWeight05) == targetValue05);
 
 

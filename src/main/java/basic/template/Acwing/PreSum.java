@@ -3,11 +3,10 @@ package basic.template.Acwing;
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/5/1 12:49
- * //1D: <a href="https://leetcode.cn/problems/range-sum-query-immutable/">...</a>
- * //2D: <a href="https://leetcode.cn/problems/range-sum-query-2d-immutable/">...</a>
  */
 public class PreSum {
 
+    //1D: https://leetcode.cn/problems/range-sum-query-immutable/
     class NumArray {
 
         int[] sums;
@@ -25,7 +24,7 @@ public class PreSum {
         }
     }
 
-
+    //2D: https://leetcode.cn/problems/range-sum-query-2d-immutable/
     class NumMatrix {
 
         private final int[][] sums;

@@ -41,8 +41,9 @@ public class Dijkstra_Q {
         // from the source node
         System.out.println("The shorted path from node :");
 
-        for (int i = 0; i < dpq.dist.length; i++)
+        for (int i = 0; i < dpq.dist.length; i++) {
             System.out.println(source + " to " + i + " is " + dpq.dist[i]);
+        }
     }
     // Java Program to Implement Dijkstra's Algorithm
     // Using Priority Queue

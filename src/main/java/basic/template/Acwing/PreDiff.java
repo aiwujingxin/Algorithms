@@ -1,12 +1,15 @@
 package basic.template.Acwing;
 
+import leetcode.problems.*;
+
 import java.util.*;
 
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/5/1 12:58
  * <a href="https://labuladong.github.io/algo/di-yi-zhan-da78c/shou-ba-sh-48c1d/xiao-er-me-c304e/">...</a>
- * <a href="https://leetcode.cn/problems/range-addition/submissions/">example</a>
+ * {@link leetcode.lists.hot200.LeetCode370}
+ * {@link LeetCode1109}
  */
 public class PreDiff {
 
@@ -42,4 +45,9 @@ public class PreDiff {
         }
         return res;
     }
+    //2D : https://leetcode.cn/problems/increment-submatrices-by-one/
+    /*
+     * 给以(x1, y1)为左上角，(x2, y2)为右下角的子矩阵中的所有元素加上c：
+     * S[x1, y1] += c, S[x2 + 1, y1] -= c, S[x1, y2 + 1] -= c, S[x2 + 1, y2 + 1] += c
+     */
 }
