@@ -13,6 +13,7 @@ public class LeetCode787_BellmanFord {
         int[] cost = new int[n];
         Arrays.fill(cost, Integer.MAX_VALUE);
         cost[src] = 0;
+        //最多不经过k条边
         for (int i = 0; i <= K; i++) {
             int[] temp = Arrays.copyOf(cost, n);
             for (int[] f : flights) {

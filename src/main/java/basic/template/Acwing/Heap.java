@@ -1,6 +1,6 @@
 package basic.template.Acwing;
 
-import basic.datastructure.heap.MaxHeap;
+import basic.algorithm.heap.MaxHeap;
 
 /**
  * @author wujingxinit@outlook.com

@@ -1,6 +1,6 @@
 package leetcode.problems;
 
-import basic.datastructure.string.KMP;
+import basic.algorithm.string.KMP;
 
 public class LeetCode214_kmp {
 

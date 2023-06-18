@@ -1,6 +1,6 @@
 package leetcode.lists.topinterview;
 
-import basic.datastructure.string.KMP;
+import basic.algorithm.string.KMP;
 
 /**
  * @author wujingxinit@outlook.com

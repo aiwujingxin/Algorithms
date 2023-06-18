@@ -5,15 +5,237 @@ import java.util.*;
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/5/23 11:47
- * from gpt
+ * {@link acwing.Acwing253}
+ * {@link leetcode.problems.LeetCode480}
  */
 
 public class TreapTree {
-    private Node root;
 
-    // 构造函数
-    public TreapTree() {
-        root = null;
+    static class Node {
+
+        int key, val, cnt, size;
+        Node left, right;
+
+        public Node(int key, int val) {
+            this.key = key;
+            this.val = val;
+            // System.out.println(val);
+            this.cnt = this.size = 1;
+        }
+    }
+
+    static final int range = 10000010;
+    static final int INF = 0x3f3f3f3f;
+    private static Node root = null;
+
+
+    public void build() {
+        root = new Node(-INF, rand());
+        root.right = new Node(INF, rand());
+        pushup(root);
+        if (root.val < root.right.val) root = zag(root);
+    }
+
+    public void insert(int key) {
+        root = insert(root, key);
+    }
+
+    public void remove(int key) {
+        root = remove(root, key);
+    }
+
+    public int getKeyByRang(int range) {
+        return getKeyByRang(root, range);
+    }
+
+    public int getRangByKey(int key) {
+        return getRangByKey(root, key);
+    }
+
+    public int getPre(int key) {
+        return getPre(root, key);
+    }
+
+    public int getNext(int key) {
+        return getNext(root, key);
+    }
+
+    public Node insert(Node node, int key) {
+        if (node == null) {
+            return new Node(key, rand());
+        }
+        if (node.key == key) {
+            node.cnt++;
+        }
+
+        if (key < node.key) {
+            node.left = insert(node.left, key);
+            if (node.left.val > node.val) {
+                node = zig(node);
+            }
+        } else if (key > node.key) {
+            node.right = insert(node.right, key);
+            if (node.right.val > node.val) {
+                node = zag(node);
+            }
+        }
+        pushup(node);
+        return node;
+    }
+
+    public Node remove(Node node, int key) {
+        if (node == null) {
+            return null;
+        }
+
+        if (key < node.key) {
+            node.left = remove(node.left, key);
+            pushup(node);
+            return node;
+        }
+
+        if (key > node.key) {
+            node.right = remove(node.right, key);
+            pushup(node);
+            return node;
+        }
+
+        //相等的时候
+        if (node.cnt > 1) {
+            node.cnt--;
+            pushup(node);
+            return node;
+        }
+        if (node.left == null && node.right == null) {
+            return null;
+        } else {
+            if (node.left == null) {//左旋
+                node = zag(node);
+                node.left = remove(node.left, key);
+                pushup(node);
+                return node;
+            }
+            if (node.right == null) {//右旋
+                node = zig(node);
+                node.right = remove(node.right, key);
+                pushup(node);
+                return node;
+            }
+            if (node.left.key > node.right.key) {//左孩子上来， 右旋
+                node = zig(node);
+                node.right = remove(node.right, key);
+            } else {//右孩子上来， 左旋
+                node = zag(node);
+                node.left = remove(node.left, key);
+            }
+        }
+
+        pushup(node);
+        return node;
+    }
+
+    public int getKeyByRang(Node node, int range) {
+        if (node == null) {
+            return INF;
+        }
+        Node left = node.left;
+        int lsize = left == null ? 0 : left.size;
+        if (lsize >= range) {
+            return getKeyByRang(node.left, range);
+        }
+        if (lsize + node.cnt >= range) {
+            return node.key;
+        }
+        return getKeyByRang(node.right, range - lsize - node.cnt);
+
+    }
+
+    public int getRangByKey(Node node, int key) {
+        if (node == null) return 0;
+        Node left = node.left;
+        int lsize = left == null ? 0 : left.size;
+
+        if (key > node.key) {
+            return lsize + node.cnt + getRangByKey(node.right, key);
+        }
+
+        if (key == node.key) {
+
+            return lsize + 1;
+        }
+
+        return getRangByKey(node.left, key);
+    }
+
+    public int getPre(Node node, int key) {
+        if (node == null) {
+
+            return -INF;
+        }
+        if (key <= node.key) {
+
+            return getPre(node.left, key);
+        }
+        return Math.max(node.key, getPre(node.right, key));
+    }
+
+    public int getNext(Node node, int key) {
+        if (node == null) {
+            return INF;
+        }
+
+        if (key >= node.key) {
+            return getNext(node.right, key);
+        }
+
+        return Math.min(node.key, getNext(node.left, key));
+    }
+
+    static int rand() {
+        return new Random().nextInt(2 * range);
+    }
+
+
+    static Node zig(Node node) {//右旋, 返回此时的该位置节点
+        Node p = node.left;
+        node.left = p.right;
+        p.right = node;
+        pushup(p.right);
+        pushup(p);
+        return p;
+    }
+
+    static Node zag(Node node) {//左旋
+        Node p = node.right;
+        node.right = p.left;
+        p.left = node;
+        pushup(p.left);
+        pushup(p);
+        return p;
+    }
+
+    static void pushup(Node node) {
+
+        int lsize, rsize;
+        lsize = rsize = 0;
+        if (node.left != null) {
+            lsize = node.left.size;
+        }
+
+        if (node.right != null) {
+            rsize = node.right.size;
+        }
+        node.size = node.cnt + lsize + rsize;
+
+    }
+
+    // 打印Treap树中的节点（中序遍历）
+    public void printTree() {
+        inorderTraversal(root);
+    }
+
+    public void postprintTree() {
+        postorder(root);
     }
 
     // 中序遍历Treap树
@@ -33,115 +255,8 @@ public class TreapTree {
         }
     }
 
-    // 在Treap树中插入节点
-    public void insert(int key) {
-        root = insertNode(root, key);
-    }
-
-    // 在Treap树中删除节点
-    public void delete(int key) {
-        root = deleteNode(root, key);
-    }
-
-    // 打印Treap树中的节点（中序遍历）
-    public void printTree() {
-        inorderTraversal(root);
-    }
-
-    public void postprintTree() {
-        postorder(root);
-    }
-
-    // 在Treap树中插入节点
-    private Node insertNode(Node root, int key) {
-        // 执行标准BST插入
-        if (root == null) {
-            return new Node(key);
-        }
-
-        if (key < root.key) {
-            root.left = insertNode(root.left, key);
-            // 通过旋转保持堆的性质
-            if (root.left.priority > root.priority) {
-                root = rightRotate(root);
-            }
-        } else if (key > root.key) {
-            root.right = insertNode(root.right, key);
-            // 通过旋转保持堆的性质
-            if (root.right.priority > root.priority) {
-                root = leftRotate(root);
-            }
-        }
-
-        return root;
-    }
-
-    // 在Treap树中删除节点
-    private Node deleteNode(Node root, int key) {
-        if (root == null) {
-            return root;
-        }
-
-        if (key < root.key) {
-            root.left = deleteNode(root.left, key);
-        } else if (key > root.key) {
-            root.right = deleteNode(root.right, key);
-        } else {
-            // 找到要删除的节点
-            if (root.left == null) {
-                root = root.right;
-            } else if (root.right == null) {
-                root = root.left;
-            } else {
-                // 如果左右子节点都存在，根据优先级进行旋转
-                if (root.left.priority < root.right.priority) {
-                    root = leftRotate(root);
-                    root.left = deleteNode(root.left, key);
-                } else {
-                    root = rightRotate(root);
-                    root.right = deleteNode(root.right, key);
-                }
-            }
-        }
-
-        return root;
-    }
-
-
-    // 左旋操作
-    private Node leftRotate(Node x) {
-        Node y = x.right;
-        x.right = y.left;
-        y.left = x;
-        return y;
-    }
-
-    // 右旋操作
-    private Node rightRotate(Node x) {
-        Node y = x.left;
-        x.left = y.right;
-        y.right = x;
-        return y;
-    }
-
-
-    static class Node {
-        int key; // 节点的键值
-        int priority; // 节点的优先级
-        Node left; // 左子节点的引用
-        Node right; // 右子节点的引用
-
-        public Node(int key) {
-            this.key = key;
-            this.priority = new Random().nextInt(100); // 生成随机优先级
-            this.left = null;
-            this.right = null;
-        }
-    }
-
     public static void main(String[] args) {
         TreapTree treap = new TreapTree();
-
         treap.insert(50);
         treap.insert(30);
         treap.insert(20);
@@ -154,9 +269,8 @@ public class TreapTree {
         treap.printTree();
         System.out.println();
 
-        treap.delete(20);
-        treap.delete(40);
-
+        treap.remove(20);
+        treap.remove(40);
         System.out.println("删除节点后的Treap树（中序遍历）：");
         treap.printTree();
         System.out.println();

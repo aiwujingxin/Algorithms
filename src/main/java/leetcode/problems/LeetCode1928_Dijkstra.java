@@ -34,17 +34,20 @@ public class LeetCode1928_Dijkstra {
             int fee = node[1];
             int time = node[2];
 
-            if (src == destination) // check whether destination reached ?
+            if (src == destination) { // check whether destination reached ?
                 return fee;
+            }
 
             for (int[] nei : graph.get(src)) {
 
                 int neiNode = nei[0];
                 int neiTime = nei[1];
 
-                if (time + neiTime > maxTime) // we cannot exceed maxTime, return ..
+                if (time + neiTime > maxTime) { // we cannot exceed maxTime, return ..
                     continue;
+                }
 
+                // 更新
                 if (time + neiTime < timeHold[neiNode]) {
                     timeHold[neiNode] = time + neiTime; //we found lesser time update time Array and add this node to pq..
                     pq.add(new int[]{neiNode, fee + passingFees[neiNode], timeHold[neiNode]});
