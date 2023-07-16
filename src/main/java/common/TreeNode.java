@@ -2,7 +2,7 @@ package common;
 
 /**
  * @author jingxinwu
- * @date 2021-12-05 3:15 下午
+ * @date 2021-07-04 5:08 下午
  */
 public class TreeNode {
     public int val;
@@ -12,8 +12,14 @@ public class TreeNode {
     public TreeNode() {
     }
 
-    public TreeNode(int x) {
-        val = x;
+    public TreeNode(int val) {
+        this.val = val;
+    }
+
+    public TreeNode(int val, TreeNode left, TreeNode right) {
+        this.val = val;
+        this.left = left;
+        this.right = right;
     }
 
     @Override

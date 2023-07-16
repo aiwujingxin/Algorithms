@@ -1,5 +1,7 @@
 package leetcode.problems;
 
+import common.TreeNode;
+
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/5/28 23:20

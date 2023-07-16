@@ -1,5 +1,7 @@
 package leetcode.problems;
 
+import common.TreeNode;
+
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.Queue;

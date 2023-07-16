@@ -1,5 +1,7 @@
 package leetcode.lists.offer;
 
+import common.TreeNode;
+
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.LinkedList;

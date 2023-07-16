@@ -1,5 +1,7 @@
 package leetcode.lists.offer;
 
+import common.TreeNode;
+
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/1/3 18:56

@@ -1,6 +1,8 @@
 package leetcode.problems;
 
 
+import common.TreeNode;
+
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/7/14 16:04

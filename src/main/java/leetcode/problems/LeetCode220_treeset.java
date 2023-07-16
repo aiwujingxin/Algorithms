@@ -1,19 +1,12 @@
 package leetcode.problems;
 
+import common.TreeNode;
+
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/1/17 21:01
  */
 public class LeetCode220_treeset {
-    public class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-
-        TreeNode(int val) {
-            this.val = val;
-        }
-    }
 
     TreeNode root;
 
