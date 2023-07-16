@@ -1,10 +1,5 @@
 package basic.problems.dp;
 
-import basic.algorithm.dp.Backpack_dfs;
-import basic.algorithm.dp.Backpack_dp_1d;
-import basic.algorithm.dp.Backpack_dp_2d;
-import basic.algorithm.greedy.Backpack_Greedy;
-
 /**
  * @author wujingxinit@outlook.com
  * @date 2022/9/13 12:23
@@ -12,46 +7,19 @@ import basic.algorithm.greedy.Backpack_Greedy;
 public interface BackPack {
 
     //《算法导论》 P243页
+    int backPack(int packageWeight, int[] goodsWeight, int[] goodsValue);
 
-    int Backpack(int[] goodsValue, int[] goodsWeight, int packageWeight);
+    int w = 32;
+    int[] weight = new int[]{2, 3, 5, 7, 3, 4, 5, 3, 2, 4, 5, 6, 7, 8, 9, 6, 5, 4, 3, 2, 7, 8};
+    int[] goodsValue = new int[]{1, 5, 2, 4, 8, 5, 3, 7, 8, 1, 4, 3, 6, 5, 2, 5, 7, 3, 8, 9, 7, 2};
 
-    int[] goodsValue05 = {6, 6, 1, 5, 2, 1, 1, 9, 4, 9, 9, 5, 4, 5, 2};
-    int[] weight05 = {3, 8, 3, 9, 4, 6, 6, 3, 9, 2, 9, 8, 1, 9, 7};
-    int packageWeight05 = 40;
-    int targetValue05 = 50;
-
-
-    int[] goodsValue051 = {6, 6, 1, 5, 4, 5, 2};
-    int[] weight051 = {3, 8, 3, 9, 1, 9, 7};
-    int packageWeight051 = 20;
-    int targetValue051 = 18;
-
-    int[] goodsValue052 = {6, 6, 1, 5, 2, 1, 1, 9, 4, 9, 9, 5, 4, 5, 2};
-    int[] weight052 = {3, 8, 3, 9, 4, 6, 6, 3, 9, 2, 9, 8, 1, 9, 7};
-    int packageWeight052 = 45;
-    int targetValue052 = 53;
-
-
-    int[] goodsValue053 = {6, 6, 1, 5, 8, 5, 2};
-    int[] weight053 = {3, 8, 3, 8, 1, 9, 7};
-    int packageWeight053 = 13;
-    int targetValue053 = 20;
-
-    int[] goodsValue054 = {6, 10, 5, 10};
-    int[] weight0534 = {3, 1, 2, 4};
-    int packageWeight054 = 6;
-    int targetValue054 = 21;
+    int ans = 64;
 
     static void main(String[] args) {
-        System.out.println(new Backpack_dp_2d().Backpack(goodsValue05, weight05, packageWeight05) == targetValue05);
-        System.out.println(new Backpack_dp_1d().Backpack(goodsValue05, weight05, packageWeight05) == targetValue05);
-        System.out.println(new Backpack_dfs().Backpack(goodsValue05, weight05, packageWeight05) == targetValue05);
-        System.out.println(new Backpack_Greedy().Backpack(goodsValue05, weight05, packageWeight05) == targetValue05);
-
-
-        System.out.println(new Backpack_dp_2d().Backpack(goodsValue051, weight051, packageWeight051) == targetValue051);
-        System.out.println(new Backpack_dp_2d().Backpack(goodsValue052, weight052, packageWeight052) == targetValue052);
-        System.out.println(new Backpack_dp_2d().Backpack(goodsValue053, weight053, packageWeight053) == targetValue053);
-
+        System.out.println(new basic.algorithm.dp.bag.bag_backtrack().backPack(w, weight, goodsValue) == ans);
+        System.out.println(new basic.algorithm.dp.bag.bag_branch_bound().backPack(w, weight, goodsValue) == ans);
+        System.out.println(new basic.algorithm.dp.bag.bag_dp_2d().backPack(w, weight, goodsValue) == ans);
+        System.out.println(new basic.algorithm.dp.bag.bag_dp_2d().backPack(w, weight, goodsValue) == ans);
+        System.out.println(new basic.algorithm.greedy.Backpack_Greedy().backPack(w, weight, goodsValue) == ans);
     }
 }

@@ -6,6 +6,7 @@ import java.util.Comparator;
 /**
  * @author wujingxinit@outlook.com
  * @date 2022/12/14 23:27
+ * 离线查询
  */
 public class LeetCode1697 {
 

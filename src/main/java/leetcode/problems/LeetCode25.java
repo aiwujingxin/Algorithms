@@ -29,7 +29,7 @@ public class LeetCode25 {
     }
 
     /*
-    左闭又开区间
+    左闭右开区间
      */
     private ListNode reverse(ListNode head, ListNode tail) {
         ListNode pre = null;

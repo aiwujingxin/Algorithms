@@ -12,6 +12,7 @@ import java.util.Queue;
  * @date 2022/9/7 12:23
  */
 public class Width implements Count {
+
     @Override
     public int count(TreeNode root) {
         Queue<AnnotatedNode> queue = new LinkedList<>();
@@ -38,7 +39,7 @@ public class Width implements Count {
         return ans;
     }
 
-    class AnnotatedNode {
+    static class AnnotatedNode {
         TreeNode node;
         int col;
 

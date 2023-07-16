@@ -14,12 +14,12 @@ public class Offer7 {
     public TreeNode buildTree(int[] preorder, int[] inorder) {
 
         if (preorder.length == 0 && inorder.length == 0) {
-            return new TreeNode(-1);
+            return null;
         }
 
         int n = preorder.length;
         // 构造哈希映射，帮助我们快速定位根节点
-        indexMap = new HashMap<Integer, Integer>();
+        indexMap = new HashMap<>();
         for (int i = 0; i < n; i++) {
             indexMap.put(inorder[i], i);
         }
@@ -34,11 +34,9 @@ public class Offer7 {
         }
 
 
-        int preorder_root = p_start;
+        TreeNode root = new TreeNode(preorder[p_start]);
 
-        TreeNode root = new TreeNode(preorder[preorder_root]);
-
-        int index = indexMap.get(preorder[preorder_root]);
+        int index = indexMap.get(preorder[p_start]);
 
         // 得到左子树中的节点数目
         int size_left_subtree = index - i_start;

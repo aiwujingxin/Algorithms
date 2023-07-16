@@ -1,5 +1,7 @@
 package common;
 
+import java.util.List;
+
 /**
  * @author jingxinwu
  * @date 2021-07-08 1:06 上午
@@ -12,6 +14,7 @@ public class Node {
     public Node next;
     public Node random;
     public Node parent;
+    public List<Node> children;
 
 
     public Node() {

@@ -33,8 +33,8 @@ public class LeetCode65_DFA {
                 {-1, -1, 5, -1, -1},
                 {8, -1, -1, -1, -1}};
         char[] ss = s.toCharArray();
-        for (int i = 0; i < ss.length; ++i) {
-            int id = make(ss[i]);
+        for (char c : ss) {
+            int id = make(c);
             if (id < 0) {
                 return false;
             }

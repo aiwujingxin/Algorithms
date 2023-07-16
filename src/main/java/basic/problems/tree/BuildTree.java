@@ -7,5 +7,6 @@ import common.TreeNode;
  * @date 2022/9/7 13:03
  */
 public interface BuildTree {
-    TreeNode deserialize(int[] a, int[] b);
+
+    TreeNode buildTree(int[] a, int[] b);
 }

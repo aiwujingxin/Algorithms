@@ -1,6 +1,6 @@
 package basic.problems.dp;
 
-import basic.algorithm.dp.ActivityPack_dp;
+import basic.algorithm.dp.activetypack.ActivityPack_dp;
 import basic.algorithm.greedy.ActivityPack_Greedy;
 
 /**

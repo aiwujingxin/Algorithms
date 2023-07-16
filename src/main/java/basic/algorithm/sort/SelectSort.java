@@ -1,6 +1,6 @@
 package basic.algorithm.sort;
 
-import basic.problems.array.*;
+import basic.problems.array.ArraySort;
 
 /**
  * @author wujingxinit@outlook.com
@@ -11,19 +11,19 @@ public class SelectSort implements ArraySort {
     @Override
     public int[] sortArray(int[] nums) {
         int n = nums.length;
-        // One by one lmove boundary of unsorted subarray
         for (int i = 0; i < n - 1; i++) {
-            // Find the minimum element in unsorted array
-            int min_idx = i;
+            int minIdx = i;
             for (int j = i + 1; j < n; j++) {
-                if (nums[j] < nums[min_idx]) {
-                    min_idx = j;
-                }
+                if (nums[j] < nums[minIdx]) minIdx = j;
             }
-            int temp = nums[min_idx];
-            nums[min_idx] = nums[i];
-            nums[i] = temp;
+            swap(nums, minIdx, i);
         }
         return nums;
+    }
+
+    private void swap(int[] nums, int minIdx, int i) {
+        int temp = nums[minIdx];
+        nums[minIdx] = nums[i];
+        nums[i] = temp;
     }
 }

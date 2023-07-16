@@ -13,10 +13,10 @@ public interface Traverse {
     //preOrder https://leetcode.cn/problems/binary-tree-preorder-traversal/
     //inOrder https://leetcode.cn/problems/binary-tree-inorder-traversal/
     //postOrder https://leetcode.cn/problems/binary-tree-postorder-traversal/
-
     //levelOrder https://leetcode.cn/problems/binary-tree-level-order-traversal/
     //levelOrderII https://leetcode.cn/problems/binary-tree-level-order-traversal-ii/
-    List<Integer> traverseByDFS(TreeNode root);
 
-    List<Integer> traverseByIteration(TreeNode root);
+    List<Integer> DFS(TreeNode root);
+
+    List<Integer> Iteration(TreeNode root);
 }

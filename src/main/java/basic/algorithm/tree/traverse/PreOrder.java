@@ -1,10 +1,11 @@
 package basic.algorithm.tree.traverse;
 
-import basic.problems.tree.*;
+import basic.problems.tree.Traverse;
 import common.TreeNode;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Stack;
 
 /**
  * @author wujingxinit@outlook.com
@@ -15,24 +16,30 @@ public abstract class PreOrder implements Traverse {
     List<Integer> list = new ArrayList<>();
 
     @Override
-    public List<Integer> traverseByDFS(TreeNode root) {
+    public List<Integer> DFS(TreeNode root) {
         if (root == null) {
-            return list;
+            return new ArrayList<>();
         }
-        dfs(root);
+        list.add(root.val);
+        DFS(root.left);
+        DFS(root.right);
         return list;
     }
 
     @Override
-    public abstract List<Integer> traverseByIteration(TreeNode root);
-
-    private void dfs(TreeNode root) {
-        if (root == null) {
-            return;
+    public List<Integer> Iteration(TreeNode root) {
+        List<Integer> list = new ArrayList<>();
+        Stack<TreeNode> stack = new Stack<>();
+        while (root != null || !stack.empty()) {
+            while (root != null) {
+                list.add(root.val);//visit
+                stack.push(root);
+                root = root.left;
+            }
+            // 模拟退栈过程
+            root = stack.pop();
+            root = root.right;
         }
-        list.add(root.val);
-        dfs(root.left);
-        dfs(root.right);
+        return list;
     }
-
 }

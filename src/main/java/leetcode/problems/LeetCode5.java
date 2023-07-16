@@ -6,11 +6,6 @@ package leetcode.problems;
  */
 public class LeetCode5 {
 
-    public static void main(String[] args) {
-        LeetCode5 leetCode5 = new LeetCode5();
-        System.out.println(leetCode5.longestPalindrome("cbbd"));
-    }
-
     public String longestPalindrome(String s) {
         if (s == null || s.length() == 0) {
             return "";

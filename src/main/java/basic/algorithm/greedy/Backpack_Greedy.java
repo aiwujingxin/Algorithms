@@ -11,7 +11,7 @@ import java.util.List;
 public class Backpack_Greedy implements BackPack {
 
     @Override
-    public int Backpack(int[] goodsValue, int[] weight, int packageWeight) {
+    public int backPack(int packageWeight, int[] weight, int[] goodsValue) {
         int sum = 0;
         List<Goods> goods = getGoods(goodsValue, weight);
         goods.sort(Comparator.comparing(Goods::getPw));
