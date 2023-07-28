@@ -1,6 +1,6 @@
 package leetcode.problems;
 
-import common.TreeNode;
+import common.*;
 
 /**
  * @author jingxinwu
@@ -8,9 +8,13 @@ import common.TreeNode;
  */
 public class LeetCode100 {
 
-    public void recoverTree(TreeNode root) {
-
-        return;
+    public boolean isSameTree(TreeNode p, TreeNode q) {
+        if (p == null && q == null) {
+            return true;
+        }
+        if (p == null || q == null || p.val != q.val) {
+            return false;
+        }
+        return isSameTree(p.left, q.left) && isSameTree(p.right, q.right);
     }
-
 }

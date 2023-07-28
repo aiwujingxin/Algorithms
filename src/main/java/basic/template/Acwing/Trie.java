@@ -1,7 +1,7 @@
 package basic.template.Acwing;
 
 
-import leetcode.lists.hot100.LeetCode208;
+import leetcode.lists.hot100.*;
 
 /**
  * @author wujingxinit@outlook.com

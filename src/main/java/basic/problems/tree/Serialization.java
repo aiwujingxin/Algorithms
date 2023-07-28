@@ -1,6 +1,6 @@
 package basic.problems.tree;
 
-import common.TreeNode;
+import common.*;
 
 /**
  * @author wujingxinit@outlook.com
@@ -8,6 +8,9 @@ import common.TreeNode;
  * <a href="https://leetcode.cn/problems/serialize-and-deserialize-binary-tree/">...</a>
  */
 public interface Serialization {
+
+    String NULL = "null";
+    String COMMA = ",";
 
     TreeNode deserialize(String data);
 

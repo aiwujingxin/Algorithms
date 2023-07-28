@@ -1,5 +1,7 @@
 package basic.problems.dp;
 
+import basic.algorithm.dp.backpack.zeroOnePack.*;
+
 /**
  * @author wujingxinit@outlook.com
  * @date 2022/9/13 12:23
@@ -16,10 +18,11 @@ public interface BackPack {
     int ans = 64;
 
     static void main(String[] args) {
-        System.out.println(new basic.algorithm.dp.bag.bag_backtrack().backPack(w, weight, goodsValue) == ans);
-        System.out.println(new basic.algorithm.dp.bag.bag_branch_bound().backPack(w, weight, goodsValue) == ans);
-        System.out.println(new basic.algorithm.dp.bag.bag_dp_2d().backPack(w, weight, goodsValue) == ans);
-        System.out.println(new basic.algorithm.dp.bag.bag_dp_2d().backPack(w, weight, goodsValue) == ans);
+        System.out.println(new ZeroOnePack_backtrack().backPack(w, weight, goodsValue) == ans);
+        System.out.println(new ZeroOnePack_branch_bound().backPack(w, weight, goodsValue) == ans);
+        System.out.println(new ZeroOnePack_dp_2d().backPack(w, weight, goodsValue) == ans);
+        System.out.println(new ZeroOnePack_dp_2d().backPack(w, weight, goodsValue) == ans);
+        System.out.println(new ZeroOnePack_dfs_memo().backPack(w, weight, goodsValue) == ans);
         System.out.println(new basic.algorithm.greedy.Backpack_Greedy().backPack(w, weight, goodsValue) == ans);
     }
 }

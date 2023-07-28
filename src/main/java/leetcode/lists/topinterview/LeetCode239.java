@@ -1,6 +1,6 @@
 package leetcode.lists.topinterview;
 
-import java.util.ArrayDeque;
+import java.util.*;
 
 /**
  * @author wujingxinit@outlook.com

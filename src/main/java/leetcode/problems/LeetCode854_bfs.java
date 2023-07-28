@@ -1,8 +1,6 @@
 package leetcode.problems;
 
-import java.util.ArrayDeque;
-import java.util.ArrayList;
-import java.util.HashSet;
+import java.util.*;
 
 /**
  * @author wujingxinit@outlook.com

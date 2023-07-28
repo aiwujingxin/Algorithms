@@ -7,7 +7,7 @@ package leetcode.lists.hot100;
 public class LeetCode221_dp {
 
     public static void main(String[] args) {
-        System.out.println(new LeetCode221_dp().maximalSquare(new char[][]{{'0','1'},{'1','0'}}));
+        System.out.println(new LeetCode221_dp().maximalSquare(new char[][]{{'0', '1'}, {'1', '0'}}));
     }
 
     public int maximalSquare(char[][] matrix) {

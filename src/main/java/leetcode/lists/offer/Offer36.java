@@ -1,5 +1,7 @@
 package leetcode.lists.offer;
 
+import common.*;
+
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/1/4 15:17

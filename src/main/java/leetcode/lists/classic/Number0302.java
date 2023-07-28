@@ -1,6 +1,6 @@
 package leetcode.lists.classic;
 
-import java.util.Stack;
+import java.util.*;
 
 /**
  * @author jingxinwu

@@ -1,11 +1,9 @@
 package basic.algorithm.tree.serialize;
 
-import basic.problems.tree.Serialization;
-import common.TreeNode;
+import basic.problems.tree.*;
+import common.*;
 
-import java.util.LinkedList;
-import java.util.Objects;
-import java.util.Queue;
+import java.util.*;
 
 
 /**
@@ -27,13 +25,15 @@ public class LevelOrder implements Serialization {
         while (!queue.isEmpty()) {
             TreeNode node = queue.poll();
             if (node != null) {
-                res.append("").append(node.val);
+                res.append(node.val);
                 queue.offer(node.left);
                 queue.offer(node.right);
             } else {
-                res.append("null");
+                res.append(NULL);
             }
-            res.append(",");
+            if (!queue.isEmpty()) {
+                res.append(COMMA);
+            }
         }
         res.append("]");
         return res.toString();
@@ -42,26 +42,26 @@ public class LevelOrder implements Serialization {
     // Decodes your encoded data to tree.
     @Override
     public TreeNode deserialize(String data) {
-        if (Objects.equals(data, "")) {
+        if (data.length() == 0) {
             return null;
         }
-        String[] dataList = data.substring(1, data.length() - 1).split(",");
+        String[] dataList = data.substring(1, data.length() - 1).split(COMMA);
         TreeNode root = new TreeNode(Integer.parseInt(dataList[0]));
         Queue<TreeNode> queue = new LinkedList<>();
         queue.offer(root);
-        int i = 1;
+        int index = 1;
         while (!queue.isEmpty()) {
             TreeNode node = queue.poll();
-            if (!"null".equals(dataList[i])) {
-                node.left = new TreeNode(Integer.parseInt(dataList[i]));
+            if (!NULL.equals(dataList[index])) {
+                node.left = new TreeNode(Integer.parseInt(dataList[index]));
                 queue.offer(node.left);
             }
-            i++;
-            if (!"null".equals(dataList[i])) {
-                node.right = new TreeNode(Integer.parseInt(dataList[i]));
+            index++;
+            if (!NULL.equals(dataList[index])) {
+                node.right = new TreeNode(Integer.parseInt(dataList[index]));
                 queue.offer(node.right);
             }
-            i++;
+            index++;
         }
         return root;
     }

@@ -1,10 +1,8 @@
 package leetcode.problems;
 
-import common.TreeNode;
+import common.*;
 
-import java.util.Deque;
-import java.util.LinkedList;
-import java.util.Queue;
+import java.util.*;
 
 /**
  * @author jingxinwu
@@ -37,7 +35,7 @@ public class LeetCode662 {
         return ans;
     }
 
-    class AnnotatedNode {
+    static class AnnotatedNode {
 
         TreeNode node;
         int col;

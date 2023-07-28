@@ -1,6 +1,6 @@
 package leetcode.problems;
 
-import common.TreeNode;
+import common.*;
 
 /**
  * @author jingxinwu
@@ -11,12 +11,17 @@ public class LeetCode1038 {
     int sum = 0;
 
     public TreeNode bstToGst(TreeNode root) {
-        if (root != null) {
-            bstToGst(root.right);
-            sum += root.val;
-            root.val = sum;
-            bstToGst(root.left);
-        }
+        dfs(root);
         return root;
+    }
+
+    private void dfs(TreeNode root) {
+        if (root == null) {
+            return;
+        }
+        bstToGst(root.right);
+        sum += root.val;
+        root.val = sum;
+        bstToGst(root.left);
     }
 }

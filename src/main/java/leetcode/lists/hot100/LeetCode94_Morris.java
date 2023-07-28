@@ -1,9 +1,8 @@
 package leetcode.lists.hot100;
 
-import common.TreeNode;
+import common.*;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 /**
  * @author wujingxinit@outlook.com

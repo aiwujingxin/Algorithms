@@ -1,6 +1,6 @@
 package engineer.thread;
 
-import java.util.LinkedList;
+import java.util.*;
 
 /**
  * @author jingxinwu

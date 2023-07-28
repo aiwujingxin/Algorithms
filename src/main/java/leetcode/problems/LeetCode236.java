@@ -1,10 +1,12 @@
 package leetcode.problems;
 
-import common.TreeNode;
+import common.*;
 
 /**
  * @author jingxinwu
  * @date 2021-08-25 1:44 上午
+ * {@link LeetCode1080}
+ * {@link LeetCode865}
  */
 public class LeetCode236 {
 

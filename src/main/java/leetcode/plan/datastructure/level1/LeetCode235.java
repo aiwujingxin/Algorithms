@@ -1,6 +1,6 @@
 package leetcode.plan.datastructure.level1;
 
-import common.TreeNode;
+import common.*;
 
 /**
  * @author wujingxinit@outlook.com
@@ -9,8 +9,6 @@ import common.TreeNode;
 public class LeetCode235 {
 
     public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
-
-
         if (root == null) {
             return null;
         }

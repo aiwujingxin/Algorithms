@@ -1,7 +1,6 @@
 package leetcode.problems;
 
-import common.ListNode;
-import common.TreeNode;
+import common.*;
 
 /**
  * @author jingxinwu

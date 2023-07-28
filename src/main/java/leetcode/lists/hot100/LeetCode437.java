@@ -1,7 +1,7 @@
 package leetcode.lists.hot100;
 
 
-import common.TreeNode;
+import common.*;
 
 /**
  * @author wujingxinit@outlook.com
@@ -26,13 +26,12 @@ public class LeetCode437 {
         if (root == null) {
             return 0;
         }
-        int val = root.val;
-        if (val == targetSum) {
+        if (root.val == targetSum) {
             ret++;
         }
 
-        ret += rootSum(root.left, targetSum - val);
-        ret += rootSum(root.right, targetSum - val);
+        ret += rootSum(root.left, targetSum - root.val);
+        ret += rootSum(root.right, targetSum - root.val);
         return ret;
     }
 }

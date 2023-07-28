@@ -1,6 +1,6 @@
 package leetcode.lists.hot200;
 
-import common.TreeNode;
+import common.*;
 
 public class LeetCode156 {
 

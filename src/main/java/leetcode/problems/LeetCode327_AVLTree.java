@@ -1,6 +1,6 @@
 package leetcode.problems;
 
-import java.util.Random;
+import java.util.*;
 
 /**
  * @author aiwujingxin@gmail.com
@@ -33,6 +33,7 @@ public class LeetCode327_AVLTree {
         private final Random rand;
         private BalancedNode root;
         private int size;
+
         public BalancedTree() {
             this.root = null;
             this.size = 0;

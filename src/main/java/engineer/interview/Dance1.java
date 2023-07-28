@@ -1,7 +1,6 @@
 package engineer.interview;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 /**
  * @author jingxinwu
@@ -16,9 +15,6 @@ public class Dance1 {
      * 4.编写一个路径规划程序，求解汽车出发从X城市出发中途经过N个城市返回X的走法
      * 5.例如：从编号0出发，中途经过3个城市返回起点0，
      * 则走法6种(0-9-8-9-0，0-1-2-1-0，0-1-0-1-0，0-9-0-9-0，0-1-0-9-0，0-9-0-1-0)
-     *
-     * @author ronaldwu
-     * @date 2022-03-22 15:12:47
      **/
 
     public static void main(String[] args) {

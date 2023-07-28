@@ -1,6 +1,6 @@
 package leetcode.lists.hot100;
 
-import common.TreeNode;
+import common.*;
 
 /**
  * @author wujingxinit@outlook.com
@@ -9,10 +9,10 @@ import common.TreeNode;
 public class LeetCode114_pre {
 
     /**
-     *      1
-     *   2     5
+     * 1
+     * 2     5
      * 3   4      6
-     * */
+     */
 
     public void flatten(TreeNode root) {
         TreeNode curr = root;

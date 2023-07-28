@@ -1,10 +1,9 @@
 package basic.algorithm.tree.serialize;
 
-import basic.problems.tree.Serialization;
-import common.TreeNode;
+import basic.problems.tree.*;
+import common.*;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 /**
  * @author wujingxinit@outlook.com
@@ -25,7 +24,7 @@ public class BSTCodec implements Serialization {
         for (int i = 0; i < n; i++) {
             sb.append(list.get(i));
             if (i != n - 1) {
-                sb.append(",");
+                sb.append(COMMA);
             }
         }
         return sb.toString();
@@ -45,7 +44,7 @@ public class BSTCodec implements Serialization {
         if (s == null) {
             return null;
         }
-        String[] ss = s.split(",");
+        String[] ss = s.split(COMMA);
         return dfs2(ss, 0, ss.length - 1);
     }
 

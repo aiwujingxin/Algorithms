@@ -3,9 +3,9 @@ package basic.problems.dp;
 /**
  * @author wujingxinit@outlook.com
  * @date 2022/9/13 13:33
+ * {@link leetcode.problems.LeetCode322}
+ * {@link leetcode.problems.LeetCode518}
  */
 public interface ChangeMoney {
-    //322. 零钱兑换
-    //518. 零钱兑换 II 组合数
     int change(int amount, int[] coins);
 }

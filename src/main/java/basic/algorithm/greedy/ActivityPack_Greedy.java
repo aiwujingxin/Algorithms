@@ -1,11 +1,8 @@
 package basic.algorithm.greedy;
 
-import basic.problems.dp.ActivityPack;
+import basic.problems.dp.*;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 
 /**
  * @author aiwujingxin@gmail.com
@@ -13,7 +10,7 @@ import java.util.List;
  */
 public class ActivityPack_Greedy implements ActivityPack {
 
-    public int pack(int[][] periods) {
+    public int activityPack(int[][] periods) {
 
         Arrays.sort(periods, new Comparator<int[]>() {
             @Override

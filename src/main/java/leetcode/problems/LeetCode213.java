@@ -1,18 +1,12 @@
 package leetcode.problems;
 
-import java.util.Arrays;
-
 /**
  * @author jingxinwu
  * @date 2021-08-17 11:38 下午
  */
 public class LeetCode213 {
 
-    public static void main(String[] args) {
-        LeetCode213 leetCode213 = new LeetCode213();
-        int[] nums = new int[]{1, 2, 3, 1};
-        System.out.println(leetCode213.rob(nums));
-    }
+    int[] dp;
 
     public int rob(int[] nums) {
         if (nums == null || nums.length == 0) {
@@ -24,21 +18,16 @@ public class LeetCode213 {
         if (nums.length == 2) {
             return Math.max(nums[0], nums[1]);
         }
-        return Math.max(helper(Arrays.copyOfRange(nums, 0, nums.length - 1)),
-                helper(Arrays.copyOfRange(nums, 1, nums.length)));
+        dp = new int[nums.length];
+        return Math.max(rob(nums, 1, nums.length - 1), rob(nums, 0, nums.length - 2));
     }
 
-    private int helper(int[] nums) {
-        int length = nums.length;
-        if (length == 1) {
-            return nums[0];
-        }
-        int[] dp = new int[length];
-        dp[0] = nums[0];
-        dp[1] = Math.max(nums[0], nums[1]);
-        for (int i = 2; i < length; i++) {
+    public int rob(int[] nums, int start, int end) {
+        dp[start] = nums[start];
+        dp[start + 1] = Math.max(nums[start], nums[start + 1]);
+        for (int i = start + 2; i <= end; i++) {
             dp[i] = Math.max(dp[i - 2] + nums[i], dp[i - 1]);
         }
-        return dp[length - 1];
+        return dp[end];
     }
 }

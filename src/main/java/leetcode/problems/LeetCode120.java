@@ -1,6 +1,6 @@
 package leetcode.problems;
 
-import java.util.List;
+import java.util.*;
 
 /**
  * @author jingxinwu

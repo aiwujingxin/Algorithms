@@ -1,9 +1,6 @@
 package leetcode.plan.algorithm.level1;
 
-import java.util.ArrayDeque;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Queue;
+import java.util.*;
 
 /**
  * @author wujingxinit@outlook.com

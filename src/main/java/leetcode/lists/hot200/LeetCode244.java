@@ -1,8 +1,6 @@
 package leetcode.lists.hot200;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 /**
  * @author wujingxinit@outlook.com

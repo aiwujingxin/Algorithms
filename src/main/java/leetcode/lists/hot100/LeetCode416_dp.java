@@ -1,8 +1,7 @@
 package leetcode.lists.hot100;
 
-import leetcode.problems.LeetCode131;
 import leetcode.problems.LeetCode322_dp;
-import leetcode.problems.LeetCode518;
+import leetcode.problems.*;
 
 /**
  * @author wujingxinit@outlook.com

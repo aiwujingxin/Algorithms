@@ -4,8 +4,8 @@ package leetcode.plan.dp.level1;
  * @author wujingxinit@outlook.com
  * @date 2022/10/18 23:06
  * <a href="https://leetcode.com/problems/matrix-block-sum/discuss/1723821/Java-prefixSum">...</a>
- * @related {@link leetcode.problems.LeetCode304}
- * @related {@link leetcode.problems.LeetCode1292}
+ * {@link leetcode.problems.LeetCode304}
+ * {@link leetcode.problems.LeetCode1292}
  */
 public class LeetCode1314 {
 

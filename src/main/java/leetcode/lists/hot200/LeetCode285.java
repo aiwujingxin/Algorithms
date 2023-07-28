@@ -1,8 +1,8 @@
 package leetcode.lists.hot200;
 
-import common.TreeNode;
+import common.*;
 
-import java.util.Stack;
+import java.util.*;
 
 /**
  * @author wujingxinit@outlook.com
@@ -10,53 +10,23 @@ import java.util.Stack;
  */
 public class LeetCode285 {
     public TreeNode inorderSuccessor(TreeNode root, TreeNode p) {
-
         if (root == null) {
             return null;
         }
         Stack<TreeNode> stack = new Stack<>();
         TreeNode prev = null;
-        TreeNode curr = root;
-        while (!stack.isEmpty() || curr != null) {
-            while (curr != null) {
-                stack.push(curr);
-                curr = curr.left;
+        while (!stack.isEmpty() || root != null) {
+            while (root != null) {
+                stack.push(root);
+                root = root.left;
             }
-            curr = stack.pop();
+            root = stack.pop();
             if (prev == p) {
-                return curr;
+                return root;
             }
-            prev = curr;
-            curr = curr.right;
+            prev = root;
+            root = root.right;
         }
         return null;
-    }
-
-    // == dfs==
-    boolean flag;
-    TreeNode res;
-
-    public TreeNode inorderSuccessor_dfs(TreeNode root, TreeNode p) {
-        if (root == null) {
-            return null;
-        }
-
-        return dfs(root, p);
-    }
-
-    private TreeNode dfs(TreeNode root, TreeNode p) {
-        if (root == null) {
-            return null;
-        }
-        dfs(root.left, p);
-        if (flag) {
-            res = root;
-            flag = false;
-        }
-        if (root == p) {
-            flag = true;
-        }
-        dfs(root.right, p);
-        return res;
     }
 }

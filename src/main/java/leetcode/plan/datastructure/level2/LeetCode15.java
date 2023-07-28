@@ -1,8 +1,6 @@
 package leetcode.plan.datastructure.level2;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 /**
  * @author wujingxinit@outlook.com

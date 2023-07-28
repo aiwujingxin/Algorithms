@@ -1,8 +1,6 @@
 package leetcode.plan.graph.level1;
 
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.Queue;
+import java.util.*;
 
 /**
  * @author wujingxinit@outlook.com

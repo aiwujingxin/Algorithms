@@ -1,6 +1,6 @@
 package leetcode.lists.topinterview;
 
-import common.ListNode;
+import common.*;
 
 /**
  * @author wujingxinit@outlook.com
@@ -12,7 +12,7 @@ public class LeetCode328 {
 
     public ListNode oddEvenList(ListNode head) {
 
-        if (head == null || head.next == null ||head.next.next == null) {
+        if (head == null || head.next == null || head.next.next == null) {
             return head;
         }
 

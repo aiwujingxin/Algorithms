@@ -1,7 +1,7 @@
 package basic.algorithm.tree.serialize;
 
-import basic.problems.tree.Serialization;
-import common.TreeNode;
+import basic.problems.tree.*;
+import common.*;
 
 /**
  * @author wujingxinit@outlook.com

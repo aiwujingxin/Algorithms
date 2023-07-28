@@ -1,6 +1,6 @@
 package leetcode.lists.hot200;
 
-import common.Node;
+import common.*;
 
 /**
  * @author wujingxinit@outlook.com
@@ -8,17 +8,24 @@ import common.Node;
  */
 public class LeetCode510 {
 
+    //https://leetcode.cn/problems/inorder-successor-in-bst-ii/solution/hong-hei-shu-shi-zen-yao-zhao-hou-ji-jie-dian-de-z/
+
     public Node inorderSuccessor(Node x) {
-        if (x.right != null) {
-            x = x.right;
-            while (x.left != null) {
-                x = x.left;
+        Node node = x.right;
+        if (node != null) {
+            // 存在右子树，那么x的后继就是node的最左节点
+            while (node.left != null) {
+                node = node.left;
             }
-            return x;
+            return node;
         }
-        while (x.parent != null && x == x.parent.right) {
-            x = x.parent;
+        // 不存在右子树，那么后继就是x所在子树的第一个左孩子的父节点
+        node = x;
+        Node parent = node.parent;
+        while (parent != null && parent.right == node) {
+            node = parent;
+            parent = parent.parent;
         }
-        return x.parent;
+        return parent;
     }
 }

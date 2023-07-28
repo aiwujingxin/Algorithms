@@ -1,6 +1,6 @@
 package leetcode.problems;
 
-import java.util.Arrays;
+import java.util.*;
 
 /**
  * @author jingxinwu
@@ -25,6 +25,7 @@ public class LeetCode673 {
                         dp[i] = dp[j] + 1;
                         count[i] = count[j];
                     } else if (dp[j] + 1 == dp[i]) {
+                        //可能找到若干个j, i 都可以接在后面, 则都需要算进去
                         count[i] += count[j];
                     }
                 }

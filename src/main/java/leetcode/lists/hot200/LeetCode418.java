@@ -9,7 +9,7 @@ package leetcode.lists.hot200;
 public class LeetCode418 {
 
     public static void main(String[] args) {
-        System.out.println(new LeetCode418().wordsTyping(new String[] { "f", "p", "a" }, 8, 7));
+        System.out.println(new LeetCode418().wordsTyping(new String[]{"f", "p", "a"}, 8, 7));
     }
 
     public int wordsTyping(String[] sentence, int rows, int cols) {

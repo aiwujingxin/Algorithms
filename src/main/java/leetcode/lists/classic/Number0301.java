@@ -8,6 +8,7 @@ public class Number0301 {
     int stackSize;
     int[] buffer;
     int[] pointer = new int[]{-1, -1, -1};
+
     public Number0301(int stackSize) {
         this.stackSize = stackSize;
         this.buffer = new int[stackSize * 3];

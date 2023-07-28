@@ -1,6 +1,6 @@
 package leetcode.problems;
 
-import common.TreeNode;
+import common.*;
 
 /**
  * @author wujingxinit@outlook.com
@@ -9,10 +9,10 @@ import common.TreeNode;
 public class LeetCode654 {
 
     public TreeNode constructMaximumBinaryTree(int[] nums) {
-        return construct(nums, 0, nums.length - 1);
+        return buildTree(nums, 0, nums.length - 1);
     }
 
-    public TreeNode construct(int[] nums, int left, int right) {
+    public TreeNode buildTree(int[] nums, int left, int right) {
         if (left > right) {
             return null;
         }
@@ -23,8 +23,8 @@ public class LeetCode654 {
             }
         }
         TreeNode node = new TreeNode(nums[best]);
-        node.left = construct(nums, left, best - 1);
-        node.right = construct(nums, best + 1, right);
+        node.left = buildTree(nums, left, best - 1);
+        node.right = buildTree(nums, best + 1, right);
         return node;
     }
 }

@@ -1,9 +1,8 @@
 package leetcode.problems;
 
-import common.GraphNode;
+import common.*;
 
-import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.*;
 
 /**
  * @author jingxinwu
@@ -15,7 +14,7 @@ public class LeetCode133 {
 
     public GraphNode cloneGraph(GraphNode node) {
         if (node == null) {
-            return node;
+            return null;
         }
 
         // 如果该节点已经被访问过了，则直接从哈希表中取出对应的克隆节点返回

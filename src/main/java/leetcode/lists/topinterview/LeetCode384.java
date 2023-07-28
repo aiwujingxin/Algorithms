@@ -1,7 +1,6 @@
 package leetcode.lists.topinterview;
 
-import java.util.Arrays;
-import java.util.Random;
+import java.util.*;
 
 /**
  * @author wujingxinit@outlook.com

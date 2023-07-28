@@ -1,5 +1,7 @@
 package leetcode.lists.offer;
 
+import common.*;
+
 /**
  * @author jingxinwu
  * @date 2021-11-21 6:07 下午

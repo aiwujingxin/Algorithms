@@ -1,14 +1,14 @@
 package leetcode.lists.offer;
 
+import common.*;
+
 /**
  * @author jingxinwu
  * @date 2021-11-21 6:11 下午
  */
 public class Offer24 {
 
-
     public ListNode reverseList(ListNode head) {
-
         if (head == null || head.next == null) {
             return head;
         }

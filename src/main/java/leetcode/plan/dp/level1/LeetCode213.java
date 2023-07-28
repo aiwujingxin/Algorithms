@@ -8,7 +8,10 @@ public class LeetCode213 {
 
     public static void main(String[] args) {
         System.out.println(new LeetCode213().rob(new int[]{1, 2, 3, 1}));
+        System.out.println(new LeetCode213().rob(new int[]{1, 2, 3}));
     }
+
+    int[] dp;
 
     public int rob(int[] nums) {
         if (nums == null || nums.length == 0) {
@@ -20,23 +23,16 @@ public class LeetCode213 {
         if (nums.length == 2) {
             return Math.max(nums[0], nums[1]);
         }
+        dp = new int[nums.length];
         return Math.max(rob(nums, 1, nums.length - 1), rob(nums, 0, nums.length - 2));
     }
 
     public int rob(int[] nums, int start, int end) {
-        int[] arr = new int[nums.length - 1];
-        int index = 0;
-        while (start <= end) {
-            arr[index] = nums[start];
-            index++;
-            start++;
+        dp[start] = nums[start];
+        dp[start + 1] = Math.max(nums[start], nums[start + 1]);
+        for (int i = start + 2; i <= end; i++) {
+            dp[i] = Math.max(dp[i - 2] + nums[i], dp[i - 1]);
         }
-        int[] dp = new int[arr.length];
-        dp[0] = arr[0];
-        dp[1] = Math.max(arr[0], arr[1]);
-        for (int i = 2; i < arr.length; i++) {
-            dp[i] = Math.max(dp[i - 2] + arr[i], dp[i - 1]);
-        }
-        return dp[dp.length - 1];
+        return dp[end];
     }
 }

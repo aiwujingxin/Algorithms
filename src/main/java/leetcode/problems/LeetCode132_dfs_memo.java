@@ -1,6 +1,6 @@
 package leetcode.problems;
 
-import java.util.Arrays;
+import java.util.*;
 
 public class LeetCode132_dfs_memo {
 

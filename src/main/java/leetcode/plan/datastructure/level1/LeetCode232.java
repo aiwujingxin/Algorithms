@@ -1,6 +1,6 @@
 package leetcode.plan.datastructure.level1;
 
-import java.util.Stack;
+import java.util.*;
 
 /**
  * @author wujingxinit@outlook.com

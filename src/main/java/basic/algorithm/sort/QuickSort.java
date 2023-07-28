@@ -1,8 +1,8 @@
 package basic.algorithm.sort;
 
-import basic.problems.array.ArraySort;
+import basic.problems.array.*;
 
-import java.util.Random;
+import java.util.*;
 
 /**
  * @author wujingxinit@outlook.com
@@ -11,8 +11,7 @@ import java.util.Random;
 public class QuickSort implements ArraySort {
     @Override
     public int[] sortArray(int[] nums) {
-        int len = nums.length;
-        quickSort(nums, 0, len - 1);
+        quickSort(nums, 0, nums.length - 1);
         return nums;
     }
 
@@ -20,9 +19,9 @@ public class QuickSort implements ArraySort {
         if (left >= right) {
             return;
         }
-        int pIndex = partition(nums, left, right);
-        quickSort(nums, left, pIndex - 1);
-        quickSort(nums, pIndex + 1, right);
+        int index = partition(nums, left, right);
+        quickSort(nums, left, index - 1);
+        quickSort(nums, index + 1, right);
     }
 
     private int partition(int[] nums, int i, int j) {

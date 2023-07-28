@@ -1,7 +1,7 @@
 package basic.algorithm.tree.measure;
 
 import basic.problems.tree.*;
-import common.TreeNode;
+import common.*;
 
 /**
  * @author wujingxinit@outlook.com

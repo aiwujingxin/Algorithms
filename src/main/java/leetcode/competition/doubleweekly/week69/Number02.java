@@ -1,8 +1,8 @@
 package leetcode.competition.doubleweekly.week69;
 
-import common.ListNode;
-import java.util.ArrayList;
-import java.util.List;
+import common.*;
+
+import java.util.*;
 
 /**
  * @author jingxinwu

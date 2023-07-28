@@ -1,65 +1,53 @@
 package leetcode.problems;
 
-import common.TreeNode;
+import common.*;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2023/7/13 22:50
+ * @date 2023/7/13 23:35
  */
 public class LeetCode863_dfs {
 
-    int idx;    // 根据数据范围最多有 501 个点，每个点最多有 2 条无向边（两个子节点）
-    int N = 510, M = N * 4;
-    boolean[] vis = new boolean[N];
+    Map<TreeNode, TreeNode> familyMap = new HashMap<>();
+    boolean[] visited;
+    List<Integer> res;
 
-    public List<Integer> distanceK(TreeNode root, TreeNode t, int k) {
-        List<Integer> ans = new ArrayList<>();
-        Arrays.fill(he, -1);
-        dfs(root);
-        vis[t.val] = true;
-        find(t.val, k, 0, ans);
-        return ans;
+    public List<Integer> distanceK(TreeNode root, TreeNode target, int K) {
+        res = new ArrayList<>();
+        //递归获取父子结点映射关系
+        preorder(root);
+        visited = new boolean[501];
+        //递归获取距离指定结点指定距离的所有结点值
+        search(target, K);
+        return res;
     }
 
-    int[] he = new int[N], e = new int[M], ne = new int[M];
-
-    void find(int root, int max, int cur, List<Integer> ans) {
-        if (cur == max) {
-            ans.add(root);
+    private void search(TreeNode target, int K) {
+        if (target == null || K < 0 || visited[target.val]) {
             return;
         }
-        for (int i = he[root]; i != -1; i = ne[i]) {
-            int j = e[i];
-            if (!vis[j]) {
-                vis[j] = true;
-                find(j, max, cur + 1, ans);
-            }
+        if (K == 0 && !visited[target.val]) {
+            res.add(target.val);
+            visited[target.val] = true;
+            return;
         }
+        visited[target.val] = true;
+        search(target.left, K - 1);
+        search(target.right, K - 1);
+        search(familyMap.get(target), K - 1);
     }
 
-    void dfs(TreeNode root) {
-        if (root == null) {
-            return;
-        }
+    private void preorder(TreeNode root) {
+        if (root == null) return;
         if (root.left != null) {
-            add(root.val, root.left.val);
-            add(root.left.val, root.val);
-            dfs(root.left);
+            familyMap.put(root.left, root);
         }
         if (root.right != null) {
-            add(root.val, root.right.val);
-            add(root.right.val, root.val);
-            dfs(root.right);
+            familyMap.put(root.right, root);
         }
-    }
-
-    void add(int a, int b) {
-        e[idx] = b;
-        ne[idx] = he[a];
-        he[a] = idx++;
+        preorder(root.left);
+        preorder(root.right);
     }
 }

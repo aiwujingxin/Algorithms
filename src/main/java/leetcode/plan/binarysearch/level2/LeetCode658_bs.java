@@ -1,7 +1,6 @@
 package leetcode.plan.binarysearch.level2;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 /**
  * @author wujingxinit@outlook.com

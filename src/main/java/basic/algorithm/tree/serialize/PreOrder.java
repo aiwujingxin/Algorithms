@@ -1,49 +1,52 @@
 package basic.algorithm.tree.serialize;
 
-import basic.problems.tree.Serialization;
-import common.TreeNode;
-
-import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.List;
+import basic.problems.tree.*;
+import common.*;
 
 /**
  * @author wujingxinit@outlook.com
  * @date 2022/9/7 12:43
  */
 public class PreOrder implements Serialization {
-    @Override
-    public TreeNode deserialize(String data) {
-        String[] dataArray = data.split(",");
-        List<String> dataList = new LinkedList<>(Arrays.asList(dataArray));
-        return rdeserialize(dataList);
-    }
 
     @Override
     public String serialize(TreeNode root) {
-        return rserialize(root, "");
+        StringBuilder sb = new StringBuilder();
+        dfs(sb, root);
+        return sb.toString();
     }
 
-    public String rserialize(TreeNode root, String str) {
-        if (root == null) {
-            str += "None,";
-        } else {
-            str += root.val + ",";
-            str = rserialize(root.left, str);
-            str = rserialize(root.right, str);
+    private void dfs(StringBuilder sb, TreeNode root) {
+        if (sb.length() != 0) {
+            sb.append(COMMA);
         }
-        return str;
+        // 边界条件
+        if (root == null) {
+            sb.append(NULL);
+            return;
+        }
+        sb.append(root.val);
+        dfs(sb, root.left);
+        dfs(sb, root.right);
     }
 
-    public TreeNode rdeserialize(List<String> dataList) {
-        if (dataList.get(0).equals("None")) {
-            dataList.remove(0);
+    // Decodes your encoded data to tree.
+    @Override
+    public TreeNode deserialize(String data) {
+        return decode(data.split(COMMA));
+    }
+
+    private int desIndex = 0;
+
+    private TreeNode decode(String[] vals) {
+        String nodeVal = vals[desIndex++];
+        // 边界条件
+        if (nodeVal.equals(NULL)) {
             return null;
         }
-        TreeNode root = new TreeNode(Integer.parseInt(dataList.get(0)));
-        dataList.remove(0);
-        root.left = rdeserialize(dataList);
-        root.right = rdeserialize(dataList);
-        return root;
+        TreeNode node = new TreeNode(Integer.parseInt(nodeVal));
+        node.left = decode(vals);
+        node.right = decode(vals);
+        return node;
     }
 }

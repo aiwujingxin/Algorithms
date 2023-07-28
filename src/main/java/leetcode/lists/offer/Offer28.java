@@ -1,6 +1,6 @@
 package leetcode.lists.offer;
 
-import common.TreeNode;
+import common.*;
 
 /**
  * @author jingxinwu
@@ -12,7 +12,6 @@ public class Offer28 {
         if (root == null) {
             return true;
         }
-
         return helper(root.left, root.right);
     }
 
@@ -20,16 +19,9 @@ public class Offer28 {
         if (L == null && R == null) {
             return true;
         }
-        if (L == null) {
+        if (L == null || R == null || L.val != R.val) {
             return false;
         }
-        if (R == null) {
-            return false;
-        }
-        if (L.val != R.val) {
-            return false;
-        }
-
         return helper(L.left, R.right) && helper(L.right, R.left);
     }
 }

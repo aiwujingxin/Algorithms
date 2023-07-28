@@ -11,11 +11,13 @@ public class LeetCode1186 {
             return 0;
         }
         int[][] dp = new int[arr.length][2];
-        dp[0][1] = 0;
+        //不删除
         dp[0][0] = arr[0];
-        int max = Math.max(dp[0][0], dp[0][1]);
+        //删除
+        dp[0][1] = 0;
+        int max = arr[0];
         for (int i = 1; i < arr.length; i++) {
-            dp[i][0] = Math.max(dp[i - 1][0] + arr[i], arr[i]);
+            dp[i][0] = Math.max(dp[i - 1][0], 0) + arr[i];
             dp[i][1] = Math.max(dp[i - 1][0], dp[i - 1][1] + arr[i]);
             max = Math.max(Math.max(max, dp[i][0]), dp[i][1]);
         }

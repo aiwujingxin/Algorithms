@@ -1,6 +1,6 @@
 package leetcode.problems;
 
-import java.util.ArrayList;
+import java.util.*;
 
 /**
  * @author aiwujingxin@gmail.com

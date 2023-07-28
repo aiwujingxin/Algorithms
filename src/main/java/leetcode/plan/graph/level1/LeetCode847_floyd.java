@@ -1,6 +1,6 @@
 package leetcode.plan.graph.level1;
 
-import java.util.Arrays;
+import java.util.*;
 
 /**
  * @author wujingxinit@outlook.com

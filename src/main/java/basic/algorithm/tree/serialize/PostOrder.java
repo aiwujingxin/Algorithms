@@ -1,7 +1,7 @@
 package basic.algorithm.tree.serialize;
 
 import basic.problems.tree.*;
-import common.TreeNode;
+import common.*;
 
 import java.util.*;
 
@@ -14,20 +14,20 @@ public class PostOrder implements Serialization {
     @Override
     public String serialize(TreeNode root) {
         if (root == null) {
-            return "null";
+            return NULL;
         }
-        return serialize(root.left) + "," + serialize(root.right) + "," + root.val;
+        return serialize(root.left) + COMMA + serialize(root.right) + COMMA + root.val;
     }
 
     @Override
     public TreeNode deserialize(String data) {
-        String[] req = data.split(",");
+        String[] req = data.split(COMMA);
         ArrayList<String> r = new ArrayList<>(Arrays.asList(req));
         return dfsdeserialize(r);
     }
 
     public TreeNode dfsdeserialize(ArrayList<String> r) {
-        if ("null".equals(r.get(r.size() - 1))) {
+        if (NULL.equals(r.get(r.size() - 1))) {
             r.remove(r.size() - 1);
             return null;
         }

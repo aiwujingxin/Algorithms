@@ -1,6 +1,6 @@
 package leetcode.lists.hot100;
 
-import common.TreeNode;
+import common.*;
 
 /**
  * @author wujingxinit@outlook.com
@@ -9,6 +9,7 @@ import common.TreeNode;
 public class LeetCode538 {
 
     int sum = 0;
+
     public TreeNode convertBST(TreeNode root) {
         if (root != null) {
             convertBST(root.right);

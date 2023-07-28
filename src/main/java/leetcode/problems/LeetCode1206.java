@@ -1,7 +1,6 @@
 package leetcode.problems;
 
-import java.util.Random;
-import java.util.Stack;
+import java.util.*;
 
 /**
  * @author aiwujingxin@gmail.com
@@ -11,6 +10,7 @@ public class LeetCode1206 {
     class Skiplist {
         Node head = new Node(-1, null, null);
         Random rand = new Random();
+
         public Skiplist() {
 
         }

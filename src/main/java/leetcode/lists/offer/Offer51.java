@@ -6,45 +6,52 @@ package leetcode.lists.offer;
  */
 public class Offer51 {
 
-
     int count;
 
-    int[] nums, tmp;
+    int[] arr;
 
     public int reversePairs(int[] nums) {
-        this.nums = nums;
-        tmp = new int[nums.length];
-        MergeSort(nums, 0, nums.length - 1);
+        arr = new int[nums.length];
+        mergeSort(nums, 0, nums.length - 1);
         return count;
     }
 
-    private void MergeSort(int[] arr, int l, int r) {
-        if (l < r) {
-            // Find the middle point
-            int m = l + (r - l) / 2;
-            // Sort first and second halves
-            MergeSort(arr, l, m);
-
-            MergeSort(arr, m + 1, r);
-            // Merge the sorted halves
-            merge(arr, l, m, r);
+    private void mergeSort(int[] nums, int left, int right) {
+        if (left >= right) {
+            return;
         }
+        int mid = (right - left) / 2 + left;
+        mergeSort(nums, left, mid);
+        mergeSort(nums, mid + 1, right);
+        merge(nums, left, mid, right);
     }
 
-    void merge(int[] arr, int l, int m, int r) {
-        int i = l, j = m + 1;
-        for (int k = l; k <= r; k++) {
-            tmp[k] = nums[k];
-        }
-        for (int k = l; k <= r; k++) {
-            if (i == m + 1) {
-                nums[k] = tmp[j++];
-            } else if (j == r + 1 || tmp[i] <= tmp[j]) {
-                nums[k] = tmp[i++];
+    private void merge(int[] nums, int left, int mid, int right) {
+        int i = left, j = mid + 1;
+        int k = left;
+        while (i <= mid && j <= right) {
+            if (nums[i] <= nums[j]) {
+                arr[k] = nums[i];
+                i++;
             } else {
-                nums[k] = tmp[j++];
-                count += m - i + 1; // 统计逆序对
+                arr[k] = nums[j];
+                j++;
+                count += mid - i + 1; // 统计逆序对
             }
+            k++;
+        }
+        while (i <= mid) {
+            arr[k] = nums[i];
+            i++;
+            k++;
+        }
+        while (j <= right) {
+            arr[k] = nums[j];
+            j++;
+            k++;
+        }
+        for (int n = left; n <= right; n++) {
+            nums[n] = arr[n];
         }
     }
 }

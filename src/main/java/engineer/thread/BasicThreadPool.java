@@ -1,10 +1,9 @@
 package engineer.thread;
 
-import java.util.ArrayDeque;
-import java.util.Queue;
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.atomic.AtomicInteger;
-import java.util.stream.IntStream;
+import java.util.*;
+import java.util.concurrent.*;
+import java.util.concurrent.atomic.*;
+import java.util.stream.*;
 
 /**
  * @author jingxinwu
@@ -42,7 +41,7 @@ public class BasicThreadPool extends Thread implements ThreadPool {
     }
 
     public BasicThreadPool(int initSize, int maxSize, int coreSize, ThreadFactory threadFactory, int queueSize,
-            DenyPolicy denyPolicy, long keepAliveTime, TimeUnit timeUnit) {
+                           DenyPolicy denyPolicy, long keepAliveTime, TimeUnit timeUnit) {
         this.initSize = initSize;
         this.maxSize = maxSize;
         this.coreSize = coreSize;

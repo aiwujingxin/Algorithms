@@ -1,11 +1,12 @@
 package leetcode.lists.offer;
 
+import common.*;
+
 /**
  * @author jingxinwu
  * @date 2021-11-24 12:57 上午
  */
 public class Offer52 {
-
 
     public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
         if (headA == null || headB == null) {

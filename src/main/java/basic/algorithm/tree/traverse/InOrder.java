@@ -1,17 +1,15 @@
 package basic.algorithm.tree.traverse;
 
-import basic.problems.tree.Traverse;
-import common.TreeNode;
+import basic.problems.tree.*;
+import common.*;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Stack;
+import java.util.*;
 
 /**
  * @author wujingxinit@outlook.com
  * @date 2022/9/14 14:18
  */
-public abstract class InOrder implements Traverse {
+public class InOrder implements Traverse {
 
 
     List<Integer> list = new ArrayList<>();

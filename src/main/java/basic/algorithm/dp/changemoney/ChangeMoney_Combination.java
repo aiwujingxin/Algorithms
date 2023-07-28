@@ -1,6 +1,6 @@
 package basic.algorithm.dp.changemoney;
 
-import basic.problems.dp.ChangeMoney;
+import basic.problems.dp.*;
 
 /**
  * @author wujingxinit@outlook.com

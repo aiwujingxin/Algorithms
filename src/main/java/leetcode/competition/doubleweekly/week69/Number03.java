@@ -1,8 +1,6 @@
 package leetcode.competition.doubleweekly.week69;
 
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
+import java.util.*;
 
 /**
  * @author jingxinwu

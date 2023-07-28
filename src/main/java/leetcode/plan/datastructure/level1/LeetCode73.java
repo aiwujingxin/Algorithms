@@ -24,7 +24,7 @@ public class LeetCode73 {
         }
         for (int i = 0; i < row.length; i++) {
             for (int j = 0; j < col.length; j++) {
-                if (row[i] || col[j]){
+                if (row[i] || col[j]) {
                     matrix[i][j] = 0;
                 }
             }

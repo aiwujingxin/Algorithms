@@ -32,23 +32,5 @@ public class LeetCode123_dp_2d {
             dp[i][4] = Math.max(dp[i - 1][4], dp[i - 1][3] + prices[i]);
         }
         return dp[dp.length - 1][4];
-
-    }
-
-    //空间压缩
-    public int maxProfit_space(int[] prices) {
-        int len = prices.length;
-        int[] dp = new int[5];
-        dp[1] = -prices[0];
-        dp[3] = -prices[0];
-
-        for (int i = 1; i < len; i++) {
-            dp[1] = Math.max(dp[1], dp[0] - prices[i]);
-            dp[2] = Math.max(dp[2], dp[1] + prices[i]);
-            dp[3] = Math.max(dp[3], dp[2] - prices[i]);
-            dp[4] = Math.max(dp[4], dp[3] + prices[i]);
-        }
-
-        return dp[4];
     }
 }

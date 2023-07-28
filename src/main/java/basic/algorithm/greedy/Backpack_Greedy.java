@@ -1,11 +1,9 @@
 package basic.algorithm.greedy;
 
 
-import basic.problems.dp.BackPack;
+import basic.problems.dp.*;
 
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 
 
 public class Backpack_Greedy implements BackPack {

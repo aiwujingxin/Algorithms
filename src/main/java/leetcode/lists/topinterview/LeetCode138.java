@@ -1,8 +1,8 @@
 package leetcode.lists.topinterview;
 
-import common.Node;
+import common.*;
 
-import java.util.HashMap;
+import java.util.*;
 
 /**
  * @author wujingxinit@outlook.com

@@ -1,10 +1,8 @@
 package leetcode.plan.datastructure.level1;
 
-import common.TreeNode;
+import common.*;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Stack;
+import java.util.*;
 
 /**
  * @author wujingxinit@outlook.com

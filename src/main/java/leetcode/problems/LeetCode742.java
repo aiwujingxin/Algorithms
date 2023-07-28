@@ -1,12 +1,13 @@
 package leetcode.problems;
 
-import common.TreeNode;
+import common.*;
 
 import java.util.*;
 
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/7/16 15:11
+ * {@link LeetCode863_dfs}
  */
 public class LeetCode742 {
 
@@ -36,7 +37,7 @@ public class LeetCode742 {
                             min = level;
                         }
                     } else {
-                        return k;
+                        return node.val;
                     }
 
                 }

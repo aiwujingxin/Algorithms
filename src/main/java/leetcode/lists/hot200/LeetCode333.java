@@ -1,6 +1,6 @@
 package leetcode.lists.hot200;
 
-import common.TreeNode;
+import common.*;
 
 /**
  * @author wujingxinit@outlook.com
@@ -14,7 +14,7 @@ public class LeetCode333 {
             return 0;
         }
         if (dfs(root, Integer.MIN_VALUE, Integer.MAX_VALUE)) {
-            cnt(root);
+            return cnt(root);
         }
         return Math.max(largestBSTSubtree(root.left), largestBSTSubtree(root.right));
     }

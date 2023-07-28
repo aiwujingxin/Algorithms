@@ -6,14 +6,13 @@ package leetcode.problems;
  */
 public class LeetCode300_dp {
 
-
     public int lengthOfLIS(int[] nums) {
         if (nums.length == 0) {
             return 0;
         }
         int[] dp = new int[nums.length];
         dp[0] = 1;
-        int maxans = 1;
+        int max = 1;
         for (int i = 1; i < nums.length; i++) {
             //fix
             dp[i] = 1;
@@ -22,8 +21,8 @@ public class LeetCode300_dp {
                     dp[i] = Math.max(dp[i], dp[j] + 1);
                 }
             }
-            maxans = Math.max(maxans, dp[i]);
+            max = Math.max(max, dp[i]);
         }
-        return maxans;
+        return max;
     }
 }

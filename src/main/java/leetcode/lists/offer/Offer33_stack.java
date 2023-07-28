@@ -1,7 +1,6 @@
 package leetcode.lists.offer;
 
-import java.util.Deque;
-import java.util.LinkedList;
+import java.util.*;
 
 /**
  * @author wujingxinit@outlook.com
@@ -9,23 +8,27 @@ import java.util.LinkedList;
  */
 public class Offer33_stack {
 
+    //https://leetcode.cn/problems/er-cha-sou-suo-shu-de-hou-xu-bian-li-xu-lie-lcof/solution/di-gui-he-zhan-liang-chong-fang-shi-jie-jue-zui-ha/
+
     public boolean verifyPostorder(int[] postorder) {
-        // 单调栈使用，单调递增的单调栈
-        Deque<Integer> stack = new LinkedList<>();
-        int pervElem = Integer.MAX_VALUE;
-        // 逆向遍历，就是翻转的先序遍历
+        Stack<Integer> stack = new Stack<>();
+        int parent = Integer.MAX_VALUE;
+        //注意for循环是倒叙遍历的
         for (int i = postorder.length - 1; i >= 0; i--) {
-            // 左子树元素必须要小于递增栈被peek访问的元素，否则就不是二叉搜索树
-            if (postorder[i] > pervElem) {
+            int cur = postorder[i];
+            //当如果前节点小于栈顶元素，说明栈顶元素和当前值构成了倒叙，
+            //说明当前节点是前面某个节点的左子节点，我们要找到他的父节点
+            while (!stack.isEmpty() && stack.peek() > cur) {
+                parent = stack.pop();
+            }
+            //只要遇到了某一个左子节点，才会执行上面的代码，才会更
+            //新parent的值，否则parent就是一个非常大的值，也就
+            //是说如果一直没有遇到左子节点，那么右子节点可以非常大
+            if (cur > parent) {
                 return false;
             }
-            while (!stack.isEmpty() && postorder[i] < stack.peek()) {
-                // 数组元素小于单调栈的元素了，表示往左子树走了，记录下上个根节点
-                // 找到这个左子树对应的根节点，之前右子树全部弹出，不再记录，因为不可能在往根节点的右子树走了
-                pervElem = stack.pop();
-            }
-            // 这个新元素入栈
-            stack.push(postorder[i]);
+            //入栈
+            stack.add(cur);
         }
         return true;
     }

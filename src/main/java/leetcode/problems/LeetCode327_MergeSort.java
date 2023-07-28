@@ -51,15 +51,14 @@ public class LeetCode327_MergeSort {
             while (high <= end && sum[high] - sum[left] <= upper) {
                 high++;
             }
+            // 计数
+            count += high - low;
 
             // 排序
             while (right <= end && sum[right] < sum[left]) {
                 temp[index++] = sum[right++];
             }
             temp[index++] = sum[left];
-
-            // 计数
-            count += high - low;
         }
 
         //接着排序

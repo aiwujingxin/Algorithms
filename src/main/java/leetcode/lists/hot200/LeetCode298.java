@@ -1,10 +1,11 @@
 package leetcode.lists.hot200;
 
-import common.TreeNode;
+import common.*;
 
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/3/14 18:57
+ * {@link leetcode.problems.LeetCode549_dp_tree}
  */
 public class LeetCode298 {
 
@@ -22,7 +23,7 @@ public class LeetCode298 {
         if (p == null) {
             return;
         }
-        length = (parent != null && p.val == parent.val + 1) ? length + 1 : 1;
+        length = (p.val == parent.val + 1) ? length + 1 : 1;
         maxLength = Math.max(maxLength, length);
         dfs(p.left, p, length);
         dfs(p.right, p, length);

@@ -1,10 +1,14 @@
 package basic.algorithm.sort;
 
-import basic.problems.array.ArraySort;
+import basic.problems.array.*;
 
 /**
  * @author jingxinwu
  * @date 2021-06-06 1:46 下午
+ * {@link leetcode.problems.LeetCode315_mergeSort}
+ * {@link leetcode.problems.LeetCode493_mergesort}
+ * {@link leetcode.problems.LeetCode327}
+ * {@link leetcode.lists.offer.Offer51}
  */
 public class MergeSort implements ArraySort {
 

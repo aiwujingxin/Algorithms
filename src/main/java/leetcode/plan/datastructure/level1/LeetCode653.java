@@ -1,8 +1,8 @@
 package leetcode.plan.datastructure.level1;
 
-import common.TreeNode;
+import common.*;
 
-import java.util.HashSet;
+import java.util.*;
 
 /**
  * @author wujingxinit@outlook.com

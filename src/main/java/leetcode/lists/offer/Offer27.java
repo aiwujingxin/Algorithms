@@ -1,6 +1,6 @@
 package leetcode.lists.offer;
 
-import common.TreeNode;
+import common.*;
 
 /**
  * @author jingxinwu
@@ -8,7 +8,6 @@ import common.TreeNode;
  */
 public class Offer27 {
 
-    //镜像树
     public TreeNode mirrorTree(TreeNode root) {
         if (root == null) {
             return null;
@@ -20,6 +19,5 @@ public class Offer27 {
         mirrorTree(root.left);
         mirrorTree(root.right);
         return root;
-
     }
 }

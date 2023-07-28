@@ -1,6 +1,6 @@
 package leetcode.problems;
 
-import common.TreeNode;
+import common.*;
 
 /**
  * @author jingxinwu
@@ -19,9 +19,8 @@ public class LeetCode129 {
         int sum = prevSum * 10 + root.val;
         if (root.left == null && root.right == null) {
             return sum;
-        } else {
-            return dfs(root.left, sum) + dfs(root.right, sum);
         }
+        return dfs(root.left, sum) + dfs(root.right, sum);
     }
 }
 
