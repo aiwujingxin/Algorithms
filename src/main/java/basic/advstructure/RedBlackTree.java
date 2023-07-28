@@ -7,8 +7,8 @@ package basic.advstructure;
  */
 
 public class RedBlackTree {
-    private Node root;
     private final Node TNULL;
+    private Node root;
 
     // 构造函数
     public RedBlackTree() {
@@ -17,6 +17,21 @@ public class RedBlackTree {
         TNULL.left = null;
         TNULL.right = null;
         root = TNULL;
+    }
+
+    public static void main(String[] args) {
+        RedBlackTree rbTree = new RedBlackTree();
+
+        rbTree.insert(55);
+        rbTree.insert(40);
+        rbTree.insert(65);
+        rbTree.insert(60);
+        rbTree.insert(75);
+        rbTree.insert(20);
+        rbTree.insert(35);
+
+        System.out.println("红黑树中的节点（中序遍历）：");
+        rbTree.inorder();
     }
 
     // 在红黑树中插入节点
@@ -168,20 +183,5 @@ public class RedBlackTree {
             this.data = data;
             this.color = 1; // 默认新插入的节点为红色
         }
-    }
-
-    public static void main(String[] args) {
-        RedBlackTree rbTree = new RedBlackTree();
-
-        rbTree.insert(55);
-        rbTree.insert(40);
-        rbTree.insert(65);
-        rbTree.insert(60);
-        rbTree.insert(75);
-        rbTree.insert(20);
-        rbTree.insert(35);
-
-        System.out.println("红黑树中的节点（中序遍历）：");
-        rbTree.inorder();
     }
 }

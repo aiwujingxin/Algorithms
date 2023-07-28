@@ -1,6 +1,6 @@
 package basic.problems.list;
 
-import common.*;
+import common.ListNode;
 
 /**
  * @author wujingxinit@outlook.com

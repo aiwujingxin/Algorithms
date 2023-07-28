@@ -1,6 +1,6 @@
 package basic.template.Acwing;
 
-import basic.advstructure.*;
+import basic.advstructure.UnionFind;
 
 /**
  * @author wujingxinit@outlook.com

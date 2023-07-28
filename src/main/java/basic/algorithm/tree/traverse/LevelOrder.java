@@ -1,6 +1,6 @@
 package basic.algorithm.tree.traverse;
 
-import basic.problems.tree.*;
+import basic.problems.tree.Traverse;
 import common.TreeNode;
 
 import java.util.ArrayList;

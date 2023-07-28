@@ -14,17 +14,6 @@ public class LeetCode1162_dfs {
 
     //https://leetcode.com/problems/as-far-from-land-as-possible/discuss/1812102/Easy-to-understand-or-Java-or-DFS-or-BFS
     int count = 0;
-
-    static class Pair {
-        int x;
-        int y;
-
-        Pair(int x, int y) {
-            this.x = x;
-            this.y = y;
-        }
-    }
-
     int[][] dirs = new int[][]{
             {-1, 0}, {1, 0}, {0, 1}, {0, -1}
     };
@@ -86,6 +75,16 @@ public class LeetCode1162_dfs {
             }
 
             dfsHelper(newRow, newCol, dp, row, col, dist + 1);
+        }
+    }
+
+    static class Pair {
+        int x;
+        int y;
+
+        Pair(int x, int y) {
+            this.x = x;
+            this.y = y;
         }
     }
 }

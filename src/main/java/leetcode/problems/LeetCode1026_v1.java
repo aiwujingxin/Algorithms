@@ -1,6 +1,6 @@
 package leetcode.problems;
 
-import common.*;
+import common.TreeNode;
 
 /**
  * @author wujingxinit@outlook.com
@@ -8,11 +8,11 @@ import common.*;
  */
 public class LeetCode1026_v1 {
 
+    int ans;
+
     public static void main(String[] args) {
         System.out.println(new LeetCode1026_v1().maxAncestorDiff(new TreeNode(1, new TreeNode(2), new TreeNode(3))));
     }
-
-    int ans;
 
     public int maxAncestorDiff(TreeNode root) {
         dfs(root);

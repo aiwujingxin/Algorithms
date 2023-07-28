@@ -1,6 +1,6 @@
 package basic.algorithm.graph.path;
 
-import java.util.*;
+import java.util.Arrays;
 
 /**
  * @author aiwujingxin@gmail.com
@@ -15,6 +15,20 @@ public class Dijkstra {
      */
 
     private static final int VERTICES = 6; // 图的顶点数
+
+    public static void main(String[] args) {
+        int[][] graph = {
+                {0, 2, 4, 0, 0, 0},
+                {2, 0, 1, 4, 2, 0},
+                {4, 1, 0, 0, 3, 0},
+                {0, 4, 0, 0, 3, 1},
+                {0, 2, 3, 3, 0, 2},
+                {0, 0, 0, 1, 2, 0}
+        };
+        int source = 0;
+        Dijkstra dijkstra = new Dijkstra();
+        dijkstra.dijkstra(graph, source);
+    }
 
     public void dijkstra(int[][] graph, int source) {
         int[] dist = new int[VERTICES]; // 存储源节点到每个节点的最短距离
@@ -57,19 +71,5 @@ public class Dijkstra {
         for (int i = 0; i < VERTICES; i++) {
             System.out.println(i + "\t\t\t" + dist[i]);
         }
-    }
-
-    public static void main(String[] args) {
-        int[][] graph = {
-                {0, 2, 4, 0, 0, 0},
-                {2, 0, 1, 4, 2, 0},
-                {4, 1, 0, 0, 3, 0},
-                {0, 4, 0, 0, 3, 1},
-                {0, 2, 3, 3, 0, 2},
-                {0, 0, 0, 1, 2, 0}
-        };
-        int source = 0;
-        Dijkstra dijkstra = new Dijkstra();
-        dijkstra.dijkstra(graph, source);
     }
 }

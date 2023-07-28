@@ -12,6 +12,14 @@ import java.util.Queue;
 
 class BipartiteGraph_bfs {
 
+    private final int vertices;
+    private final int[][] adjacencyMatrix;
+
+    public BipartiteGraph_bfs(int vertices) {
+        this.vertices = vertices;
+        adjacencyMatrix = new int[vertices][vertices];
+    }
+
     public static void main(String[] args) {
         int vertices = 4;
         BipartiteGraph_bfs graph = new BipartiteGraph_bfs(vertices);
@@ -26,14 +34,6 @@ class BipartiteGraph_bfs {
         } else {
             System.out.println("The graph is not bipartite.");
         }
-    }
-
-    private final int vertices;
-    private final int[][] adjacencyMatrix;
-
-    public BipartiteGraph_bfs(int vertices) {
-        this.vertices = vertices;
-        adjacencyMatrix = new int[vertices][vertices];
     }
 
     public void addEdge(int source, int destination) {

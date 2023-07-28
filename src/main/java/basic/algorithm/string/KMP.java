@@ -34,6 +34,24 @@ public class KMP {
         System.out.println(new KMP().KMPSearch(pat, txt));
     }
 
+    //prefix[i]表示对应的部分匹配值, s[i - prefix[i]] : i] == s[0: prefix[i]]
+    public static void makePrefix(int[] prefix, String needle) {
+        int i = 0, j = 1;
+        while (j < needle.length()) {
+            if (needle.charAt(i) == needle.charAt(j)) {
+                prefix[j] = i + 1;
+                i++;
+                j++;
+            } else {
+                if (i - 1 >= 0) {
+                    i = prefix[i - 1];
+                } else {
+                    prefix[j++] = 0;
+                }
+            }
+        }
+    }
+
     public int KMPSearch(String pat, String txt) {
         int M = pat.length();
         int N = txt.length();
@@ -57,23 +75,5 @@ public class KMP {
             }
         }
         return -1;
-    }
-
-    //prefix[i]表示对应的部分匹配值, s[i - prefix[i]] : i] == s[0: prefix[i]]
-    public static void makePrefix(int[] prefix, String needle) {
-        int i = 0, j = 1;
-        while (j < needle.length()) {
-            if (needle.charAt(i) == needle.charAt(j)) {
-                prefix[j] = i + 1;
-                i++;
-                j++;
-            } else {
-                if (i - 1 >= 0) {
-                    i = prefix[i - 1];
-                } else {
-                    prefix[j++] = 0;
-                }
-            }
-        }
     }
 }

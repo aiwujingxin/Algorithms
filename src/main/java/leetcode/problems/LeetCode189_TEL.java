@@ -7,6 +7,23 @@ package leetcode.problems;
 public class LeetCode189_TEL {
 
 
+    public static void rotateV2(int[] nums, int k) {
+        k %= nums.length;
+        reverse(nums, 0, nums.length - 1);
+        reverse(nums, 0, k - 1);
+        reverse(nums, k, nums.length - 1);
+    }
+
+    public static void reverse(int[] nums, int start, int end) {
+        while (start < end) {
+            int temp = nums[start];
+            nums[start] = nums[end];
+            nums[end] = temp;
+            start++;
+            end--;
+        }
+    }
+
     //fix 超时
     public void rotate(int[] nums, int k) {
 
@@ -29,24 +46,6 @@ public class LeetCode189_TEL {
         }
         nums[0] = last;
 
-    }
-
-
-    public static void rotateV2(int[] nums, int k) {
-        k %= nums.length;
-        reverse(nums, 0, nums.length - 1);
-        reverse(nums, 0, k - 1);
-        reverse(nums, k, nums.length - 1);
-    }
-
-    public static void reverse(int[] nums, int start, int end) {
-        while (start < end) {
-            int temp = nums[start];
-            nums[start] = nums[end];
-            nums[end] = temp;
-            start++;
-            end--;
-        }
     }
 
 }

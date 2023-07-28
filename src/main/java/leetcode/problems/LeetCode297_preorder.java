@@ -19,6 +19,7 @@ public class LeetCode297_preorder {
         final String nan = "X";
 
         StringBuilder data;
+        Queue<String> nodes;
 
         // Encodes a tree to a single string.
         public String serialize(TreeNode root) {
@@ -41,8 +42,6 @@ public class LeetCode297_preorder {
             buildString(root.left);
             buildString(root.right);
         }
-
-        Queue<String> nodes;
 
         // Decodes your encoded data to tree.
         public TreeNode deserialize(String data) {

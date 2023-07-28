@@ -1,10 +1,6 @@
 package leetcode.lists.offer;
 
-import java.util.HashMap;
-import java.util.LinkedHashMap;
-import java.util.LinkedList;
-import java.util.Map;
-import java.util.Queue;
+import java.util.*;
 
 /**
  * @author jingxinwu

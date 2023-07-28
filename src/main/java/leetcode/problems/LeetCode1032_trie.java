@@ -1,6 +1,6 @@
 package leetcode.problems;
 
-import java.util.*;
+import java.util.Arrays;
 
 /**
  * @author wujingxinit@outlook.com
@@ -15,6 +15,15 @@ public class LeetCode1032_trie {
         static boolean[] isEnd = new boolean[N * 26];
         StringBuilder sb = new StringBuilder();
 
+        public StreamChecker(String[] words) {
+            for (int i = 0; i <= idx; i++) {
+                Arrays.fill(tr[i], 0);
+                isEnd[i] = false;
+            }
+            idx = 0;
+            for (String s : words) add(s);
+        }
+
         void add(String s) {
             int p = 0;
             for (int i = s.length() - 1; i >= 0; i--) {
@@ -23,15 +32,6 @@ public class LeetCode1032_trie {
                 p = tr[p][u];
             }
             isEnd[p] = true;
-        }
-
-        public StreamChecker(String[] words) {
-            for (int i = 0; i <= idx; i++) {
-                Arrays.fill(tr[i], 0);
-                isEnd[i] = false;
-            }
-            idx = 0;
-            for (String s : words) add(s);
         }
 
         public boolean query(char c) {

@@ -10,6 +10,16 @@ public class BigDecimal implements basic.problems.string.BigDecimal {
         System.out.println(new BigDecimal().sub("-345", "-8765"));
     }
 
+    public static boolean compare(String num1, String num2) {
+        if (num1.length() < num2.length()) {
+            return false;
+        } else if (num1.length() > num2.length()) {
+            return true;
+        } else {
+            return num1.compareTo(num2) > 0;
+        }
+    }
+
     @Override
     public String addStrings(String num1, String num2) {
         int len1 = num1.length() - 1, len2 = num2.length() - 1;
@@ -99,17 +109,6 @@ public class BigDecimal implements basic.problems.string.BigDecimal {
             return sign + sb.substring(index);//负数需要返回
         }
     }
-
-    public static boolean compare(String num1, String num2) {
-        if (num1.length() < num2.length()) {
-            return false;
-        } else if (num1.length() > num2.length()) {
-            return true;
-        } else {
-            return num1.compareTo(num2) > 0;
-        }
-    }
-
 
     @Override
     public String div(String s1, String s2) {

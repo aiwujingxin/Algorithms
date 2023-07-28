@@ -9,11 +9,11 @@ import java.util.List;
  * @date 2022/7/6 22:27
  */
 public class LeetCode212_fast {
+    private final int[][] directions = new int[][]{{-1, 0}, {0, 1}, {1, 0}, {0, -1}};
     TrieNode root;
     char[][] board;
     int m, n;
     HashSet<String> set;
-    private final int[][] directions = new int[][]{{-1, 0}, {0, 1}, {1, 0}, {0, -1}};
 
     public List<String> findWords(char[][] board, String[] words) {
         root = new TrieNode();

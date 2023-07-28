@@ -14,6 +14,29 @@ public class AVLTree {
         root = null;
     }
 
+    public static void main(String[] args) {
+        AVLTree avl = new AVLTree();
+
+        avl.insert(50);
+        avl.insert(30);
+        avl.insert(20);
+        avl.insert(40);
+        avl.insert(70);
+        avl.insert(60);
+        avl.insert(80);
+
+        System.out.println("AVL树中的节点（中序遍历）：");
+        avl.printTree();
+        System.out.println();
+
+        avl.delete(20);
+        avl.delete(40);
+
+        System.out.println("删除节点后的AVL树（中序遍历）：");
+        avl.printTree();
+        System.out.println();
+    }
+
     // 在AVL树中插入节点
     public void insert(int key) {
         root = insertNode(root, key);
@@ -23,7 +46,6 @@ public class AVLTree {
     public void delete(int key) {
         root = deleteNode(root, key);
     }
-
 
     // 查找AVL树中的最大节点
     private Node findMax(Node node) {
@@ -41,7 +63,6 @@ public class AVLTree {
             inorderTraversal(node.right);
         }
     }
-
 
     // 获取节点的高度
     private int getHeight(Node node) {
@@ -216,29 +237,5 @@ public class AVLTree {
             this.left = null;
             this.right = null;
         }
-    }
-
-
-    public static void main(String[] args) {
-        AVLTree avl = new AVLTree();
-
-        avl.insert(50);
-        avl.insert(30);
-        avl.insert(20);
-        avl.insert(40);
-        avl.insert(70);
-        avl.insert(60);
-        avl.insert(80);
-
-        System.out.println("AVL树中的节点（中序遍历）：");
-        avl.printTree();
-        System.out.println();
-
-        avl.delete(20);
-        avl.delete(40);
-
-        System.out.println("删除节点后的AVL树（中序遍历）：");
-        avl.printTree();
-        System.out.println();
     }
 }

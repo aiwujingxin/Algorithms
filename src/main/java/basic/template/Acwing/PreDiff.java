@@ -1,12 +1,13 @@
 package basic.template.Acwing;
 
-import leetcode.problems.*;
+import leetcode.problems.LeetCode1109;
+import leetcode.problems.LeetCode370;
 
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/5/1 12:58
  * <a href="https://labuladong.github.io/algo/di-yi-zhan-da78c/shou-ba-sh-48c1d/xiao-er-me-c304e/">...</a>
- * {@link leetcode.lists.hot200.LeetCode370}
+ * {@link LeetCode370}
  * {@link LeetCode1109}
  */
 public class PreDiff {

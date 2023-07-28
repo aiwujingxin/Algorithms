@@ -6,16 +6,16 @@ package leetcode.problems;
  */
 public class LeetCode327 {
 
+    int count = 0;
+    int lower;
+    int upper;
+    long[] temp;
+
     public static void main(String[] args) {
         System.out.println(new LeetCode327().countRangeSum(new int[]{1, 2, 3, 4, 5, 6, 7, 8}, 10, 15));
         System.out.println(new LeetCode327().countRangeSum(new int[]{-2, 5, -1}, -2, 2));
         System.out.println(new LeetCode327().countRangeSum(new int[]{-2, 5, -1, 3, 6, 7, 2, 1, 5, 7}, -2, 5));
     }
-
-    int count = 0;
-    int lower;
-    int upper;
-    long[] temp;
 
     public int countRangeSum(int[] nums, int lower, int upper) {
         temp = new long[nums.length + 1];

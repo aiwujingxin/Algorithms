@@ -13,7 +13,7 @@ public class LeetCode487_dp {
         int[][] dp = new int[nums.length][2];
         if (nums[0] == 1) {
             dp[0][0] = 1;
-        }  else {
+        } else {
             dp[0][1] = 1;
         }
         int max = 1;

@@ -14,15 +14,6 @@ import java.util.Queue;
  */
 public class ZeroOnePack_branch_bound implements BackPack {
 
-    @Override
-    public int backPack(int capacity, int[] weights, int[] values) {
-        Item[] arr = new Item[weights.length];
-        for (int i = 0; i < weights.length; i++) {
-            arr[i] = new Item(weights[i], values[i]);
-        }
-        return knapsackSolution(capacity, arr, weights.length);
-    }
-
     static int bound(Node u, int n, int W, Item[] arr) {
         if (u.weight >= W)
             return 0;
@@ -79,6 +70,15 @@ public class ZeroOnePack_branch_bound implements BackPack {
         }
 
         return maxProfit;
+    }
+
+    @Override
+    public int backPack(int capacity, int[] weights, int[] values) {
+        Item[] arr = new Item[weights.length];
+        for (int i = 0; i < weights.length; i++) {
+            arr[i] = new Item(weights[i], values[i]);
+        }
+        return knapsackSolution(capacity, arr, weights.length);
     }
 
     static class Item {

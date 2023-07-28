@@ -10,8 +10,16 @@ import java.util.Stack;
  * <a href="https://github.com/labuladong/fucking-algorithm/blob/master/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%B3%BB%E5%88%97/%E4%BA%8C%E5%8F%89%E5%A0%86%E8%AF%A6%E8%A7%A3%E5%AE%9E%E7%8E%B0%E4%BC%98%E5%85%88%E7%BA%A7%E9%98%9F%E5%88%97.md">...</a>
  */
 
-public class MaxHeap<Key extends Comparable<Key>> implements basic.problems.array.TopK{
+public class MaxHeap<Key extends Comparable<Key>> implements basic.problems.array.TopK {
 
+
+    private final Key[] pq; // 基于堆的完全二叉树
+    private int N = 0; // 存储于 pq[1 .. N] 中，pq[0] 没有使用
+
+    @SuppressWarnings("unchecked")
+    MaxHeap(int capacity) { // 创建一个初始容量为 capacity 的优先队列
+        pq = (Key[]) new Comparable[capacity + 1];
+    }
 
     public static void main(String[] args) {
         int M = 5;
@@ -36,14 +44,6 @@ public class MaxHeap<Key extends Comparable<Key>> implements basic.problems.arra
         while (!sk.isEmpty()) {
             System.out.println(sk.pop());
         }
-    }
-
-    private final Key[] pq; // 基于堆的完全二叉树
-    private int N = 0; // 存储于 pq[1 .. N] 中，pq[0] 没有使用
-
-    @SuppressWarnings("unchecked")
-    MaxHeap(int capacity) { // 创建一个初始容量为 capacity 的优先队列
-        pq = (Key[]) new Comparable[capacity + 1];
     }
 
     // 插入一个元素

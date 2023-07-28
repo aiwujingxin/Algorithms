@@ -1,7 +1,7 @@
 package basic.algorithm.tree.build;
 
-import basic.problems.tree.*;
-import common.*;
+import basic.problems.tree.BuildTree;
+import common.TreeNode;
 
 /**
  * @author wujingxinit@outlook.com

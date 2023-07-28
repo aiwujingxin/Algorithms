@@ -10,6 +10,14 @@ public class LeetCode220_treeset {
 
     TreeNode root;
 
+    private static void delete(TreeNode node, TreeNode prev, TreeNode child) {
+        if (node == prev.left) {
+            prev.left = child;
+        } else {
+            prev.right = child;
+        }
+    }
+
     public boolean containsNearbyAlmostDuplicate(int[] nums, int indexDiff, int valueDiff) {
         root = new TreeNode(nums[0]);
         if (indexDiff == nums.length) {
@@ -72,14 +80,6 @@ public class LeetCode220_treeset {
             }
             node.val = rightLeftmost.val;
             delete(rightLeftmost, prev, rightLeftmost.right);
-        }
-    }
-
-    private static void delete(TreeNode node, TreeNode prev, TreeNode child) {
-        if (node == prev.left) {
-            prev.left = child;
-        } else {
-            prev.right = child;
         }
     }
 }

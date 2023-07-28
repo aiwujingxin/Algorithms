@@ -12,19 +12,6 @@ public class ActivityPack_dp implements ActivityPack {
 
     //https://www.cs.princeton.edu/~wayne/cs423/lectures/dynamic-programming-4up.pdf
 
-    @Override
-    public int activityPack(int[][] periods) {
-        int[] s = new int[periods.length];
-        for (int i = 0; i < periods.length; i++) {
-            s[i] = periods[i][0];
-        }
-        int[] f = new int[periods.length];
-        for (int i = 0; i < periods.length; i++) {
-            f[i] = periods[i][1];
-        }
-        return selector_DP_memorized(s, f);
-    }
-
     /**
      * dynamic programming ActivitySelector - UpBottom memorized. 16.1-1
      *
@@ -75,5 +62,18 @@ public class ActivityPack_dp implements ActivityPack {
             }
         }
         System.out.println("Max compatibile solution DP memorized: " + solution);
+    }
+
+    @Override
+    public int activityPack(int[][] periods) {
+        int[] s = new int[periods.length];
+        for (int i = 0; i < periods.length; i++) {
+            s[i] = periods[i][0];
+        }
+        int[] f = new int[periods.length];
+        for (int i = 0; i < periods.length; i++) {
+            f[i] = periods[i][1];
+        }
+        return selector_DP_memorized(s, f);
     }
 }

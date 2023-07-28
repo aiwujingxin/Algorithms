@@ -1,6 +1,6 @@
 package basic.problems.tree;
 
-import common.*;
+import common.TreeNode;
 
 /**
  * @author wujingxinit@outlook.com

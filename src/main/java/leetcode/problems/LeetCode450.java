@@ -5,7 +5,7 @@ import common.TreeNode;
 /**
  * @author jingxinwu
  * @date 2022-02-16 7:04 PM
- * {@link leetcode.plan.datastructure.level1.LeetCode701}
+ * {@link LeetCode701}
  */
 public class LeetCode450 {
 

@@ -1,6 +1,8 @@
 package leetcode.problems;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * @author wujingxinit@outlook.com
@@ -18,13 +20,12 @@ public class LeetCode1349 {
     boolean[] visit;
     int[] match;
     int[][] data;
+    int[] dy = {1, 1, 1, -1, -1, -1};
+    int[] dx = {0, 1, -1, 0, 1, -1};
 
     int getPosition(int x, int y) {
         return x * n + y + 1;
     }
-
-    int[] dy = {1, 1, 1, -1, -1, -1};
-    int[] dx = {0, 1, -1, 0, 1, -1};
 
     public int maxStudents(char[][] seats) {
         m = seats.length;

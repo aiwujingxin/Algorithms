@@ -13,14 +13,6 @@ public class Offer40 {
         System.out.println(Arrays.toString(offer40.getLeastNumbers(new int[]{0, 0, 2, 3, 2, 1, 1, 2, 0, 4}, 10)));
     }
 
-    public int[] getLeastNumbers(int[] arr, int k) {
-        if (arr.length == 0) {
-            return new int[]{};
-        }
-        int index = helper(arr, 0, arr.length - 1, k);
-        return Arrays.copyOf(arr, index);
-    }
-
     public static int helper(int[] a, int lo, int hi, int k) {
         int pi = a[lo];
         int low_temp = lo;
@@ -43,5 +35,13 @@ public class Offer40 {
         } else {
             return helper(a, lo + 1, hi_temp, k);
         }
+    }
+
+    public int[] getLeastNumbers(int[] arr, int k) {
+        if (arr.length == 0) {
+            return new int[]{};
+        }
+        int index = helper(arr, 0, arr.length - 1, k);
+        return Arrays.copyOf(arr, index);
     }
 }

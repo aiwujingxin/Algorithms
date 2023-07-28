@@ -1,13 +1,15 @@
 package basic.algorithm.tree.serialize;
 
-import basic.problems.tree.*;
-import common.*;
+import basic.problems.tree.Serialization;
+import common.TreeNode;
 
 /**
  * @author wujingxinit@outlook.com
  * @date 2022/9/7 12:43
  */
 public class PreOrder implements Serialization {
+
+    private int desIndex = 0;
 
     @Override
     public String serialize(TreeNode root) {
@@ -35,8 +37,6 @@ public class PreOrder implements Serialization {
     public TreeNode deserialize(String data) {
         return decode(data.split(COMMA));
     }
-
-    private int desIndex = 0;
 
     private TreeNode decode(String[] vals) {
         String nodeVal = vals[desIndex++];

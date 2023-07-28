@@ -5,40 +5,6 @@ package leetcode.lists.classic;
  * @date 2023/2/25 19:26
  */
 public class Number1010 {
-    // 并不能处理 x 不在树中的情况，x 不在树中，则会返回-1
-    /*
-    ["StreamRank", "track", "track","track","track","track","track","track","track","track", "getRankOfNumber","getRankOfNumber","getRankOfNumber","getRankOfNumber"]
-[[], [5], [1], [4],[4],[5],[9],[7],[13],[3],[1],[3],[4],[9]]
-
-
-    ["StreamRank", "track", "track","track","track","track","track","track", "getRankOfNumber"]
-[[], [4], [3], [5],[3],[1],[5],[1],[9]]
-    * */
-    class StreamRank {
-
-        public StreamRank() {
-        }
-
-        private static RankNode root = null;
-
-        public void track(int x) {
-            if (root == null) {
-                root = new RankNode(x);
-            } else {
-                root.insert(x);
-            }
-        }
-
-        public int getRankOfNumber(int x) {
-            if (root == null) {
-                return 0;
-            }
-            return root.getRank(x);
-        }
-
-
-    }
-
     static class RankNode {
         public int left_size = 0;
         public RankNode left;
@@ -84,5 +50,39 @@ public class Number1010 {
                 }
             }
         }
+    }
+
+    // 并不能处理 x 不在树中的情况，x 不在树中，则会返回-1
+    /*
+    ["StreamRank", "track", "track","track","track","track","track","track","track","track", "getRankOfNumber","getRankOfNumber","getRankOfNumber","getRankOfNumber"]
+[[], [5], [1], [4],[4],[5],[9],[7],[13],[3],[1],[3],[4],[9]]
+
+
+    ["StreamRank", "track", "track","track","track","track","track","track", "getRankOfNumber"]
+[[], [4], [3], [5],[3],[1],[5],[1],[9]]
+    * */
+    class StreamRank {
+
+        private static RankNode root = null;
+
+        public StreamRank() {
+        }
+
+        public void track(int x) {
+            if (root == null) {
+                root = new RankNode(x);
+            } else {
+                root.insert(x);
+            }
+        }
+
+        public int getRankOfNumber(int x) {
+            if (root == null) {
+                return 0;
+            }
+            return root.getRank(x);
+        }
+
+
     }
 }

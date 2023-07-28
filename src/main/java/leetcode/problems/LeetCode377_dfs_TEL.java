@@ -10,13 +10,6 @@ public class LeetCode377_dfs_TEL {
         System.out.println(new LeetCode377_dfs_TEL().combinationSum4(new int[]{1, 2, 3}, 4));
     }
 
-    public int combinationSum4(int[] nums, int target) {
-        if (nums == null || nums.length == 0 || target <= 0) {
-            return 0;
-        }
-        return dfs(nums, target);
-    }
-
     private static int dfs(int[] arr, int target) {
         // target为0，有1种组合：一个数都不要
         if (target == 0) {
@@ -39,5 +32,12 @@ public class LeetCode377_dfs_TEL {
         }
 
         return count;
+    }
+
+    public int combinationSum4(int[] nums, int target) {
+        if (nums == null || nums.length == 0 || target <= 0) {
+            return 0;
+        }
+        return dfs(nums, target);
     }
 }

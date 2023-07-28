@@ -1,22 +1,9 @@
 package basic.algorithm.search;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class IDSSearch {
-
-    private static class Node {
-        int value;
-        List<Node> children;
-
-        Node(int value) {
-            this.value = value;
-            this.children = new ArrayList<>();
-        }
-
-        void addChild(Node child) {
-            children.add(child);
-        }
-    }
 
     public static boolean iterativeDeepeningSearch(Node root, int target) {
         for (int depth = 0; depth < Integer.MAX_VALUE; depth++) {
@@ -64,6 +51,20 @@ public class IDSSearch {
             System.out.println("Target " + target + " found!");
         } else {
             System.out.println("Target " + target + " not found!");
+        }
+    }
+
+    private static class Node {
+        int value;
+        List<Node> children;
+
+        Node(int value) {
+            this.value = value;
+            this.children = new ArrayList<>();
+        }
+
+        void addChild(Node child) {
+            children.add(child);
         }
     }
 }

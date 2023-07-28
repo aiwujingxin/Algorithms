@@ -10,16 +10,6 @@ import java.util.Arrays;
  */
 public class CompletePack_dfs_memo implements BackPack {
 
-    @Override
-    public int backPack(int capacity, int[] weights, int[] values) {
-        int n = weights.length;
-        int[][] memo = new int[n + 1][capacity + 1];
-        for (int[] row : memo) {
-            Arrays.fill(row, -1); // 初始化为-1，表示尚未计算过
-        }
-        return knapsackHelper(weights, values, capacity, n, memo);
-    }
-
     private static int knapsackHelper(int[] weights, int[] values, int capacity, int index, int[][] memo) {
         if (index == 0 || capacity == 0) {
             return 0;
@@ -40,5 +30,15 @@ public class CompletePack_dfs_memo implements BackPack {
             memo[index][capacity] = knapsackHelper(weights, values, capacity, index - 1, memo);
         }
         return memo[index][capacity];
+    }
+
+    @Override
+    public int backPack(int capacity, int[] weights, int[] values) {
+        int n = weights.length;
+        int[][] memo = new int[n + 1][capacity + 1];
+        for (int[] row : memo) {
+            Arrays.fill(row, -1); // 初始化为-1，表示尚未计算过
+        }
+        return knapsackHelper(weights, values, capacity, n, memo);
     }
 }

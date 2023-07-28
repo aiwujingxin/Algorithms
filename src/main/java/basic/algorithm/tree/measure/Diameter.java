@@ -6,7 +6,7 @@ import common.TreeNode;
 /**
  * @author wujingxinit@outlook.com
  * @date 2022/9/7 12:29
- * {@link leetcode.lists.hot100.LeetCode543}
+ * {@link leetcode.problems.LeetCode543}
  */
 public class Diameter implements Count {
 

@@ -8,6 +8,17 @@ public class LeetCode1905 {
 
     //https://leetcode.com/problems/count-sub-islands/discuss/2619147/Java-or-99.01-faster-or-DFS-or-Easy
 
+    private static void dfs(int[][] g2, int r, int c) {
+        if (r < 0 || c < 0 || r >= g2.length || c >= g2[0].length || g2[r][c] == 0) {
+            return;
+        }
+        g2[r][c] = 0;
+        dfs(g2, r + 1, c);
+        dfs(g2, r - 1, c);
+        dfs(g2, r, c + 1);
+        dfs(g2, r, c - 1);
+    }
+
     public int countSubIslands(int[][] grid1, int[][] grid2) {
         int row = grid1.length;
         int col = grid1[0].length;
@@ -29,16 +40,5 @@ public class LeetCode1905 {
             }
         }
         return ans;
-    }
-
-    private static void dfs(int[][] g2, int r, int c) {
-        if (r < 0 || c < 0 || r >= g2.length || c >= g2[0].length || g2[r][c] == 0) {
-            return;
-        }
-        g2[r][c] = 0;
-        dfs(g2, r + 1, c);
-        dfs(g2, r - 1, c);
-        dfs(g2, r, c + 1);
-        dfs(g2, r, c - 1);
     }
 }

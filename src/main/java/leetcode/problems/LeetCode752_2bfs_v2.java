@@ -1,6 +1,7 @@
 package leetcode.problems;
 
-import java.util.*;
+import java.util.Collections;
+import java.util.HashSet;
 
 /**
  * @author wujingxinit@outlook.com

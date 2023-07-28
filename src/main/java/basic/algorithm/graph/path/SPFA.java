@@ -25,15 +25,6 @@ public class SPFA {
     private final int[] dist; // 从源节点到每个顶点的最短距离
     private final boolean[] visited; // 记录节点是否在队列中
 
-    private static class Edge {
-        int dest, weight;
-
-        Edge(int dest, int weight) {
-            this.dest = dest;
-            this.weight = weight;
-        }
-    }
-
     SPFA(int v) {
         V = v;
         adjList = new ArrayList[V];
@@ -42,6 +33,20 @@ public class SPFA {
         }
         dist = new int[V];
         visited = new boolean[V];
+    }
+
+    public static void main(String[] args) {
+        int V = 5; // 图中顶点的数量
+        SPFA algorithm = new SPFA(V);
+        algorithm.addEdge(0, 1, -1);
+        algorithm.addEdge(0, 2, 4);
+        algorithm.addEdge(1, 2, 3);
+        algorithm.addEdge(1, 3, 2);
+        algorithm.addEdge(1, 4, 2);
+        algorithm.addEdge(3, 2, 5);
+        algorithm.addEdge(3, 1, 1);
+        algorithm.addEdge(4, 3, -3);
+        algorithm.spfa(0);
     }
 
     void addEdge(int src, int dest, int weight) {
@@ -96,17 +101,12 @@ public class SPFA {
         }
     }
 
-    public static void main(String[] args) {
-        int V = 5; // 图中顶点的数量
-        SPFA algorithm = new SPFA(V);
-        algorithm.addEdge(0, 1, -1);
-        algorithm.addEdge(0, 2, 4);
-        algorithm.addEdge(1, 2, 3);
-        algorithm.addEdge(1, 3, 2);
-        algorithm.addEdge(1, 4, 2);
-        algorithm.addEdge(3, 2, 5);
-        algorithm.addEdge(3, 1, 1);
-        algorithm.addEdge(4, 3, -3);
-        algorithm.spfa(0);
+    private static class Edge {
+        int dest, weight;
+
+        Edge(int dest, int weight) {
+            this.dest = dest;
+            this.weight = weight;
+        }
     }
 }

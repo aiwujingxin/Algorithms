@@ -11,6 +11,7 @@ public class LeetCode1206 {
     class Skiplist {
         Node head = new Node(-1, null, null);
         Random rand = new Random();
+
         public Skiplist() {
 
         }

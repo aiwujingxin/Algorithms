@@ -8,6 +8,17 @@ import java.util.*;
  */
 public class AStar {
 
+    public static List<int[]> constructPath(Node node) {
+        // 回溯构造路径
+        List<int[]> path = new ArrayList<>();
+        while (node != null) {
+            path.add(node.state);
+            node = node.parent;
+        }
+        Collections.reverse(path);
+        return path;
+    }
+
     public List<int[]> astarSearch(int[] startState, int[] goalState) {
         // 初始化起始节点和目标节点
         Node startNode = new Node(startState);
@@ -73,17 +84,6 @@ public class AStar {
 
     private int calculateHeuristic(int[] neighbor, int[] goal) {
         return 0;
-    }
-
-    public static List<int[]> constructPath(Node node) {
-        // 回溯构造路径
-        List<int[]> path = new ArrayList<>();
-        while (node != null) {
-            path.add(node.state);
-            node = node.parent;
-        }
-        Collections.reverse(path);
-        return path;
     }
 
     static class Node {

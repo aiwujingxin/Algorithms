@@ -13,59 +13,9 @@ class BellmanFord {
     private final int V; // 图中顶点的数量
     private final int[] dist; // 从源节点到每个顶点的最短距离
 
-    private static class Edge {
-        int src, dest, weight;
-
-        Edge() {
-            src = dest = weight = 0;
-        }
-    }
-
     BellmanFord(int v) {
         V = v;
         dist = new int[V];
-    }
-
-    void bellmanFordAlgorithm(Edge[] edges, int src) {
-        // 初始化所有节点的距离为无穷大
-        for (int i = 0; i < V; ++i) {
-            dist[i] = Integer.MAX_VALUE;
-        }
-
-        // 设置源节点的距离为0
-        dist[src] = 0;
-
-        // 进行V-1次迭代更新、
-        for (int i = 1; i < V; ++i) {
-            for (Edge edge : edges) {
-                int u = edge.src;
-                int v = edge.dest;
-                int weight = edge.weight;
-
-                // 松弛操作
-                // 三角不等式
-                if (dist[u] != Integer.MAX_VALUE && dist[u] + weight < dist[v]) {
-                    dist[v] = dist[u] + weight;
-                }
-            }
-        }
-
-        // 检测负权回路
-        for (Edge edge : edges) {
-            int u = edge.src;
-            int v = edge.dest;
-            int weight = edge.weight;
-            if (dist[u] != Integer.MAX_VALUE && dist[u] + weight < dist[v]) {
-                System.out.println("图中存在负权回路");
-                return;
-            }
-        }
-
-        // 输出最短路径
-        System.out.println("顶点\t最短距离");
-        for (int i = 0; i < V; ++i) {
-            System.out.println(i + "\t\t" + dist[i]);
-        }
     }
 
     public static void main(String[] args) {
@@ -112,5 +62,55 @@ class BellmanFord {
 
         BellmanFord algorithm = new BellmanFord(V);
         algorithm.bellmanFordAlgorithm(edges, 0);
+    }
+
+    void bellmanFordAlgorithm(Edge[] edges, int src) {
+        // 初始化所有节点的距离为无穷大
+        for (int i = 0; i < V; ++i) {
+            dist[i] = Integer.MAX_VALUE;
+        }
+
+        // 设置源节点的距离为0
+        dist[src] = 0;
+
+        // 进行V-1次迭代更新、
+        for (int i = 1; i < V; ++i) {
+            for (Edge edge : edges) {
+                int u = edge.src;
+                int v = edge.dest;
+                int weight = edge.weight;
+
+                // 松弛操作
+                // 三角不等式
+                if (dist[u] != Integer.MAX_VALUE && dist[u] + weight < dist[v]) {
+                    dist[v] = dist[u] + weight;
+                }
+            }
+        }
+
+        // 检测负权回路
+        for (Edge edge : edges) {
+            int u = edge.src;
+            int v = edge.dest;
+            int weight = edge.weight;
+            if (dist[u] != Integer.MAX_VALUE && dist[u] + weight < dist[v]) {
+                System.out.println("图中存在负权回路");
+                return;
+            }
+        }
+
+        // 输出最短路径
+        System.out.println("顶点\t最短距离");
+        for (int i = 0; i < V; ++i) {
+            System.out.println(i + "\t\t" + dist[i]);
+        }
+    }
+
+    private static class Edge {
+        int src, dest, weight;
+
+        Edge() {
+            src = dest = weight = 0;
+        }
     }
 }

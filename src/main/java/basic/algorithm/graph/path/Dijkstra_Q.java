@@ -1,6 +1,7 @@
 package basic.algorithm.graph.path;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.PriorityQueue;
 
 /**
  * @author aiwujingxin@gmail.com
@@ -9,6 +10,21 @@ import java.util.*;
 public class Dijkstra_Q {
     private static int VERTICES; // 图的顶点数
 
+    public static void main(String[] args) {
+        VERTICES = 6;
+        int[][] graph = {
+                {0, 2, 4, 0, 0, 0},
+                {2, 0, 1, 4, 2, 0},
+                {4, 1, 0, 0, 3, 0},
+                {0, 4, 0, 0, 3, 1},
+                {0, 2, 3, 3, 0, 2},
+                {0, 0, 0, 1, 2, 0}};
+
+        int source = 0;
+
+        Dijkstra_Q dijkstra = new Dijkstra_Q();
+        dijkstra.dijkstra(graph, source);
+    }
 
     public void dijkstra(int[][] graph, int source) {
         int[] dist = new int[VERTICES]; // 存储源节点到每个节点的最短距离
@@ -48,7 +64,6 @@ public class Dijkstra_Q {
         }
     }
 
-
     static class Node implements Comparable<Node> {
         int vertex;
         int distance;
@@ -61,21 +76,5 @@ public class Dijkstra_Q {
         public int compareTo(Node other) {
             return Integer.compare(this.distance, other.distance);
         }
-    }
-
-    public static void main(String[] args) {
-        VERTICES = 6;
-        int[][] graph = {
-                {0, 2, 4, 0, 0, 0},
-                {2, 0, 1, 4, 2, 0},
-                {4, 1, 0, 0, 3, 0},
-                {0, 4, 0, 0, 3, 1},
-                {0, 2, 3, 3, 0, 2},
-                {0, 0, 0, 1, 2, 0}};
-
-        int source = 0;
-
-        Dijkstra_Q dijkstra = new Dijkstra_Q();
-        dijkstra.dijkstra(graph, source);
     }
 }

@@ -8,11 +8,6 @@ import java.util.List;
  */
 //https://leetcode.cn/problems/replace-words/solution/by-ac_oier-jecf/
 public class LeetCode648 {
-    class Node {
-        boolean isEnd;
-        Node[] tns = new Node[26];
-    }
-
     Node root = new Node();
 
     void add(String s) {
@@ -41,5 +36,10 @@ public class LeetCode648 {
         StringBuilder sb = new StringBuilder();
         for (String str : s.split(" ")) sb.append(query(str)).append(" ");
         return sb.substring(0, sb.length() - 1);
+    }
+
+    class Node {
+        boolean isEnd;
+        Node[] tns = new Node[26];
     }
 }

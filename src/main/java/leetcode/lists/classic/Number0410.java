@@ -1,6 +1,6 @@
 package leetcode.lists.classic;
 
-import common.*;
+import common.TreeNode;
 
 /**
  * @author wujingxinit@outlook.com
@@ -15,7 +15,7 @@ public class Number0410 {
         if (t1 == null) {
             return false;
         }
-        return isSameTree(t1,t2) || checkSubTree(t1.left, t2) || checkSubTree(t1.right, t2);
+        return isSameTree(t1, t2) || checkSubTree(t1.left, t2) || checkSubTree(t1.right, t2);
     }
 
     private boolean isSameTree(TreeNode t1, TreeNode t2) {

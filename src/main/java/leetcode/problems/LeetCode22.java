@@ -9,12 +9,6 @@ import java.util.List;
  */
 public class LeetCode22 {
 
-    public static void main(String[] args) {
-        LeetCode22 leetCode22 = new LeetCode22();
-        System.out.println(leetCode22.generateParenthesis(3));
-    }
-
-
     public List<String> generateParenthesis(int n) {
         List<String> res = new ArrayList<>();
         if (n == 0) {

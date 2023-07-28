@@ -8,12 +8,6 @@ import java.util.*;
  */
 public class LeetCode820 {
 
-    //https://leetcode.com/problems/short-encoding-of-words/solutions/125784/trie-solution/
-    static class TrieNode {
-        HashMap<Character, TrieNode> next = new HashMap<>();
-        int depth;
-    }
-
     public int minimumLengthEncoding(String[] words) {
         TrieNode root = new TrieNode();
         List<TrieNode> leaves = new ArrayList<>();
@@ -36,5 +30,11 @@ public class LeetCode820 {
             }
         }
         return res;
+    }
+
+    //https://leetcode.com/problems/short-encoding-of-words/solutions/125784/trie-solution/
+    static class TrieNode {
+        HashMap<Character, TrieNode> next = new HashMap<>();
+        int depth;
     }
 }

@@ -17,7 +17,7 @@ public class Offer29 {
 
     public int[] spiralOrder(int[][] matrix) {
 
-        if (matrix == null || matrix.length ==0) return new int[]{};
+        if (matrix == null || matrix.length == 0) return new int[]{};
 
 
         int rowStart = 0;

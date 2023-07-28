@@ -5,7 +5,7 @@ import common.TreeNode;
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/7/20 22:34
- * {@link leetcode.lists.hot200.LeetCode366}
+ * {@link LeetCode366}
  * {@link LeetCode814}
  * {@link LeetCode1080_v1}
  */

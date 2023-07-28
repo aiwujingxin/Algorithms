@@ -8,6 +8,32 @@ public class SplayTree {
 
     private Node root;
 
+    public static void main(String[] args) {
+        SplayTree tree = new SplayTree();
+
+        tree.insert(50);
+        tree.insert(30);
+        tree.insert(70);
+        tree.insert(20);
+        tree.insert(40);
+        tree.insert(60);
+        tree.insert(80);
+
+        System.out.println("前序遍历：");
+        tree.preOrderTraversal();
+
+        System.out.println("\n中序遍历：");
+        tree.inOrderTraversal();
+
+        tree.search(40);
+        System.out.println("\n前序遍历（搜索后）：");
+        tree.preOrderTraversal();
+
+        tree.delete(30);
+        System.out.println("\n前序遍历（删除后）：");
+        tree.preOrderTraversal();
+    }
+
     // 右旋转
     private void rotateRight(Node node) {
         Node parent = node.parent;
@@ -215,31 +241,5 @@ public class SplayTree {
             this.key = key;
             left = right = parent = null;
         }
-    }
-
-    public static void main(String[] args) {
-        SplayTree tree = new SplayTree();
-
-        tree.insert(50);
-        tree.insert(30);
-        tree.insert(70);
-        tree.insert(20);
-        tree.insert(40);
-        tree.insert(60);
-        tree.insert(80);
-
-        System.out.println("前序遍历：");
-        tree.preOrderTraversal();
-
-        System.out.println("\n中序遍历：");
-        tree.inOrderTraversal();
-
-        tree.search(40);
-        System.out.println("\n前序遍历（搜索后）：");
-        tree.preOrderTraversal();
-
-        tree.delete(30);
-        System.out.println("\n前序遍历（删除后）：");
-        tree.preOrderTraversal();
     }
 }

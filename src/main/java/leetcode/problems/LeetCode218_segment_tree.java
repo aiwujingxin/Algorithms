@@ -17,6 +17,7 @@ public class LeetCode218_segment_tree {
 
     //https://leetcode.cn/problems/the-skyline-problem/solution/javaxian-duan-shu-jie-fa-by-vigilant-her-uc45/
     public static class SegmentTree {
+        private final TreeMap<Integer, Integer> truthToVirtual;
         //buildings 房子数据
         int[][] buildings;
         //更新
@@ -24,7 +25,6 @@ public class LeetCode218_segment_tree {
         boolean[] update;
         //max
         int[] max;
-        private final TreeMap<Integer, Integer> truthToVirtual;
         private int N;//数组长度，有几个不同的坐标
 
         public SegmentTree(int[][] buildings) {

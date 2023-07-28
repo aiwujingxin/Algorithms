@@ -38,6 +38,12 @@ public class Backpack_Greedy implements BackPack {
         int weight;
         double pw;
 
+        public Goods(int prices, int weight, double pw) {
+            this.prices = prices;
+            this.weight = weight;
+            this.pw = pw;
+        }
+
         public int getPrices() {
             return prices;
         }
@@ -59,12 +65,6 @@ public class Backpack_Greedy implements BackPack {
         }
 
         public void setPw(double pw) {
-            this.pw = pw;
-        }
-
-        public Goods(int prices, int weight, double pw) {
-            this.prices = prices;
-            this.weight = weight;
             this.pw = pw;
         }
     }

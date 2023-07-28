@@ -1,6 +1,6 @@
 package basic.advstructure;
 
-import java.util.*;
+import java.util.PriorityQueue;
 
 /**
  * @author wujingxinit@outlook.com
@@ -9,6 +9,12 @@ import java.util.*;
  */
 public class HuffmanTree {
 
+    private HuffmanNode root;
+
+    public HuffmanTree() {
+        this.root = null;
+    }
+
     public static void main(String[] args) {
         char[] characters = {'A', 'B', 'C', 'D', 'E'};
         int[] frequencies = {5, 3, 8, 2, 6};
@@ -16,12 +22,6 @@ public class HuffmanTree {
         HuffmanTree huffmanTree = new HuffmanTree();
         huffmanTree.buildTree(characters, frequencies);
         huffmanTree.printCodes();
-    }
-
-    private HuffmanNode root;
-
-    public HuffmanTree() {
-        this.root = null;
     }
 
     public void buildTree(char[] characters, int[] frequencies) {

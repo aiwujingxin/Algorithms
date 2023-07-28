@@ -9,14 +9,12 @@ package leetcode.lists.offer;
 public class Offer64 {
 
 
+    int res = 0;
+    int max = 0;
+
     public static void main(String[] args) {
         System.out.println(new Offer64().sumNums(9));
     }
-
-
-    int res = 0;
-
-    int max = 0;
 
     public int sumNums(int n) {
         max = n;

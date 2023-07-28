@@ -5,7 +5,7 @@ import common.TreeNode;
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/7/14 17:48
- * {@link leetcode.plan.datastructure.level1.LeetCode701_dfs}
+ * {@link LeetCode701_dfs}
  */
 public class LeetCode669 {
 

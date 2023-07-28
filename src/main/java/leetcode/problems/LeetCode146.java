@@ -8,6 +8,16 @@ import java.util.LinkedList;
  * @date 2021-08-03 11:56 下午
  */
 public class LeetCode146 {
+    private final int capacity;
+    private final LinkedList<CacheEntry> list;
+    private final HashMap<Integer, CacheEntry> map;
+
+    public LeetCode146(int capacity) {
+        this.capacity = capacity;
+        map = new HashMap<>();
+        list = new LinkedList<>();
+    }
+
     public static void main(String[] args) {
         LeetCode146 leetCode146 = new LeetCode146(2);
         leetCode146.put(1, 1);
@@ -20,17 +30,6 @@ public class LeetCode146 {
         leetCode146.get(3);
         leetCode146.get(4);
     }
-
-    private final int capacity;
-    private final LinkedList<CacheEntry> list;
-    private final HashMap<Integer, CacheEntry> map;
-
-    public LeetCode146(int capacity) {
-        this.capacity = capacity;
-        map = new HashMap<>();
-        list = new LinkedList<>();
-    }
-
 
     public int get(int key) {
         //如果没有，则返回

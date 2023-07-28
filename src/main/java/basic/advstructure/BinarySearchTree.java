@@ -8,6 +8,12 @@ package basic.advstructure;
  */
 public class BinarySearchTree {
 
+    private TreeNode root;
+
+    public BinarySearchTree() {
+        this.root = null;
+    }
+
     public static void main(String[] args) {
         BinarySearchTree bst = new BinarySearchTree();
         bst.insert(5);
@@ -21,12 +27,6 @@ public class BinarySearchTree {
 
         bst.delete(3);
         System.out.println(bst.search(3)); // 输出 false
-    }
-
-    private TreeNode root;
-
-    public BinarySearchTree() {
-        this.root = null;
     }
 
     public void insert(int val) {

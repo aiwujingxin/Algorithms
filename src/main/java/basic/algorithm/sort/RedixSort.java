@@ -1,6 +1,6 @@
 package basic.algorithm.sort;
 
-import basic.problems.array.*;
+import basic.problems.array.ArraySort;
 
 import java.util.Arrays;
 
@@ -9,25 +9,6 @@ import java.util.Arrays;
  * @date 2022/6/13 23:15
  */
 public class RedixSort implements ArraySort {
-
-    @Override
-    public int[] sortArray(int[] nums) {
-        radixsort(nums, nums.length);
-        return nums;
-    }
-
-    // The main function to that sorts arr[] of size n using
-    // Radix Sort
-    private void radixsort(int[] arr, int n) {
-        // Find the maximum number to know number of digits
-        int m = getMax(arr, n);
-        // Do counting sort for every digit. Note that
-        // instead of passing digit number, exp is passed.
-        // exp is 10^i where i is current digit number
-        for (int exp = 1; m / exp > 0; exp *= 10) {
-            countSort(arr, n, exp);
-        }
-    }
 
     // A utility function to get maximum value in arr[]
     static int getMax(int[] arr, int n) {
@@ -65,6 +46,25 @@ public class RedixSort implements ArraySort {
         // contains sorted numbers according to current digit
         for (i = 0; i < n; i++) {
             arr[i] = output[i];
+        }
+    }
+
+    @Override
+    public int[] sortArray(int[] nums) {
+        radixsort(nums, nums.length);
+        return nums;
+    }
+
+    // The main function to that sorts arr[] of size n using
+    // Radix Sort
+    private void radixsort(int[] arr, int n) {
+        // Find the maximum number to know number of digits
+        int m = getMax(arr, n);
+        // Do counting sort for every digit. Note that
+        // instead of passing digit number, exp is passed.
+        // exp is 10^i where i is current digit number
+        for (int exp = 1; m / exp > 0; exp *= 10) {
+            countSort(arr, n, exp);
         }
     }
 }

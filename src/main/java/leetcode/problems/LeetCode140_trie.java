@@ -10,12 +10,8 @@ import java.util.List;
  */
 public class LeetCode140_trie {
 
-    public static class Node {
-        Node[] nodes = new Node[256];
-        String word = "";
-    }
-
     protected Node root = new Node();
+    List<String> out = new ArrayList<>();
 
     protected void insert(String word) {
         Node node = root;
@@ -28,9 +24,6 @@ public class LeetCode140_trie {
         }
         node.word = word;
     }
-
-
-    List<String> out = new ArrayList<>();
 
     public List<String> wordBreak(String s, List<String> words) {
         if (s.isEmpty() || words.isEmpty()) {
@@ -61,5 +54,10 @@ public class LeetCode140_trie {
             backtrack(s, pos + 1, root, current);
             current.removeLast();
         }
+    }
+
+    public static class Node {
+        Node[] nodes = new Node[256];
+        String word = "";
     }
 }

@@ -10,14 +10,14 @@ import java.util.Arrays;
  */
 public class ZeroOnePack_dfs_memo implements BackPack {
 
-    public static void main(String[] args) {
-    }
-
     int n;
     int[][] memo;
     int capacity;
     int[] weights;
     int[] values;
+
+    public static void main(String[] args) {
+    }
 
     @Override
     public int backPack(int capacity, int[] weights, int[] values) {

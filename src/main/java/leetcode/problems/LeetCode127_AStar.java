@@ -11,16 +11,6 @@ public class LeetCode127_AStar {
 
     //https://leetcode.cn/problems/word-ladder/solution/gong-shui-san-xie-ru-he-shi-yong-shuang-magjd/
 
-    static class Node {
-        String str;
-        int val;
-
-        Node(String _str, int _val) {
-            str = _str;
-            val = _val;
-        }
-    }
-
     String s, e;
     Set<String> set = new HashSet<>();
 
@@ -73,5 +63,15 @@ public class LeetCode127_AStar {
             ans += str.charAt(i) == e.charAt(i) ? 0 : 1;
         }
         return ans;
+    }
+
+    static class Node {
+        String str;
+        int val;
+
+        Node(String _str, int _val) {
+            str = _str;
+            val = _val;
+        }
     }
 }

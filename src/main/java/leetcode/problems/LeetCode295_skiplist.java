@@ -7,6 +7,44 @@ package leetcode.problems;
 public class LeetCode295_skiplist {
     class MedianFinder {
 
+        private final Skiplist skiplist;
+        private int n;
+        private SkiplistNode left;
+        private SkiplistNode right;
+
+        public MedianFinder() {
+            skiplist = new Skiplist();
+            left = right = skiplist.getHead();
+        }
+
+        public void addNum(int num) {
+            skiplist.add(num);
+            if (n == 0) {
+                left = left.next[0];
+                right = right.next[0];
+            } else if ((n & 1) == 1) {
+                if (num <= left.val) {
+                    left = left.pre;
+                } else {
+                    right = right.next[0];
+                }
+            } else {
+                if (num > left.val && num <= right.val) {
+                    left = left.next[0];
+                    right = right.pre;
+                } else if (num <= left.val) {
+                    right = right.pre;
+                } else {
+                    left = left.next[0];
+                }
+            }
+            n++;
+        }
+
+        public double findMedian() {
+            return (left.val + right.val) / 2.0;
+        }
+
         class SkiplistNode {
             int val;
             SkiplistNode[] next;
@@ -20,9 +58,9 @@ public class LeetCode295_skiplist {
 
         class Skiplist {
             private static final int MAX_LEVEL = 32;
+            private final SkiplistNode head;
             //            private static final double FACTOR = 0.25;
             private int level;
-            private final SkiplistNode head;
 
             Skiplist() {
                 head = new SkiplistNode(-1, MAX_LEVEL);
@@ -64,44 +102,6 @@ public class LeetCode295_skiplist {
                 }
                 return lv;
             }
-        }
-
-        private final Skiplist skiplist;
-        private int n;
-        private SkiplistNode left;
-        private SkiplistNode right;
-
-        public MedianFinder() {
-            skiplist = new Skiplist();
-            left = right = skiplist.getHead();
-        }
-
-        public void addNum(int num) {
-            skiplist.add(num);
-            if (n == 0) {
-                left = left.next[0];
-                right = right.next[0];
-            } else if ((n & 1) == 1) {
-                if (num <= left.val) {
-                    left = left.pre;
-                } else {
-                    right = right.next[0];
-                }
-            } else {
-                if (num > left.val && num <= right.val) {
-                    left = left.next[0];
-                    right = right.pre;
-                } else if (num <= left.val) {
-                    right = right.pre;
-                } else {
-                    left = left.next[0];
-                }
-            }
-            n++;
-        }
-
-        public double findMedian() {
-            return (left.val + right.val) / 2.0;
         }
     }
 }

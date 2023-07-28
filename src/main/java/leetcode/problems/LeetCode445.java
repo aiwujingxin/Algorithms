@@ -52,16 +52,6 @@ public class LeetCode445 {
         return plus; // 返回给 l1 的pre节点
     }
 
-    private static class ListNodePlus {
-        int carry;
-        ListNode head;
-
-        public ListNodePlus(ListNode head, int carry) {
-            this.carry = carry;
-            this.head = head;
-        }
-    }
-
     private int length(ListNode node) {
         int len = 0;
         ListNode cur = node;
@@ -70,5 +60,15 @@ public class LeetCode445 {
             cur = cur.next;
         }
         return len;
+    }
+
+    private static class ListNodePlus {
+        int carry;
+        ListNode head;
+
+        public ListNodePlus(ListNode head, int carry) {
+            this.carry = carry;
+            this.head = head;
+        }
     }
 }

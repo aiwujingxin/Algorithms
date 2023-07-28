@@ -1,7 +1,8 @@
 package leetcode.problems;
 
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @author wujingxinit@outlook.com

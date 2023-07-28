@@ -10,6 +10,19 @@ import java.util.*;
 
 public class Template {
 
+    public static final double PI = 3.141592653589793d;
+    static long mod = (long) 1e9 + 7;
+
+    public static void main(String[] args) throws IOException {
+        InputStream inputStream = System.in;
+        OutputStream outputStream = System.out;
+        InputReader in = new InputReader(inputStream);
+        OutputWriter out = new OutputWriter(outputStream);
+        TaskC solver = new TaskC();
+        solver.solve(1, in, out);
+        out.close();
+    }
+
     static class Pair {
         int x, y;
 
@@ -21,20 +34,6 @@ public class Template {
         public String toString() {
             return x + " " + y;
         }
-    }
-
-    static long mod = (long) 1e9 + 7;
-
-    public static final double PI = 3.141592653589793d;
-
-    public static void main(String[] args) throws IOException {
-        InputStream inputStream = System.in;
-        OutputStream outputStream = System.out;
-        InputReader in = new InputReader(inputStream);
-        OutputWriter out = new OutputWriter(outputStream);
-        TaskC solver = new TaskC();
-        solver.solve(1, in, out);
-        out.close();
     }
 
     static class TaskC {
@@ -56,6 +55,10 @@ public class Template {
 
         public InputReader(InputStream stream) {
             this.stream = stream;
+        }
+
+        public static boolean isWhitespace(int c) {
+            return c == ' ' || c == '\n' || c == '\r' || c == '\t' || c == -1;
         }
 
         public int read() {
@@ -218,10 +221,6 @@ public class Template {
                 return filter.isSpaceChar(c);
             }
             return isWhitespace(c);
-        }
-
-        public static boolean isWhitespace(int c) {
-            return c == ' ' || c == '\n' || c == '\r' || c == '\t' || c == -1;
         }
 
         public interface SpaceCharFilter {

@@ -9,6 +9,7 @@ import common.TreeNode;
 public class Number1712 {
 
     TreeNode resultNode;
+    TreeNode pre = null;
 
     public TreeNode convertBiNode(TreeNode root) {
         inOrder(root);
@@ -22,8 +23,6 @@ public class Number1712 {
             inOrder(node.right);
         }
     }
-
-    TreeNode pre = null;
 
     private void visit(TreeNode cur) {
         if (pre == null) {

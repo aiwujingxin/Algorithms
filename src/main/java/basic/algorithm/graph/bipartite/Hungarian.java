@@ -1,6 +1,6 @@
 package basic.algorithm.graph.bipartite;
 
-import java.util.*;
+import java.util.Arrays;
 
 
 /**
@@ -11,6 +11,10 @@ import java.util.*;
  */
 
 public class Hungarian {
+
+    private int[][] graph;
+    private int[] match;
+    private boolean[] visited;
 
     public static void main(String[] args) {
         int[][] graph = {
@@ -23,10 +27,6 @@ public class Hungarian {
         int maxMatching = hungarian.maxMatching(graph);
         System.out.println("Maximum Matching: " + maxMatching);
     }
-
-    private int[][] graph;
-    private int[] match;
-    private boolean[] visited;
 
     public int maxMatching(int[][] graph) {
         this.graph = graph;

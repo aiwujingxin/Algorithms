@@ -1,6 +1,6 @@
 package basic.algorithm.graph.tree;
 
-import java.util.*;
+import java.util.Arrays;
 
 /**
  * @author aiwujingxin@gmail.com
@@ -13,6 +13,27 @@ public class Prim {
     // todo 考虑不存在的情况
     static int v;
     static int[] parent;
+
+    public static void main(String[] args) {
+        /*v = 4;
+        int[][] graph = {
+                {0, 1, 2, 3},
+                {1, 0, 2, 0},
+                {2, 2, 0, 4},
+                {3, 0, 4, 0}
+        };*/
+        v = 5;
+        int[][] graph = {
+                {0, 2, 0, 6, 0},
+                {2, 0, 3, 8, 5},
+                {0, 3, 0, 0, 7},
+                {6, 8, 0, 0, 9},
+                {0, 5, 7, 9, 0}
+        };
+        Prim prim = new Prim();
+        System.out.println(prim.primMST(graph));
+        prim.printMST(parent, graph);
+    }
 
     public int primMST(int[][] graph) {
         v = graph.length; // 图的顶点数
@@ -59,27 +80,5 @@ public class Prim {
         for (int i = 1; i < v; i++) {
             System.out.println(parent[i] + " - " + i + "    " + graph[i][parent[i]]);
         }
-    }
-
-
-    public static void main(String[] args) {
-        /*v = 4;
-        int[][] graph = {
-                {0, 1, 2, 3},
-                {1, 0, 2, 0},
-                {2, 2, 0, 4},
-                {3, 0, 4, 0}
-        };*/
-        v = 5;
-        int[][] graph = {
-                {0, 2, 0, 6, 0},
-                {2, 0, 3, 8, 5},
-                {0, 3, 0, 0, 7},
-                {6, 8, 0, 0, 9},
-                {0, 5, 7, 9, 0}
-        };
-        Prim prim = new Prim();
-        System.out.println(prim.primMST(graph));
-        prim.printMST(parent, graph);
     }
 }

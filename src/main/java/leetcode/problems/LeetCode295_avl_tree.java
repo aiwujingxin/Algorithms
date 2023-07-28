@@ -7,23 +7,6 @@ package leetcode.problems;
 
 //https://leetcode.com/problems/find-median-from-data-stream/solutions/499243/java-2-methods-explained-avl-heap/
 public class LeetCode295_avl_tree {
-    class MedianFinder {
-
-        AVL avl;
-
-        public MedianFinder() {
-            avl = new AVL();
-        }
-
-        public void addNum(int num) {
-            avl.insert(num);
-        }
-
-        public double findMedian() {
-            return avl.findMedian();
-        }
-    }
-
     static class Node {
         int key;
         int freq; //duplicates are allowed in stream
@@ -183,6 +166,23 @@ public class LeetCode295_avl_tree {
             } else {
                 return find(root.right, idx - root.lcount - root.freq);
             }
+        }
+    }
+
+    class MedianFinder {
+
+        AVL avl;
+
+        public MedianFinder() {
+            avl = new AVL();
+        }
+
+        public void addNum(int num) {
+            avl.insert(num);
+        }
+
+        public double findMedian() {
+            return avl.findMedian();
         }
     }
 }

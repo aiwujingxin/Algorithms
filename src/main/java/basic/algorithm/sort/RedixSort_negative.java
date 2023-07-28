@@ -1,6 +1,6 @@
 package basic.algorithm.sort;
 
-import basic.problems.array.*;
+import basic.problems.array.ArraySort;
 
 import java.util.ArrayList;
 import java.util.List;

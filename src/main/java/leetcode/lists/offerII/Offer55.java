@@ -1,8 +1,9 @@
 package leetcode.lists.offerII;
 
-import common.*;
+import common.TreeNode;
 
-import java.util.*;
+import java.util.Deque;
+import java.util.LinkedList;
 
 /**
  * @author wujingxinit@outlook.com
@@ -12,8 +13,8 @@ public class Offer55 {
 
     class BSTIterator {
 
-        private TreeNode cur;
         private final Deque<TreeNode> stack;
+        private TreeNode cur;
 
         public BSTIterator(TreeNode root) {
             cur = root;

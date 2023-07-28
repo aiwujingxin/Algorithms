@@ -1,12 +1,23 @@
 package basic.advstructure;
 
-import java.util.*;
+import java.util.Random;
 
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/5/23 11:47
  */
 public class SkipList {
+
+    private static final int MAX_LEVEL = 16; // 最大层数
+    private final SkipListNode head; // 头节点
+    private final Random random; // 用于生成随机数
+    private int level; // 当前跳表的层数
+
+    public SkipList() {
+        this.level = 0;
+        this.head = new SkipListNode(Integer.MIN_VALUE, MAX_LEVEL);
+        this.random = new Random();
+    }
 
     public static void main(String[] args) {
         SkipList skipList = new SkipList();
@@ -19,17 +30,6 @@ public class SkipList {
 
         skipList.delete(1);
         System.out.println(skipList.search(1)); // 输出 false
-    }
-
-    private static final int MAX_LEVEL = 16; // 最大层数
-    private int level; // 当前跳表的层数
-    private final SkipListNode head; // 头节点
-    private final Random random; // 用于生成随机数
-
-    public SkipList() {
-        this.level = 0;
-        this.head = new SkipListNode(Integer.MIN_VALUE, MAX_LEVEL);
-        this.random = new Random();
     }
 
     public void insert(int val) {
