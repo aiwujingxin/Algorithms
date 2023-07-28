@@ -1,7 +1,7 @@
 package basic.problems.dp;
 
-import basic.algorithm.dp.other.*;
-import basic.algorithm.greedy.*;
+import basic.algorithm.dp.other.ActivityPack_dp;
+import basic.algorithm.greedy.ActivityPack_Greedy;
 
 /**
  * @author wujingxinit@outlook.com

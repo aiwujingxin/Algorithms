@@ -1,7 +1,10 @@
 package leetcode.lists.topinterview;
 
 
-import java.util.*;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Set;
 
 /**
  * @author wujingxinit@outlook.com

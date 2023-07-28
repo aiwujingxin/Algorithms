@@ -1,6 +1,6 @@
 package leetcode.lists.hot100;
 
-import common.*;
+import common.TreeNode;
 
 /**
  * @author wujingxinit@outlook.com
@@ -11,7 +11,7 @@ public class LeetCode236 {
     public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
 
         if (root == null) {
-            return null;
+            return root;
         }
 
         if (root == p || root == q) {

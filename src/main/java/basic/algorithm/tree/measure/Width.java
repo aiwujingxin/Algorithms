@@ -1,9 +1,11 @@
 package basic.algorithm.tree.measure;
 
 import basic.problems.tree.*;
-import common.*;
+import common.TreeNode;
 
-import java.util.*;
+import java.util.Deque;
+import java.util.LinkedList;
+import java.util.Queue;
 
 /**
  * @author wujingxinit@outlook.com

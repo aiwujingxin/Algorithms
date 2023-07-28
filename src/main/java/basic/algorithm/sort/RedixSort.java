@@ -2,7 +2,7 @@ package basic.algorithm.sort;
 
 import basic.problems.array.*;
 
-import java.util.*;
+import java.util.Arrays;
 
 /**
  * @author aiwujingxin@gmail.com

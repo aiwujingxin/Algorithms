@@ -1,7 +1,7 @@
 package basic.algorithm.tree.serialize;
 
 import basic.problems.tree.*;
-import common.*;
+import common.TreeNode;
 
 import java.util.*;
 

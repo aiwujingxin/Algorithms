@@ -1,8 +1,8 @@
 package basic.algorithm.sort;
 
-import basic.problems.array.*;
+import basic.problems.array.ArraySort;
 
-import java.util.*;
+import java.util.Random;
 
 /**
  * @author wujingxinit@outlook.com

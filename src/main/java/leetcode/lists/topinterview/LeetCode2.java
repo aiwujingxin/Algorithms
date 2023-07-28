@@ -1,6 +1,6 @@
 package leetcode.lists.topinterview;
 
-import common.*;
+import common.ListNode;
 
 /**
  * @author wujingxinit@outlook.com

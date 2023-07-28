@@ -1,7 +1,7 @@
 package basic.algorithm.sort;
 
 import basic.problems.list.*;
-import common.*;
+import common.ListNode;
 
 /**
  * @author wujingxinit@outlook.com

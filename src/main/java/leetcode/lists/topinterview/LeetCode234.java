@@ -1,6 +1,6 @@
 package leetcode.lists.topinterview;
 
-import common.*;
+import common.ListNode;
 
 /**
  * @author wujingxinit@outlook.com
@@ -19,7 +19,7 @@ public class LeetCode234 {
         frontPointer = head;
         return recursivelyCheck(head);
     }
-
+    
     private boolean recursivelyCheck(ListNode currentNode) {
         if (currentNode != null) {
             if (!recursivelyCheck(currentNode.next)) {

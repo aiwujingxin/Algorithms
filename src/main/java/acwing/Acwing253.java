@@ -1,9 +1,9 @@
 package acwing;
 
 
-import basic.advstructure.*;
+import basic.advstructure.TreapTree;
 
-import java.util.*;
+import java.util.Scanner;
 
 /**
  * @author wujingxinit@outlook.com

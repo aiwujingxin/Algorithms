@@ -1,6 +1,6 @@
 package leetcode.lists.hot200;
 
-import java.util.*;
+import java.util.List;
 
 /**
  * @author wujingxinit@outlook.com

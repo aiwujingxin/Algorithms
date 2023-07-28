@@ -1,7 +1,8 @@
 package leetcode.plan.graph.level1;
 
 
-import java.util.*;
+import java.util.ArrayDeque;
+import java.util.Queue;
 
 /**
  * @author wujingxinit@outlook.com

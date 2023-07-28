@@ -1,6 +1,6 @@
 package leetcode.lists.hot100;
 
-import java.util.*;
+import java.util.PriorityQueue;
 
 /**
  * @author aiwujingxin@gmail.com

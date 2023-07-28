@@ -1,6 +1,6 @@
 package basic.algorithm.np.tsp;
 
-import java.util.*;
+import java.util.Arrays;
 
 /**
  * @author wujingxinit@outlook.com

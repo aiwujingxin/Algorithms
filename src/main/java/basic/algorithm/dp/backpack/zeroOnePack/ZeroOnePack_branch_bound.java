@@ -1,8 +1,11 @@
 package basic.algorithm.dp.backpack.zeroOnePack;
 
-import basic.problems.dp.*;
+import basic.problems.dp.BackPack;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.LinkedList;
+import java.util.Queue;
 
 /**
  * @author wujingxinit@outlook.com

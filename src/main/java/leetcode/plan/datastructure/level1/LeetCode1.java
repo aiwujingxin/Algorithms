@@ -1,6 +1,6 @@
 package leetcode.plan.datastructure.level1;
 
-import java.util.*;
+import java.util.HashMap;
 
 /**
  * @author wujingxinit@outlook.com

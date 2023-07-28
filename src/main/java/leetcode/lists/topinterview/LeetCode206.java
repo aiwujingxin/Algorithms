@@ -1,6 +1,6 @@
 package leetcode.lists.topinterview;
 
-import common.*;
+import common.ListNode;
 
 /**
  * @author wujingxinit@outlook.com
@@ -17,7 +17,7 @@ public class LeetCode206 {
         //     pre    cur   next
         ListNode pre = head;
         ListNode cur = head.next;
-        pre.next = null;
+        pre.next  = null;
         while (cur != null) {
             ListNode next = cur.next;
             cur.next = pre;

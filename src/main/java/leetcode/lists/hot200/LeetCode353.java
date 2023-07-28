@@ -1,6 +1,7 @@
 package leetcode.lists.hot200;
 
-import java.util.*;
+import java.util.ArrayDeque;
+import java.util.Deque;
 
 /**
  * @author wujingxinit@outlook.com

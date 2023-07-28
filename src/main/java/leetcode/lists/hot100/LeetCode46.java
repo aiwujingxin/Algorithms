@@ -1,6 +1,7 @@
 package leetcode.lists.hot100;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author aiwujingxin@gmail.com

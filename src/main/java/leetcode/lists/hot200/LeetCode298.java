@@ -1,11 +1,10 @@
 package leetcode.lists.hot200;
 
-import common.*;
+import common.TreeNode;
 
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/3/14 18:57
- * {@link leetcode.problems.LeetCode549_dp_tree}
  */
 public class LeetCode298 {
 

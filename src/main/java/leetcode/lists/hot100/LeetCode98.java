@@ -1,6 +1,6 @@
 package leetcode.lists.hot100;
 
-import common.*;
+import common.TreeNode;
 
 /**
  * @author wujingxinit@outlook.com

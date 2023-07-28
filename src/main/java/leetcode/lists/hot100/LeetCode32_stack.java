@@ -1,6 +1,6 @@
 package leetcode.lists.hot100;
 
-import java.util.*;
+import java.util.Stack;
 
 /**
  * @author wujingxinit@outlook.com

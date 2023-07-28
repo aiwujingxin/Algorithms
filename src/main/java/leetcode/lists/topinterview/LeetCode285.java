@@ -1,8 +1,8 @@
 package leetcode.lists.topinterview;
 
-import common.*;
+import common.TreeNode;
 
-import java.util.*;
+import java.util.Stack;
 
 /**
  * @author wujingxinit@outlook.com

@@ -1,8 +1,10 @@
 package leetcode.lists.hot100;
 
-import common.*;
+import common.TreeNode;
 
-import java.util.*;
+import java.util.LinkedList;
+import java.util.Objects;
+import java.util.Queue;
 
 /**
  * @author wujingxinit@outlook.com

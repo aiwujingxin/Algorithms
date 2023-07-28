@@ -1,6 +1,6 @@
 package leetcode.lists.topinterview;
 
-import java.util.*;
+import java.util.TreeSet;
 
 /**
  * @author wujingxinit@outlook.com

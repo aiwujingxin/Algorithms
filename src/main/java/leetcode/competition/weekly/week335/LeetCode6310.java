@@ -1,6 +1,6 @@
 package leetcode.competition.weekly.week335;
 
-import java.util.*;
+import java.util.Arrays;
 
 /**
  * @author wujingxinit@outlook.com

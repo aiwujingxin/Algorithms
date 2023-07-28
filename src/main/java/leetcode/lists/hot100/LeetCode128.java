@@ -1,6 +1,6 @@
 package leetcode.lists.hot100;
 
-import java.util.*;
+import java.util.HashSet;
 
 /**
  * @author wujingxinit@outlook.com

@@ -1,8 +1,8 @@
 package leetcode.problems;
 
-import common.*;
+import common.TreeNode;
 
-import java.util.*;
+import java.util.Arrays;
 
 /**
  * @author wujingxinit@outlook.com

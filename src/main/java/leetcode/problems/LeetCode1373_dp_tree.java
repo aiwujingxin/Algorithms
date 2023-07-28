@@ -1,10 +1,11 @@
 package leetcode.problems;
 
-import common.*;
+import common.TreeNode;
 
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/7/23 14:53
+ * {@link leetcode.lists.hot200.LeetCode333_dp_tree}
  */
 public class LeetCode1373_dp_tree {
 
@@ -15,21 +16,20 @@ public class LeetCode1373_dp_tree {
         return ans;
     }
 
-    private int[] dfs(TreeNode node) {
-        if (node == null) {
+    private int[] dfs(TreeNode root) {
+        if (root == null) {
             return new int[]{Integer.MAX_VALUE, Integer.MIN_VALUE, 0};
         }
 
-        int[] left = dfs(node.left); // 递归左子树
-        int[] right = dfs(node.right); // 递归右子树
-        int x = node.val;
-        if (x <= left[1] || x >= right[0]) { // 不是二叉搜索树
+        int[] left = dfs(root.left); // 递归左子树
+        int[] right = dfs(root.right); // 递归右子树
+        if (root.val <= left[1] || root.val >= right[0]) { // 不是二叉搜索树
             return new int[]{Integer.MIN_VALUE, Integer.MAX_VALUE, 0};
         }
 
-        int s = left[2] + right[2] + x; // 这棵子树的所有节点值之和
+        int s = left[2] + right[2] + root.val; // 这棵子树的所有节点值之和
         ans = Math.max(ans, s);
 
-        return new int[]{Math.min(left[0], x), Math.max(right[1], x), s};
+        return new int[]{Math.min(left[0], root.val), Math.max(right[1], root.val), s};
     }
 }

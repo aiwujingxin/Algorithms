@@ -1,8 +1,8 @@
 package basic.algorithm.dp.other;
 
-import basic.problems.dp.*;
+import basic.problems.dp.ActivityPack;
 
-import java.util.*;
+import java.util.Arrays;
 
 /**
  * @author aiwujingxin@gmail.com

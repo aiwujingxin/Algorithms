@@ -13,7 +13,7 @@ public class LeetCode80_v2 {
         if (nums.length <= 2) {
             return nums.length;
         }
-        // loc-2  loc-1  _idx      loc
+       // loc-2  loc-1  _idx      loc
         //                        idx
         int loc = 2;
         for (int idx = 2; idx < nums.length; idx++) {

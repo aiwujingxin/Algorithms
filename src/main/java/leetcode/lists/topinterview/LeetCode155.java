@@ -1,6 +1,6 @@
 package leetcode.lists.topinterview;
 
-import java.util.*;
+import java.util.Stack;
 
 /**
  * @author wujingxinit@outlook.com

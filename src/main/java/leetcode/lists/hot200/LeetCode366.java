@@ -1,7 +1,7 @@
 package leetcode.lists.hot200;
 
 
-import common.*;
+import common.TreeNode;
 
 import java.util.*;
 

@@ -1,6 +1,7 @@
 package leetcode.lists.hot100;
 
-import java.util.*;
+import java.util.Deque;
+import java.util.LinkedList;
 
 /**
  * @author wujingxinit@outlook.com

@@ -1,6 +1,6 @@
 package basic.algorithm.string;
 
-import java.util.*;
+import java.util.Arrays;
 
 /**
  * @author aiwujingxin@gmail.com

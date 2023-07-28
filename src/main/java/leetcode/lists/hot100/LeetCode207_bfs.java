@@ -1,6 +1,7 @@
 package leetcode.lists.hot100;
 
-import java.util.*;
+import java.util.LinkedList;
+import java.util.Queue;
 
 /**
  * @author wujingxinit@outlook.com

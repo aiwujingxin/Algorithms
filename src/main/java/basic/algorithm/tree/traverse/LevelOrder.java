@@ -1,9 +1,12 @@
 package basic.algorithm.tree.traverse;
 
 import basic.problems.tree.*;
-import common.*;
+import common.TreeNode;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Queue;
 
 /**
  * @author wujingxinit@outlook.com

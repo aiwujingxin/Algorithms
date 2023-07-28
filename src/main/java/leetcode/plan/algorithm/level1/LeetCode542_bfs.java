@@ -1,6 +1,7 @@
 package leetcode.plan.algorithm.level1;
 
-import java.util.*;
+import java.util.LinkedList;
+import java.util.Queue;
 
 /**
  * @author wujingxinit@outlook.com

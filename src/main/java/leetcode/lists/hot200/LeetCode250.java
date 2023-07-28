@@ -1,6 +1,6 @@
 package leetcode.lists.hot200;
 
-import common.*;
+import common.TreeNode;
 
 /**
  * @author wujingxinit@outlook.com
@@ -9,7 +9,6 @@ import common.*;
 public class LeetCode250 {
 
     int res = 0;
-
     public int countUnivalSubtrees(TreeNode root) {
         if (root == null) {
             return 0;

@@ -46,9 +46,8 @@ public class LeetCode327 {
         int low = mid + 1, high = mid + 1;
 
         int t = left;
-
-        // 计数
         while (t <= mid) {
+            // 计数
             while (low <= right && sum[low] - sum[t] < lower) {
                 low++;
             }

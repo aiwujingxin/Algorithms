@@ -1,6 +1,6 @@
 package leetcode.lists.hot200;
 
-import common.*;
+import common.TreeNode;
 
 import java.util.*;
 
@@ -45,7 +45,7 @@ public class LeetCode314 {
                 map.put(left.col, _list);
             }
             if (node.node.right != null) {
-                STreeNode right = new STreeNode(node.node.left, node.row + 1, node.col + 1);
+                STreeNode right = new STreeNode(node.node.right, node.row + 1, node.col + 1);
                 queue.add(right);
                 List<STreeNode> _list = map.getOrDefault(right.col, new ArrayList<>());
                 _list.add(right);

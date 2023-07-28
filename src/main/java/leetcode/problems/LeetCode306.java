@@ -1,7 +1,8 @@
 package leetcode.problems;
 
-import java.math.*;
-import java.util.*;
+import java.math.BigInteger;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author jingxinwu

@@ -7,7 +7,7 @@ package leetcode.lists.topinterview;
 public class LeetCode122 {
 
     public static void main(String[] args) {
-        System.out.println(new LeetCode122().maxProfit(new int[]{7, 1, 5, 3, 6, 4}));
+        System.out.println(new LeetCode122().maxProfit(new int[]{7,1,5,3,6,4}));
     }
 
     public int maxProfit(int[] prices) {

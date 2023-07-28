@@ -1,6 +1,6 @@
 package leetcode.competition.doubleweekly.week99;
 
-import java.util.*;
+import java.util.Arrays;
 
 /**
  * @author aiwujingxin@gmail.com

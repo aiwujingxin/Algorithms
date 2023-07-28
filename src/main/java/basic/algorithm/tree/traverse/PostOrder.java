@@ -1,9 +1,11 @@
 package basic.algorithm.tree.traverse;
 
-import basic.problems.tree.*;
-import common.*;
+import basic.problems.tree.Traverse;
+import common.TreeNode;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Stack;
 
 /**
  * @author wujingxinit@outlook.com
@@ -37,22 +39,25 @@ public class PostOrder implements Traverse {
             return list;
         }
         Stack<TreeNode> stack = new Stack<>();
+        TreeNode cur = root;
         TreeNode pre = null;  // 用于记录上一次访问的节点
-        while (root != null || !stack.isEmpty()) {
-            while (root != null) {
-                stack.push(root);
-                root = root.left;
+        while (cur != null || !stack.isEmpty()) {
+            while (cur != null) {
+                stack.push(cur);
+                cur = cur.left;
             }
-            if (!stack.isEmpty()) {
-                root = stack.pop();
-                if (root.right == null || pre == root.right) { // 访问节点的条件
-                    list.add(root.val); // 访问
-                    pre = root; // 这一步是记录上一次访问的节点
-                    root = null; // 此处为了跳过下一次循环的访问左子节点的过程，直接进入栈的弹出阶段，因为但凡在栈中的节点，它们的左子节点都肯定被经过且已放入栈中。
-                } else { // 不访问节点的条件
-                    stack.push(root); // 将已弹出的根节点放回栈中
-                    root = root.right; // 经过右子节点
-                }
+            if (stack.isEmpty()) {
+                return list;
+            }
+            // 连续不断的向上一层返回，连续退栈
+            cur = stack.pop();
+            if (cur.right == null || pre == cur.right) { // 访问节点的条件, 没有右节点了， 或者刚访问完它的右节点
+                list.add(cur.val); // 访问
+                pre = cur; // 这一步是记录上一次访问的节点
+                cur = null; // 此处为了跳过下一次循环的访问左子节点的过程，直接进入栈的弹出阶段，因为但凡在栈中的节点，它们的左子节点都肯定被经过且已放入栈中。
+            } else { // 不访问节点的条件
+                stack.push(cur); // 将已弹出的根节点放回栈中
+                cur = cur.right; // 经过右子节点， 再借助最外层的while循环继续走
             }
         }
         return list;

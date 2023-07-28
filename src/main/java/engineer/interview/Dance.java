@@ -1,6 +1,7 @@
 package engineer.interview;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author jingxinwu

@@ -20,7 +20,7 @@ public class LeetCode5 {
         }
 
 
-        for (int i = 0; i < s.length() - 1; i++) {
+        for (int i = 0; i < s.length() -1; i++) {
             helper(s, i, i);
             helper(s, i, i + 1);
         }

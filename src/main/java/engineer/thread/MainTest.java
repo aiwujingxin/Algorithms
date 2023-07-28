@@ -1,6 +1,6 @@
 package engineer.thread;
 
-import java.util.concurrent.*;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @author jingxinwu

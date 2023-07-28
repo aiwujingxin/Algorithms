@@ -1,6 +1,6 @@
 package leetcode.plan.algorithm.level1;
 
-import common.*;
+import common.TreeNode;
 
 /**
  * @author wujingxinit@outlook.com

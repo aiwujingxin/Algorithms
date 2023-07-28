@@ -19,7 +19,7 @@ public class LeetCode1926 {
         int res = Integer.MAX_VALUE;
         Queue<int[]> queue = new LinkedList<>();
         HashSet<String> visited = new HashSet<>();
-        boolean flag = false;
+        boolean flag= false;
         queue.add(new int[]{entrance[0], entrance[1], 0});
         visited.add(entrance[0] + "," + entrance[1]);
         while (!queue.isEmpty()) {
@@ -30,7 +30,7 @@ public class LeetCode1926 {
             for (int[] next : nexts) {
                 if (next[0] == 0 || next[0] == maze.length - 1
                         || next[1] == 0 || next[1] == maze[0].length - 1) {
-                    flag = true;
+                    flag =true;
                     res = Math.min(res, next[2]);
                 } else {
                     queue.add(next);

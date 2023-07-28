@@ -1,6 +1,7 @@
 package leetcode.lists.topinterview;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.LinkedList;
 
 /**
  * @author wujingxinit@outlook.com

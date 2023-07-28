@@ -1,6 +1,6 @@
 package basic.advstructure;
 
-import java.util.*;
+import java.util.Stack;
 
 /**
  * 基于堆的优先队列
@@ -10,7 +10,7 @@ import java.util.*;
  * <a href="https://github.com/labuladong/fucking-algorithm/blob/master/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%B3%BB%E5%88%97/%E4%BA%8C%E5%8F%89%E5%A0%86%E8%AF%A6%E8%A7%A3%E5%AE%9E%E7%8E%B0%E4%BC%98%E5%85%88%E7%BA%A7%E9%98%9F%E5%88%97.md">...</a>
  */
 
-public class MaxHeap<Key extends Comparable<Key>> implements basic.problems.array.TopK {
+public class MaxHeap<Key extends Comparable<Key>> implements basic.problems.array.TopK{
 
 
     public static void main(String[] args) {

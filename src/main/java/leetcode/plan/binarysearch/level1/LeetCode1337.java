@@ -1,6 +1,7 @@
 package leetcode.plan.binarysearch.level1;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.Comparator;
 
 /**
  * @author wujingxinit@outlook.com

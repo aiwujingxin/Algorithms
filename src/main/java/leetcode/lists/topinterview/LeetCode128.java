@@ -1,6 +1,6 @@
 package leetcode.lists.topinterview;
 
-import java.util.*;
+import java.util.HashSet;
 
 /**
  * @author wujingxinit@outlook.com
