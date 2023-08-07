@@ -1,6 +1,6 @@
 package leetcode.problems;
 
-import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -9,27 +9,32 @@ import java.util.List;
  */
 public class LeetCode77 {
 
+    List<List<Integer>> res = new LinkedList<>();
+    // 记录回溯算法的递归路径
+    LinkedList<Integer> track = new LinkedList<>();
+
+    // 主函数
     public List<List<Integer>> combine(int n, int k) {
-        if (n == 0) {
-            return new ArrayList<>(new ArrayList<>());
-        }
-        List<List<Integer>> res = new ArrayList<>();
-
-        helper(n, k, res, 1, new ArrayList<>());
-
+        backtrack(1, n, k);
         return res;
     }
 
-    private void helper(int n, int k, List<List<Integer>> res, int index, ArrayList<Integer> temp) {
-
-        if (temp.size() == k) {
-            res.add(new ArrayList<>(temp));
+    void backtrack(int start, int n, int k) {
+        // base case
+        if (k == track.size()) {
+            // 遍历到了第 k 层，收集当前节点的值
+            res.add(new LinkedList<>(track));
+            return;
         }
 
-        for (int i = index; i <= n; i++) {
-            temp.add(i);
-            helper(n, k, res, i + 1, temp);
-            temp.remove(temp.size() - 1);
+        // 回溯算法标准框架
+        for (int i = start; i <= n; i++) {
+            // 选择
+            track.addLast(i);
+            // 通过 start 参数控制树枝的遍历，避免产生重复的子集
+            backtrack(i + 1, n, k);
+            // 撤销选择
+            track.removeLast();
         }
     }
 }

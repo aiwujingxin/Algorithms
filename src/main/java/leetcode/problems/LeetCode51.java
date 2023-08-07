@@ -18,11 +18,11 @@ public class LeetCode51 {
             }
         }
 
-        dfs(board, 0, n, new ArrayList<>(), result);
+        backtrack(board, 0, n, new ArrayList<>(), result);
         return result;
     }
 
-    private void dfs(char[][] board, int row, int n, List<String> tempList, List<List<String>> result) {
+    private void backtrack(char[][] board, int row, int n, List<String> tempList, List<List<String>> result) {
         if (row == n) {
             result.add(new ArrayList<>(tempList));
             return;
@@ -35,7 +35,7 @@ public class LeetCode51 {
 
             board[row][col] = 'Q';
             tempList.add(new String(board[row]));
-            dfs(board, row + 1, n, tempList, result); // 以行为单位
+            backtrack(board, row + 1, n, tempList, result); // 以行为单位
             board[row][col] = '.';
             tempList.remove(tempList.size() - 1);
         }

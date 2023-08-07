@@ -1,36 +1,32 @@
 package leetcode.problems;
 
 /**
- * @author jingxinwu
- * @date 2021-12-07 12:23 上午
+ * @author wujingxinit@outlook.com
+ * @date 2023/8/1 12:38
  */
 public class LeetCode322_dfs {
 
-    public int coinChange(int[] coins, int amount) {
-        if (amount < 1) {
-            return 0;
-        }
-        return coinChange(coins, amount, new int[amount]);
+    int coinChange(int[] coins, int amount) {
+        // 题目要求的最终结果是 dp(amount)
+        return dp(coins, amount);
     }
 
-    private int coinChange(int[] coins, int rem, int[] count) {
-        if (rem < 0) {
-            return -1;
-        }
-        if (rem == 0) {
-            return 0;
-        }
-        if (count[rem - 1] != 0) {
-            return count[rem - 1];
-        }
-        int min = Integer.MAX_VALUE;
+    // 定义：要凑出金额 n，至少要 dp(coins, n) 个硬币
+    int dp(int[] coins, int amount) {
+        // base case
+        if (amount == 0) return 0;
+        if (amount < 0) return -1;
+        int res = Integer.MAX_VALUE;
         for (int coin : coins) {
-            int res = coinChange(coins, rem - coin, count);
-            if (res >= 0 && res < min) {
-                min = 1 + res;
+            // 计算子问题的结果
+            int subProblem = dp(coins, amount - coin);
+            // 子问题无解则跳过
+            if (subProblem == -1) {
+                continue;
             }
+            // 在子问题中选择最优解，然后加一
+            res = Math.min(res, subProblem + 1);
         }
-        count[rem - 1] = (min == Integer.MAX_VALUE) ? -1 : min;
-        return count[rem - 1];
+        return res == Integer.MAX_VALUE ? -1 : res;
     }
 }

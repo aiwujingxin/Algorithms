@@ -21,11 +21,11 @@ public class LeetCode47_set {
         if (nums == null || nums.length == 0) {
             return res;
         }
-        helper(0, res, nums);
+        backtrack(0, res, nums);
         return res;
     }
 
-    private void helper(int depth, List<List<Integer>> res, int[] nums) {
+    private void backtrack(int depth, List<List<Integer>> res, int[] nums) {
         if (depth == nums.length) {
             List<Integer> temp = new ArrayList<>();
             for (int num : nums) {
@@ -42,7 +42,7 @@ public class LeetCode47_set {
             visited.add(nums[i]);
 
             swap(nums, depth, i);
-            helper(depth + 1, res, nums);
+            backtrack(depth + 1, res, nums);
             swap(nums, depth, i);
         }
     }

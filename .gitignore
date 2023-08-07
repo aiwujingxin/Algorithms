@@ -33,3 +33,4 @@ build/
 .vscode/
 /.mvn/
 /src/test/
+/src/test/java/

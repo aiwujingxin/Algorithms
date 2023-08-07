@@ -9,16 +9,6 @@ import java.util.Queue;
 
 public class LeetCode1609 {
 
-    public static void main(String[] args) {
-
-        TreeNode root = new TreeNode(2);
-        TreeNode q = new TreeNode(12);
-        TreeNode w = new TreeNode(8);
-        root.left = q;
-        root.right = w;
-        System.out.println(new LeetCode1609().isEvenOddTree(root));
-    }
-
     public boolean isEvenOddTree(TreeNode root) {
         if (root == null) {
             return true;

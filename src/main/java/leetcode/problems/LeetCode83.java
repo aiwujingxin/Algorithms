@@ -8,20 +8,21 @@ import common.ListNode;
  */
 public class LeetCode83 {
 
-    public ListNode deleteDuplicates(ListNode head) {
-        if (head == null || head.next == null) {
-            return head;
-        }
-        ListNode dummy = new ListNode(-1);
-        dummy.next = head;
-        ListNode cur = head;
-        while (cur.next != null) {
-            if (cur.val == cur.next.val) {
-                cur.next = cur.next.next;
-            } else {
-                cur = cur.next;
+    ListNode deleteDuplicates(ListNode head) {
+        if (head == null) return null;
+        ListNode slow = head, fast = head;
+        while (fast != null) {
+            if (fast.val != slow.val) {
+                // nums[slow] = nums[fast];
+                slow.next = fast;
+                // slow++;
+                slow = slow.next;
             }
+            // fast++
+            fast = fast.next;
         }
-        return dummy.next;
+        // 断开与后面重复元素的连接
+        slow.next = null;
+        return head;
     }
 }

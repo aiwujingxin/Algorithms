@@ -1,7 +1,7 @@
 package leetcode.problems;
 
-import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -10,29 +10,27 @@ import java.util.List;
  */
 public class LeetCode90 {
 
+    List<List<Integer>> res = new LinkedList<>();
+    LinkedList<Integer> track = new LinkedList<>();
+
     public List<List<Integer>> subsetsWithDup(int[] nums) {
-        List<List<Integer>> res = new ArrayList<>();
-
-        if (nums == null || nums.length == 0) {
-            return res;
-        }
-
+        // 先排序，让相同的元素靠在一起
         Arrays.sort(nums);
-        helper(nums, 0, res, new ArrayList<>());
-
+        backtrack(nums, 0);
         return res;
     }
 
-    private void helper(int[] nums, int index, List<List<Integer>> res, ArrayList<Integer> temp) {
-        res.add(new ArrayList<>(temp));
-        for (int i = 0; i < nums.length; i++) {
-
-            if (i != index && nums[i] == nums[i - 1]) {
+    void backtrack(int[] nums, int start) {
+        // 前序位置，每个节点的值都是一个子集
+        res.add(new LinkedList<>(track));
+        for (int i = start; i < nums.length; i++) {
+            // 剪枝逻辑，值相同的相邻树枝，只遍历第一条
+            if (i > start && nums[i] == nums[i - 1]) {
                 continue;
             }
-            temp.add(nums[i]);
-            helper(nums, index + 1, res, temp);
-            temp.remove(temp.size() - 1);
+            track.addLast(nums[i]);
+            backtrack(nums, i + 1);
+            track.removeLast();
         }
     }
 }

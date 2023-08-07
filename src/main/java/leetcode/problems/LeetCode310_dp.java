@@ -14,11 +14,6 @@ import java.util.List;
 //首先，它通过输入的边的列表来构建一张图，然后使用深度优先搜索（DFS）来计算每个结点往下的最长链（d1）和次长链（d2），并记录下每个结点父节点的信息（p）。
 //接着，它再次使用DFS来计算每个结点向上的最远距离（up），最后用每个结点的最长链和它向上的最远距离的最大值来计算出最小高度，并返回所有具有最小高度的结点的编号。
 public class LeetCode310_dp {
-    void add(int a, int b) {
-        e[idx] = b;
-        ne[idx] = he[a];
-        he[a] = idx++;
-    }
 
     public List<Integer> findMinHeightTrees(int n, int[][] edges) {
         Arrays.fill(he, -1);
@@ -47,6 +42,12 @@ public class LeetCode310_dp {
         }
         return ans;
     }    int N = 20010, M = N * 2, idx = 0;
+
+    void add(int a, int b) {
+        e[idx] = b;
+        ne[idx] = he[a];
+        he[a] = idx++;
+    }
 
     int dfs1(int u, int fa) {
         for (int i = he[u]; i != -1; i = ne[i]) {
@@ -90,13 +91,14 @@ public class LeetCode310_dp {
             //遍历整颗树，递归更新
             dfs2(j, u);
         }
-    }    int[] he = new int[N], e = new int[M], ne = new int[M];
+    }
 
+
+
+    int[] he = new int[N], e = new int[M], ne = new int[M];
 
 
     int[] f1 = new int[N], f2 = new int[N], g = new int[N], p = new int[N];
-
-
 
 
 }

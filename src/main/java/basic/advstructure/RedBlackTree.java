@@ -3,7 +3,7 @@ package basic.advstructure;
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/5/25 00:14
- * from chat gpt
+ * from ChatGPT
  */
 
 public class RedBlackTree {

@@ -25,18 +25,19 @@ public class LeetCode46 {
             return new ArrayList<>();
         }
         List<List<Integer>> res = new ArrayList<>();
-        helper(res, nums, 0);
+        backtrack(res, nums, 0);
         return res;
     }
 
-    private void helper(List<List<Integer>> res, int[] nums, int index) {
+    private void backtrack(List<List<Integer>> res, int[] nums, int index) {
         if (index == nums.length) {
             res.add(asList(nums));
             return;
         }
         for (int i = index; i < nums.length; i++) {
+            // 只要在递归之前做出选择，在递归之后撤销刚才的选择
             swap(nums, i, index);
-            helper(res, nums, index + 1);
+            backtrack(res, nums, index + 1);
             swap(nums, i, index);
         }
     }

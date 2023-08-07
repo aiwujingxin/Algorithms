@@ -22,12 +22,11 @@ public class LeetCode47 {
             return res;
         }
         Arrays.sort(nums);
-        helper(res, nums, new HashSet<>(), new ArrayList<>());
+        backtrack(res, nums, new HashSet<>(), new ArrayList<>());
         return res;
     }
 
-    private void helper(List<List<Integer>> res, int[] nums, HashSet<Integer> visited,
-                        ArrayList<Integer> temp) {
+    private void backtrack(List<List<Integer>> res, int[] nums, HashSet<Integer> visited, ArrayList<Integer> temp) {
         if (temp.size() == nums.length) {
             res.add(new ArrayList<>(temp));
             return;
@@ -41,7 +40,7 @@ public class LeetCode47 {
             }
             temp.add(nums[i]);
             visited.add(i);
-            helper(res, nums, visited, temp);
+            backtrack(res, nums, visited, temp);
             temp.remove(temp.size() - 1);
             visited.remove(i);
         }

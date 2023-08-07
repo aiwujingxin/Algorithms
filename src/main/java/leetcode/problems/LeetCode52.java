@@ -9,10 +9,10 @@ public class LeetCode52 {
         for (char[] i : board) {
             Arrays.fill(i, '.');
         }
-        return dfs(0, board);
+        return backtrack(0, board);
     }
 
-    public int dfs(int col, char[][] board) {
+    public int backtrack(int col, char[][] board) {
         if (col == board.length) {
             return 1;
         }
@@ -20,7 +20,7 @@ public class LeetCode52 {
         for (int row = 0; row < board.length; row++) {
             if (valid(board, row, col)) {
                 board[row][col] = 'Q';
-                count += dfs(col + 1, board);
+                count += backtrack(col + 1, board);
                 board[row][col] = '.';
             }
         }

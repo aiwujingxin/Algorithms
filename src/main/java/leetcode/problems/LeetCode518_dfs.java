@@ -19,10 +19,10 @@ public class LeetCode518_dfs {
 
         HashMap<Integer, HashMap<Integer, Integer>> map = new HashMap<>();
 
-        return changeHelper(amount, coins, coins.length - 1, map);
+        return dfs(amount, coins, coins.length - 1, map);
     }
 
-    private int changeHelper(int amount, int[] coins, int idx, HashMap<Integer, HashMap<Integer, Integer>> map) {
+    private int dfs(int amount, int[] coins, int idx, HashMap<Integer, HashMap<Integer, Integer>> map) {
         if (amount < 0 || idx < 0) {
             return 0;
         }
@@ -33,7 +33,7 @@ public class LeetCode518_dfs {
             return map.get(idx).get(amount);
         }
 
-        int count = changeHelper(amount - coins[idx], coins, idx, map) + changeHelper(amount, coins, idx - 1, map);
+        int count = dfs(amount - coins[idx], coins, idx, map) + dfs(amount, coins, idx - 1, map);
         map.putIfAbsent(idx, new HashMap<>());
         map.get(idx).put(amount, count);
         return count;
