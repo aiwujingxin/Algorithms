@@ -1,4 +1,4 @@
-package basic.algorithm.dp.knapsack.zeroone;
+package basic.algorithm.dp.knapsack.zeroOne;
 
 import basic.problems.dp.BackPack;
 

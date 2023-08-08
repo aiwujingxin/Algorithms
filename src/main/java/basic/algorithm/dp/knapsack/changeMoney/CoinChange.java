@@ -1,4 +1,4 @@
-package basic.algorithm.dp.knapsack.changemoney;
+package basic.algorithm.dp.knapsack.changeMoney;
 
 import basic.problems.dp.ChangeMoney;
 

@@ -7,5 +7,8 @@ package basic.algorithm.dp.knapsack.lintCode;
  * <a href="https://www.lintcode.com/problem/440/"></a>
  * {@link basic.algorithm.dp.knapsack.complete.CompletePack_dp_1d}
  */
+/*
+ * 给定n种具有大小 Ai 和价值 Vi 的物品(每个物品可以取用无限次)和一个大小为 m 的一个背包, 你可以放入背包里的最大价值是多少?
+ * */
 public class BackpackIII {
 }

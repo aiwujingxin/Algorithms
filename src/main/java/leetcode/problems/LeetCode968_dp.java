@@ -1,6 +1,6 @@
 package leetcode.problems;
 
-import common.TreeNode;
+import common.*;
 
 /**
  * @author wujingxinit@outlook.com
@@ -17,6 +17,9 @@ public class LeetCode968_dp {
         }
         return res;
     }
+    // 0 无覆盖,没有摄像头
+    // 1 有覆盖,  有摄像头
+    // 2 有覆盖, 没有摄像头
 
     public int minCame(TreeNode root) {
         if (root == null) {
@@ -30,16 +33,16 @@ public class LeetCode968_dp {
         if (left == 2 && right == 2) {
             //(2,2)
             return 0;
-        } else if (left == 0 || right == 0) {
+        }
+        if (left == 0 || right == 0) {
             // 左右节点都是无覆盖状态,那 根节点此时应该放一个摄像头
             // (0,0) (0,1) (0,2) (1,0) (2,0)
             // 状态值为 1 摄像头数 ++;
             res++;
             return 1;
-        } else {
-            // 左右节点的 状态为 (1,1) (1,2) (2,1) 也就是左右节点至少存在 1个摄像头，
-            // 那么本节点就是处于被覆盖状态
-            return 2;
         }
+        // 左右节点的 状态为 (1,1) (1,2) (2,1) 也就是左右节点至少存在 1个摄像头，
+        // 那么本节点就是处于被覆盖状态
+        return 2;
     }
 }
