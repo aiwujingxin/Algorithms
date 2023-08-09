@@ -1,7 +1,6 @@
 package basic.algorithm.other;
 
-import leetcode.problems.LeetCode1109;
-import leetcode.problems.LeetCode370;
+import leetcode.problems.*;
 
 /**
  * @author wujingxinit@outlook.com

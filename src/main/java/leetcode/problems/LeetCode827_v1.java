@@ -1,9 +1,6 @@
 package leetcode.problems;
 
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 /**
  * @author aiwujingxin@gmail.com

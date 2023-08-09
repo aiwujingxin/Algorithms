@@ -1,7 +1,6 @@
 package leetcode.problems;
 
-import java.util.LinkedList;
-import java.util.Queue;
+import java.util.*;
 
 public class LeetCode490_bfs {
 

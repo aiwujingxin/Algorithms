@@ -1,8 +1,8 @@
 package basic.algorithm.sort;
 
-import basic.structure.array.ArraySort;
+import basic.structure.array.*;
 
-import java.util.Arrays;
+import java.util.*;
 
 /**
  * @author aiwujingxin@gmail.com

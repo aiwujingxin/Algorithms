@@ -1,7 +1,6 @@
 package leetcode.problems;
 
-import java.util.HashMap;
-import java.util.LinkedList;
+import java.util.*;
 
 /**
  * @author jingxinwu

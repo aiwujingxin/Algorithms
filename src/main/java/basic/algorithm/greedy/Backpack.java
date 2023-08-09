@@ -1,11 +1,9 @@
 package basic.algorithm.greedy;
 
 
-import basic.algorithm.dp.knapsack.knapsack;
+import basic.algorithm.dp.knapsack.*;
 
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 
 
 public class Backpack implements knapsack {

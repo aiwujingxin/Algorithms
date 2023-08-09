@@ -1,8 +1,6 @@
 package basic.algorithm.graph.mst;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 /**
  * @author aiwujingxin@gmail.com

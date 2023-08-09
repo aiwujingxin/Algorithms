@@ -5,10 +5,7 @@ package basic.algorithm.search;
  * @date 2023/6/6 22:48
  */
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class IDAStar {
     // 目标状态

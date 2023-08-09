@@ -1,8 +1,8 @@
 package leetcode.lists.offer;
 
-import common.ListNode;
+import common.*;
 
-import java.util.ArrayList;
+import java.util.*;
 
 /**
  * @author wujingxinit@outlook.com

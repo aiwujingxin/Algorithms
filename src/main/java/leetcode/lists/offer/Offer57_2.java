@@ -1,7 +1,6 @@
 package leetcode.lists.offer;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 /**
  * @author jingxinwu

@@ -1,6 +1,6 @@
 package basic.algorithm.dp.linerdp;
 
-import basic.algorithm.dp.other.ActivityPack_dp;
+import basic.algorithm.dp.other.*;
 
 /**
  * @author wujingxinit@outlook.com

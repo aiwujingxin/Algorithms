@@ -1,6 +1,6 @@
 package leetcode.lists.offerII;
 
-import common.TreeNode;
+import common.*;
 
 /**
  * @author wujingxinit@outlook.com

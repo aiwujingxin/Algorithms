@@ -1,11 +1,8 @@
 package leetcode.problems;
 
-import basic.advstructure.BinaryIndexedTree;
+import basic.advstructure.*;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
-import java.util.TreeSet;
+import java.util.*;
 
 /**
  * @author jingxinwu

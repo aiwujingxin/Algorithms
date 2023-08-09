@@ -1,9 +1,8 @@
 package leetcode.problems;
 
-import common.TreeNode;
+import common.*;
 
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 /**
  * @author jingxinwu

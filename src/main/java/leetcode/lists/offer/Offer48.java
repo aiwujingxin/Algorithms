@@ -1,6 +1,6 @@
 package leetcode.lists.offer;
 
-import java.util.HashMap;
+import java.util.*;
 
 /**
  * @author jingxinwu

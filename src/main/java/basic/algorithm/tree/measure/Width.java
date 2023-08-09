@@ -1,11 +1,9 @@
 package basic.algorithm.tree.measure;
 
-import basic.structure.tree.Count;
-import common.TreeNode;
+import basic.structure.tree.*;
+import common.*;
 
-import java.util.Deque;
-import java.util.LinkedList;
-import java.util.Queue;
+import java.util.*;
 
 /**
  * @author wujingxinit@outlook.com

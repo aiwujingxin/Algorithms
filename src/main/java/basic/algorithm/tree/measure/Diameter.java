@@ -1,7 +1,7 @@
 package basic.algorithm.tree.measure;
 
-import basic.structure.tree.Count;
-import common.TreeNode;
+import basic.structure.tree.*;
+import common.*;
 
 /**
  * @author wujingxinit@outlook.com

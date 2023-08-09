@@ -1,8 +1,8 @@
 package basic.algorithm.dp.knapsack.complete;
 
-import basic.algorithm.dp.knapsack.knapsack;
+import basic.algorithm.dp.knapsack.*;
 
-import java.util.Arrays;
+import java.util.*;
 
 /**
  * @author wujingxinit@outlook.com

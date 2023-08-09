@@ -1,6 +1,6 @@
 package basic.algorithm.dp.knapsack.lintCode;
 
-import java.util.Arrays;
+import java.util.*;
 
 /**
  * @author wujingxinit@outlook.com

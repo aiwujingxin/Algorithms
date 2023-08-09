@@ -1,8 +1,8 @@
 package basic.algorithm.dp.other;
 
-import basic.algorithm.dp.linerdp.ActivityPack;
+import basic.algorithm.dp.linerdp.*;
 
-import java.util.Arrays;
+import java.util.*;
 
 /**
  * @author aiwujingxin@gmail.com

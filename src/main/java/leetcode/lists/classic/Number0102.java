@@ -1,8 +1,6 @@
 package leetcode.lists.classic;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Objects;
+import java.util.*;
 
 /**
  * @author jingxinwu

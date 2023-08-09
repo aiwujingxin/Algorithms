@@ -1,8 +1,6 @@
 package leetcode.problems;
 
-import java.util.LinkedList;
-import java.util.Queue;
-import java.util.Stack;
+import java.util.*;
 
 /**
  * @author jingxinwu

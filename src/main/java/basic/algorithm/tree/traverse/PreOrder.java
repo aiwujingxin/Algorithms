@@ -1,11 +1,9 @@
 package basic.algorithm.tree.traverse;
 
-import basic.structure.tree.Traverse;
-import common.TreeNode;
+import basic.structure.tree.*;
+import common.*;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Stack;
+import java.util.*;
 
 /**
  * @author wujingxinit@outlook.com

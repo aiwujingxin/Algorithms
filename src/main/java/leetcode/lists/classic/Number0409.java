@@ -1,10 +1,8 @@
 package leetcode.lists.classic;
 
-import common.TreeNode;
+import common.*;
 
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 /**
  * @author aiwujingxin@gmail.com

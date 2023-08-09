@@ -1,7 +1,7 @@
 package basic.algorithm.sort;
 
-import basic.structure.list.ListSort;
-import common.ListNode;
+import basic.structure.list.*;
+import common.*;
 
 /**
  * @author wujingxinit@outlook.com

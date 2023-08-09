@@ -1,6 +1,6 @@
 package leetcode.problems;
 
-import common.Node;
+import common.*;
 
 /**
  * @author wujingxinit@outlook.com

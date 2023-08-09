@@ -1,8 +1,6 @@
 package leetcode.problems;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 /**
  * @author wujingxinit@outlook.com
@@ -47,7 +45,9 @@ public class LeetCode310_dp {
         e[idx] = b;
         ne[idx] = he[a];
         he[a] = idx++;
-    }    int N = 20010, M = N * 2, idx = 0;
+    }
+
+    int N = 20010, M = N * 2, idx = 0;
 
     int dfs1(int u, int fa) {
         for (int i = he[u]; i != -1; i = ne[i]) {
@@ -92,8 +92,6 @@ public class LeetCode310_dp {
             dfs2(j, u);
         }
     }
-
-
 
 
     int[] he = new int[N], e = new int[M], ne = new int[M];

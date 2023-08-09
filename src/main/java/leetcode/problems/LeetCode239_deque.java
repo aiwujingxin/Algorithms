@@ -1,6 +1,6 @@
 package leetcode.problems;
 
-import java.util.ArrayDeque;
+import java.util.*;
 
 /**
  * @author jingxinwu

@@ -1,10 +1,9 @@
 package basic.algorithm.tree.serialize;
 
-import basic.structure.tree.Serialization;
-import common.TreeNode;
+import basic.structure.tree.*;
+import common.*;
 
-import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.*;
 
 /**
  * @author wujingxinit@outlook.com

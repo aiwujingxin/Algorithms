@@ -1,6 +1,6 @@
 package leetcode.lists.lcp;
 
-import java.util.HashMap;
+import java.util.*;
 
 /**
  * @author wujingxinit@outlook.com

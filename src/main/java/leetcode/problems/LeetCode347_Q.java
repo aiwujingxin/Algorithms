@@ -1,9 +1,6 @@
 package leetcode.problems;
 
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.PriorityQueue;
+import java.util.*;
 
 /**
  * @author aiwujingxin@gmail.com

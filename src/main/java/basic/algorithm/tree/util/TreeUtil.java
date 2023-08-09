@@ -1,6 +1,6 @@
 package basic.algorithm.tree.util;
 
-import common.TreeNode;
+import common.*;
 
 /**
  * @author wujingxinit@outlook.com

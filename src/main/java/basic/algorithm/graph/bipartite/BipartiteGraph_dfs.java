@@ -1,7 +1,6 @@
 package basic.algorithm.graph.bipartite;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 /**
  * @author wujingxinit@outlook.com

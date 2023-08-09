@@ -1,6 +1,4 @@
-package basic.advstructure;
-
-import java.util.Stack;
+package basic.structure.heap;
 
 /**
  * 基于堆的优先队列
@@ -8,46 +6,22 @@ import java.util.Stack;
  * @author wujingxinit@outlook.com
  * @date 2022/7/23 16:33
  * <a href="https://github.com/labuladong/fucking-algorithm/blob/master/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%B3%BB%E5%88%97/%E4%BA%8C%E5%8F%89%E5%A0%86%E8%AF%A6%E8%A7%A3%E5%AE%9E%E7%8E%B0%E4%BC%98%E5%85%88%E7%BA%A7%E9%98%9F%E5%88%97.md">...</a>
+ * {@link basic.algorithm.sort.HeapSort}
+ * {@link basic.algorithm.sort.HeapSelect}
  */
 
-public class MaxHeap<Key extends Comparable<Key>> implements basic.structure.array.TopK {
-
+public class MaxHeap<Key extends Comparable<Key>> {
 
     private final Key[] pq; // 基于堆的完全二叉树
     private int N = 0; // 存储于 pq[1 .. N] 中，pq[0] 没有使用
 
     @SuppressWarnings("unchecked")
-    MaxHeap(int capacity) { // 创建一个初始容量为 capacity 的优先队列
+    public MaxHeap(int capacity) { // 创建一个初始容量为 capacity 的优先队列
         pq = (Key[]) new Comparable[capacity + 1];
     }
 
-    public static void main(String[] args) {
-        int M = 5;
-        int[] arr = new int[]{1, 5, 3, 7, 2, 4, 6, 8, 9, 0};
-        new MaxHeap(M).findMinK(arr, M);
-    }
-
-    @Override
-    public void findMinK(int[] arr, int M) {
-        MaxHeap<Integer> pq = new MaxHeap<>(arr.length + 1);
-        for (int j : arr) {
-            pq.insert(j);
-            if (pq.size() > M) {
-                pq.delMax();
-            }
-        }
-        Stack<Integer> sk = new Stack<>();
-        while (!pq.isEmpty()) {
-            sk.push(pq.delMax());
-        }
-
-        while (!sk.isEmpty()) {
-            System.out.println(sk.pop());
-        }
-    }
-
     // 插入一个元素
-    void insert(Key v) {
+    public void insert(Key v) {
         pq[++N] = v;
         up(N);
     }
@@ -108,12 +82,12 @@ public class MaxHeap<Key extends Comparable<Key>> implements basic.structure.arr
         return N == 0;
     }
 
-    int size() { // 返回优先队列中的元素个数
+    public int size() { // 返回优先队列中的元素个数
         return N;
     }
 
     private boolean less(int i, int j) {
-        return pq[i].compareTo(pq[j]) < 0;
+        return pq[i].compareTo(pq[j]) >= 0;
     }
 
 }

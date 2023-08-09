@@ -1,7 +1,6 @@
 package leetcode.problems;
 
-import java.util.Random;
-import java.util.Stack;
+import java.util.*;
 
 /**
  * @author aiwujingxin@gmail.com

@@ -1,7 +1,6 @@
 package basic.algorithm.dp.treedp;
 
-import java.util.ArrayList;
-import java.util.Scanner;
+import java.util.*;
 
 /**
  * @author wujingxinit@outlook.com

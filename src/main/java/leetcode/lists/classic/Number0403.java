@@ -1,12 +1,8 @@
 package leetcode.lists.classic;
 
-import common.ListNode;
-import common.TreeNode;
+import common.*;
 
-import java.util.ArrayDeque;
-import java.util.ArrayList;
-import java.util.Deque;
-import java.util.List;
+import java.util.*;
 
 /**
  * @author wujingxinit@outlook.com

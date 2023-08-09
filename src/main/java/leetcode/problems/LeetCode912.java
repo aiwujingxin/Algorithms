@@ -1,6 +1,6 @@
 package leetcode.problems;
 
-import basic.algorithm.sort.QuickSort;
+import basic.algorithm.sort.*;
 
 /**
  * @author jingxinwu

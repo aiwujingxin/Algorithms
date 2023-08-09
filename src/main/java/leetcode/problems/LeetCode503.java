@@ -1,7 +1,6 @@
 package leetcode.problems;
 
-import java.util.Arrays;
-import java.util.Stack;
+import java.util.*;
 
 /**
  * @author jingxinwu

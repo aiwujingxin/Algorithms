@@ -1,6 +1,6 @@
 package basic.structure.list;
 
-import common.ListNode;
+import common.*;
 
 /**
  * @author wujingxinit@outlook.com

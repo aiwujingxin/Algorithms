@@ -1,6 +1,6 @@
 package basic.algorithm.dp.knapsack.changeMoney;
 
-import java.util.Arrays;
+import java.util.*;
 
 /**
  * @author wujingxinit@outlook.com

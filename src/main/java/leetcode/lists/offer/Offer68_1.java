@@ -1,6 +1,6 @@
 package leetcode.lists.offer;
 
-import common.TreeNode;
+import common.*;
 
 /**
  * @author jingxinwu

@@ -1,8 +1,8 @@
 package leetcode.lists.offer;
 
-import common.ListNode;
+import common.*;
 
-import java.util.Stack;
+import java.util.*;
 
 /**
  * @author jingxinwu

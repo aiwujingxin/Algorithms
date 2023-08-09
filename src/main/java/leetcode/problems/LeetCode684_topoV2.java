@@ -1,9 +1,6 @@
 package leetcode.problems;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Queue;
+import java.util.*;
 
 /**
  * @author aiwujingxin@gmail.com
