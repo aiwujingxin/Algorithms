@@ -6,7 +6,7 @@ import java.util.*;
  * @author aiwujingxin@gmail.com
  * @date 2022/7/3 11:21
  */
-public class ActivityPack implements basic.algorithm.dp.linerdp.ActivityPack {
+public class ActivityPack implements basic.algorithm.dp.liner.ActivityPack {
 
     public int activityPack(int[][] periods) {
 

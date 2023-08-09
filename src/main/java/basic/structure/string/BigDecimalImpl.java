@@ -44,13 +44,13 @@ public class BigDecimalImpl implements basic.structure.string.BigDecimal {
 
     @Override
     public String sub(String num1, String num2) {
-        if ((num1 == null || num1.length() == 0) && (num2 == null || num2.length() == 0)) {
+        if ((num1 == null || num1.isEmpty()) && (num2 == null || num2.isEmpty())) {
             return "";
         }
-        if (num2 == null || num2.length() == 0) {
+        if (num2 == null || num2.isEmpty()) {
             return num1;
         }
-        if (num1 == null || num1.length() == 0) {
+        if (num1 == null || num1.isEmpty()) {
             return num2;
         }
         if (num1.charAt(0) != '-' && num2.charAt(0) == '-') {
@@ -140,11 +140,11 @@ public class BigDecimalImpl implements basic.structure.string.BigDecimal {
 
     @Override
     public String multiply(String num1, String num2) {
-        if (num1 == null || num1.length() == 0) {
+        if (num1 == null || num1.isEmpty()) {
             return num2;
         }
 
-        if (num2 == null || num2.length() == 0) {
+        if (num2 == null || num2.isEmpty()) {
             return num1;
         }
 
@@ -162,11 +162,11 @@ public class BigDecimalImpl implements basic.structure.string.BigDecimal {
 
         StringBuilder sb = new StringBuilder();
         for (int j : arr) {
-            if (sb.length() == 0 && j == 0) {
+            if (sb.isEmpty() && j == 0) {
                 continue;
             }
             sb.append(j);
         }
-        return sb.length() == 0 ? "0" : sb.toString();
+        return sb.isEmpty() ? "0" : sb.toString();
     }
 }

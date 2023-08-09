@@ -1,10 +1,11 @@
 package basic.algorithm.dp.knapsack.changeMoney;
 
-import java.util.*;
+import java.util.Arrays;
 
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/8/5 00:27
+ * @description 01背包
  * <a href="https://leetcode.cn/problems/coin-change/">LeetCode322</a>
  * {@link leetcode.problems.LeetCode322_dp_1d}
  */
