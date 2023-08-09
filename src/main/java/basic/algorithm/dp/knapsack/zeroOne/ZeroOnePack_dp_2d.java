@@ -1,12 +1,12 @@
 package basic.algorithm.dp.knapsack.zeroOne;
 
-import basic.problems.dp.BackPack;
+import basic.algorithm.dp.knapsack.knapsack;
 
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/6/26 23:20
  */
-public class ZeroOnePack_dp_2d implements BackPack {
+public class ZeroOnePack_dp_2d implements knapsack {
 
     @Override
     public int backPack(int capacity, int[] weights, int[] values) {

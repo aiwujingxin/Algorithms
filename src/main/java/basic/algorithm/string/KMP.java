@@ -5,8 +5,10 @@ import java.util.Arrays;
 /**
  * @author aiwujingxin@gmail.com
  * @date 2022/7/4 22:47
+ * {@link leetcode.problems.LeetCode214_kmp}
+ * {@link leetcode.problems.LeetCode28}
  */
-public class KMP {
+public class KMP implements basic.structure.string.KMP {
 
     /*
     * KMP 算法的主要思想是提前判断如何重新开始查找，而这种判断只取决于模式本身。
@@ -52,6 +54,7 @@ public class KMP {
         }
     }
 
+    @Override
     public int KMPSearch(String pat, String txt) {
         int M = pat.length();
         int N = txt.length();

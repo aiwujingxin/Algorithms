@@ -1,7 +1,5 @@
 package basic.algorithm.dp.knapsack.changeMoney;
 
-import basic.problems.dp.ChangeMoney;
-
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/8/5 00:31

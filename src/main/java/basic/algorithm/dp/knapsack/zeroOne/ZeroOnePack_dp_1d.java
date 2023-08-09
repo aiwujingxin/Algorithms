@@ -1,13 +1,13 @@
 package basic.algorithm.dp.knapsack.zeroOne;
 
-import basic.problems.dp.BackPack;
+import basic.algorithm.dp.knapsack.knapsack;
 
 /**
  * @author wujingxinit@outlook.com
  * @date 2022/9/13 12:37
  * <a href="https://www.lintcode.com/problem/125/">Backpack II 125</a>
  */
-public class ZeroOnePack_dp_1d implements BackPack {
+public class ZeroOnePack_dp_1d implements knapsack {
 
     @Override
     public int backPack(int capacity, int[] weights, int[] values) {

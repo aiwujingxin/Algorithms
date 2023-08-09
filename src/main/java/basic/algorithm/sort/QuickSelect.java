@@ -4,7 +4,7 @@ package basic.algorithm.sort;
  * @author wujingxinit@outlook.com
  * @date 2022/12/18 17:14
  */
-public class QuickSelect implements basic.problems.array.QuickSelect {
+public class QuickSelect implements basic.structure.array.QuickSelect {
     @Override
     public int findKthLargest(int[] nums, int k) {
         if (nums == null || nums.length == 0) {

@@ -1,6 +1,6 @@
 package leetcode.problems;
 
-import basic.template.Acwing.PreDiffMatrix;
+import basic.algorithm.other.PreDiffMatrix;
 
 /**
  * @author wujingxinit@outlook.com

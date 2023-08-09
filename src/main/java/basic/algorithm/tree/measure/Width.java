@@ -1,6 +1,6 @@
 package basic.algorithm.tree.measure;
 
-import basic.problems.tree.Count;
+import basic.structure.tree.Count;
 import common.TreeNode;
 
 import java.util.Deque;

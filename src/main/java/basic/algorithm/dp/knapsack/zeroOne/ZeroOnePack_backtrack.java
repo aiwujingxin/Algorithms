@@ -1,12 +1,12 @@
 package basic.algorithm.dp.knapsack.zeroOne;
 
-import basic.problems.dp.BackPack;
+import basic.algorithm.dp.knapsack.knapsack;
 
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/6/27 00:17
  */
-public class ZeroOnePack_backtrack implements BackPack {
+public class ZeroOnePack_backtrack implements knapsack {
 
     int ans;
     int temp;

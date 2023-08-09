@@ -1,5 +1,7 @@
 package basic.algorithm.dp.knapsack.lintCode;
 
+import java.util.Arrays;
+
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/8/8 18:28
@@ -8,12 +10,7 @@ package basic.algorithm.dp.knapsack.lintCode;
 /*
  * 你总共有10 * n 千元(n万元 )，希望申请国外的大学，要申请的话需要交一定的申请费用，给出每个大学的申请费用以及你得到这个大学offer的成功概率，大学的数量是 m。
  * 如果经济条件允许，你可以申请多所大学。找到获得至少一份工作的最高可能性。
- */
 
-
-import java.util.*;
-
-/**
  * Approach: 0-1 Backpack
  * 题目求解的是：至少收到一个offer的最高概率。
  * 因此这里可以稍微应用一下 概率学 上面的知识，即可以把问题转换为：
@@ -41,7 +38,7 @@ public class BackpackIX {
         }
 
         for (int i = 0; i < probability.length; i++) {
-            // Gurantee the money is enough to pay pricees[i] fee
+            // Grantee the money is enough to pay prices[i] fee
             for (int j = n; j >= prices[i]; j--) {
                 dp[j] = Math.min(dp[j], dp[j - prices[i]] * probability[i]);
             }

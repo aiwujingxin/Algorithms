@@ -1,7 +1,5 @@
 package basic.algorithm.dp.knapsack.changeMoney;
 
-import basic.problems.dp.ChangeMoney;
-
 import java.util.Arrays;
 
 /**

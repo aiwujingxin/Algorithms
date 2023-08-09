@@ -1,6 +1,6 @@
 package basic.algorithm.dp.other;
 
-import basic.problems.dp.ActivityPack;
+import basic.algorithm.dp.linerdp.ActivityPack;
 
 import java.util.Arrays;
 
@@ -30,25 +30,25 @@ public class ActivityPack_dp implements ActivityPack {
     private static int selector_DP_memorized_helper(int[] s, int[] f, int end, int[] c) {
         if (end == 0) {
             c[end] = 0;
-        } else {
-            int left = 0;
-            if (c[end] == Integer.MIN_VALUE) {
-                //find the biggest compatible index j, where j < end, assign to left.
-                for (int i = end - 1; i >= 0; i--) {
-                    if (f[i] <= s[end]) {
-                        left = i;
-                        break;
-                    }
+            return c[end];
+        }
+        int left = 0;
+        if (c[end] == Integer.MIN_VALUE) {
+            //find the biggest compatible index j, where j < end, assign to left.
+            for (int i = end - 1; i >= 0; i--) {
+                if (f[i] <= s[end]) {
+                    left = i;
+                    break;
                 }
-                //in case index end is in optimal set.
-                //选end
-                int temp1 = selector_DP_memorized_helper(s, f, left, c) + 1;
-                //in case index end is NOT in optimal set.
-                // 不选end
-                int temp2 = selector_DP_memorized_helper(s, f, end - 1, c);
-                c[end] = Math.max(temp1, temp2);
-                //System.out.println("c " + end + "=" + c[end] + " " + temp1 + " " + temp2);
             }
+            //in case index end is in optimal set.
+            //选end
+            int temp1 = selector_DP_memorized_helper(s, f, left, c) + 1;
+            //in case index end is NOT in optimal set.
+            // 不选end
+            int temp2 = selector_DP_memorized_helper(s, f, end - 1, c);
+            c[end] = Math.max(temp1, temp2);
+            //System.out.println("c " + end + "=" + c[end] + " " + temp1 + " " + temp2);
         }
         return c[end];
     }
@@ -57,7 +57,9 @@ public class ActivityPack_dp implements ActivityPack {
         StringBuilder solution = new StringBuilder();
         for (int i = 1; i < c.length; i++) {
             if (c[i] > c[i - 1]) {
-                if (solution.length() != 0) solution.append(",");
+                if (!solution.isEmpty()) {
+                    solution.append(",");
+                }
                 solution.append(i);
             }
         }

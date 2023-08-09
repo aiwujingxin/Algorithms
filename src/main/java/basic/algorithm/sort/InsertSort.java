@@ -1,7 +1,7 @@
 package basic.algorithm.sort;
 
 
-import basic.problems.array.ArraySort;
+import basic.structure.array.ArraySort;
 
 /**
  * @author jingxinwu

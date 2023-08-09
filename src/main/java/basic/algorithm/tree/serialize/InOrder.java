@@ -1,6 +1,6 @@
 package basic.algorithm.tree.serialize;
 
-import basic.problems.tree.Serialization;
+import basic.structure.tree.Serialization;
 import common.TreeNode;
 
 /**

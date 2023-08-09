@@ -1,6 +1,6 @@
 package basic.algorithm.sort;
 
-import basic.problems.list.ListSort;
+import basic.structure.list.ListSort;
 import common.ListNode;
 
 /**

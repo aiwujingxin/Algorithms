@@ -1,6 +1,6 @@
 package basic.algorithm.tree.build;
 
-import basic.problems.tree.BuildTree;
+import basic.structure.tree.BuildTree;
 import common.TreeNode;
 
 /**

@@ -1,6 +1,6 @@
 package basic.algorithm.dp.knapsack.zeroOne;
 
-import basic.problems.dp.BackPack;
+import basic.algorithm.dp.knapsack.knapsack;
 
 import java.util.Arrays;
 import java.util.Comparator;
@@ -12,7 +12,7 @@ import java.util.Queue;
  * @date 2023/6/26 23:19
  * <a href="https://www.bilibili.com/video/BV1gb411G7FH/?spm_id_from=333.788.recommend_more_video.-1&vd_source=88e5a3e60377510439e11f13b5878c25"></a>
  */
-public class ZeroOnePack_branch_bound implements BackPack {
+public class ZeroOnePack_branch_bound implements knapsack {
 
     static int bound(Node u, int n, int W, Item[] arr) {
         if (u.weight >= W)

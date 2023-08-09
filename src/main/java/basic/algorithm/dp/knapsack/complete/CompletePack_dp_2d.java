@@ -1,12 +1,12 @@
 package basic.algorithm.dp.knapsack.complete;
 
-import basic.problems.dp.BackPack;
+import basic.algorithm.dp.knapsack.knapsack;
 
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/7/18 12:33
  */
-public class CompletePack_dp_2d implements BackPack {
+public class CompletePack_dp_2d implements knapsack {
 
     @Override
     public int backPack(int capacity, int[] weights, int[] values) {

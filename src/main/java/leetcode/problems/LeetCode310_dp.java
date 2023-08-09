@@ -41,13 +41,13 @@ public class LeetCode310_dp {
             }
         }
         return ans;
-    }    int N = 20010, M = N * 2, idx = 0;
+    }
 
     void add(int a, int b) {
         e[idx] = b;
         ne[idx] = he[a];
         he[a] = idx++;
-    }
+    }    int N = 20010, M = N * 2, idx = 0;
 
     int dfs1(int u, int fa) {
         for (int i = he[u]; i != -1; i = ne[i]) {
@@ -92,6 +92,7 @@ public class LeetCode310_dp {
             dfs2(j, u);
         }
     }
+
 
 
 
