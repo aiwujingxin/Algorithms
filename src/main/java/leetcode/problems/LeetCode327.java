@@ -79,8 +79,6 @@ public class LeetCode327 {
             j++;
             k++;
         }
-        for (int n = left; n <= right; n++) {
-            sum[n] = temp[n];
-        }
+        if (right + 1 - left >= 0) System.arraycopy(temp, left, sum, left, right + 1 - left);
     }
 }

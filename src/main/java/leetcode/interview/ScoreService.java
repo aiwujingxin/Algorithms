@@ -1,7 +1,7 @@
 package leetcode.interview;
 
 import java.util.*;
-import java.util.Map.*;
+import java.util.Map.Entry;
 
 /**
  * @author jingxinwu
@@ -94,9 +94,7 @@ public class ScoreService {
             for (int i = 0; i < list.size(); i++) {
                 userScores[i] = list.get(i).getValue();
             }
-            for (int i = low_bound; i < up_bound; i++) {
-                result.add(userScores[i]);
-            }
+            result.addAll(Arrays.asList(userScores).subList(low_bound, up_bound));
             return result;
         }
 
@@ -128,7 +126,7 @@ public class ScoreService {
 
     public class MapValueComparator implements Comparator<Entry<Integer, UserScore>> {
 
-        private Map<String, Integer> map;
+        private final Map<String, Integer> map;
 
         public MapValueComparator(Map<String, Integer> map) {
             this.map = map;

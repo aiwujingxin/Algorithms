@@ -1,6 +1,6 @@
 package leetcode.problems;
 
-import basic.algorithm.other.*;
+import basic.algorithm.other.PreDiffMatrix;
 
 /**
  * @author wujingxinit@outlook.com

@@ -1,6 +1,6 @@
 package leetcode.lists.lcp;
 
-import java.util.*;
+import java.util.Arrays;
 
 /**
  * @author wujingxinit@outlook.com

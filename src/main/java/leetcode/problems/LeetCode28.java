@@ -1,6 +1,6 @@
 package leetcode.problems;
 
-import basic.algorithm.string.*;
+import basic.algorithm.string.KMP;
 
 /**
  * @author wujingxinit@outlook.com

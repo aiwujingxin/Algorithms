@@ -1,6 +1,7 @@
 package leetcode.problems;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.Random;
 
 /**
  * @author wujingxinit@outlook.com

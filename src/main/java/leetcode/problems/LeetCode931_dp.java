@@ -19,9 +19,7 @@ public class LeetCode931_dp {
         int n = matrix.length;
         //init
         int[][] dp = new int[n][n];
-        for (int i = 0; i < matrix[0].length; i++) {
-            dp[0][i] = matrix[0][i];
-        }
+        System.arraycopy(matrix[0], 0, dp[0], 0, matrix[0].length);
         /*
          * 2,1,3
          * 6,5,4

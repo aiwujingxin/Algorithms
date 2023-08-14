@@ -1,6 +1,9 @@
 package leetcode.problems;
 
-import java.util.*;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.Set;
 
 /**
  * @author wujingxinit@outlook.com
@@ -17,7 +20,7 @@ public class LeetCode1162_dfs {
 
     public int maxDistance(int[][] grid) {
         int M = grid.length, N = grid[0].length;
-        int dp[][] = new int[M][N];
+        int[][] dp = new int[M][N];
         Set<Pair> lands = new HashSet<>();
         Queue<Pair> q = new LinkedList<>();
         for (int i = 0; i < M; i++) {

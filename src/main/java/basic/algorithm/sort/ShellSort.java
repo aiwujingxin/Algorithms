@@ -1,6 +1,6 @@
 package basic.algorithm.sort;
 
-import basic.structure.array.*;
+import basic.structure.array.ArraySort;
 
 /**
  * @author wujingxinit@outlook.com

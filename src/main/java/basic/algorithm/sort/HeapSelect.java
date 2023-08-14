@@ -1,7 +1,7 @@
 package basic.algorithm.sort;
 
-import basic.structure.array.*;
-import basic.structure.heap.*;
+import basic.structure.array.TopK;
+import basic.structure.heap.MaxHeap;
 
 /**
  * @author wujingxinit@outlook.com

@@ -1,8 +1,9 @@
 package leetcode.lists.offerII;
 
-import common.*;
+import common.TreeNode;
 
-import java.util.*;
+import java.util.Deque;
+import java.util.LinkedList;
 
 /**
  * @author wujingxinit@outlook.com

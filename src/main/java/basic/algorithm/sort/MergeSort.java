@@ -1,6 +1,6 @@
 package basic.algorithm.sort;
 
-import basic.structure.array.*;
+import basic.structure.array.ArraySort;
 
 /**
  * @author jingxinwu
@@ -67,8 +67,6 @@ public class MergeSort implements ArraySort {
             j++;
             k++;
         }
-        for (int n = left; n <= right; n++) {
-            nums[n] = arr[n];
-        }
+        if (right + 1 - left >= 0) System.arraycopy(arr, left, nums, left, right + 1 - left);
     }
 }

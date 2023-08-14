@@ -150,7 +150,7 @@ public class LeetCode295_avl_tree {
             double median = 0;
 
             k1 = find(root, idx);
-            median = k1 / 1.0;
+            median = k1;
             if (size % 2 == 0) {
                 k2 = find(root, idx - 1);
                 median = (k1 + k2) / 2.0;

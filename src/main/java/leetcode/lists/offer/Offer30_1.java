@@ -1,6 +1,6 @@
 package leetcode.lists.offer;
 
-import java.util.*;
+import java.util.Stack;
 
 /**
  * @author jingxinwu
@@ -9,8 +9,8 @@ import java.util.*;
 public class Offer30_1 {
 
 
-    private Stack<Integer> dataStack; // 数据栈
-    private Stack<Integer> minStack; // 辅助栈，记录每次有元素进栈后或者出栈后，元素的最小值
+    private final Stack<Integer> dataStack; // 数据栈
+    private final Stack<Integer> minStack; // 辅助栈，记录每次有元素进栈后或者出栈后，元素的最小值
 
     /**
      * initialize your data structure here.

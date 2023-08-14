@@ -8,14 +8,15 @@ import java.io.*;
  * <a href="https://www.acwing.com/solution/content/106038/"></a>
  */
 public class AcWing287 {
-    private static final int N = 200010, M = 2 * N;
-    private static int[] h = new int[N], e = new int[M], ne = new int[M], w = new int[M], deg = new int[N];
-    //up[i]和down[i]分别表示以节点i为根节点，向上和向下的最大流量
-    private static int[] up = new int[N], down = new int[N];
-    private static int n, idx = 0;
-
-    private static final BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-    private static final BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(System.out));
+    private static final BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));    private static final int N = 200010, M = 2 * N;
+    private static final BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(System.out));    private static final int[] h = new int[N];
+    private static final int[] e = new int[M];
+    private static final int[] ne = new int[M];
+    private static final int[] w = new int[M];
+    private static final int[] deg = new int[N];
+    private static int n, idx = 0;    //up[i]和down[i]分别表示以节点i为根节点，向上和向下的最大流量
+    private static final int[] up = new int[N];
+    private static final int[] down = new int[N];
 
     public static void main(String[] args) throws IOException {
         int t = Integer.parseInt(reader.readLine());
@@ -73,4 +74,10 @@ public class AcWing287 {
         w[idx++] = c;
         deg[b]++;
     }
+
+
+
+
+
+
 }

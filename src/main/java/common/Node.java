@@ -1,6 +1,6 @@
 package common;
 
-import java.util.*;
+import java.util.List;
 
 /**
  * @author jingxinwu

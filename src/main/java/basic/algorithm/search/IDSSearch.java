@@ -1,6 +1,7 @@
 package basic.algorithm.search;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class IDSSearch {
 

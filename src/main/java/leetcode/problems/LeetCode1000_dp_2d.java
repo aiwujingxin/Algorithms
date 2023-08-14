@@ -5,9 +5,9 @@ package leetcode.problems;
  * @date 2023/6/23 20:07
  * <a href="https://leetcode.com/problems/minimum-cost-to-merge-stones/solutions/247657/JAVA-Bottom-Up-+-Top-Down-DP-With-Explaination/">...</a>
  */
-public class LeetCode1000_easy {
+public class LeetCode1000_dp_2d {
 
-    public int mergeStonesTwo(int[] stones) {
+    public int mergeStones(int[] stones) {
         if (stones == null || stones.length == 0) {
             return 0;
         }
@@ -23,8 +23,9 @@ public class LeetCode1000_easy {
                 int r = i + len - 1;
                 dp[l][r] = Integer.MAX_VALUE;
                 for (int k = l; k < r; k++) {
-                    dp[l][r] = Math.min(dp[l][r], dp[l][k] + dp[k + 1][r] + prefixSum[r] - prefixSum[l - 1]);
+                    dp[l][r] = Math.min(dp[l][r], dp[l][k] + dp[k + 1][r]);
                 }
+                dp[l][r] += prefixSum[r] - prefixSum[l - 1];
             }
         }
         return dp[1][n];

@@ -1,6 +1,7 @@
 package leetcode.problems;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author wujingxinit@outlook.com
@@ -41,8 +42,6 @@ public class LeetCode315 {
             res.set(indexes[l], res.get(indexes[l]) + reversecount);
         }
 
-        for (int k = 0; k < p; k++) {
-            indexes[start + k] = tmp[k];
-        }
+        if (p >= 0) System.arraycopy(tmp, 0, indexes, start + 0, p);
     }
 }

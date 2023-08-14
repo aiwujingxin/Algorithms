@@ -1,6 +1,6 @@
 package leetcode.problems;
 
-import java.util.*;
+import java.util.Arrays;
 
 /**
  * @author wujingxinit@outlook.com
@@ -17,7 +17,7 @@ public class LeetCode300_dfs_memo {
         return helper(nums, 0, -1, dp);
     }
 
-    public int helper(int[] nums, int ind, int prev, int dp[][]) {
+    public int helper(int[] nums, int ind, int prev, int[][] dp) {
         if (ind == nums.length) {
             return 0;
         }

@@ -14,12 +14,14 @@ public class LeetCode73_v2 {
         for (int i = 0; i < m; i++) {
             if (matrix[i][0] == 0) {
                 flagCol0 = true;
+                break;
             }
         }
         //第一行为0
         for (int j = 0; j < n; j++) {
             if (matrix[0][j] == 0) {
                 flagRow0 = true;
+                break;
             }
         }
         //用其他行列 去 更新第一行和第一列

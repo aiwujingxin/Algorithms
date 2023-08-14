@@ -1,6 +1,6 @@
 package leetcode.problems;
 
-import java.util.*;
+import java.util.Arrays;
 
 /**
  * @author aiwujingxin@gmail.com
@@ -84,9 +84,7 @@ public class LeetCode164 {
                 aux[--count[(nums[i] / exp) % 10]] = nums[i];
             }
 
-            for (int i = 0; i < nums.length; i++) {
-                nums[i] = aux[i];
-            }
+            System.arraycopy(aux, 0, nums, 0, nums.length);
             exp *= 10;
         }
 

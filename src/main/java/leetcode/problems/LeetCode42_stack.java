@@ -1,6 +1,7 @@
 package leetcode.problems;
 
-import java.util.*;
+import java.util.Deque;
+import java.util.LinkedList;
 
 /**
  * @author wujingxinit@outlook.com

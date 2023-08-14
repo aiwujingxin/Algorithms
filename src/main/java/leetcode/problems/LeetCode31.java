@@ -1,6 +1,6 @@
 package leetcode.problems;
 
-import java.util.*;
+import java.util.Arrays;
 
 /**
  * @author jingxinwu
@@ -52,7 +52,6 @@ public class LeetCode31 {
         nums[j] = temp;
 
         reverse(nums, i + 1);
-        return;
     }
 
     private void reverse(int[] nums, int index) {

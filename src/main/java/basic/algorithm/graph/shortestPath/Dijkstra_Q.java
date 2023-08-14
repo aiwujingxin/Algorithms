@@ -1,6 +1,7 @@
 package basic.algorithm.graph.shortestPath;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.PriorityQueue;
 
 /**
  * @author aiwujingxin@gmail.com

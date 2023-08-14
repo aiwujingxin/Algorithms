@@ -1,8 +1,11 @@
 package basic.algorithm.dp.knapsack.zeroOne;
 
-import basic.algorithm.dp.knapsack.*;
+import basic.algorithm.dp.knapsack.knapsack;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.LinkedList;
+import java.util.Queue;
 
 /**
  * @author wujingxinit@outlook.com

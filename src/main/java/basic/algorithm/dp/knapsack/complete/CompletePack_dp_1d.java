@@ -1,6 +1,6 @@
 package basic.algorithm.dp.knapsack.complete;
 
-import basic.algorithm.dp.knapsack.*;
+import basic.algorithm.dp.knapsack.knapsack;
 
 /**
  * @author wujingxinit@outlook.com

@@ -1,6 +1,6 @@
 package leetcode.problems;
 
-import java.util.*;
+import java.util.HashMap;
 
 /**
  * @author wujingxinit@outlook.com
@@ -10,7 +10,7 @@ public class LeetCode359 {
 
     class Logger {
 
-        private HashMap<String, Integer> msgDict;
+        private final HashMap<String, Integer> msgDict;
 
         /**
          * Initialize your data structure here.

@@ -1,6 +1,7 @@
 package leetcode.problems;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author jingxinwu
@@ -11,7 +12,7 @@ public class LeetCode241 {
 
     public List<Integer> diffWaysToCompute(String input) {
         //校验
-        if (input == null || input.length() == 0) {
+        if (input == null || input.isEmpty()) {
             return new ArrayList<>();
         }
         List<Integer> res = new ArrayList<>();
@@ -35,7 +36,7 @@ public class LeetCode241 {
                 }
             }
         }
-        if (res.size() == 0) {
+        if (res.isEmpty()) {
             res.add(Integer.valueOf(input));
         }
         return res;

@@ -1,6 +1,7 @@
 package basic.algorithm.dp.knapsack.multiple;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author wujingxinit@outlook.com

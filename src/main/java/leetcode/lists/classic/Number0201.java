@@ -1,8 +1,8 @@
 package leetcode.lists.classic;
 
-import common.*;
+import common.ListNode;
 
-import java.util.*;
+import java.util.HashSet;
 
 /**
  * @author jingxinwu

@@ -1,8 +1,9 @@
 package leetcode.lists.classic;
 
-import common.*;
+import common.ListNode;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author jingxinwu

@@ -1,7 +1,7 @@
 package basic.structure.tree.build;
 
-import basic.structure.tree.*;
-import common.*;
+import basic.structure.tree.BuildTree;
+import common.TreeNode;
 
 /**
  * @author wujingxinit@outlook.com

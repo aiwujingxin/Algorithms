@@ -1,7 +1,7 @@
 package leetcode.problems;
 
 
-import java.util.*;
+import java.util.PriorityQueue;
 
 /**
  * @author aiwujingxin@gmail.com

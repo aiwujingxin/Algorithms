@@ -1,6 +1,8 @@
 package leetcode.problems;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * @author wujingxinit@outlook.com
@@ -47,8 +49,6 @@ public class LeetCode310_dp {
         he[a] = idx++;
     }
 
-    int N = 20010, M = N * 2, idx = 0;
-
     int dfs1(int u, int fa) {
         for (int i = he[u]; i != -1; i = ne[i]) {
             //j为u的相邻节点
@@ -71,7 +71,7 @@ public class LeetCode310_dp {
             }
         }
         return f1[u];
-    }    //f1最大向下高度、f2次大向下高度、g最大向上高度、p最大向下高度由那个节点得到
+    }    //f1最大向下高度、f2次大向下高度、g最大向上高度、p最大向下高度由那个节点得到    int N = 20010, M = N * 2, idx = 0;
 
     void dfs2(int u, int fa) {
 
@@ -92,6 +92,8 @@ public class LeetCode310_dp {
             dfs2(j, u);
         }
     }
+
+
 
 
     int[] he = new int[N], e = new int[M], ne = new int[M];

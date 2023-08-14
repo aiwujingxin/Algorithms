@@ -1,6 +1,6 @@
 package leetcode.problems;
 
-import common.*;
+import common.TreeNode;
 
 import java.util.*;
 

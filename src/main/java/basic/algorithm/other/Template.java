@@ -19,7 +19,7 @@ public class Template {
         InputReader in = new InputReader(inputStream);
         OutputWriter out = new OutputWriter(outputStream);
         TaskC solver = new TaskC();
-        solver.solve(1, in, out);
+        TaskC.solve(1, in, out);
         out.close();
     }
 
@@ -47,8 +47,8 @@ public class Template {
     }
 
     static class InputReader {
-        private InputStream stream;
-        private byte[] buf = new byte[1024];
+        private final InputStream stream;
+        private final byte[] buf = new byte[1024];
         private int curChar;
         private int numChars;
         private InputReader.SpaceCharFilter filter;
@@ -176,7 +176,7 @@ public class Template {
         }
 
         public long[] nextLongArray(int arraySize) {
-            long array[] = new long[arraySize];
+            long[] array = new long[arraySize];
 
             for (int i = 0; i < arraySize; i++) {
                 array[i] = nextLong();
@@ -224,7 +224,7 @@ public class Template {
         }
 
         public interface SpaceCharFilter {
-            public boolean isSpaceChar(int ch);
+            boolean isSpaceChar(int ch);
 
         }
     }
@@ -330,7 +330,7 @@ public class Template {
 
         static ArrayList<Integer> bitWiseSieve(int n) {
             ArrayList<Integer> al = new ArrayList<>();
-            int prime[] = new int[n / 64 + 1];
+            int[] prime = new int[n / 64 + 1];
 
 
             for (int i = 3; i * i <= n; i += 2) {
@@ -350,7 +350,7 @@ public class Template {
             return al;
         }
 
-        public static long[] sort(long arr[]) {
+        public static long[] sort(long[] arr) {
             List<Long> list = new ArrayList<>();
             for (long n : arr) {
                 list.add(n);
@@ -389,7 +389,7 @@ public class Template {
         static ArrayList<Integer> sieve(long size) {
 
             ArrayList<Integer> pr = new ArrayList<Integer>();
-            boolean prime[] = new boolean[(int) size];
+            boolean[] prime = new boolean[(int) size];
             for (int i = 2; i < prime.length; i++) prime[i] = true;
             for (int i = 2; i * i < prime.length; i++) {
                 if (prime[i]) {
@@ -406,7 +406,7 @@ public class Template {
             ArrayList<Integer> al = new ArrayList<>();
             if (l == 1) ++l;
             int max = r - l + 1;
-            int arr[] = new int[max];
+            int[] arr = new int[max];
             for (int p : primes) {
                 if (p * p <= r) {
                     int i = (l / p) * p;
@@ -559,7 +559,7 @@ public class Template {
             TreeMap<Long, Long> pf = new TreeMap<>(Collections.reverseOrder());
             long cnt = 0;
             long total = 1;
-            for (long i = 2; (long) i * i <= n; ++i) {
+            for (long i = 2; i * i <= n; ++i) {
                 if (n % i == 0) {
                     cnt = 0;
                     while (n % i == 0) {
@@ -577,7 +577,7 @@ public class Template {
             return pf;
         }
 
-        static long upper_Bound(long a[], long x) {
+        static long upper_Bound(long[] a, long x) {
             long l = 0, h = 0, mid = 0, ans = -1;
             while (l <= h) {
                 mid = (l + h) >> 1;
@@ -605,7 +605,7 @@ public class Template {
             return ans;
         }
 
-        static long lower_Bound(long a[], long x) {
+        static long lower_Bound(long[] a, long x) {
             long l = 0, h = 0, mid = 0, ans = -1;
             while (l <= h) {
                 mid = (l + h) >> 1;
@@ -619,7 +619,7 @@ public class Template {
             return ans;
         }
 
-        static int upperBound(int a[], int x) {// x is the key or target value
+        static int upperBound(int[] a, int x) {// x is the key or target value
             long l = 0, h = 0, mid = 0, ans = -1;
             while (l <= h) {
                 mid = (l + h) >> 1;
@@ -633,7 +633,7 @@ public class Template {
             return (int) ans;
         }
 
-        static int bs(long a[], long t) {
+        static int bs(long[] a, long t) {
             int ans = -1;
             int i = 0, j = a.length - 1;
             while (i <= j) {
@@ -687,7 +687,7 @@ public class Template {
             return ans;
         }
 
-        static void sort(int a[]) // heap sort
+        static void sort(int[] a) // heap sort
         {
             PriorityQueue<Integer> q = new PriorityQueue<>();
             for (int i = 0; i < a.length; i++)
@@ -706,10 +706,7 @@ public class Template {
         static boolean isPalindrome(String s) {
             StringBuilder sb = new StringBuilder(s);
             sb.reverse();
-            if (s.equals(sb.toString())) {
-                return true;
-            }
-            return false;
+            return s.contentEquals(sb);
         }
 
         public static int[] radixSort2(int[] a) {
@@ -740,7 +737,7 @@ public class Template {
 
         static int[] computeLps(String pat) {
             int len = 0, i = 1, m = pat.length();
-            int lps[] = new int[m];
+            int[] lps = new int[m];
             lps[0] = 0;
             while (i < m) {
                 if (pat.charAt(i) == pat.charAt(len)) {
@@ -762,7 +759,7 @@ public class Template {
         static ArrayList<Integer> kmp(String s, String pat) {
             ArrayList<Integer> al = new ArrayList<>();
             int n = s.length(), m = pat.length();
-            int lps[] = computeLps(pat);
+            int[] lps = computeLps(pat);
             int i = 0, j = 0;
             while (i < n) {
                 if (s.charAt(i) == pat.charAt(j)) {
@@ -784,7 +781,7 @@ public class Template {
             return al;
         }
 
-        static void reverse_ruffle_sort(int a[]) {
+        static void reverse_ruffle_sort(int[] a) {
             shuffle(a);
             Arrays.sort(a);
             for (int l = 0, r = a.length - 1; l < r; ++l, --r)
@@ -792,12 +789,12 @@ public class Template {
 
         }
 
-        static void ruffle_sort(int a[]) {
+        static void ruffle_sort(int[] a) {
             shuffle(a);
             Arrays.sort(a);
         }
 
-        static int getMax(int arr[], int n) {
+        static int getMax(int[] arr, int n) {
             int mx = arr[0];
             for (int i = 1; i < n; i++)
                 if (arr[i] > mx)
@@ -815,10 +812,10 @@ public class Template {
                 n /= 2L;
             }
 
-            for (long i = 3; (long) i * i <= n; i += 2) {
+            for (long i = 3; i * i <= n; i += 2) {
                 while ((n % i == 0)) {
-                    if (!al.contains((long) i)) {
-                        al.add((long) i);
+                    if (!al.contains(i)) {
+                        al.add(i);
                     }
                     n /= i;
                 }
@@ -855,7 +852,8 @@ public class Template {
         }
 
         static int[] z_function(String s) {
-            int n = s.length(), z[] = new int[n];
+            int n = s.length();
+            int[] z = new int[n];
 
             for (int i = 1, l = 0, r = 0; i < n; ++i) {
                 if (i <= r)
@@ -901,10 +899,10 @@ public class Template {
         }
 
         static int factorsCount(int n) {
-            boolean hash[] = new boolean[n + 1];
+            boolean[] hash = new boolean[n + 1];
             Arrays.fill(hash, true);
             for (int p = 2; p * p < n; p++)
-                if (hash[p] == true)
+                if (hash[p])
                     for (int i = p * 2; i < n; i += p)
                         hash[i] = false;
 
@@ -937,7 +935,7 @@ public class Template {
             return res;
         }
 
-        static long c(long fact[], long n, long k) {
+        static long c(long[] fact, long n, long k) {
             if (k > n) return 0;
             long res = fact[(int) n];
             res = (int) ((res * Modular_Expo(fact[(int) k], mod - 2)) % mod);
@@ -987,9 +985,7 @@ public class Template {
             }
 
             for (int i = 0; i < n; i++) {
-                for (int j = 0; j < p; j++) {
-                    A[i][j] = C[i][j];
-                }
+                System.arraycopy(C[i], 0, A[i], 0, p);
             }
         }
 
@@ -1056,7 +1052,7 @@ public class Template {
 
         public static int lcs(String s, String t) {
             int n = s.length(), m = t.length();
-            int dp[][] = new int[n + 1][m + 1];
+            int[][] dp = new int[n + 1][m + 1];
             for (int i = 0; i <= n; ++i) {
                 for (int j = 0; j <= m; ++j) {
                     if (i == 0 || j == 0) {

@@ -1,7 +1,7 @@
 package basic.structure.tree.serialize;
 
-import basic.structure.tree.*;
-import common.*;
+import basic.structure.tree.Serialization;
+import common.TreeNode;
 
 /**
  * @author wujingxinit@outlook.com

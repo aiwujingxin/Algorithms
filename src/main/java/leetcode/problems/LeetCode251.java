@@ -7,7 +7,7 @@ package leetcode.problems;
 public class LeetCode251 {
     class Vector2D {
 
-        private int[][] vector;
+        private final int[][] vector;
         private int inner = 0;
         private int outer = 0;
 

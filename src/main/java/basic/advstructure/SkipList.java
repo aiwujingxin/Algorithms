@@ -1,6 +1,6 @@
 package basic.advstructure;
 
-import java.util.*;
+import java.util.Random;
 
 /**
  * @author wujingxinit@outlook.com

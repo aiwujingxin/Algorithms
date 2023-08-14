@@ -23,7 +23,7 @@ public class LeetCode8_v2 {
             char ch = str.charAt(i);
             if (Character.isDigit(ch)) {
                 build.append(ch);
-                if ("0".equals(build.toString())) {
+                if ("0".contentEquals(build)) {
                     build = new StringBuilder();
                 }
             } else {

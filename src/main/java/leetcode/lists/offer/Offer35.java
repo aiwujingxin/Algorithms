@@ -1,8 +1,8 @@
 package leetcode.lists.offer;
 
-import common.*;
+import common.Node;
 
-import java.util.*;
+import java.util.HashMap;
 
 /**
  * @author jingxinwu

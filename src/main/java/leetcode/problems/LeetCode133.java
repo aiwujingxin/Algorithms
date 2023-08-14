@@ -1,8 +1,9 @@
 package leetcode.problems;
 
-import common.*;
+import common.GraphNode;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * @author jingxinwu
@@ -10,7 +11,7 @@ import java.util.*;
  */
 public class LeetCode133 {
 
-    private HashMap<GraphNode, GraphNode> visited = new HashMap<>();
+    private final HashMap<GraphNode, GraphNode> visited = new HashMap<>();
 
     public GraphNode cloneGraph(GraphNode node) {
         if (node == null) {

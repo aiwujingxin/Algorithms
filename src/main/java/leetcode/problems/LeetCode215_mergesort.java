@@ -15,10 +15,8 @@ public class LeetCode215_mergesort {
         mergeSort(nums, mid + 1, right, temp);//记录树右边的
 
         //合并两个区间
-        for (int i = left; i <= right; i++) {
-            temp[i] = nums[i];
-            //temp就是辅助列表，新列表的需要排序的值就是从辅助列表中拿到的
-        }
+        //temp就是辅助列表，新列表的需要排序的值就是从辅助列表中拿到的
+        if (right + 1 - left >= 0) System.arraycopy(nums, left, temp, left, right + 1 - left);
         int i = left;       //给辅助数组里面的值标点
         int j = mid + 1;
         for (int k = left; k <= right; k++) {//k 就为当前要插入的位置

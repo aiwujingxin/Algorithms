@@ -58,8 +58,6 @@ public class LeetCode493_mergesort {
             j++;
             k++;
         }
-        for (int n = left; n <= right; n++) {
-            nums[n] = arr[n];
-        }
+        if (right + 1 - left >= 0) System.arraycopy(arr, left, nums, left, right + 1 - left);
     }
 }

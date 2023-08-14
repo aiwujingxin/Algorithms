@@ -13,9 +13,7 @@ public class LeetCode312_dfs {
         int[] arr = new int[N + 2];
         arr[0] = 1;
         arr[N + 1] = 1;
-        for (int i = 1; i <= N; i++) {
-            arr[i] = nums[i - 1];
-        }
+        System.arraycopy(nums, 0, arr, 1, N);
         //momo
         int[][] dp = new int[N + 1][N + 1];
         for (int i = 0; i < N + 1; i++) {

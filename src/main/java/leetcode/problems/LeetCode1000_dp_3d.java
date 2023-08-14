@@ -5,7 +5,7 @@ package leetcode.problems;
  * @date 2023/6/23 20:04
  * <a href="https://leetcode.com/problems/minimum-cost-to-merge-stones/solutions/247657/JAVA-Bottom-Up-+-Top-Down-DP-With-Explaination/">...</a>
  */
-public class LeetCode1000_dp {
+public class LeetCode1000_dp_3d {
 
     public int mergeStones(int[] stones, int K) {
         int len = stones.length;

@@ -1,6 +1,6 @@
 package leetcode.problems;
 
-import java.util.*;
+import java.util.ArrayDeque;
 
 /**
  * @author wujingxinit@outlook.com
@@ -49,7 +49,7 @@ public class LeetCode1263_opt {
             }
         }
 
-        while (deque.size() > 0) {
+        while (!deque.isEmpty()) {
             int[] curr = deque.pollFirst();
             int boxI = directions[curr[2]][0] + curr[0];
             int boxJ = directions[curr[2]][1] + curr[1];
@@ -81,7 +81,7 @@ public class LeetCode1263_opt {
         ArrayDeque<int[]> deque = new ArrayDeque<>();
         boolean[][] isVisited = new boolean[m][n];
         deque.add(newPos);
-        while (deque.size() > 0) {
+        while (!deque.isEmpty()) {
             int[] curr = deque.pollFirst();
             if (currPos[0] == curr[0] && currPos[1] == curr[1]) return true;
             for (int[] d : directions) {

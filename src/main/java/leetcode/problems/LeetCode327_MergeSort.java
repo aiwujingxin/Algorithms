@@ -67,8 +67,6 @@ public class LeetCode327_MergeSort {
         }
 
         // 给原来的数组
-        for (int i = start; i <= end; i++) {
-            sum[i] = temp[i];
-        }
+        if (end + 1 - start >= 0) System.arraycopy(temp, start, sum, start, end + 1 - start);
     }
 }

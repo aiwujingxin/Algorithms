@@ -1,6 +1,6 @@
 package basic.algorithm.graph.bipartite;
 
-import java.util.*;
+import java.util.Arrays;
 
 
 /**

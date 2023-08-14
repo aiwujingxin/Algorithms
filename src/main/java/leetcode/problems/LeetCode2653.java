@@ -1,6 +1,7 @@
 package leetcode.problems;
 
-import java.util.*;
+import java.util.Map;
+import java.util.TreeMap;
 
 /**
  * @author wujingxinit@outlook.com

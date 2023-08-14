@@ -1,8 +1,8 @@
 package basic.algorithm.dp.knapsack.zeroOne;
 
-import basic.algorithm.dp.knapsack.*;
+import basic.algorithm.dp.knapsack.knapsack;
 
-import java.util.*;
+import java.util.Arrays;
 
 /**
  * @author wujingxinit@outlook.com

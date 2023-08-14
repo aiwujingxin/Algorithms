@@ -1,6 +1,6 @@
 package basic.advstructure;
 
-import java.util.*;
+import java.util.PriorityQueue;
 
 /**
  * @author wujingxinit@outlook.com

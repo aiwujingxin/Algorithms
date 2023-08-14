@@ -14,9 +14,7 @@ public class LeetCode312_dp {
         int[] arr = new int[N + 2];
         arr[0] = 1;
         arr[N + 1] = 1;
-        for (int i = 1; i <= N; i++) {
-            arr[i] = nums[i - 1];
-        }
+        System.arraycopy(nums, 0, arr, 1, N);
         int[][] dp = new int[N + 2][N + 2];
         for (int i = N; i >= 1; i--) {
             for (int j = 1; j <= N; j++) {
