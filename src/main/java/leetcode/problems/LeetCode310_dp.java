@@ -1,8 +1,6 @@
 package leetcode.problems;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 /**
  * @author wujingxinit@outlook.com
@@ -14,6 +12,7 @@ import java.util.List;
 //首先，它通过输入的边的列表来构建一张图，然后使用深度优先搜索（DFS）来计算每个结点往下的最长链（d1）和次长链（d2），并记录下每个结点父节点的信息（p）。
 //接着，它再次使用DFS来计算每个结点向上的最远距离（up），最后用每个结点的最长链和它向上的最远距离的最大值来计算出最小高度，并返回所有具有最小高度的结点的编号。
 public class LeetCode310_dp {
+    int N = 20010, M = N * 2, idx = 0;
 
     public List<Integer> findMinHeightTrees(int n, int[][] edges) {
         Arrays.fill(he, -1);
@@ -92,8 +91,6 @@ public class LeetCode310_dp {
             dfs2(j, u);
         }
     }
-
-
 
 
     int[] he = new int[N], e = new int[M], ne = new int[M];

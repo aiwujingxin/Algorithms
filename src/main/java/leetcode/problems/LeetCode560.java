@@ -1,6 +1,6 @@
 package leetcode.problems;
 
-import java.util.HashMap;
+import java.util.*;
 
 /**
  * @author jingxinwu
@@ -17,9 +17,9 @@ public class LeetCode560 {
         int sum = 0;
         map.put(0, 1);
         for (int num : nums) {
-            sum = sum + num;
+            sum += num;
             if (map.containsKey(sum - k)) {
-                count = count + map.get(sum - k);
+                count += map.get(sum - k);
             }
             map.put(sum, map.getOrDefault(sum, 0) + 1);
         }
