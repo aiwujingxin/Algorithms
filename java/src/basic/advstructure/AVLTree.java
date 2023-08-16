@@ -3,7 +3,7 @@ package basic.advstructure;
 /**
  * @author aiwujingxin@gmail.com
  * @date 2022/7/19 01:10
- * from chat gpt
+ * from ChatGPT
  */
 public class AVLTree {
 
