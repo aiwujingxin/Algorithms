@@ -6,7 +6,7 @@ import java.util.Arrays;
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/6/20 00:10
- * {@link  leetcode.lists.lcp.LCP04}
+ * {@link leetcode.lists.lcp.LCP04}
  * {@link leetcode.problems.LeetCode1349}
  */
 

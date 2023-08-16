@@ -42,6 +42,6 @@ public class LeetCode315 {
             res.set(indexes[l], res.get(indexes[l]) + reversecount);
         }
 
-        if (p >= 0) System.arraycopy(tmp, 0, indexes, start + 0, p);
+        if (p >= 0) System.arraycopy(tmp, 0, indexes, start, p);
     }
 }

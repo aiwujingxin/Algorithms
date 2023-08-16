@@ -8,8 +8,8 @@ import java.util.*;
  */
 public class LeetCode2581_v2 {
 
-    private List<Integer>[] g;
     private final Set<Long> s = new HashSet<>();
+    private List<Integer>[] g;
     private int k, ans, cnt0;
 
     public int rootCount(int[][] edges, int[][] guesses, int k) {

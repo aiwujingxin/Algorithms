@@ -30,3 +30,4 @@ target/
 /.mvn/
 /src/test/
 /src/test/java/
+/out/

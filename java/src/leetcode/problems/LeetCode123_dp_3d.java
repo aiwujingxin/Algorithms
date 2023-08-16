@@ -3,6 +3,7 @@ package leetcode.problems;
 /**
  * @author aiwujingxin@gmail.com
  * @date 2022/7/7 22:29
+ * {@link LeetCode188_dp_3d}
  */
 public class LeetCode123_dp_3d {
 
@@ -12,8 +13,6 @@ public class LeetCode123_dp_3d {
      * k交易次数上限
      * <p>
      * 可扩展至第188题 的解法
-     *
-     * @link LeetCode188_dp_3d
      */
 
     public int maxProfit(int[] prices) {

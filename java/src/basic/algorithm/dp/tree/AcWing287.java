@@ -8,15 +8,14 @@ import java.io.*;
  * <a href="https://www.acwing.com/solution/content/106038/"></a>
  */
 public class AcWing287 {
-    private static final BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));    private static final int N = 200010, M = 2 * N;
-    private static final BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(System.out));    private static final int[] h = new int[N];
+    private static final BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+    private static final BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(System.out));
+    private static final int N = 200010, M = 2 * N;
     private static final int[] e = new int[M];
     private static final int[] ne = new int[M];
+    private static final int[] h = new int[N];
     private static final int[] w = new int[M];
-    private static final int[] deg = new int[N];
     private static int n, idx = 0;    //up[i]和down[i]分别表示以节点i为根节点，向上和向下的最大流量
-    private static final int[] up = new int[N];
-    private static final int[] down = new int[N];
 
     public static void main(String[] args) throws IOException {
         int t = Integer.parseInt(reader.readLine());
@@ -54,6 +53,8 @@ public class AcWing287 {
         }
     }
 
+    private static final int[] deg = new int[N];
+
     private static void dfsDown(int u, int parent) {
         down[u] = 0;
         for (int i = h[u]; i != -1; i = ne[i]) {
@@ -75,9 +76,8 @@ public class AcWing287 {
         deg[b]++;
     }
 
-
-
-
+    private static final int[] up = new int[N];
+    private static final int[] down = new int[N];
 
 
 }
