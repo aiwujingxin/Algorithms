@@ -2,23 +2,20 @@ package basic.algorithm.dp.interval;
 
 import leetcode.problems.*;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.*;
 
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/8/10 21:44
- * <a href="https://www.acwing.com/problem/content/description/284/"></a>
- * <p>
- * <a href="https://www.acwing.com/blog/content/4802/"></a>
- * <a href="https://leetcode.cn/circle/article/BO520a/"></a>
- * {@link LeetCode1000_dp_3d}
- * {@link LeetCode312_dp 戳气球}
- * {@link LeetCode486_dp}
- * {@link LeetCode516}
- * {@link LeetCode647_dp_2d}
- * {@link LeetCode678_dp}
+ * @link <a href="https://www.acwing.com/problem/content/description/284/"</a>
+ * @link <a href="https://www.acwing.com/blog/content/4802/"></a>
+ * @link <a href="https://leetcode.cn/circle/article/BO520a/"></a>
+ * @see LeetCode1000_dp_3d
+ * @see LeetCode312_dp 戳气球
+ * @see LeetCode486_dp
+ * @see LeetCode516
+ * @see LeetCode647_dp_2d
+ * @see LeetCode678_dp
  */
 public class AcWing282 {
 
@@ -53,4 +50,3 @@ public class AcWing282 {
         System.out.println(f[1][n]);
     }
 }
-

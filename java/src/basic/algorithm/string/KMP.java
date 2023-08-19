@@ -1,12 +1,12 @@
 package basic.algorithm.string;
 
-import java.util.Arrays;
+import java.util.*;
 
 /**
  * @author aiwujingxin@gmail.com
  * @date 2022/7/4 22:47
- * {@link leetcode.problems.LeetCode214_kmp}
- * {@link leetcode.problems.LeetCode28}
+ * @see leetcode.problems.LeetCode214_kmp
+ * @see leetcode.problems.LeetCode28
  */
 public class KMP implements basic.structure.string.KMP {
 

@@ -1,15 +1,14 @@
 package basic.structure.tree.serialize;
 
-import basic.structure.tree.Serialization;
-import common.TreeNode;
+import basic.structure.tree.*;
+import common.*;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/7/16 15:52
- * {@link leetcode.problems.LeetCode449}
+ * @see leetcode.problems.LeetCode449
  */
 public class BSTCodec implements Serialization {
 

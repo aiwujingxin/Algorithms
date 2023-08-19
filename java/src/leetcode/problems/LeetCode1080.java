@@ -1,11 +1,11 @@
 package leetcode.problems;
 
-import common.TreeNode;
+import common.*;
 
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/7/18 17:43
- * {@link LeetCode1110_dfs}
+ * @see LeetCode1110_dfs
  */
 public class LeetCode1080 {
 

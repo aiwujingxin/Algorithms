@@ -3,7 +3,7 @@ package basic.algorithm.other;
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/5/27 23:58
- * {@link leetcode.problems.LeetCode2536}
+ * @see leetcode.problems.LeetCode2536
  */
 public class PreDiffMatrix {
 

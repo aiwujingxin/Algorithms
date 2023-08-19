@@ -5,7 +5,7 @@ import java.util.*;
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/3/30 19:15
- * {@link  /main/GO/leetcode/lists/offerII/Offer115.go}
+ * @see ../go/src/leetcode/offerII/Offer115.go
  */
 public class LeetCode444 {
 

@@ -6,8 +6,8 @@ package leetcode.problems;
  * <a href="https://leetcode.cn/problems/valid-palindrome-iii/solution/javazi-di-xiang-shang-dong-tai-gui-hua-b-u3a4/">...</a>
  * <a href="https://www.youtube.com/watch?v=Xfk2lEByP9M">区间DP</a>
  * <p>
- * {@link LeetCode516}
- * {@link LeetCode312_dp}
+ * @see LeetCode516
+ * @see LeetCode312_dp
  */
 public class LeetCode1216 {
     public boolean isValidPalindrome(String s, int k) {

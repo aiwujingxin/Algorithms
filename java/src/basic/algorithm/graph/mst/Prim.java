@@ -1,12 +1,12 @@
 package basic.algorithm.graph.mst;
 
-import java.util.Arrays;
+import java.util.*;
 
 /**
  * @author aiwujingxin@gmail.com
  * @date 2022/7/3 16:24
  * 和Dijkstra很像
- * {@link leetcode.problems.LeetCode1584_prim}
+ * @see leetcode.problems.LeetCode1584_prim
  */
 public class Prim {
 

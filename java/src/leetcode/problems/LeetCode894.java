@@ -1,14 +1,13 @@
 package leetcode.problems;
 
-import common.TreeNode;
+import common.*;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/7/17 16:36
- * {@link LeetCode95}
+ * @see LeetCode95
  */
 public class LeetCode894 {
 

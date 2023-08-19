@@ -7,8 +7,7 @@ package leetcode.problems;
 public class LeetCode33 {
 
     public static void main(String[] args) {
-        LeetCode33 leetCode33 = new LeetCode33();
-        System.out.println(leetCode33.search(new int[]{4, 5, 6, 7, 0, 1, 2}, 0));
+        System.out.println(new LeetCode33().search(new int[] { 4, 5, 6, 7, 0, 1, 2 }, 0));
     }
 
     public int search(int[] nums, int target) {

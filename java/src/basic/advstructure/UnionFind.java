@@ -47,7 +47,7 @@ public class UnionFind {
     /**
      * @author wujingxinit@outlook.com
      * @date 2023/5/22 21:55
-     * {@link leetcode.problems.LeetCode208}
+     * @see leetcode.problems.LeetCode208
      */
     public static class Trie {
     }

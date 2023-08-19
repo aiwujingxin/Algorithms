@@ -1,13 +1,13 @@
 package leetcode.problems;
 
-import common.TreeNode;
+import common.*;
 
-import java.util.HashMap;
+import java.util.*;
 
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/8/14 18:10
- * {@link LeetCode560}
+ * @see LeetCode560
  */
 public class LeetCode437_pre {
 

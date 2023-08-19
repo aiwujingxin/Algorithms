@@ -7,7 +7,7 @@ import (
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/2/8 18:21
- * @link: 区间DP
+ * @description 区间DP
 	https://www.youtube.com/watch?v=Xfk2lEByP9M 20min
 	https://leetcode.cn/problems/boolean-evaluation-lcci/solution/java-fen-zhi-ji-yi-hua-di-gui-lei-si-yu-241-ti-241/
 */

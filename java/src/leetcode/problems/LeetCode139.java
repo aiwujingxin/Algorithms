@@ -1,7 +1,6 @@
 package leetcode.problems;
 
-import java.util.HashSet;
-import java.util.List;
+import java.util.*;
 
 /**
  * @author wujingxinit@outlook.com
@@ -11,7 +10,7 @@ public class LeetCode139 {
 
     public boolean wordBreak(String s, List<String> wordDict) {
         HashSet<String> set = new HashSet<>(wordDict);
-        if (s == null || s.length() == 0) {
+        if (s == null || s.isEmpty()) {
             return false;
         }
         //fix boolean[] dp = new boolean[s.length() + 1];

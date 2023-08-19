@@ -1,14 +1,11 @@
 package basic.algorithm.other;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/5/7 12:45
- * {@link leetcode.problems.LeetCode56}
+ * @see leetcode.problems.LeetCode56
  */
 public class MergeIntervals {
 

@@ -1,16 +1,13 @@
 package leetcode.problems;
 
-import basic.advstructure.BinaryIndexedTree;
+import basic.advstructure.*;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
-import java.util.TreeSet;
+import java.util.*;
 
 /**
  * @author jingxinwu
  * @date 2022-01-31 2:29 PM
- * {@link LeetCode327_BitTree}
+ * @see LeetCode327_BitTree
  */
 public class LeetCode493_bittree {
 

@@ -1,11 +1,11 @@
 package leetcode.problems;
 
-import java.util.Arrays;
+import java.util.*;
 
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/6/20 20:32
- * {@link LeetCode1031}
+ * @see LeetCode1031
  */
 public class LeetCode1477 {
 

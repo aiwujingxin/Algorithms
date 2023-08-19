@@ -1,12 +1,12 @@
 package basic.structure.tree.measure;
 
-import basic.structure.tree.Count;
-import common.TreeNode;
+import basic.structure.tree.*;
+import common.*;
 
 /**
  * @author wujingxinit@outlook.com
  * @date 2022/9/7 12:29
- * {@link leetcode.problems.LeetCode543}
+ * @see leetcode.problems.LeetCode543
  */
 public class Diameter implements Count {
 

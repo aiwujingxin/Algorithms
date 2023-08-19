@@ -3,7 +3,7 @@ package leetcode.problems;
 /**
  * @author aiwujingxin@gmail.com
  * @date 2022/7/7 22:29
- * {@link LeetCode188_dp_3d}
+ * @see LeetCode188_dp_3d
  */
 public class LeetCode123_dp_3d {
 

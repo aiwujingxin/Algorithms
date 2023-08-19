@@ -1,11 +1,11 @@
 package leetcode.problems;
 
-import java.util.Arrays;
+import java.util.*;
 
 /**
  * @author jingxinwu
  * @date 2021-08-17 7:30 下午
- * {@link LeetCode1208_bs}
+ * @see LeetCode1208_bs
  */
 public class LeetCode209_bs {
 

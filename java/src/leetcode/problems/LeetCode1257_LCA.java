@@ -1,13 +1,11 @@
 package leetcode.problems;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/8/14 17:11
- * {@link LeetCode160_v2}
+ * @see LeetCode160_v2
  */
 public class LeetCode1257_LCA {
 

@@ -3,9 +3,9 @@ package leetcode.problems;
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/6/8 21:14
- * {@link LeetCode1004_sd_v2}
- * {@link LeetCode1156}
- * {@link LeetCode1208_sd}
+ * @see LeetCode1004_sd_v2
+ * @see LeetCode1156
+ * @see LeetCode1208_sd
  */
 public class LeetCode424 {
 

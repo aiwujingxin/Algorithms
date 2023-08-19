@@ -7,8 +7,8 @@ import java.util.Queue;
 /**
  * @author wujingxinit@outlook.com
  * @date 2022/10/20 00:08
- * <a href="https://leetcode.com/problems/water-and-jug-problem/discuss/2427669/BFS-Easy-JAVA">...</a>
- * <a href="https://www.youtube.com/watch?v=vdKQgyvAUVA">...</a>
+ * @link <a href="https://leetcode.com/problems/water-and-jug-problem/discuss/2427669/BFS-Easy-JAVA">...</a>
+ * @link <a href="https://www.youtube.com/watch?v=vdKQgyvAUVA">...</a>
  */
 public class LeetCode365_bfs {
 

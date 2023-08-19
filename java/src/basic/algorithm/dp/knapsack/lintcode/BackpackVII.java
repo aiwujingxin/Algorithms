@@ -4,8 +4,8 @@ package basic.algorithm.dp.knapsack.lintcode;
  * @author wujingxinit@outlook.com
  * @date 2023/8/7 22:18
  * @description 多重背包
- * {@link basic.algorithm.dp.knapsack.multiple.MultiplePack_1d}
- * <a href="https://github.com/cherryljr/LintCode/blob/master/Backpack%20VII.java"></a>
+ * @link <a href="https://github.com/cherryljr/LintCode/blob/master/Backpack%20VII.java"></a>
+ * @see basic.algorithm.dp.knapsack.multiple.MultiplePack_1d
  */
 /*
  * 假设你身上有 n 元，超市里有多种大米可以选择，每种大米都是袋装的，必须整袋购买，给出每种大米的重量，价格以及数量，求最多能买多少公斤的大米

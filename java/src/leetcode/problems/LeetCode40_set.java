@@ -36,7 +36,7 @@ public class LeetCode40_set {
         HashSet<Integer> visited = new HashSet<>();
 
         for (int i = start; i < candidates.length; i++) {
-            //本层不能有重复的数字，visited 去重
+            // 本层不能有重复的数字，visited 去重
             if (visited.contains(candidates[i])) {
                 continue;
             }

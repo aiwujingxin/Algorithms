@@ -1,14 +1,13 @@
 package basic.algorithm.other;
 
-import leetcode.problems.LeetCode1109;
-import leetcode.problems.LeetCode370;
+import leetcode.problems.*;
 
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/5/1 12:58
  * <a href="https://labuladong.github.io/algo/di-yi-zhan-da78c/shou-ba-sh-48c1d/xiao-er-me-c304e/">...</a>
- * {@link LeetCode370}
- * {@link LeetCode1109}
+ * @see LeetCode370
+ * @see LeetCode1109
  */
 public class PreDiff {
 

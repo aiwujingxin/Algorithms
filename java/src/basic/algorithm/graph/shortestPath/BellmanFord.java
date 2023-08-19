@@ -5,8 +5,8 @@ package basic.algorithm.graph.shortestPath;
  * @date 2023/5/29 21:37
  * <p>
  * Bellman-Ford算法是一种用于解决加权有向图中单源最短路径问题的算法。它可以处理负权边，而Dijkstra算法则不能。
- * {@link leetcode.problems.LeetCode787_BellmanFord}
- * {@link leetcode.problems.LeetCode1514_BellmanFord}
+ * @see leetcode.problems.LeetCode787_BellmanFord
+ * @see leetcode.problems.LeetCode1514_BellmanFord
  */
 
 class BellmanFord {

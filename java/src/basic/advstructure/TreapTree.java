@@ -1,11 +1,11 @@
 package basic.advstructure;
 
-import java.util.Random;
+import java.util.*;
 
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/5/23 11:47
- * {@link leetcode.problems.LeetCode480}
+ * @see leetcode.problems.LeetCode480
  */
 
 public class TreapTree {
