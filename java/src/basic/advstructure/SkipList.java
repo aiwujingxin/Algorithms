@@ -1,99 +1,99 @@
 package basic.advstructure;
 
-import java.util.Random;
-
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/5/23 11:47
  */
+
 public class SkipList {
-
-    private static final int MAX_LEVEL = 16; // 最大层数
-    private final SkipListNode head; // 头节点
-    private final Random random; // 用于生成随机数
-    private int level; // 当前跳表的层数
-
-    public SkipList() {
-        this.level = 0;
-        this.head = new SkipListNode(Integer.MIN_VALUE, MAX_LEVEL);
-        this.random = new Random();
-    }
 
     public static void main(String[] args) {
         SkipList skipList = new SkipList();
-        skipList.insert(3);
-        skipList.insert(1);
-        skipList.insert(5);
-
+        skipList.add(3);
+        skipList.add(1);
+        skipList.add(5);
         System.out.println(skipList.search(0)); // 输出 false
         System.out.println(skipList.search(3)); // 输出 true
-
-        skipList.delete(1);
+        skipList.erase(1);
         System.out.println(skipList.search(1)); // 输出 false
     }
 
-    public void insert(int val) {
-        // 生成一个随机的层数
-        int newLevel = randomLevel();
-        // 如果新生成的层数大于当前跳表的层数，更新当前层数
-        if (newLevel > level) {
-            level = newLevel;
-        }
+    private static final int DEFAULT_MAX_LEVEL = 32;
+    Node head = new Node(null, DEFAULT_MAX_LEVEL);
+    int curLevel = 1;
 
-        // 创建新的节点
-        SkipListNode newNode = new SkipListNode(val, newLevel);
-
-        // 更新每层的指针
-        SkipListNode current = head;
-        for (int i = level; i >= 0; i--) {
-            while (current.forwards[i] != null && current.forwards[i].val < val) {
-                current = current.forwards[i];
-            }
-            newNode.forwards[i] = current.forwards[i];
-            current.forwards[i] = newNode;
-        }
-    }
-
-    public void delete(int val) {
-        SkipListNode current = head;
-        for (int i = level; i >= 0; i--) {
-            while (current.forwards[i] != null && current.forwards[i].val < val) {
-                current = current.forwards[i];
-            }
-            if (current.forwards[i] != null && current.forwards[i].val == val) {
-                current.forwards[i] = current.forwards[i].forwards[i];
-            }
-        }
-    }
-
-    public boolean search(int val) {
-        SkipListNode current = head;
-        for (int i = level; i >= 0; i--) {
-            while (current.forwards[i] != null && current.forwards[i].val < val) {
-                current = current.forwards[i];
-            }
-            if (current.forwards[i] != null && current.forwards[i].val == val) {
+    public boolean search(int target) {
+        Node searchNode = head;
+        for (int i = curLevel - 1; i >= 0; i--) {
+            searchNode = findClosest(searchNode, i, target);
+            if (searchNode.next[i] != null && searchNode.next[i].value == target) {
                 return true;
             }
         }
         return false;
     }
 
-    private int randomLevel() {
-        int level = 0;
-        while (random.nextDouble() < 0.5 && level < MAX_LEVEL) {
+    public void add(int num) {
+        int level = randomLevel();
+        Node updateNode = head;
+        Node newNode = new Node(num, level);
+        for (int i = curLevel - 1; i >= 0; i--) {
+            updateNode = findClosest(updateNode, i, num);
+            if (i < level) {
+                if (updateNode.next[i] == null) {
+                    updateNode.next[i] = newNode;
+                } else {
+                    Node temp = updateNode.next[i];
+                    updateNode.next[i] = newNode;
+                    newNode.next[i] = temp;
+                }
+            }
+        }
+        if (level > curLevel) {
+            for (int i = curLevel; i < level; i++) {
+                head.next[i] = newNode;
+            }
+            curLevel = level;
+        }
+    }
+
+    public boolean erase(int num) {
+        boolean flag = false;
+        Node searchNode = head;
+        for (int i = curLevel - 1; i >= 0; i--) {
+            searchNode = findClosest(searchNode, i, num);
+            if (searchNode.next[i] != null && searchNode.next[i].value == num) {
+                searchNode.next[i] = searchNode.next[i].next[i];
+                flag = true;
+            }
+        }
+        return flag;
+    }
+
+    private Node findClosest(Node node, int levelIndex, int value) {
+        while ((node.next[levelIndex]) != null && value > node.next[levelIndex].value) {
+            node = node.next[levelIndex];
+        }
+        return node;
+    }
+
+    private static int randomLevel() {
+        int level = 1;
+        double DEFAULT_P_FACTORY = 0.25;
+        while (Math.random() < DEFAULT_P_FACTORY && level < DEFAULT_MAX_LEVEL) {
             level++;
         }
         return level;
     }
 
-    static class SkipListNode {
-        int val;
-        SkipListNode[] forwards;
+    static class Node {
+        Integer value;
+        Node[] next;
 
-        public SkipListNode(int val, int level) {
-            this.val = val;
-            this.forwards = new SkipListNode[level + 1];
+        public Node(Integer value, int size) {
+            this.value = value;
+            this.next = new Node[size];
         }
     }
 }
+

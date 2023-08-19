@@ -6,6 +6,10 @@
       <sourceFolder url="file://$MODULE_DIR$/cpp/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/go/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/java/src" isTestSource="false" />
+      <excludeFolder url="file://$MODULE_DIR$/cpp/src/advalgorithm/build" />
+      <excludeFolder url="file://$MODULE_DIR$/out" />
+      <excludeFolder url="file://$MODULE_DIR$/.vscode" />
+      <excludeFolder url="file://$MODULE_DIR$/test" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
