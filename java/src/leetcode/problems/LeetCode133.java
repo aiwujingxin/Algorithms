@@ -1,9 +1,8 @@
 package leetcode.problems;
 
-import common.GraphNode;
+import common.*;
 
-import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.*;
 
 /**
  * @author jingxinwu

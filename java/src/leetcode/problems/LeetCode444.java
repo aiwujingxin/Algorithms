@@ -9,7 +9,6 @@ import java.util.*;
  */
 public class LeetCode444 {
 
-
     public boolean sequenceReconstruction(int[] nums, List<List<Integer>> sequences) {
         Map<Integer, Set<Integer>> graph = new HashMap<>();
         Map<Integer, Integer> inDegrees = new HashMap<>();
@@ -38,7 +37,7 @@ public class LeetCode444 {
         }
 
         List<Integer> built = new LinkedList<>();
-        while (queue.size() == 1) {//important
+        while (queue.size() == 1) {// important
             int num = queue.poll();
             built.add(num);
 
@@ -52,31 +51,5 @@ public class LeetCode444 {
 
         System.out.println(Arrays.toString(built.stream().mapToInt(i -> i).toArray()));
         return Arrays.equals(built.stream().mapToInt(i -> i).toArray(), nums);
-    }
-
-    //====dp===
-    public boolean sequenceReconstruction_DP(int[] nums, List<List<Integer>> sequences) {
-        int n = nums.length;
-        boolean[] dp = new boolean[n];
-        dp[0] = true;
-        int[] sub = new int[n + 1];
-
-        for (int i = 0; i < n; i++) {
-            sub[nums[i]] = i;
-        }
-
-        for (List<Integer> sequence : sequences) {
-            for (int j = 1; j < sequence.size(); j++) {
-                if (sub[sequence.get(j)] - sub[sequence.get(j - 1)] == 1) {
-                    dp[sub[sequence.get(j)]] = true;
-                }
-            }
-        }
-        for (int i = 0; i < n; i++) {
-            if (!dp[i]) {
-                return false;
-            }
-        }
-        return true;
     }
 }

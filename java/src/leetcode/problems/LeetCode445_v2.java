@@ -5,13 +5,14 @@ import common.ListNode;
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/1/17 16:26
- * <a href="https://leetcode.com/problems/add-two-numbers-ii/solutions/2645982/java-recursive-solution-95-fast-solution/">...</a>
+ * @link<a href=
+ *         "https://leetcode.com/problems/add-two-numbers-ii/solutions/2645982/java-recursive-solution-95-fast-solution/">...</a>
  */
 
 public class LeetCode445_v2 {
 
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
-        //init
+        // init
         int len1 = 0, len2 = 0;
         ListNode temp1 = l1, temp2 = l2;
         while (temp1 != null) {
