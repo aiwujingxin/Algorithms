@@ -1,12 +1,14 @@
 package basic.algorithm.graph.shortestPath;
 
+import leetcode.*;
+
 import java.util.*;
 
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/5/29 21:40
  * 对BellmanFord优化 和 Dijkstra 很像
- * @see leetcode.problems.LeetCode1514_SPFA
+ * @see LeetCode1514_SPFA
  */
 
 /*

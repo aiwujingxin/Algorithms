@@ -5,7 +5,7 @@ import java.util.PriorityQueue;
 /**
  * @author wujingxinit@outlook.com
  * @date 2022/9/7 13:08
- * from gpt
+ *       from gpt
  */
 public class HuffmanTree {
 
@@ -16,8 +16,8 @@ public class HuffmanTree {
     }
 
     public static void main(String[] args) {
-        char[] characters = {'A', 'B', 'C', 'D', 'E'};
-        int[] frequencies = {5, 3, 8, 2, 6};
+        char[] characters = { 'A', 'B', 'C', 'D', 'E' };
+        int[] frequencies = { 5, 3, 8, 2, 6 };
 
         HuffmanTree huffmanTree = new HuffmanTree();
         huffmanTree.buildTree(characters, frequencies);

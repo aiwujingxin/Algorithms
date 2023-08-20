@@ -1,9 +1,11 @@
 package basic.algorithm.other;
 
+import leetcode.*;
+
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/5/27 23:58
- * @see leetcode.problems.LeetCode2536
+ * @see LeetCode2536
  */
 public class PreDiffMatrix {
 

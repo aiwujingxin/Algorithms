@@ -1,13 +1,16 @@
 package basic.algorithm.graph.bipartite;
 
+import leetcode.*;
+import leetcode.lcp.*;
+
 import java.util.*;
 
 
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/6/20 00:10
- * @see leetcode.lists.lcp.LCP04
- * @see leetcode.problems.LeetCode1349
+ * @see LCP04
+ * @see LeetCode1349
  */
 
 public class Hungarian {

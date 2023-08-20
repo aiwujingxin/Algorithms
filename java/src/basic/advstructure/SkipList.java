@@ -1,22 +1,14 @@
 package basic.advstructure;
 
+import leetcode.LeetCode1206;
+
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/5/23 11:47
+ * @see LeetCode1206
  */
 
 public class SkipList {
-
-    public static void main(String[] args) {
-        SkipList skipList = new SkipList();
-        skipList.add(3);
-        skipList.add(1);
-        skipList.add(5);
-        System.out.println(skipList.search(0)); // 输出 false
-        System.out.println(skipList.search(3)); // 输出 true
-        skipList.erase(1);
-        System.out.println(skipList.search(1)); // 输出 false
-    }
 
     private static final int DEFAULT_MAX_LEVEL = 32;
     Node head = new Node(null, DEFAULT_MAX_LEVEL);
@@ -96,4 +88,3 @@ public class SkipList {
         }
     }
 }
-

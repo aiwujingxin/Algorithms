@@ -1,12 +1,14 @@
 package basic.algorithm.graph.mst;
 
-import java.util.*;
+import leetcode.*;
+
+import java.util.Arrays;
 
 /**
  * @author aiwujingxin@gmail.com
  * @date 2022/7/3 16:24
- * 和Dijkstra很像
- * @see leetcode.problems.LeetCode1584_prim
+ *       和Dijkstra很像
+ * @see LeetCode1584_prim
  */
 public class Prim {
 
@@ -15,20 +17,22 @@ public class Prim {
     static int[] parent;
 
     public static void main(String[] args) {
-        /*v = 4;
-        int[][] graph = {
-                {0, 1, 2, 3},
-                {1, 0, 2, 0},
-                {2, 2, 0, 4},
-                {3, 0, 4, 0}
-        };*/
+        /*
+         * v = 4;
+         * int[][] graph = {
+         * {0, 1, 2, 3},
+         * {1, 0, 2, 0},
+         * {2, 2, 0, 4},
+         * {3, 0, 4, 0}
+         * };
+         */
         v = 5;
         int[][] graph = {
-                {0, 2, 0, 6, 0},
-                {2, 0, 3, 8, 5},
-                {0, 3, 0, 0, 7},
-                {6, 8, 0, 0, 9},
-                {0, 5, 7, 9, 0}
+                { 0, 2, 0, 6, 0 },
+                { 2, 0, 3, 8, 5 },
+                { 0, 3, 0, 0, 7 },
+                { 6, 8, 0, 0, 9 },
+                { 0, 5, 7, 9, 0 }
         };
         Prim prim = new Prim();
         System.out.println(prim.primMST(graph));

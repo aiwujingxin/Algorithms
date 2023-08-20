@@ -2,11 +2,12 @@ package basic.structure.tree.measure;
 
 import basic.structure.tree.*;
 import common.*;
+import leetcode.*;
 
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/7/15 23:05
- * @see leetcode.problems.LeetCode222
+ * @see LeetCode222
  */
 public class Amount implements Count {
 

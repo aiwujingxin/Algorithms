@@ -1,12 +1,13 @@
 package basic.advstructure;
 
+import leetcode.LeetCode98;
+import leetcode.LeetCode99;
+
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/1/4 15:49
- * @link <a href=
- * "https://leetcode.cn/problems/validate-binary-search-tree/">检查一个树是否是二叉搜索树</a>
- * @link <a href=
- * "https://leetcode.cn/problems/recover-binary-search-tree/">根据递增排序的序列生成二权搜索树</a>
+ * @see LeetCode98 检查一个树是否是二叉搜索树
+ * @see LeetCode99 根据递增排序的序列生成二权搜索树
  */
 public class BinarySearchTree {
 
@@ -14,21 +15,6 @@ public class BinarySearchTree {
 
     public BinarySearchTree() {
         this.root = null;
-    }
-
-    public static void main(String[] args) {
-        BinarySearchTree bst = new BinarySearchTree();
-        bst.insert(5);
-        bst.insert(3);
-        bst.insert(7);
-        bst.insert(2);
-        bst.insert(4);
-
-        System.out.println(bst.search(4)); // 输出 true
-        System.out.println(bst.search(6)); // 输出 false
-
-        bst.delete(3);
-        System.out.println(bst.search(3)); // 输出 false
     }
 
     public void insert(int val) {

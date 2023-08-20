@@ -1,12 +1,14 @@
 package basic.algorithm.string;
 
+import leetcode.*;
+
 import java.util.*;
 
 /**
  * @author aiwujingxin@gmail.com
  * @date 2022/7/4 22:47
- * @see leetcode.problems.LeetCode214_kmp
- * @see leetcode.problems.LeetCode28
+ * @see LeetCode214_kmp
+ * @see LeetCode28
  */
 public class KMP implements basic.structure.string.KMP {
 

@@ -3,7 +3,7 @@ package basic.advstructure;
 /**
  * @author aiwujingxin@gmail.com
  * @date 2022/7/19 00:37
- * <a href="https://www.youtube.com/watch?v=e_bK-dgPvfM">讲解</a>
+ * @link <a href="https://www.youtube.com/watch?v=e_bK-dgPvfM">讲解</a>
  */
 public class SegmentTree {
 

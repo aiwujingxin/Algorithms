@@ -1,11 +1,13 @@
 package basic.algorithm.other;
 
-import leetcode.problems.*;
+import leetcode.LeetCode1109;
+import leetcode.LeetCode370;
 
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/5/1 12:58
- * <a href="https://labuladong.github.io/algo/di-yi-zhan-da78c/shou-ba-sh-48c1d/xiao-er-me-c304e/">...</a>
+ * @link <a href=
+ *       "https://labuladong.github.io/algo/di-yi-zhan-da78c/shou-ba-sh-48c1d/xiao-er-me-c304e/">...</a>
  * @see LeetCode370
  * @see LeetCode1109
  */

@@ -1,82 +1,31 @@
 package basic.advstructure;
 
-import java.util.*;
+import leetcode.*;
+
+import java.util.Random;
 
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/5/23 11:47
- * @see leetcode.problems.LeetCode480
+ * @see LeetCode480
  */
 
 public class TreapTree {
 
-    static final int range = 10000010;
-    static final int INF = 0x3f3f3f3f;
-    private static Node root = null;
+    final int range = 10000010;
+    final int INF = 0x3f3f3f3f;
+    private Node root = null;
 
-    static int rand() {
+    int rand() {
         return new Random().nextInt(2 * range);
-    }
-
-    static Node zig(Node node) {//右旋, 返回此时的该位置节点
-        Node p = node.left;
-        node.left = p.right;
-        p.right = node;
-        pushup(p.right);
-        pushup(p);
-        return p;
-    }
-
-    static Node zag(Node node) {//左旋
-        Node p = node.right;
-        node.right = p.left;
-        p.left = node;
-        pushup(p.left);
-        pushup(p);
-        return p;
-    }
-
-    static void pushup(Node node) {
-
-        int lsize, rsize;
-        lsize = rsize = 0;
-        if (node.left != null) {
-            lsize = node.left.size;
-        }
-
-        if (node.right != null) {
-            rsize = node.right.size;
-        }
-        node.size = node.cnt + lsize + rsize;
-
-    }
-
-    public static void main(String[] args) {
-        TreapTree treap = new TreapTree();
-        treap.insert(50);
-        treap.insert(30);
-        treap.insert(20);
-        treap.insert(40);
-        treap.insert(70);
-        treap.insert(60);
-        treap.insert(80);
-
-        System.out.println("Treap树中的节点（中序遍历）：");
-        treap.printTree();
-        System.out.println();
-
-        treap.remove(20);
-        treap.remove(40);
-        System.out.println("删除节点后的Treap树（中序遍历）：");
-        treap.printTree();
-        System.out.println();
     }
 
     public void build() {
         root = new Node(-INF, rand());
         root.right = new Node(INF, rand());
         pushup(root);
-        if (root.val < root.right.val) root = zag(root);
+        if (root.val < root.right.val)
+            root = zag(root);
     }
 
     public void insert(int key) {
@@ -143,7 +92,7 @@ public class TreapTree {
             return node;
         }
 
-        //相等的时候
+        // 相等的时候
         if (node.cnt > 1) {
             node.cnt--;
             pushup(node);
@@ -152,22 +101,22 @@ public class TreapTree {
         if (node.left == null && node.right == null) {
             return null;
         } else {
-            if (node.left == null) {//左旋
+            if (node.left == null) {// 左旋
                 node = zag(node);
                 node.left = remove(node.left, key);
                 pushup(node);
                 return node;
             }
-            if (node.right == null) {//右旋
+            if (node.right == null) {// 右旋
                 node = zig(node);
                 node.right = remove(node.right, key);
                 pushup(node);
                 return node;
             }
-            if (node.left.key > node.right.key) {//左孩子上来， 右旋
+            if (node.left.key > node.right.key) {// 左孩子上来， 右旋
                 node = zig(node);
                 node.right = remove(node.right, key);
-            } else {//右孩子上来， 左旋
+            } else {// 右孩子上来， 左旋
                 node = zag(node);
                 node.left = remove(node.left, key);
             }
@@ -194,7 +143,8 @@ public class TreapTree {
     }
 
     public int getRangByKey(Node node, int key) {
-        if (node == null) return 0;
+        if (node == null)
+            return 0;
         Node left = node.left;
         int lsize = left == null ? 0 : left.size;
 
@@ -234,6 +184,39 @@ public class TreapTree {
         return Math.min(node.key, getNext(node.left, key));
     }
 
+    Node zig(Node node) {// 右旋, 返回此时的该位置节点
+        Node p = node.left;
+        node.left = p.right;
+        p.right = node;
+        pushup(p.right);
+        pushup(p);
+        return p;
+    }
+
+    Node zag(Node node) {// 左旋
+        Node p = node.right;
+        node.right = p.left;
+        p.left = node;
+        pushup(p.left);
+        pushup(p);
+        return p;
+    }
+
+    void pushup(Node node) {
+
+        int lsize, rsize;
+        lsize = rsize = 0;
+        if (node.left != null) {
+            lsize = node.left.size;
+        }
+
+        if (node.right != null) {
+            rsize = node.right.size;
+        }
+        node.size = node.cnt + lsize + rsize;
+
+    }
+
     // 打印Treap树中的节点（中序遍历）
     public void printTree() {
         inorderTraversal(root);
@@ -260,15 +243,13 @@ public class TreapTree {
         }
     }
 
-    static class Node {
-
+    class Node {
         int key, val, cnt, size;
         Node left, right;
 
         public Node(int key, int val) {
             this.key = key;
             this.val = val;
-            // System.out.println(val);
             this.cnt = this.size = 1;
         }
     }

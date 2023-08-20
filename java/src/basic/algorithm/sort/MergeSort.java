@@ -1,14 +1,16 @@
 package basic.algorithm.sort;
 
 import basic.structure.array.*;
+import leetcode.*;
+import leetcode.offer.*;
 
 /**
  * @author jingxinwu
  * @date 2021-06-06 1:46 下午
- * @see leetcode.problems.LeetCode315_mergeSort
- * @see leetcode.problems.LeetCode493_mergesort
- * @see leetcode.problems.LeetCode327
- * @see leetcode.lists.offer.Offer51
+ * @see LeetCode315_mergeSort
+ * @see LeetCode493_mergesort
+ * @see LeetCode327
+ * @see Offer51
  */
 
 /*

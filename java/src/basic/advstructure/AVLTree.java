@@ -3,7 +3,7 @@ package basic.advstructure;
 /**
  * @author aiwujingxin@gmail.com
  * @date 2022/7/19 01:10
- * from ChatGPT
+ *       from ChatGPT
  */
 public class AVLTree {
 
@@ -12,29 +12,6 @@ public class AVLTree {
     // 构造函数
     public AVLTree() {
         root = null;
-    }
-
-    public static void main(String[] args) {
-        AVLTree avl = new AVLTree();
-
-        avl.insert(50);
-        avl.insert(30);
-        avl.insert(20);
-        avl.insert(40);
-        avl.insert(70);
-        avl.insert(60);
-        avl.insert(80);
-
-        System.out.println("AVL树中的节点（中序遍历）：");
-        avl.printTree();
-        System.out.println();
-
-        avl.delete(20);
-        avl.delete(40);
-
-        System.out.println("删除节点后的AVL树（中序遍历）：");
-        avl.printTree();
-        System.out.println();
     }
 
     // 在AVL树中插入节点

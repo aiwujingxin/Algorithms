@@ -1,6 +1,6 @@
 package basic.algorithm.dp.interval;
 
-import leetcode.problems.*;
+import leetcode.*;
 
 import java.io.*;
 

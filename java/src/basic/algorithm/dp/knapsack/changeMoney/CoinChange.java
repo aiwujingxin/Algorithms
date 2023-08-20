@@ -1,12 +1,14 @@
 package basic.algorithm.dp.knapsack.changeMoney;
 
+import leetcode.*;
+
 import java.util.*;
 
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/8/5 00:27
  * @description 01背包
- * @see leetcode.problems.LeetCode322_dp_1d
+ * @see LeetCode322_dp_1d
  */
 public class CoinChange implements ChangeMoney {
 

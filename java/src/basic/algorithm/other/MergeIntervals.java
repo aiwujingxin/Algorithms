@@ -1,11 +1,13 @@
 package basic.algorithm.other;
 
+import leetcode.*;
+
 import java.util.*;
 
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/5/7 12:45
- * @see leetcode.problems.LeetCode56
+ * @see LeetCode56
  */
 public class MergeIntervals {
 
