@@ -21,7 +21,7 @@ public class LeetCode131 {
 
     public List<List<String>> partition(String s) {
 
-        if (s == null || s.length() == 0) {
+        if (s == null || s.isEmpty()) {
             return res;
         }
 

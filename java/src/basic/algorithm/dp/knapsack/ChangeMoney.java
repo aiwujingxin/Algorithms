@@ -1,4 +1,4 @@
-package basic.algorithm.dp.knapsack.changeMoney;
+package basic.algorithm.dp.knapsack;
 
 import leetcode.*;
 

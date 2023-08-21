@@ -1,14 +1,14 @@
 package basic.algorithm.greedy;
 
 
-import basic.algorithm.dp.knapsack.knapsack;
+import basic.algorithm.dp.knapsack.Knapsack;
 
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
 
-public class Backpack implements knapsack {
+public class Backpack implements Knapsack {
 
     @Override
     public int backPack(int packageWeight, int[] weight, int[] goodsValue) {

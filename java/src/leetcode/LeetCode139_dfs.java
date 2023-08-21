@@ -1,6 +1,6 @@
 package leetcode;
 
-import java.util.List;
+import java.util.*;
 
 /**
  * @author wujingxinit@outlook.com
@@ -8,13 +8,14 @@ import java.util.List;
  */
 public class LeetCode139_dfs {
 
+    boolean[] memo;
 
     public boolean wordBreak(String s, List<String> wordDict) {
-        boolean[] memo = new boolean[s.length()];
-        return dfs(s, wordDict, 0, memo);
+        memo = new boolean[s.length()];
+        return dfs(s, wordDict, 0);
     }
 
-    private boolean dfs(String s, List<String> wordDict, int start, boolean[] memo) {
+    private boolean dfs(String s, List<String> wordDict, int start) {
         if (start == s.length()) {
             return true;
         }
@@ -25,7 +26,7 @@ public class LeetCode139_dfs {
             if (word.length() > s.length() - start) {
                 continue;
             }
-            if (s.startsWith(word, start) && dfs(s, wordDict, start + word.length(), memo)) {
+            if (s.startsWith(word, start) && dfs(s, wordDict, start + word.length())) {
                 return true;
             }
         }

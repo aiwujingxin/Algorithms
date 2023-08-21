@@ -1,6 +1,6 @@
 package basic.algorithm.dp.knapsack.complete;
 
-import basic.algorithm.dp.knapsack.knapsack;
+import basic.algorithm.dp.knapsack.Knapsack;
 
 import java.util.Arrays;
 
@@ -8,7 +8,7 @@ import java.util.Arrays;
  * @author wujingxinit@outlook.com
  * @date 2023/7/18 12:35
  */
-public class CompletePack_dfs_memo implements knapsack {
+public class CompletePack_dfs_memo implements Knapsack {
 
     int[][] memo;
     int[] weights;

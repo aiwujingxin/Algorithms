@@ -1,6 +1,6 @@
 package leetcode;
 
-import java.util.List;
+import java.util.*;
 
 /**
  * @author aiwujingxin@gmail.com
@@ -55,15 +55,14 @@ public class LeetCode139_trie_TEL {
             return false;
         }
 
-    }
+        static class TrieNode {
+            public char data;
+            public TrieNode[] children = new TrieNode[26]; // 使用数组保存结果
+            public boolean isEndingChar = false;
 
-    static class TrieNode {
-        public char data;
-        public TrieNode[] children = new TrieNode[26]; // 使用数组保存结果
-        public boolean isEndingChar = false;
-
-        public TrieNode(char data) {
-            this.data = data;
+            public TrieNode(char data) {
+                this.data = data;
+            }
         }
     }
 }

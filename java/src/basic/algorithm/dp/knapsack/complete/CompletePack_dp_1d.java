@@ -1,13 +1,13 @@
 package basic.algorithm.dp.knapsack.complete;
 
-import basic.algorithm.dp.knapsack.knapsack;
+import basic.algorithm.dp.knapsack.Knapsack;
 
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/7/18 12:33
  * <a href="https://www.lintcode.com/problem/440/">backPackIII</a>
  */
-public class CompletePack_dp_1d implements knapsack {
+public class CompletePack_dp_1d implements Knapsack {
 
     @Override
     public int backPack(int capacity, int[] weights, int[] values) {

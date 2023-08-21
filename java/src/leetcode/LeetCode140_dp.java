@@ -21,7 +21,7 @@ public class LeetCode140_dp {
 
     public List<String> wordBreak(String s, List<String> wordDict) {
         List<String> rst = new ArrayList<>();
-        if (s == null || s.length() == 0 || wordDict == null) {
+        if (s == null || s.isEmpty() || wordDict == null) {
             return rst;
         }
 

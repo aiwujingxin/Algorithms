@@ -1,6 +1,6 @@
 package leetcode;
 
-import java.util.List;
+import java.util.*;
 
 /**
  * @author wujingxinit@outlook.com
@@ -14,15 +14,6 @@ public class LeetCode139_trie {
             trie.insert(word.toCharArray());
         }
         return trie.find(s, 0);
-    }
-
-    static class TrieNode {
-        public TrieNode[] children = new TrieNode[26];
-        public boolean isEnd = false;
-
-        public TrieNode() {
-
-        }
     }
 
     static class Trie {
@@ -62,6 +53,11 @@ public class LeetCode139_trie {
                 }
             }
             return false;
+        }
+
+        static class TrieNode {
+            public TrieNode[] children = new TrieNode[26];
+            public boolean isEnd = false;
         }
     }
 }

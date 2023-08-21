@@ -13,12 +13,12 @@ public class LeetCode254_TEL {
 
     public List<List<Integer>> getFactors(int n) {
         List<List<Integer>> res = new ArrayList<>();
-        dfs(n, new ArrayList<>(), res, new HashSet<>());
+        backtrack(n, new ArrayList<>(), res, new HashSet<>());
         res.remove(0);
         return res;
     }
 
-    private void dfs(int num, List<Integer> list, List<List<Integer>> res, HashSet<String> set) {
+    private void backtrack(int num, List<Integer> list, List<List<Integer>> res, HashSet<String> set) {
         list.add(num);
         String s = convert(list);
         if (!set.contains(s)) {
@@ -29,7 +29,7 @@ public class LeetCode254_TEL {
         for (int i = 2; i <= num / 2; i++) {
             if (num % i == 0) {
                 list.add(i);
-                dfs(num / i, list, res, set);
+                backtrack(num / i, list, res, set);
                 list.remove(list.size() - 1);
             }
         }

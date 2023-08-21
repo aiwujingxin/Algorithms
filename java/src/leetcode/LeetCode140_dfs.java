@@ -19,7 +19,7 @@ public class LeetCode140_dfs {
         }
 
         LinkedList<String> res = new LinkedList<>();
-        if (s.length() == 0) {
+        if (s.isEmpty()) {
             res.add("");
             return res;
         }

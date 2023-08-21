@@ -1,6 +1,6 @@
 package basic.algorithm.dp.knapsack.zeroOne;
 
-import basic.algorithm.dp.knapsack.knapsack;
+import basic.algorithm.dp.knapsack.Knapsack;
 
 import java.util.Arrays;
 
@@ -8,7 +8,7 @@ import java.util.Arrays;
  * @author wujingxinit@outlook.com
  * @date 2023/7/18 12:37
  */
-public class ZeroOnePack_dfs_memo implements knapsack {
+public class ZeroOnePack_dfs_memo implements Knapsack {
 
     int n;
     int[][] memo;

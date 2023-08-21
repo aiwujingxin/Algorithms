@@ -148,15 +148,6 @@ func (avlNode *AVLNode) GetHeight() int {
 	return avlNode.Height
 }
 
-// Max 比较两个子树高度的大小
-func Max(a, b int) int {
-	if a >= b {
-		return a
-	} else {
-		return b
-	}
-}
-
 // Find 查找指定值
 func (avlNode *AVLNode) Find(data interface{}) *AVLNode {
 	var found *AVLNode

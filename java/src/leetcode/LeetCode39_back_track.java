@@ -9,11 +9,6 @@ import java.util.List;
  */
 public class LeetCode39_back_track {
 
-    public static void main(String[] args) {
-        LeetCode39_back_track leetCode39 = new LeetCode39_back_track();
-        System.out.println(leetCode39.combinationSum(new int[]{2, 3, 6, 7}, 7));
-    }
-
     public List<List<Integer>> combinationSum(int[] candidates, int target) {
         ArrayList<List<Integer>> res = new ArrayList<>();
         if (candidates == null || candidates.length == 0) {
@@ -31,9 +26,10 @@ public class LeetCode39_back_track {
             ans.add(new ArrayList<>(temp));
             return;
         }
+        //for (int i = 0; i < candidates.length; i++) 会重复
         for (int i = start; i < candidates.length; i++) {
             temp.add(candidates[i]);
-            backtrack(ans, candidates, target - candidates[i], temp, i + 1);
+            backtrack(ans, candidates, target - candidates[i], temp, i); // fix i+1
             temp.remove(temp.size() - 1);
         }
     }
