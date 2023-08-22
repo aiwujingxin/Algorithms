@@ -1,6 +1,6 @@
 package leetcode;
 
-import basic.advstructure.BinaryIndexedTree;
+import basicKnowledge.advStructure.BinaryIndexedTree;
 
 /**
  * @author wujingxinit@outlook.com

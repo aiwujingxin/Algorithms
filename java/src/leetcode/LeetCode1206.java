@@ -1,6 +1,6 @@
 package leetcode;
 
-import basic.advstructure.SkipList;
+import basicKnowledge.advStructure.SkipList;
 
 /**
  * @author aiwujingxin@gmail.com

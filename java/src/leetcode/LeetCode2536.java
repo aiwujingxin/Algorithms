@@ -1,6 +1,6 @@
 package leetcode;
 
-import basic.algorithm.other.PreDiffMatrix;
+import basicKnowledge.algorithm.preAndDiff.MatrixDiff;
 
 /**
  * @author wujingxinit@outlook.com
@@ -9,7 +9,7 @@ import basic.algorithm.other.PreDiffMatrix;
 public class LeetCode2536 {
 
     public int[][] rangeAddQueries(int n, int[][] queries) {
-        PreDiffMatrix pm = new PreDiffMatrix();
+        MatrixDiff pm = new MatrixDiff();
         pm.PreDiff(new int[n][n]);
         for (int[] q : queries) {
             int r1 = q[0], c1 = q[1], r2 = q[2], c2 = q[3];

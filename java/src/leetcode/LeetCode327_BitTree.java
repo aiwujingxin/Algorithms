@@ -1,6 +1,6 @@
 package leetcode;
 
-import basic.advstructure.BinaryIndexedTree;
+import basicKnowledge.advStructure.BinaryIndexedTree;
 
 import java.util.HashMap;
 import java.util.Map;

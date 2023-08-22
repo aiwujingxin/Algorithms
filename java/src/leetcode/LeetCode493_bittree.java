@@ -1,6 +1,6 @@
 package leetcode;
 
-import basic.advstructure.*;
+import basicKnowledge.advStructure.*;
 
 import java.util.*;
 
