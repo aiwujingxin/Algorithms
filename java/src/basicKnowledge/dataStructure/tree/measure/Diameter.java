@@ -1,6 +1,6 @@
 package basicKnowledge.dataStructure.tree.measure;
 
-import basicKnowledge.dataStructure.tree.*;
+import basicKnowledge.dataStructure.tree.util.*;
 import common.*;
 import leetcode.*;
 

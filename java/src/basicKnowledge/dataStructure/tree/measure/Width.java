@@ -1,6 +1,6 @@
 package basicKnowledge.dataStructure.tree.measure;
 
-import basicKnowledge.dataStructure.tree.Count;
+import basicKnowledge.dataStructure.tree.util.Count;
 import common.TreeNode;
 
 import java.util.Deque;

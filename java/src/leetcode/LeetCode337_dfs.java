@@ -6,7 +6,7 @@ import common.TreeNode;
  * @author jingxinwu
  * @date 2021-12-12 5:33 PM
  */
-public class LeetCode337 {
+public class LeetCode337_dfs {
 
     //https://leetcode-cn.com/problems/house-robber-iii/solution/san-chong-fang-fa-jie-jue-shu-xing-dong-tai-gui-hu/
 

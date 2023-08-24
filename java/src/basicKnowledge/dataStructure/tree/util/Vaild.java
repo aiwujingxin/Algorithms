@@ -1,4 +1,4 @@
-package basicKnowledge.dataStructure.tree;
+package basicKnowledge.dataStructure.tree.util;
 
 import common.TreeNode;
 

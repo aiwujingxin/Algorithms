@@ -2,7 +2,7 @@ package basicKnowledge.dataStructure.list;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2023/5/1 12:42
+ * @date 2023/8/23 16:10
  */
-public interface BigDecimal {
+public interface Reverse {
 }

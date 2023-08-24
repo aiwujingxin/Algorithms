@@ -1,4 +1,4 @@
-package basicKnowledge.dataStructure.tree.trie;
+package basicKnowledge.dataStructure.trie;
 
 import leetcode.*;
 
