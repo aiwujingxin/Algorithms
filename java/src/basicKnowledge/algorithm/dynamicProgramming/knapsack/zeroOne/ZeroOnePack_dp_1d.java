@@ -10,7 +10,7 @@ import basicKnowledge.algorithm.dynamicProgramming.knapsack.Knapsack;
 public class ZeroOnePack_dp_1d implements Knapsack {
 
     @Override
-    public int backPack(int capacity, int[] weights, int[] values) {
+    public int backPack(int[] weights, int[] values, int capacity) {
         int[] dp = new int[capacity + 1];
         for (int i = 1; i <= capacity; i++) {
             //滚动数组 逆序实现

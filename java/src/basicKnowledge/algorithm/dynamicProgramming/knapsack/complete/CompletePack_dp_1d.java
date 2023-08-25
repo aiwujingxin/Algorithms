@@ -10,7 +10,7 @@ import basicKnowledge.algorithm.dynamicProgramming.knapsack.Knapsack;
 public class CompletePack_dp_1d implements Knapsack {
 
     @Override
-    public int backPack(int capacity, int[] weights, int[] values) {
+    public int backPack(int[] weights, int[] values, int capacity) {
         int n = weights.length;
         int[] dp = new int[capacity + 1];
         // 计算每个容量下的最大价值

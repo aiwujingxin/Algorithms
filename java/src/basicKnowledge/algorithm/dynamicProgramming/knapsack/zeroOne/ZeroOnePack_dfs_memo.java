@@ -20,7 +20,7 @@ public class ZeroOnePack_dfs_memo implements Knapsack {
     }
 
     @Override
-    public int backPack(int capacity, int[] weights, int[] values) {
+    public int backPack(int[] weights, int[] values, int capacity) {
         n = weights.length;
         memo = new int[n + 1][capacity + 1];
         this.capacity = capacity;

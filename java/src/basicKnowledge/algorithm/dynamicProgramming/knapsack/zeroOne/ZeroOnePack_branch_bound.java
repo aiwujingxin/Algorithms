@@ -73,7 +73,7 @@ public class ZeroOnePack_branch_bound implements Knapsack {
     }
 
     @Override
-    public int backPack(int capacity, int[] weights, int[] values) {
+    public int backPack(int[] weights, int[] values, int capacity) {
         Item[] arr = new Item[weights.length];
         for (int i = 0; i < weights.length; i++) {
             arr[i] = new Item(weights[i], values[i]);

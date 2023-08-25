@@ -9,7 +9,7 @@ import basicKnowledge.algorithm.dynamicProgramming.knapsack.Knapsack;
 public class ZeroOnePack_dp_2d implements Knapsack {
 
     @Override
-    public int backPack(int capacity, int[] weights, int[] values) {
+    public int backPack(int[] weights, int[] values, int capacity) {
         int n = weights.length;
         int[][] dp = new int[n + 1][capacity + 1];
         for (int i = 1; i <= n; i++) {

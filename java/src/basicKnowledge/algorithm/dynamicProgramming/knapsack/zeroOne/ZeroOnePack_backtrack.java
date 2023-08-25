@@ -12,7 +12,7 @@ public class ZeroOnePack_backtrack implements Knapsack {
     int temp;
 
     @Override
-    public int backPack(int packageWeight, int[] weight, int[] goodsValue) {
+    public int backPack(int[] weight, int[] goodsValue, int packageWeight) {
         backtrack(0, 0, packageWeight, goodsValue, weight);
         return ans;
     }

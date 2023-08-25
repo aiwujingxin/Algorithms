@@ -6,5 +6,5 @@ package basicKnowledge.algorithm.dynamicProgramming.knapsack;
  */
 public interface Knapsack {
     //《算法导论》 P243页
-    int backPack(int packageWeight, int[] goodsWeight, int[] goodsValue);
+    int backPack(int[] weights, int[] values, int capacity);
 }
