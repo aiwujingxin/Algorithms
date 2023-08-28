@@ -17,7 +17,7 @@ public class LeetCode536 {
 
     //4(2(3)(1))(6(5)(7))
     public TreeNode str2tree(String s) {
-        if (s == null || s.length() == 0) {
+        if (s == null || s.isEmpty()) {
             return null;
         }
         int v = getValue(s);

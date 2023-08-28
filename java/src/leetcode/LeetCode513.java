@@ -14,16 +14,16 @@ public class LeetCode513 {
     public int findBottomLeftValue(TreeNode root) {
         int ret = 0;
         Queue<TreeNode> queue = new LinkedList<>();
-        queue.offer(root);
+        queue.add(root);
         while (!queue.isEmpty()) {
-            TreeNode p = queue.poll();
-            if (p.right != null) {
-                queue.offer(p.right);
+            TreeNode node = queue.poll();
+            if (node.right != null) {
+                queue.offer(node.right);
             }
-            if (p.left != null) {
-                queue.offer(p.left);
+            if (node.left != null) {
+                queue.offer(node.left);
             }
-            ret = p.val;
+            ret = node.val;
         }
         return ret;
     }

@@ -12,11 +12,7 @@ public class LeetCode437 {
         if (root == null) {
             return 0;
         }
-
-        int ret = rootSum(root, targetSum);
-        ret += pathSum(root.left, targetSum);
-        ret += pathSum(root.right, targetSum);
-        return ret;
+        return rootSum(root, targetSum) + pathSum(root.left, targetSum) + pathSum(root.right, targetSum);
     }
 
     public int rootSum(TreeNode root, int targetSum) {

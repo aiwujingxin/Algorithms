@@ -7,7 +7,7 @@ import java.util.*;
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/7/16 15:11
- * @see LeetCode863_dfs
+ * @see LeetCode863_bfs
  */
 public class LeetCode742 {
 

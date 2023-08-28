@@ -2,50 +2,28 @@ package leetcode;
 
 import common.TreeNode;
 
-import java.util.Deque;
-import java.util.LinkedList;
-import java.util.Queue;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
- * @author jingxinwu
- * @date 2022-03-01 7:14 PM
+ * @author wujingxinit@outlook.com
+ * @date 2023/8/29 00:26
  */
 public class LeetCode662 {
 
+    Map<Integer, Integer> levelMin = new HashMap<>();
+
     public int widthOfBinaryTree(TreeNode root) {
-        Queue<AnnotatedNode> queue = new LinkedList<>();
-        queue.add(new AnnotatedNode(root, 0));
-        int ans = 0;
-        while (!queue.isEmpty()) {
-            int size = queue.size();
-            Deque<Integer> level = new LinkedList<>();
-
-            while (size > 0) {
-                AnnotatedNode a = queue.poll();
-                level.add(a.col);
-                if (a.node.left != null) {
-                    queue.add(new AnnotatedNode(a.node.left, a.col * 2));
-
-                }
-                if (a.node.right != null) {
-                    queue.add(new AnnotatedNode(a.node.right, a.col * 2 + 1));
-                }
-                size--;
-            }
-            ans = Math.max(ans, level.getLast() - level.getFirst() + 1);
-        }
-        return ans;
+        return dfs(root, 1, 1);
     }
 
-    static class AnnotatedNode {
-
-        TreeNode node;
-        int col;
-
-        public AnnotatedNode(TreeNode node, int col) {
-            this.node = node;
-            this.col = col;
+    public int dfs(TreeNode node, int depth, int index) {
+        if (node == null) {
+            return 0;
         }
+        levelMin.putIfAbsent(depth, index); // 每一层最先访问到的节点会是最左边的节点，即每一层编号的最小值
+        return Math.max(index - levelMin.get(depth) + 1,
+                Math.max(dfs(node.left, depth + 1, index * 2),
+                        dfs(node.right, depth + 1, index * 2 + 1)));
     }
 }
-
