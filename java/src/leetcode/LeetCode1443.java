@@ -1,7 +1,6 @@
 package leetcode;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 /**
  * @author wujingxinit@outlook.com
@@ -9,19 +8,20 @@ import java.util.List;
  */
 public class LeetCode1443 {
 
-    List<Integer>[] graph;
+
+    HashMap<Integer, List<Integer>> map = new HashMap<>();
     boolean[] visited;
     List<Boolean> hasApple;
 
     public int minTime(int n, int[][] edges, List<Boolean> hasApple) {
-        graph = new List[n];
+
         this.hasApple = hasApple;
-        for (int i = 0; i < graph.length; i++) {
-            graph[i] = new ArrayList<>();
+        for (int i = 0; i < n; i++) {
+            map.put(i, new ArrayList<>());
         }
         for (int[] edge : edges) {
-            graph[edge[0]].add(edge[1]);
-            graph[edge[1]].add(edge[0]);
+            map.get(edge[0]).add(edge[1]);
+            map.get(edge[1]).add(edge[0]);
         }
         visited = new boolean[n];
         return Math.max(dfsMinTime(0) - 2, 0);
@@ -33,7 +33,7 @@ public class LeetCode1443 {
         }
         visited[cur] = true;
         int res = 0;
-        for (Integer next : graph[cur]) {
+        for (Integer next : map.get(cur)) {
             res += dfsMinTime(next);
         }
         if (res != 0) {

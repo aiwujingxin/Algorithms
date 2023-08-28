@@ -10,9 +10,9 @@ import java.util.*;
  */
 public class LeetCode133 {
 
-    private final HashMap<GraphNode, GraphNode> visited = new HashMap<>();
+    private final HashMap<Node, Node> visited = new HashMap<>();
 
-    public GraphNode cloneGraph(GraphNode node) {
+    public Node cloneGraph(Node node) {
         if (node == null) {
             return null;
         }
@@ -23,12 +23,12 @@ public class LeetCode133 {
         }
 
         // 克隆节点，注意到为了深拷贝我们不会克隆它的邻居的列表
-        GraphNode cloneNode = new GraphNode(node.val, new ArrayList<>());
+        Node cloneNode = new Node(node.val, new ArrayList<>());
         // 哈希表存储
         visited.put(node, cloneNode);
 
         // 遍历该节点的邻居并更新克隆节点的邻居列表
-        for (GraphNode neighbor : node.neighbors) {
+        for (Node neighbor : node.neighbors) {
             cloneNode.neighbors.add(cloneGraph(neighbor));
         }
         return cloneNode;

@@ -1,9 +1,6 @@
 package leetcode;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Queue;
+import java.util.*;
 
 /**
  * @author wujingxinit@outlook.com
@@ -12,19 +9,17 @@ import java.util.Queue;
  */
 public class LeetCode886_bfs {
 
-    //study
     public boolean possibleBipartition(int n, int[][] dislikes) {
-        List<Integer>[] graph = new ArrayList[n];
+        // build tree
+        Map<Integer, List<Integer>> map = new HashMap<>();
         for (int i = 0; i < n; i++) {
-            graph[i] = new ArrayList<>();
+            map.put(i, new ArrayList<>());
         }
-
         for (int[] dislike : dislikes) {
             int u = dislike[0] - 1;
             int v = dislike[1] - 1;
-
-            graph[u].add(v);
-            graph[v].add(u);
+            map.get(u).add(v);
+            map.get(v).add(u);
         }
 
         int[] colors = new int[n];
@@ -42,7 +37,7 @@ public class LeetCode886_bfs {
             while (!queue.isEmpty()) {
                 int node = queue.poll();
 
-                for (int adj : graph[node]) {
+                for (int adj : map.get(node)) {
                     if (colors[adj] == colors[node]) {
                         return false;
                     }

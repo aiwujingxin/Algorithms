@@ -1,9 +1,6 @@
 package leetcode;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * @author aiwujingxin@gmail.com
@@ -42,11 +39,9 @@ public class LeetCode797 {
     }
 
     private void dfs(Integer start, List<List<Integer>> list, Map<Integer, List<Integer>> map, List<Integer> temp, int n) {
-        if (map.get(start).size() == 0) {
-            if (start == n - 1) {
-                list.add(new ArrayList<>(temp));
-                return;
-            }
+        if (start == n - 1) {
+            list.add(new ArrayList<>(temp));
+            return;
         }
 
         for (int j = 0; j < map.get(start).size(); j++) {

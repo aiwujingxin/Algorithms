@@ -1,51 +1,63 @@
 package leetcode;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2022/9/10 16:20
+ * @date 2023/8/28 16:49
  */
 public class LeetCode207_dfs {
 
-    List<List<Integer>> edges;
-    int[] visited;
-    boolean valid = true;
+    // 记录一次递归堆栈中的节点
+    boolean[] onPath;
+    // 记录遍历过的节点，防止走回头路
+    boolean[] visited;
+    // 记录图中是否有环
+    boolean hasCycle = false;
 
-    public boolean canFinish(int numCourses, int[][] prerequisites) {
+    boolean canFinish(int numCourses, int[][] prerequisites) {
+        List<Integer>[] graph = buildGraph(numCourses, prerequisites);
 
-        //init graph
-        edges = new ArrayList<>();
-        for (int i = 0; i < numCourses; ++i) {
-            edges.add(new ArrayList<>());
-        }
-        visited = new int[numCourses];
-        for (int[] info : prerequisites) {
-            edges.get(info[1]).add(info[0]);
-        }
+        visited = new boolean[numCourses];
+        onPath = new boolean[numCourses];
 
-        for (int i = 0; i < numCourses && valid; ++i) {
-            if (visited[i] == 0) {
-                dfs(i);
-            }
+        for (int i = 0; i < numCourses; i++) {
+            // 遍历图中的所有节点
+            traverse(graph, i);
         }
-        return valid;
+        // 只要没有循环依赖可以完成所有课程
+        return !hasCycle;
     }
 
-    public void dfs(int u) {
-        visited[u] = 1;
-        for (int v : edges.get(u)) {
-            if (visited[v] == 0) {
-                dfs(v);
-                if (!valid) {
-                    return;
-                }
-            } else if (visited[v] == 1) {
-                valid = false;
-                return;
-            }
+    void traverse(List<Integer>[] graph, int s) {
+        if (onPath[s]) {
+            // 出现环
+            hasCycle = true;
         }
-        visited[u] = 2;
+
+        if (visited[s] || hasCycle) {
+            // 如果已经找到了环，也不用再遍历了
+            return;
+        }
+        // 前序代码位置
+        visited[s] = true;
+        onPath[s] = true;
+        for (int t : graph[s]) {
+            traverse(graph, t);
+        }
+        // 后序代码位置
+        onPath[s] = false;
+    }
+
+    List<Integer>[] buildGraph(int numCourses, int[][] prerequisites) {
+        // 图中共有 numCourses 个节点
+        List<Integer>[] graph = new LinkedList[numCourses];
+        for (int i = 0; i < numCourses; i++) {
+            graph[i] = new LinkedList<>();
+        }
+        for (int[] edge : prerequisites) {
+            graph[edge[1]].add(edge[0]);
+        }
+        return graph;
     }
 }

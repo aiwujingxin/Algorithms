@@ -13,21 +13,16 @@ public class LeetCode261 {
     }
 
     public boolean validTree(int n, int[][] edges) {
-        //fix case
-        //5
-        //[[0,1],[1,2],[2,3],[1,3],[1,4]]
-//        if (edges.length != n - 1) {
-//            return false;
-//        }
-
+        if (edges.length != n - 1) {
+            return false;
+        }
         Map<Integer, List<Integer>> map = new HashMap<>();
+        for (int i = 0; i < n; i++) {
+            map.put(i, new ArrayList<>());
+        }
         for (int[] edge : edges) {
-            List<Integer> one = map.getOrDefault(edge[0], new ArrayList<>());
-            one.add(edge[1]);
-            map.put(edge[0], one);
-            List<Integer> two = map.getOrDefault(edge[1], new ArrayList<>());
-            one.add(edge[0]);
-            map.put(edge[1], two);
+            map.get(edge[0]).add(edge[1]);
+            map.get(edge[1]).add(edge[0]);
         }
 
         Queue<Integer> queue = new LinkedList<>();
@@ -45,7 +40,6 @@ public class LeetCode261 {
                 }
             }
         }
-        System.out.println(set);
         return set.size() == n;
     }
 }

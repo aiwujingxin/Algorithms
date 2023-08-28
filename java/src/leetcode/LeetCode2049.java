@@ -1,9 +1,6 @@
 package leetcode;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * @author wujingxinit@outlook.com
@@ -16,10 +13,6 @@ public class LeetCode2049 {
     int n;
     int cnt;
     long maxScore = 0;
-
-    public static void main(String[] args) {
-        System.out.println(new LeetCode2049().countHighestScoreNodes(new int[]{-1, 2, 0, 2, 0}));
-    }
 
     public int countHighestScoreNodes(int[] parents) {
         if (parents == null || parents.length == 0) {

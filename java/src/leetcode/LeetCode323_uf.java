@@ -4,7 +4,7 @@ package leetcode;
  * @author wujingxinit@outlook.com
  * @date 2023/3/16 15:55
  */
-public class LeetCode323 {
+public class LeetCode323_uf {
 
     int[] parent;
 

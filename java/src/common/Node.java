@@ -16,6 +16,7 @@ public class Node {
     public Node parent;
     public List<Node> children;
 
+    public List<Node> neighbors;
 
     public Node() {
     }
@@ -35,5 +36,10 @@ public class Node {
         this.val = val;
         this.next = next;
         this.random = random;
+    }
+
+    public Node(int val, List<Node> neighbors) {
+        this.val = val;
+        this.neighbors = neighbors;
     }
 }

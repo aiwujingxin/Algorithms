@@ -1,8 +1,6 @@
 package leetcode;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 /**
  * @author wujingxinit@outlook.com
@@ -10,8 +8,9 @@ import java.util.List;
  */
 public class LeetCode582 {
 
+    HashMap<Integer, List<Integer>> map = new HashMap<>();
+
     public List<Integer> killProcess(List<Integer> pid, List<Integer> ppid, int kill) {
-        HashMap<Integer, List<Integer>> map = new HashMap<>();
         for (int i = 0; i < pid.size(); i++) {
             Integer parent = ppid.get(i);
             if (parent > 0) {
@@ -22,15 +21,15 @@ public class LeetCode582 {
         }
         List<Integer> list = new ArrayList<>();
         list.add(kill);
-        dfs(map, kill, list);
+        dfs(kill, list);
         return list;
     }
 
-    private void dfs(HashMap<Integer, List<Integer>> map, int kill, List<Integer> list) {
+    private void dfs(int kill, List<Integer> list) {
         if (map.containsKey(kill)) {
             for (int i = 0; i < map.get(kill).size(); i++) {
                 list.add(map.get(kill).get(i));
-                dfs(map, map.get(kill).get(i), list);
+                dfs(map.get(kill).get(i), list);
             }
         }
     }

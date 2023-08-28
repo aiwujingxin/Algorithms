@@ -1,7 +1,6 @@
 package leetcode;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 /**
  * @author wujingxinit@outlook.com
@@ -11,17 +10,17 @@ import java.util.List;
 public class LeetCode1245 {
 
     int ans = 0;
-    List<Integer>[] list;
+
+    Map<Integer, List<Integer>> map = new HashMap<>();
 
     public int treeDiameter(int[][] edges) {
         int n = edges.length + 1;
-        list = new ArrayList[n];
         for (int i = 0; i < n; i++) {
-            list[i] = new ArrayList<>();
+            map.putIfAbsent(i, new ArrayList<>());
         }
         for (int[] edge : edges) {
-            list[edge[0]].add(edge[1]);
-            list[edge[1]].add(edge[0]);
+            map.get(edge[0]).add(edge[1]);
+            map.get(edge[1]).add(edge[0]);
         }
         dfs(0, -1);
         return ans;
@@ -29,7 +28,7 @@ public class LeetCode1245 {
 
     public int dfs(int x, int fa) {
         int maxLen = 0;
-        for (int a : list[x]) {
+        for (int a : map.get(x)) {
             if (a == fa) {
                 continue;
             }
