@@ -19,7 +19,7 @@ public class PreOrder implements Serialization {
     }
 
     private void dfs(StringBuilder sb, TreeNode root) {
-        if (sb.length() != 0) {
+        if (!sb.isEmpty()) {
             sb.append(COMMA);
         }
         // 边界条件

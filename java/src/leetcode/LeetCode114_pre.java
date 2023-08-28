@@ -8,12 +8,6 @@ import common.TreeNode;
  */
 public class LeetCode114_pre {
 
-    /**
-     * 1
-     * 2     5
-     * 3   4      6
-     */
-
     public void flatten(TreeNode root) {
         TreeNode curr = root;
         while (curr != null) {

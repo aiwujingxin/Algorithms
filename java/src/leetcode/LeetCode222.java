@@ -4,42 +4,27 @@ import common.TreeNode;
 
 /**
  * @author jingxinwu
- * @date 2021-08-24 11:54 下午
+ * @date 2022-02-23 1:33 PM
  */
 public class LeetCode222 {
 
     public int countNodes(TreeNode root) {
-        if (root == null) {
-            return 0;
+        TreeNode l = root, r = root;
+        // 记录左、右子树的高度
+        int hl = 0, hr = 0;
+        while (l != null) {
+            l = l.left;
+            hl++;
         }
-        int left = leftDepth(root);
-        int right = rightDepth(root);
-
-        if (left == right) {
-            return (1 << left) - 1;
+        while (r != null) {
+            r = r.right;
+            hr++;
         }
-
+        // 如果左右子树的高度相同，则是一棵满二叉树
+        if (hl == hr) {
+            return (int) Math.pow(2, hl) - 1;
+        }
+        // 如果左右高度不同，则按照普通二叉树的逻辑计算
         return 1 + countNodes(root.left) + countNodes(root.right);
-
     }
-
-    private int leftDepth(TreeNode root) {
-        int cnt = 0;
-
-        while (root != null) {
-            root = root.left;
-            cnt++;
-        }
-        return cnt;
-    }
-
-    private int rightDepth(TreeNode root) {
-        int cnt = 0;
-        while (root != null) {
-            root = root.right;
-            cnt++;
-        }
-        return cnt;
-    }
-
 }

@@ -13,7 +13,7 @@ public class LeetCode226_bfs {
 
     public TreeNode invertTree(TreeNode root) {
         if (root == null) {
-            return root;
+            return null;
         }
 
         Queue<TreeNode> queue = new LinkedList<>();

@@ -6,7 +6,7 @@ import common.TreeNode;
  * @author wujingxinit@outlook.com
  * @date 2023/7/20 23:23
  */
-public class LeetCode104 {
+public class LeetCode104_backtrack {
 
     // 记录最大深度
     int res = 0;

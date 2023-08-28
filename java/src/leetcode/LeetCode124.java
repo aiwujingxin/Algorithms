@@ -25,9 +25,8 @@ public class LeetCode124 {
         int left = Math.max(maxGain(node.left), 0);
         int right = Math.max(maxGain(node.right), 0);
 
-        int path = node.val + left + right;
         //得到二叉树的最大路径和
-        maxSum = Math.max(maxSum, path);
+        maxSum = Math.max(maxSum, node.val + left + right);
         // 返回节点的最大贡献值
         return node.val + Math.max(left, right);
     }

@@ -23,6 +23,9 @@ public class LeetCode285_dfs {
         if (root == null) {
             return null;
         }
+        if (res != null) {
+            return res;
+        }
         dfs(root.left, p);
         if (flag) {
             res = root;

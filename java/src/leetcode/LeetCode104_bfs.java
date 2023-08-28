@@ -15,13 +15,13 @@ public class LeetCode104_bfs {
         if (root == null) {
             return 0;
         }
-        int count = 0;
+        int level = 0;
         Queue<TreeNode> queue = new LinkedList<>();
         queue.add(root);
         while (!queue.isEmpty()) {
             int size = queue.size();
-            count++;
-            while (size > 0) {
+            level++;
+            for (int i = 0; i < size; i++) {
                 TreeNode node = queue.poll();
                 if (node.left != null) {
                     queue.add(node.left);
@@ -29,9 +29,9 @@ public class LeetCode104_bfs {
                 if (node.right != null) {
                     queue.add(node.right);
                 }
-                size--;
+
             }
         }
-        return count;
+        return level;
     }
 }

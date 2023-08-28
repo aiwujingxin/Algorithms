@@ -5,6 +5,7 @@ import common.TreeNode;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
 
 /**
  * @author jingxinwu
@@ -17,21 +18,20 @@ public class LeetCode199 {
         if (root == null) {
             return view;
         }
-        var q = new LinkedList<TreeNode>();
-        q.add(root);
-
-        while (!q.isEmpty()) {
-            var levelSize = q.size();
-            for (var i = 0; i < levelSize; i++) {
-                var currentNode = q.poll();
-                if (currentNode.left != null) {
-                    q.add(currentNode.left);
+        Queue<TreeNode> queue = new LinkedList<>();
+        queue.add(root);
+        while (!queue.isEmpty()) {
+            int size = queue.size();
+            for (var i = 0; i < size; i++) {
+                var node = queue.poll();
+                if (node.left != null) {
+                    queue.add(node.left);
                 }
-                if (currentNode.right != null) {
-                    q.add(currentNode.right);
+                if (node.right != null) {
+                    queue.add(node.right);
                 }
-                if (i == levelSize - 1) {
-                    view.add(currentNode.val);
+                if (i == size - 1) {
+                    view.add(node.val);
                 }
             }
         }

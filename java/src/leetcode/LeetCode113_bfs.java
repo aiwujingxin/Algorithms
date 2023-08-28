@@ -10,12 +10,12 @@ import java.util.*;
  */
 public class LeetCode113_bfs {
 
-    List<List<Integer>> ret = new LinkedList<>();
-    Map<TreeNode, TreeNode> map = new HashMap<>();
+    List<List<Integer>> res = new LinkedList<>();
+    Map<TreeNode, TreeNode> parentMap = new HashMap<>();
 
     public List<List<Integer>> pathSum(TreeNode root, int targetSum) {
         if (root == null) {
-            return ret;
+            return res;
         }
 
         Queue<TreeNode> queueNode = new LinkedList<>();
@@ -33,28 +33,28 @@ public class LeetCode113_bfs {
                 }
             } else {
                 if (node.left != null) {
-                    map.put(node.left, node);
+                    parentMap.put(node.left, node);
                     queueNode.offer(node.left);
                     queueSum.offer(rec);
                 }
                 if (node.right != null) {
-                    map.put(node.right, node);
+                    parentMap.put(node.right, node);
                     queueNode.offer(node.right);
                     queueSum.offer(rec);
                 }
             }
         }
 
-        return ret;
+        return res;
     }
 
     public void getPath(TreeNode node) {
-        List<Integer> temp = new LinkedList<>();
+        List<Integer> list = new LinkedList<>();
         while (node != null) {
-            temp.add(node.val);
-            node = map.get(node);
+            list.add(node.val);
+            node = parentMap.get(node);
         }
-        Collections.reverse(temp);
-        ret.add(new LinkedList<>(temp));
+        Collections.reverse(list);
+        res.add(new LinkedList<>(list));
     }
 }

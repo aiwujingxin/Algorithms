@@ -43,7 +43,7 @@ public class LevelOrder implements Serialization {
     // Decodes your encoded data to tree.
     @Override
     public TreeNode deserialize(String data) {
-        if (data.length() == 0) {
+        if (data.isEmpty()) {
             return null;
         }
         String[] dataList = data.substring(1, data.length() - 1).split(COMMA);

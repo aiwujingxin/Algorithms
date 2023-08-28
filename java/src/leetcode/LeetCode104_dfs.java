@@ -6,7 +6,7 @@ import common.TreeNode;
  * @author wujingxinit@outlook.com
  * @date 2023/7/20 23:24
  */
-public class LeetCode104_v1 {
+public class LeetCode104_dfs {
 
     // 定义：输入根节点，返回这棵二叉树的最大深度
     int maxDepth(TreeNode root) {

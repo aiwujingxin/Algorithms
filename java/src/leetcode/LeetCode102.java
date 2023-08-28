@@ -23,7 +23,7 @@ public class LeetCode102 {
         while (!queue.isEmpty()) {
             List<Integer> level = new ArrayList<>();
             int size = queue.size();
-            while (size > 0) {
+            for (int i = 0; i < size; i++) {
                 TreeNode node = queue.poll();
                 level.add(node.val);
                 if (node.left != null) {
@@ -32,8 +32,6 @@ public class LeetCode102 {
                 if (node.right != null) {
                     queue.add(node.right);
                 }
-
-                size--;
             }
             res.add(level);
         }
