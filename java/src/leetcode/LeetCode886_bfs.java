@@ -6,6 +6,7 @@ import java.util.*;
  * @author wujingxinit@outlook.com
  * @date 2022/10/22 23:34
  * <a href="https://leetcode.com/problems/possible-bipartition/discuss/593828/java-DFSBFS-3-clean-simple-approaches-intuitive-%2B-unusual-better-than-most-voted">...</a>
+ * @see LeetCode785_bfs
  */
 public class LeetCode886_bfs {
 

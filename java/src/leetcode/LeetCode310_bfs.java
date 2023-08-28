@@ -23,22 +23,22 @@ public class LeetCode310_bfs {
             degree[e[0]]++;
             degree[e[1]]++;
         }
-        Queue<Integer> q = new LinkedList<>();
+        Queue<Integer> queue = new LinkedList<>();
         for (int i = 0; i < n; i++) {
             if (degree[i] == 1) {
-                q.offer(i);
+                queue.offer(i);
             }
         }
-        while (!q.isEmpty()) {
+        while (!queue.isEmpty()) {
             List<Integer> list = new ArrayList<>();
-            int size = q.size();
+            int size = queue.size();
             for (int i = 0; i < size; i++) {
-                int cur = q.poll();
+                int cur = queue.poll();
                 list.add(cur);
                 for (int parent : map.get(cur)) {
                     degree[parent]--;
                     if (degree[parent] == 1) {
-                        q.offer(parent);
+                        queue.offer(parent);
                     }
                 }
             }

@@ -6,8 +6,8 @@ package leetcode;
  */
 public class LeetCode785_dfs {
 
-    //study
-
+    // 对于图中的任意两个节点 u 和 v，如果它们之间有一条边直接相连，那么
+    //u 和 v 必须属于不同的集合。
     public boolean isBipartite(int[][] graph) {
         int n = graph.length;
         int[] colors = new int[n];

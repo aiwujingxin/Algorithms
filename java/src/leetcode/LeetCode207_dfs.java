@@ -8,56 +8,38 @@ import java.util.*;
  */
 public class LeetCode207_dfs {
 
-    // 记录一次递归堆栈中的节点
-    boolean[] onPath;
-    // 记录遍历过的节点，防止走回头路
-    boolean[] visited;
-    // 记录图中是否有环
-    boolean hasCycle = false;
+    Map<Integer, List<Integer>> map = new HashMap<>();
 
-    boolean canFinish(int numCourses, int[][] prerequisites) {
-        List<Integer>[] graph = buildGraph(numCourses, prerequisites);
-
-        visited = new boolean[numCourses];
-        onPath = new boolean[numCourses];
-
+    public boolean canFinish(int numCourses, int[][] prerequisites) {
         for (int i = 0; i < numCourses; i++) {
-            // 遍历图中的所有节点
-            traverse(graph, i);
+            map.put(i, new ArrayList<>());
         }
-        // 只要没有循环依赖可以完成所有课程
-        return !hasCycle;
+        for (int[] cp : prerequisites) {
+            map.get(cp[1]).add(cp[0]);
+        }
+        int[] flags = new int[numCourses];
+        for (int i = 0; i < numCourses; i++) {
+            if (dfs(flags, i)) {
+                return false;
+            }
+        }
+        return true;
     }
 
-    void traverse(List<Integer>[] graph, int s) {
-        if (onPath[s]) {
-            // 出现环
-            hasCycle = true;
+    private boolean dfs(int[] flags, int i) {
+        if (flags[i] == 1) {
+            return true;
         }
-
-        if (visited[s] || hasCycle) {
-            // 如果已经找到了环，也不用再遍历了
-            return;
+        if (flags[i] == -1) {
+            return false;
         }
-        // 前序代码位置
-        visited[s] = true;
-        onPath[s] = true;
-        for (int t : graph[s]) {
-            traverse(graph, t);
+        flags[i] = 1;
+        for (Integer j : map.get(i)) {
+            if (dfs(flags, j)) {
+                return true;
+            }
         }
-        // 后序代码位置
-        onPath[s] = false;
-    }
-
-    List<Integer>[] buildGraph(int numCourses, int[][] prerequisites) {
-        // 图中共有 numCourses 个节点
-        List<Integer>[] graph = new LinkedList[numCourses];
-        for (int i = 0; i < numCourses; i++) {
-            graph[i] = new LinkedList<>();
-        }
-        for (int[] edge : prerequisites) {
-            graph[edge[1]].add(edge[0]);
-        }
-        return graph;
+        flags[i] = -1;
+        return false;
     }
 }
