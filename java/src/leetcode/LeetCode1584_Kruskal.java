@@ -1,6 +1,8 @@
 package leetcode;
 
-import java.util.PriorityQueue;
+import basicKnowledge.advStructure.*;
+
+import java.util.*;
 
 /**
  * @author aiwujingxin@gmail.com
@@ -36,23 +38,4 @@ public class LeetCode1584_Kruskal {
         return Math.abs(points[a][0] - points[b][0]) + Math.abs(points[a][1] - points[b][1]);
     }
 
-    static class UnionFind {
-        int[] parent;
-
-        UnionFind(int n) {
-            this.parent = new int[n];
-            for (int i = 0; i < n; i++) parent[i] = i;
-        }
-
-        public void union(int a, int b) {
-            parent[find(a)] = parent[find(b)];
-        }
-
-        public int find(int x) {
-            if (parent[x] != x) {
-                parent[x] = find(parent[x]);
-            }
-            return parent[x];
-        }
-    }
 }

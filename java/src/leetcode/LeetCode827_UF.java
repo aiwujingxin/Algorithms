@@ -6,7 +6,7 @@ import java.util.*;
  * @author aiwujingxin@gmail.com
  * @date 2022/6/18 16:56
  */
-public class LeetCode827_UnionFind {
+public class LeetCode827_UF {
 
     UnionFind uf;
     int[][] dirs = {{0, 1}, {1, 0}, {0, -1}, {-1, 0}};

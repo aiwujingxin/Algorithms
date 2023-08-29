@@ -1,5 +1,7 @@
 package leetcode;
 
+import basicKnowledge.advStructure.*;
+
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/8/28 16:58
@@ -68,38 +70,5 @@ public class LeetCode130_uf {
 
     private int getIndex(int x, int y, int cols) {
         return x * cols + y;
-    }
-
-    class UnionFind {
-
-        private int[] parent;
-
-        public UnionFind(int n) {
-            this.parent = new int[n];
-            for (int i = 0; i < n; i++) {
-                parent[i] = i;
-            }
-        }
-
-        public boolean isConnected(int x, int y) {
-            return find(x) == find(y);
-        }
-
-        public int find(int x) {
-            while (x != parent[x]) {
-                parent[x] = parent[parent[x]];
-                x = parent[x];
-            }
-            return x;
-        }
-
-        public void union(int x, int y) {
-            int xRoot = find(x);
-            int yRoot = find(y);
-            if (xRoot == yRoot) {
-                return;
-            }
-            parent[xRoot] = yRoot;
-        }
     }
 }

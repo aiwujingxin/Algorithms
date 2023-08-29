@@ -1,7 +1,8 @@
 package leetcode;
 
-import java.util.ArrayList;
-import java.util.List;
+import basicKnowledge.advStructure.*;
+
+import java.util.*;
 
 /**
  * @author wujingxinit@outlook.com
@@ -12,7 +13,7 @@ public class LeetCode305 {
     private final static int[][] DIRECTIONS = {{-1, 0}, {0, -1}, {1, 0}, {0, 1}};
 
     public List<Integer> numIslands2(int m, int n, int[][] positions) {
-        UnionFind unionFind = new UnionFind(m * n);
+        UnionFind unionFind = new UnionFind(m * n, 0);
         boolean[] visited = new boolean[m * n];
 
         List<Integer> res = new ArrayList<>();
@@ -43,48 +44,5 @@ public class LeetCode305 {
 
     public boolean inArea(int x, int y, int m, int n) {
         return 0 <= x && x < m && 0 <= y && y < n;
-    }
-
-    private class UnionFind {
-
-        private final int[] parent;
-        private int count;
-
-        public UnionFind(int n) {
-            this.parent = new int[n];
-            for (int i = 0; i < n; i++) {
-                parent[i] = i;
-            }
-            this.count = 0;
-        }
-
-        public int getCount() {
-            return count;
-        }
-
-        public void addCount() {
-            count++;
-        }
-
-        public boolean isConnected(int x, int y) {
-            return find(x) == find(y);
-        }
-
-        public int find(int x) {
-            if (parent[x] != x) {
-                parent[x] = find(parent[x]);
-            }
-            return parent[x];
-        }
-
-        public void union(int x, int y) {
-            int rootX = find(x);
-            int rootY = find(y);
-            if (rootX == rootY) {
-                return;
-            }
-            parent[rootX] = rootY;
-            count--;
-        }
     }
 }

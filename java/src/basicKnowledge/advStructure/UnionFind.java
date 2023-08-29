@@ -4,8 +4,7 @@ package basicKnowledge.advStructure;
  * @author wujingxinit@outlook.com
  * @date 2023/5/22 22:16
  * @link <a href="https://algs4.cs.princeton.edu/15uf/">UF</a>
- * @link <a href=
- *       "https://github.com/AhmadElsagheer/Competitive-programming-library/blob/master/data_structures/UnionFind.java">额外信息</a>
+ * @link <a href="https://github.com/AhmadElsagheer/Competitive-programming-library/blob/master/data_structures/UnionFind.java"></a>
  */
 public class UnionFind {
 
@@ -13,15 +12,19 @@ public class UnionFind {
     private int count; // number of components
 
     public UnionFind(int n) {
-        parent = new int[n];
-        count = n;
+        this.parent = new int[n];
+        this.count = n;
         for (int i = 0; i < n; i++) {
             parent[i] = i;
         }
     }
 
-    public int count() {
-        return count;
+    public UnionFind(int n, int count) {
+        parent = new int[n];
+        this.count = count;
+        for (int i = 0; i < n; i++) {
+            parent[i] = i;
+        }
     }
 
     public int find(int x) {
@@ -31,7 +34,7 @@ public class UnionFind {
         return parent[x];
     }
 
-    public boolean connected(int p, int q) {
+    public boolean isConnected(int p, int q) {
         return find(p) == find(q);
     }
 
@@ -43,5 +46,13 @@ public class UnionFind {
         }
         parent[rootP] = rootQ;
         count--;
+    }
+
+    public int getCount() {
+        return count;
+    }
+
+    public void addCount() {
+        count++;
     }
 }

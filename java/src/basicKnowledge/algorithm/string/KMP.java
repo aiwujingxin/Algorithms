@@ -30,7 +30,7 @@ public class KMP implements basicKnowledge.dataStructure.string.KMP {
         String needle = "AABAAA";
         int m = needle.length();
         int[] prefix = new int[m];
-        makePrefix(prefix, needle);
+        new KMP().makePrefix(prefix, needle);
         System.out.println(Arrays.toString(prefix));
 
         String txt = "ABABDABACDABABCABABC";
@@ -39,7 +39,7 @@ public class KMP implements basicKnowledge.dataStructure.string.KMP {
     }
 
     //prefix[i]表示对应的部分匹配值, s[i - prefix[i]] : i] == s[0: prefix[i]]
-    public static void makePrefix(int[] prefix, String needle) {
+    public void makePrefix(int[] prefix, String needle) {
         int i = 0, j = 1;
         while (j < needle.length()) {
             if (needle.charAt(i) == needle.charAt(j)) {

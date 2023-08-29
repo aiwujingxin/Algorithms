@@ -1,6 +1,6 @@
 package leetcode;
 
-import basicKnowledge.algorithm.string.KMP;
+import basicKnowledge.algorithm.string.*;
 
 public class LeetCode214_kmp {
 
@@ -9,7 +9,7 @@ public class LeetCode214_kmp {
     public String shortestPalindrome(String s) {
         String kmpstr = s + "#" + new StringBuilder(s).reverse();
         int[] next = new int[kmpstr.length()];
-        KMP.makePrefix(next, kmpstr);
+        new KMP().makePrefix(next, kmpstr);
         return new StringBuilder(s.substring(next[kmpstr.length() - 1])).reverse() + s;
     }
 }

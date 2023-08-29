@@ -17,6 +17,9 @@ func inorderSuccessor(root *TreeNode, p *TreeNode) *TreeNode {
 			return
 		}
 		dfs(root.Left, p)
+        if res != nil {
+            return
+        }
 		if root == p {
 			flag = true
 		}

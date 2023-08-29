@@ -6,16 +6,24 @@ package offer
  */
 
 func isSubStructure(A *TreeNode, B *TreeNode) bool {
-
+    if A == nil || B == nil {
+        return false
+    }
 	var dfs func(A *TreeNode, B *TreeNode) bool
 	dfs = func(A *TreeNode, B *TreeNode) bool {
-		if B == nil {
-			return true
-		}
-		if A == nil || A.Val != B.Val {
+	    if (A == null && B == null) {
+            return true;
+        }
+		if A == nil {
 			return false
 		}
+        if B == nil {
+            return true
+        }
+        if A.Val != B.Val {
+            return false
+        }
 		return dfs(A.Left, B.Left) && dfs(A.Right, B.Right)
 	}
-	return (A != nil && B != nil) && (dfs(A, B) || isSubStructure(A.Left, B) || isSubStructure(A.Right, B))
+	return dfs(A, B) || isSubStructure(A.Left, B) || isSubStructure(A.Right, B)
 }
