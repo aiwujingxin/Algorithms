@@ -1,4 +1,4 @@
-package basicKnowledge.algorithm.backtrack;
+package basicKnowledge.algorithm.recursion;
 
 /**
  * @author wujingxinit@outlook.com

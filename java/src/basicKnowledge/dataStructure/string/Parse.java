@@ -9,6 +9,7 @@ package basicKnowledge.dataStructure.string;
  * @see leetcode.LeetCode394 394. 字符串解码
  * @see leetcode.LeetCode10 10. 正则表达式匹配
  * @see leetcode.LeetCode44 44. 通配符匹配
+ * @see leetcode.LeetCode8 8. 字符串转换整数 (atoi)
  */
 public interface Parse {
 }

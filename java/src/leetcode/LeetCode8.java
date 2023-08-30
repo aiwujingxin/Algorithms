@@ -7,50 +7,38 @@ package leetcode;
 public class LeetCode8 {
 
     public static void main(String[] args) {
-        LeetCode8 leetCode8 = new LeetCode8();
-        System.out.println(leetCode8.myAtoi("   -42"));
+        System.out.println(new LeetCode8().myAtoi("   -42"));
     }
 
     public int myAtoi(String s) {
-        if (s == null || s.length() == 0) {
+        if (s == null || s.isEmpty()) {
             return 0;
         }
-        boolean flag = false;
-        for (int i = 0; i < s.length(); i++) {
-            int temp = s.charAt(i) - '0';
-
-            // 非法字符
-            if ((temp < 0 || temp > 9)) {
-                if (s.charAt(i) != '-' && s.charAt(i) != ' ') {
-                    return 0;
-                }
-            }
-
-            if (s.charAt(i) == '-') {
-                flag = true;
-                break;
-            }
-
+        s = s.trim();
+        if (s.isEmpty()) {
+            return 0;
         }
+        int index = 0, sign = 1;
+        if (s.charAt(index) == '+') {
+            index++;
+        } else if (s.charAt(index) == '-') {
+            sign = -1;
+            index++;
+        }
+
         int res = 0;
-        int factor = 1;
-        for (int i = s.length() - 1; i >= 0; i--) {
-            int temp = s.charAt(i) - '0';
-
-            if (temp < 0 || temp > 9) {
-                continue;
-            }
-
-            if (i == 0 && flag) {
-                continue;
-            }
-            if (temp < 0 || temp > 9) {
+        while (index < s.length()) {
+            char c = s.charAt(index);
+            if (c < '0' || c > '9') {
                 break;
             }
-
-            res += factor * temp;
-            factor = factor * 10;
+            int num = c - '0';
+            if (res > (Integer.MAX_VALUE - num) / 10) {
+                return (sign == 1) ? Integer.MAX_VALUE : Integer.MIN_VALUE;
+            }
+            res = res * 10 + num;
+            index++;
         }
-        return flag ? -1 * res : res;
+        return sign * res;
     }
 }
