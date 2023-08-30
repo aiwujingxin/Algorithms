@@ -1,6 +1,6 @@
 package leetcode;
 
-import basicKnowledge.algorithm.preAndDiff.MatrixDiff;
+import basic.algorithm.prefixanddiff.MatrixDiff;
 
 /**
  * @author wujingxinit@outlook.com

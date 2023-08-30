@@ -1,6 +1,6 @@
 package leetcode;
 
-import basicKnowledge.dataStructure.graph.detectcycle.*;
+import basic.datastructure.graph.detectcycle.*;
 
 import java.util.*;
 

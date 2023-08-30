@@ -2,7 +2,7 @@ package leetcode;
 
 import java.util.Arrays;
 
-import basicKnowledge.advStructure.TreapTree;
+import basic.datastructure.advance.TreapTree;
 
 /**
  * @author wujingxinit@outlook.com

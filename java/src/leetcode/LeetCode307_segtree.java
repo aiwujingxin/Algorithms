@@ -1,6 +1,6 @@
 package leetcode;
 
-import basicKnowledge.advStructure.SegmentTree;
+import basic.datastructure.advance.SegmentTree;
 
 /**
  * @author wujingxinit@outlook.com

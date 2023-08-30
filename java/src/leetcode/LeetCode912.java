@@ -1,6 +1,6 @@
 package leetcode;
 
-import basicKnowledge.algorithm.sort.QuickSort;
+import basic.algorithm.sort.QuickSort;
 
 /**
  * @author jingxinwu
