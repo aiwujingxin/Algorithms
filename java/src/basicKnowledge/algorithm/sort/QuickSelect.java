@@ -1,10 +1,12 @@
 package basicKnowledge.algorithm.sort;
 
+import basicKnowledge.dataStructure.liner.array.TopK;
+
 /**
  * @author wujingxinit@outlook.com
  * @date 2022/12/18 17:14
  */
-public class QuickSelect implements basicKnowledge.dataStructure.array.TopK {
+public class QuickSelect implements TopK {
 
     @Override
     public int findKthLargest(int[] nums, int k) {

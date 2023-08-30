@@ -1,6 +1,6 @@
 package basicKnowledge.algorithm.sort;
 
-import basicKnowledge.dataStructure.array.TopK;
+import basicKnowledge.dataStructure.liner.array.TopK;
 import basicKnowledge.dataStructure.heap.MaxHeap;
 
 /**

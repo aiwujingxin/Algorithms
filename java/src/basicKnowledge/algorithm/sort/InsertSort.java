@@ -1,7 +1,7 @@
 package basicKnowledge.algorithm.sort;
 
 
-import basicKnowledge.dataStructure.array.ArraySort;
+import basicKnowledge.dataStructure.liner.array.ArraySort;
 
 /**
  * @author jingxinwu

@@ -1,6 +1,6 @@
 package leetcode;
 
-import basicKnowledge.algorithm.string.KMP;
+import basicKnowledge.dataStructure.string.search.KMP;
 
 /**
  * @author wujingxinit@outlook.com
@@ -9,6 +9,6 @@ import basicKnowledge.algorithm.string.KMP;
 public class LeetCode28 {
     //https://leetcode.com/problems/find-the-index-of-the-first-occurrence-in-a-string/discuss/2268683/Java-or-Using-KMP
     public int strStr(String haystack, String needle) {
-        return new KMP().KMPSearch(haystack, needle);
+        return new KMP().search(haystack, needle);
     }
 }

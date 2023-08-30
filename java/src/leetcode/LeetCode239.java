@@ -8,8 +8,6 @@ import java.util.ArrayDeque;
  */
 public class LeetCode239 {
 
-    //[1,3,-1,-3,5,3,6,7], k = 3
-    //study
     //https://leetcode.com/problems/sliding-window-maximum/discuss/2651803/Java-O(n)-solution-using-deque
     public int[] maxSlidingWindow(int[] nums, int k) {
         int[] ans = new int[nums.length - k + 1];

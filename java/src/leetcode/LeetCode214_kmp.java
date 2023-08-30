@@ -1,6 +1,6 @@
 package leetcode;
 
-import basicKnowledge.algorithm.string.*;
+import basicKnowledge.dataStructure.string.search.KMP;
 
 public class LeetCode214_kmp {
 

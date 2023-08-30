@@ -1,6 +1,6 @@
 package basicKnowledge.algorithm.sort;
 
-import basicKnowledge.dataStructure.array.*;
+import basicKnowledge.dataStructure.liner.array.ArraySort;
 import leetcode.*;
 import leetcode.offer.*;
 

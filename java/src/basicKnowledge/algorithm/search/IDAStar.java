@@ -1,14 +1,14 @@
 package basicKnowledge.algorithm.search;
 
-/**
- * @author wujingxinit@outlook.com
- * @date 2023/6/6 22:48
- */
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+/**
+ * @author wujingxinit@outlook.com
+ * @date 2023/6/6 22:48
+ */
 
 public class IDAStar {
     // 目标状态

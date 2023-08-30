@@ -10,7 +10,7 @@ import java.util.LinkedList;
 public class LeetCode227 {
 
     public int calculate(String s) {
-        if (s == null || s.trim().length() == 0) {
+        if (s == null || s.trim().isEmpty()) {
             return 0;
         }
         Deque<Integer> stack = new LinkedList<>();
