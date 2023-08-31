@@ -1,6 +1,6 @@
-package basic.datastructure.tree.measure;
+package basic.datastructure.tree.attribute;
 
-import basic.datastructure.tree.util.*;
+import basic.datastructure.tree.*;
 import common.*;
 import leetcode.*;
 
@@ -9,7 +9,7 @@ import leetcode.*;
  * @date 2022/9/7 12:29
  * @see LeetCode543
  */
-public class Diameter implements Count {
+public class Diameter implements Attribute {
 
     int maxDiameter = 0;
 

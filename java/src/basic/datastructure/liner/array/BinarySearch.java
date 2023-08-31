@@ -2,34 +2,91 @@ package basic.datastructure.liner.array;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2022/10/15 19:07
+ * @date 2023/5/1 13:02
+ * <a href="https://leetcode.cn/problems/find-first-and-last-position-of-element-in-sorted-array/">...</a>
  */
-public interface BinarySearch {
-    //704. 二分查找 https://leetcode.cn/problems/binary-search/?envType=study-plan&id=binary-search-beginner&plan=binary-search&plan_progress=s4b8jr2
-    //33. 搜索旋转排序数组 https://leetcode.cn/problems/search-in-rotated-sorted-array/
-    //35. 搜索插入位置 https://leetcode.cn/problems/search-insert-position/?envType=study-plan&id=binary-search-beginner&plan=binary-search&plan_progress=s4b8jr2
-    //81. 搜索旋转排序数组 II https://leetcode.cn/problems/search-in-rotated-sorted-array-ii/
-    // 搜索左/右边界
+public class BinarySearch implements basic.algorithm.binarysearch.BinarySearch {
 
-    // 209. 长度最小的子数组 https://leetcode.cn/problems/minimum-size-subarray-sum/?envType=study-plan&id=binary-search-basic&plan=binary-search&plan_progress=47rf0us
-    int search(int[] nums, int target);
+    //34. 在排序数组中查找元素的第一个和最后一个位置
+    @Override
+    public int[] searchRange(int[] nums, int target) {
+        if (nums == null || nums.length == 0) {
+            return new int[]{-1, -1};
+        }
+        int left = bsearch_1(nums, target);
+        int right = bsearch_2(nums, target);
+        if (nums[left] != target) {
+            left = -1;
+        }
+        if (nums[right] != target) {
+            right = -1;
+        }
+        return new int[]{left, right};
+    }
 
-    //1539. 第 k 个缺失的正整数 https://leetcode.cn/problems/kth-missing-positive-number/?envType=study-plan&id=binary-search-beginner&plan=binary-search&plan_progress=s4b8jr2
-    //719. 找出第 K 小的数对距离 https://leetcode.cn/problems/find-k-th-smallest-pair-distance/
-    int find(int[] nums, int k);
+    // 第一个大于等于target的数
+    public int bsearch_1(int[] nums, int target) {
+        int l = 0;
+        int r = nums.length - 1;
+        while (l < r) {
+            int mid = l + r >> 1;
+            if (nums[mid] >= target) {
+                r = mid;
+            } else {
+                l = mid + 1;
+            }
+        }
+        return l;
+    }
 
-    //162. 寻找峰值 https://leetcode.cn/problems/find-peak-element/
-    //153. 寻找旋转排序数组中的最小值 https://leetcode.cn/problems/find-minimum-in-rotated-sorted-array/
-    //268. 丢失的数字  https://leetcode.cn/problems/missing-number/
-    //287. 寻找重复数 https://leetcode.cn/problems/find-the-duplicate-number/
-    //852. 山脉数组的峰顶索引 https://leetcode.cn/problems/peak-index-in-a-mountain-array/
-    //1027. 最长等差数列 https://leetcode.cn/problems/longest-arithmetic-subsequence/
-    int find(int[] nums);
+    // 最后一个小于等于target的数
+    public int bsearch_2(int[] nums, int target) {
+        int l = 0;
+        int r = nums.length - 1;
+        while (l < r) {
+            int mid = l + r + 1 >> 1;
+            if (nums[mid] <= target) {
+                l = mid;
+            } else {
+                r = mid - 1;
+            }
+        }
+        return l;
+    }
 
-    //1855. 下标对中的最大距离  https://leetcode.cn/problems/maximum-distance-between-a-pair-of-values/
-    int find(int[] nums1, int[] nums2);
+    double bsearch_3(double l, double r) {
+        double eps = 1e-6;  // eps 表示精度，取决于题目对精度的要求
+        while (r - l > eps) {
+            double mid = (l + r) / 2;
+            if (check(mid)) {
+                r = mid;
+            } else {
+                l = mid;
+            }
+        }
+        return l;
+    }
 
-    //367. 有效的完全平方数 https://leetcode.cn/problems/valid-perfect-square/
-    //633. 平方数之和 https://leetcode.cn/problems/sum-of-square-numbers/
-    int sqrt(int c);
+    private boolean check(double mid) {
+        return false;
+    }
+
+    int binarySearch(int[] nums, int target) {
+        if (nums == null || nums.length == 0) {
+            return -1;
+        }
+        int left = 0;
+        int right = nums.length - 1;
+        while (left <= right) {
+            int mid = left + (right - left) / 2;
+            if (nums[mid] == target) {
+                return mid;
+            } else if (nums[mid] < target) {
+                left = mid + 1;
+            } else if (nums[mid] > target) {
+                right = mid - 1;
+            }
+        }
+        return -1;
+    }
 }

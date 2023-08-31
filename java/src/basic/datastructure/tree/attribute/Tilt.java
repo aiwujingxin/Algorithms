@@ -1,13 +1,13 @@
-package basic.datastructure.tree.measure;
+package basic.datastructure.tree.attribute;
 
-import basic.datastructure.tree.util.Count;
+import basic.datastructure.tree.Attribute;
 import common.TreeNode;
 
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/7/15 23:12
  */
-public class Tilt implements Count {
+public class Tilt implements Attribute {
 
     int ans = 0;
 

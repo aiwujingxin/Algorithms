@@ -1,6 +1,6 @@
-package basic.datastructure.tree.measure;
+package basic.datastructure.tree.attribute;
 
-import basic.datastructure.tree.util.*;
+import basic.datastructure.tree.*;
 import common.*;
 import leetcode.*;
 
@@ -9,7 +9,7 @@ import leetcode.*;
  * @date 2023/7/15 23:05
  * @see LeetCode222
  */
-public class Amount implements Count {
+public class Amount implements Attribute {
 
     @Override
     public int count(TreeNode root) {

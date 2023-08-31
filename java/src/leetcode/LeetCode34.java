@@ -1,17 +1,10 @@
 package leetcode;
 
-import java.util.Arrays;
-
 /**
  * @author jingxinwu
  * @date 2021-06-18 1:24 上午
  */
 public class LeetCode34 {
-
-    public static void main(String[] args) {
-        LeetCode34 leetCode34 = new LeetCode34();
-        System.out.println(Arrays.toString(leetCode34.searchRange(new int[]{2, 2}, 2)));
-    }
 
     public int[] searchRange(int[] nums, int target) {
         if (nums == null || nums.length == 0) {

@@ -1,4 +1,4 @@
-package basic.datastructure.tree.util;
+package basic.datastructure.tree;
 
 import common.TreeNode;
 

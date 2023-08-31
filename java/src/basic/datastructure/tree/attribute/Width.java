@@ -1,6 +1,6 @@
-package basic.datastructure.tree.measure;
+package basic.datastructure.tree.attribute;
 
-import basic.datastructure.tree.util.Count;
+import basic.datastructure.tree.Attribute;
 import common.TreeNode;
 
 import java.util.Deque;
@@ -11,7 +11,7 @@ import java.util.Queue;
  * @author wujingxinit@outlook.com
  * @date 2022/9/7 12:23
  */
-public class Width implements Count {
+public class Width implements Attribute {
 
     @Override
     public int count(TreeNode root) {
