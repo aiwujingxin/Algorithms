@@ -6,7 +6,7 @@ import common.TreeNode;
  * @author wujingxinit@outlook.com
  * @date 2023/8/24 10:11
  */
-public class LCP64_self {
+public class LCP64_WA {
 
     public int closeLampInTree(TreeNode root) {
         int[] res = dfs(root);
