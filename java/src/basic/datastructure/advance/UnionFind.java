@@ -8,22 +8,30 @@ package basic.datastructure.advance;
  */
 public class UnionFind {
 
-    private final int[] parent; // parent[i] = parent of i
+    private final int[] parent, size, rank; // parent[i] = parent of i
     private int count; // number of components
 
     public UnionFind(int n) {
         this.parent = new int[n];
+        this.size = new int[n];
+        this.rank = new int[n];
         this.count = n;
         for (int i = 0; i < n; i++) {
             parent[i] = i;
+            size[i] = 1;
+            rank[i] = 1;
         }
     }
 
     public UnionFind(int n, int count) {
-        parent = new int[n];
+        this.parent = new int[n];
+        this.size = new int[n];
+        this.rank = new int[n];
         this.count = count;
         for (int i = 0; i < n; i++) {
             parent[i] = i;
+            size[i] = 1;
+            rank[i] = 1;
         }
     }
 
@@ -38,13 +46,33 @@ public class UnionFind {
         return find(p) == find(q);
     }
 
-    public void union(int p, int q) {
-        int rootP = find(p);
-        int rootQ = find(q);
-        if (rootP == rootQ) {
+    public void union(int x, int y) {
+        int rootX = find(x);
+        int rootY = find(y);
+        if (rootX == rootY) {
             return;
         }
-        parent[rootP] = rootQ;
+        parent[rootX] = rootY;
+        size[rootX] += size[rootY];
+        count--;
+    }
+
+    public void unionByRank(int x, int y) {
+        int rootX = find(x);
+        int rootY = find(y);
+        if (rootX == rootY) {
+            return;
+        }
+        if (rank[rootX] > rank[rootY]) {
+            parent[rootY] = rootX;
+            size[rootX] += size[rootY];
+        } else if (rank[rootX] < rank[rootY]) {
+            parent[rootX] = rootY;
+            size[rootY] += size[rootX];
+        } else {
+            parent[rootY] = rootX;
+            rank[rootX] += 1;
+        }
         count--;
     }
 
@@ -54,5 +82,9 @@ public class UnionFind {
 
     public void addCount() {
         count++;
+    }
+
+    public int sizeOfSet(int i) {
+        return this.size[find(i)];
     }
 }
