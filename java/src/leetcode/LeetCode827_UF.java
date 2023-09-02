@@ -1,6 +1,10 @@
 package leetcode;
 
-import java.util.*;
+import basic.datastructure.advance.UnionFind;
+
+import java.util.HashSet;
+
+//https://leetcode.com/problems/making-a-large-island/solutions/3787791/clean-java-solution-union-find-concise-solution-easy-to-understand/
 
 /**
  * @author aiwujingxin@gmail.com
@@ -8,100 +12,43 @@ import java.util.*;
  */
 public class LeetCode827_UF {
 
-    UnionFind uf;
-    int[][] dirs = {{0, 1}, {1, 0}, {0, -1}, {-1, 0}};
-
     public int largestIsland(int[][] grid) {
         int n = grid.length;
-        uf = new UnionFind(n * n);
-        int ans = 0;
-
+        UnionFind unionFind = new UnionFind(n * n);
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
-                if (grid[i][j] == 0) {
+                if (grid[i][j] == 0)
                     continue;
+                int[][] drc = {{1, 0}, {-1, 0}, {0, 1}, {0, -1}};
+                for (int[] d : drc) {
+                    int r = d[0] + i, c = d[1] + j;
+                    if (0 <= r && r < n && 0 <= c && c < n && grid[r][c] == 1) {
+                        unionFind.unionBySize(i * n + j, r * n + c);
+                    }
                 }
-                int curr = i * n + j;
-
-                uf.add(curr);
-                for (int neigh : neighbors(grid, i, j)) {
-                    uf.union(curr, neigh);
-                }
-
-                int p = uf.find(curr);
-                ans = Math.max(ans, uf.size[p]);
             }
         }
-
+        int maxSize = 0;
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
                 if (grid[i][j] == 1) {
+                    maxSize = Math.max(maxSize, unionFind.sizeOfSet(i * n + j));
                     continue;
                 }
-
-                Set<Integer> neighParents = new HashSet<>();
-                for (int neigh : neighbors(grid, i, j)) {
-                    neighParents.add(uf.find(neigh));
+                int[][] drc = {{1, 0}, {-1, 0}, {0, 1}, {0, -1}};
+                HashSet<Integer> visited = new HashSet<>();
+                int currSize = 0;
+                for (int[] d : drc) {
+                    int r = d[0] + i, c = d[1] + j;
+                    if (0 <= r && r < n && 0 <= c && c < n && grid[r][c] == 1 &&
+                            !visited.contains(unionFind.find(r * n + c))) {
+                        visited.add(unionFind.find(r * n + c));
+                        currSize += unionFind.sizeOfSet(r * n + c);
+                    }
                 }
-
-
-                int size = 1;
-                for (int s : neighParents) {
-                    size += uf.size[s];
-                }
-                ans = Math.max(ans, size);
+                maxSize = Math.max(maxSize, currSize + 1);
             }
         }
-        return ans;
-    }
-
-    List<Integer> neighbors(int[][] grid, int i, int j) {
-        int n = grid.length;
-        List<Integer> list = new ArrayList<>();
-        for (int[] dir : dirs) {
-            int x = i + dir[0], y = j + dir[1];
-            if (x < 0 || y < 0 || x >= n || y >= n || !uf.contains(x * n + y)) continue;
-            list.add(x * n + y);
-        }
-        return list;
-    }
-
-    static class UnionFind {
-        int[] parent, size;
-
-        UnionFind(int n) {
-            parent = new int[n];
-            Arrays.fill(parent, -1);
-            size = new int[n];
-        }
-
-        boolean contains(int u) {
-            return parent[u] >= 0;
-        }
-
-        void add(int u) {
-            if (contains(u)) return;
-            parent[u] = u;
-            size[u] = 1;
-        }
-
-        int find(int u) {
-            if (parent[u] == u) return u;
-            parent[u] = find(parent[u]); //path compression
-            return parent[u];
-        }
-
-        boolean union(int u, int v) {
-            int pu = find(u), pv = find(v);
-            if (pu == pv) return false;
-            if (size[pu] <= size[pv]) { //merge smaller component
-                parent[pu] = pv;
-                size[pv] += size[pu];
-            } else {
-                parent[pv] = pu;
-                size[pu] += size[pv];
-            }
-            return true;
-        }
+        return maxSize;
     }
 }

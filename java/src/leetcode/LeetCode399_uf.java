@@ -9,6 +9,7 @@ import java.util.Map;
  * @date 2022/9/10 01:58
  */
 public class LeetCode399_uf {
+    //https://leetcode.com/problems/evaluate-division/solutions/1995737/java-union-find/
 
     //处理有传递性关系的问题，可以使用「并查集」
     //一边查询一边修改结点指向是并查集的特色。

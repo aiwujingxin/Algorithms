@@ -53,7 +53,7 @@ public class UnionFind {
             return;
         }
         parent[rootX] = rootY;
-        size[rootX] += size[rootY];
+        size[rootY] += size[rootX];
         count--;
     }
 
@@ -71,7 +71,22 @@ public class UnionFind {
             size[rootY] += size[rootX];
         } else {
             parent[rootY] = rootX;
+            size[rootX] += size[rootY];
             rank[rootX] += 1;
+        }
+        count--;
+    }
+
+    public void unionBySize(int x, int y) {
+        int xr = find(x), yr = find(y);
+        if (xr == yr) {
+            return;
+        } else if (size[xr] < size[yr]) {
+            parent[xr] = yr;
+            size[yr] += size[xr];
+        } else {
+            parent[yr] = xr;
+            size[xr] += size[yr];
         }
         count--;
     }

@@ -1,44 +1,38 @@
 package basic.datastructure.graph.shortestpath;
 
-import java.util.Arrays;
-import java.util.PriorityQueue;
+import java.util.*;
 
 /**
  * @author aiwujingxin@gmail.com
  * @date 2022/7/1 18:43
  */
 public class Dijkstra_Q {
-    private static int VERTICES; // 图的顶点数
+    List<int[]>[] graph;
+    int N;
 
-    public static void main(String[] args) {
-        VERTICES = 6;
-        int[][] graph = {
-                {0, 2, 4, 0, 0, 0},
-                {2, 0, 1, 4, 2, 0},
-                {4, 1, 0, 0, 3, 0},
-                {0, 4, 0, 0, 3, 1},
-                {0, 2, 3, 3, 0, 2},
-                {0, 0, 0, 1, 2, 0}};
+    public int[] dijkstra(int n, int[][] edges, int source) {
+        N = n + 1;
+        graph = new ArrayList[N];
+        for (int i = 1; i < N; i++) {
+            graph[i] = new ArrayList<>();
+        }
+        for (int[] edge : edges) {
+            graph[edge[0]].add(new int[]{edge[1], edge[2]});
+            graph[edge[1]].add(new int[]{edge[0], edge[2]});
+        }
 
-        int source = 0;
-
-        Dijkstra_Q dijkstra = new Dijkstra_Q();
-        dijkstra.dijkstra(graph, source);
-    }
-
-    public void dijkstra(int[][] graph, int source) {
-        int[] dist = new int[VERTICES]; // 存储源节点到每个节点的最短距离
-        boolean[] visited = new boolean[VERTICES]; // 记录节点是否被访问过
+        int[] dist = new int[N]; // 存储源节点到每个节点的最短距离
+        boolean[] visited = new boolean[N]; // 记录节点是否被访问过
 
         Arrays.fill(dist, Integer.MAX_VALUE); // 初始化距离为无穷大
         dist[source] = 0;
 
-        PriorityQueue<Node> minHeap = new PriorityQueue<>();
-        minHeap.offer(new Node(source, 0));
+        PriorityQueue<int[]> minHeap = new PriorityQueue<>(Comparator.comparingInt(o -> o[1]));
+        minHeap.add(new int[]{source, 0});
 
         while (!minHeap.isEmpty()) {
-            Node currNode = minHeap.poll();
-            int currVertex = currNode.vertex;
+            int[] currNode = minHeap.poll();
+            int currVertex = currNode[0];
 
             if (visited[currVertex]) {
                 continue;
@@ -46,35 +40,18 @@ public class Dijkstra_Q {
 
             visited[currVertex] = true;
 
-            for (int j = 0; j < VERTICES; j++) {
-                if (!visited[j] && graph[currVertex][j] != 0 && dist[currVertex] != Integer.MAX_VALUE && dist[currVertex] + graph[currVertex][j] < dist[j]) {
-                    dist[j] = dist[currVertex] + graph[currVertex][j];
-                    minHeap.offer(new Node(j, dist[j]));
+            for (int[] next : graph[currVertex]) {
+                if (!visited[next[0]] && next[1] != 0 && dist[currVertex] != Integer.MAX_VALUE && dist[currVertex] + next[1] < dist[next[0]]) {
+                    dist[next[0]] = dist[currVertex] + next[1];
+                    minHeap.offer(new int[]{next[0], dist[next[0]]});
                 }
             }
         }
-
-        printShortestPaths(dist, source);
+        return dist;
     }
 
-    private void printShortestPaths(int[] dist, int source) {
-        System.out.println("Vertex\t\tDistance from Source");
-        for (int i = 0; i < VERTICES; i++) {
-            System.out.println(i + "\t\t\t" + dist[i]);
-        }
+    public List<int[]>[] getGraph() {
+        return graph;
     }
 
-    static class Node implements Comparable<Node> {
-        int vertex;
-        int distance;
-
-        public Node(int vertex, int distance) {
-            this.vertex = vertex;
-            this.distance = distance;
-        }
-
-        public int compareTo(Node other) {
-            return Integer.compare(this.distance, other.distance);
-        }
-    }
 }
