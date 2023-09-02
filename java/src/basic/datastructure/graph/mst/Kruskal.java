@@ -1,5 +1,7 @@
 package basic.datastructure.graph.mst;
 
+import basic.datastructure.graph.MinimumTree;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -9,7 +11,7 @@ import java.util.List;
  * @author aiwujingxin@gmail.com
  * @date 2022/7/3 16:24
  */
-public class Kruskal implements MSTree {
+public class Kruskal implements MinimumTree {
     public int MST(int n, int[][] edges) {
         final List<int[]> graph = new ArrayList<>();
         Collections.addAll(graph, edges);

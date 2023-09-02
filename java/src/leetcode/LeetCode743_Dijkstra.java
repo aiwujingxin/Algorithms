@@ -9,7 +9,7 @@ import basic.datastructure.graph.shortestpath.Dijkstra_Q;
 public class LeetCode743_Dijkstra {
 
     public int networkDelayTime(int[][] times, int n, int K) {
-        int[] distance = new Dijkstra_Q().dijkstra(n, times, K);
+        int[] distance = new Dijkstra_Q().getShortestPath(n, times, K);
         int result = 0;
         for (int i = 1; i < distance.length; i++) {
             if (distance[i] == Integer.MAX_VALUE) {

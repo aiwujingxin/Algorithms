@@ -1,4 +1,4 @@
-package basic.datastructure.graph.detectcycle;
+package basic.datastructure.graph;
 
 /**
  * @author wujingxinit@outlook.com

@@ -1,5 +1,6 @@
 package basic.datastructure.graph.shortestpath;
 
+import basic.datastructure.graph.ShortestPath;
 import leetcode.LeetCode1514_SPFA;
 
 import java.util.*;
@@ -20,18 +21,9 @@ import java.util.*;
  *综上所述，Dijkstra算法适用于处理没有负权边的图，而SPFA算法适用于处理有负权边的图。如果图中不存在负权边，那么Dijkstra算法通常比SPFA算法更高效。但是，如果图中存在负权边，并且负权边的数量较少，那么SPFA算法可能比Dijkstra算法更快。在实际应用中，根据具体情况选择适合的算法。
  * */
 
-public class SPFA {
+public class SPFA implements ShortestPath {
 
-    public static void main(String[] args) {
-        int[] dist = new SPFA().spfa(5, new int[][]{{0, 1, -1}, {0, 2, 4}, {1, 2, 3}, {1, 3, 2}, {1, 4, 2}, {3, 2, 5}, {3, 1, 1}, {4, 3, -3}}, 0);
-        // 输出最短路径
-        System.out.println("顶点\t最短距离");
-        for (int i = 0; i < 5; i++) {
-            System.out.println(i + "\t\t" + dist[i]);
-        }
-    }
-
-    int[] spfa(int n, int[][] edges, int src) {
+    public int[] getShortestPath(int n, int[][] edges, int source) {
         List<int[]>[] graph = new ArrayList[n];
         for (int i = 0; i < n; i++) {
             graph[i] = new ArrayList<>();
@@ -45,12 +37,12 @@ public class SPFA {
         boolean[] visited = new boolean[n];
         // 初始化所有节点的距离为无穷大
         Arrays.fill(dist, Integer.MAX_VALUE);
-        dist[src] = 0;
+        dist[source] = 0;
 
         //用BFS做优化
         Queue<Integer> queue = new LinkedList<>();
-        queue.offer(src);
-        visited[src] = true;
+        queue.offer(source);
+        visited[source] = true;
 
         int[] count = new int[n]; // 记录顶点进队次数
 

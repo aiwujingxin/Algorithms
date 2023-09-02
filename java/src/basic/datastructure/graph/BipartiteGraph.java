@@ -1,4 +1,4 @@
-package basic.datastructure.graph.bipartite;
+package basic.datastructure.graph;
 
 /**
  * @author wujingxinit@outlook.com

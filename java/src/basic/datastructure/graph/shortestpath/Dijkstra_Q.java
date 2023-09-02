@@ -1,16 +1,18 @@
 package basic.datastructure.graph.shortestpath;
 
+import basic.datastructure.graph.ShortestPath;
+
 import java.util.*;
 
 /**
  * @author aiwujingxin@gmail.com
  * @date 2022/7/1 18:43
  */
-public class Dijkstra_Q {
+public class Dijkstra_Q implements ShortestPath {
 
     List<int[]>[] graph;
 
-    public int[] dijkstra(int n, int[][] edges, int source) {
+    public int[] getShortestPath(int n, int[][] edges, int source) {
         graph = new ArrayList[n + 1];
         for (int i = 1; i < n + 1; i++) {
             graph[i] = new ArrayList<>();

@@ -20,7 +20,7 @@ public class LeetCode1786 {
 
     public int countRestrictedPaths(int n, int[][] edges) {
         Dijkstra dijkstra = new Dijkstra();
-        int[] dist = dijkstra.dijkstra(n, edges, n);
+        int[] dist = dijkstra.getShortestPath(n, edges, n);
         this.N = n + 1;
         graph = dijkstra.getGraph();
         return (int) dfs(graph, 1, n, dist, new Long[n + 1]);

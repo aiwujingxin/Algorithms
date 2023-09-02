@@ -1,5 +1,7 @@
 package basic.datastructure.graph.shortestpath;
 
+import basic.datastructure.graph.ShortestPath;
+
 import java.util.Arrays;
 
 /**
@@ -7,7 +9,7 @@ import java.util.Arrays;
  * @date 2022/6/26 18:14
  * 基于动态规划
  */
-public class Floyd {
+public class Floyd implements ShortestPath {
     final static int INF = 99999;
 
     public static void main(String[] args) {
@@ -35,6 +37,10 @@ public class Floyd {
             }
             System.out.println();
         }
+    }
+
+    public int[] getShortestPath(int n, int[][] edges, int source) {
+        return floyd(n, edges)[source];
     }
 
     private int[][] floyd(int n, int[][] edges) {

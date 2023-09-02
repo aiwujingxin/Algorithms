@@ -1,5 +1,6 @@
 package basic.datastructure.graph.mst;
 
+import basic.datastructure.graph.MinimumTree;
 import leetcode.LeetCode1584_prim;
 
 import java.util.ArrayList;
@@ -12,7 +13,7 @@ import java.util.List;
  * 和Dijkstra很像
  * @see LeetCode1584_prim
  */
-public class Prim implements MSTree {
+public class Prim implements MinimumTree {
 
     public int MST(int n, int[][] edges) {
         List<int[]>[] graph = new ArrayList[n];

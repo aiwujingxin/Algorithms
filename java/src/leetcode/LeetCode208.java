@@ -53,7 +53,7 @@ public class LeetCode208 {
             return true;
         }
 
-        class Node {
+        static class Node {
 
             Node[] childs;
             boolean isEnd;

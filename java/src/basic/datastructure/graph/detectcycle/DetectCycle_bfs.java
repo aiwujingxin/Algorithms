@@ -1,5 +1,7 @@
 package basic.datastructure.graph.detectcycle;
 
+import basic.datastructure.graph.DetectCycle;
+
 import java.util.*;
 
 /**

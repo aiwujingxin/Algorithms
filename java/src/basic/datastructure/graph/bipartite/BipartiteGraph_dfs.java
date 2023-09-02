@@ -1,5 +1,7 @@
 package basic.datastructure.graph.bipartite;
 
+import basic.datastructure.graph.BipartiteGraph;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;

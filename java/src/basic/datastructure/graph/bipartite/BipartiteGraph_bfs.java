@@ -1,6 +1,8 @@
 package basic.datastructure.graph.bipartite;
 
 
+import basic.datastructure.graph.BipartiteGraph;
+
 import java.util.*;
 
 /**

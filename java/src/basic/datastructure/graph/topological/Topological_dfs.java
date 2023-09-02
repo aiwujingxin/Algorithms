@@ -1,25 +1,30 @@
 package basic.datastructure.graph.topological;
 
-import java.util.*;
+import basic.datastructure.graph.Topological;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.LinkedList;
+import java.util.List;
 
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/8/31 18:19
  */
-public class Topological_dfs {
+public class Topological_dfs implements Topological {
 
     List<Integer> postorder = new ArrayList<>();
     boolean[] onPath;
     boolean[] visited;
     boolean hasCycle = false;
 
-    public int[] findOrder(int numCourses, int[][] prerequisites) {
-        List<Integer>[] graph = buildGraph(numCourses, prerequisites);
+    public int[] findOrder(int n, int[][] edges) {
+        List<Integer>[] graph = buildGraph(n, edges);
 
-        visited = new boolean[numCourses];
-        onPath = new boolean[numCourses];
+        visited = new boolean[n];
+        onPath = new boolean[n];
 
-        for (int i = 0; i < numCourses; i++) {
+        for (int i = 0; i < n; i++) {
             traverse(graph, i);
         }
 
@@ -29,8 +34,8 @@ public class Topological_dfs {
         }
         // 逆后序遍历结果即为拓扑排序结果
         Collections.reverse(postorder);
-        int[] res = new int[numCourses];
-        for (int i = 0; i < numCourses; i++) {
+        int[] res = new int[n];
+        for (int i = 0; i < n; i++) {
             res[i] = postorder.get(i);
         }
         return res;

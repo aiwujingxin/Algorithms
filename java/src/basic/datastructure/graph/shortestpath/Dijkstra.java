@@ -1,5 +1,7 @@
 package basic.datastructure.graph.shortestpath;
 
+import basic.datastructure.graph.ShortestPath;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -19,12 +21,12 @@ import java.util.List;
  * 每次从「未确定节点」中取一个与起点距离最短的点，将它归类为「已确定节点」，并用它「更新」从起点到其他所有「未确定节点」的距离。直到所有点都被归类为「已确定节点」。
  */
 
-public class Dijkstra {
+public class Dijkstra implements ShortestPath {
 
     List<int[]>[] graph;
     int N;
 
-    public int[] dijkstra(int n, int[][] edges, int source) {
+    public int[] getShortestPath(int n, int[][] edges, int source) {
         N = n + 1;
         graph = new ArrayList[N];
         for (int i = 1; i < N; i++) {
