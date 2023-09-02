@@ -2,93 +2,45 @@ package basic.datastructure.graph.mst;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 /**
  * @author aiwujingxin@gmail.com
  * @date 2022/7/3 16:24
  */
-public class Kruskal {
-
-    public static void main(String[] args) {
-        int vertices = 5;
-        Graph graph = new Graph(vertices);
-        graph.addEdge(0, 1, 2);
-        graph.addEdge(0, 3, 6);
-        graph.addEdge(1, 2, 3);
-        graph.addEdge(1, 3, 8);
-        graph.addEdge(1, 4, 5);
-        graph.addEdge(2, 4, 7);
-        graph.addEdge(3, 4, 9);
-        graph.kruskalMST();
+public class Kruskal implements MSTree {
+    public int MST(int n, int[][] edges) {
+        final List<int[]> graph = new ArrayList<>();
+        Collections.addAll(graph, edges);
+        // 将边按权重从小到大排序
+        graph.sort(Comparator.comparingInt(o -> o[2]));
+        // 使用并查集存储顶点的连通分量
+        int[] parent = new int[n];
+        for (int i = 0; i < n; i++) {
+            parent[i] = i;
+        }
+        List<int[]> mst = new ArrayList<>();
+        for (int[] edge : graph) {
+            int sourceParent = find(parent, edge[0]);
+            int destinationParent = find(parent, edge[1]);
+            // 判断加入边是否形成环路
+            if (sourceParent != destinationParent) {
+                mst.add(edge);
+                parent[sourceParent] = destinationParent;
+            }
+        }
+        int sum = 0;
+        for (int[] edge : mst) {
+            sum += edge[2];
+        }
+        return sum;
     }
 
-    static class Graph {
-        private final int vertices;
-        private final List<Edge> edges;
-
-        public Graph(int vertices) {
-            this.vertices = vertices;
-            edges = new ArrayList<>();
+    private int find(int[] parent, int vertex) {
+        if (parent[vertex] != vertex) {
+            parent[vertex] = find(parent, parent[vertex]);
         }
-
-        public void addEdge(int source, int destination, int weight) {
-            Edge edge = new Edge(source, destination, weight);
-            edges.add(edge);
-        }
-
-        public void kruskalMST() {
-            // 将边按权重从小到大排序
-            Collections.sort(edges);
-
-            // 使用并查集存储顶点的连通分量
-            int[] parent = new int[vertices];
-            for (int i = 0; i < vertices; i++) {
-                parent[i] = i;
-            }
-
-            List<Edge> mst = new ArrayList<>();
-
-            for (Edge edge : edges) {
-                int sourceParent = find(parent, edge.source);
-                int destinationParent = find(parent, edge.destination);
-
-                // 判断加入边是否形成环路
-                if (sourceParent != destinationParent) {
-                    mst.add(edge);
-                    parent[sourceParent] = destinationParent;
-                }
-            }
-
-            // 打印最小生成树
-            System.out.println("Edge \tWeight");
-            for (Edge edge : mst) {
-                System.out.println(edge.source + " - " + edge.destination + "\t" + edge.weight);
-            }
-        }
-
-        private int find(int[] parent, int vertex) {
-            if (parent[vertex] != vertex) {
-                parent[vertex] = find(parent, parent[vertex]);
-            }
-            return parent[vertex];
-        }
-    }
-
-    static class Edge implements Comparable<Edge> {
-        int source;
-        int destination;
-        int weight;
-
-        public Edge(int source, int destination, int weight) {
-            this.source = source;
-            this.destination = destination;
-            this.weight = weight;
-        }
-
-        @Override
-        public int compareTo(Edge other) {
-            return this.weight - other.weight;
-        }
+        return parent[vertex];
     }
 }

@@ -1,12 +1,14 @@
 package basic.datastructure.graph.shortestpath;
 
+import java.util.Arrays;
+
 /**
  * @author aiwujingxin@gmail.com
  * @date 2022/6/26 18:14
  * 基于动态规划
  */
 public class Floyd {
-    final static int INF = 99999, V = 4;
+    final static int INF = 99999;
 
     public static void main(String[] args) {
         /* Let us create the following weighted graph
@@ -18,37 +20,13 @@ public class Floyd {
         \|/         |
         (1)------->(2)
               3           */
-        int[][] graph = {{0, 5, INF, 10}, {INF, 0, 3, INF}, {INF, INF, 0, 1}, {INF, INF, INF, 0}};
         Floyd a = new Floyd();
         // Print the solution
-        a.floyd(graph);
-    }
-
-    private void floyd(int[][] graph) {
-        int[][] dist = new int[V][V];
-        int i, j, k;
-        for (i = 0; i < V; i++) {
-            for (j = 0; j < V; j++) {
-                dist[i][j] = graph[i][j];
-            }
-        }
-        // 从i 只经过1-k 这些中间点, 到达 j 的最短距离
-        for (k = 0; k < V; k++) {
-            for (i = 0; i < V; i++) {
-                for (j = 0; j < V; j++) {
-                    if (dist[i][k] + dist[k][j] < dist[i][j]) {
-                        dist[i][j] = dist[i][k] + dist[k][j];
-                    }
-                }
-            }
-        }
-        printSolution(dist);
-    }
-
-    void printSolution(int[][] dist) {
+        int n = 4;
+        int[][] dist = a.floyd(n, new int[][]{{0, 3, 10}, {0, 1, 5}, {1, 2, 3}, {2, 3, 1}});
         System.out.println("The following matrix shows the shortest distances between every pair of vertices");
-        for (int i = 0; i < V; ++i) {
-            for (int j = 0; j < V; ++j) {
+        for (int i = 0; i < n; ++i) {
+            for (int j = 0; j < n; ++j) {
                 if (dist[i][j] == INF) {
                     System.out.print("INF ");
                 } else {
@@ -57,5 +35,26 @@ public class Floyd {
             }
             System.out.println();
         }
+    }
+
+    private int[][] floyd(int n, int[][] edges) {
+        int[][] dist = new int[n][n];
+        for (int[] d : dist) {
+            Arrays.fill(d, INF);
+        }
+        for (int[] edge : edges) {
+            dist[edge[0]][edge[1]] = edge[2];
+        }
+        // 从i 只经过1-k 这些中间点, 到达 j 的最短距离
+        for (int k = 0; k < n; k++) {
+            for (int i = 0; i < n; i++) {
+                for (int j = 0; j < n; j++) {
+                    if (dist[i][k] + dist[k][j] < dist[i][j]) {
+                        dist[i][j] = dist[i][k] + dist[k][j];
+                    }
+                }
+            }
+        }
+        return dist;
     }
 }

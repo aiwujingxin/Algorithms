@@ -40,12 +40,12 @@ class BipartiteGraph_bfs implements BipartiteGraph {
         queue.add(source);
         colors[source] = 0;
         while (!queue.isEmpty()) {
-            int currentVertex = queue.poll();
-            for (int next : graph.get(currentVertex)) {
+            int cur = queue.poll();
+            for (int next : graph.get(cur)) {
                 if (colors[next] == -1) {
-                    colors[next] = 1 - colors[currentVertex];
+                    colors[next] = 1 - colors[cur];
                     queue.add(next);
-                } else if (colors[next] == colors[currentVertex]) {
+                } else if (colors[next] == colors[cur]) {
                     return false;
                 }
             }

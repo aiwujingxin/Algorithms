@@ -6,5 +6,6 @@ package basic.datastructure.graph.mst;
  */
 public interface MSTree {
 
-    int mst(int n, int[][] edges);
+    int MST(int n, int[][] edges);
+
 }

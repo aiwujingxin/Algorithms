@@ -1,6 +1,6 @@
 package basic.datastructure.graph.shortestpath;
 
-import leetcode.*;
+import leetcode.LeetCode1514_SPFA;
 
 import java.util.*;
 
@@ -22,40 +22,27 @@ import java.util.*;
 
 public class SPFA {
 
-    private final int V; // 图中顶点的数量
-    private final List<Edge>[] adjList; // 邻接表
-    private final int[] dist; // 从源节点到每个顶点的最短距离
-    private final boolean[] visited; // 记录节点是否在队列中
-
-    SPFA(int v) {
-        V = v;
-        adjList = new ArrayList[V];
-        for (int i = 0; i < V; i++) {
-            adjList[i] = new ArrayList<>();
-        }
-        dist = new int[V];
-        visited = new boolean[V];
-    }
-
     public static void main(String[] args) {
-        int V = 5; // 图中顶点的数量
-        SPFA algorithm = new SPFA(V);
-        algorithm.addEdge(0, 1, -1);
-        algorithm.addEdge(0, 2, 4);
-        algorithm.addEdge(1, 2, 3);
-        algorithm.addEdge(1, 3, 2);
-        algorithm.addEdge(1, 4, 2);
-        algorithm.addEdge(3, 2, 5);
-        algorithm.addEdge(3, 1, 1);
-        algorithm.addEdge(4, 3, -3);
-        algorithm.spfa(0);
+        int[] dist = new SPFA().spfa(5, new int[][]{{0, 1, -1}, {0, 2, 4}, {1, 2, 3}, {1, 3, 2}, {1, 4, 2}, {3, 2, 5}, {3, 1, 1}, {4, 3, -3}}, 0);
+        // 输出最短路径
+        System.out.println("顶点\t最短距离");
+        for (int i = 0; i < 5; i++) {
+            System.out.println(i + "\t\t" + dist[i]);
+        }
     }
 
-    void addEdge(int src, int dest, int weight) {
-        adjList[src].add(new Edge(dest, weight));
-    }
-
-    void spfa(int src) {
+    int[] spfa(int n, int[][] edges, int src) {
+        List<int[]>[] graph = new ArrayList[n];
+        for (int i = 0; i < n; i++) {
+            graph[i] = new ArrayList<>();
+        }
+        for (int[] edge : edges) {
+            graph[edge[0]].add(new int[]{edge[1], edge[2]});
+        }
+        // 从源节点到每个顶点的最短距离
+        int[] dist = new int[n];
+        // 记录节点是否在队列中
+        boolean[] visited = new boolean[n];
         // 初始化所有节点的距离为无穷大
         Arrays.fill(dist, Integer.MAX_VALUE);
         dist[src] = 0;
@@ -65,17 +52,16 @@ public class SPFA {
         queue.offer(src);
         visited[src] = true;
 
-
-        int[] count = new int[V]; // 记录顶点进队次数
+        int[] count = new int[n]; // 记录顶点进队次数
 
         while (!queue.isEmpty()) {
             int u = queue.poll();
             visited[u] = false;
 
             // 更新所有边
-            for (Edge edge : adjList[u]) {
-                int v = edge.dest;
-                int weight = edge.weight;
+            for (int[] edge : graph[u]) {
+                int v = edge[0];
+                int weight = edge[1];
 
                 // 如果更新成功, 加入队列, 更新谁, 就那谁更新别人
                 // 一个点没有更新过,再拿它更新别人一定是没有效果的
@@ -88,27 +74,13 @@ public class SPFA {
 
                         // 记录进队次数，若超过V次，则存在负环
                         count[v]++;
-                        if (count[v] >= V) {
-                            System.out.println("图中存在负权回路");
-                            return;
+                        if (count[v] >= n) {
+                            return null;
                         }
                     }
                 }
             }
         }
-        // 输出最短路径
-        System.out.println("顶点\t最短距离");
-        for (int i = 0; i < V; i++) {
-            System.out.println(i + "\t\t" + dist[i]);
-        }
-    }
-
-    private static class Edge {
-        int dest, weight;
-
-        Edge(int dest, int weight) {
-            this.dest = dest;
-            this.weight = weight;
-        }
+        return dist;
     }
 }

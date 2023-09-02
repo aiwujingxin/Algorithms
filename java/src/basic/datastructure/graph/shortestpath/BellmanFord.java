@@ -1,6 +1,9 @@
 package basic.datastructure.graph.shortestpath;
 
-import leetcode.*;
+import leetcode.LeetCode1514_BellmanFord;
+import leetcode.LeetCode787_BellmanFord;
+
+import java.util.Arrays;
 
 /**
  * @author wujingxinit@outlook.com
@@ -11,76 +14,25 @@ import leetcode.*;
  * @see LeetCode1514_BellmanFord
  */
 
-class   BellmanFord {
-    private final int V; // 图中顶点的数量
-    private final int[] dist; // 从源节点到每个顶点的最短距离
-
-    BellmanFord(int v) {
-        V = v;
-        dist = new int[V];
-    }
-
+class BellmanFord {
     public static void main(String[] args) {
-        int V = 5; // 图中顶点的数量
-        int E = 8; // 图中边的数量
-
-        Edge[] edges = new Edge[E];
-        for (int i = 0; i < E; ++i) {
-            edges[i] = new Edge();
-        }
-
-        // 设置边的起点、终点和权重
-        edges[0].src = 0;
-        edges[0].dest = 1;
-        edges[0].weight = -1;
-
-        edges[1].src = 0;
-        edges[1].dest = 2;
-        edges[1].weight = 4;
-
-        edges[2].src = 1;
-        edges[2].dest = 2;
-        edges[2].weight = 3;
-
-        edges[3].src = 1;
-        edges[3].dest = 3;
-        edges[3].weight = 2;
-
-        edges[4].src = 1;
-        edges[4].dest = 4;
-        edges[4].weight = 2;
-
-        edges[5].src = 3;
-        edges[5].dest = 2;
-        edges[5].weight = 5;
-
-        edges[6].src = 3;
-        edges[6].dest = 1;
-        edges[6].weight = 1;
-
-        edges[7].src = 4;
-        edges[7].dest = 3;
-        edges[7].weight = -3;
-
-        BellmanFord algorithm = new BellmanFord(V);
-        algorithm.bellmanFordAlgorithm(edges, 0);
+        BellmanFord algorithm = new BellmanFord();
+        algorithm.bellmanFordAlgorithm(5, new int[][]{{0, 1, -1}, {0, 2, 4}, {1, 2, 3}, {1, 3, 2}, {1, 4, 2}, {3, 2, 5}, {3, 1, 1}, {4, 3, -3}}, 0);
     }
 
-    void bellmanFordAlgorithm(Edge[] edges, int src) {
+    void bellmanFordAlgorithm(int n, int[][] edges, int src) {
+        int[] dist = new int[n];
         // 初始化所有节点的距离为无穷大
-        for (int i = 0; i < V; ++i) {
-            dist[i] = Integer.MAX_VALUE;
-        }
+        Arrays.fill(dist, Integer.MAX_VALUE);
 
         // 设置源节点的距离为0
         dist[src] = 0;
-
         // 进行V-1次迭代更新、
-        for (int i = 1; i < V; ++i) {
-            for (Edge edge : edges) {
-                int u = edge.src;
-                int v = edge.dest;
-                int weight = edge.weight;
+        for (int i = 1; i < n; ++i) {
+            for (int[] edge : edges) {
+                int u = edge[0];
+                int v = edge[1];
+                int weight = edge[2];
 
                 // 松弛操作
                 // 三角不等式
@@ -91,10 +43,10 @@ class   BellmanFord {
         }
 
         // 检测负权回路
-        for (Edge edge : edges) {
-            int u = edge.src;
-            int v = edge.dest;
-            int weight = edge.weight;
+        for (int[] edge : edges) {
+            int u = edge[0];
+            int v = edge[1];
+            int weight = edge[2];
             if (dist[u] != Integer.MAX_VALUE && dist[u] + weight < dist[v]) {
                 System.out.println("图中存在负权回路");
                 return;
@@ -103,16 +55,8 @@ class   BellmanFord {
 
         // 输出最短路径
         System.out.println("顶点\t最短距离");
-        for (int i = 0; i < V; ++i) {
+        for (int i = 0; i < n; ++i) {
             System.out.println(i + "\t\t" + dist[i]);
-        }
-    }
-
-    private static class Edge {
-        int src, dest, weight;
-
-        Edge() {
-            src = dest = weight = 0;
         }
     }
 }
