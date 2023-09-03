@@ -10,7 +10,7 @@ import java.util.Arrays;
  * 基于动态规划
  */
 public class Floyd implements ShortestPath {
-    final static int INF = 99999;
+    final static int INF = Integer.MAX_VALUE / 2;
 
     public static void main(String[] args) {
         /* Let us create the following weighted graph
@@ -47,6 +47,10 @@ public class Floyd implements ShortestPath {
         int[][] dist = new int[n][n];
         for (int[] d : dist) {
             Arrays.fill(d, INF);
+        }
+        // self
+        for (int i = 0; i < dist.length; i++) {
+            dist[i][i] = 0;
         }
         for (int[] edge : edges) {
             dist[edge[0]][edge[1]] = edge[2];

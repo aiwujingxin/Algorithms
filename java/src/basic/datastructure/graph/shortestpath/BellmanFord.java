@@ -22,8 +22,9 @@ public class BellmanFord implements ShortestPath {
         Arrays.fill(dist, Integer.MAX_VALUE);
         // 设置源节点的距离为0
         dist[source] = 0;
-        // 进行V-1次迭代更新、
-        for (int i = 1; i < n; ++i) {
+        // 进行V-1次迭代更新
+        for (int i = 1; i < n - 1; ++i) {
+            //每次松弛所有的边
             for (int[] edge : edges) {
                 int u = edge[0];
                 int v = edge[1];
@@ -31,7 +32,7 @@ public class BellmanFord implements ShortestPath {
 
                 // 松弛操作
                 // 三角不等式
-                if (dist[u] != Integer.MAX_VALUE && dist[u] + weight < dist[v]) {
+                if (dist[u] + weight < dist[v]) {
                     dist[v] = dist[u] + weight;
                 }
             }
@@ -42,7 +43,7 @@ public class BellmanFord implements ShortestPath {
             int u = edge[0];
             int v = edge[1];
             int weight = edge[2];
-            if (dist[u] != Integer.MAX_VALUE && dist[u] + weight < dist[v]) {
+            if (dist[u] + weight < dist[v]) {
                 System.out.println("图中存在负权回路");
                 return null;
             }

@@ -1,6 +1,6 @@
 package leetcode;
 
-import basic.datastructure.graph.shortestpath.Dijkstra_Q;
+import basic.datastructure.graph.shortestpath.Dijkstra;
 
 /**
  * @author wujingxinit@outlook.com
@@ -11,7 +11,7 @@ public class LeetCode2093_Bellman {
     //https://leetcode.cn/problems/minimum-cost-to-reach-city-with-discounts/solutions/2015404/dijkstra-bellman-ford-by-lc_4fun-86j9/
 
     public int minimumCost(int n, int[][] highways, int discounts) {
-        Dijkstra_Q dijkstra = new Dijkstra_Q();
+        Dijkstra dijkstra = new Dijkstra();
         int[] dist = dijkstra.getShortestPath(n, highways, 0);
         //基于第一部分的结果利用 Bellman-Ford 算法进行折扣情况下的松弛操作,松弛操作次数为 discounts,带约束条件下的最短路径还是需要 Bellman-Ford 算法
         for (int i = 0; i < discounts; i++) {
