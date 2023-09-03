@@ -10,9 +10,9 @@ import java.util.Queue;
  * @date 2022/10/19 22:41
  * <a href="https://leetcode.com/problems/minimum-jumps-to-reach-home/discuss/935504/JAVA-BFS-and-DFS-solution">...</a>
  */
-public class LeetCode1654 {
+public class LeetCode1654_bfs {
     public static void main(String[] args) {
-        System.out.println(new LeetCode1654().minimumJumps(new int[]{8, 3, 16, 6, 12, 20}, 15, 13, 11));
+        System.out.println(new LeetCode1654_bfs().minimumJumps(new int[]{8, 3, 16, 6, 12, 20}, 15, 13, 11));
     }
 
     public int minimumJumps(int[] forbidden, int a, int b, int x) {
@@ -35,6 +35,7 @@ public class LeetCode1654 {
             if (pos[0] == x) {
                 return pos[1];
             }
+            // 贝祖定理
             if (pos[0] + a < 6000 && !forbit.contains(pos[0] + a) && !visited.contains(pos[0] + a + "," + 0)) {
                 queue.add(new int[]{pos[0] + a, pos[1] + 1, 1});
                 visited.add(pos[0] + a + "," + 0);
