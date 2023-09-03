@@ -29,7 +29,7 @@ public class Dijkstra implements ShortestPath {
     public int[] getShortestPath(int n, int[][] edges, int source) {
         N = n + 1;
         graph = new ArrayList[N];
-        for (int i = 1; i < N; i++) {
+        for (int i = 0; i < N; i++) {
             graph[i] = new ArrayList<>();
         }
         for (int[] edge : edges) {

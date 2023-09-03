@@ -243,7 +243,7 @@ public class TreapTree {
         }
     }
 
-    class Node {
+    static class Node {
         int key, val, cnt, size;
         Node left, right;
 

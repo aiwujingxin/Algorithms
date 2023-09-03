@@ -14,7 +14,7 @@ public class Dijkstra_Q implements ShortestPath {
 
     public int[] getShortestPath(int n, int[][] edges, int source) {
         graph = new ArrayList[n + 1];
-        for (int i = 1; i < n + 1; i++) {
+        for (int i = 0; i < n + 1; i++) {
             graph[i] = new ArrayList<>();
         }
         for (int[] edge : edges) {
