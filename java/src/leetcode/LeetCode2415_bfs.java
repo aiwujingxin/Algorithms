@@ -2,7 +2,7 @@ package leetcode;
 
 import common.TreeNode;
 
-import java.util.LinkedList;
+import java.util.*;
 
 /**
  * @author wujingxinit@outlook.com
@@ -11,7 +11,7 @@ import java.util.LinkedList;
 public class LeetCode2415_bfs {
 
     public TreeNode reverseOddLevels(TreeNode root) {
-        LinkedList<TreeNode> queue = new LinkedList<>();
+        Queue<TreeNode> queue = new LinkedList<>();
         queue.add(root);
         int depth = 0;
         while (!queue.isEmpty()) {

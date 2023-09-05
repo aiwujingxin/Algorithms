@@ -23,7 +23,7 @@ public class LeetCode1631 {
         effortTo[0][0] = 0;
 
         // 优先级队列，effortFromStart 较小的排在前面
-        Queue<int[]> pq = new PriorityQueue<>(Comparator.comparingInt(a -> a[2]));
+        PriorityQueue<int[]> pq = new PriorityQueue<>(Comparator.comparingInt(a -> a[2]));
 
         // 从起点 (0, 0) 开始进行 BFS
         pq.offer(new int[]{0, 0, 0});

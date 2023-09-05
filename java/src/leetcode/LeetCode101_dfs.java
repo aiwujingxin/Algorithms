@@ -6,7 +6,7 @@ import common.TreeNode;
  * @author wujingxinit@outlook.com
  * @date 2022/9/7 00:42
  */
-public class LeetCode101 {
+public class LeetCode101_dfs {
 
 
     public boolean isSymmetric(TreeNode root) {

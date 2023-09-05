@@ -35,7 +35,7 @@ public class LeetCode210 {
 
             int cur = queue.poll();
 
-            //fix
+
             for (int[] prerequisite : prerequisites) {
 
                 if (arr[prerequisite[0]] == 0) {

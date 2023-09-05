@@ -1,13 +1,12 @@
 package basic.datastructure.graph.shortestpath;
 
-import basic.datastructure.graph.ShortestPath;
+import basic.datastructure.graph.*;
 
 import java.util.*;
 
 /**
  * @author aiwujingxin@gmail.com
  * @date 2022/7/1 18:43
- * @see leetcode.LeetCode743_Dijkstra
  * @see leetcode.LeetCode1631
  * @see leetcode.LeetCode1514_Dijkstra
  * @see leetcode.LeetCode1786
@@ -23,6 +22,8 @@ public class Dijkstra implements ShortestPath {
 
     List<int[]>[] graph;
 
+    final static int INF = Integer.MAX_VALUE / 2;
+
     public int[] getShortestPath(int n, int[][] edges, int source) {
         graph = new ArrayList[n + 1];
         for (int i = 0; i < n + 1; i++) {
@@ -32,8 +33,8 @@ public class Dijkstra implements ShortestPath {
             graph[edge[0]].add(new int[]{edge[1], edge[2]});
             graph[edge[1]].add(new int[]{edge[0], edge[2]});
         }
-        int[] dist = new int[n + 1]; // 存储源节点到每个节点的最短距离
-        Arrays.fill(dist, Integer.MAX_VALUE); // 初始化距离为无穷大
+        int[] dist = new int[n + 1];
+        Arrays.fill(dist, INF);
         dist[source] = 0;
         PriorityQueue<int[]> minHeap = new PriorityQueue<>(Comparator.comparingInt(o -> o[1]));
         minHeap.add(new int[]{source, 0});

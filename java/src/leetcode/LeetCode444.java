@@ -48,8 +48,6 @@ public class LeetCode444 {
                 }
             }
         }
-
-        System.out.println(Arrays.toString(built.stream().mapToInt(i -> i).toArray()));
         return Arrays.equals(built.stream().mapToInt(i -> i).toArray(), nums);
     }
 }

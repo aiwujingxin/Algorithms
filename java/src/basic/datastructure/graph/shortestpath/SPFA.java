@@ -1,7 +1,7 @@
 package basic.datastructure.graph.shortestpath;
 
-import basic.datastructure.graph.ShortestPath;
-import leetcode.LeetCode1514_SPFA;
+import basic.datastructure.graph.*;
+import leetcode.*;
 
 import java.util.*;
 
@@ -23,6 +23,8 @@ import java.util.*;
 
 public class SPFA implements ShortestPath {
 
+    final static int INF = Integer.MAX_VALUE / 2;
+
     public int[] getShortestPath(int n, int[][] edges, int source) {
         List<int[]>[] graph = new ArrayList[n];
         for (int i = 0; i < n; i++) {
@@ -36,7 +38,7 @@ public class SPFA implements ShortestPath {
         // 记录节点是否在队列中
         boolean[] visited = new boolean[n];
         // 初始化所有节点的距离为无穷大
-        Arrays.fill(dist, Integer.MAX_VALUE);
+        Arrays.fill(dist, INF);
         dist[source] = 0;
 
         //用BFS做优化
@@ -58,7 +60,7 @@ public class SPFA implements ShortestPath {
                 // 如果更新成功, 加入队列, 更新谁, 就那谁更新别人
                 // 一个点没有更新过,再拿它更新别人一定是没有效果的
                 // 只有我变小了,我后面的人才会变小
-                if (dist[u] != Integer.MAX_VALUE && dist[u] + weight < dist[v]) {
+                if (dist[u] + weight < dist[v]) {
                     dist[v] = dist[u] + weight;
                     if (!visited[v]) {
                         queue.offer(v);

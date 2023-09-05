@@ -1,25 +1,30 @@
 package basic.datastructure.graph.shortestpath;
 
-import basic.datastructure.graph.ShortestPath;
-import leetcode.LeetCode1514_BellmanFord;
-import leetcode.LeetCode787_BellmanFord;
+import basic.datastructure.graph.*;
+import leetcode.*;
 
-import java.util.Arrays;
+import java.util.*;
 
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/5/29 21:37
  * <p>
  * Bellman-Ford算法是一种用于解决加权有向图中单源最短路径问题的算法。它可以处理负权边，而Dijkstra算法则不能。
+ * 可以解决带限制的最短路径
+ * 差分约束系统与约束图
+ * @see LeetCode2093_Bellman
  * @see LeetCode787_BellmanFord
  * @see LeetCode1514_BellmanFord
  */
 
 public class BellmanFord implements ShortestPath {
+
+    final static int INF = Integer.MAX_VALUE / 2;
+
     public int[] getShortestPath(int n, int[][] edges, int source) {
         int[] dist = new int[n];
         // 初始化所有节点的距离为无穷大
-        Arrays.fill(dist, Integer.MAX_VALUE);
+        Arrays.fill(dist, INF);
         // 设置源节点的距离为0
         dist[source] = 0;
         // 进行V-1次迭代更新

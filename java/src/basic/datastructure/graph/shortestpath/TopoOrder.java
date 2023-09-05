@@ -1,6 +1,6 @@
 package basic.datastructure.graph.shortestpath;
 
-import basic.datastructure.graph.ShortestPath;
+import basic.datastructure.graph.*;
 
 import java.util.*;
 
