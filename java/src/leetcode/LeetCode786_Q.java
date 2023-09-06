@@ -1,7 +1,7 @@
 package leetcode;
 
 
-import java.util.PriorityQueue;
+import java.util.*;
 
 /**
  * @author aiwujingxin@gmail.com
@@ -11,18 +11,16 @@ public class LeetCode786_Q {
 
     public int[] kthSmallestPrimeFraction(int[] arr, int k) {
         int n = arr.length;
-        PriorityQueue<int[]> pq = new PriorityQueue<int[]>((x, y) -> arr[x[0]] * arr[y[1]] - arr[y[0]] * arr[x[1]]);
-        for (int j = 1; j < n; ++j) {
-            pq.offer(new int[]{0, j});
-        }
-        for (int i = 1; i < k; ++i) {
-            int[] frac = pq.poll();
-            int x = frac[0], y = frac[1];
-            if (x + 1 < y) {
-                pq.offer(new int[]{x + 1, y});
+        PriorityQueue<int[]> q = new PriorityQueue<>((a, b) -> Double.compare(b[0] * 1.0 / b[1], a[0] * 1.0 / a[1]));
+        for (int i = 0; i < n; i++) {
+            for (int j = i + 1; j < n; j++) {
+                double t = arr[i] * 1.0 / arr[j];
+                if (q.size() < k || q.peek()[0] * 1.0 / q.peek()[1] > t) {
+                    if (q.size() == k) q.poll();
+                    q.add(new int[]{arr[i], arr[j]});
+                }
             }
         }
-        return new int[]{arr[pq.peek()[0]], arr[pq.peek()[1]]};
+        return q.poll();
     }
-
 }

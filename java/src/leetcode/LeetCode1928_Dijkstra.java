@@ -7,6 +7,7 @@ import java.util.*;
  * @date 2022/6/27 19:56
  */
 public class LeetCode1928_Dijkstra {
+
     public int minCost(int maxTime, int[][] edges, int[] passingFees) {
         int n = passingFees.length;
         int destination = n - 1;
@@ -29,10 +30,10 @@ public class LeetCode1928_Dijkstra {
         pq.offer(new int[]{source, passingFees[source], 0});
         timeHold[0] = 0;
         while (!pq.isEmpty()) {
-            int[] node = pq.poll();
-            int src = node[0];
-            int fee = node[1];
-            int time = node[2];
+            int[] cur = pq.poll();
+            int src = cur[0];
+            int fee = cur[1];
+            int time = cur[2];
 
             if (src == destination) { // check whether destination reached ?
                 return fee;
@@ -47,7 +48,6 @@ public class LeetCode1928_Dijkstra {
                     continue;
                 }
 
-                // 更新
                 if (time + neiTime < timeHold[neiNode]) {
                     timeHold[neiNode] = time + neiTime; //we found lesser time update time Array and add this node to pq..
                     pq.add(new int[]{neiNode, fee + passingFees[neiNode], timeHold[neiNode]});

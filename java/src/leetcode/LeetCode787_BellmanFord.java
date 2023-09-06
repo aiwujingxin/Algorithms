@@ -5,6 +5,7 @@ import java.util.*;
 /**
  * @author aiwujingxin@gmail.com
  * @date 2022/6/27 19:35
+ * @see LeetCode1928_Dijkstra
  */
 public class LeetCode787_BellmanFord {
 

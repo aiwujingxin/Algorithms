@@ -1,12 +1,14 @@
 package leetcode;
 
-import java.util.Arrays;
+import java.util.*;
 
 /**
  * @author aiwujingxin@gmail.com
  * @date 2022/6/27 19:57
  */
-public class LeetCode1928_dp {
+public class LeetCode1928_BellmanFord {
+
+    //https://leetcode.com/problems/minimum-cost-to-reach-destination-in-time/solutions/3659374/c-bellman-ford/
 
     public int minCost(int maxTime, int[][] edges, int[] fee) {
         int n = fee.length, minCost = Integer.MAX_VALUE;
