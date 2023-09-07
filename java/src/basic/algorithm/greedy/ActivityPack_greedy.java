@@ -1,6 +1,6 @@
 package basic.algorithm.greedy;
 
-import basic.algorithm.dp.liner.problems.ActivityPack;
+import basic.algorithm.dp.liner.ActivityPack;
 
 import java.util.ArrayList;
 import java.util.Arrays;

@@ -1,4 +1,4 @@
-package basic.algorithm.dp.liner.problems;
+package basic.algorithm.dp.liner;
 
 /**
  * @author wujingxinit@outlook.com

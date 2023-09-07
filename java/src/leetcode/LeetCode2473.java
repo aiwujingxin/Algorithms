@@ -8,10 +8,10 @@ import java.util.*;
  */
 public class LeetCode2473 {
 
-    public int[] minCost(int n, int[][] roads, int[] appleCost, int k) {
+    public long[] minCost(int n, int[][] roads, int[] appleCost, int k) {
         List<int[]>[] graph = new List[n];
 
-        for (int i = 0; i <= n; i++) {
+        for (int i = 0; i < n; i++) {
             graph[i] = new ArrayList<>();
         }
         for (int[] road : roads) {
@@ -22,7 +22,7 @@ public class LeetCode2473 {
             graph[v].add(new int[]{u, c});
         }
 
-        int[] result = new int[n];
+        long[] result = new long[n];
 
         for (int i = 0; i < n; i++) {
             result[i] = dijkstra(i, n, graph, appleCost, k);
@@ -30,13 +30,13 @@ public class LeetCode2473 {
         return result;
     }
 
-    private int dijkstra(int x, int n, List<int[]>[] graph, int[] appleCost, int k) {
+    private long dijkstra(int source, int n, List<int[]>[] graph, int[] appleCost, int k) {
         int[] dis = new int[n];
         Arrays.fill(dis, Integer.MAX_VALUE);
-        dis[x] = 0;
+        dis[source] = 0;
         int ans = Integer.MAX_VALUE;
         PriorityQueue<int[]> h = new PriorityQueue<>(Comparator.comparingInt(a -> a[0]));
-        h.add(new int[]{0, x});
+        h.add(new int[]{0, source});
 
         while (!h.isEmpty()) {
             int[] node = h.poll();

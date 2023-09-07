@@ -32,8 +32,7 @@ public class LeetCode261 {
 
         while (!queue.isEmpty()) {
             Integer node = queue.poll();
-            List<Integer> nebers = map.getOrDefault(node, new ArrayList<>());
-            for (Integer next : nebers) {
+            for (Integer next : map.get(node)) {
                 if (!set.contains(next)) {
                     set.add(next);
                     queue.add(next);
