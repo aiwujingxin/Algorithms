@@ -1,7 +1,7 @@
 package basic.datastructure.graph.bipartite;
 
 
-import basic.datastructure.graph.BipartiteGraph;
+import basic.datastructure.graph.*;
 
 import java.util.*;
 
@@ -10,11 +10,7 @@ import java.util.*;
  * @date 2023/6/19 23:23
  */
 
-class BipartiteGraph_bfs implements BipartiteGraph {
-
-    public static void main(String[] args) {
-        System.out.println(new BipartiteGraph_bfs().isBipartite(4, new int[][]{{0, 1}, {0, 3}, {1, 2}, {2, 3}}));
-    }
+public class BipartiteGraph_bfs implements BipartiteGraph {
 
     HashMap<Integer, List<Integer>> graph = new HashMap<>();
 

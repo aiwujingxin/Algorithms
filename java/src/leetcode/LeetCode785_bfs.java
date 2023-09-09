@@ -9,15 +9,15 @@ import java.util.*;
 public class LeetCode785_bfs {
 
     public boolean isBipartite(int[][] graph) {
-        int len = graph.length;
-        int[] colors = new int[len];
-
-        for (int i = 0; i < len; i++) {
-            if (colors[i] != 0) continue;
+        int n = graph.length;
+        int[] colors = new int[n];
+        for (int i = 0; i < n; i++) {
+            if (colors[i] != 0) {
+                continue;
+            }
             Queue<Integer> queue = new LinkedList<>();
             queue.offer(i);
             colors[i] = 1;   // Blue: 1; Red: -1.
-
             while (!queue.isEmpty()) {
                 int cur = queue.poll();
                 for (int next : graph[cur]) {

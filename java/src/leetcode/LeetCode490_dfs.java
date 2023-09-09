@@ -7,15 +7,18 @@ package leetcode;
 public class LeetCode490_dfs {
 
     int row, col;
+    boolean[][] vis;
+    int[][] maze;
 
     public boolean hasPath(int[][] maze, int[] st, int[] end) {
         row = maze.length;
         col = maze[0].length;
-        boolean[][] vis = new boolean[row][col];
-        return dfs(st, end, vis, maze);
+        vis = new boolean[row][col];
+        this.maze = maze;
+        return dfs(st, end);
     }
 
-    public boolean dfs(int[] st, int[] end, boolean[][] vis, int[][] maze) {
+    public boolean dfs(int[] st, int[] end) {
         if (st[0] < 0 || st[1] < 0 || st[0] >= row || st[1] >= col || vis[st[0]][st[1]]) {
             return false;
         }
@@ -32,7 +35,7 @@ public class LeetCode490_dfs {
                 nx += d[0];
                 ny += d[1];
             }
-            if (dfs(new int[]{nx - d[0], ny - d[1]}, end, vis, maze)) {
+            if (dfs(new int[]{nx - d[0], ny - d[1]}, end)) {
                 return true;
             }
         }

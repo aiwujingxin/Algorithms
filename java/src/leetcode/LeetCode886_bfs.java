@@ -38,14 +38,14 @@ public class LeetCode886_bfs {
             while (!queue.isEmpty()) {
                 int node = queue.poll();
 
-                for (int adj : map.get(node)) {
-                    if (colors[adj] == colors[node]) {
+                for (int next : map.get(node)) {
+                    if (colors[next] == colors[node]) {
                         return false;
                     }
 
-                    if (colors[adj] == 0) {
-                        colors[adj] = -colors[node];
-                        queue.add(adj);
+                    if (colors[next] == 0) {
+                        colors[next] = -colors[node];
+                        queue.add(next);
                     }
                 }
             }

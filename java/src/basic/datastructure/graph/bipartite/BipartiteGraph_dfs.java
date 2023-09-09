@@ -1,21 +1,14 @@
 package basic.datastructure.graph.bipartite;
 
-import basic.datastructure.graph.BipartiteGraph;
+import basic.datastructure.graph.*;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/6/19 23:31
  */
 public class BipartiteGraph_dfs implements BipartiteGraph {
-
-    public static void main(String[] args) {
-        System.out.println(new BipartiteGraph_dfs().isBipartite(4, new int[][]{{0, 1}, {0, 3}, {1, 2}, {2, 3}}));
-    }
 
     HashMap<Integer, List<Integer>> graph = new HashMap<>();
 
