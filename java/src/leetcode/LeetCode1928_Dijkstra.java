@@ -44,7 +44,7 @@ public class LeetCode1928_Dijkstra {
                 int neiNode = nei[0];
                 int neiTime = nei[1];
 
-                if (time + neiTime > maxTime) { // we cannot exceed maxTime, return ..
+                if (time + neiTime > maxTime) { // we cannot exceed maxTime, return
                     continue;
                 }
 
