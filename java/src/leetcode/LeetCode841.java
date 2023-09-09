@@ -1,9 +1,6 @@
 package leetcode;
 
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Queue;
+import java.util.*;
 
 /**
  * @author wujingxinit@outlook.com
@@ -13,7 +10,7 @@ public class LeetCode841 {
 
     public boolean canVisitAllRooms(List<List<Integer>> rooms) {
 
-        if (rooms == null || rooms.size() == 0) {
+        if (rooms == null || rooms.isEmpty()) {
             return false;
         }
 

@@ -10,44 +10,39 @@ import java.util.*;
 public class LeetCode444 {
 
     public boolean sequenceReconstruction(int[] nums, List<List<Integer>> sequences) {
-        Map<Integer, Set<Integer>> graph = new HashMap<>();
-        Map<Integer, Integer> inDegrees = new HashMap<>();
-
+        int n = nums.length;
+        int[] indegrees = new int[n + 1];
+        List<Integer>[] graph = new List[n + 1];
+        for (int i = 1; i <= n; i++) {
+            graph[i] = new ArrayList<>();
+        }
         for (List<Integer> sequence : sequences) {
-            for (int num : sequence) {
-                if (num < 1 || num > nums.length) {
-                    return false;
-                }
-                graph.putIfAbsent(num, new HashSet<>());
-                inDegrees.putIfAbsent(num, 0);
-            }
-            for (int i = 0; i < sequence.size() - 1; i++) {
-                if (!graph.get(sequence.get(i)).contains(sequence.get(i + 1))) {
-                    graph.get(sequence.get(i)).add(sequence.get(i + 1));
-                    inDegrees.put(sequence.get(i + 1), inDegrees.get(sequence.get(i + 1)) + 1);
-                }
+            for (int i = 1; i < sequence.size(); i++) {
+                graph[sequence.get(i - 1)].add(sequence.get(i));
+                indegrees[sequence.get(i)]++;
             }
         }
-
-        Queue<Integer> queue = new LinkedList<>();
-        for (Integer in : inDegrees.keySet()) {
-            if (inDegrees.get(in) == 0) {
-                queue.add(in);
+        Queue<Integer> queue = new ArrayDeque<>();
+        for (int i = 1; i <= n; i++) {
+            if (indegrees[i] == 0) {
+                queue.offer(i);
             }
         }
-
-        List<Integer> built = new LinkedList<>();
-        while (queue.size() == 1) {// important
+        if (queue.size() > 1) {
+            return false;
+        }
+        while (!queue.isEmpty()) {
+            if (queue.size() > 1) {
+                return false;
+            }
             int num = queue.poll();
-            built.add(num);
-
-            for (Integer next : graph.get(num)) {
-                inDegrees.put(next, inDegrees.get(next) - 1);
-                if (inDegrees.get(next) == 0) {
-                    queue.add(next);
+            for (int next : graph[num]) {
+                indegrees[next]--;
+                if (indegrees[next] == 0) {
+                    queue.offer(next);
                 }
             }
         }
-        return Arrays.equals(built.stream().mapToInt(i -> i).toArray(), nums);
+        return true;
     }
 }

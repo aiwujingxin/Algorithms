@@ -7,35 +7,39 @@ import java.util.*;
  * @date 2022/6/24 16:34
  */
 public class LeetCode684_bfs {
+
+    Map<Integer, Set<Integer>> graph;
+
     public int[] findRedundantConnection(int[][] edges) {
-
-        int m = edges.length;
-        Map<Integer, Set<Integer>> map = new HashMap<>();
-        for (int i = 1; i <= m; i++) {
-            map.put(i, new HashSet<>());
+        int n = edges.length;
+        graph = new HashMap<>();
+        for (int i = 1; i <= n; i++) {
+            graph.put(i, new HashSet<>());
         }
-
         for (int[] edge : edges) {
-            if (bfs(map, edge[0], edge[1])) return edge;
-            map.get(edge[0]).add(edge[1]);
-            map.get(edge[1]).add(edge[0]);
+            if (bfs(edge[0], edge[1])) {
+                return edge;
+            }
+            graph.get(edge[0]).add(edge[1]);
+            graph.get(edge[1]).add(edge[0]);
         }
 
         return new int[]{-1, -1};
     }
 
-    // search
-    private boolean bfs(Map<Integer, Set<Integer>> map, int src, int target) {
-        Queue<Integer> q = new LinkedList<>();
-        q.offer(src);
+    private boolean bfs(int src, int target) {
+        Queue<Integer> queue = new LinkedList<>();
+        queue.add(src);
         Set<Integer> visited = new HashSet<>();
         visited.add(src);
-        while (!q.isEmpty()) {
-            int cur = q.poll();
-            if (cur == target) return true;
-            for (int next : map.get(cur)) {
+        while (!queue.isEmpty()) {
+            int cur = queue.poll();
+            if (cur == target) {
+                return true;
+            }
+            for (int next : graph.get(cur)) {
                 if (visited.add(next)) {
-                    q.offer(next);
+                    queue.offer(next);
                 }
             }
         }
