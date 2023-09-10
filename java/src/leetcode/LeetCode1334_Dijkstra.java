@@ -11,17 +11,11 @@ public class LeetCode1334_Dijkstra {
     public static int findTheCity(int n, int[][] edges, int distanceThreshold) {
         Map<Integer, Map<Integer, Integer>> graph = new HashMap<>();
 
+        for (int i = 0; i < n; i++) {
+            graph.put(i, new HashMap<>());
+        }
         for (int[] edge : edges) {
-            if (!graph.containsKey(edge[0])) {
-                graph.put(edge[0], new HashMap<>());
-            }
-
             graph.get(edge[0]).put(edge[1], edge[2]);
-
-            if (!graph.containsKey(edge[1])) {
-                graph.put(edge[1], new HashMap<>());
-            }
-
             graph.get(edge[1]).put(edge[0], edge[2]);
         }
 
@@ -52,11 +46,9 @@ public class LeetCode1334_Dijkstra {
 
                 count++;
 
-                if (graph.containsKey(curNode)) {
-                    for (int adj : graph.get(curNode).keySet()) {
-                        if (!visited[adj] && curDist + graph.get(curNode).get(adj) <= distanceThreshold) {
-                            pq.add(new int[]{adj, curDist + graph.get(curNode).get(adj)});
-                        }
+                for (int adj : graph.get(curNode).keySet()) {
+                    if (!visited[adj] && curDist + graph.get(curNode).get(adj) <= distanceThreshold) {
+                        pq.add(new int[]{adj, curDist + graph.get(curNode).get(adj)});
                     }
                 }
             }
