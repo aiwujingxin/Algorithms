@@ -8,10 +8,6 @@ import java.util.*;
  */
 public class LeetCode261 {
 
-    public static void main(String[] args) {
-        System.out.println(new LeetCode261().validTree(5, new int[][]{{0, 1}, {1, 2}, {2, 3}, {1, 3}, {1, 4}}));
-    }
-
     public boolean validTree(int n, int[][] edges) {
         if (edges.length != n - 1) {
             return false;

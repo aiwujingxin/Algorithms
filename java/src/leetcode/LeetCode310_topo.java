@@ -6,7 +6,7 @@ import java.util.*;
  * @author wujingxinit@outlook.com
  * @date 2023/5/19 17:51
  */
-public class LeetCode310_bfs {
+public class LeetCode310_topo {
 
     public List<Integer> findMinHeightTrees(int n, int[][] edges) {
         List<Integer> res = new ArrayList<>();
@@ -16,7 +16,9 @@ public class LeetCode310_bfs {
         }
         int[] degree = new int[n];
         Map<Integer, Set<Integer>> map = new HashMap<>();
-        for (int i = 0; i < n; i++) map.put(i, new HashSet<>());
+        for (int i = 0; i < n; i++) {
+            map.put(i, new HashSet<>());
+        }
         for (int[] e : edges) {
             map.get(e[0]).add(e[1]);
             map.get(e[1]).add(e[0]);
@@ -26,23 +28,23 @@ public class LeetCode310_bfs {
         Queue<Integer> queue = new LinkedList<>();
         for (int i = 0; i < n; i++) {
             if (degree[i] == 1) {
-                queue.offer(i);
+                queue.add(i);
             }
         }
         while (!queue.isEmpty()) {
-            List<Integer> list = new ArrayList<>();
             int size = queue.size();
+            List<Integer> level = new ArrayList<>();
             for (int i = 0; i < size; i++) {
                 int cur = queue.poll();
-                list.add(cur);
+                level.add(cur);
                 for (int parent : map.get(cur)) {
                     degree[parent]--;
                     if (degree[parent] == 1) {
-                        queue.offer(parent);
+                        queue.add(parent);
                     }
                 }
             }
-            res = list;
+            res = level;
         }
         return res;
     }

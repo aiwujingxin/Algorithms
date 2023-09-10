@@ -1,9 +1,6 @@
 package leetcode;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 /**
  * @author aiwujingxin@gmail.com
@@ -12,13 +9,13 @@ import java.util.Set;
 public class LeetCode1557 {
 
     public List<Integer> findSmallestSetOfVertices(int n, List<List<Integer>> edges) {
-        List<Integer> ans = new ArrayList<>();
-        Set<Integer> endSet = new HashSet<>();
+        int[] inDegrees = new int[n];
         for (List<Integer> edge : edges) {
-            endSet.add(edge.get(1));
+            inDegrees[edge.get(1)]++;
         }
-        for (int i = 0; i < n; i++) {
-            if (!endSet.contains(i)) {
+        List<Integer> ans = new ArrayList<>();
+        for (int i = 0; i < inDegrees.length; i++) {
+            if (inDegrees[i] == 0) {
                 ans.add(i);
             }
         }
