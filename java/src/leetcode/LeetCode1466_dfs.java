@@ -40,7 +40,7 @@ public class LeetCode1466_dfs {
         return cost;
     }
 
-    private class Edge {
+    private static class Edge {
         int vertex, count;
 
         public Edge(int vertex, int count) {

@@ -1,11 +1,11 @@
 package leetcode;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 /**
  * @author aiwujingxin@gmail.com
  * @date 2022/6/23 22:10
+ * @see LeetCode200
  */
 public class LeetCode1319_dfs {
 
@@ -15,7 +15,9 @@ public class LeetCode1319_dfs {
             return -1;
         }
         List<Integer>[] graph = new List[n];
-        for (int i = 0; i < n; i++) graph[i] = new ArrayList<>();
+        for (int i = 0; i < n; i++) {
+            graph[i] = new ArrayList<>();
+        }
         for (int[] c : connections) {
             graph[c[0]].add(c[1]);
             graph[c[1]].add(c[0]);

@@ -8,7 +8,7 @@ import java.util.*;
  * @author wujingxinit@outlook.com
  * @date 2023/8/29 16:06
  */
-public class LeetCode947 {
+public class LeetCode947_uf {
 
     public int removeStones(int[][] stones) {
         int n = stones.length;

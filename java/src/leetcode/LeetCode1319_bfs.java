@@ -1,9 +1,6 @@
 package leetcode;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Queue;
+import java.util.*;
 
 /**
  * @author aiwujingxin@gmail.com
@@ -15,10 +12,6 @@ import java.util.Queue;
  * <a href="https://leetcode.com/problems/number-of-operations-to-make-network-connected/discuss/1395262/java-clean-bfs-solution-easy-to-understand">...</a>
  */
 public class LeetCode1319_bfs {
-
-    public static void main(String[] args) {
-        System.out.println(new LeetCode1319_bfs().makeConnected(4, new int[][]{{0, 1}, {0, 2}}));
-    }
 
     public int makeConnected(int n, int[][] connections) {
         // To connect all nodes need at least n-1 edges

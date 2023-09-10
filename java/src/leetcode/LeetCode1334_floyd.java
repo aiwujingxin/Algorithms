@@ -6,7 +6,7 @@ import java.util.Arrays;
  * @author aiwujingxin@gmail.com
  * @date 2022/6/25 10:20
  */
-public class LeetCode1334 {
+public class LeetCode1334_floyd {
 
     public int findTheCity(int n, int[][] edges, int distanceThreshold) {
         // build graph

@@ -7,55 +7,43 @@ import java.util.*;
  * @date 2022/6/21 21:51
  */
 public class LeetCode1462_topo {
-    //https://leetcode.com/problems/course-schedule-iv/discuss/746692/Java-or-TopologicalSort-and-BFS-or-O(N2)-time-or-46ms-or
 
     public List<Boolean> checkIfPrerequisite(int n, int[][] prerequisites, int[][] queries) {
-        // build graph
-        //record pre
-        List<Integer>[] pre = new List[n];
-        //record all next course
-        Set<Integer>[] next = new HashSet[n];
-        //count next with prerequisites
-        int[] nextCount = new int[n];
+        List<Integer>[] graph = new List[n];
+        boolean[][] prerequisitesMatrix = new boolean[n][n];
+        int[] indegrees = new int[n];
         for (int i = 0; i < n; i++) {
-            pre[i] = new ArrayList<>();
-            next[i] = new HashSet<>();
+            graph[i] = new ArrayList<>();
         }
-        for (int[] p : prerequisites) {
-            pre[p[1]].add(p[0]);
-            next[p[0]].add(p[1]);
-            nextCount[p[0]]++;
+        for (int[] prerequisite : prerequisites) {
+            graph[prerequisite[0]].add(prerequisite[1]);
+            indegrees[prerequisite[1]]++;
         }
-        //record removed course
-        boolean[] used = new boolean[n];
-        //find all course nextcount = 0
-        LinkedList<Integer> list = new LinkedList<>();
+        Queue<Integer> queue = new LinkedList<>();
         for (int i = 0; i < n; i++) {
-            if (nextCount[i] == 0) {
-                list.add(i);
-                used[i] = true;
+            if (indegrees[i] == 0) {
+                queue.offer(i);
             }
         }
-        while (!list.isEmpty()) {
-            // get the no next course
-            int remove = list.removeFirst();
-            //find the pre courses
-            for (int i : pre[remove]) {
-                // make it nextcount--
-                nextCount[i]--;
-                //add all the next[remove]
-                next[i].addAll(next[remove]);
-                if (nextCount[i] == 0) {
-                    //if not have other next, add to the have not next list
-                    list.add(i);
+        while (!queue.isEmpty()) {
+            int curr = queue.poll();
+            for (int next : graph[curr]) {
+                prerequisitesMatrix[curr][next] = true;
+                for (int i = 0; i < n; i++) {
+                    if (prerequisitesMatrix[i][curr]) {
+                        prerequisitesMatrix[i][next] = true;
+                    }
+                }
+                indegrees[next]--;
+                if (indegrees[next] == 0) {
+                    queue.offer(next);
                 }
             }
         }
-        //  check exist in the next list
-        List<Boolean> res = new ArrayList<>(queries.length);
-        for (int[] q : queries) {
-            res.add(next[q[0]].contains(q[1]));
+        List<Boolean> answer = new ArrayList<>();
+        for (int[] query : queries) {
+            answer.add(prerequisitesMatrix[query[0]][query[1]]);
         }
-        return res;
+        return answer;
     }
 }

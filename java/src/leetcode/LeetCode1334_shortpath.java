@@ -6,7 +6,7 @@ import java.util.*;
  * @author aiwujingxin@gmail.com
  * @date 2022/6/25 10:30
  */
-public class LeetCode1334_all {
+public class LeetCode1334_shortpath {
 
     public int findTheCity(int n, int[][] edges, int distanceThreshold) {
         int INF = (int) 1e9 + 7;

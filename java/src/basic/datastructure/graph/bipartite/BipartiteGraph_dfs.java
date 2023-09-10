@@ -18,6 +18,7 @@ public class BipartiteGraph_dfs implements BipartiteGraph {
         }
         for (int[] edge : edges) {
             graph.get(edge[1]).add(edge[0]);
+            graph.get(edge[0]).add(edge[1]);
         }
         int[] colors = new int[n];
         Arrays.fill(colors, -1);

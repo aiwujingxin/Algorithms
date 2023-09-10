@@ -13,14 +13,14 @@ public class LeetCode1514_Dijkstra {
     //https://leetcode.com/problems/path-with-maximum-probability/solutions/2440627/java-dijkstra-algorithm/
 
     public double maxProbability(int n, int[][] edges, double[] succProb, int start, int end) {
-        List<List<Pair>> graph = new ArrayList<>();
+        List<Pair>[] graph = new List[n];
         for (int i = 0; i < n; i++) {
-            graph.add(new ArrayList<>());
+            graph[i] = new ArrayList<>();
         }
         for (int i = 0; i < edges.length; i++) {
             int[] e = edges[i];
-            graph.get(e[0]).add(new Pair(succProb[i], e[1]));
-            graph.get(e[1]).add(new Pair(succProb[i], e[0]));
+            graph[e[0]].add(new Pair(succProb[i], e[1]));
+            graph[e[1]].add(new Pair(succProb[i], e[0]));
         }
 
         PriorityQueue<Pair> que = new PriorityQueue<>();
@@ -35,7 +35,7 @@ public class LeetCode1514_Dijkstra {
             if (pr < prob[node]) {
                 continue;
             }
-            for (Pair pairNext : graph.get(node)) {
+            for (Pair pairNext : graph[node]) {
                 double prNext = pairNext.probability;
                 int nodeNext = pairNext.node;
                 if (prob[nodeNext] < prob[node] * prNext) {
