@@ -9,16 +9,16 @@ import java.util.*;
 public class LeetCode2192_topo {
 
     public List<List<Integer>> getAncestors(int n, int[][] edges) {
-        Map<Integer, List<Integer>> map = new HashMap<>();
+        Map<Integer, List<Integer>> graph = new HashMap<>();
         Set<Integer>[] parents = new HashSet[n];
         int[] indegrees = new int[n];
         for (int i = 0; i < n; i++) {
-            map.put(i, new ArrayList<>());
+            graph.put(i, new ArrayList<>());
             parents[i] = new HashSet<>();
         }
 
         for (int[] edge : edges) {
-            map.get(edge[0]).add(edge[1]);
+            graph.get(edge[0]).add(edge[1]);
             parents[edge[1]].add(edge[0]);
             indegrees[edge[1]]++;
         }
@@ -34,7 +34,7 @@ public class LeetCode2192_topo {
             int size = queue.size();
             for (int i = 0; i < size; i++) {
                 int cur = queue.poll();
-                for (int next : map.get(cur)) {
+                for (int next : graph.get(cur)) {
                     for (int parent : parents[cur]) {
                         parents[next].add(parent);
                     }

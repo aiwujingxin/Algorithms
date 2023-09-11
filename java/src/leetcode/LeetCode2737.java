@@ -15,9 +15,7 @@ public class LeetCode2737 {
         for (int i = 0; i < edges.size(); i++) {
             es[i] = new int[]{edges.get(i).get(0), edges.get(i).get(1), edges.get(i).get(2)};
         }
-        Dijkstra dijkstra = new Dijkstra();
-        int[] dist = dijkstra.getShortestPath(n, es, s);
-        System.out.println(Arrays.toString(dist));
+        int[] dist = new Dijkstra().getShortestPath(n, es, s);
         int ans = Integer.MAX_VALUE;
         HashSet<Integer> set = new HashSet<>();
         for (int j : marked) {

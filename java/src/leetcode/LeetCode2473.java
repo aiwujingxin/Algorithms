@@ -35,11 +35,10 @@ public class LeetCode2473 {
         Arrays.fill(dis, Integer.MAX_VALUE);
         dis[source] = 0;
         int ans = Integer.MAX_VALUE;
-        PriorityQueue<int[]> h = new PriorityQueue<>(Comparator.comparingInt(a -> a[0]));
-        h.add(new int[]{0, source});
-
-        while (!h.isEmpty()) {
-            int[] node = h.poll();
+        PriorityQueue<int[]> queue = new PriorityQueue<>(Comparator.comparingInt(a -> a[0]));
+        queue.add(new int[]{0, source});
+        while (!queue.isEmpty()) {
+            int[] node = queue.poll();
             int d = node[0];
             int cur = node[1];
 
@@ -50,12 +49,10 @@ public class LeetCode2473 {
             }
             for (int[] neighbor : graph[cur]) {
                 int nxt = neighbor[0];
-                int c = neighbor[1];
-                int nxtd = d + c;
-
-                if (nxtd < dis[nxt]) {
-                    h.add(new int[]{nxtd, nxt});
-                    dis[nxt] = nxtd;
+                int cost = neighbor[1];
+                if (d + cost < dis[nxt]) {
+                    queue.add(new int[]{d + cost, nxt});
+                    dis[nxt] = d + cost;
                 }
             }
         }

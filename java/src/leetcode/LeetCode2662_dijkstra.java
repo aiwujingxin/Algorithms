@@ -8,7 +8,7 @@ import java.util.Queue;
  * @author wujingxinit@outlook.com
  * @date 2023/9/8 18:50
  */
-public class LeetCode2662_dij {
+public class LeetCode2662_dijkstra {
 
     public int minimumCost(int[] start, int[] target, int[][] specialRoads) {
         int res = dist(start[0], start[1], target[0], target[1]);
