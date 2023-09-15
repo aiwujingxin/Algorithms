@@ -8,10 +8,6 @@ import java.util.Arrays;
  */
 public class Offer40 {
 
-    public static void main(String[] args) {
-        System.out.println(Arrays.toString(new Offer40().getLeastNumbers(new int[]{4, 5, 1, 6, 1, 7, 3, 8}, 4)));
-    }
-
     public int[] getLeastNumbers(int[] arr, int k) {
         if (arr.length == 0) {
             return new int[]{};

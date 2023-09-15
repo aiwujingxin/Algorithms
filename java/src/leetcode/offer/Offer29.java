@@ -19,31 +19,23 @@ public class Offer29 {
         int index = 0;
         int[] res = new int[m * n];
         while (top <= down && left <= right) {
-            int col_start = left;
-            while (col_start <= right) {
-                res[index++] = matrix[top][col_start];
-                col_start++;
+            for (int i = left; i <= right; i++) {
+                res[index++] = matrix[top][i];
             }
             top++;
-            int row_start = top;
-            while (row_start <= down) {
-                res[index++] = matrix[row_start][right];
-                row_start++;
+            for (int i = top; i <= down; i++) {
+                res[index++] = matrix[i][right];
             }
             right--;
-            int col_end = right;
             if (top <= down && left <= right) {
-                while (left <= col_end) {
-                    res[index++] = matrix[down][col_end];
-                    col_end--;
+                for (int i = right; i >= left; i--) {
+                    res[index++] = matrix[down][i];
                 }
                 down--;
             }
             if (top <= down && left <= right) {
-                int row_end = down;
-                while (top <= row_end) {
-                    res[index++] = matrix[row_end][left];
-                    row_end--;
+                for (int i = down; i >= top; i--) {
+                    res[index++] = matrix[i][left];
                 }
                 left++;
             }

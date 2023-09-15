@@ -8,11 +8,6 @@ import common.ListNode;
  */
 public class LeetCode2 {
 
-    // fix case
-    //[9,9,9,9,9,9,9]
-    //[9,9,9,9]
-
-
     int flag = 0;
 
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
