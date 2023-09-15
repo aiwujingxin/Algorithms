@@ -3,33 +3,40 @@ package leetcode.offer;
 import java.util.Stack;
 
 /**
- * @author jingxinwu
- * @date 2021-11-19 9:59 下午
+ * @author wujingxinit@outlook.com
+ * @date 2023/9/12 13:38
  */
 public class Offer9 {
 
-    Stack<Integer> stack1;
-    Stack<Integer> stack2;
+    class CQueue {
 
-    public Offer9() {
-        stack1 = new Stack<>();
-        stack2 = new Stack<>();
-    }
+        Stack<Integer> stack1;
+        Stack<Integer> stack2;
 
-    public void appendTail(int value) {
-        if (stack1.isEmpty()) {
+        public CQueue() {
+            stack1 = new Stack<>();
+            stack2 = new Stack<>();
+        }
+
+        public void appendTail(int value) {
             stack1.push(value);
         }
-    }
 
-    public int deleteHead() {
-        if (!stack2.isEmpty()) {
-            return stack2.pop();
-        }
-        while (!stack1.isEmpty()) {
-            stack2.push(stack1.pop());
-        }
-        return stack2.pop();
-    }
+        public int deleteHead() {
+            if (!stack2.empty()) {
+                return stack2.pop();
+            }
+            if (stack2.empty()) {
+                while (!stack1.empty()) {
+                    stack2.add(stack1.pop());
+                }
+            }
 
+            if (!stack2.empty()) {
+                return stack2.pop();
+            } else {
+                return -1;
+            }
+        }
+    }
 }

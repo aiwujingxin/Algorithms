@@ -3,37 +3,58 @@ package leetcode.offer;
 import java.util.Stack;
 
 /**
- * @author jingxinwu
- * @date 2021-11-21 8:06 下午
+ * @author wujingxinit@outlook.com
+ * @date 2023/9/12 23:39
  */
 public class Offer30 {
 
-    Stack<Integer> A, B;
+    class MinStack {
 
-    //栈 A 中的最小元素始终对应栈 B 的栈顶元素
-    public Offer30() {
-        A = new Stack<>();
-        B = new Stack<>();
-    }
 
-    public void push(int x) {
-        A.add(x);
-        if (B.empty() || B.peek() >= x) {
-            B.add(x);
+        Stack<Integer> stack;
+        Stack<Integer> minstack;
+
+        /**
+         * initialize your data structure here.
+         */
+        public MinStack() {
+            stack = new Stack<>();
+            minstack = new Stack<>();
         }
-    }
 
-    public void pop() {
-        if (A.pop().equals(B.peek())) {
-            B.pop();
+        public void push(int x) {
+            stack.push(x);
+            if (!minstack.empty()) {
+                if (minstack.peek() < x) {
+                    minstack.push(minstack.peek());
+                } else {
+                    minstack.push(x);
+                }
+            } else {
+                minstack.push(x);
+            }
         }
-    }
 
-    public int top() {
-        return A.peek();
-    }
+        public void pop() {
+            if (stack.empty()) {
+                return;
+            }
+            stack.pop();
+            minstack.pop();
+        }
 
-    public int min() {
-        return B.peek();
+        public int top() {
+            if (stack.empty()) {
+                return -1;
+            }
+            return stack.peek();
+        }
+
+        public int min() {
+            if (minstack.empty()) {
+                return -1;
+            }
+            return minstack.peek();
+        }
     }
 }

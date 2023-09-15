@@ -1,31 +1,30 @@
 package leetcode.offer;
 
-import java.util.Stack;
+import common.*;
 
-import common.ListNode;
+import java.util.*;
 
 /**
- * @author jingxinwu
- * @date 2021-11-19 9:28 下午
+ * @author wujingxinit@outlook.com
+ * @date 2023/9/12 13:26
  */
 public class Offer6 {
 
     public int[] reversePrint(ListNode head) {
+        List<Integer> list = new ArrayList<>();
+        dfs(head, list);
+        int[] res = new int[list.size()];
+        for (int i = 0; i < list.size(); i++) {
+            res[i] = list.get(i);
+        }
+        return res;
+    }
+
+    private void dfs(ListNode head, List<Integer> list) {
         if (head == null) {
-            return new int[] {};
+            return;
         }
-        Stack<ListNode> stack = new Stack<>();
-        ListNode point = head;
-        while (point != null) {
-            stack.push(point);
-            point = point.next;
-        }
-        int[] arr = new int[stack.size()];
-        int index = 0;
-        while (!stack.isEmpty()) {
-            arr[index] = stack.pop().val;
-            index++;
-        }
-        return arr;
+        dfs(head.next, list);
+        list.add(head.val);
     }
 }

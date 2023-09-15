@@ -1,17 +1,16 @@
 package leetcode.offer;
 
 /**
- * @author jingxinwu
- * @date 2021-11-27 2:53 下午
+ * @author wujingxinit@outlook.com
+ * @date 2023/9/14 02:15
  */
 public class Offer65 {
-
-    //todo
     public int add(int a, int b) {
-        if (b == 0) {
-            return a;
+        while (b != 0) {
+            int carry = (a & b) << 1;
+            a = a ^ b;
+            b = carry;
         }
-        // 转换成非进位和 + 进位
-        return add(a ^ b, (a & b) << 1);
+        return a;
     }
 }

@@ -38,4 +38,12 @@ public class Offer62 {
         }
         helper(list, m, index);
     }
+
+    public int lastRemaining_dp(int n, int m) {
+        int x = 0;
+        for (int i = 2; i <= n; i++) {
+            x = (x + m) % i;
+        }
+        return x;
+    }
 }

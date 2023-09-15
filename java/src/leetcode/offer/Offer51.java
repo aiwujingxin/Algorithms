@@ -1,55 +1,77 @@
 package leetcode.offer;
 
+import java.util.*;
+
 /**
- * @author jingxinwu
- * @date 2021-12-04 5:29 下午
+ * @author wujingxinit@outlook.com
+ * @date 2023/9/14 01:34
  */
 public class Offer51 {
 
-    int count;
+    public static void main(String[] args) {
+        System.out.println(new Offer51().reversePairs(new int[]{7, 5, 6, 4}));
+        System.out.println(Arrays.toString(new Offer51().mergeSort(new int[]{7, 5, 6, 4})));
+    }
 
-    int[] arr;
+    public int[] mergeSort(int[] nums) {
+        this.nums = nums;
+        this.temp = new int[nums.length];
+        mergeSort(nums, 0, nums.length - 1);
+        return nums;
+    }
+
+
+    int res = 0;
+    int[] nums;
+    int[] temp;
 
     public int reversePairs(int[] nums) {
-        arr = new int[nums.length];
+        if (nums == null || nums.length == 0) {
+            return 0;
+        }
+        this.nums = nums;
+        this.temp = new int[nums.length];
         mergeSort(nums, 0, nums.length - 1);
-        return count;
+        return res;
     }
 
-    private void mergeSort(int[] nums, int left, int right) {
-        if (left >= right) {
+    public void mergeSort(int[] nums, int start, int end) {
+        if (start >= end) {
             return;
         }
-        int mid = (right - left) / 2 + left;
-        mergeSort(nums, left, mid);
-        mergeSort(nums, mid + 1, right);
-        merge(nums, left, mid, right);
+        int mid = (start + end) / 2;
+        mergeSort(nums, start, mid);
+        mergeSort(nums, mid + 1, end);
+        merge(nums, mid, start, end);
     }
 
-    private void merge(int[] nums, int left, int mid, int right) {
-        int i = left, j = mid + 1;
-        int k = left;
-        while (i <= mid && j <= right) {
+    public void merge(int[] nums, int mid, int start, int end) {
+        int i = start;
+        int j = mid + 1;
+        int k = start;
+        while (i < mid + 1 && j <= end) {
             if (nums[i] <= nums[j]) {
-                arr[k] = nums[i];
+                temp[k] = nums[i];
                 i++;
-            } else {
-                arr[k] = nums[j];
+            } else if (nums[i] > nums[j]) {
+                temp[k] = nums[j];
                 j++;
-                count += mid - i + 1; // 统计逆序对
+                res = res + mid + 1 - i;
             }
             k++;
         }
-        while (i <= mid) {
-            arr[k] = nums[i];
+        while (i < mid + 1) {
+            temp[k] = nums[i];
+            k++;
             i++;
-            k++;
         }
-        while (j <= right) {
-            arr[k] = nums[j];
+        while (j <= end) {
+            temp[k] = nums[j];
+            k++;
             j++;
-            k++;
         }
-        if (right + 1 - left >= 0) System.arraycopy(arr, left, nums, left, right + 1 - left);
+        for (int l = start; l <= end; l++) {
+            nums[l] = temp[l];
+        }
     }
 }

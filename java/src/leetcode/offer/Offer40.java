@@ -3,45 +3,51 @@ package leetcode.offer;
 import java.util.Arrays;
 
 /**
- * @author jingxinwu
- * @date 2021-11-21 11:40 下午
+ * @author wujingxinit@outlook.com
+ * @date 2023/9/13 01:48
  */
 public class Offer40 {
 
     public static void main(String[] args) {
-        Offer40 offer40 = new Offer40();
-        System.out.println(Arrays.toString(offer40.getLeastNumbers(new int[] { 0, 0, 2, 3, 2, 1, 1, 2, 0, 4 }, 10)));
-    }
-
-    public static int helper(int[] a, int lo, int hi, int k) {
-        int pi = a[lo];
-        int low_temp = lo;
-        int hi_temp = hi;
-        while (lo < hi) {
-            while (lo < hi && a[hi] >= pi) {
-                hi--;
-            }
-            a[lo] = a[hi];
-            while (lo < hi && a[lo] <= pi) {
-                lo++;
-            }
-            a[hi] = a[lo];
-        }
-        a[lo] = pi;
-        if (lo == k) {
-            return lo;
-        } else if (lo > k) {
-            return helper(a, low_temp, lo - 1, k);
-        } else {
-            return helper(a, lo + 1, hi_temp, k);
-        }
+        System.out.println(Arrays.toString(new Offer40().getLeastNumbers(new int[]{4, 5, 1, 6, 1, 7, 3, 8}, 4)));
     }
 
     public int[] getLeastNumbers(int[] arr, int k) {
         if (arr.length == 0) {
-            return new int[] {};
+            return new int[]{};
         }
-        int index = helper(arr, 0, arr.length - 1, k);
-        return Arrays.copyOf(arr, index);
+        getIndex(arr, 0, arr.length - 1, k);
+        return Arrays.copyOf(arr, k);
+    }
+
+    public void getIndex(int[] arr, int start, int end, int k) {
+        if (start >= end) {
+            return;
+        }
+        int index = partition(arr, start, end);
+        if (index - start + 1 == k) {//todo ?
+            return;
+        }
+        if (index > k) {
+            getIndex(arr, start, index - 1, k);
+        } else {
+            getIndex(arr, index + 1, end, k);
+        }
+    }
+
+    public int partition(int[] arr, int i, int j) {
+        int pi = arr[i];
+        while (i < j) {
+            while (arr[j] >= pi && i < j) {
+                j--;
+            }
+            arr[i] = arr[j];
+            while (arr[i] <= pi && i < j) {
+                i++;
+            }
+            arr[j] = arr[i];
+        }
+        arr[i] = pi;
+        return i;
     }
 }

@@ -2,47 +2,51 @@ package leetcode.offer;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
 
 /**
- * @author jingxinwu
- * @date 2021-11-21 11:16 下午
+ * @author wujingxinit@outlook.com
+ * @date 2023/9/13 00:19
  */
 public class Offer38 {
-
-    List<String> rec;
-    boolean[] vis;
+    List<String> list;
 
     public String[] permutation(String s) {
-        int n = s.length();
-        rec = new ArrayList<>();
-        vis = new boolean[n];
-        char[] arr = s.toCharArray();
-        Arrays.sort(arr);
-        StringBuffer perm = new StringBuffer();
-        backtrack(arr, 0, n, perm);
-        int size = rec.size();
-        String[] recArr = new String[size];
-        for (int i = 0; i < size; i++) {
-            recArr[i] = rec.get(i);
+        if (s == null || s.isEmpty()) {
+            return new String[]{};
         }
-        return recArr;
+        list = new ArrayList<>();
+        char[] chars = s.toCharArray();
+        Arrays.sort(chars);
+        backtrack(0, chars);
+        String[] strings = new String[list.size()];
+        for (int i = 0; i < list.size(); i++) {
+            strings[i] = list.get(i);
+        }
+        return strings;
     }
 
-    public void backtrack(char[] arr, int i, int n, StringBuffer perm) {
-        if (i == n) {
-            rec.add(perm.toString());
+    private void backtrack(int index, char[] chars) {
+        if (index == chars.length) {
+            list.add(new String(chars));
             return;
         }
-        for (int j = 0; j < n; j++) {
-            if (vis[j] || (j > 0 && !vis[j - 1] && arr[j - 1] == arr[j])) {
+        HashSet<Character> set = new HashSet<>();
+        for (int j = index; j < chars.length; j++) {
+            if (set.contains(chars[j])) {
                 continue;
             }
-            vis[j] = true;
-            perm.append(arr[j]);
-            backtrack(arr, i + 1, n, perm);
-            perm.deleteCharAt(perm.length() - 1);
-            vis[j] = false;
+            set.add(chars[j]);
+            swap(index, j, chars);
+            backtrack(index + 1, chars);
+            swap(index, j, chars);
         }
+    }
+
+    private void swap(int index, int j, char[] chars) {
+        char t = chars[index];
+        chars[index] = chars[j];
+        chars[j] = t;
     }
 }

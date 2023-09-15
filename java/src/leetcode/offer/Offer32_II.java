@@ -8,22 +8,26 @@ import java.util.List;
 import java.util.Queue;
 
 /**
- * @author jingxinwu
- * @date 2021-11-21 9:04 下午
+ * @author wujingxinit@outlook.com
+ * @date 2023/9/12 23:22
  */
-public class Offer32_2 {
+public class Offer32_II {
+
 
     public List<List<Integer>> levelOrder(TreeNode root) {
-        Queue<TreeNode> queue = new LinkedList<>();
-        List<List<Integer>> res = new ArrayList<>();
-        if (root != null) {
-            queue.add(root);
+        if (root == null) {
+            return new ArrayList<>();
         }
+
+        List<List<Integer>> list = new ArrayList<>();
+        Queue<TreeNode> queue = new LinkedList<>();
+        queue.add(root);
         while (!queue.isEmpty()) {
-            List<Integer> tmp = new ArrayList<>();
-            for (int i = queue.size(); i > 0; i--) {
+            List<Integer> level = new ArrayList<>();
+            int size = queue.size();
+            for (int i = 0; i < size; i++) {
                 TreeNode node = queue.poll();
-                tmp.add(node.val);
+                level.add(node.val);
                 if (node.left != null) {
                     queue.add(node.left);
                 }
@@ -31,8 +35,8 @@ public class Offer32_2 {
                     queue.add(node.right);
                 }
             }
-            res.add(tmp);
+            list.add(level);
         }
-        return res;
+        return list;
     }
 }

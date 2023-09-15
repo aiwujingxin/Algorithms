@@ -4,9 +4,10 @@ import common.Node;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2023/1/4 15:17
+ * @date 2023/9/12 23:36
  */
 public class Offer36 {
+
     Node pre, head;
 
     public Node treeToDoublyList(Node root) {
@@ -19,22 +20,20 @@ public class Offer36 {
         return head;
     }
 
-    // 中序遍历
-    void dfs(Node cur) {
-        if (cur == null) {
+    private void dfs(Node root) {
+        if (root == null) {
             return;
         }
-        dfs(cur.left);
-
-        //操作root
+        dfs(root.left);
+        // do something
         if (pre != null) {
-            pre.right = cur;
+            pre.right = root;
         } else {
-            head = cur;
+            head = root;
         }
-        cur.left = pre;
-        pre = cur;
+        root.left = pre;
+        pre = root;
 
-        dfs(cur.right);
+        dfs(root.right);
     }
 }

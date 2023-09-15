@@ -2,48 +2,68 @@ package leetcode.offer;
 
 import common.TreeNode;
 
-import java.util.Arrays;
 import java.util.LinkedList;
-import java.util.List;
+import java.util.Objects;
+import java.util.Queue;
 
 /**
- * @author jingxinwu
- * @date 2021-11-21 11:38 下午
+ * @author wujingxinit@outlook.com
+ * @date 2023/9/15 09:37
  */
 public class Offer37 {
 
-    public String serialize(TreeNode root) {
-        return rserialize(root, "");
-    }
 
-    public TreeNode deserialize(String data) {
-        String[] dataArray = data.split(",");
-        List<String> dataList = new LinkedList<>(Arrays.asList(dataArray));
-        return rdeserialize(dataList);
-    }
+    public class Codec {
 
-    public String rserialize(TreeNode root, String str) {
-        if (root == null) {
-            str += "None,";
-        } else {
-            str += root.val + ",";
-            str = rserialize(root.left, str);
-            str = rserialize(root.right, str);
+
+        StringBuilder sb = new StringBuilder();
+
+        // Encodes a tree to a single string.
+        public String serialize(TreeNode root) {
+            if (root == null) {
+                return "";
+            }
+            Queue<TreeNode> queue = new LinkedList<>();
+            queue.add(root);
+            while (!queue.isEmpty()) {
+                TreeNode node = queue.poll();
+                if (node == null) {
+                    sb.append("NULL").append(",");
+                } else {
+                    sb.append(node.val).append(",");
+                    queue.add(node.left);
+                    queue.add(node.right);
+                }
+            }
+            sb.deleteCharAt(sb.length() - 1);
+            return sb.toString();
+
         }
-        return str;
-    }
 
-    public TreeNode rdeserialize(List<String> dataList) {
-        if (dataList.get(0).equals("None")) {
-            dataList.remove(0);
-            return null;
+        // Decodes your encoded data to tree.
+        public TreeNode deserialize(String data) {
+            if (sb.isEmpty()) {
+                return null;
+            }
+            String[] strings = sb.toString().split(",");
+            TreeNode root = new TreeNode(Integer.parseInt(strings[0]));
+            Queue<TreeNode> nodeQueue = new LinkedList<>();
+            nodeQueue.add(root);
+            int index = 1;
+            while (!nodeQueue.isEmpty()) {
+                TreeNode node = nodeQueue.poll();
+                if (!Objects.equals(strings[index], "NULL")) {
+                    node.left = new TreeNode(Integer.parseInt(strings[index]));
+                    nodeQueue.add(node.left);
+                }
+                index++;
+                if (!Objects.equals(strings[index], "NULL")) {
+                    node.right = new TreeNode(Integer.parseInt(strings[index]));
+                    nodeQueue.add(node.right);
+                }
+                index++;
+            }
+            return root;
         }
-
-        TreeNode root = new TreeNode(Integer.parseInt(dataList.get(0)));
-        dataList.remove(0);
-        root.left = rdeserialize(dataList);
-        root.right = rdeserialize(dataList);
-        return root;
     }
-
 }

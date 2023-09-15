@@ -1,34 +1,27 @@
 package leetcode.offer;
 
 /**
- * @author jingxinwu
- * @date 2021-11-21 2:17 下午
+ * @author wujingxinit@outlook.com
+ * @date 2023/9/12 15:57
  */
 public class Offer16 {
 
     public double myPow(double x, int n) {
-        boolean flag = false;
-        if (n < 0) {
-            flag = true;
-            x = 1 / x;
-            n = -(n + 1);
+        double res = myPowH(x, n);
+        return n < 0 ? 1 / res : res;
+    }
+
+    private double myPowH(double x, int n) {
+        if (n == 0) {
+            return 1;
         }
-
-        double res = 1;
-        double temp = x;
-
-        while (n != 0) {
-            if (n % 2 == 1) {
-                res *= temp;
-            }
-            temp *= temp;
-            n = n / 2;
+        if (n == 1) {
+            return x;
         }
-
-        if (flag) {
-            res *= x;
+        if (n % 2 == 0) {
+            return myPowH(x * x, n / 2);
+        } else {
+            return myPowH(x * x, n / 2) * x;
         }
-
-        return res;
     }
 }

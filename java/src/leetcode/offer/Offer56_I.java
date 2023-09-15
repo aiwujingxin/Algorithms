@@ -1,10 +1,10 @@
 package leetcode.offer;
 
 /**
- * @author jingxinwu
- * @date 2021-11-25 12:37 上午
+ * @author wujingxinit@outlook.com
+ * @date 2023/9/13 22:17
  */
-public class Offer56_1 {
+public class Offer56_I {
 
     public int[] singleNumbers(int[] nums) {
         int ret = 0;

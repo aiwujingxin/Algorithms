@@ -3,25 +3,32 @@ package leetcode.offer;
 import common.TreeNode;
 
 /**
- * @author jingxinwu
- * @date 2021-11-21 7:02 下午
+ * @author wujingxinit@outlook.com
+ * @date 2023/9/12 22:00
  */
 public class Offer28 {
 
+
     public boolean isSymmetric(TreeNode root) {
+
         if (root == null) {
             return true;
         }
-        return helper(root.left, root.right);
+        return isSymmetric(root.right, root.left);
     }
 
-    public boolean helper(TreeNode L, TreeNode R) {
-        if (L == null && R == null) {
+    public boolean isSymmetric(TreeNode right, TreeNode left) {
+
+
+        if (right == null && left == null) {
             return true;
         }
-        if (L == null || R == null || L.val != R.val) {
+        if (right == null || left == null) {
             return false;
         }
-        return helper(L.left, R.right) && helper(L.right, R.left);
+        if (right.val != left.val) {
+            return false;
+        }
+        return isSymmetric(right.right, left.left) && isSymmetric(right.left, left.right);
     }
 }

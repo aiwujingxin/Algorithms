@@ -1,33 +1,26 @@
 package leetcode.offer;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
- * @author jingxinwu
- * @date 2021-11-19 9:06 下午
+ * @author wujingxinit@outlook.com
+ * @date 2023/9/12 13:17
  */
+
 public class Offer3 {
 
     public int findRepeatNumber(int[] nums) {
         if (nums == null || nums.length == 0) {
             return 0;
         }
-        HashMap<Integer, Integer> map = new HashMap<>();
-        for (int num : nums) {
-            if (map.containsKey(num)) {
-                int count = map.get(num) + 1;
-                map.put(num, count);
-            } else {
-                map.put(num, 1);
+        Set<Integer> set = new HashSet<>();
+        for (int n : nums) {
+            if (set.contains(n)) {
+                return n;
             }
-        }
-        for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
-            if (entry.getValue() > 1) {
-                return entry.getKey();
-            }
+            set.add(n);
         }
         return -1;
     }
-
 }

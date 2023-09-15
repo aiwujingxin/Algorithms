@@ -1,23 +1,24 @@
 package leetcode.offer;
 
-import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
- * @author jingxinwu
- * @date 2021-11-23 12:15 上午
+ * @author wujingxinit@outlook.com
+ * @date 2023/9/13 01:13
  */
 public class Offer45 {
 
     public String minNumber(int[] nums) {
-        String[] strs = new String[nums.length];
-        for (int i = 0; i < nums.length; i++) {
-            strs[i] = String.valueOf(nums[i]);
+        List<String> list = new ArrayList<>();
+        for (int num : nums) {
+            list.add(String.valueOf(num));
         }
-        Arrays.sort(strs, (x, y) -> (x + y).compareTo(y + x));
-        StringBuilder res = new StringBuilder();
-        for (String s : strs) {
-            res.append(s);
+        list.sort((o1, o2) -> (o1 + o2).compareTo(o2 + o1));
+        StringBuilder sb = new StringBuilder();
+        for (String s : list) {
+            sb.append(s);
         }
-        return res.toString();
+        return sb.toString();
     }
 }

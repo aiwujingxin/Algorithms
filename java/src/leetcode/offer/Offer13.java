@@ -1,50 +1,41 @@
 package leetcode.offer;
 
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.Queue;
 
 /**
- * @author jingxinwu
- * @date 2021-11-21 1:40 下午
+ * @author wujingxinit@outlook.com
+ * @date 2023/9/12 15:11
  */
 public class Offer13 {
 
+    public static void main(String[] args) {
+        System.out.println(new Offer13().cal(1, 2));
+    }
+
     public int movingCount(int m, int n, int k) {
-        if (k == 0) {
-            return 1;
-        }
+        int[][] dic = new int[][]{{-1, 0}, {1, 0}, {0, 1}, {0, -1}};
         Queue<int[]> queue = new LinkedList<>();
-        // 向右和向下的方向数组
-        int[] dx = {0, 1};
-        int[] dy = {1, 0};
-        boolean[][] vis = new boolean[m][n];
-        queue.offer(new int[]{0, 0});
-        vis[0][0] = true;
-        int ans = 1;
+        queue.add(new int[]{0, 0});
+        HashSet<String> set = new HashSet<>();
+        set.add(0 + "," + 0);
         while (!queue.isEmpty()) {
-            int[] cell = queue.poll();
-            int x = cell[0], y = cell[1];
-            for (int i = 0; i < 2; ++i) {
-                int tx = dx[i] + x;
-                int ty = dy[i] + y;
-                if (tx < 0 || tx >= m || ty < 0 || ty >= n || vis[tx][ty] || get(tx) + get(ty) > k) {
+            int[] node = queue.poll();
+            for (int[] ints : dic) {
+                int nr = node[0] + ints[0];
+                int nc = node[1] + ints[1];
+                if (nr < 0 || nc < 0 || nr >= m || nc >= n || cal(nr, nc) > k || set.contains(nr + "," + nc)) {
                     continue;
                 }
-                queue.offer(new int[]{tx, ty});
-                vis[tx][ty] = true;
-                ans++;
+                set.add(nr + "," + nc);
+                queue.add(new int[]{nr, nc});
             }
         }
-        return ans;
+        return set.size();
     }
 
-    private int get(int x) {
-        int res = 0;
-        while (x != 0) {
-            res += x % 10;
-            x /= 10;
-        }
-        return res;
+    public int cal(int i, int j) {
+        return i % 10 + i / 10 + j % 10 + j / 10;
     }
-
 }

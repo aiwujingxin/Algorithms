@@ -1,26 +1,22 @@
 package leetcode.offer;
 
 /**
- * @author jingxinwu
- * @date 2021-11-19 9:24 下午
+ * @author wujingxinit@outlook.com
+ * @date 2023/9/12 13:23
  */
 public class Offer5 {
 
-
     public String replaceSpace(String s) {
-        if (s == null || s.length() == 0) {
-            return s;
+        if (s == null || s.isEmpty()) {
+            return "";
         }
-
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < s.length(); i++) {
-            Character c = s.charAt(i);
-            if (c != ' ') {
-                sb.append(c);
-            } else {
+            if (s.charAt(i) == ' ') {
                 sb.append("%20");
+            } else {
+                sb.append(s.charAt(i));
             }
-
         }
         return sb.toString();
     }

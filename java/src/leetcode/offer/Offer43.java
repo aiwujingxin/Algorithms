@@ -1,8 +1,8 @@
 package leetcode.offer;
 
 /**
- * @author jingxinwu
- * @date 2021-12-04 6:22 下午
+ * @author wujingxinit@outlook.com
+ * @date 2023/9/15 12:19
  */
 public class Offer43 {
 
@@ -24,5 +24,5 @@ public class Offer43 {
         }
         return res;
     }
-
 }
+

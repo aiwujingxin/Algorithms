@@ -1,14 +1,34 @@
 package leetcode.offer;
 
+import java.util.*;
+
 /**
  * @author jingxinwu
  * @date 2021-12-04 3:12 下午
  */
 public class Offer63 {
 
-    // 我们需要找出给定数组中两个数字之间的最大差值
 
     public int maxProfit(int[] prices) {
+        if (prices == null || prices.length == 0) {
+            return 0;
+        }
+        int[][] dp = new int[prices.length][2];
+        dp[0][0] = 0;
+        dp[0][1] = -prices[0];
+        for (int i = 1; i < prices.length; i++) {
+            // 不持有
+            dp[i][0] = Math.max(dp[i - 1][0], dp[i - 1][1] + prices[i]);
+            dp[i][1] = Math.max(dp[i - 1][1], -prices[i]);
+        }
+        System.out.println(Arrays.deepToString(dp));
+        return dp[dp.length - 1][0];
+    }
+
+
+    // 我们需要找出给定数组中两个数字之间的最大差值
+
+    public int maxProfit_greedy(int[] prices) {
 
         if (prices == null || prices.length == 0) {
             return 0;

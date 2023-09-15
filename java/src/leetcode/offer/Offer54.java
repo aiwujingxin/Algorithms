@@ -1,14 +1,16 @@
 package leetcode.offer;
 
-import common.TreeNode;
+import common.*;
 
 /**
- * @author jingxinwu
- * @date 2021-11-25 12:29 上午
+ * @author wujingxinit@outlook.com
+ * @date 2023/9/13 22:24
  */
 public class Offer54 {
 
-    int res, k;
+    int res;
+    boolean find;
+    int k;
 
     public int kthLargest(TreeNode root, int k) {
         this.k = k;
@@ -16,17 +18,20 @@ public class Offer54 {
         return res;
     }
 
-    void dfs(TreeNode root) {
+    private void dfs(TreeNode root) {
         if (root == null) {
             return;
         }
-        dfs(root.right);
-        if (k == 0) {
+        if (find) {
             return;
         }
-        if (--k == 0) {
+        dfs(root.right);
+        k--;
+        if (k == 0) {
             res = root.val;
+            find = true;
         }
+        System.out.println(root.val);
         dfs(root.left);
     }
 }

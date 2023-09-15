@@ -4,8 +4,7 @@ import common.TreeNode;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2023/1/3 18:56
- * @see leetcode.LeetCode572
+ * @date 2023/9/12 21:58
  */
 public class Offer26 {
     public boolean isSubStructure(TreeNode s, TreeNode t) {

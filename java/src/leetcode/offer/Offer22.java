@@ -3,20 +3,29 @@ package leetcode.offer;
 import common.ListNode;
 
 /**
- * @author jingxinwu
- * @date 2021-11-21 6:07 下午
+ * @author wujingxinit@outlook.com
+ * @date 2023/9/12 21:39
  */
 public class Offer22 {
 
     public ListNode getKthFromEnd(ListNode head, int k) {
-        int n = 0;
-        ListNode node;
-        for (node = head; node != null; node = node.next) {
-            n++;
+        if (head == null) {
+            return null;
         }
-        for (node = head; n > k; n--) {
-            node = node.next;
+        ListNode fast = head;
+        while (k-- > 0) {
+            if (fast == null) {
+                return null;
+            }
+            fast = fast.next;
         }
-        return node;
+        ListNode dummy = new ListNode(0);
+        dummy.next = head;
+        ListNode cur = dummy;
+        while (fast != null) {
+            cur = cur.next;
+            fast = fast.next;
+        }
+        return cur.next;
     }
 }

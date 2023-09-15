@@ -1,44 +1,39 @@
 package leetcode.offer;
 
-import java.util.HashMap;
+import java.util.*;
 
 /**
- * @author jingxinwu
- * @date 2021-11-25 12:54 上午
+ * @author wujingxinit@outlook.com
+ * @date 2023/9/13 22:02
  */
 public class Offer57 {
 
     public int[] twoSum(int[] nums, int target) {
-        if (nums == null || nums.length == 0) {
-            return new int[]{};
-        }
-
-        HashMap<Integer, Integer> map = new HashMap<>();
-        int[] res = new int[2];
-        for (int i = 0; i < nums.length; i++) {
-            if (!map.containsKey(target - nums[i])) {
-                map.put(nums[i], i);
-            } else {
-                res[0] = i;
-                res[1] = map.get(target - nums[i]);
-                break;
+        HashSet<Integer> set = new HashSet<>();
+        for (int num : nums) {
+            if (set.contains(target - num)) {
+                return new int[]{num, target - num};
             }
+            set.add(num);
         }
-        return res;
+        return new int[]{};
     }
 
-    public int[] twoSumV2(int[] nums, int target) {
-        int i = 0, j = nums.length - 1;
-        while (i < j) {
-            int s = nums[i] + nums[j];
-            if (s < target) {
-                i++;
-            } else if (s > target) {
-                j--;
-            } else {
-                return new int[]{nums[i], nums[j]};
+    public int[] twoSum_fast(int[] nums, int target) {
+        int len = nums.length;
+        for (int i = 0; i < len; i++) {
+            int l = i, r = len - 1, tar = target - nums[i];
+            while (l <= r) {
+                int mid = (l + r) >>> 1;
+                if (nums[mid] < tar) {
+                    l = mid + 1;
+                } else if (nums[mid] == tar) {
+                    return new int[]{nums[mid], nums[i]};
+                } else {
+                    r = mid - 1;
+                }
             }
         }
-        return new int[0];
+        return new int[]{};
     }
 }

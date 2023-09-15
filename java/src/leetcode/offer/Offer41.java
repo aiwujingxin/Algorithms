@@ -1,49 +1,45 @@
 package leetcode.offer;
 
-import java.util.Comparator;
 import java.util.PriorityQueue;
 
 /**
- * @author jingxinwu
- * @date 2021-11-22 10:17 下午
+ * @author wujingxinit@outlook.com
+ * @date 2023/9/15 10:44
  */
 public class Offer41 {
 
-    /**
-     * 时间复杂度：
-     * <p>
-     * addNum: O(logn)，其中 nn 为累计添加的数的数量。
-     * findMedian: )O(1)。
-     * 空间复杂度：O(n)，主要为优先队列的开销。
-     */
 
-    PriorityQueue<Integer> queMin;
-    PriorityQueue<Integer> queMax;
+    class MedianFinder {
 
-    public Offer41() {
-        queMin = new PriorityQueue<>((a, b) -> (b - a));
-        queMax = new PriorityQueue<>(Comparator.comparingInt(a -> a));
-    }
+        PriorityQueue<Integer> q1;
+        PriorityQueue<Integer> q2;
 
-    public void addNum(int num) {
-        if (queMin.isEmpty() || num <= queMin.peek()) {
-            queMin.offer(num);
-            if (queMax.size() + 1 < queMin.size()) {
-                queMax.offer(queMin.poll());
-            }
-        } else {
-            queMax.offer(num);
-            if (queMax.size() > queMin.size()) {
-                queMin.offer(queMax.poll());
+        public MedianFinder() {
+            q1 = new PriorityQueue<>((o1, o2) -> o2 - o1);
+            q2 = new PriorityQueue<>();
+        }
+
+        // 优先加入q1
+        // 确保q1 size >= q2 size
+        public void addNum(int num) {
+            if (q1.isEmpty() || num <= q1.peek()) {
+                q1.offer(num);
+                if (q2.size() + 1 < q1.size()) {
+                    q2.offer(q1.poll());
+                }
+            } else {
+                q2.offer(num);
+                if (q1.size() < q2.size()) {
+                    q1.offer(q2.poll());
+                }
             }
         }
-    }
 
-    public double findMedian() {
-        if (queMin.size() > queMax.size()) {
-            return queMin.peek();
+        public double findMedian() {
+            if (q1.size() > q2.size()) {
+                return q1.peek();
+            }
+            return (q1.peek() + q2.peek()) / 2.0;
         }
-        return (queMin.peek() + queMax.peek()) / 2.0;
     }
-
 }

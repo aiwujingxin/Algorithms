@@ -20,7 +20,6 @@ public class LevelOrder implements Serialization {
             return "";
         }
         StringBuilder res = new StringBuilder();
-        res.append("[");
         Queue<TreeNode> queue = new LinkedList<>();
         queue.offer(root);
         while (!queue.isEmpty()) {
@@ -36,7 +35,7 @@ public class LevelOrder implements Serialization {
                 res.append(COMMA);
             }
         }
-        res.append("]");
+        System.out.println(res);
         return res.toString();
     }
 
@@ -46,7 +45,7 @@ public class LevelOrder implements Serialization {
         if (data.isEmpty()) {
             return null;
         }
-        String[] dataList = data.substring(1, data.length() - 1).split(COMMA);
+        String[] dataList = data.split(COMMA);
         TreeNode root = new TreeNode(Integer.parseInt(dataList[0]));
         Queue<TreeNode> queue = new LinkedList<>();
         queue.offer(root);

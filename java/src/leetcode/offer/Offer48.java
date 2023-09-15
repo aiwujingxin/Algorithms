@@ -3,36 +3,30 @@ package leetcode.offer;
 import java.util.HashMap;
 
 /**
- * @author jingxinwu
- * @date 2021-11-24 12:14 上午
+ * @author wujingxinit@outlook.com
+ * @date 2023/9/13 23:24
  */
 public class Offer48 {
 
-    public static void main(String[] args) {
-        System.out.println(new Offer48().lengthOfLongestSubstring("abcabcbb"));
-        System.out.println(new Offer48().lengthOfLongestSubstring("bbbbb"));
-        System.out.println(new Offer48().lengthOfLongestSubstring("pwwkew"));
-        System.out.println(new Offer48().lengthOfLongestSubstring("au"));
-        System.out.println(new Offer48().lengthOfLongestSubstring("dvdf"));
-    }
-
-
     public int lengthOfLongestSubstring(String s) {
-        if (s == null || s.length() == 0) {
+        if (s == null || s.isEmpty()) {
             return 0;
         }
-
+        int left = 0;
+        int right = 0;
+        int res = 0;
         HashMap<Character, Integer> map = new HashMap<>();
-        int res = Integer.MIN_VALUE;
-        int j = 0;
-        for (int i = 0; i < s.length(); i++) {
-            if (map.containsKey(s.charAt(i))) {
-                j = Math.max(map.get(s.charAt(i)) + 1, j);
+        while (right < s.length()) {
+            char c = s.charAt(right);
+            map.put(c, map.getOrDefault(c, 0) + 1);
+            while (map.get(c) > 1) {
+                char d = s.charAt(left);
+                map.put(d, map.getOrDefault(d, 0) - 1);
+                left++;
             }
-            res = Math.max(res, i - j + 1);
-            map.put(s.charAt(i), i);
+            res = Math.max(res, right - left + 1);
+            right++;
         }
         return res;
     }
-
 }

@@ -1,12 +1,12 @@
 package leetcode.offer;
 
-import common.TreeNode;
+import common.*;
 
 /**
- * @author jingxinwu
- * @date 2021-11-25 12:33 上午
+ * @author wujingxinit@outlook.com
+ * @date 2023/9/13 02:11
  */
-public class Offer55_1 {
+public class Offer55_I {
 
     public int maxDepth(TreeNode root) {
         if (root == null) {

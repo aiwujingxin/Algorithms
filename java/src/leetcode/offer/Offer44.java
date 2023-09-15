@@ -16,7 +16,7 @@ public class Offer44 {
         int digitNum = 1;
         long base = 9;
         while (n > digitNum * base) {
-            n -= digitNum * base;
+            n -= (int) (digitNum * base);
             start *= 10;
             base *= 10;
             digitNum++;

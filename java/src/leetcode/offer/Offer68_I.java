@@ -6,7 +6,7 @@ import common.TreeNode;
  * @author jingxinwu
  * @date 2021-11-27 3:01 下午
  */
-public class Offer68_1 {
+public class Offer68_I {
 
     public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
         if (root.val > p.val && root.val > q.val) {
