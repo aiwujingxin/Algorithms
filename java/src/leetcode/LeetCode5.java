@@ -1,40 +1,34 @@
 package leetcode;
 
 /**
- * @author jingxinwu
- * @date 2021-06-06 12:10 下午
+ * @author wujingxinit@outlook.com
+ * @date 2023/9/15 23:14
  */
 public class LeetCode5 {
 
     public String longestPalindrome(String s) {
-        if (s == null || s.length() == 0) {
-            return "";
+        if (s == null || s.isEmpty() || s.length() == 1) {
+            return s;
         }
-
-        int start = 0;
-        int end = 0;
-
-        for (int i = 0; i < s.length(); i++) {
-            int one = helper(s, i, i);
-            int two = helper(s, i, i + 1);
-
-            int temp = Math.max(one, two);
-
-            if (end - start < temp) {
-                start = i - (temp - 1) / 2;
-                end = i + (temp) / 2;
+        String res = "";
+        for (int i = 0; i < s.length() - 1; i++) {
+            String a = check(s, i, i);
+            String b = check(s, i, i + 1);
+            if (a.length() > res.length()) {
+                res = a;
             }
-
+            if (b.length() > res.length()) {
+                res = b;
+            }
         }
-
-        return s.substring(start, end + 1);
+        return res;
     }
 
-    public int helper(String s, int i, int j) {
+    private String check(String s, int i, int j) {
         while (i >= 0 && j < s.length() && s.charAt(i) == s.charAt(j)) {
             i--;
             j++;
         }
-        return j - i - 1;
+        return s.substring(i + 1, j);
     }
 }

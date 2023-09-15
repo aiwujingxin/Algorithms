@@ -3,42 +3,42 @@ package leetcode;
 import common.ListNode;
 
 /**
- * @author aiwujingxin@gmail.com
- * @date 2022/9/13 00:36
+ * @author wujingxinit@outlook.com
+ * @date 2023/9/16 00:37
  */
 public class LeetCode23 {
+
     public ListNode mergeKLists(ListNode[] lists) {
-        if (lists == null || lists.length == 0) {
-            return new ListNode();
+        if (lists.length == 0) {
+            return null;
         }
         return mergeKLists(lists, 0, lists.length - 1);
     }
 
-    public ListNode mergeKLists(ListNode[] list, int left, int right) {
-        // 相当于递归终止条件
-        if (left >= right) {
-            return list[left];
+    public ListNode mergeKLists(ListNode[] list, int start, int end) {
+        //fix
+        if (start >= end) {
+            return list[start];
         }
-        int index = (left + right) / 2;
-        ListNode list1 = mergeKLists(list, left, index);
-        ListNode list2 = mergeKLists(list, index + 1, right);
-        return mergeList(list1, list2);
+        int mid = (start + end) / 2;
+        ListNode list1 = mergeKLists(list, start, mid);
+        ListNode list2 = mergeKLists(list, mid + 1, end);
+        return mergeTwoLists(list1, list2);
     }
 
-    private ListNode mergeList(ListNode list1, ListNode list2) {
-        if (list1 == null && list2 == null) {
-            return null;
-        }
+    public ListNode mergeTwoLists(ListNode list1, ListNode list2) {
         if (list1 == null) {
             return list2;
         }
         if (list2 == null) {
             return list1;
         }
+
         ListNode dummy = new ListNode();
         ListNode cur = dummy;
+
         while (list1 != null && list2 != null) {
-            if (list1.val <= list2.val) {
+            if (list1.val < list2.val) {
                 cur.next = list1;
                 list1 = list1.next;
             } else {
@@ -47,10 +47,11 @@ public class LeetCode23 {
             }
             cur = cur.next;
         }
-        if (list1 == null) {
-            cur.next = list2;
-        } else {
+        if (list1 != null) {
             cur.next = list1;
+        }
+        if (list2 != null) {
+            cur.next = list2;
         }
         return dummy.next;
     }

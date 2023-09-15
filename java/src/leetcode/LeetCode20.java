@@ -4,19 +4,12 @@ import java.util.Stack;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2022/9/15 23:10
+ * @date 2023/9/16 00:02
  */
 public class LeetCode20 {
 
-    //fx case
-    //"(])"
-
-    public static void main(String[] args) {
-        System.out.println(new LeetCode20().isValid("(])"));
-    }
-
     public boolean isValid(String s) {
-        if (s == null || s.length() == 0) {
+        if (s == null || s.isEmpty()) {
             return true;
         }
 

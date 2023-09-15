@@ -3,25 +3,29 @@ package leetcode;
 import java.util.HashMap;
 
 /**
- * @author jingxinwu
- * @date 2021-06-14 11:41 上午
+ * @author wujingxinit@outlook.com
+ * @date 2023/9/15 22:47
  */
 public class LeetCode3 {
 
-
     public int lengthOfLongestSubstring(String s) {
-        if (s == null || s.length() == 0) {
+        if (s == null || s.isEmpty()) {
             return 0;
         }
-        HashMap<Character, Integer> map = new HashMap<>();
+        int left = 0;
+        int right = 0;
         int max = Integer.MIN_VALUE;
-        int j = 0;
-        for (int i = 0; i < s.length(); i++) {
-            if (map.containsKey(s.charAt(i))) {
-                j = Math.max(map.get(s.charAt(i)), i + 1);
+        HashMap<Character, Integer> map = new HashMap<>();
+        while (right < s.length()) {
+            char c = s.charAt(right);
+            map.put(c, map.getOrDefault(c, 0) + 1);
+            while (left < right && map.get(c) > 1) {
+                char d = s.charAt(left);
+                map.put(d, map.getOrDefault(d, 0) - 1);
+                left++;
             }
-            max = Math.max(max, i - j + 1);
-            map.put(s.charAt(i), i);
+            max = Math.max(max, right - left + 1);
+            right++;
         }
         return max;
     }

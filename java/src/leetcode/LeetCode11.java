@@ -1,8 +1,8 @@
 package leetcode;
 
 /**
- * @author jingxinwu
- * @date 2021-06-14 1:14 下午
+ * @author wujingxinit@outlook.com
+ * @date 2023/9/15 23:26
  */
 public class LeetCode11 {
 
@@ -12,16 +12,15 @@ public class LeetCode11 {
         }
         int left = 0;
         int right = height.length - 1;
-        int max = Integer.MIN_VALUE;
+        int res = 0;
         while (left < right) {
-            int size = Math.min(height[left], height[right]) * (right - left);
-            max = Math.max(size, max);
-            if (height[left] <= height[right]) {
+            res = Math.max(res, Math.min(height[left], height[right]) * (right - left));
+            if (height[left] < height[right]) {
                 left++;
             } else {
                 right--;
             }
         }
-        return max;
+        return res;
     }
 }

@@ -5,48 +5,41 @@ import java.util.HashMap;
 import java.util.List;
 
 /**
- * @author jingxinwu
- * @date 2021-06-16 10:36 下午
+ * @author wujingxinit@outlook.com
+ * @date 2023/9/15 23:50
  */
 public class LeetCode17 {
 
-    public static void main(String[] args) {
-        LeetCode17 leetCode17 = new LeetCode17();
-        System.out.println(leetCode17.letterCombinations("23"));
-    }
+    List<String> res;
+    HashMap<Integer, String> map;
 
     public List<String> letterCombinations(String digits) {
-        List<String> res = new ArrayList<>();
-        if (digits == null || digits.length() == 0) {
-            return res;
+        if (digits == null || digits.isEmpty()) {
+            return new ArrayList<>();
         }
-        HashMap<Character, String> phoneMap = new HashMap<>() {{
-            put('2', "abc");
-            put('3', "def");
-            put('4', "ghi");
-            put('5', "jkl");
-            put('6', "mno");
-            put('7', "pqrs");
-            put('8', "tuv");
-            put('9', "wxyz");
-        }};
-        backtrack(phoneMap, digits, 0, res, new StringBuilder());
+        map = new HashMap<>();
+        res = new ArrayList<>();
+        map.put(2, "abc");
+        map.put(3, "def");
+        map.put(4, "ghi");
+        map.put(5, "jkl");
+        map.put(6, "mno");
+        map.put(7, "pqrs");
+        map.put(8, "tuv");
+        map.put(9, "wxyz");
+        backtrack(0, digits, new StringBuilder());
         return res;
     }
 
-    private void backtrack(HashMap<Character, String> phoneMap, String digits, Integer index, List<String> res,
-                           StringBuilder sb) {
+    private void backtrack(int index, String digits, StringBuilder sb) {
         if (index == digits.length()) {
             res.add(sb.toString());
-        } else {
-            char digit = digits.charAt(index);
-            String letters = phoneMap.get(digit);
-            int lettersCount = letters.length();
-            for (int i = 0; i < lettersCount; i++) {
-                sb.append(letters.charAt(i));
-                backtrack(phoneMap, digits, index + 1, res, sb);
-                sb.deleteCharAt(sb.length() - 1);
-            }
+            return;
+        }
+        for (char aChar : map.get(digits.charAt(index) - '0').toCharArray()) {
+            sb.append(aChar);
+            backtrack(index + 1, digits, sb);
+            sb.deleteCharAt(sb.length() - 1);
         }
     }
 }

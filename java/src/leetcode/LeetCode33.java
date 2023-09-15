@@ -7,7 +7,7 @@ package leetcode;
 public class LeetCode33 {
 
     public static void main(String[] args) {
-        System.out.println(new LeetCode33().search(new int[] { 4, 5, 6, 7, 0, 1, 2 }, 0));
+        System.out.println(new LeetCode33().search(new int[]{4, 5, 6, 7, 0, 1, 2}, 0));
     }
 
     public int search(int[] nums, int target) {
@@ -23,7 +23,8 @@ public class LeetCode33 {
             int mid = (right - left) / 2 + left;
             if (nums[mid] == target) {
                 return mid;
-            } else if (nums[0] <= nums[mid]) {
+            }
+            if (nums[0] <= nums[mid]) {
                 if (nums[0] <= target && target < nums[mid]) {
                     right = mid - 1;
                 } else {

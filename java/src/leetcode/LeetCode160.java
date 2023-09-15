@@ -32,7 +32,6 @@ public class LeetCode160 {
             diff--;
         }
 
-        System.out.println(a.val);
         while (a != null && b != null) {
             if (a == b) {
                 return a;

@@ -4,7 +4,7 @@ public class LeetCode5_dp_2d {
 
     public String longestPalindrome(String s) {
         int n = s.length();
-        String res = null;
+        String res = "";
 
         boolean[][] dp = new boolean[n][n];
 
@@ -12,7 +12,7 @@ public class LeetCode5_dp_2d {
             for (int j = i; j < n; j++) {
                 dp[i][j] = s.charAt(i) == s.charAt(j) && (j - i < 3 || dp[i + 1][j - 1]);
 
-                if (dp[i][j] && (res == null || j - i + 1 > res.length())) {
+                if (dp[i][j] && j - i + 1 > res.length()) {
                     res = s.substring(i, j + 1);
                 }
             }

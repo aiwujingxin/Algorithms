@@ -4,10 +4,9 @@ import java.util.HashMap;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2022/10/6 18:06
+ * @date 2023/9/15 22:38
  */
 public class LeetCode1 {
-
     public int[] twoSum(int[] nums, int target) {
         if (nums == null || nums.length == 0) {
             return new int[]{};
@@ -16,9 +15,8 @@ public class LeetCode1 {
         for (int i = 0; i < nums.length; i++) {
             if (map.containsKey(target - nums[i])) {
                 return new int[]{i, map.get(target - nums[i])};
-            } else {
-                map.put(nums[i], i);
             }
+            map.put(nums[i], i);
         }
         return new int[]{};
     }
