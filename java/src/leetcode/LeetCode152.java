@@ -1,24 +1,30 @@
 package leetcode;
 
 /**
- * @author jingxinwu
- * @date 2021-08-04 11:21 下午
+ * @author wujingxinit@outlook.com
+ * @date 2023/9/17 19:20
  */
 public class LeetCode152 {
 
-    public static void main(String[] args) {
-        System.out.println(new LeetCode152().maxProduct(new int[]{2, 3, -2, 4}));
-    }
-
     public int maxProduct(int[] nums) {
-        int maxF = nums[0], minF = nums[0], ans = nums[0];
-        int length = nums.length;
-        for (int i = 1; i < length; ++i) {
-            int mx = maxF, mn = minF;
-            maxF = Math.max(mx * nums[i], Math.max(nums[i], mn * nums[i]));
-            minF = Math.min(mn * nums[i], Math.min(nums[i], mx * nums[i]));
-            ans = Math.max(maxF, ans);
+        if (nums == null || nums.length == 0) {
+            return 0;
         }
-        return ans;
+        long[] max = new long[nums.length];
+        long[] min = new long[nums.length];
+        max[0] = nums[0];
+        min[0] = nums[0];
+        long res = Long.MIN_VALUE;
+        for (int i = 1; i < nums.length; i++) {
+            long mx = max[i - 1];
+            long mn = min[i - 1];
+            max[i] = Math.max(Math.max(nums[i], mn * nums[i]), mx * nums[i]);
+            min[i] = Math.min(Math.min(nums[i], mn * nums[i]), mx * nums[i]);
+            if (min[i] < Integer.MIN_VALUE) {
+                min[i] = 0; // 添加这个判断
+            }
+            res = Math.max(Math.max(res, max[i]), min[i]);
+        }
+        return (int) res;
     }
 }

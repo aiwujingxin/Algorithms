@@ -1,22 +1,28 @@
 package leetcode;
 
-import common.TreeNode;
+import common.*;
 
 /**
- * @author jingxinwu
- * @date 2021-08-25 1:44 上午
+ * @author wujingxinit@outlook.com
+ * @date 2023/9/17 15:52
  */
 public class LeetCode236 {
 
     public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
-        if (root == null || root == p || root == q) {
+        if (root == null) {
+            return null;
+        }
+
+        if (root == p || root == q) {
             return root;
         }
-        TreeNode left = lowestCommonAncestor(root.left, p, q);
-        TreeNode right = lowestCommonAncestor(root.right, p, q);
-        if (left != null && right != null) {
+
+        TreeNode l = lowestCommonAncestor(root.left, p, q);
+        TreeNode r = lowestCommonAncestor(root.right, p, q);
+        if (l != null && r != null) {
             return root;
         }
-        return left != null ? left : right;
+        return l != null ? l : r;
     }
+
 }

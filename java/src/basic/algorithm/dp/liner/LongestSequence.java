@@ -1,7 +1,6 @@
 package basic.algorithm.dp.liner;
 
 import leetcode.LeetCode1143;
-import leetcode.LeetCode300_dp;
 
 /**
  * @author wujingxinit@outlook.com
@@ -11,7 +10,7 @@ import leetcode.LeetCode300_dp;
  * 最大乘积连续子数组
  * @see leetcode.LeetCode153
  * 最长递增子序列
- * @see LeetCode300_dp
+ * @see leetcode.LeetCode300
  * 最长公共子序列
  * @see LeetCode1143
  * 丑数

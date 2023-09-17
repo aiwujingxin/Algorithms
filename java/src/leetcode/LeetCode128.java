@@ -1,12 +1,13 @@
 package leetcode;
 
-import java.util.HashSet;
+import java.util.*;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2022/9/15 23:35
+ * @date 2023/9/17 19:35
  */
 public class LeetCode128 {
+
     public int longestConsecutive(int[] nums) {
         if (nums == null || nums.length == 0) {
             return 0;
@@ -15,18 +16,16 @@ public class LeetCode128 {
         for (int n : nums) {
             set.add(n);
         }
-        int max = 0;
-
-        for (int j : nums) {
-            int num = j;
-            int temp = 1;
+        int max = 1;
+        for (int num : nums) {
+            int t = 1;
             if (!set.contains(num - 1)) {
                 while (set.contains(num + 1)) {
-                    num++;
-                    temp++;
+                    num--;
+                    t++;
                 }
-                max = Math.max(temp, max);
             }
+            max = Math.max(max, t);
         }
         return max;
     }

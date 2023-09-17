@@ -1,40 +1,54 @@
 package leetcode;
 
-import java.util.Stack;
+import java.util.*;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2022/9/19 13:28
+ * @date 2023/9/17 21:28
  */
 public class LeetCode155 {
 
-    int min;
-    Stack<Integer> stack;
+    class MinStack {
 
-    public LeetCode155() {
-        min = Integer.MAX_VALUE;
-        stack = new Stack<>();
-    }
+        Stack<Integer> stack1;
+        Stack<Integer> stack2;
 
-    public void push(int val) {
-        if (val <= min) {
-            stack.push(min);
-            min = val;
+        public MinStack() {
+            stack1 = new Stack<>();
+            stack2 = new Stack<>();
         }
-        stack.push(val);
-    }
 
-    public void pop() {
-        if (stack.pop() == min) {
-            min = stack.pop();
+        public void push(int val) {
+            stack1.push(val);
+            if (!stack2.empty() && val > stack2.peek()) {
+                stack2.push(stack2.peek());
+            } else {
+                stack2.push(val);
+            }
+        }
+
+        public void pop() {
+            if (stack1.empty()) {
+                return;
+            }
+            stack1.pop();
+            stack2.pop();
+        }
+
+        public int top() {
+
+            if (stack1.empty()) {
+                return -1;
+            }
+            return stack1.peek();
+        }
+
+        public int getMin() {
+            if (stack2.empty()) {
+                return -1;
+            }
+            return stack2.peek();
         }
     }
 
-    public int top() {
-        return stack.peek();
-    }
-
-    public int getMin() {
-        return min;
-    }
 }

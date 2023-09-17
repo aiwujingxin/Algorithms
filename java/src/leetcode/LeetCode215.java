@@ -1,36 +1,36 @@
 package leetcode;
 
 /**
- * @author jingxinwu
- * @date 2022-02-16 4:26 PM
+ * @author wujingxinit@outlook.com
+ * @date 2023/9/17 21:28
  */
 public class LeetCode215 {
 
     public int findKthLargest(int[] nums, int k) {
-
         if (nums == null || nums.length == 0) {
-            return -1;
+            return 0;
         }
-
-        int left = 0;
-        int right = nums.length - 1;
-        while (left <= right) {
-            int index = part(nums, left, right);
-            if (index + 1 == k) {
-                return nums[index];//fix
-            } else if (index + 1 < k) {
-                left = index + 1;//fix
-            } else {
-                right = index - 1;//fix
-            }
-        }
-        return -1;
+        return findK(nums, 0, nums.length - 1, k);
     }
 
-    private int part(int[] nums, int i, int j) {
-        int pi = nums[i];
-        while (i < j) {
+    public int findK(int[] nums, int start, int end, int k) {
+        if (start > end) {
+            return -1;
+        }
+        int index = partition(nums, start, end);
+        if (index + 1 == k) {
+            return nums[index];
+        } else if (index < k) {
+            return findK(nums, index + 1, end, k);
+        } else {
+            return findK(nums, start, index - 1, k);
+        }
+    }
 
+    private int partition(int[] nums, int i, int j) {
+        int pi = nums[i];
+
+        while (i < j) {
             while (i < j && nums[j] <= pi) {
                 j--;
             }
@@ -43,5 +43,4 @@ public class LeetCode215 {
         nums[i] = pi;
         return i;
     }
-
 }

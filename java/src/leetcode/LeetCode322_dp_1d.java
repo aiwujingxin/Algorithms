@@ -1,6 +1,6 @@
 package leetcode;
 
-import java.util.Arrays;
+import java.util.*;
 
 /**
  * @author wujingxinit@outlook.com
@@ -9,9 +9,8 @@ import java.util.Arrays;
 public class LeetCode322_dp_1d {
 
     public int coinChange(int[] coins, int amount) {
-        int max = amount + 1;
         int[] dp = new int[amount + 1];
-        Arrays.fill(dp, max);
+        Arrays.fill(dp, amount + 1);
         dp[0] = 0;
         for (int i = 1; i <= amount; i++) {
             for (int coin : coins) {

@@ -1,67 +1,59 @@
 package leetcode;
 
 /**
- * @author jingxinwu
- * @date 2021-08-18 12:41 上午
+ * @author wujingxinit@outlook.com
+ * @date 2023/9/17 16:30
  */
 public class LeetCode208 {
 
     class Trie {
 
-        final private Node root;
+        TrieNode root;
 
         public Trie() {
-            root = new Node();
+            root = new TrieNode();
         }
 
         public void insert(String word) {
-            Node curr = root;
-            for (int i = 0; i < word.length(); i++) {
-                char ch = word.charAt(i);
-                if (curr.childs[ch - 'a'] == null) {
-                    curr.childs[ch - 'a'] = new Node();
+            char[] chars = word.toCharArray();
+            TrieNode node = root;
+            for (int i = 0; i < chars.length; i++) {
+                if (node.children[chars[i] - 'a'] == null) {
+                    node.children[chars[i] - 'a'] = new TrieNode();
                 }
-                curr = curr.childs[ch - 'a'];
+                node = node.children[chars[i] - 'a'];
             }
-
-            curr.isEnd = true;
+            node.isEnd = true;
         }
 
         public boolean search(String word) {
-            Node curr = root;
-            for (int i = 0; i < word.length(); i++) {
-                char ch = word.charAt(i);
-                if (curr.childs[ch - 'a'] == null) {
+            char[] chars = word.toCharArray();
+            TrieNode node = root;
+            for (int i = 0; i < chars.length; i++) {
+                if (node.children[chars[i] - 'a'] == null) {
                     return false;
                 }
-                curr = curr.childs[ch - 'a'];
+                node = node.children[chars[i] - 'a'];
             }
-
-            return curr.isEnd;
+            return node.isEnd;
         }
 
         public boolean startsWith(String prefix) {
-            Node curr = root;
-            for (int i = 0; i < prefix.length(); i++) {
-                char ch = prefix.charAt(i);
-                if (curr.childs[ch - 'a'] == null) {
+            char[] chars = prefix.toCharArray();
+            TrieNode node = root;
+            for (int i = 0; i < chars.length; i++) {
+                if (node.children[chars[i] - 'a'] == null) {
                     return false;
                 }
-                curr = curr.childs[ch - 'a'];
+                node = node.children[chars[i] - 'a'];
             }
-
             return true;
         }
 
-        static class Node {
-
-            Node[] childs;
-            boolean isEnd;
-
-            Node() {
-                childs = new Node[26];
-                isEnd = false;
-            }
+        static class TrieNode {
+            public TrieNode[] children = new TrieNode[26];
+            boolean isEnd = false;
         }
     }
+
 }

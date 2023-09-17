@@ -1,18 +1,14 @@
 package leetcode;
 
-import common.TreeNode;
+import common.*;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Queue;
+import java.util.*;
 
 /**
- * @author jingxinwu
- * @date 2021-07-05 11:59 下午
+ * @author wujingxinit@outlook.com
+ * @date 2023/9/17 21:06
  */
 public class LeetCode102 {
-
     public List<List<Integer>> levelOrder(TreeNode root) {
         List<List<Integer>> res = new ArrayList<>();
         if (root == null) {

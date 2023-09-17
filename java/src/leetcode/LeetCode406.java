@@ -1,40 +1,34 @@
 package leetcode;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 /**
- * @author jingxinwu
- * @date 2021-12-12 11:29 PM
+ * @author wujingxinit@outlook.com
+ * @date 2023/9/17 23:42
  */
 public class LeetCode406 {
 
-    public static void main(String[] args) {
-        System.out.println(Arrays.deepToString(new LeetCode406().
-                reconstructQueue(new int[][]{{7, 1}, {7, 0}})));
-    }
-
-
-    public int[][] reconstructQueue(int[][] array) {
-        if (array == null || array.length == 0) {
+    public int[][] reconstructQueue(int[][] people) {
+        if (people == null || people.length == 0) {
             return new int[][]{};
         }
-
-        //TODO
-        //x.compareTo(y) 来“比较x和y的大小”。若返回“负数”，意味着“x比y小”；返回“零”，意味着“x等于y”；返回“正数”，意味着“x大于y”。
-        //默认为从小到大排序，用参数a减参数b。若需要从大到小排序，则用参数b减参数a
-        Arrays.sort(array, (p1, p2) -> {
-            if (p1[0] != p2[0]) {
-                return p2[0] - p1[0]; //高到低
-            } else {
-                return p1[1] - p2[1]; //低到高
+        Arrays.sort(people, new Comparator<int[]>() {
+            @Override
+            public int compare(int[] o1, int[] o2) {
+                if (o1[0] == o2[0]) {
+                    return o1[1] - o2[1];
+                }
+                return o2[0] - o1[0];
             }
         });
         List<int[]> list = new ArrayList<>();
-        for (int[] ints : array) {
-            list.add(ints[1], ints);
+        for (int[] person : people) {
+            list.add(person[1], person);
         }
-        return list.toArray(new int[array.length][]);
+        int[][] res = new int[people.length][];
+        for (int i = 0; i < list.size(); i++) {
+            res[i] = list.get(i);
+        }
+        return res;
     }
 }
