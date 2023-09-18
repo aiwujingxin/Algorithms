@@ -1,40 +1,24 @@
 package leetcode;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 /**
- * @author jingxinwu
- * @date 2021-12-11 11:50 下午
+ * @author wujingxinit@outlook.com
+ * @date 2023/9/18 22:57
  */
 public class LeetCode169 {
 
-
     public int majorityElement(int[] nums) {
-
         if (nums == null || nums.length == 0) {
-            return 0;
+            return -1;
         }
-
-        // int max = Integer.MIN_VALUE;
-        // int res = nums[0];
         HashMap<Integer, Integer> map = new HashMap<>();
-        for (int n : nums) {
-            if (map.containsKey(n)) {
-                map.put(n, map.get(n) + 1);
-            } else {
-                map.put(n, 1);
+        for (int num : nums) {
+            map.put(num, map.getOrDefault(num, 0) + 1);
+            if (map.get(num) > nums.length / 2) {
+                return num;
             }
-        }
-
-        for (Map.Entry<Integer, Integer> en : map.entrySet()) {
-            if (en.getValue() > nums.length / 2) {
-                return en.getKey();
-
-            }
-
         }
         return -1;
-
     }
 }

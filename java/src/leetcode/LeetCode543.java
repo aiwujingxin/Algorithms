@@ -1,28 +1,29 @@
 package leetcode;
 
-import common.TreeNode;
+import common.*;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2022/9/8 12:49
+ * @date 2023/9/19 00:04
  */
 public class LeetCode543 {
-
-    // 记录最大直径的长度
-    int maxDiameter = 0;
+    int max = 0;
 
     public int diameterOfBinaryTree(TreeNode root) {
-        maxDepth(root);
-        return maxDiameter;
-    }
-
-    int maxDepth(TreeNode root) {
         if (root == null) {
             return 0;
         }
-        int leftMax = maxDepth(root.left);
-        int rightMax = maxDepth(root.right);
-        maxDiameter = Math.max(maxDiameter, leftMax + rightMax);
-        return 1 + Math.max(leftMax, rightMax);
+        dfs(root);
+        return max;
+    }
+
+    private int dfs(TreeNode root) {
+        if (root == null) {
+            return 0;
+        }
+        int left = dfs(root.left);
+        int right = dfs(root.right);
+        max = Math.max(max, left + right);
+        return Math.max(left, right) + 1;
     }
 }
