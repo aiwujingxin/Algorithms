@@ -12,16 +12,6 @@ import java.util.List;
 public class LeetCode254 {
     int m;
 
-    public static void main(String[] args) {
-        System.out.println(new LeetCode254().getFactors(12));
-        System.out.println(new LeetCode254().getFactors(18));
-        System.out.println(new LeetCode254().getFactors(32));
-        System.out.println(new LeetCode254().getFactors(37));
-        System.out.println(new LeetCode254().getFactors(1));
-        System.out.println(new LeetCode254().getFactors(128));
-        System.out.println(new LeetCode254().getFactors(2097152));
-    }
-
     public List<List<Integer>> getFactors(int n) {
         this.m = n;
         List<List<Integer>> res = new ArrayList<>();

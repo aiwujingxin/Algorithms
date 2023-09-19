@@ -1,52 +1,45 @@
 package leetcode;
 
 /**
- * @author jingxinwu
- * @date 2021-06-18 1:24 上午
+ * @author wujingxinit@outlook.com
+ * @date 2023/9/16 00:18
  */
 public class LeetCode34 {
 
     public int[] searchRange(int[] nums, int target) {
         if (nums == null || nums.length == 0) {
-            return new int[]{-1, -1};
+            return new int[]{};
         }
-        int left = bsearch_1(nums, target);
-        int right = bsearch_2(nums, target);
-        if (left == nums.length || nums[left] != target) {
-            left = -1;
-        }
-        if (nums[right] != target) {
-            right = -1;
-        }
-        return new int[]{left, right};
+        int left = leftBound(nums, target);
+        int right = rightBound(nums, target);
+        return new int[]{nums[left] == target ? left : -1, nums[right] == target ? right : -1};
     }
 
-
-    int bsearch_1(int[] nums, int target) {
-        int l = 0;
-        int r = nums.length;
-        while (l < r) {
-            int mid = l + r >> 1;
-            if (nums[mid] >= target) {
-                r = mid;
+    private int leftBound(int[] nums, int target) {
+        int left = 0;
+        int right = nums.length - 1;
+        while (left < right) {
+            int mid = (left + right) / 2;
+            if (nums[mid] < target) {
+                left = mid + 1;
             } else {
-                l = mid + 1;
+                right = mid;
             }
         }
-        return l;
+        return left;
     }
 
-    int bsearch_2(int[] nums, int target) {
-        int l = 0;
-        int r = nums.length - 1;
-        while (l < r) {
-            int mid = l + r + 1 >> 1;
+    private int rightBound(int[] nums, int target) {
+        int left = 0;
+        int right = nums.length - 1;
+        while (left < right) {
+            int mid = (left + right + 1) / 2;
             if (nums[mid] <= target) {
-                l = mid;
+                left = mid;
             } else {
-                r = mid - 1;
+                right = mid - 1;
             }
         }
-        return l;
+        return left;
     }
 }

@@ -2,45 +2,50 @@ package leetcode;
 
 /**
  * @author jingxinwu
- * @date 2021-06-26 3:28 下午
+ * @date 2023-09-19 16:18 下午
  */
 public class LeetCode79 {
 
-    static boolean[][] visited;
+    String word;
 
-    private static boolean find(char[][] board, int row, int col, String word, int c) {
-        if (c == word.length()) {
-            return true;
-        }
+    boolean[][] visited;
 
-        if (col < 0 || col >= board[0].length
-                || row < 0 || row >= board.length
-                || word.charAt(c) != board[row][col]
-                || visited[row][col]) {
+    public boolean exist(char[][] board, String word) {
+        if (board == null || board.length == 0) {
             return false;
         }
 
-        visited[row][col] = true;
-        if (find(board, row, col + 1, word, c + 1)
-                || find(board, row, col - 1, word, c + 1)
-                || find(board, row + 1, col, word, c + 1)
-                || find(board, row - 1, col, word, c + 1)) {
-            return true;
-        }
-        visited[row][col] = false;
-        return false;
-    }
+        int m = board.length;
+        int n = board[0].length;
 
-    public boolean exist(char[][] board, String word) {
-        int c = 0;
-        visited = new boolean[board.length][board[0].length];
-        for (int row = 0; row < board.length; row++) {
-            for (int col = 0; col < board[0].length; col++) {
-                if (find(board, row, col, word, c)) {
+        visited = new boolean[m][n];
+        this.word = word;
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                if (backtrack(board, i, j, 0)) {
                     return true;
                 }
             }
         }
         return false;
+    }
+
+    private boolean backtrack(char[][] board, int i, int j, int index) {
+        if (index == word.length()) {
+            return true;
+        }
+        if (i < 0 || j < 0 || i > board.length - 1 || j > board[0].length - 1 || visited[i][j]) {
+            return false;
+        }
+        if (board[i][j] != word.charAt(index)) {
+            return false;
+        }
+        visited[i][j] = true;
+        boolean res = backtrack(board, i + 1, j, index + 1) ||
+                backtrack(board, i, j + 1, index + 1) ||
+                backtrack(board, i - 1, j, index + 1) ||
+                backtrack(board, i, j - 1, index + 1);
+        visited[i][j] = false;
+        return res;
     }
 }

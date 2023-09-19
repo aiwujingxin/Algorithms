@@ -4,55 +4,40 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @author jingxinwu
- * @date 2021-06-21 11:42 下午
+ * @author wujingxinit@outlook.com
+ * @date 2023/9/16 23:30
  */
 public class LeetCode46 {
-
-    public static void main(String[] args) {
-        LeetCode46 leetCode46 = new LeetCode46();
-        List<List<Integer>> list = leetCode46.permute(new int[]{1, 2, 3, 4, 5});
-
-        for (List<Integer> item : list) {
-            System.out.print(item);
-            System.out.print("  ");
-            System.out.println();
-        }
-    }
 
     public List<List<Integer>> permute(int[] nums) {
         if (nums == null || nums.length == 0) {
             return new ArrayList<>();
         }
         List<List<Integer>> res = new ArrayList<>();
-        backtrack(res, nums, 0);
+        backtrack(nums, 0, res);
         return res;
     }
 
-    private void backtrack(List<List<Integer>> res, int[] nums, int index) {
+    private void backtrack(int[] nums, int index, List<List<Integer>> res) {
         if (index == nums.length) {
-            res.add(asList(nums));
+            List<Integer> t = new ArrayList<>();
+            for (int num : nums) {
+                t.add(num);
+            }
+            res.add(t);
             return;
         }
         for (int i = index; i < nums.length; i++) {
-            // 只要在递归之前做出选择，在递归之后撤销刚才的选择
             swap(nums, i, index);
-            backtrack(res, nums, index + 1);
+            backtrack(nums, index + 1, res);
             swap(nums, i, index);
         }
-    }
-
-    private List<Integer> asList(int[] nums) {
-        List<Integer> list = new ArrayList<>();
-        for (int num : nums) {
-            list.add(num);
-        }
-        return list;
     }
 
     private void swap(int[] nums, int i, int index) {
-        int temp = nums[i];
+        int t = nums[i];
         nums[i] = nums[index];
-        nums[index] = temp;
+        nums[index] = t;
     }
 }
+

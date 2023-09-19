@@ -6,7 +6,7 @@ import common.*;
  * @author wujingxinit@outlook.com
  * @date 2023/9/18 23:31
  */
-public class LeetCode234_v1 {
+public class LeetCode234_recur {
 
     ListNode cur;
 

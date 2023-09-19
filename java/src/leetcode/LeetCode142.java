@@ -4,31 +4,28 @@ import common.ListNode;
 
 /**
  * @author jingxinwu
- * @date 2022-02-16 3:19 PM
+ * @date 2023.09.19 16:47
  */
 public class LeetCode142 {
 
     public ListNode detectCycle(ListNode head) {
-        if (head == null || head.next == null) {
+        if (head == null) {
             return null;
         }
         ListNode slow = head;
-        ListNode fast = head.next;
+        ListNode fast = head;
         while (fast != null && fast.next != null) {
-            //fix
             slow = slow.next;
             fast = fast.next.next;
             if (slow == fast) {
                 fast = head;
-                while (slow != null && fast != null && slow != fast) {
-                    slow = slow.next;
+                while (fast != slow) {
                     fast = fast.next;
+                    slow = slow.next;
                 }
-                return slow;
-
+                return fast;
             }
         }
         return null;
-
     }
 }

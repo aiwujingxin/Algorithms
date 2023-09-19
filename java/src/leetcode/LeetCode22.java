@@ -4,33 +4,32 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @author jingxinwu
- * @date 2021-06-16 10:46 下午
+ * @author wujingxinit@outlook.com
+ * @date 2023/9/16 00:12
  */
 public class LeetCode22 {
+    List<String> res;
 
     public List<String> generateParenthesis(int n) {
-        List<String> res = new ArrayList<>();
-        if (n == 0) {
-            return res;
-        }
-        backtrack(res, 0, 0, n, new StringBuilder());
+        res = new ArrayList<>();
+        backtrack(0, 0, new StringBuilder(), n);
         return res;
     }
 
-    private void backtrack(List<String> res, int open, int close, int n, StringBuilder sb) {
-
-        if (close == n) {
+    private void backtrack(int left, int right, StringBuilder sb, int n) {
+        if (sb.length() == n * 2) {
             res.add(sb.toString());
+            return;
         }
-        if (open < n) {
+        if (left < n) {
             sb.append("(");
-            backtrack(res, open + 1, close, n, sb);
+            backtrack(left + 1, right, sb, n);
             sb.deleteCharAt(sb.length() - 1);
         }
-        if (close < open) {
+
+        if (right < left) {
             sb.append(")");
-            backtrack(res, open, close + 1, n, sb);
+            backtrack(left, right + 1, sb, n);
             sb.deleteCharAt(sb.length() - 1);
         }
     }

@@ -4,7 +4,7 @@ import common.TreeNode;
 
 /**
  * @author jingxinwu
- * @date 2022-02-16 3:11 PM
+ * @date 2023.09.19 16:33
  */
 public class LeetCode98 {
 
@@ -15,15 +15,13 @@ public class LeetCode98 {
         return isValidBST(root, null, null);
     }
 
-    private boolean isValidBST(TreeNode root, TreeNode min, TreeNode max) {
+    public boolean isValidBST(TreeNode root, TreeNode min, TreeNode max) {
         if (root == null) {
             return true;
         }
-        //fix 注意比较符号
         if (min != null && root.val <= min.val) {
             return false;
         }
-        //fix 注意比较符号
         if (max != null && root.val >= max.val) {
             return false;
         }

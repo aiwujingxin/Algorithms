@@ -2,34 +2,21 @@ package leetcode;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2022/9/14 01:44
+ * @date 2023/9/19 20:36
  */
 public class LeetCode287 {
-
     public int findDuplicate(int[] nums) {
-
-        if (nums == null || nums.length == 0) {
+        if (nums == null) {
             return -1;
         }
-
-        int left = 0;
-        int right = nums.length - 1;
-        int ans = -1;
-        while (left < right) {
-            int mid = (left + right) / 2;
-            int cnt = 0;
-            for (int num : nums) {
-                if (num <= mid) {
-                    cnt++;
-                }
+        for (int i = 0; i < nums.length; i++) {
+            int num = Math.abs(nums[i]);
+            if (nums[num - 1] < 0) {
+                return num - 1;
             }
-            if (cnt <= mid) {
-                left = mid + 1;
-            } else {
-                right = mid - 1;
-                ans = mid;
-            }
+            nums[num - 1] = -nums[num - 1];
         }
-        return ans;
+        return -1;
+
     }
 }

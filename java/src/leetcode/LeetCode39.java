@@ -4,21 +4,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @author jingxinwu
- * @date 2021-06-21 1:17 下午
+ * @author wujingxinit@outlook.com
+ * @date 2023/9/16 00:16
  */
-public class LeetCode39_back_track {
+public class LeetCode39 {
 
     public List<List<Integer>> combinationSum(int[] candidates, int target) {
         ArrayList<List<Integer>> res = new ArrayList<>();
         if (candidates == null || candidates.length == 0) {
             return res;
         }
-        backtrack(res, candidates, target, new ArrayList<>(), 0);
+        backtrack(0, res, candidates, target, new ArrayList<>());
         return res;
     }
 
-    private void backtrack(List<List<Integer>> ans, int[] candidates, int target, ArrayList<Integer> temp, int start) {
+    private void backtrack(int index, List<List<Integer>> ans, int[] candidates, int target, List<Integer> temp) {
         if (target < 0) {
             return;
         }
@@ -26,10 +26,9 @@ public class LeetCode39_back_track {
             ans.add(new ArrayList<>(temp));
             return;
         }
-        //for (int i = 0; i < candidates.length; i++) 会重复
-        for (int i = start; i < candidates.length; i++) {
+        for (int i = index; i < candidates.length; i++) {
             temp.add(candidates[i]);
-            backtrack(ans, candidates, target - candidates[i], temp, i); // fix i+1
+            backtrack(i, ans, candidates, target - candidates[i], temp);
             temp.remove(temp.size() - 1);
         }
     }

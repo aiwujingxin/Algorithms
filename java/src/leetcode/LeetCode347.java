@@ -1,29 +1,31 @@
 package leetcode;
 
-import java.util.*;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.PriorityQueue;
 
 /**
- * @author jingxinwu
- * @date 2021-12-12 1:09 上午
+ * @author wujingxinit@outlook.com
+ * @date 2023/9/19 21:37
  */
 public class LeetCode347 {
 
     public int[] topKFrequent(int[] nums, int k) {
-        Map<Integer, Integer> occurrences = new HashMap<>();
+        Map<Integer, Integer> map = new HashMap<>();
         for (int num : nums) {
-            occurrences.put(num, occurrences.getOrDefault(num, 0) + 1);
+            map.put(num, map.getOrDefault(num, 0) + 1);
         }
-        // int[] 的第一个元素代表数组的值，第二个元素代表了该值出现的次数
+
         PriorityQueue<int[]> queue = new PriorityQueue<>(new Comparator<int[]>() {
-            @Override
-            public int compare(int[] o1, int[] o2) {
-                return o1[1] - o2[1];
+            public int compare(int[] m, int[] n) {
+                return m[1] - n[1];
             }
         });
-        for (Map.Entry<Integer, Integer> entry : occurrences.entrySet()) {
+        for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
             int num = entry.getKey(), count = entry.getValue();
             if (queue.size() == k) {
-                if (Objects.requireNonNull(queue.peek())[1] < count) {
+                if (queue.peek()[1] < count) {
                     queue.poll();
                     queue.offer(new int[]{num, count});
                 }
@@ -33,7 +35,7 @@ public class LeetCode347 {
         }
         int[] ret = new int[k];
         for (int i = 0; i < k; ++i) {
-            ret[i] = Objects.requireNonNull(queue.poll())[0];
+            ret[i] = queue.poll()[0];
         }
         return ret;
     }

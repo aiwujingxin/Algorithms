@@ -7,7 +7,7 @@ import java.util.List;
  * @author wujingxinit@outlook.com
  * @date 2023/8/21 22:29
  */
-public class LeetCode39_back_track_v2 {
+public class LeetCode39_v2 {
 
     List<List<Integer>> res;
     List<Integer> list;

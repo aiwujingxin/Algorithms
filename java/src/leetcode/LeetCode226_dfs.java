@@ -4,24 +4,18 @@ import common.TreeNode;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2023/7/17 20:52
+ * @date 2023/7/12 00:13
  */
 public class LeetCode226_dfs {
 
-    public TreeNode invertTree(TreeNode root) {
-        traverse(root);
-        return root;
-    }
-
-    // 二叉树遍历函数
-    void traverse(TreeNode root) {
+    TreeNode invertTree(TreeNode root) {
         if (root == null) {
-            return;
+            return null;
         }
-        TreeNode tmp = root.left;
-        root.left = root.right;
-        root.right = tmp;
-        traverse(root.left);
-        traverse(root.right);
+        TreeNode left = invertTree(root.left);
+        TreeNode right = invertTree(root.right);
+        root.left = right;
+        root.right = left;
+        return root;
     }
 }

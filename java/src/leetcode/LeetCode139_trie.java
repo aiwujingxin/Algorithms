@@ -1,50 +1,50 @@
 package leetcode;
 
-import java.util.*;
+import java.util.List;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2023/3/7 22:53
+ * @date 2023/9/19 20:39
  */
 public class LeetCode139_trie {
+
     public boolean wordBreak(String s, List<String> wordDict) {
         Trie trie = new Trie();
-
-        for (String word : wordDict) {
-            trie.insert(word.toCharArray());
+        for (String string : wordDict) {
+            trie.insert(string);
         }
         return trie.find(s, 0);
     }
 
     static class Trie {
-        private final TrieNode root = new TrieNode();
+        public TrieNode root = new TrieNode();
         boolean[] failed = new boolean[301]; // s.length <= 300
 
-        public void insert(char[] text) {
-            TrieNode p = root;
-            for (char c : text) {
-                if (p.children[c - 'a'] == null) {
-                    p.children[c - 'a'] = new TrieNode();
+        public void insert(String word) {
+            TrieNode node = root;
+            for (int i = 0; i < word.length(); i++) {
+                if (node.children[word.charAt(i) - 'a'] == null) {
+                    node.children[word.charAt(i) - 'a'] = new TrieNode();
                 }
-                p = p.children[c - 'a'];
+                node = node.children[word.charAt(i) - 'a'];
             }
-            p.isEnd = true;
+            node.isEnd = true;
         }
 
-        public boolean find(String s, int i) {
-            if (failed[i]) {
+
+        public boolean find(String s, int index) {
+            if (failed[index]) {
                 return false;
             }
-            if (i >= s.length()) {
+            if (index >= s.length()) {
                 return true;
             }
             TrieNode p = root;
-            for (; i < s.length(); i++) {
-                int index = s.charAt(i) - 'a';
-                if (p.children[index] == null) {
+            for (int i = index; i < s.length(); i++) {
+                if (p.children[s.charAt(i) - 'a'] == null) {
                     return false;
                 }
-                p = p.children[index];
+                p = p.children[s.charAt(i) - 'a'];
                 if (p.isEnd) {
                     if (find(s, i + 1)) {
                         return true;
@@ -56,8 +56,13 @@ public class LeetCode139_trie {
         }
 
         static class TrieNode {
-            public TrieNode[] children = new TrieNode[26];
-            public boolean isEnd = false;
+            public TrieNode[] children;
+            public boolean isEnd;
+
+            public TrieNode() {
+                this.children = new TrieNode[26];
+                this.isEnd = false;
+            }
         }
     }
 }
