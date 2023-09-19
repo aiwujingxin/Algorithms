@@ -4,30 +4,27 @@ import common.TreeNode;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2022/9/5 11:36
+ * @date 2023/9/19 22:12
  */
 public class LeetCode124 {
-    int maxSum = Integer.MIN_VALUE;
+
+    int max = Integer.MIN_VALUE;
 
     public int maxPathSum(TreeNode root) {
         if (root == null) {
             return 0;
         }
-        maxGain(root);
-        return maxSum;
+        dfs(root);
+        return max;
     }
 
-    private int maxGain(TreeNode node) {
-        if (node == null) {
+    private int dfs(TreeNode root) {
+        if (root == null) {
             return 0;
         }
-        //每个节点的最大贡献值
-        int left = Math.max(maxGain(node.left), 0);
-        int right = Math.max(maxGain(node.right), 0);
-
-        //得到二叉树的最大路径和
-        maxSum = Math.max(maxSum, node.val + left + right);
-        // 返回节点的最大贡献值
-        return node.val + Math.max(left, right);
+        int left = dfs(root.left);
+        int right = dfs(root.right);
+        max = Math.max(max, left + right + root.val);
+        return Math.max(0, Math.max(left, right) + root.val);
     }
 }

@@ -1,37 +1,39 @@
 package leetcode;
 
-import java.util.ArrayDeque;
+import java.util.Comparator;
+import java.util.PriorityQueue;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2022/10/4 16:07
+ * @date 2023/9/19 22:09
  */
 public class LeetCode239 {
-
-    //https://leetcode.com/problems/sliding-window-maximum/discuss/2651803/Java-O(n)-solution-using-deque
     public int[] maxSlidingWindow(int[] nums, int k) {
-        int[] ans = new int[nums.length - k + 1];
-        ArrayDeque<Integer> queue = new ArrayDeque<>();
-        for (int i = 0; i < nums.length; i++) {
-            //比较队尾元素和将要进来的值，如果小的话就都移除
-            // maintain monotonic decreasing.
-            // all elements in the deque smaller than the current one
-            // have no chance of being the maximum, so get rid of them
-            // queue 单调递减队列 大--->小
-            while (!queue.isEmpty() && nums[i] > nums[queue.getLast()]) {
-                queue.removeLast();
-            }
-            queue.addLast(i);
-            // 如果队首存储的角标就是滑动窗口左边界数值，就移除队首
-            // 如果此时队列的首元素是 i-k 的话，表示此时窗口向右移了一步，则移除队首元素
-            if (queue.getFirst() == i - k) {
-                queue.removeFirst();
-            }
-            // 将队首角标对应元素(窗口最大值)放入结果数组
-            if (i >= k - 1) {
-                ans[i - k + 1] = nums[queue.getFirst()];
-            }
+        if (nums == null || nums.length == 0) {
+            return new int[]{};
         }
-        return ans;
+        PriorityQueue<int[]> queue = new PriorityQueue<>(new Comparator<int[]>() {
+            @Override
+            public int compare(int[] o1, int[] o2) {
+                if (o1[0] == o2[0]) {
+                    return o2[1] - o1[1];
+                }
+                return o2[0] - o1[0];
+            }
+        });
+        for (int i = 0; i < k; i++) {
+            queue.add(new int[]{nums[i], i});
+        }
+        int[] result = new int[nums.length - k + 1];
+        result[0] = queue.peek()[0];
+
+        for (int i = k; i < nums.length; i++) {
+            queue.add(new int[]{nums[i], i});
+            while (queue.peek()[1] <= i - k) {
+                queue.poll();
+            }
+            result[i - k + 1] = queue.peek()[0];
+        }
+        return result;
     }
 }

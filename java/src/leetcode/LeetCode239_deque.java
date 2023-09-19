@@ -1,28 +1,14 @@
-package basic.datastructure.liner.queue;
-
-
-import leetcode.LeetCode239_deque;
+package leetcode;
 
 import java.util.ArrayDeque;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2023/8/30 22:04
- * @see LeetCode239_deque
- * @link <a href="https://leetcode.com/problems/sliding-window-maximum/discuss/2651803/Java-O(n)-solution-using-deque">...</a>
+ * @date 2022/10/4 16:07
  */
-public class MonotonicQueue {
+public class LeetCode239_deque {
 
-    public static void main(String[] args) {
-        int[] nums = {1, 3, -1, -3, 5, 3, 6, 7};
-        int k = 3;
-        int[] result = new MonotonicQueue().maxSlidingWindow(nums, k);
-        for (int num : result) {
-            System.out.print(num + " ");
-        }
-    }
-
-
+    //https://leetcode.com/problems/sliding-window-maximum/discuss/2651803/Java-O(n)-solution-using-deque
     public int[] maxSlidingWindow(int[] nums, int k) {
         int[] ans = new int[nums.length - k + 1];
         ArrayDeque<Integer> queue = new ArrayDeque<>();
@@ -48,5 +34,4 @@ public class MonotonicQueue {
         }
         return ans;
     }
-
 }
