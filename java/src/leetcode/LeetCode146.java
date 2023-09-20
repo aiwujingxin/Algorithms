@@ -4,70 +4,66 @@ import java.util.HashMap;
 import java.util.LinkedList;
 
 /**
- * @author jingxinwu
- * @date 2021-08-03 11:56 下午
+ * @author wujingxinit@outlook.com
+ * @date 2023/9/20 22:34
  */
 public class LeetCode146 {
-    private final int capacity;
-    private final LinkedList<CacheEntry> list;
-    private final HashMap<Integer, CacheEntry> map;
 
-    public LeetCode146(int capacity) {
-        this.capacity = capacity;
-        map = new HashMap<>();
-        list = new LinkedList<>();
-    }
+    class LRUCache {
 
-    public static void main(String[] args) {
-        LeetCode146 leetCode146 = new LeetCode146(2);
-        leetCode146.put(1, 1);
-        leetCode146.put(2, 2);
-        leetCode146.get(1);
-        leetCode146.put(3, 3);
-        leetCode146.get(2);
-        leetCode146.put(4, 4);
-        leetCode146.get(1);
-        leetCode146.get(3);
-        leetCode146.get(4);
-    }
+        LinkedList<Node> list;
+        HashMap<Integer, Node> map;
+        int capacity;
 
-    public int get(int key) {
-        //如果没有，则返回
-        if (!map.containsKey(key)) {
-            return -1;
+        public LRUCache(int capacity) {
+            this.capacity = capacity;
+            this.list = new LinkedList<>();
+            this.map = new HashMap<>();
         }
-        //如果存在，则返回, 并且放在头部
-        CacheEntry entry = map.get(key);
-        int value = entry.value;
-        list.remove(entry);
-        list.addFirst(entry);
-        return value;
-    }
 
-    public void put(int key, int value) {
-        CacheEntry entry = new CacheEntry(key, value);
-        if (map.containsKey(key)) {//1如果存在
-            list.remove(map.get(key));
-        } else {
-            //2如果小于容量，则直接放入
-            if (map.size() >= capacity) {
-                //3 如果大于容量，则删掉最不长用的元素,同时删掉map，再放入元素
-                map.remove(list.pollLast().key);
+        public int get(int key) {
+            Node node = map.get(key);
+            if (node == null) {
+                return -1;
+            }
+            list.remove(node);
+            list.addFirst(node);
+            return node.value;
+        }
+
+        public void put(int key, int value) {
+            Node node = map.get(key);
+            if (node != null) { //if exited
+                node.value = value;
+                list.remove(node);
+                list.addFirst(node);
+            } else {
+                // 超过capacity
+                if (map.size() == capacity) {
+                    Node remove = list.pollLast();
+                    map.remove(remove.key);
+                    node = new Node(key, value);
+                    list.addFirst(node);
+                    map.put(key, node);
+                } else {
+                    node = new Node(key, value);
+                    map.put(key, node);
+                    list.addFirst(node);
+                }
             }
         }
-        list.addFirst(entry);
-        map.put(key, entry);
-    }
 
-    class CacheEntry {
+        static class Node {
+            public int value;
+            public int key;
 
-        int key;
-        int value;
-
-        public CacheEntry(int key, int value) {
-            this.key = key;
-            this.value = value;
+            public Node(int key, int value) {
+                this.key = key;
+                this.value = value;
+            }
         }
     }
+
+
 }
 

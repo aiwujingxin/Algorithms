@@ -3,40 +3,37 @@ package leetcode;
 import java.util.Stack;
 
 /**
- * @author jingxinwu
- * @date 2021-12-18 7:40 PM
+ * @author wujingxinit@outlook.com
+ * @date 2023/9/20 21:32
  */
 public class LeetCode581 {
 
-    public static void main(String[] args) {
-        System.out.println(new LeetCode581().findUnsortedSubarray(new int[]{2, 6, 4, 8, 10, 9, 15}));
-    }
+    //https://www.youtube.com/watch?v=jbrAZ9Tf0ew
 
     public int findUnsortedSubarray(int[] nums) {
-        if (nums == null || nums.length < 2) {
+        if (nums == null || nums.length == 0) {
             return 0;
         }
-        Stack<Integer> stack = new Stack<>();
-        int l = nums.length - 1;
-        int r = 0;
-        for (int i = 0; i < nums.length; i++) {
-            if (stack.empty() || nums[i] > nums[stack.peek()]) {
-                stack.push(i);
-            } else {
-                l = Math.min(l, stack.pop());
-                i--;
+        Stack<Integer> incr = new Stack<>();
+        Stack<Integer> decr = new Stack<>();
+        int n = nums.length;
+        int start = n;
+        int end = -1;
+        for (int i = 0; i < n; i++) {
+            while (!incr.empty() && nums[i] < nums[incr.peek()]) {
+                start = Math.min(start, incr.pop());
             }
+            incr.push(i);
         }
-        stack.clear();
-        for (int i = nums.length - 1; i >= 0; i--) {
-
-            if (stack.empty() || nums[i] <= nums[stack.peek()]) {
-                stack.push(i);
-
-            } else {
-                r = Math.max(r, stack.pop());
+        for (int i = n - 1; i >= 0; i--) {
+            while (!decr.empty() && nums[i] > nums[decr.peek()]) {
+                end = Math.max(end, decr.pop());
             }
+            decr.push(i);
         }
-        return r - l + 1;
+        if (end == -1) {
+            return 0;
+        }
+        return end - start + 1;
     }
 }

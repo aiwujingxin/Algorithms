@@ -1,62 +1,57 @@
 package leetcode;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2022/9/10 17:47
+ * @date 2023/9/20 21:58
  */
 public class LeetCode399_dfs {
 
     //https://leetcode.com/problems/evaluate-division/discuss/2043629/Java-Union-Find-or-BFS-or-DFS
 
     //https://www.youtube.com/watch?v=berj4Xm_YTY
+    HashMap<String, Map<String, Double>> graph;
+
     public double[] calcEquation(List<List<String>> equations, double[] values, List<List<String>> queries) {
-        Map<String, Map<String, Double>> adj = buildGraph(equations, values);
-
-        int querySize = queries.size();
-        double[] res = new double[querySize];
-        for (int i = 0; i < querySize; i++) {
-            Set<String> visited = new HashSet<>();
-            String start = queries.get(i).get(0);
-            String target = queries.get(i).get(1);
-            res[i] = dfs(adj, visited, start, target);
+        graph = new HashMap<>();
+        for (int i = 0; i < equations.size(); i++) {
+            String u = equations.get(i).get(0);
+            String v = equations.get(i).get(1);
+            double w = values[i];
+            graph.putIfAbsent(u, new HashMap<>());
+            graph.get(u).put(v, w);
+            graph.putIfAbsent(v, new HashMap<>());
+            graph.get(v).put(u, 1 / w);
         }
-
+        double[] res = new double[queries.size()];
+        for (int i = 0; i < queries.size(); i++) {
+            HashSet<String> visited = new HashSet<>();
+            res[i] = dfs(visited, queries.get(i).get(0), queries.get(i).get(1));
+        }
         return res;
     }
 
-    public Map<String, Map<String, Double>> buildGraph(List<List<String>> equations, double[] values) {
-        Map<String, Map<String, Double>> adj = new HashMap<>();
-        for (int i = 0; i < values.length; i++) {
-            String u = equations.get(i).get(0);
-            String v = equations.get(i).get(1);
-            adj.putIfAbsent(u, new HashMap<>());
-            adj.get(u).put(v, values[i]);
-            adj.putIfAbsent(v, new HashMap<>());
-            adj.get(v).put(u, 1 / values[i]);
+    private double dfs(HashSet<String> visited, String start, String end) {
+        if (!graph.containsKey(start)) {
+            return -1;
         }
-        return adj;
-    }
-
-
-    public Double dfs(Map<String, Map<String, Double>> adj, Set<String> visited, String curr, String target) {
-        if (!adj.containsKey(curr)) {
-            return -1.0;
+        if (graph.get(start).containsKey(end)) {
+            return graph.get(start).get(end);
         }
-        if (adj.get(curr).containsKey(target)) {
-            return adj.get(curr).get(target);
-        }
-        visited.add(curr);
-        Map<String, Double> edges = adj.get(curr);
-        for (Map.Entry<String, Double> entry : edges.entrySet()) {
-            if (!visited.contains(entry.getKey())) {
-                Double weight = dfs(adj, visited, entry.getKey(), target);
-                if (weight != -1.0) {
-                    return entry.getValue() * weight;
-                }
+        visited.add(start);
+        for (Map.Entry<String, Double> next : graph.get(start).entrySet()) {
+            if (visited.contains(next.getKey())) {
+                continue;
+            }
+            double res = dfs(visited, next.getKey(), end);
+            if (res != -1) {
+                return res * next.getValue();
             }
         }
-        return -1.0;
+        return -1;
     }
 }

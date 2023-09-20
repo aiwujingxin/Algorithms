@@ -1,48 +1,51 @@
 package leetcode;
 
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
 
 /**
- * @author jingxinwu
- * @date 2021-12-19 6:08 PM
+ * @author wujingxinit@outlook.com
+ * @date 2023/9/20 21:17
  */
 public class LeetCode438 {
 
-
-    public static void main(String[] args) {
-        System.out.println(new LeetCode438().findAnagrams("baebabacd", "abc"));
-    }
-
     public List<Integer> findAnagrams(String s, String p) {
-        int sLen = s.length(), pLen = p.length();
-
-        if (sLen < pLen) {
+        if (s == null || s.isEmpty()) {
             return new ArrayList<>();
         }
-
-        List<Integer> ans = new ArrayList<>();
-        int[] sCount = new int[26];
-        int[] pCount = new int[26];
-        for (int i = 0; i < pLen; ++i) {
-            ++sCount[s.charAt(i) - 'a'];
-            ++pCount[p.charAt(i) - 'a'];
+        int left = 0;
+        int right = 0;
+        int[] arr = new int[26];
+        int[] arr1 = new int[26];
+        int count = 0;
+        HashSet<Character> set = new HashSet<>();
+        for (int i = 0; i < p.length(); i++) {
+            arr1[p.charAt(i) - 'a']++;
+            set.add(p.charAt(i));
         }
+        int target = set.size();
 
-        if (Arrays.equals(sCount, pCount)) {
-            ans.add(0);
-        }
-
-        for (int i = 0; i < sLen - pLen; ++i) {
-            --sCount[s.charAt(i) - 'a'];
-            ++sCount[s.charAt(i + pLen) - 'a'];
-
-            if (Arrays.equals(sCount, pCount)) {
-                ans.add(i + 1);
+        List<Integer> res = new ArrayList<>();
+        while (right < s.length()) {
+            char c = s.charAt(right);
+            arr[c - 'a']++;
+            if (arr[c - 'a'] == arr1[c - 'a']) {
+                count++;
             }
+            while (left < right && right - left + 1 > p.length()) {
+                char d = s.charAt(left);
+                if (arr[d - 'a'] == arr1[d - 'a']) {
+                    count--;
+                }
+                arr[d - 'a']--;
+                left++;
+            }
+            if (right - left + 1 == p.length() && count == target) {
+                res.add(left);
+            }
+            right++;
         }
-
-        return ans;
+        return res;
     }
 }

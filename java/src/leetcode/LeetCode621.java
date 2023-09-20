@@ -1,12 +1,15 @@
 package leetcode;
 
 /**
- * @author jingxinwu
- * @date 2021-12-18 10:21 PM
+ * @author wujingxinit@outlook.com
+ * @date 2023/9/20 22:49
  */
 public class LeetCode621 {
-
-    //https://www.jiakaobo.com/leetcode/621.%20Task%20Scheduler.html
+    //https://www.youtube.com/watch?v=siNqiP6tk94&t=302s
+    // 1) 关键是最多的任务 2) 最多的任务有几个?maxCountSame个
+    // A _ _ _ _ _ A _ _ _ _ _ A....
+    // (n+1)*(maxCount - 1) + maxCountSame
+    // 3) 比较 整个长度
     public int leastInterval(char[] tasks, int n) {
         int[] dict = new int[26];
         for (char task : tasks) {
