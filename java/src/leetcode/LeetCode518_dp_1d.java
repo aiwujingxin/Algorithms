@@ -3,6 +3,8 @@ package leetcode;
 /**
  * @author wujingxinit@outlook.com
  * @date 2022/10/24 23:15
+ * <a href="https://aaronice.gitbook.io/lintcode/knapsack_problems/coin-change-ii">...</a>
+ * <a href="https://leetcode.cn/problems/coin-change-ii/">LeetCode518</a>
  */
 public class LeetCode518_dp_1d {
     /**

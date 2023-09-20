@@ -14,7 +14,7 @@ import java.io.*;
  * @see LeetCode312_dp 戳气球
  * @see LeetCode486_dp
  * @see LeetCode516
- * @see LeetCode647_dp_2d
+ * @see LeetCode647_dp
  * @see LeetCode678_dp
  */
 public class AcWing282 {

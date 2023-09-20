@@ -31,8 +31,8 @@ public class LeetCode234 {
     private ListNode getMid(ListNode head) {
         ListNode dummy = new ListNode(-1);
         dummy.next = head;
-        ListNode s = head;
-        ListNode f = head;
+        ListNode s = dummy;
+        ListNode f = dummy;
         while (f != null && f.next != null) {
             s = s.next;
             f = f.next.next;

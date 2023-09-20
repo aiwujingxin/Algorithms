@@ -1,6 +1,6 @@
 package leetcode;
 
-import common.ListNode;
+import common.*;
 
 /**
  * @author aiwujingxin@gmail.com
@@ -15,9 +15,8 @@ public class LeetCode148_insertsort {
         ListNode dummy = new ListNode();
         dummy.next = head;
         ListNode sorted = head;
+        // curr 是工作指针
         ListNode curr = head.next;
-        // 1   2    3    4   5      6      3    xx
-        //     pre                 sort   cur
         while (curr != null) {
             //如果都是排好顺序的，则一直往前
             if (sorted.val <= curr.val) {
@@ -28,7 +27,6 @@ public class LeetCode148_insertsort {
                 while (pre.next.val < curr.val) {
                     pre = pre.next;
                 }
-                // 断开 + 插入
                 sorted.next = curr.next;
                 curr.next = pre.next;
                 pre.next = curr;

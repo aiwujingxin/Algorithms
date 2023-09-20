@@ -1,6 +1,6 @@
 package leetcode;
 
-import common.ListNode;
+import common.*;
 
 /**
  * @author aiwujingxin@gmail.com
@@ -10,18 +10,24 @@ public class LeetCode148_mergesort {
 
     public ListNode sortList(ListNode head) {
         if (head == null || head.next == null) return head;
-        ListNode temp = null;
-        ListNode fast = head;
-        ListNode slow = head;
-        while (fast != null && fast.next != null) {
-            temp = slow;
-            fast = fast.next.next;
-            slow = slow.next;
-        }
-        temp.next = null;
+        ListNode mid = getMid(head);
+        ListNode head1 = mid.next;
+        mid.next = null;
         ListNode l1 = sortList(head);
-        ListNode l2 = sortList(slow);
+        ListNode l2 = sortList(head1);
         return mergeTwoLists(l1, l2);
+    }
+
+    private ListNode getMid(ListNode head) {
+        ListNode dummy = new ListNode(-1);
+        dummy.next = head;
+        ListNode s = dummy;
+        ListNode f = dummy;
+        while (f != null && f.next != null) {
+            s = s.next;
+            f = f.next.next;
+        }
+        return s;
     }
 
     public ListNode mergeTwoLists(ListNode l1, ListNode l2) {

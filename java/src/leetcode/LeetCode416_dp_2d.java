@@ -5,37 +5,38 @@ package leetcode;
  * @date 2022/10/25 22:48
  */
 public class LeetCode416_dp_2d {
+    //https://leetcode.com/problems/partition-equal-subset-sum/solutions/1624101/java-memoization-to-optimized-dp-detailed-explanation/
 
     public boolean canPartition(int[] nums) {
-        int n = nums.length;
-        if (n < 2) {
-            return false;
-        }
-        int sum = 0, maxNum = 0;
+        int sum = 0;
         for (int num : nums) {
-            sum += num;
-            maxNum = Math.max(maxNum, num);
+            sum = sum + num;
         }
-        if (sum % 2 != 0) {
+        if ((sum & 1) == 1) {
             return false;
         }
         int target = sum / 2;
-        if (maxNum > target) {
-            return false;
+        int n = nums.length;
+        boolean[][] dp = new boolean[n][target + 1];
+
+        dp[0][0] = true;
+        if (nums[0] <= target) {
+            dp[0][nums[0]] = true;
         }
-        boolean[][] dp = new boolean[n + 1][target + 1];
-        for (int i = 0; i <= n; i++) {
-            dp[i][0] = true;
-        }
-        for (int i = 1; i <= n; i++) {
-            for (int j = 1; j <= target; j++) {
-                if (j >= nums[i - 1]) {
-                    dp[i][j] = dp[i - 1][j] | dp[i - 1][j - nums[i - 1]];
+        for (int i = 1; i < nums.length; i++) {
+            for (int j = 0; j <= target; j++) {
+                //考虑当前数
+                if (nums[i] <= j) {
+                    dp[i][j] = dp[i - 1][j] || dp[i - 1][j - nums[i]];
                 } else {
+                    //不考虑当前值
                     dp[i][j] = dp[i - 1][j];
                 }
             }
+            if (dp[i][target]) {
+                return true;
+            }
         }
-        return dp[n][target];
+        return dp[n - 1][target];
     }
 }
