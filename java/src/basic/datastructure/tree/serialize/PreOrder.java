@@ -1,52 +1,55 @@
 package basic.datastructure.tree.serialize;
 
-import basic.datastructure.tree.Serialization;
-import common.TreeNode;
+import basic.datastructure.tree.*;
+import common.*;
 
 /**
  * @author wujingxinit@outlook.com
  * @date 2022/9/7 12:43
  */
-public class PreOrder implements Serialization {
+public class PreOrder {
 
-    private int desIndex = 0;
+    public class Codec implements Serialization {
 
-    @Override
-    public String serialize(TreeNode root) {
-        StringBuilder sb = new StringBuilder();
-        dfs(sb, root);
-        return sb.toString();
-    }
+        private int desIndex = 0;
 
-    private void dfs(StringBuilder sb, TreeNode root) {
-        if (!sb.isEmpty()) {
-            sb.append(COMMA);
+        @Override
+        public String serialize(TreeNode root) {
+            StringBuilder sb = new StringBuilder();
+            dfs(sb, root);
+            return sb.toString();
         }
-        // 边界条件
-        if (root == null) {
-            sb.append(NULL);
-            return;
-        }
-        sb.append(root.val);
-        dfs(sb, root.left);
-        dfs(sb, root.right);
-    }
 
-    // Decodes your encoded data to tree.
-    @Override
-    public TreeNode deserialize(String data) {
-        return decode(data.split(COMMA));
-    }
-
-    private TreeNode decode(String[] vals) {
-        String nodeVal = vals[desIndex++];
-        // 边界条件
-        if (nodeVal.equals(NULL)) {
-            return null;
+        private void dfs(StringBuilder sb, TreeNode root) {
+            if (!sb.isEmpty()) {
+                sb.append(COMMA);
+            }
+            // 边界条件
+            if (root == null) {
+                sb.append(NULL);
+                return;
+            }
+            sb.append(root.val);
+            dfs(sb, root.left);
+            dfs(sb, root.right);
         }
-        TreeNode node = new TreeNode(Integer.parseInt(nodeVal));
-        node.left = decode(vals);
-        node.right = decode(vals);
-        return node;
+
+        // Decodes your encoded data to tree.
+        @Override
+        public TreeNode deserialize(String data) {
+            return decode(data.split(COMMA));
+        }
+
+        private TreeNode decode(String[] vals) {
+            String nodeVal = vals[desIndex++];
+            // 边界条件
+            if (nodeVal.equals(NULL)) {
+                return null;
+            }
+            TreeNode node = new TreeNode(Integer.parseInt(nodeVal));
+            node.left = decode(vals);
+            node.right = decode(vals);
+            return node;
+        }
     }
 }

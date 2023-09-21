@@ -1,68 +1,69 @@
 package basic.datastructure.tree.serialize;
 
-import basic.datastructure.tree.Serialization;
-import common.TreeNode;
+import basic.datastructure.tree.*;
+import common.*;
 
-import java.util.LinkedList;
-import java.util.Queue;
+import java.util.*;
 
 
 /**
  * @author wujingxinit@outlook.com
  * @date 2022/9/7 12:44
  */
-public class LevelOrder implements Serialization {
+public class LevelOrder {
     //https://leetcode.cn/problems/serialize-and-deserialize-binary-tree/solution/297-er-cha-shu-de-xu-lie-hua-yu-fan-xu-l-647c/
     // Encodes a tree to a single string.
-    @Override
-    public String serialize(TreeNode root) {
-        if (root == null) {
-            return "";
-        }
-        StringBuilder res = new StringBuilder();
-        Queue<TreeNode> queue = new LinkedList<>();
-        queue.offer(root);
-        while (!queue.isEmpty()) {
-            TreeNode node = queue.poll();
-            if (node != null) {
-                res.append(node.val);
-                queue.offer(node.left);
-                queue.offer(node.right);
-            } else {
-                res.append(NULL);
+    public class Codec implements Serialization {
+        @Override
+        public String serialize(TreeNode root) {
+            if (root == null) {
+                return "";
             }
-            if (!queue.isEmpty()) {
-                res.append(COMMA);
+            StringBuilder res = new StringBuilder();
+            Queue<TreeNode> queue = new LinkedList<>();
+            queue.offer(root);
+            while (!queue.isEmpty()) {
+                TreeNode node = queue.poll();
+                if (node != null) {
+                    res.append(node.val);
+                    queue.offer(node.left);
+                    queue.offer(node.right);
+                } else {
+                    res.append(NULL);
+                }
+                if (!queue.isEmpty()) {
+                    res.append(COMMA);
+                }
             }
+            System.out.println(res);
+            return res.toString();
         }
-        System.out.println(res);
-        return res.toString();
-    }
 
-    // Decodes your encoded data to tree.
-    @Override
-    public TreeNode deserialize(String data) {
-        if (data.isEmpty()) {
-            return null;
-        }
-        String[] dataList = data.split(COMMA);
-        TreeNode root = new TreeNode(Integer.parseInt(dataList[0]));
-        Queue<TreeNode> queue = new LinkedList<>();
-        queue.offer(root);
-        int index = 1;
-        while (!queue.isEmpty()) {
-            TreeNode node = queue.poll();
-            if (!NULL.equals(dataList[index])) {
-                node.left = new TreeNode(Integer.parseInt(dataList[index]));
-                queue.offer(node.left);
+        // Decodes your encoded data to tree.
+        @Override
+        public TreeNode deserialize(String data) {
+            if (data.isEmpty()) {
+                return null;
             }
-            index++;
-            if (!NULL.equals(dataList[index])) {
-                node.right = new TreeNode(Integer.parseInt(dataList[index]));
-                queue.offer(node.right);
+            String[] dataList = data.split(COMMA);
+            TreeNode root = new TreeNode(Integer.parseInt(dataList[0]));
+            Queue<TreeNode> queue = new LinkedList<>();
+            queue.offer(root);
+            int index = 1;
+            while (!queue.isEmpty()) {
+                TreeNode node = queue.poll();
+                if (!NULL.equals(dataList[index])) {
+                    node.left = new TreeNode(Integer.parseInt(dataList[index]));
+                    queue.offer(node.left);
+                }
+                index++;
+                if (!NULL.equals(dataList[index])) {
+                    node.right = new TreeNode(Integer.parseInt(dataList[index]));
+                    queue.offer(node.right);
+                }
+                index++;
             }
-            index++;
+            return root;
         }
-        return root;
     }
 }
