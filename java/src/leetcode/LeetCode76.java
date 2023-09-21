@@ -1,70 +1,57 @@
 package leetcode;
 
-import java.util.HashMap;
+import java.util.*;
 
 /**
- * @author aiwujingxin@gmail.com
- * @date 2022/6/22 16:34
+ * @author wujingxinit@outlook.com
+ * @date 2023/9/21 13:09
  */
 public class LeetCode76 {
 
-    //youtube: https://www.youtube.com/watch?v=63i802XLgOM
-
-    //性质: 首尾是T中的字符
-    //记录： T每一个字符的数量： Map or Array
-    //      已经找到的字符的数量
-
-    //https://leetcode.com/problems/minimum-window-substring/discuss/26811/Share-my-neat-java-solution
-
     public String minWindow(String s, String t) {
-
-        if (s == null || s.length() < t.length() || s.length() == 0) {
+        if (s == null || s.isEmpty()) {
             return "";
         }
-        //init
-        HashMap<Character, Integer> map = new HashMap<>();
-        for (char c : t.toCharArray()) {
-            if (map.containsKey(c)) {
-                map.put(c, map.get(c) + 1);
-            } else {
-                map.put(c, 1);
-            }
+        if (s.length() < t.length()) {
+            return "";
         }
-        // 左边界
         int left = 0;
-        int minLeft = 0;
-        int minLen = s.length() + 1;
-        int count = 0;
-        for (int right = 0; right < s.length(); right++) {
-            // 找到相同的字符
-            if (map.containsKey(s.charAt(right))) {
-                //计数count
-                map.put(s.charAt(right), map.get(s.charAt(right)) - 1);
-                if (map.get(s.charAt(right)) >= 0) {// 只有真正找到，count才++
-                    count++;
-                }
+        int right = 0;
+        int start = 0;
+        int len = Integer.MAX_VALUE;
+        HashMap<Character, Integer> sArr = new HashMap<>();
+        HashMap<Character, Integer> tArr = new HashMap<>();
+        HashSet<Character> set = new HashSet<>();
+        for (int i = 0; i < t.length(); i++) {
+            tArr.put(t.charAt(i), tArr.getOrDefault(t.charAt(i), 0) + 1);
+            set.add(t.charAt(i));
+        }
 
-                while (count == t.length()) {
-                    //更新
-                    if (right - left + 1 < minLen) {
-                        minLeft = left;
-                        minLen = right - left + 1;
-                    }
-                    // 左指针向右移动，去除多余匹配的字符，
-                    if (map.containsKey(s.charAt(left))) {
-                        map.put(s.charAt(left), map.get(s.charAt(left)) + 1);
-                        if (map.get(s.charAt(left)) > 0) { //对count产生的影响
-                            count--; // 不是有效的substring了，退出这次while
-                        }
-                    }
-                    left++;
-                }
+        int valid = 0;
+        int target = set.size();
+
+        while (right < s.length()) {
+            char c = s.charAt(right);
+            sArr.put(c, sArr.getOrDefault(c, 0) + 1);
+            if (Objects.equals(sArr.get(c), tArr.get(c))) {
+                valid++;
             }
+            while (valid == target) {
+                if (right - left + 1 < len) {
+                    start = left;
+                    len = right - left + 1;
+                }
+                char d = s.charAt(left);
+                if (sArr.get(d) >= tArr.getOrDefault(d, 0)) {
+                    if (Objects.equals(sArr.get(d), tArr.getOrDefault(d, 0))) {
+                        valid--;
+                    }
+                    sArr.put(d, sArr.get(d) - 1);
+                }
+                left++;
+            }
+            right++;
         }
-        if (minLen > s.length()) {
-            return "";
-        }
-
-        return s.substring(minLeft, minLeft + minLen);
+        return len == Integer.MAX_VALUE ? "" : s.substring(start, start + len);
     }
 }
