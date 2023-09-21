@@ -15,7 +15,7 @@ public class LeetCode32_stack {
         for (int i = 0; i < s.length(); i++) {
             if (s.charAt(i) == '(') {
                 stack.push(i);
-            } else { // )
+            } else {
                 if (stack.isEmpty()) {
                     start = i;
                 } else {
