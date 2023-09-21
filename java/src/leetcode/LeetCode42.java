@@ -3,6 +3,8 @@ package leetcode;
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/9/15 23:30
+ * @see LeetCode84
+ * @see LeetCode85_v2
  */
 public class LeetCode42 {
 

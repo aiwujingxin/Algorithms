@@ -2,7 +2,9 @@ package basic.algorithm.dp.interval;
 
 import leetcode.*;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 
 /**
  * @author wujingxinit@outlook.com
@@ -10,7 +12,7 @@ import java.io.*;
  * @link <a href="https://www.acwing.com/problem/content/description/284/"</a>
  * @link <a href="https://www.acwing.com/blog/content/4802/"></a>
  * @link <a href="https://leetcode.cn/circle/article/BO520a/"></a>
- * @see LeetCode1000_dp_3d
+ * @see LeetCode1000_dp_3d 石子合并
  * @see LeetCode312_dp 戳气球
  * @see LeetCode486_dp
  * @see LeetCode516

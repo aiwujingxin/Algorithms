@@ -7,10 +7,6 @@ package leetcode;
 
 public class LeetCode85_dp {
 
-    public static void main(String[] args) {
-        System.out.println(new LeetCode85_dp().maximalRectangle(new char[][]{{}, {}, {}, {}}));
-    }
-
     //https://leetcode.com/problems/maximal-rectangle/discuss/403093/Java-Simple-DP-Solution-with-state-table
     public int maximalRectangle(char[][] matrix) {
         if (matrix.length == 0) {
