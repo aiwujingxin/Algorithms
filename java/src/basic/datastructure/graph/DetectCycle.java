@@ -1,6 +1,6 @@
 package basic.datastructure.graph;
 
-import leetcode.*;
+import leetcode.problems.LeetCode207;
 
 /**
  * @author wujingxinit@outlook.com

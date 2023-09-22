@@ -2,7 +2,7 @@ package basic.datastructure.tree.build;
 
 import basic.datastructure.tree.*;
 import common.*;
-import leetcode.*;
+import leetcode.problems.LeetCode105;
 
 /**
  * @author wujingxinit@outlook.com

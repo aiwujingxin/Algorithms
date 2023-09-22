@@ -1,7 +1,7 @@
 package basic.datastructure.advance;
 
-import leetcode.LeetCode98;
-import leetcode.LeetCode99;
+import leetcode.problems.LeetCode98;
+import leetcode.problems.LeetCode99;
 
 /**
  * @author wujingxinit@outlook.com

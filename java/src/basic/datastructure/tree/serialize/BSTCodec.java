@@ -2,7 +2,7 @@ package basic.datastructure.tree.serialize;
 
 import basic.datastructure.tree.*;
 import common.*;
-import leetcode.*;
+import leetcode.problems.LeetCode449;
 
 import java.util.*;
 

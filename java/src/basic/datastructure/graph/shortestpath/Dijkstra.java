@@ -1,15 +1,18 @@
 package basic.datastructure.graph.shortestpath;
 
 import basic.datastructure.graph.*;
+import leetcode.problems.LeetCode1514_Dijkstra;
+import leetcode.problems.LeetCode1631;
+import leetcode.problems.LeetCode1786;
 
 import java.util.*;
 
 /**
  * @author aiwujingxin@gmail.com
  * @date 2022/7/1 18:43
- * @see leetcode.LeetCode1631
- * @see leetcode.LeetCode1514_Dijkstra
- * @see leetcode.LeetCode1786
+ * @see LeetCode1631
+ * @see LeetCode1514_Dijkstra
+ * @see LeetCode1786
  */
 
 /*

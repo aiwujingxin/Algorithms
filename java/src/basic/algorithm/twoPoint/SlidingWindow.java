@@ -1,9 +1,11 @@
 package basic.algorithm.twoPoint;
 
+import leetcode.problems.LeetCode674;
+
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/6/1 16:51
- * @see leetcode.LeetCode674 连续最长递增子序列
+ * @see LeetCode674 连续最长递增子序列
  */
 public interface SlidingWindow {
 

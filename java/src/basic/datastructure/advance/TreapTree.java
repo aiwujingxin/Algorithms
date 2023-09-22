@@ -1,6 +1,6 @@
 package basic.datastructure.advance;
 
-import leetcode.*;
+import leetcode.problems.LeetCode480;
 
 import java.util.Random;
 

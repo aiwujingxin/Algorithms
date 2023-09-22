@@ -1,7 +1,7 @@
 package basic.datastructure.liner.queue;
 
 
-import leetcode.LeetCode239_deque;
+import leetcode.problems.LeetCode239_deque;
 
 import java.util.ArrayDeque;
 

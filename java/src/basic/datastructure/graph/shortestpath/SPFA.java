@@ -1,7 +1,7 @@
 package basic.datastructure.graph.shortestpath;
 
 import basic.datastructure.graph.*;
-import leetcode.*;
+import leetcode.problems.LeetCode1514_SPFA;
 
 import java.util.*;
 

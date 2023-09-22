@@ -1,7 +1,7 @@
 package basic.algorithm.dp.knapsack.changeMoney;
 
 import basic.algorithm.dp.knapsack.ChangeMoney;
-import leetcode.*;
+import leetcode.problems.LeetCode518_dp_1d;
 
 /**
  * @author wujingxinit@outlook.com

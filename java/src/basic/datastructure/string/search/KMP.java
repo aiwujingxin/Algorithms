@@ -1,7 +1,8 @@
 package basic.datastructure.string.search;
 
 import basic.datastructure.string.*;
-import leetcode.*;
+import leetcode.problems.LeetCode214_kmp;
+import leetcode.problems.LeetCode28;
 
 /**
  * @author aiwujingxin@gmail.com

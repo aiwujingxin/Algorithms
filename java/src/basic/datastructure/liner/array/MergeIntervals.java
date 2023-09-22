@@ -1,6 +1,6 @@
 package basic.datastructure.liner.array;
 
-import leetcode.LeetCode56_acwing;
+import leetcode.problems.LeetCode56_acwing;
 
 /**
  * @author wujingxinit@outlook.com

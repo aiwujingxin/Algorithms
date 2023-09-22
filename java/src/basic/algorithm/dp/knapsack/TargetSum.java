@@ -1,6 +1,6 @@
 package basic.algorithm.dp.knapsack;
 
-import leetcode.*;
+import leetcode.problems.LeetCode494_dp_1d;
 
 /**
  * @author wujingxinit@outlook.com

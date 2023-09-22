@@ -1,10 +1,12 @@
 package basic.datastructure.advance;
 
 
+import leetcode.problems.LeetCode1206;
+
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/5/23 11:47
- * @see leetcode.LeetCode1206
+ * @see LeetCode1206
  */
 
 public class SkipList {

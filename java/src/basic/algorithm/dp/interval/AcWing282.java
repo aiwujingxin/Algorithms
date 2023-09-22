@@ -1,6 +1,6 @@
 package basic.algorithm.dp.interval;
 
-import leetcode.*;
+import leetcode.problems.*;
 
 import java.io.BufferedReader;
 import java.io.IOException;

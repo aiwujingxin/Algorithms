@@ -1,9 +1,11 @@
 package basic.datastructure.liner.array;
 
+import leetcode.problems.LeetCode215;
+
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/5/22 22:55
- * @see leetcode.LeetCode215
+ * @see LeetCode215
  */
 public interface TopK {
 

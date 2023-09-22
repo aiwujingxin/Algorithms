@@ -1,7 +1,7 @@
 package basic.datastructure.graph.mst;
 
 import basic.datastructure.graph.MinimumTree;
-import leetcode.LeetCode1584_prim;
+import leetcode.problems.LeetCode1584_prim;
 
 import java.util.ArrayList;
 import java.util.Arrays;

@@ -1,8 +1,10 @@
 package basic.algorithm.sort;
 
 import basic.datastructure.liner.array.ArraySort;
-import leetcode.*;
 import leetcode.lists.offer.*;
+import leetcode.problems.LeetCode315_mergeSort;
+import leetcode.problems.LeetCode327;
+import leetcode.problems.LeetCode493_mergesort;
 
 /**
  * @author jingxinwu

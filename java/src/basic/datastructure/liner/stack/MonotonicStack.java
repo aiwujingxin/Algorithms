@@ -1,11 +1,13 @@
 package basic.datastructure.liner.stack;
 
+import leetcode.problems.LeetCode739;
+
 import java.util.Stack;
 
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/8/30 21:59
- * @see leetcode.LeetCode739
+ * @see LeetCode739
  */
 public class MonotonicStack {
 

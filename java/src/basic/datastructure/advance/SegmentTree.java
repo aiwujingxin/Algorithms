@@ -1,10 +1,12 @@
 package basic.datastructure.advance;
 
+import leetcode.problems.LeetCode307_segtree;
+
 /**
  * @author aiwujingxin@gmail.com
  * @date 2022/7/19 00:37
  * @link <a href="https://www.youtube.com/watch?v=e_bK-dgPvfM">讲解</a>
- * @see leetcode.LeetCode307_segtree
+ * @see LeetCode307_segtree
  */
 public class SegmentTree {
 

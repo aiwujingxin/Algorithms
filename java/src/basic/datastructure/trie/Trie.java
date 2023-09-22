@@ -1,6 +1,6 @@
 package basic.datastructure.trie;
 
-import leetcode.*;
+import leetcode.problems.LeetCode208;
 
 /**
  * @author wujingxinit@outlook.com

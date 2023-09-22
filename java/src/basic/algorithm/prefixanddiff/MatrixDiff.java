@@ -1,6 +1,6 @@
 package basic.algorithm.prefixanddiff;
 
-import leetcode.*;
+import leetcode.problems.LeetCode2536;
 
 /**
  * @author wujingxinit@outlook.com

@@ -1,7 +1,7 @@
 package basic.algorithm.prefixanddiff;
 
-import leetcode.LeetCode1109;
-import leetcode.LeetCode370;
+import leetcode.problems.LeetCode1109;
+import leetcode.problems.LeetCode370;
 
 /**
  * @author wujingxinit@outlook.com
