@@ -1,19 +1,17 @@
-package leetcode;
+package leetcode.lists.offer;
 
 import common.TreeNode;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2023/8/29 00:15
- * @see leetcode.lists.offer.Offer26
+ * @date 2023/9/12 21:58
  */
-public class LeetCode572 {
-
-    public boolean isSubtree(TreeNode s, TreeNode t) {
+public class Offer26 {
+    public boolean isSubStructure(TreeNode s, TreeNode t) {
         if (s == null || t == null) {
             return false;
         }
-        return dfs(s, t) || isSubtree(s.left, t) || isSubtree(s.right, t);
+        return dfs(s, t) || isSubStructure(s.left, t) || isSubStructure(s.right, t);
     }
 
     private boolean dfs(TreeNode s, TreeNode t) {
@@ -24,7 +22,7 @@ public class LeetCode572 {
             return false;
         }
         if (t == null) {
-            return false; //diff with offer26
+            return true;
         }
         if (s.val != t.val) {
             return false;

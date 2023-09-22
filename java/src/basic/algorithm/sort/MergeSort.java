@@ -2,7 +2,7 @@ package basic.algorithm.sort;
 
 import basic.datastructure.liner.array.ArraySort;
 import leetcode.*;
-import leetcode.offer.*;
+import leetcode.lists.offer.*;
 
 /**
  * @author jingxinwu
