@@ -3,7 +3,7 @@ package leetcode.problems;
 /**
  * @author jingxinwu
  * @date 2022-02-13 6:04 PM
- * @see LeetCode139
+ * @see LeetCode139_dp
  */
 public class LeetCode39_dp {
 

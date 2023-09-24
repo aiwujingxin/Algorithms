@@ -1,19 +1,14 @@
-package leetcode.problems;
+package leetcode.lists.LCR;
 
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 
 /**
- * @author jingxinwu
- * @date 2021-06-21 11:55 下午
+ * @author wujingxinit@outlook.com
+ * @date 2023/9/25 01:45
  */
-public class LeetCode47_set {
-
-    public static void main(String[] args) {
-        LeetCode47_set leetCode47 = new LeetCode47_set();
-        System.out.println(leetCode47.permuteUnique(new int[]{1, 2, 2}));
-    }
+public class LCR84 {
 
     public List<List<Integer>> permuteUnique(int[] nums) {
         List<List<Integer>> res = new ArrayList<>();
@@ -25,8 +20,8 @@ public class LeetCode47_set {
         return res;
     }
 
-    private void backtrack(int depth, List<List<Integer>> res, int[] nums) {
-        if (depth == nums.length) {
+    private void backtrack(int index, List<List<Integer>> res, int[] nums) {
+        if (index == nums.length) {
             List<Integer> temp = new ArrayList<>();
             for (int num : nums) {
                 temp.add(num);
@@ -35,15 +30,14 @@ public class LeetCode47_set {
             return;
         }
         HashSet<Integer> visited = new HashSet<>();
-        for (int i = depth; i < nums.length; i++) {
+        for (int i = index; i < nums.length; i++) {
             if (visited.contains(nums[i])) {
                 continue;
             }
             visited.add(nums[i]);
-
-            swap(nums, depth, i);
-            backtrack(depth + 1, res, nums);
-            swap(nums, depth, i);
+            swap(nums, index, i);
+            backtrack(index + 1, res, nums);
+            swap(nums, index, i);
         }
     }
 
@@ -52,5 +46,4 @@ public class LeetCode47_set {
         nums[i] = nums[j];
         nums[j] = temp;
     }
-
 }

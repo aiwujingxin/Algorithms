@@ -7,13 +7,13 @@ import leetcode.problems.*;
  * @date 2023/8/21 22:08
  * <p>子集
  * @see LeetCode78
- * @see LeetCode90_set
+ * @see LeetCode90
  * <p>组合总和
- * @see leetcode.LeetCode39_back_track
- * @see LeetCode40_set
+ * @see LeetCode39
+ * @see LeetCode40
  * <p>全排列
  * @see LeetCode46
- * @see LeetCode47_set
+ * @see LeetCode47
  * <p>组合
  * @see LeetCode77
  * <p>N皇后

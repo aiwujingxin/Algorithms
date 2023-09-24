@@ -1,14 +1,13 @@
-package leetcode.problems;
+package leetcode.lists.LCR;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2023/9/17 00:52
+ * @date 2023/9/25 01:39
  */
-public class LeetCode78 {
-
+public class LCR79 {
     List<List<Integer>> res;
 
     public List<List<Integer>> subsets(int[] nums) {

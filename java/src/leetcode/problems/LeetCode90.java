@@ -1,36 +1,41 @@
 package leetcode.problems;
 
+import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.LinkedList;
+import java.util.HashSet;
 import java.util.List;
 
 /**
- * @author jingxinwu
- * @date 2021-06-30 11:04 下午
+ * @author wujingxinit@outlook.com
+ * @date 2023/2/17 17:03
  */
 public class LeetCode90 {
-
-    List<List<Integer>> res = new LinkedList<>();
-    LinkedList<Integer> track = new LinkedList<>();
-
     public List<List<Integer>> subsetsWithDup(int[] nums) {
-        // 先排序，让相同的元素靠在一起
+        List<List<Integer>> res = new ArrayList<>();
+
+        if (nums == null || nums.length == 0) {
+            return res;
+        }
+
         Arrays.sort(nums);
-        backtrack(nums, 0);
+        helper(nums, 0, res, new ArrayList<>());
+
         return res;
     }
 
-    void backtrack(int[] nums, int start) {
-        // 前序位置，每个节点的值都是一个子集
-        res.add(new LinkedList<>(track));
-        for (int i = start; i < nums.length; i++) {
-            // 剪枝逻辑，值相同的相邻树枝，只遍历第一条
-            if (i > start && nums[i] == nums[i - 1]) {
+    private void helper(int[] nums, int index, List<List<Integer>> res, ArrayList<Integer> temp) {
+        res.add(new ArrayList<>(temp));
+        HashSet<Integer> visited = new HashSet<>();
+
+        for (int i = index; i < nums.length; i++) {
+            if (visited.contains(nums[i])) {
                 continue;
             }
-            track.addLast(nums[i]);
-            backtrack(nums, i + 1);
-            track.removeLast();
+            visited.add(nums[i]);
+
+            temp.add(nums[i]);
+            helper(nums, i + 1, res, temp);
+            temp.remove(temp.size() - 1);
         }
     }
 }
