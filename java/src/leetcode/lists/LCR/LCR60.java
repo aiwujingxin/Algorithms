@@ -1,15 +1,17 @@
-package leetcode.problems;
+package leetcode.lists.LCR;
 
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.PriorityQueue;
+import java.util.*;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2023/9/19 21:37
+ * @date 2023/9/24 22:59
  */
-public class LeetCode347 {
+public class LCR60 {
+
+    public static void main(String[] args) {
+        System.out.println(Arrays.toString(new LCR60().topKFrequent(new int[]{1, 1, 1, 2, 2, 3}, 2)));
+        System.out.println(Arrays.toString(new LCR60().topKFrequent(new int[]{1, 1, 1, 2, 2, 3, 3, 4, 5, 5, 6, 6, 6, 6}, 2)));
+    }
 
     public int[] topKFrequent(int[] nums, int k) {
         if (nums == null || nums.length == 0) {

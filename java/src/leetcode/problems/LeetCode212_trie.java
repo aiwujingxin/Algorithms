@@ -1,5 +1,8 @@
 package leetcode.problems;
 
+
+import basic.datastructure.trie.Trie;
+
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -54,64 +57,5 @@ public class LeetCode212_trie {
         dfs(board, visited, str, x, y - 1, trie);
         dfs(board, visited, str, x, y + 1, trie);
         visited[x][y] = false;
-    }
-
-    static class Trie {
-
-        final private Trie.Node root;
-
-        public Trie() {
-            root = new Trie.Node();
-        }
-
-        public void insert(String word) {
-            Trie.Node curr = root;
-            for (int i = 0; i < word.length(); i++) {
-                char ch = word.charAt(i);
-                if (curr.childs[ch - 'a'] == null) {
-                    curr.childs[ch - 'a'] = new Trie.Node();
-                }
-                curr = curr.childs[ch - 'a'];
-            }
-
-            curr.isEnd = true;
-        }
-
-        public boolean search(String word) {
-            Trie.Node curr = root;
-            for (int i = 0; i < word.length(); i++) {
-                char ch = word.charAt(i);
-                if (curr.childs[ch - 'a'] == null) {
-                    return false;
-                }
-                curr = curr.childs[ch - 'a'];
-            }
-
-            return curr.isEnd;
-        }
-
-        public boolean startsWith(String prefix) {
-            Trie.Node curr = root;
-            for (int i = 0; i < prefix.length(); i++) {
-                char ch = prefix.charAt(i);
-                if (curr.childs[ch - 'a'] == null) {
-                    return false;
-                }
-                curr = curr.childs[ch - 'a'];
-            }
-
-            return true;
-        }
-
-        static class Node {
-
-            Trie.Node[] childs;
-            boolean isEnd;
-
-            Node() {
-                childs = new Trie.Node[26];
-                isEnd = false;
-            }
-        }
     }
 }

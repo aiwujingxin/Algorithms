@@ -1,12 +1,10 @@
-package leetcode.problems;
+package leetcode.lists.LCR;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2023/5/12 21:51
+ * @date 2023/9/25 01:24
  */
-public class LeetCode852 {
-
-    //https://leetcode.cn/problems/peak-index-in-a-mountain-array/solution/gong-shui-san-xie-er-fen-san-fen-cha-zhi-5gfv/
+public class LCR69 {
 
     public int peakIndexInMountainArray(int[] arr) {
         int left = 0;

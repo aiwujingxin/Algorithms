@@ -1,4 +1,4 @@
-package leetcode.problems;
+package leetcode.lists.LCR;
 
 import basic.datastructure.trie.Trie;
 
@@ -6,9 +6,9 @@ import java.util.List;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2023/9/25 00:05
+ * @date 2023/9/24 23:49
  */
-public class LeetCode648 {
+public class LCR63 {
 
     public String replaceWords(List<String> dictionary, String sentence) {
         Trie trie = new Trie();
