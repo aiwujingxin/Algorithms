@@ -1,16 +1,16 @@
-package leetcode.problems;
+package leetcode.lists.LCR;
 
 import common.TreeNode;
 
 /**
- * @author jingxinwu
- * @date 2021-12-19 6:50 PM
+ * @author wujingxinit@outlook.com
+ * @date 2023/9/24 10:41
  */
-public class LeetCode1038 {
+public class LCR54 {
 
     int sum = 0;
 
-    public TreeNode bstToGst(TreeNode root) {
+    public TreeNode convertBST(TreeNode root) {
         dfs(root);
         return root;
     }

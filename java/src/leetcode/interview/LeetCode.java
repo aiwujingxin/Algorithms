@@ -1,4 +1,4 @@
-package leetcode.lists.interview;
+package leetcode.interview;
 
 /**
  * @author wujingxinit@outlook.com

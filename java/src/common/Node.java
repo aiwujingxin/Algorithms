@@ -18,6 +18,9 @@ public class Node {
 
     public List<Node> neighbors;
 
+    public Node prev;
+    public Node child;
+
     public Node() {
     }
 
