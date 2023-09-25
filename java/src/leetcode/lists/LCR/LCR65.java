@@ -1,12 +1,12 @@
-package leetcode.problems;
+package leetcode.lists.LCR;
 
 import java.util.Arrays;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2023/1/19 12:38
+ * @date 2023/9/25 22:06
  */
-public class LeetCode820 {
+public class LCR65 {
 
     public int minimumLengthEncoding(String[] words) {
         int len = 0;
@@ -51,4 +51,5 @@ public class LeetCode820 {
         public TrieNode() {
         }
     }
+
 }
