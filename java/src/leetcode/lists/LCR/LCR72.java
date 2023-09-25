@@ -1,19 +1,19 @@
-package leetcode.problems;
+package leetcode.lists.LCR;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2022/10/8 21:34
+ * @date 2023/9/25 18:09
  */
-public class LeetCode69 {
+public class LCR72 {
 
     public int mySqrt(int x) {
         if (x == 0 || x == 1) {
             return x;
         }
-        int left = 0;
-        int right = x;
+        long left = 0;
+        long right = x;
         while (left < right) {
-            long mid = ((right - left) / 2 + left + 1) >> 1;
+            long mid = (left + right + 1) / 2;
             if (mid * mid == x) {
                 return (int) mid;
             }
@@ -23,6 +23,8 @@ public class LeetCode69 {
                 right = (int) mid - 1;
             }
         }
-        return left;
+        return (int) left;
     }
 }
+
+
