@@ -46,15 +46,16 @@ public class UnionFind {
         return find(p) == find(q);
     }
 
-    public void union(int x, int y) {
+    public boolean union(int x, int y) {
         int rootX = find(x);
         int rootY = find(y);
         if (rootX == rootY) {
-            return;
+            return false;
         }
         parent[rootX] = rootY;
         size[rootY] += size[rootX];
         count--;
+        return true;
     }
 
     public void unionByRank(int x, int y) {

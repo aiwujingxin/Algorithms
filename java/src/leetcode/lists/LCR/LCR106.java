@@ -6,7 +6,7 @@ import java.util.*;
  * @author wujingxinit@outlook.com
  * @date 2023/9/23 00:46
  */
-public class LCR106_bfs {
+public class LCR106 {
     HashMap<Integer, List<Integer>> graph = new HashMap<>();
 
     int n;
