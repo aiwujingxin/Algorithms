@@ -7,7 +7,7 @@ package leetcode.problems;
 public class LeetCode1839 {
 
     public int longestBeautifulSubstring(String word) {
-        if (word == null || word.length() == 0) {
+        if (word == null || word.isEmpty()) {
             return 0;
         }
         int left = 0;

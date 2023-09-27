@@ -1,12 +1,12 @@
-package leetcode.problems;
+package leetcode.lists.LCR;
 
 import java.util.*;
 
 /**
- * @author aiwujingxin@gmail.com
- * @date 2022/7/1 14:10
+ * @author wujingxinit@outlook.com
+ * @date 2023/9/26 18:40
  */
-public class LeetCode797 {
+public class LCR110 {
 
     public List<List<Integer>> allPathsSourceTarget(int[][] graph) {
         if (graph == null || graph.length == 0) {

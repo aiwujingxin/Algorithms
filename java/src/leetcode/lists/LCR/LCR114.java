@@ -1,12 +1,14 @@
-package leetcode.problems;
+package leetcode.lists.LCR;
 
 import java.util.*;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2023/3/12 16:11
+ * @date 2023/9/26 18:41
  */
-public class LeetCode269 {
+
+public class LCR114 {
+
     public String alienOrder(String[] words) {
         if (words.length == 0) {
             return "";
