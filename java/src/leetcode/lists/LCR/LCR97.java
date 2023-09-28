@@ -1,6 +1,10 @@
-package leetcode.problems;
+package leetcode.lists.LCR;
 
-public class LeetCode115 {
+/**
+ * @author wujingxinit@outlook.com
+ * @date 2023/9/28 16:25
+ */
+public class LCR97 {
 
     public int numDistinct(String s, String t) {
         int[][] dp = new int[t.length() + 1][s.length() + 1];

@@ -1,11 +1,10 @@
-package leetcode.problems;
+package leetcode.lists.LCR;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2022/10/25 00:07
- * @description 完全背包 方案数
+ * @date 2023/9/28 16:21
  */
-public class LeetCode377_dp_1d {
+public class LCR104 {
 
     public int combinationSum4(int[] nums, int target) {
         int[] dp = new int[target + 1];

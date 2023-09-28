@@ -8,13 +8,9 @@ import java.util.*;
  */
 public class LeetCode267 {
 
-    public static void main(String[] args) {
-        System.out.println(new LeetCode267().generatePalindromes("aaa"));
-    }
-
     public List<String> generatePalindromes(String s) {
 
-        if (s == null || s.length() == 0) {
+        if (s == null || s.isEmpty()) {
             return new ArrayList<>();
         }
         Map<Character, Integer> map = new HashMap<>();

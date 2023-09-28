@@ -5,12 +5,6 @@ package leetcode.problems;
  * @date 2023/9/20 17:30
  */
 public class LeetCode647_dp {
-    public static void main(String[] args) {
-        System.out.println(new LeetCode647_dp().countSubstrings("aaa"));
-        System.out.println(new LeetCode647_dp().countSubstrings("aaabbaaababbabaa"));
-
-    }
-
     public int countSubstrings(String s) {
         if (s == null || s.isEmpty()) {
             return 0;

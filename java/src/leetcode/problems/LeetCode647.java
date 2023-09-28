@@ -4,7 +4,7 @@ package leetcode.problems;
  * @author jingxinwu
  * @date 2022-03-11 4:45 PM
  */
-public class LeetCode647_center {
+public class LeetCode647 {
 
     int count = 0;
 

@@ -3,7 +3,7 @@ package basic.algorithm.dp.knapsack.lintcode;
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/8/7 22:17
- * @description 完全背包
+ * @description 完全背包 最大价值
  * @link <a href="https://www.lintcode.com/problem/440/"></a>
  * @see basic.algorithm.dp.knapsack.complete.CompletePack_dp_1d
  */

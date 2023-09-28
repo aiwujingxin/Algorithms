@@ -1,20 +1,20 @@
-package leetcode.problems;
+package leetcode.lists.LCR;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @author jingxinwu
- * @date 2021-07-10 3:31 下午
+ * @author wujingxinit@outlook.com
+ * @date 2023/9/28 16:43
  */
-public class LeetCode131 {
+public class LCR86 {
 
     List<List<String>> list = new ArrayList<>();
     boolean[][] dp;
 
-    public List<List<String>> partition(String s) {
+    public String[][] partition(String s) {
         if (s == null || s.isEmpty()) {
-            return new ArrayList<>();
+            return new String[][]{};
         }
         int n = s.length();
         dp = new boolean[n][n];
@@ -26,7 +26,15 @@ public class LeetCode131 {
             }
         }
         backtrack(s, 0, new ArrayList<>());
-        return list;
+        String[][] res = new String[list.size()][];
+        for (int i = 0; i < list.size(); i++) {
+            String[] l = new String[list.get(i).size()];
+            for (int j = 0; j < list.get(i).size(); j++) {
+                l[j] = list.get(i).get(j);
+            }
+            res[i] = l;
+        }
+        return res;
     }
 
     private void backtrack(String s, int i, ArrayList<String> temp) {
