@@ -81,9 +81,10 @@ public class BinarySearch implements basic.datastructure.liner.array.BinarySearc
             int mid = left + (right - left) / 2;
             if (nums[mid] == target) {
                 return mid;
-            } else if (nums[mid] < target) {
+            }
+            if (nums[mid] < target) {
                 left = mid + 1;
-            } else if (nums[mid] > target) {
+            } else {
                 right = mid - 1;
             }
         }
