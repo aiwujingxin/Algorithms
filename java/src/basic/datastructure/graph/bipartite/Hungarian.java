@@ -1,7 +1,7 @@
 package basic.datastructure.graph.bipartite;
 
 import leetcode.problems.LeetCode1349;
-import leetcode.lists.LCP.LCP04;
+import leetcode.lists.lcp.LCP04;
 
 import java.util.Arrays;
 

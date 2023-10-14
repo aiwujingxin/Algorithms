@@ -8,8 +8,7 @@ import java.util.Random;
  * @date 2023/6/5 17:42
  */
 public class LeetCode528 {
-
-
+    //https://www.youtube.com/watch?v=KYmlcich2_k&t=228s
     class Solution {
 
         int[] presum;
