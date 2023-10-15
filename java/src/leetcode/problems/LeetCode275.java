@@ -7,9 +7,16 @@ package leetcode.problems;
 public class LeetCode275 {
 
     public int hIndex(int[] citations) {
-
-        return 0;
-
+        int n = citations.length;
+        int left = 0, right = n - 1;
+        while (left < right) {
+            int mid = (left + right + 1) / 2;
+            if (citations[mid] >= n - mid) {
+                right = mid - 1;
+            } else {
+                left = mid;
+            }
+        }
+        return n - left <= citations[left] ? n - left : n - left - 1;
     }
-
 }
