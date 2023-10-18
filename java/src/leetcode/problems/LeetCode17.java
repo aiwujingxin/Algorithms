@@ -6,12 +6,17 @@ import java.util.List;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2023/9/15 23:50
+ * @date 2023/10/18 15:20
  */
 public class LeetCode17 {
 
-    List<String> res;
+
+    public static void main(String[] args) {
+        System.out.println(new LeetCode17().letterCombinations("23"));
+    }
+
     HashMap<Integer, String> map;
+    List<String> res;
 
     public List<String> letterCombinations(String digits) {
         if (digits == null || digits.isEmpty()) {
@@ -27,18 +32,20 @@ public class LeetCode17 {
         map.put(7, "pqrs");
         map.put(8, "tuv");
         map.put(9, "wxyz");
-        backtrack(0, digits, new StringBuilder());
+        backtrack(digits, 0, new StringBuilder());
         return res;
     }
 
-    private void backtrack(int index, String digits, StringBuilder sb) {
+    private void backtrack(String digits, int index, StringBuilder sb) {
         if (index == digits.length()) {
             res.add(sb.toString());
             return;
         }
-        for (char aChar : map.get(digits.charAt(index) - '0').toCharArray()) {
-            sb.append(aChar);
-            backtrack(index + 1, digits, sb);
+        int num = digits.charAt(index) - '0';
+        for (int i = 0; i < map.get(num).length(); i++) {
+            sb.append(map.get(num).charAt(i));
+
+            backtrack(digits, index + 1, sb);
             sb.deleteCharAt(sb.length() - 1);
         }
     }

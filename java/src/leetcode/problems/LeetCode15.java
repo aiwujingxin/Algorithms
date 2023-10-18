@@ -6,9 +6,13 @@ import java.util.List;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2023/9/15 23:35
+ * @date 2023/10/18 15:13
  */
 public class LeetCode15 {
+
+    public static void main(String[] args) {
+        System.out.println(new LeetCode15().threeSum(new int[]{-1, 0, 1, 2, -1, -4}));
+    }
 
     public List<List<Integer>> threeSum(int[] nums) {
         if (nums == null || nums.length == 0) {
@@ -17,20 +21,19 @@ public class LeetCode15 {
         Arrays.sort(nums);
         List<List<Integer>> res = new ArrayList<>();
         for (int i = 0; i < nums.length; i++) {
-            if (i > 0 && nums[i] == nums[i - 1]) {
+            if (i > 0 && nums[i - 1] == nums[i]) {
                 continue;
             }
             int left = i + 1;
             int right = nums.length - 1;
             while (left < right) {
                 if (nums[left] + nums[right] + nums[i] == 0) {
-                    ArrayList<Integer> list = new ArrayList<>();
-                    list.add(nums[left]);
-                    list.add(nums[right]);
-                    list.add(nums[i]);
-                    res.add(list);
-                    //fix
-                    while (left < right && nums[left] == nums[left + 1]) {
+                    List<Integer> l = new ArrayList<>();
+                    l.add(nums[i]);
+                    l.add(nums[left]);
+                    l.add(nums[right]);
+                    res.add(l);
+                    while (left < right && nums[left + 1] == nums[left]) {
                         left++;
                     }
                     while (left < right && nums[right - 1] == nums[right]) {
@@ -43,9 +46,9 @@ public class LeetCode15 {
                 } else {
                     right--;
                 }
+
             }
         }
         return res;
-
     }
 }

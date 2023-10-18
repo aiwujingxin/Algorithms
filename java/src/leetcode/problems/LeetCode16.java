@@ -16,10 +16,10 @@ public class LeetCode16 {
         int res = Integer.MIN_VALUE;
         int diff = Integer.MAX_VALUE;
         for (int i = 0; i < nums.length; i++) {
-            int l = i + 1;
-            int r = nums.length - 1;
-            while (l < r) {
-                int sum = nums[i] + nums[l] + nums[r];
+            int left = i + 1;
+            int right = nums.length - 1;
+            while (left < right) {
+                int sum = nums[i] + nums[left] + nums[right];
                 if (sum == target) {
                     return target;
                 } else if (sum < target) {
@@ -27,13 +27,13 @@ public class LeetCode16 {
                         res = sum;
                         diff = Math.abs(sum - target);
                     }
-                    l++;
-                } else if (sum > target) {
+                    left++;
+                } else {
                     if (Math.abs(sum - target) < diff) {
                         res = sum;
                         diff = Math.abs(sum - target);
                     }
-                    r--;
+                    right--;
                 }
             }
         }

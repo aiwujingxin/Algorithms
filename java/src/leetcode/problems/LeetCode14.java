@@ -2,33 +2,34 @@ package leetcode.problems;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2022/9/21 00:12
+ * @date 2023/10/18 15:04
  */
 public class LeetCode14 {
 
-    public String longestCommonPrefix(String[] strs) {
-        if (strs == null || strs.length == 0) {
-            return "";
-        }
-        int len = Integer.MAX_VALUE;
-        for (String str : strs) {
-            len = Math.min(len, str.length());
-        }
-        int count = 0;
-        for (int i = 0; i < len; i++) {
-            if (same(strs, i)) {
-                count++;
-            } else {
-                break;
-            }
-        }
-        return strs[0].substring(0, count);
+    public static void main(String[] args) {
+        System.out.println(new LeetCode14().longestCommonPrefix(new String[]{"abc", "abd", "abs"}));
     }
 
-    private boolean same(String[] strs, int i) {
-        char a = strs[0].charAt(i);
-        for (int j = 1; j < strs.length; j++) {
-            if (strs[j].charAt(i) != a) {
+    public String longestCommonPrefix(String[] strs) {
+
+        int index = 0;
+        int max = Integer.MAX_VALUE;
+        for (String s : strs) {
+            max = Math.min(max, s.length());
+        }
+        while (index < max) {
+            char c = strs[0].charAt(index);
+            if (!can(index, c, strs)) {
+                break;
+            }
+            index++;
+        }
+        return strs[0].substring(0, index);
+    }
+
+    private boolean can(int index, char c, String[] strs) {
+        for (int i = 1; i < strs.length; i++) {
+            if (strs[i].charAt(index) != c) {
                 return false;
             }
         }

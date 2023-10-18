@@ -4,7 +4,7 @@ import java.util.Stack;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2023/9/16 00:02
+ * @date 2023/10/18 15:30
  */
 public class LeetCode20 {
 
@@ -12,20 +12,19 @@ public class LeetCode20 {
         if (s == null || s.isEmpty()) {
             return true;
         }
-
-        char[] chars = s.toCharArray();
         Stack<Character> stack = new Stack<>();
-        for (char aChar : chars) {
-            if (aChar == '(' || aChar == '[' || aChar == '{') {
-                stack.push(aChar);
-            } else if (aChar == ')' || aChar == ']' || aChar == '}') {
+        for (int i = 0; i < s.length(); i++) {
+            char c = s.charAt(i);
+            if (c == '(' || c == '[' || c == '{') {
+                stack.push(c);
+            } else {
                 if (stack.isEmpty()) {
                     return false;
                 }
-                if ((aChar == ')' && stack.peek() == '(') || (aChar == ']' && stack.peek() == '[') || (aChar == '}' && stack.peek() == '{')) {
+                if ((c == ')' && stack.peek() == '(') || (c == ']' && stack.peek() == '[') || (c == '}' && stack.peek() == '{')) {
                     stack.pop();
                 } else {
-                    stack.push(aChar);
+                    stack.push(c);
                 }
             }
         }

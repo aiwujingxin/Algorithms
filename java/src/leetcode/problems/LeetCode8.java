@@ -1,13 +1,13 @@
 package leetcode.problems;
 
 /**
- * @author jingxinwu
- * @date 2021-06-14 1:43 下午
+ * @author wujingxinit@outlook.com
+ * @date 2023/10/18 13:13
  */
 public class LeetCode8 {
 
     public static void main(String[] args) {
-        System.out.println(new LeetCode8().myAtoi("   -42"));
+        System.out.println(new LeetCode8().myAtoi("-21474836482"));
     }
 
     public int myAtoi(String s) {
@@ -18,27 +18,38 @@ public class LeetCode8 {
         if (s.isEmpty()) {
             return 0;
         }
-        int index = 0, sign = 1;
-        if (s.charAt(index) == '+') {
+        int index = 0;
+        boolean flag = false;
+        if (s.charAt(0) == '-') {
             index++;
-        } else if (s.charAt(index) == '-') {
-            sign = -1;
+            flag = true;
+        } else if (s.charAt(0) == '+') {
             index++;
         }
-
         int res = 0;
+        int max = Integer.MAX_VALUE / 10;
         while (index < s.length()) {
             char c = s.charAt(index);
             if (c < '0' || c > '9') {
-                break;
+                return flag ? -1 * res : res;
             }
-            int num = c - '0';
-            if (res > (Integer.MAX_VALUE - num) / 10) {
-                return (sign == 1) ? Integer.MAX_VALUE : Integer.MIN_VALUE;
+            if (res > max) {
+                return flag ? Integer.MIN_VALUE : Integer.MAX_VALUE;
             }
-            res = res * 10 + num;
+            if (res == max) {
+                if (flag) {
+                    if (c >= '8') {
+                        return Integer.MIN_VALUE;
+                    }
+                } else {
+                    if (c > '7') {
+                        return Integer.MAX_VALUE;
+                    }
+                }
+            }
+            res = res * 10 + (c - '0');
             index++;
         }
-        return sign * res;
+        return flag ? -1 * res : res;
     }
 }

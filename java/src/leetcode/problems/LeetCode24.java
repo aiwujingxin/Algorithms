@@ -17,5 +17,4 @@ public class LeetCode24 {
         nextNode.next = head;
         return nextNode;
     }
-
 }

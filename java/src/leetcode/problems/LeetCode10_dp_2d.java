@@ -9,7 +9,9 @@ public class LeetCode10_dp_2d {
     //https://leetcode.com/problems/regular-expression-matching/discuss/2335781/JavaC%2B%2BPythonJavaScriptKotlin3LINES-O(n)timeBEATS-99.97-MEMORYSPEED-0ms-APRIL-2022
 
     public boolean isMatch(String s, String p) {
-        if (p == null || p.length() == 0) return (s == null || s.length() == 0);
+        if (p == null || p.isEmpty() || s == null || s.isEmpty()) {
+            return true;
+        }
 
         boolean[][] dp = new boolean[s.length() + 1][p.length() + 1];
         dp[0][0] = true;

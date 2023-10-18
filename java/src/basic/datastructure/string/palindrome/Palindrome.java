@@ -5,7 +5,7 @@ import leetcode.problems.*;
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/8/31 14:15
- * @see LeetCode5 5. 最长回文子串
+ * @see LeetCode5_center 5. 最长回文子串
  * @see LeetCode131 131. 分割回文串
  * @see LeetCode132_dp_2d 132. 分割回文串 II
  * @see LeetCode516 516. 最长回文子序列

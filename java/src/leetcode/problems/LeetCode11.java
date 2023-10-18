@@ -2,7 +2,7 @@ package leetcode.problems;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2023/9/15 23:26
+ * @date 2023/10/18 15:00
  */
 public class LeetCode11 {
 
@@ -14,7 +14,7 @@ public class LeetCode11 {
         int right = height.length - 1;
         int res = 0;
         while (left < right) {
-            res = Math.max(res, Math.min(height[left], height[right]) * (right - left));
+            res = Math.max(res, Math.min(height[left], height[right]) * (right - left - 1));
             if (height[left] < height[right]) {
                 left++;
             } else {

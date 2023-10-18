@@ -5,31 +5,30 @@ import java.util.List;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2023/9/16 00:12
+ * @date 2023/10/18 17:42
  */
 public class LeetCode22 {
-    List<String> res;
 
     public List<String> generateParenthesis(int n) {
-        res = new ArrayList<>();
-        backtrack(0, 0, new StringBuilder(), n);
+        List<String> res = new ArrayList<>();
+        backtrack(res, 0, 0, n, new StringBuilder());
         return res;
     }
 
-    private void backtrack(int left, int right, StringBuilder sb, int n) {
+    private void backtrack(List<String> res, int left, int right, int n, StringBuilder sb) {
         if (sb.length() == n * 2) {
             res.add(sb.toString());
             return;
         }
         if (left < n) {
             sb.append("(");
-            backtrack(left + 1, right, sb, n);
+            backtrack(res, left + 1, right, n, sb);
             sb.deleteCharAt(sb.length() - 1);
-        }
 
+        }
         if (right < left) {
             sb.append(")");
-            backtrack(left, right + 1, sb, n);
+            backtrack(res, left, right + 1, n, sb);
             sb.deleteCharAt(sb.length() - 1);
         }
     }
