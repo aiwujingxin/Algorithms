@@ -16,16 +16,16 @@ public class LeetCode45_dfs {
         return helper(nums, dp, 0);
     }
 
-    private int helper(int[] nums, int[] dp, int pos) {
-        if (pos >= nums.length - 1) {
+    private int helper(int[] nums, int[] dp, int index) {
+        if (index >= nums.length - 1) {
             return 0;
         }
-        if (dp[pos] != 10001) {
-            return dp[pos];
+        if (dp[index] != 10001) {
+            return dp[index];
         }
-        for (int j = 1; j <= nums[pos]; j++) {
-            dp[pos] = Math.min(dp[pos], 1 + helper(nums, dp, pos + j));
+        for (int j = 1; j <= nums[index]; j++) {
+            dp[index] = Math.min(dp[index], 1 + helper(nums, dp, index + j));
         }
-        return dp[pos];
+        return dp[index];
     }
 }

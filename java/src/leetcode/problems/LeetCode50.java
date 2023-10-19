@@ -1,42 +1,34 @@
 package leetcode.problems;
 
 /**
- * @author jingxinwu
- * @date 2021-06-24 12:40 上午
+ * @author wujingxinit@outlook.com
+ * @date 2023/10/19 14:45
  */
 public class LeetCode50 {
 
-    public static void main(String[] args) {
-        LeetCode50 leetCode50 = new LeetCode50();
-        System.out.println(leetCode50.myPow(2.00000, -2147483648));
-    }
-
     public double myPow(double x, int n) {
-
-        boolean flag = false;
-
+        if (n == 0) {
+            return 1;
+        }
+        if (n == 1) {
+            return x;
+        }
+        if (x == 1 || x == 0) {
+            return x;
+        }
         if (n < 0) {
-            flag = true;
-            x = 1 / x;
-            n = -(n + 1);
+            return 1 / dfs(x, -n);
         }
-
-        double res = 1;
-        double temp = x;
-
-        while (n != 0) {
-            if (n % 2 == 1) {
-                res *= temp;
-            }
-            temp *= temp;
-            n = n / 2;
-        }
-
-        if (flag) {
-            res *= x;
-        }
-
-        return res;
+        return dfs(x, n);
     }
 
+    private double dfs(double x, long n) {
+        if (n == 0) {
+            return 1.0;
+        }
+        if (n % 2 == 0) {
+            return dfs(x * x, n / 2);
+        }
+        return x * dfs(x * x, n / 2);
+    }
 }

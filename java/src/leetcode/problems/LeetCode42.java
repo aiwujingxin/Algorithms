@@ -12,25 +12,23 @@ public class LeetCode42 {
         if (height == null || height.length == 0) {
             return 0;
         }
-
         int[] left = new int[height.length];
-        int leftMax = height[0];
-        left[0] = leftMax;
+        int left_max = height[0];
+        left[0] = left_max;
         for (int i = 1; i < height.length; i++) {
-            if (height[i] > leftMax) {
-                leftMax = height[i];
+            if (left_max < height[i]) {
+                left_max = height[i];
             }
-            left[i] = leftMax;
+            left[i] = left_max;
         }
-
         int[] right = new int[height.length];
-        int rightMax = height[height.length - 1];
-        right[0] = rightMax;
-        for (int i = height.length - 1; i >= 0; i--) {
-            if (height[i] > rightMax) {
-                rightMax = height[i];
+        int right_max = height[height.length - 1];
+        right[right.length - 1] = right_max;
+        for (int i = height.length - 2; i >= 0; i--) {
+            if (right_max < height[i]) {
+                right_max = height[i];
             }
-            right[i] = rightMax;
+            right[i] = right_max;
         }
         int res = 0;
         for (int i = 0; i < height.length; i++) {

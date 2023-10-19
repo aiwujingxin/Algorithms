@@ -2,25 +2,29 @@ package leetcode.problems;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2022/10/8 22:07
+ * @date 2023/10/19 18:11
  */
 public class LeetCode45_greedy {
+    public static void main(String[] args) {
+        System.out.println(new LeetCode45_greedy().jump(new int[]{2, 3, 1, 1, 4}));
+        System.out.println(new LeetCode45_greedy().jump(new int[]{2, 3, 0, 1, 4}));
+    }
 
-    //https://leetcode.com/problems/jump-game-ii/discuss/1192401/Easy-Solutions-w-Explanation-or-Optimizations-from-Brute-Force-to-DP-to-Greedy-BFS
-
-    int jump(int[] nums) {
-        int i = 0;
-        int maxReachable = 0;
-        int lastJumpedPos = 0;
-        int jumps = 0;
-        while (lastJumpedPos < nums.length - 1) {
-            maxReachable = Math.max(maxReachable, i + nums[i]);
-            if (i == lastJumpedPos) {
-                lastJumpedPos = maxReachable;
-                jumps++;
-            }
-            i++;
+    public int jump(int[] nums) {
+        if (nums == null || nums.length == 0) {
+            return 0;
         }
-        return jumps;
+        int end = 0;
+        int max = 0;
+        int step = 0;
+        // 不访问最后一个元素
+        for (int i = 0; i < nums.length - 1; i++) {
+            max = Math.max(max, nums[i] + i);
+            if (i == end) {
+                end = max;
+                step++;
+            }
+        }
+        return step;
     }
 }

@@ -44,31 +44,24 @@ public class BigDecimal implements basic.datastructure.string.BigDecimal {
 
     @Override
     public String sub(String num1, String num2) {
-        if ((num1 == null || num1.isEmpty()) && (num2 == null || num2.isEmpty())) {
+        if (num1 == null || num1.isEmpty() || num2 == null || num2.isEmpty()) {
             return "";
-        }
-        if (num2 == null || num2.isEmpty()) {
-            return num1;
-        }
-        if (num1 == null || num1.isEmpty()) {
-            return num2;
         }
         if (num1.charAt(0) != '-' && num2.charAt(0) == '-') {
             return addStrings(num1, num2.substring(1));
         }
-        if (num2.charAt(0) != '-' && num1.charAt(0) == '-') {
+        if (num1.charAt(0) == '-' && num2.charAt(0) != '-') {
             return "-" + addStrings(num1.substring(1), num2);
         }
         if (num1.charAt(0) == '-' && num2.charAt(0) == '-') {
-            String temp = num1;
-            num1 = num2.substring(1);
-            num2 = temp.substring(1);
+            num1 = num1.substring(1);
+            num2 = num2.substring(1);
         }
-        char sign = '+';//正负号
+        boolean sign = true;//正负号
         //让num1>num2 如果num1<num2 那么结果就是—(num2-num1)
         //可以先将num1和num2交换和前面情况统一
         if (!compare(num1, num2)) {
-            sign = '-';
+            sign = false;
             String temp = num2;
             num2 = num1;
             num1 = temp;
@@ -82,7 +75,6 @@ public class BigDecimal implements basic.datastructure.string.BigDecimal {
         while (len1 >= 0 || len2 >= 0) {
             int n1 = len1 >= 0 ? (ch1[len1--] - '0') : 0;
             int n2 = len2 >= 0 ? (ch2[len2--] - '0') : 0;
-
             int num = n1 - n2 - borrow;
             borrow = 0;
             //需要向前借位
@@ -92,7 +84,6 @@ public class BigDecimal implements basic.datastructure.string.BigDecimal {
             }
             sb.append(num);
         }
-
         sb.reverse();//需要先翻转
         int index = 0;//去掉前面没用的’0‘
         while (index < sb.length() && sb.charAt(index) == '0') {
@@ -102,40 +93,26 @@ public class BigDecimal implements basic.datastructure.string.BigDecimal {
         if (index == sb.length()) {
             return "0";
         }
-        //如果正数
-        if (sign == '+') {
-            return sb.substring(index);
-        } else {
-            return sign + sb.substring(index);//负数需要返回
-        }
+        return sign ? sb.substring(index) : "-" + sb.substring(index);
     }
 
     @Override
-    public String div(String s1, String s2) {
-        return null;
-    }
-
-    public int divide(int dividend, int divisor) {
-        int sign = (dividend < 0) ^ (divisor < 0) ? -1 : 1;
-        long ldividend = Math.abs((long) (dividend));
-        long ldivisor = Math.abs((long) (divisor));
-        long res = 0;
-        while (ldivisor <= ldividend) {
-            long temp = ldivisor;
-            long mul = 1;
-            while (ldividend >= (temp << 1)) {
-                temp <<= 1;
-                mul <<= 1;
-            }
-            ldividend = ldividend - temp;
-            res += mul;
-
+    public String divide(String dividend, int divisor) {
+        StringBuilder sb = new StringBuilder();
+        int carry = 0;
+        for (int i = 0; i < dividend.length(); i++) {
+            int t = dividend.charAt(i) - '0' + carry * 10;
+            int currentResult = t / divisor;
+            carry = t % divisor;
+            sb.append(currentResult);
         }
-        res = res * sign;
-        if (res >= Integer.MAX_VALUE) {
-            return Integer.MAX_VALUE;
+        while (!sb.isEmpty() && sb.charAt(0) == '0') {
+            sb.deleteCharAt(0);
         }
-        return (int) res;
+        if (sb.isEmpty()) {
+            return "0";
+        }
+        return sb.toString();
     }
 
     @Override

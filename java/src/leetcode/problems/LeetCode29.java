@@ -21,7 +21,7 @@ public class LeetCode29 {
         while (dividend <= divisor) {
             int count = 1;
             int temp = divisor;
-            // temp + temp >= dividend
+            // 不能 temp + temp >= dividend
             while (temp >= dividend - temp) {
                 temp += temp;
                 count += count;

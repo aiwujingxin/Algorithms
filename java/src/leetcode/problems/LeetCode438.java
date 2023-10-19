@@ -16,32 +16,30 @@ public class LeetCode438 {
         }
         int left = 0;
         int right = 0;
-        int[] arr = new int[26];
-        int[] arr1 = new int[26];
+        int[] sArr = new int[26];
+        int[] pArr = new int[26];
         int count = 0;
         HashSet<Character> set = new HashSet<>();
         for (int i = 0; i < p.length(); i++) {
-            arr1[p.charAt(i) - 'a']++;
+            pArr[p.charAt(i) - 'a']++;
             set.add(p.charAt(i));
         }
-        int target = set.size();
-
         List<Integer> res = new ArrayList<>();
         while (right < s.length()) {
             char c = s.charAt(right);
-            arr[c - 'a']++;
-            if (arr[c - 'a'] == arr1[c - 'a']) {
+            sArr[c - 'a']++;
+            if (sArr[c - 'a'] == pArr[c - 'a']) {
                 count++;
             }
             while (left < right && right - left + 1 > p.length()) {
                 char d = s.charAt(left);
-                if (arr[d - 'a'] == arr1[d - 'a']) {
+                if (sArr[d - 'a'] == pArr[d - 'a']) {
                     count--;
                 }
-                arr[d - 'a']--;
+                sArr[d - 'a']--;
                 left++;
             }
-            if (right - left + 1 == p.length() && count == target) {
+            if (right - left + 1 == p.length() && count == set.size()) {
                 res.add(left);
             }
             right++;

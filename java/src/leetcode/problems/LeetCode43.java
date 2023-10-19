@@ -1,46 +1,39 @@
 package leetcode.problems;
 
 /**
- * @author jingxinwu
- * @date 2021-06-21 11:30 下午
+ * @author wujingxinit@outlook.com
+ * @date 2023/10/19 15:51
  */
 public class LeetCode43 {
 
-    public static void main(String[] args) {
-        LeetCode43 leetCode43 = new LeetCode43();
-        System.out.println(leetCode43.multiply("5", "9"));
-    }
-
     public String multiply(String num1, String num2) {
-
-        if (num1 == null || num1.length() == 0) {
+        if (num1 == null || num1.isEmpty()) {
             return num2;
         }
-
-        if (num2 == null || num2.length() == 0) {
+        if (num2 == null || num2.isEmpty()) {
             return num1;
         }
-
-        int[] arr = new int[num1.length() + num2.length()];
-        for (int i = num1.length() - 1; i >= 0; i--) {
-            for (int j = num2.length() - 1; j >= 0; j--) {
-
-                int p1 = i + j; // 十位
-                int p2 = i + j + 1;// 个位
-                int sum = (num1.charAt(i) - '0') * (num2.charAt(j) - '0') + arr[p2];
-                arr[p2] = sum % 10; //个位
-                arr[p1] += sum / 10; //十位
+        int m = num1.length();
+        int n = num2.length();
+        int[] arr = new int[n + m];
+        for (int i = m - 1; i >= 0; i--) {
+            for (int j = n - 1; j >= 0; j--) {
+                int t = (num1.charAt(i) - '0') * (num2.charAt(j) - '0') + arr[i + j + 1];
+                arr[i + j] += t / 10;
+                arr[i + j + 1] = t % 10;
             }
         }
-
         StringBuilder sb = new StringBuilder();
-        for (int j : arr) {
-            if (sb.length() == 0 && j == 0) {
-                continue;
-            }
-            sb.append(j);
+        int index = 0;
+        while (index < arr.length && arr[index] == 0) {
+            index++;
         }
-        return sb.length() == 0 ? "0" : sb.toString();
+        for (int i = index; i < arr.length; i++) {
+            sb.append(arr[i]);
+        }
+        if (sb.isEmpty()) {
+            return "0";
+        }
+        return sb.toString();
     }
-
 }
