@@ -7,32 +7,41 @@ import java.util.List;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2023/9/17 00:07
+ * @date 2023/10/20 16:21
  */
 public class LeetCode56 {
 
     public int[][] merge(int[][] intervals) {
         if (intervals == null || intervals.length == 0) {
-            return new int[0][2];
+            return new int[][]{};
         }
-        Arrays.sort(intervals, Comparator.comparingInt(interval -> interval[0]));
-        int[] last = intervals[0];
         List<int[]> list = new ArrayList<>();
-        list.add(last);
-        for (int i = 1; i < intervals.length; i++) {
-            int[] cur = intervals[i];
-            if (cur[0] > last[1]) {
-                list.add(cur);
-                last = cur;
+        Arrays.sort(intervals, new Comparator<int[]>() {
+            @Override
+            public int compare(int[] o1, int[] o2) {
+                if (o1[0] == o2[0]) {
+                    return o1[1] - o2[1];
+                }
+                return o1[0] - o2[0];
+            }
+        });
+        list.add(intervals[0]);
+        for (int[] interval : intervals) {
+            int[] last = list.get(list.size() - 1);
+            if (interval[0] > last[1]) {
+                list.add(interval);
             } else {
-                int[] newInt = new int[2];
-                newInt[0] = last[0];
-                newInt[1] = Math.max(cur[1], last[1]);
+                int[] t = new int[2];
+                t[0] = Math.min(last[0], interval[0]);
+                t[1] = Math.max(last[1], interval[1]);
                 list.remove(list.size() - 1);
-                list.add(newInt);
-                last = newInt;
+                list.add(t);
             }
         }
-        return list.toArray(new int[list.size()][]);
+        int[][] res = new int[list.size()][];
+        for (int i = 0; i < list.size(); i++) {
+            res[i] = list.get(i);
+        }
+        return res;
     }
 }

@@ -22,9 +22,8 @@ public class LeetCode37 {
                             board[i][j] = c;
                             if (solve(board)) {
                                 return true;
-                            } else {
-                                board[i][j] = '.';
                             }
+                            board[i][j] = '.';
                         }
                     }
                     return false;

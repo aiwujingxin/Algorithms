@@ -1,49 +1,61 @@
 package leetcode.problems;
 
-import java.util.HashMap;
+import java.util.HashSet;
 
 /**
- * @author jingxinwu
- * @date 2021-06-18 12:09 下午
+ * @author wujingxinit@outlook.com
+ * @date 2023/10/20 10:44
  */
 public class LeetCode36 {
 
     public boolean isValidSudoku(char[][] board) {
-
-        if (board == null || board.length == 0 || board[0].length == 0) {
-            return true;
+        if (board == null || board.length == 0) {
+            return false;
+        }
+        // check row
+        for (int i = 0; i < board.length; i++) {
+            HashSet<Character> set = new HashSet<>();
+            for (int j = 0; j < board[0].length; j++) {
+                if (board[i][j] == '.') {
+                    continue;
+                }
+                if (set.contains(board[i][j])) {
+                    return false;
+                }
+                set.add(board[i][j]);
+            }
+        }
+        // check col
+        for (int i = 0; i < board[0].length; i++) {
+            HashSet<Character> set = new HashSet<>();
+            for (int j = 0; j < board.length; j++) {
+                if (board[j][i] == '.') {
+                    continue;
+                }
+                if (set.contains(board[j][i])) {
+                    return false;
+                }
+                set.add(board[j][i]);
+            }
         }
 
-        // init data
-        HashMap<Integer, Integer>[] rows = new HashMap[9];
-        HashMap<Integer, Integer>[] columns = new HashMap[9];
-        HashMap<Integer, Integer>[] boxes = new HashMap[9];
-        for (int i = 0; i < 9; i++) {
-            rows[i] = new HashMap<>();
-            columns[i] = new HashMap<>();
-            boxes[i] = new HashMap<>();
-        }
-
-        // validate a board
-        for (int i = 0; i < 9; i++) {
-            for (int j = 0; j < 9; j++) {
-                char num = board[i][j];
-                if (num != '.') {
-                    int n = num;
-                    int box_index = (i / 3) * 3 + j / 3;
-                    // keep the current cell value
-                    rows[i].put(n, rows[i].getOrDefault(n, 0) + 1);
-                    columns[j].put(n, columns[j].getOrDefault(n, 0) + 1);
-                    boxes[box_index].put(n, boxes[box_index].getOrDefault(n, 0) + 1);
-                    // check if this value has been already seen before
-                    if (rows[i].get(n) > 1 || columns[j].get(n) > 1 || boxes[box_index].get(n) > 1) {
-                        return false;
+        // fix
+        for (int i = 0; i < board.length; i = i + 3) {
+            for (int j = 0; j < board[0].length; j = j + 3) {
+                HashSet<Character> set = new HashSet<>();
+                for (int k = i; k < i + 3; k++) {
+                    for (int l = j; l < j + 3; l++) {
+                        if (board[k][l] == '.') {
+                            continue;
+                        }
+                        if (set.contains(board[k][l])) {
+                            return false;
+                        }
+                        set.add(board[k][l]);
                     }
                 }
             }
         }
-
         return true;
     }
-
 }

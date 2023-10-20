@@ -5,12 +5,6 @@ package leetcode.problems;
  * @date 2023/10/19 18:10
  */
 public class LeetCode41 {
-
-    public static void main(String[] args) {
-        System.out.println(new LeetCode41().firstMissingPositive(new int[]{3, 4, -1, 1}));
-        System.out.println(new LeetCode41().firstMissingPositive(new int[]{7, 8, 9, 11, 12}));
-    }
-
     public int firstMissingPositive(int[] nums) {
         if (nums == null || nums.length == 0) {
             return 0;

@@ -1,44 +1,36 @@
 package leetcode.problems;
 
 /**
- * @author jingxinwu
- * @date 2021-11-16 9:12 下午
+ * @author wujingxinit@outlook.com
+ * @date 2023/10/20 10:31
  */
 public class LeetCode38 {
 
     public static void main(String[] args) {
-        System.out.println(countAndSay(5));
+        System.out.println(new LeetCode38().countAndSay(6));
     }
 
-    public static String countAndSay(int n) {
+    public String countAndSay(int n) {
         if (n == 0) {
             return "";
         }
-        if (n == 1) {
-            return "1";
-        }
         String s = "1";
         for (int i = 1; i < n; i++) {
-            int j = 0;
-            char target = s.charAt(j);
-            int count = 0;
             StringBuilder sb = new StringBuilder();
-            while (j < s.length()) {
-                while (j < s.length() && s.charAt(j) == target) {
-                    count++;
-                    j++;
+            int left = 0;
+            int right = left;
+            while (right < s.length()) {
+                int cnt = 0;
+                while (right < s.length() && s.charAt(left) == s.charAt(right)) {
+                    right++;
+                    cnt++;
                 }
-                sb.append(count).append(s.charAt(j - 1));
-                if (j < s.length()) {
-                    target = s.charAt(j);
-                    count = 0;
-                } else {
-                    break;
-                }
+                sb.append(cnt);
+                sb.append(s.charAt(left) - '0');
+                left = right;
             }
             s = sb.toString();
         }
         return s;
     }
-
 }

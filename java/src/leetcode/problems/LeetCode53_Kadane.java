@@ -22,6 +22,4 @@ public class LeetCode53_Kadane {
         }
         return maxSum;
     }
-
-
 }

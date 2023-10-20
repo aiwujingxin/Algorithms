@@ -1,25 +1,23 @@
 package leetcode.problems;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
+/**
+ * @author wujingxinit@outlook.com
+ * @date 2023/10/20 18:10
+ */
 public class LeetCode51 {
 
     public List<List<String>> solveNQueens(int n) {
-        List<List<String>> result = new ArrayList<>();
-        if (n < 1) {
-            return result;
-        }
-        // 初始化
         char[][] board = new char[n][n];
         for (int i = 0; i < n; i++) {
-            for (int j = 0; j < n; j++) {
-                board[i][j] = '.';
-            }
+            Arrays.fill(board[i], '.');
         }
-
-        backtrack(board, 0, n, new ArrayList<>(), result);
-        return result;
+        List<List<String>> res = new ArrayList<>();
+        backtrack(board, 0, n, new ArrayList<>(), res);
+        return res;
     }
 
     private void backtrack(char[][] board, int row, int n, List<String> tempList, List<List<String>> result) {
@@ -27,12 +25,10 @@ public class LeetCode51 {
             result.add(new ArrayList<>(tempList));
             return;
         }
-
         for (int col = 0; col < n; col++) {
             if (!valid(board, row, col)) {
                 continue;
             }
-
             board[row][col] = 'Q';
             tempList.add(new String(board[row]));
             backtrack(board, row + 1, n, tempList, result); // 以行为单位

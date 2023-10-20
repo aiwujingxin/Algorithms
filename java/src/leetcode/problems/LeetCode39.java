@@ -5,31 +5,33 @@ import java.util.List;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2023/9/16 00:16
+ * @date 2023/10/20 10:30
  */
 public class LeetCode39 {
-
     public List<List<Integer>> combinationSum(int[] candidates, int target) {
-        ArrayList<List<Integer>> res = new ArrayList<>();
         if (candidates == null || candidates.length == 0) {
-            return res;
+            return new ArrayList<>();
         }
-        backtrack(0, res, candidates, target, new ArrayList<>());
+        List<List<Integer>> res = new ArrayList<>();
+        backtrack(candidates, 0, target, new ArrayList<>(), res);
         return res;
     }
 
-    private void backtrack(int index, List<List<Integer>> ans, int[] candidates, int target, List<Integer> temp) {
+    private void backtrack(int[] candidates, int index, int target, List<Integer> list, List<List<Integer>> res) {
+        if (index == candidates.length) {
+            return;
+        }
         if (target < 0) {
             return;
         }
         if (target == 0) {
-            ans.add(new ArrayList<>(temp));
+            res.add(new ArrayList<>(list));
             return;
         }
         for (int i = index; i < candidates.length; i++) {
-            temp.add(candidates[i]);
-            backtrack(i, ans, candidates, target - candidates[i], temp);
-            temp.remove(temp.size() - 1);
+            list.add(candidates[i]);
+            backtrack(candidates, i, target - candidates[i], list, res);
+            list.remove(list.size() - 1);
         }
     }
 }

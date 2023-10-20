@@ -7,7 +7,7 @@ import java.util.List;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2022/10/15 21:39
+ * @date 2023/10/20 10:09
  */
 public class LeetCode40 {
     /*
@@ -26,34 +26,36 @@ public class LeetCode40 {
      *
      * */
     public List<List<Integer>> combinationSum2(int[] candidates, int target) {
-        List<List<Integer>> ans = new ArrayList<>();
         if (candidates == null || candidates.length == 0) {
-            return ans;
+            return new ArrayList<>();
         }
+        List<List<Integer>> res = new ArrayList<>();
         Arrays.sort(candidates);
-        backtrack(ans, candidates, target, new ArrayList<>(), 0);
-        return ans;
+        backtrack(candidates, 0, target, new ArrayList<>(), res);
+        return res;
     }
 
-    private void backtrack(List<List<Integer>> ans, int[] candidates, int target, ArrayList<Integer> temp, int start) {
+    private void backtrack(int[] candidates, int index, int target, List<Integer> list, List<List<Integer>> res) {
+        // 不能有这个限制
+//        if (index == candidates.length) {
+//            return;
+//        }
         if (target < 0) {
             return;
         }
-
         if (target == 0) {
-            ans.add(new ArrayList<>(temp));
+            res.add(new ArrayList<>(list));
             return;
         }
-        HashSet<Integer> visited = new HashSet<>();
-
-        for (int i = start; i < candidates.length; i++) {
-            if (visited.contains(candidates[i])) {
+        HashSet<Integer> set = new HashSet<>();
+        for (int i = index; i < candidates.length; i++) {
+            if (set.contains(candidates[i])) {
                 continue;
             }
-            visited.add(candidates[i]);
-            temp.add(candidates[i]);
-            backtrack(ans, candidates, target - candidates[i], temp, i + 1);
-            temp.remove(temp.size() - 1);
+            set.add(candidates[i]);
+            list.add(candidates[i]);
+            backtrack(candidates, i + 1, target - candidates[i], list, res);
+            list.remove(list.size() - 1);
         }
     }
 }

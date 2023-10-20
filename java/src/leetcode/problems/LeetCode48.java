@@ -22,6 +22,5 @@ public class LeetCode48 {
                 matrix[j][i] = t;
             }
         }
-
     }
 }

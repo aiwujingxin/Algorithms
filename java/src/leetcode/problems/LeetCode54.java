@@ -4,57 +4,51 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @author jingxinwu
- * @date 2021-06-24 12:31 上午
+ * @author wujingxinit@outlook.com
+ * @date 2023/10/20 16:08
  */
 public class LeetCode54 {
+
     public static void main(String[] args) {
         System.out.println(new LeetCode54().spiralOrder(new int[][]{{1, 2, 3, 4}, {5, 6, 7, 8}, {9, 10, 11, 12}}));
+        System.out.println(new LeetCode54().spiralOrder(new int[][]{{1, 2, 3}, {4, 5, 6}, {7, 8, 9}}));
     }
 
     public List<Integer> spiralOrder(int[][] matrix) {
-
-        List<Integer> res = new ArrayList<>();
         if (matrix == null || matrix.length == 0) {
-            return res;
+            return new ArrayList<>();
         }
 
-        int rowStart = 0;
-        int rowEnd = matrix.length - 1;
-        int colStart = 0;
-        int colEnd = matrix[0].length - 1;
+        int row_start = 0;
+        int row_end = matrix.length - 1;
+        int col_start = 0;
+        int col_end = matrix[0].length - 1;
+        List<Integer> res = new ArrayList<>();
+        while (row_start <= row_end && col_start <= col_end) {
 
-        while (rowStart <= rowEnd && colStart <= colEnd) {
-
-            for (int j = colStart; j <= colEnd; j++) {
-                res.add(matrix[rowStart][j]);
+            for (int i = col_start; i <= col_end; i++) {
+                res.add(matrix[row_start][i]);
             }
-            rowStart++; //删掉一行
 
-            for (int j = rowStart; j <= rowEnd; j++) {
-                res.add(matrix[j][colEnd]);
+            row_start++;
+            for (int i = row_start; i <= row_end; i++) {
+                res.add(matrix[i][col_end]);
             }
-            colEnd--; //删掉一列
+            col_end--;
 
-            //[[1,2,3,4],[5,6,7,8],[9,10,11,12]]
-            //必须要有row和col的时候才可以遍历
-            if (rowStart <= rowEnd) {// col还有，但是row没有了：rowStart++ 改变了row
-
-                for (int j = colEnd; j >= colStart; j--) {
-                    res.add(matrix[rowEnd][j]);
+            if (row_start <= row_end && col_start <= col_end) {
+                for (int i = col_end; i >= col_start; i--) {
+                    res.add(matrix[row_end][i]);
                 }
             }
-            rowEnd--;
-
-            //[[7],[9],[6]]
-            if (colStart <= colEnd) {
-                for (int j = rowEnd; j >= rowStart; j--) {
-                    res.add(matrix[j][colStart]);
+            row_end--;
+            if (row_start <= row_end && col_start <= col_end) {
+                for (int i = row_end; i >= row_start; i--) {
+                    res.add(matrix[i][col_start]);
                 }
             }
-            colStart++;
+            col_start++;
         }
-
         return res;
     }
 }
