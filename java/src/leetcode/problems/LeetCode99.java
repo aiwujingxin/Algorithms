@@ -1,38 +1,44 @@
 package leetcode.problems;
 
+
 import common.TreeNode;
 
 /**
- * @author jingxinwu
- * @date 2021-07-05 11:58 下午
+ * @author wujingxinit@outlook.com
+ * @date 2023/10/21 12:21
  */
 public class LeetCode99 {
 
-    //https://leetcode.com/problems/recover-binary-search-tree/discuss/1274892/Java-or-Easy-Inorder-Traversal-Soln-or-Faster-than-100-or-Explained
-    TreeNode pre, first, second = null;
+    TreeNode large = null;
+    TreeNode secondLarge = null;
+    TreeNode pre = null;
 
     public void recoverTree(TreeNode root) {
+        dfs(root);
+        int v = large.val;
+        large.val = secondLarge.val;
+        secondLarge.val = v;
+    }
+
+    private void dfs(TreeNode root) {
         if (root == null) {
             return;
         }
-        dfs(root);
-        int temp = first.val;
-        first.val = second.val;
-        second.val = temp;
-    }
-
-    private void dfs(TreeNode cur) {
-        if (cur == null) {
-            return;
-        }
-        dfs(cur.left);
-        if (pre != null && pre.val > cur.val) {
-            if (first == null) {
-                first = pre;
+        dfs(root.left);
+        if (pre != null) {
+            // 逆序
+            if (root.val < pre.val) {
+                if (large == null) {
+                    large = pre;
+                    secondLarge = root;
+                } else {
+                    if (root.val < secondLarge.val) {
+                        secondLarge = root;
+                    }
+                }
             }
-            second = cur;
         }
-        pre = cur;
-        dfs(cur.right);
+        pre = root;
+        dfs(root.right);
     }
 }

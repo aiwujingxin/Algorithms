@@ -3,8 +3,8 @@ package leetcode.problems;
 import common.TreeNode;
 
 /**
- * @author jingxinwu
- * @date 2023.09.19 16:33
+ * @author wujingxinit@outlook.com
+ * @date 2023/10/21 13:18
  */
 public class LeetCode98 {
 
@@ -12,13 +12,14 @@ public class LeetCode98 {
         if (root == null) {
             return true;
         }
-        return isValidBST(root, null, null);
+        return isValidBST(root, null, null) && isValidBST(root, null, null);
     }
 
     public boolean isValidBST(TreeNode root, TreeNode min, TreeNode max) {
         if (root == null) {
             return true;
         }
+
         if (min != null && root.val <= min.val) {
             return false;
         }

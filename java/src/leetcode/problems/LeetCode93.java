@@ -9,30 +9,36 @@ import java.util.List;
  */
 public class LeetCode93 {
     public List<String> restoreIpAddresses(String s) {
+        if (s == null || s.isEmpty() || s.length() > 15) {
+            return new ArrayList<>();
+        }
         List<String> res = new ArrayList<>();
-        helper(s, res, 0, 4, "");
+        backtrack(s, 0, res, new ArrayList<>());
         return res;
     }
 
-    public void helper(String s, List<String> res, int index, int remain, String cur) {
-        if (remain == 0) {
-            if (index == s.length()) {
-                res.add(cur);
+    private void backtrack(String s, int index, List<String> res, List<String> list) {
+        if (index == s.length() && list.size() == 4) {
+            StringBuilder sb = new StringBuilder();
+            for (int i = 0; i < list.size(); i++) {
+                sb.append(list.get(i));
+                if (i != list.size() - 1) {
+                    sb.append(".");
+                }
             }
+            res.add(sb.toString());
             return;
         }
-
-        for (int i = 1; i <= 3; i++) {
-            if (index + i > s.length()) {
-                break;
+        for (int j = index; j <= Math.min(index + 3, s.length() - 1); j++) {
+            String ip = s.substring(index, j + 1);
+            if (ip.length() > 1 && ip.charAt(0) == '0') {
+                continue;
             }
-            if (i != 1 && s.charAt(index) == '0') {
-                break;
-            }
-            String temp = s.substring(index, index + i);
-            int val = Integer.parseInt(temp);
-            if (val <= 255) {
-                helper(s, res, index + i, remain - 1, cur + temp + (remain == 1 ? "" : "."));
+            int iip = Integer.parseInt(ip);
+            if (iip >= 0 && iip <= 255) {
+                list.add(ip);
+                backtrack(s, j + 1, res, list);
+                list.remove(list.size() - 1);
             }
         }
     }
