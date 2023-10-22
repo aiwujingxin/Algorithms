@@ -3,6 +3,7 @@ package leetcode.problems;
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/9/3 22:10
+ * @description 贝祖定理
  */
 public class LeetCode365_math {
 
