@@ -12,9 +12,9 @@ import java.util.Set;
 public class LeetCode365_dfs {
 
     public boolean canMeasureWater(int x, int y, int z) {
-        Deque<int[]> stack = new LinkedList<int[]>();
+        Deque<int[]> stack = new LinkedList<>();
         stack.push(new int[]{0, 0});
-        Set<Long> seen = new HashSet<Long>();
+        Set<Long> seen = new HashSet<>();
         while (!stack.isEmpty()) {
             if (seen.contains(hash(stack.peek()))) {
                 stack.pop();
