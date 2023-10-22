@@ -1,17 +1,10 @@
 package leetcode.lists.offer;
 
-import java.util.*;
-
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/9/14 01:34
  */
 public class Offer51 {
-
-    public static void main(String[] args) {
-        System.out.println(new Offer51().reversePairs(new int[]{7, 5, 6, 4}));
-        System.out.println(Arrays.toString(new Offer51().mergeSort(new int[]{7, 5, 6, 4})));
-    }
 
     public int[] mergeSort(int[] nums) {
         this.nums = nums;
@@ -19,7 +12,6 @@ public class Offer51 {
         mergeSort(nums, 0, nums.length - 1);
         return nums;
     }
-
 
     int res = 0;
     int[] nums;
@@ -56,7 +48,7 @@ public class Offer51 {
             } else if (nums[i] > nums[j]) {
                 temp[k] = nums[j];
                 j++;
-                res = res + mid + 1 - i;
+                res += mid - i + 1;
             }
             k++;
         }
