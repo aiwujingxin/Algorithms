@@ -13,35 +13,35 @@ public class QuickSelect implements TopK {
         if (nums == null || nums.length == 0) {
             return 0;
         }
-        int low = 0;
-        int hi = nums.length - 1;
-        while (low <= hi) {
-            int pos = partition(nums, low, hi);
-            if (pos + 1 == k) {
-                return nums[pos];
-            } else if (pos + 1 > k) {
-                hi = pos - 1;
+        int left = 0;
+        int right = nums.length - 1;
+        while (left <= right) {
+            int index = partition(nums, left, right);
+            if (index + 1 == k) {
+                return nums[index];
+            } else if (index + 1 > k) {
+                right = index - 1;
             } else {
-                low = pos + 1;
+                left = index + 1;
             }
         }
         return -1;
     }
 
-    private int partition(int[] nums, int low, int hi) {
-        int pi = nums[low];
-        while (low < hi) {
-            while (low < hi && nums[hi] <= pi) {
-                hi--;
+    private int partition(int[] nums, int i, int j) {
+        int pi = nums[i];
+        while (i < j) {
+            while (i < j && nums[j] <= pi) {
+                j--;
             }
-            nums[low] = nums[hi];
-            while (low < hi && nums[low] >= pi) {
-                low++;
+            nums[i] = nums[j];
+            while (i < j && nums[i] >= pi) {
+                i++;
             }
-            nums[hi] = nums[low];
+            nums[j] = nums[i];
         }
-        nums[low] = pi;
-        return low;
+        nums[i] = pi;
+        return i;
     }
 
     @Override
@@ -49,34 +49,34 @@ public class QuickSelect implements TopK {
         if (nums == null || nums.length == 0) {
             return 0;
         }
-        int low = 0;
-        int hi = nums.length - 1;
-        while (low <= hi) {
-            int pos = spart(nums, low, hi);
+        int left = 0;
+        int right = nums.length - 1;
+        while (left <= right) {
+            int pos = rpart(nums, left, right);
             if (pos + 1 == k) {
                 return pos;
             } else if (pos + 1 > k) {
-                hi = pos - 1;
+                right = pos - 1;
             } else {
-                low = pos + 1;
+                left = pos + 1;
             }
         }
         return -1;
     }
 
-    private int spart(int[] nums, int low, int hi) {
-        int pi = nums[low];
-        while (low < hi) {
-            while (low < hi && nums[hi] >= pi) {
-                hi--;
+    private int rpart(int[] nums, int i, int j) {
+        int pi = nums[i];
+        while (i < j) {
+            while (i < j && nums[j] >= pi) {
+                j--;
             }
-            nums[low] = nums[hi];
-            while (low < hi && nums[low] <= pi) {
-                low++;
+            nums[i] = nums[j];
+            while (i < j && nums[i] <= pi) {
+                i++;
             }
-            nums[hi] = nums[low];
+            nums[j] = nums[i];
         }
-        nums[low] = pi;
-        return low;
+        nums[i] = pi;
+        return i;
     }
 }
