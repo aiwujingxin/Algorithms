@@ -10,11 +10,10 @@ import java.util.List;
  */
 public class LeetCode18 {
 
-
     public List<List<Integer>> fourSum(int[] nums, int target) {
-        List<List<Integer>> quadruplets = new ArrayList<>();
+        List<List<Integer>> res = new ArrayList<>();
         if (nums == null || nums.length < 4) {
-            return quadruplets;
+            return res;
         }
         Arrays.sort(nums);
         int length = nums.length;
@@ -42,7 +41,12 @@ public class LeetCode18 {
                 while (left < right) {
                     int sum = nums[i] + nums[j] + nums[left] + nums[right];
                     if (sum == target) {
-                        quadruplets.add(Arrays.asList(nums[i], nums[j], nums[left], nums[right]));
+                        List<Integer> list = new ArrayList<>();
+                        list.add(nums[i]);
+                        list.add(nums[j]);
+                        list.add(nums[left]);
+                        list.add(nums[right]);
+                        res.add(list);
                         while (left < right && nums[left] == nums[left + 1]) {
                             left++;
                         }
@@ -59,7 +63,7 @@ public class LeetCode18 {
                 }
             }
         }
-        return quadruplets;
+        return res;
 
     }
 }

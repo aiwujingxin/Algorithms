@@ -10,12 +10,6 @@ import java.util.List;
  */
 public class LeetCode57 {
 
-    public static void main(String[] args) {
-        System.out.println(Arrays.deepToString(new LeetCode57().insert(new int[][]{{1, 3}, {6, 9}}, new int[]{2, 5})));
-        System.out.println(Arrays.deepToString(new LeetCode57().insert(new int[][]{{1, 5}}, new int[]{6, 8})));
-        System.out.println(Arrays.deepToString(new LeetCode57().insert(new int[][]{{3, 5}}, new int[]{1, 2})));
-    }
-
     public int[][] insert(int[][] intervals, int[] newInterval) {
         if (intervals == null || intervals.length == 0) {
             return new int[][]{newInterval};

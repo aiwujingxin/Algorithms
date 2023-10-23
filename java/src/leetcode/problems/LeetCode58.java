@@ -1,22 +1,22 @@
 package leetcode.problems;
 
 /**
- * @author jingxinwu
- * @date 2021-11-18 11:00 下午
+ * @author wujingxinit@outlook.com
+ * @date 2023/10/23 22:22
  */
 public class LeetCode58 {
 
     public int lengthOfLastWord(String s) {
-        int len = s.length(), lastLength = 0;
-        while (len > 0 && s.charAt(len - 1) == ' ') {
-            len--;
+        int index = s.length();
+        int res = 0;
+        while (index > 0 && s.charAt(index - 1) == ' ') {
+            index--;
         }
-
-        while (len > 0 && s.charAt(len - 1) != ' ') {
-            lastLength++;
-            len--;
+        while (index > 0 && s.charAt(index - 1) != ' ') {
+            res++;
+            index--;
         }
-
-        return lastLength;
+        return res;
     }
 }
+

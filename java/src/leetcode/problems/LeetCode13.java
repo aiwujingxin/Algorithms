@@ -1,31 +1,35 @@
 package leetcode.problems;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * @author wujingxinit@outlook.com
- * @date 2022/9/21 01:39
+ * @date 2023/10/23 21:41
  */
 public class LeetCode13 {
+
+    Map<Character, Integer> symbolValues = new HashMap<>() {{
+        put('I', 1);
+        put('V', 5);
+        put('X', 10);
+        put('L', 50);
+        put('C', 100);
+        put('D', 500);
+        put('M', 1000);
+    }};
+
     public int romanToInt(String s) {
         int ans = 0;
-
-        for (int i = s.length() - 1; i >= 0; i--) {
-            char ch = s.charAt(i);
-            if (ch == 'M') ans += 1000;
-            else if (ch == 'D') ans += 500;
-            else if (ch == 'C') {
-                if (i != s.length() - 1 && (s.charAt(i + 1) == 'D' || s.charAt(i + 1) == 'M')) ans -= 100;
-                else ans += 100;
-            } else if (ch == 'L') ans += 50;
-            else if (ch == 'X') {
-                if (i != s.length() - 1 && (s.charAt(i + 1) == 'L' || s.charAt(i + 1) == 'C')) ans -= 10;
-                else ans += 10;
-            } else if (ch == 'V') ans += 5;
-            else if (ch == 'I') {
-                if (i != s.length() - 1 && (s.charAt(i + 1) == 'V' || s.charAt(i + 1) == 'X')) ans -= 1;
-                else ans += 1;
+        int n = s.length();
+        for (int i = 0; i < n; ++i) {
+            int value = symbolValues.get(s.charAt(i));
+            if (i < n - 1 && value < symbolValues.get(s.charAt(i + 1))) {
+                ans -= value;
+            } else {
+                ans += value;
             }
         }
-
         return ans;
     }
 }

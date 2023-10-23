@@ -1,61 +1,45 @@
 package leetcode.problems;
 
-import java.util.Arrays;
-
 /**
- * @author jingxinwu
- * @date 2021-06-24 11:38 下午
+ * @author wujingxinit@outlook.com
+ * @date 2023/10/23 22:24
  */
 public class LeetCode59 {
 
-    public static void main(String[] args) {
-        LeetCode59 leetCode59 = new LeetCode59();
-        System.out.println(Arrays.deepToString(leetCode59.generateMatrix(1)));
-    }
-
     public int[][] generateMatrix(int n) {
-        if (n == 0) {
-            return new int[0][0];
-        }
         int[][] matrix = new int[n][n];
-
-        int rowStart = 0;
-        int rowEnd = matrix.length - 1;//行
-        int colStart = 0;
-        int colEnd = matrix[0].length - 1;//列
-
-        int count = 1;
-        while (rowStart <= rowEnd && colStart <= colEnd) {
-
-            for (int j = colStart; j <= colEnd; j++) {
-                matrix[rowStart][j] = count;
-                count++;
+        int num = 0;
+        int row_start = 0;
+        int row_end = matrix.length - 1;
+        int col_start = 0;
+        int col_end = matrix[0].length - 1;
+        while (row_start <= row_end && col_start <= col_end) {
+            for (int i = col_start; i <= col_end; i++) {
+                matrix[row_start][i] = num;
+                num++;
             }
-            rowStart++;
-
-            for (int j = rowStart; j <= rowEnd; j++) {
-                matrix[j][colEnd] = count;
-                count++;
+            row_start++;
+            for (int i = row_start; i <= row_end; i++) {
+                matrix[i][col_end] = num;
+                num++;
             }
-            colEnd--;
+            col_end--;
 
-            if (rowStart <= rowEnd) {
-                for (int j = colEnd; j >= colStart; j--) {
-                    matrix[rowEnd][j] = count;
-                    count++;
+            if (row_start <= row_end && col_start <= col_end) {
+                for (int i = col_end; i >= col_start; i--) {
+                    matrix[row_end][i] = num;
+                    num++;
                 }
             }
-            rowEnd--;
-
-            if (colStart <= colEnd) {
-                for (int j = rowEnd; j >= rowStart; j--) {
-                    matrix[j][colStart] = count;
-                    count++;
+            row_end--;
+            if (row_start <= row_end && col_start <= col_end) {
+                for (int i = row_end; i >= row_start; i--) {
+                    matrix[i][col_start] = num;
+                    num++;
                 }
             }
-            colStart++;
+            col_start++;
         }
         return matrix;
     }
-
 }
