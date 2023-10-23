@@ -4,12 +4,7 @@ package leetcode.problems;
  * @author wujingxinit@outlook.com
  * @date 2023/10/19 18:11
  */
-public class LeetCode45_greedy {
-    public static void main(String[] args) {
-        System.out.println(new LeetCode45_greedy().jump(new int[]{2, 3, 1, 1, 4}));
-        System.out.println(new LeetCode45_greedy().jump(new int[]{2, 3, 0, 1, 4}));
-    }
-
+public class LeetCode45 {
     public int jump(int[] nums) {
         if (nums == null || nums.length == 0) {
             return 0;

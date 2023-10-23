@@ -8,17 +8,6 @@ import java.util.*;
  */
 public class LeetCode140_dp {
 
-    public static void main(String[] args) {
-        List<String> list = new ArrayList<>();
-        list.add("cat");
-        list.add("cats");
-        list.add("and");
-        list.add("sand");
-        list.add("dog");
-        System.out.println(new LeetCode140_dp().wordBreak("catsanddog", list));
-    }
-
-
     public List<String> wordBreak(String s, List<String> wordDict) {
         List<String> rst = new ArrayList<>();
         if (s == null || s.isEmpty() || wordDict == null) {

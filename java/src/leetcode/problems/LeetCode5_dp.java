@@ -4,7 +4,7 @@ package leetcode.problems;
  * @author wujingxinit@outlook.com
  * @date 2023/10/18 11:44
  */
-public class LeetCode5_dp_2d {
+public class LeetCode5_dp {
 
     public String longestPalindrome(String s) {
         if (s == null || s.isEmpty()) {

@@ -5,11 +5,6 @@ package leetcode.problems;
  * @date 2022/7/9 11:05
  */
 public class LeetCode188_dfs {
-
-    public static void main(String[] args) {
-        System.out.println(new LeetCode188_dfs().maxProfit(2, new int[]{3, 2, 6, 5, 0, 3}));
-    }
-
     //https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iv/discuss/1007170/Java-Recursive-greater-Memoization-greater-3D-Bottom-Up-greater-2D-Bottom-Up
 
     public int maxProfit(int k, int[] prices) {

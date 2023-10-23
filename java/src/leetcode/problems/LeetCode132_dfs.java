@@ -5,7 +5,7 @@ import java.util.Arrays;
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/9/28 16:28
- * @see LeetCode5_center
+ * @see LeetCode5
  * @see LeetCode131
  * @see LeetCode139_dfs
  * @see LeetCode140_dfs

@@ -5,7 +5,7 @@ package leetcode.problems;
  * @date 2022/9/4 16:11
  */
 
-public class LeetCode85_dp {
+public class LeetCode85 {
 
     //https://leetcode.com/problems/maximal-rectangle/discuss/403093/Java-Simple-DP-Solution-with-state-table
     public int maximalRectangle(char[][] matrix) {

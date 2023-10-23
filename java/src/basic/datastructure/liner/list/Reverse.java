@@ -9,7 +9,7 @@ import leetcode.problems.*;
  * @see LeetCode24 24. 两两交换链表中的节点
  * @see LeetCode25 25. K 个一组翻转链表
  * @see LeetCode92 92. 反转链表 II
- * @see LeetCode143_mid 143. 重排链表
+ * @see LeetCode143 143. 重排链表
  */
 public interface Reverse {
 }

@@ -9,7 +9,7 @@ import java.util.List;
  * @author wujingxinit@outlook.com
  * @date 2023/3/20 10:54
  */
-public class LeetCode113_backtrack {
+public class LeetCode113 {
 
     public List<List<Integer>> pathSum(TreeNode root, int targetSum) {
         List<List<Integer>> res = new ArrayList<>();

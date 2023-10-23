@@ -10,33 +10,13 @@ public class LeetCode153 {
         int left = 0;
         int right = nums.length - 1;
         while (left < right) {
-            int pivot = left + (right - left) / 2;
-            if (nums[pivot] < nums[right]) {
-                right = pivot;
+            int mid = left + (right - left) / 2;
+            if (nums[mid] < nums[right]) {
+                right = mid;
             } else {
-                left = pivot + 1;
+                left = mid + 1;
             }
         }
         return nums[left];
-    }
-
-
-    public int findMin2(int[] nums) {
-        if (nums == null || nums.length == 0) {
-            return -1;
-        }
-
-        int left = 0;
-        int right = nums.length - 1;
-
-        while (left + 1 < right) {
-            int mid = left + (right - left) / 2;
-            if (nums[mid] > nums[right]) {
-                right = mid;
-            } else if (nums[mid] < nums[right]) {
-                left = mid;
-            }
-        }
-        return Math.min(nums[left], nums[right]);
     }
 }

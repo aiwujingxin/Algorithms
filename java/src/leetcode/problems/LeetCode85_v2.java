@@ -17,7 +17,6 @@ public class LeetCode85_v2 {
                     heights[col] = 0;
                 }
             }
-            //调用上一题的解法，更新函数
             maxArea = Math.max(maxArea, new LeetCode84().largestRectangleArea(heights));
         }
         return maxArea;

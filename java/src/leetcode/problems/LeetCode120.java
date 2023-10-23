@@ -9,14 +9,30 @@ import java.util.List;
 public class LeetCode120 {
 
     public int minimumTotal(List<List<Integer>> triangle) {
-        for (int i = triangle.size() - 2; i >= 0; i--) {
-            List<Integer> cur = triangle.get(i);
-            for (int j = 0; j <= i; j++) {
-                cur.set(j, Math.min(triangle.get(i + 1).get(j + 1),
-                        triangle.get(i + 1).get(j)) + cur.get(j));
+        if (triangle == null || triangle.isEmpty()) {
+            return 0;
+        }
+        int n = triangle.get(triangle.size() - 1).size();
+        int[] dp = new int[n];
+        dp[0] = triangle.get(0).get(0);
+        for (int index = 1; index < triangle.size(); index++) {
+            List<Integer> level = triangle.get(index);
+            for (int j = level.size() - 1; j >= 0; j--) {
+                if (j == level.size() - 1) {
+                    dp[j] = dp[j - 1];
+                } else if (j == 0) {
+                    dp[j] = dp[j];
+                } else {
+                    dp[j] = Math.min(dp[j], dp[j - 1]);
+                }
+                dp[j] += level.get(j);
             }
         }
-        return triangle.get(0).get(0);
+        int min = Integer.MAX_VALUE;
+        for (int j : dp) {
+            min = Math.min(min, j);
+        }
+        return min;
     }
 
 }

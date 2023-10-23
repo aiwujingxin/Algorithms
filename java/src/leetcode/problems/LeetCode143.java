@@ -6,7 +6,7 @@ import common.ListNode;
  * @author jingxinwu
  * @date 2021-08-01 12:34 下午
  */
-public class LeetCode143_mid {
+public class LeetCode143 {
 
 
     public void reorderList(ListNode head) {

@@ -4,7 +4,7 @@ package leetcode.problems;
  * @author wujingxinit@outlook.com
  * @date 2022/9/4 16:32
  */
-public class LeetCode96_dp {
+public class LeetCode96 {
 
     public int numTrees(int n) {
         int[] G = new int[n + 1];

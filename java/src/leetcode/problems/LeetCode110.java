@@ -6,7 +6,7 @@ import common.TreeNode;
  * @author wujingxinit@outlook.com
  * @date 2023/7/20 22:00
  */
-public class LeetCode110_v1 {
+public class LeetCode110 {
     public boolean isBalanced(TreeNode root) {
         if (root == null) {
             return true;
