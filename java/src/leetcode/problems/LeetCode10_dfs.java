@@ -2,33 +2,47 @@ package leetcode.problems;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2022/12/13 11:56
+ * @date 2022/12/13 11:46
  * <a href="https://leetcode.cn/problems/regular-expression-matching/solution/c-hui-su-fa-dfsji-yi-hua-by-randy_waler-ws8t/">...</a>
  */
-
-
 public class LeetCode10_dfs {
+    Boolean[][] memo; // 0 indicates haven't found, -1 is not possible, 1 is possible!
 
     public boolean isMatch(String s, String p) {
-        return dfs(s, 0, p, 0);
+        memo = new Boolean[s.length() + 1][p.length() + 1];
+        return dfs(s, p, 0, 0);
     }
 
-    public boolean dfs(String s, int si, String p, int pi) {
+    public boolean dfs(String s, String p, int si, int pi) {
+        if (memo[si][pi] != null) {
+            return memo[si][pi];
+        }
+        boolean possible;
         if (si == s.length()) {
-            return pi == p.length() ||
-                    (pi + 1 < p.length() && p.charAt(pi + 1) == '*' && dfs(s, si, p, pi + 2));
-        } else if (pi == p.length()) {
+            possible = pi == p.length() || (pi + 1 < p.length() && p.charAt(pi + 1) == '*' && dfs(s, p, si, pi + 2));
+            memo[si][pi] = possible;
+            return possible;
+        }
+        if (pi == p.length()) {
+            memo[si][pi] = false;
             return false;
         }
+        boolean flag = pi + 1 < p.length() && p.charAt(pi + 1) == '*';
         if (s.charAt(si) == p.charAt(pi) || (p.charAt(pi) == '.')) {
-            if (pi + 1 < p.length() && p.charAt(pi + 1) == '*') {
-                return dfs(s, si + 1, p, pi) || dfs(s, si + 1, p, pi + 2) || dfs(s, si, p, pi + 2);
-            } else {
-                return dfs(s, si + 1, p, pi + 1);
+            if (flag) {
+                possible = dfs(s, p, si + 1, pi) || dfs(s, p, si + 1, pi + 2) || dfs(s, p, si, pi + 2);
+                memo[si][pi] = possible;
+                return possible;
             }
+
+            possible = dfs(s, p, si + 1, pi + 1);
+            memo[si][pi] = possible;
+            return possible;
         } else {
-            if (pi + 1 < p.length() && p.charAt(pi + 1) == '*') {
-                return dfs(s, si, p, pi + 2);
+            if (flag) {
+                possible = dfs(s, p, si, pi + 2);
+                memo[si][pi] = possible;
+                return possible;
             }
         }
         return false;
