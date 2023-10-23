@@ -2,8 +2,7 @@ package leetcode.problems;
 
 import common.TreeNode;
 
-import java.util.Deque;
-import java.util.LinkedList;
+import java.util.Stack;
 
 /**
  * @author wujingxinit@outlook.com
@@ -11,18 +10,18 @@ import java.util.LinkedList;
  */
 public class LeetCode98_stack {
     public boolean isValidBST(TreeNode root) {
-        Deque<TreeNode> stack = new LinkedList<>();
-        double inorder = -Double.MAX_VALUE;
+        Stack<TreeNode> stack = new Stack<>();
+        int pre = Integer.MIN_VALUE;
         while (!stack.isEmpty() || root != null) {
             while (root != null) {
                 stack.push(root);
                 root = root.left;
             }
             root = stack.pop();
-            if (root.val <= inorder) {
+            if (root.val <= pre) {
                 return false;
             }
-            inorder = root.val;
+            pre = root.val;
             root = root.right;
         }
         return true;

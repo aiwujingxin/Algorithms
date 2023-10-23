@@ -7,7 +7,7 @@ package leetcode.problems;
 public class LeetCode44 {
 
     //https://leetcode.com/problems/wildcard-matching/discuss/1662953/DFS-without-memo
-    Boolean[][] memo; // 0 indicates haven't found, -1 is not possible, 1 is possible!
+    Boolean[][] memo;
 
     public boolean isMatch(String s, String p) {
         memo = new Boolean[s.length() + 1][p.length() + 1];

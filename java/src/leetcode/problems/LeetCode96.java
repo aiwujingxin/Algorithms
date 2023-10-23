@@ -17,4 +17,20 @@ public class LeetCode96 {
         }
         return G[n];
     }
+
+    public int numTrees_dfs(int n) {
+        if (n == 0) {
+            return 1;
+        }
+        if (n == 1) {
+            return 1;
+        }
+        int res = 0;
+        for (int i = 0; i < n; i++) {
+            int left = numTrees_dfs(i);
+            int right = numTrees_dfs(n - i - 1);
+            res += left * right;
+        }
+        return res;
+    }
 }

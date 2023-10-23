@@ -8,7 +8,7 @@ import java.util.PriorityQueue;
  * @author wujingxinit@outlook.com
  * @date 2023/9/9 01:24
  */
-public class LCP56_dij {
+public class LCP56 {
 
     static int[][] dirs = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}};
 

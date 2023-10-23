@@ -12,7 +12,6 @@ public class LeetCode10_dp {
         if (p == null || p.isEmpty() || s == null || s.isEmpty()) {
             return true;
         }
-
         boolean[][] dp = new boolean[s.length() + 1][p.length() + 1];
         dp[0][0] = true;
         for (int j = 2; j <= p.length(); j++) {

@@ -4,7 +4,7 @@ package leetcode.problems;
  * @author wujingxinit@outlook.com
  * @date 2023/10/20 23:30
  * @see LeetCode84
- * @see LeetCode85_v2
+ * @see LeetCode85
  */
 public class LeetCode42 {
 

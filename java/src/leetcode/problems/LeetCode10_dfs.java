@@ -6,7 +6,7 @@ package leetcode.problems;
  * <a href="https://leetcode.cn/problems/regular-expression-matching/solution/c-hui-su-fa-dfsji-yi-hua-by-randy_waler-ws8t/">...</a>
  */
 public class LeetCode10_dfs {
-    Boolean[][] memo; // 0 indicates haven't found, -1 is not possible, 1 is possible!
+    Boolean[][] memo;
 
     public boolean isMatch(String s, String p) {
         memo = new Boolean[s.length() + 1][p.length() + 1];

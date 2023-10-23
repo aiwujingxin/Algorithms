@@ -1,39 +1,23 @@
 package leetcode.problems;
 
-/**
- * @author wujingxinit@outlook.com
- * @date 2022/9/4 16:11
- */
-
 public class LeetCode85 {
 
-    //https://leetcode.com/problems/maximal-rectangle/discuss/403093/Java-Simple-DP-Solution-with-state-table
     public int maximalRectangle(char[][] matrix) {
         if (matrix.length == 0) {
             return 0;
         }
-        int row = matrix.length;
-        int col = matrix[0].length;
-        int[][] dp = new int[row][col];
+        int[] heights = new int[matrix[0].length];
         int maxArea = 0;
-        for (int i = 0; i < row; i++) {
-            for (int j = 0; j < col; j++) {
-                if (i == 0) {
-                    dp[i][j] = matrix[i][j] == '1' ? 1 : 0;
+        for (char[] chars : matrix) {
+            //遍历每一列，更新高度
+            for (int col = 0; col < matrix[0].length; col++) {
+                if (chars[col] == '1') {
+                    heights[col] += 1;
                 } else {
-                    dp[i][j] = matrix[i][j] == '1' ? (dp[i - 1][j] + 1) : 0;
-                }
-                int min = dp[i][j];
-                for (int k = j; k >= 0; k--) {
-                    if (min == 0) {
-                        break;
-                    }
-                    if (dp[i][k] < min) {
-                        min = dp[i][k];
-                    }
-                    maxArea = Math.max(maxArea, min * (j - k + 1));
+                    heights[col] = 0;
                 }
             }
+            maxArea = Math.max(maxArea, new LeetCode84().largestRectangleArea(heights));
         }
         return maxArea;
     }

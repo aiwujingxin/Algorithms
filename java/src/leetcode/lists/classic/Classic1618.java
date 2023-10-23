@@ -30,10 +30,6 @@ public class Classic1618 {
                 int altIndex = firstAlt * mainSize;
                 int altSize = countOfAlt == 0 ? 0 : remainingLength / countOfAlt;
                 if (matches(pattern, value, mainSize, altSize, altIndex)) {
-
-//                    System.out.println(value.substring(0, mainSize));
-//                    System.out.println(value.substring(mainSize, mainSize + altSize));
-
                     if (!value.substring(0, mainSize).equals(value.substring(mainSize, mainSize + altSize))) {
                         return true;
 

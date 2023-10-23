@@ -21,5 +21,4 @@ public class LeetCode80 {
         }
         return slow;
     }
-
 }
