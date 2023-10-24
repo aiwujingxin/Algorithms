@@ -9,8 +9,8 @@ import leetcode.problems.*;
  * @see LeetCode93 93. 复原 IP 地址
  * @see LeetCode439 439. 三元表达式解析器
  * @see LeetCode394 394. 字符串解码
- * @see LeetCode10_dfs 10. 正则表达式匹配
- * @see LeetCode44_dfs 44. 通配符匹配
+ * @see LeetCode10 10. 正则表达式匹配
+ * @see LeetCode44 44. 通配符匹配
  * @see LeetCode8 8. 字符串转换整数 (atoi)
  */
 public interface Parse {

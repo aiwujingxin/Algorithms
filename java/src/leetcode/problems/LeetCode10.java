@@ -5,7 +5,7 @@ package leetcode.problems;
  * @date 2023/10/24 11:46
  * <a href="https://leetcode.cn/problems/regular-expression-matching/solution/c-hui-su-fa-dfsji-yi-hua-by-randy_waler-ws8t/">...</a>
  */
-public class LeetCode10_dfs {
+public class LeetCode10 {
     Boolean[][] memo;
 
     public boolean isMatch(String s, String p) {

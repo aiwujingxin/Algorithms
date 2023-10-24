@@ -4,7 +4,7 @@ package leetcode.problems;
  * @author wujingxinit@outlook.com
  * @date 2023/10/23 16:38
  */
-public class LeetCode44_dfs {
+public class LeetCode44 {
 
     //https://leetcode.com/problems/wildcard-matching/discuss/1662953/DFS-without-memo
     Boolean[][] memo;
