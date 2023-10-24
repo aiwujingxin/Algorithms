@@ -8,7 +8,7 @@ import java.util.List;
  * @date 2023/10/15 14:48
  * @see LeetCode169_vote > [n/2]
  * @see LeetCode75
- * @see LeetCode264_dp
+ * @see LeetCode264
  */
 public class LeetCode229_vote {
 

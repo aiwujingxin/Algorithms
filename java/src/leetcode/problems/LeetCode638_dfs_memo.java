@@ -12,10 +12,10 @@ import java.util.List;
 public class LeetCode638_dfs_memo {
 
     public int shoppingOffers(List<Integer> price, List<List<Integer>> special, List<Integer> needs) {
-        return helper(price, special, needs, new HashMap<>());
+        return dfs(price, special, needs, new HashMap<>());
     }
 
-    public int helper(List<Integer> price, List<List<Integer>> special, List<Integer> needs, HashMap<List<Integer>, Integer> map) {
+    public int dfs(List<Integer> price, List<List<Integer>> special, List<Integer> needs, HashMap<List<Integer>, Integer> map) {
         if (map.containsKey(needs)) return map.get(needs);
         int minSum = 0;
         // 不使用special
@@ -35,7 +35,7 @@ public class LeetCode638_dfs_memo {
                 i++;
             }
             if (i == needs.size()) {
-                minSum = Math.min(minSum, spe.get(i) + helper(price, special, currNeeds, map));
+                minSum = Math.min(minSum, spe.get(i) + dfs(price, special, currNeeds, map));
             }
         }
         map.put(needs, minSum);

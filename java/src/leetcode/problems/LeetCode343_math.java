@@ -4,7 +4,7 @@ package leetcode.problems;
  * @author wujingxinit@outlook.com
  * @date 2022/10/25 00:09
  */
-public class LeetCode343_fast {
+public class LeetCode343_math {
 
 
     public int integerBreak(int n) {

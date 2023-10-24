@@ -4,7 +4,7 @@ package leetcode.problems;
  * @author wujingxinit@outlook.com
  * @date 2022/9/29 14:02
  */
-public class LeetCode287_two_ponit {
+public class LeetCode287_two_point {
 
     public int findDuplicate(int[] nums) {
         int slow = 0, fast = 0;

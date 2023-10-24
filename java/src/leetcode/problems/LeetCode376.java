@@ -4,7 +4,7 @@ package leetcode.problems;
  * @author wujingxinit@outlook.com
  * @date 2022/10/22 11:24
  */
-public class LeetCode376_dp_2arr {
+public class LeetCode376 {
 
     public int wiggleMaxLength(int[] nums) {
         if (nums == null || nums.length == 0) {

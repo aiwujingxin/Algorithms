@@ -8,11 +8,6 @@ public class LeetCode1278_Recursion {
 
     //https://leetcode.com/problems/palindrome-partitioning-iii/discuss/441513/Java-Simple-Recursion-and-Memoization
 
-
-    public static void main(String[] args) {
-        System.out.println(new LeetCode1278_Recursion().palindromePartition("aabbc", 3));
-    }
-
     public static int divide(String s, int[][][] dp, int k, int start, int end) {
 
         if (dp[start][end][k] != -1) {

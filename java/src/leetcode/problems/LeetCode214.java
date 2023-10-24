@@ -2,7 +2,7 @@ package leetcode.problems;
 
 import basic.datastructure.string.search.*;
 
-public class LeetCode214_kmp {
+public class LeetCode214 {
 
     //https://leetcode.cn/problems/shortest-palindrome/solution/tu-jie-kmpsuan-fa-by-yangbingjie/
 

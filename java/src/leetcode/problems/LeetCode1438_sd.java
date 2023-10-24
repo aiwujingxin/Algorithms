@@ -6,7 +6,7 @@ import java.util.TreeMap;
  * @author wujingxinit@outlook.com
  * @date 2023/5/31 23:15
  */
-public class LeetCode1438_sd_treemap {
+public class LeetCode1438_sd {
 
     public int longestSubarray(int[] nums, int limit) {
         TreeMap<Integer, Integer> map = new TreeMap<>();

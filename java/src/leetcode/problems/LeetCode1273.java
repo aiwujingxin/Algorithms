@@ -10,17 +10,6 @@ import java.util.List;
  */
 public class LeetCode1273 {
 
-    public void dfs(int u, List<List<Integer>> edges, int[] value, int[] node_cnt) {
-        for (int v : edges.get(u)) {
-            dfs(v, edges, value, node_cnt);
-            value[u] += value[v];
-            node_cnt[u] += node_cnt[v];
-        }
-        if (value[u] == 0) {
-            node_cnt[u] = 0;
-        }
-    }
-
     public int deleteTreeNodes(int nodes, int[] parent, int[] value) {
         List<List<Integer>> edges = new ArrayList<>();
         for (int i = 0; i < nodes; ++i) {
@@ -36,6 +25,18 @@ public class LeetCode1273 {
         dfs(0, edges, value, node_cnt);
         return node_cnt[0];
     }
+
+    public void dfs(int u, List<List<Integer>> edges, int[] value, int[] node_cnt) {
+        for (int v : edges.get(u)) {
+            dfs(v, edges, value, node_cnt);
+            value[u] += value[v];
+            node_cnt[u] += node_cnt[v];
+        }
+        if (value[u] == 0) {
+            node_cnt[u] = 0;
+        }
+    }
+
 }
 
 

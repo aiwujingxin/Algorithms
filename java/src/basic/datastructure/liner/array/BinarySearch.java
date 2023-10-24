@@ -14,7 +14,7 @@ import leetcode.problems.*;
  * <p>
  * find k
  * @see LeetCode1539 1539. 第 k 个缺失的正整数 https://leetcode.cn/problems/kth-missing-positive-number/?envType=study-plan&id=binary-search-beginner&plan=binary-search&plan_progress=s4b8jr2
- * @see LeetCode719_binarysearch 719. 找出第 K 小的数对距离 https://leetcode.cn/problems/find-k-th-smallest-pair-distance/
+ * @see LeetCode719_bs 719. 找出第 K 小的数对距离 https://leetcode.cn/problems/find-k-th-smallest-pair-distance/
  * find
  * @see LeetCode153  153. 寻找旋转排序数组中的最小值 https://leetcode.cn/problems/find-minimum-in-rotated-sorted-array/
  * @see LeetCode162 162. 寻找峰值 https://leetcode.cn/problems/find-peak-element/

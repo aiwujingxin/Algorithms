@@ -3,53 +3,32 @@ package leetcode.problems;
 import common.ListNode;
 
 /**
- * @author jingxinwu
- * @date 2021-12-12 11:55 PM
+ * @author wujingxinit@outlook.com
+ * @date 2023/9/18 23:31
  */
 public class LeetCode234 {
 
+    ListNode cur;
 
     public boolean isPalindrome(ListNode head) {
-
-        ListNode mid = getMid(head);
-        ListNode midNext = helper(mid.next);
-
-        while (midNext != null) {
-
-            if (head.val == midNext.val) {
-                head = head.next;
-                midNext = midNext.next;
-            } else {
-                return false;
-            }
-
+        if (head == null) {
+            return true;
         }
-        return true;
+        cur = head;
+        return check(head);
     }
 
-
-    private ListNode getMid(ListNode head) {
-        ListNode dummy = new ListNode(-1);
-        dummy.next = head;
-        ListNode s = dummy;
-        ListNode f = dummy;
-        while (f != null && f.next != null) {
-            s = s.next;
-            f = f.next.next;
+    private boolean check(ListNode head) {
+        if (head == null) {
+            return true;
         }
-        return s;
-    }
-
-    private ListNode helper(ListNode head) {
-
-        ListNode cur = head;
-        ListNode pre = null;
-        while (cur != null) {
-            ListNode temp = cur.next;
-            cur.next = pre;
-            pre = cur;
-            cur = temp;
+        if (!check(head.next)) {
+            return false;
         }
-        return pre;
+        if (head.val == cur.val) {
+            cur = cur.next;
+            return true;
+        }
+        return false;
     }
 }

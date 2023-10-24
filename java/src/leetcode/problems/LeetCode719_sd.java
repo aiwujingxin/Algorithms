@@ -6,7 +6,7 @@ import java.util.Arrays;
  * @author aiwujingxin@gmail.com
  * @date 2022/7/23 13:45
  */
-public class LeetCode719_slidingwindow {
+public class LeetCode719_sd {
 
 
     //https://leetcode.com/problems/find-k-th-smallest-pair-distance/discuss/1676700/Java-or-Two-Solution-or-Binary-Search-OR-Sliding-Window

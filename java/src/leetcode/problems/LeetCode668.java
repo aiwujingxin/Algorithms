@@ -4,7 +4,7 @@ package leetcode.problems;
  * @author aiwujingxin@gmail.com
  * @date 2022/7/23 15:06
  */
-public class LeetCode668_binarysearch_v2 {
+public class LeetCode668 {
 
     public int findKthNumber(int m, int n, int k) {
         int low = 1, high = m * n + 1;

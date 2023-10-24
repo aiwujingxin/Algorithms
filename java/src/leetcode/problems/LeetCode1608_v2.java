@@ -8,15 +8,6 @@ import java.util.Arrays;
  */
 public class LeetCode1608_v2 {
 
-    public static void main(String[] args) {
-        System.out.println(new LeetCode1608_v2().specialArray(new int[]{0, 4, 3, 0, 4}));
-        System.out.println(new LeetCode1608_v2().specialArray(new int[]{3, 5}));
-        System.out.println(new LeetCode1608_v2().specialArray(new int[]{3, 9, 7, 8, 3, 8, 6, 6}));
-        System.out.println(new LeetCode1608_v2().specialArray(new int[]{0}));
-        System.out.println(new LeetCode1608_v2().specialArray(new int[]{3}));
-        //3 3 6 6 7 8 8 9
-    }
-
     public int specialArray(int[] nums) {
         if (nums == null || nums.length == 0) {
             return 0;

@@ -8,7 +8,7 @@ import java.util.TreeMap;
  * @author aiwujingxin@gmail.com
  * @date 2022/7/24 22:44
  */
-public class LeetCode632_slidingwindow {
+public class LeetCode632_sd {
 
     //https://leetcode.com/problems/smallest-range-covering-elements-from-k-lists/discuss/334343/Java-sliding-window-solution
 

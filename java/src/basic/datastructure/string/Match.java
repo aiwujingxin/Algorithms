@@ -1,12 +1,12 @@
 package basic.datastructure.string;
 
-import leetcode.problems.LeetCode214_kmp;
+import leetcode.problems.LeetCode214;
 
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/8/31 14:21
  * @see leetcode.lists.classic.Classic1618
- * @see LeetCode214_kmp 214. 最短回文串
+ * @see LeetCode214 214. 最短回文串
  */
 public interface Match {
 

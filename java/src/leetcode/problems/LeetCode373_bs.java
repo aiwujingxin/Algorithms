@@ -8,7 +8,7 @@ import java.util.List;
  * @author aiwujingxin@gmail.com
  * @date 2022/7/23 14:16
  */
-public class LeetCode373_binarysearch {
+public class LeetCode373_bs {
 
     public List<List<Integer>> kSmallestPairs(int[] nums1, int[] nums2, int k) {
         int m = nums1.length;

@@ -1,13 +1,13 @@
 package basic.datastructure.string.search;
 
 import basic.datastructure.string.*;
-import leetcode.problems.LeetCode214_kmp;
+import leetcode.problems.LeetCode214;
 import leetcode.problems.LeetCode28;
 
 /**
  * @author aiwujingxin@gmail.com
  * @date 2022/7/4 22:47
- * @see LeetCode214_kmp
+ * @see LeetCode214
  * @see LeetCode28
  */
 

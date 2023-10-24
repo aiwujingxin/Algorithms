@@ -6,12 +6,6 @@ package leetcode.problems;
  */
 public class LeetCode343_dp {
 
-    public static void main(String[] args) {
-        LeetCode343_dp leetCode343 = new LeetCode343_dp();
-        System.out.println(leetCode343.integerBreak(6));
-    }
-
-
     public int integerBreak(int n) {
         if (n < 2) {
             return 0;

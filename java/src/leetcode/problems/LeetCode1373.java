@@ -1,90 +1,35 @@
 package leetcode.problems;
 
-import common.TreeNode;
+import common.*;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2023/7/23 15:01
+ * @date 2023/7/23 14:53
+ * @see LeetCode333_dp_tree
  */
 public class LeetCode1373 {
 
-    int result = 0;
+    private int ans; // 二叉搜索树可以为空
 
     public int maxSumBST(TreeNode root) {
         dfs(root);
-        return result;
+        return ans;
     }
 
-    private int dfs(TreeNode root) {
-
-        if (root.left == null && root.right == null) {
-            if (result < root.val) result = root.val;
-            return root.val;
-        }
-
-        if (root.left == null) {
-
-            int rSum = dfs(root.right);
-            if (root.right.val != Integer.MIN_VALUE && root.val < getMin(root.right)) {
-                int sum = rSum + root.val;
-                if (sum > result) result = sum;
-                return sum;
-            }
-
-            root.val = Integer.MIN_VALUE;
-            return Integer.MIN_VALUE;
-        }
-
-        if (root.right == null) {
-
-            int lSum = dfs(root.left);
-            if (root.left.val != Integer.MIN_VALUE && root.val > getMax(root.left)) {
-                int sum = lSum + root.val;
-                if (sum > result) result = sum;
-                return sum;
-            }
-
-            root.val = Integer.MIN_VALUE;
-            return Integer.MIN_VALUE;
-        }
-
-        int lSum = dfs(root.left);
-        int rSum = dfs(root.right);
-
-        if (root.left.val == Integer.MIN_VALUE || root.right.val == Integer.MIN_VALUE) {
-            root.val = Integer.MIN_VALUE;
-            return Integer.MIN_VALUE;
-        }
-
-        int maxL = getMax(root.left);
-        int minR = getMin(root.right);
-
-        if (maxL < root.val && root.val < minR) {
-            int sum = lSum + rSum + root.val;
-            if (sum > result) result = sum;
-            return sum;
-        }
-
-        root.val = Integer.MIN_VALUE;
-        return Integer.MIN_VALUE;
-    }
-
-    private int getMax(TreeNode root) {
+    private int[] dfs(TreeNode root) {
         if (root == null) {
-            return Integer.MIN_VALUE;
+            return new int[]{Integer.MAX_VALUE, Integer.MIN_VALUE, 0};
         }
-        while (root.right != null)
-            root = root.right;
-        return root.val;
 
-    }
-
-    private int getMin(TreeNode root) {
-        if (root == null) {
-            return Integer.MAX_VALUE;
+        int[] left = dfs(root.left); // 递归左子树
+        int[] right = dfs(root.right); // 递归右子树
+        if (root.val <= left[1] || root.val >= right[0]) { // 不是二叉搜索树
+            return new int[]{Integer.MIN_VALUE, Integer.MAX_VALUE, 0};
         }
-        while (root.left != null)
-            root = root.left;
-        return root.val;
+
+        int s = left[2] + right[2] + root.val; // 这棵子树的所有节点值之和
+        ans = Math.max(ans, s);
+
+        return new int[]{Math.min(left[0], root.val), Math.max(right[1], root.val), s};
     }
 }

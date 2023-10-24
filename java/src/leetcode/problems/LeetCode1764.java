@@ -6,10 +6,6 @@ package leetcode.problems;
  */
 public class LeetCode1764 {
 
-    public static void main(String[] args) {
-        System.out.println(new LeetCode1764().canChoose(new int[][]{{1, -1, -1}, {3, -2, 0}}, new int[]{1, -1, 0, 1, -1, -1, 3, -2, 0}));
-    }
-
     public boolean canChoose(int[][] gs, int[] nums) {
         int index = 0;
         for (int[] g : gs) {

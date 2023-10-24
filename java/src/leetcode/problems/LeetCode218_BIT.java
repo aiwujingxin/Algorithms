@@ -11,7 +11,7 @@ import java.util.List;
  *
  * <a href="https://leetcode.com/problems/the-skyline-problem/solutions/61287/java-binary-indexed-tree-solution/">...</a>
  */
-public class LeetCode218_binary_index_tree {
+public class LeetCode218_BIT {
     private int[] biTree;
 
     private void add(int r, int h) { // here r is in the reduced array

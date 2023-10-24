@@ -11,7 +11,7 @@ import leetcode.problems.*;
  * @see LeetCode516 516. 最长回文子序列
  * @see LeetCode647_dp 647. 回文子串
  * @see LeetCode267 267. 回文排列 II
- * @see LeetCode214_kmp 214. 最短回文串
+ * @see LeetCode214 214. 最短回文串
  */
 public interface Palindrome {
 }
