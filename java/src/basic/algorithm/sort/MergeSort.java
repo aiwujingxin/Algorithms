@@ -1,18 +1,14 @@
 package basic.algorithm.sort;
 
 import basic.datastructure.liner.array.ArraySort;
-import leetcode.lists.offer.Offer51;
-import leetcode.problems.LeetCode315_mergeSort;
-import leetcode.problems.LeetCode327;
-import leetcode.problems.LeetCode493_mergesort;
 
 /**
  * @author jingxinwu
  * @date 2021-06-06 1:46 下午
- * @see LeetCode315_mergeSort
- * @see LeetCode493_mergesort
- * @see LeetCode327
- * @see Offer51
+ * @see leetcode.problems.LeetCode315_mergeSort
+ * @see leetcode.problems.LeetCode493_mergesort
+ * @see leetcode.problems.LeetCode327_MergeSort
+ * @see leetcode.lists.offer.Offer51
  */
 
 public class MergeSort implements ArraySort {

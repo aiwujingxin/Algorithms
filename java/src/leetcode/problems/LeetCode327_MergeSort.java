@@ -6,15 +6,10 @@ package leetcode.problems;
  */
 public class LeetCode327_MergeSort {
 
-    //todo
     //https://leetcode.com/problems/count-of-range-sum/discuss/77990/Share-my-solution
     int count = 0;
     int lower;
     int upper;
-
-    public static void main(String[] args) {
-        System.out.println(new LeetCode327_MergeSort().countRangeSum(new int[]{1, 2, 3, 4, 5, 6, 7, 8}, 10, 15));
-    }
 
     public int countRangeSum(int[] nums, int lower, int upper) {
         long[] sum = new long[nums.length + 1];
