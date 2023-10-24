@@ -1,122 +1,52 @@
 package leetcode.lists.offer;
 
-import java.util.HashMap;
-import java.util.Map;
-
 /**
- * @author jingxinwu
- * @date 2021-11-21 5:58 下午
+ * @author wujingxinit@outlook.com
+ * @date 2023/10/24 14:52
  */
 public class Offer20 {
 
-
     public boolean isNumber(String s) {
-        Map<State, Map<CharType, State>> transfer = new HashMap<>();
-        Map<CharType, State> initialMap = new HashMap<>() {{
-            put(CharType.CHAR_SPACE, State.STATE_INITIAL);
-            put(CharType.CHAR_NUMBER, State.STATE_INTEGER);
-            put(CharType.CHAR_POINT, State.STATE_POINT_WITHOUT_INT);
-            put(CharType.CHAR_SIGN, State.STATE_INT_SIGN);
-        }};
-        transfer.put(State.STATE_INITIAL, initialMap);
-        Map<CharType, State> intSignMap = new HashMap<>() {{
-            put(CharType.CHAR_NUMBER, State.STATE_INTEGER);
-            put(CharType.CHAR_POINT, State.STATE_POINT_WITHOUT_INT);
-        }};
-        transfer.put(State.STATE_INT_SIGN, intSignMap);
-        Map<CharType, State> integerMap = new HashMap<>() {{
-            put(CharType.CHAR_NUMBER, State.STATE_INTEGER);
-            put(CharType.CHAR_EXP, State.STATE_EXP);
-            put(CharType.CHAR_POINT, State.STATE_POINT);
-            put(CharType.CHAR_SPACE, State.STATE_END);
-        }};
-        transfer.put(State.STATE_INTEGER, integerMap);
-        Map<CharType, State> pointMap = new HashMap<>() {{
-            put(CharType.CHAR_NUMBER, State.STATE_FRACTION);
-            put(CharType.CHAR_EXP, State.STATE_EXP);
-            put(CharType.CHAR_SPACE, State.STATE_END);
-        }};
-        transfer.put(State.STATE_POINT, pointMap);
-        Map<CharType, State> pointWithoutIntMap = new HashMap<>() {{
-            put(CharType.CHAR_NUMBER, State.STATE_FRACTION);
-        }};
-        transfer.put(State.STATE_POINT_WITHOUT_INT, pointWithoutIntMap);
-        Map<CharType, State> fractionMap = new HashMap<>() {{
-            put(CharType.CHAR_NUMBER, State.STATE_FRACTION);
-            put(CharType.CHAR_EXP, State.STATE_EXP);
-            put(CharType.CHAR_SPACE, State.STATE_END);
-        }};
-        transfer.put(State.STATE_FRACTION, fractionMap);
-        Map<CharType, State> expMap = new HashMap<>() {{
-            put(CharType.CHAR_NUMBER, State.STATE_EXP_NUMBER);
-            put(CharType.CHAR_SIGN, State.STATE_EXP_SIGN);
-        }};
-        transfer.put(State.STATE_EXP, expMap);
-        Map<CharType, State> expSignMap = new HashMap<>() {{
-            put(CharType.CHAR_NUMBER, State.STATE_EXP_NUMBER);
-        }};
-        transfer.put(State.STATE_EXP_SIGN, expSignMap);
-        Map<CharType, State> expNumberMap = new HashMap<>() {{
-            put(CharType.CHAR_NUMBER, State.STATE_EXP_NUMBER);
-            put(CharType.CHAR_SPACE, State.STATE_END);
-        }};
-        transfer.put(State.STATE_EXP_NUMBER, expNumberMap);
-        Map<CharType, State> endMap = new HashMap<>() {{
-            put(CharType.CHAR_SPACE, State.STATE_END);
-        }};
-        transfer.put(State.STATE_END, endMap);
-
-        int length = s.length();
-        State state = State.STATE_INITIAL;
-
-        for (int i = 0; i < length; i++) {
-            CharType type = toCharType(s.charAt(i));
-            if (!transfer.get(state).containsKey(type)) {
-                return false;
-            } else {
-                state = transfer.get(state).get(type);
+        int n = s.length();
+        char[] cs = s.toCharArray();
+        int idx = -1; //判断e/E在字符串中的索引，用来把字符串分成两部分
+        //找到e/E在字符串中的索引，赋值给idx.如果idx不等于-1，说明有两个e，直接返回false
+        for (int i = 0; i < n; i++) {
+            if (cs[i] == 'e' || cs[i] == 'E') {
+                if (idx == -1) {
+                    idx = i;
+                } else {
+                    return false;
+                }
             }
         }
-        return state == State.STATE_INTEGER || state == State.STATE_POINT || state == State.STATE_FRACTION
-                || state == State.STATE_EXP_NUMBER || state == State.STATE_END;
-    }
-
-    public CharType toCharType(char ch) {
-        if (ch >= '0' && ch <= '9') {
-            return CharType.CHAR_NUMBER;
-        } else if (ch == 'e' || ch == 'E') {
-            return CharType.CHAR_EXP;
-        } else if (ch == '.') {
-            return CharType.CHAR_POINT;
-        } else if (ch == '+' || ch == '-') {
-            return CharType.CHAR_SIGN;
-        } else if (ch == ' ') {
-            return CharType.CHAR_SPACE;
+        boolean ans = true;
+        //idx不等于-1说明字符串中有e，得分成两部分判断，左侧可以任意数，右侧只能是整数，所以左侧mustInteger设为false，右侧为true
+        //否则字符串中没有e，直接调用check函数
+        if (idx != -1) {
+            ans &= check(cs, 0, idx - 1, false);
+            ans &= check(cs, idx + 1, n - 1, true);
         } else {
-            return CharType.CHAR_ILLEGAL;
+            ans &= check(cs, 0, n - 1, false);
         }
+        return ans;
     }
 
-    enum State {
-        STATE_INITIAL,
-        STATE_INT_SIGN,
-        STATE_INTEGER,
-        STATE_POINT,
-        STATE_POINT_WITHOUT_INT,
-        STATE_FRACTION,
-        STATE_EXP,
-        STATE_EXP_SIGN,
-        STATE_EXP_NUMBER,
-        STATE_END
+    //判断是整数还是浮点数
+    boolean check(char[] cs, int start, int end, boolean mustInteger) {
+        if (start > end) return false;
+        if (cs[start] == '+' || cs[start] == '-') start++;
+        boolean hasDot = false, hasNum = false;
+        for (int i = start; i <= end; i++) {
+            if (cs[i] == '.') {
+                if (mustInteger || hasDot) return false;
+                hasDot = true;
+            } else if (cs[i] >= '0' && cs[i] <= '9') {
+                hasNum = true;
+            } else {
+                return false;
+            }
+        }
+        return hasNum;
     }
-
-    enum CharType {
-        CHAR_NUMBER,
-        CHAR_EXP,
-        CHAR_POINT,
-        CHAR_SIGN,
-        CHAR_SPACE,
-        CHAR_ILLEGAL
-    }
-
 }

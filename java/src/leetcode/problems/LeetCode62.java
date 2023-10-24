@@ -2,14 +2,11 @@ package leetcode.problems;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2023/9/17 00:11
+ * @date 2023/10/24 11:44
  */
 public class LeetCode62 {
-
     public int uniquePaths(int m, int n) {
-
         int[][] dp = new int[m][n];
-
         for (int i = 0; i < m; i++) {
             dp[i][0] = 1;
         }

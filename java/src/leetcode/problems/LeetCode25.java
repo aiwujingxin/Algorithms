@@ -3,8 +3,8 @@ package leetcode.problems;
 import common.ListNode;
 
 /**
- * @author jingxinwu
- * @date 2022-02-14 3:36 PM
+ * @author wujingxinit@outlook.com
+ * @date 2023/10/23 15:52
  */
 public class LeetCode25 {
 
@@ -14,26 +14,19 @@ public class LeetCode25 {
         }
         ListNode tail = head;
         for (int i = 0; i < k; i++) {
-            //剩余数量小于k的话，则不需要反转。
             if (tail == null) {
                 return head;
             }
             tail = tail.next;
         }
-        // 反转前 k 个元素
         ListNode newHead = reverse(head, tail);
-        //下一轮的开始的地方就是tail
         head.next = reverseKGroup(tail, k);
-
         return newHead;
     }
 
-    /*
-    左闭右开区间
-     */
     private ListNode reverse(ListNode head, ListNode tail) {
         ListNode pre = null;
-        ListNode next = null;
+        ListNode next;
         while (head != tail) {
             next = head.next;
             head.next = pre;

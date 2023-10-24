@@ -7,7 +7,6 @@ package leetcode.problems;
 public class LeetCode73 {
 
     public void setZeroes(int[][] matrix) {
-
         int m = matrix.length, n = matrix[0].length;
         boolean[] row = new boolean[m];
         boolean[] col = new boolean[n];
@@ -26,6 +25,4 @@ public class LeetCode73 {
             }
         }
     }
-
-
 }

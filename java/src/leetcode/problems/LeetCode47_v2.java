@@ -10,10 +10,6 @@ import java.util.List;
  */
 public class LeetCode47_v2 {
 
-    public static void main(String[] args) {
-        System.out.println(new LeetCode47_v2().permuteUnique(new int[]{1, 2, 3}));
-    }
-
     public List<List<Integer>> permuteUnique(int[] nums) {
         if (nums == null || nums.length == 0) {
             return new ArrayList<>();

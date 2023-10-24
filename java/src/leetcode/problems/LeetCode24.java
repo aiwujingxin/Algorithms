@@ -3,8 +3,8 @@ package leetcode.problems;
 import common.ListNode;
 
 /**
- * @author jingxinwu
- * @date 2021-06-16 11:24 下午
+ * @author wujingxinit@outlook.com
+ * @date 2023/10/18 17:48
  */
 public class LeetCode24 {
 

@@ -1,33 +1,41 @@
 package leetcode.problems;
 
-import java.util.Arrays;
-
+/**
+ * @author wujingxinit@outlook.com
+ * @date 2023/10/24 14:25
+ */
 public class LeetCode52 {
 
+    int res;
+    int n;
+    char[][] board;
+
     public int totalNQueens(int n) {
-        char[][] board = new char[n][n];
-        for (char[] i : board) {
-            Arrays.fill(i, '.');
+        if (n <= 0) {
+            return 0;
         }
-        return backtrack(0, board);
+        this.n = n;
+        board = new char[n][n];
+        backtrack(0);
+        return res;
     }
 
-    public int backtrack(int col, char[][] board) {
-        if (col == board.length) {
-            return 1;
+    private void backtrack(int row) {
+        if (row == n) {
+            res++;
+            return;
         }
-        int count = 0;
-        for (int row = 0; row < board.length; row++) {
-            if (valid(board, row, col)) {
-                board[row][col] = 'Q';
-                count += backtrack(col + 1, board);
-                board[row][col] = '.';
+        for (int col = 0; col < n; col++) {
+            if (!can(board, row, col)) {
+                continue;
             }
+            board[row][col] = 'Q';
+            backtrack(row + 1);
+            board[row][col] = '.';
         }
-        return count;
     }
 
-    private boolean valid(char[][] board, int x, int y) {
+    private boolean can(char[][] board, int x, int y) {
         int n = board.length;
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {

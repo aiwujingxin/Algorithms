@@ -2,25 +2,22 @@ package leetcode.problems;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2022/10/8 21:34
+ * @date 2023/10/24 12:09
  */
 public class LeetCode69 {
 
     public int mySqrt(int x) {
-        if (x == 0 || x == 1) {
-            return x;
+        if (x <= 0) {
+            return 0;
         }
         int left = 0;
         int right = x;
         while (left < right) {
-            long mid = ((right - left) / 2 + left + 1) >> 1;
-            if (mid * mid == x) {
-                return (int) mid;
-            }
-            if (mid * mid < x) {
-                left = (int) mid;
+            int mid = (left + right + 1) / 2;
+            if (mid > x / mid) {
+                right = mid - 1;
             } else {
-                right = (int) mid - 1;
+                left = mid;
             }
         }
         return left;

@@ -2,11 +2,12 @@ package leetcode.problems;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2023/9/17 00:23
+ * @date 2023/10/24 12:13
  */
 public class LeetCode70 {
+
     public int climbStairs(int n) {
-        if (n == 0) {
+        if (n <= 0) {
             return 0;
         }
         if (n == 1) {

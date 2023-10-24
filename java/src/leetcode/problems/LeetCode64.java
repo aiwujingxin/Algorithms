@@ -2,14 +2,11 @@ package leetcode.problems;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2023/9/17 00:15
+ * @date 2023/10/24 11:51
  */
 public class LeetCode64 {
 
     public int minPathSum(int[][] grid) {
-        if (grid == null || grid.length == 0) {
-            return 0;
-        }
         int m = grid.length;
         int n = grid[0].length;
         int[][] dp = new int[m][n];
