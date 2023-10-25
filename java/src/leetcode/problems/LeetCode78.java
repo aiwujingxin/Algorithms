@@ -5,27 +5,25 @@ import java.util.List;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2023/9/17 00:52
+ * @date 2023/10/25 20:13
  */
 public class LeetCode78 {
-
-    List<List<Integer>> res;
 
     public List<List<Integer>> subsets(int[] nums) {
         if (nums == null || nums.length == 0) {
             return new ArrayList<>();
         }
-        res = new ArrayList<>();
-        backtrack(nums, 0, new ArrayList<>());
+        List<List<Integer>> res = new ArrayList<>();
+        backtrack(nums, 0, res, new ArrayList<>());
         return res;
     }
 
-    private void backtrack(int[] nums, int index, List<Integer> temp) {
-        res.add(new ArrayList<>(temp));
+    private void backtrack(int[] nums, int index, List<List<Integer>> res, ArrayList<Integer> list) {
+        res.add(new ArrayList<>(list));
         for (int i = index; i < nums.length; i++) {
-            temp.add(nums[i]);
-            backtrack(nums, i + 1, temp);
-            temp.remove(temp.size() - 1);
+            list.add(nums[i]);
+            backtrack(nums, i + 1, res, list);
+            list.remove(list.size() - 1);
         }
     }
 }
