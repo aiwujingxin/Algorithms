@@ -2,7 +2,7 @@ package leetcode.problems;
 
 import java.util.*;
 
-public class LeetCode126_BFS {
+public class LeetCode126 {
 
     public List<List<String>> findLadders(String beginWord, String endWord, List<String> wordList) {
         List<List<String>> res = new ArrayList<>();

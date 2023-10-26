@@ -6,7 +6,7 @@ import java.util.List;
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/10/15 14:48
- * @see LeetCode169_vote > [n/2]
+ * @see LeetCode169 > [n/2]
  * @see LeetCode75
  * @see LeetCode264
  */

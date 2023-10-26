@@ -7,35 +7,32 @@ import java.util.List;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2023/2/17 17:03
+ * @date 2023/10/27 04:23
  */
 public class LeetCode90 {
+
     public List<List<Integer>> subsetsWithDup(int[] nums) {
-        List<List<Integer>> res = new ArrayList<>();
-
         if (nums == null || nums.length == 0) {
-            return res;
+            return new ArrayList<>();
         }
-
+        List<List<Integer>> res = new ArrayList<>();
         Arrays.sort(nums);
-        helper(nums, 0, res, new ArrayList<>());
-
+        backtrack(nums, 0, res, new ArrayList<>());
         return res;
     }
 
-    private void helper(int[] nums, int index, List<List<Integer>> res, ArrayList<Integer> temp) {
-        res.add(new ArrayList<>(temp));
-        HashSet<Integer> visited = new HashSet<>();
+    private void backtrack(int[] nums, int index, List<List<Integer>> res, List<Integer> list) {
+        res.add(new ArrayList<>(list));
 
+        HashSet<Integer> set = new HashSet<>();
         for (int i = index; i < nums.length; i++) {
-            if (visited.contains(nums[i])) {
+            if (set.contains(nums[i])) {
                 continue;
             }
-            visited.add(nums[i]);
-
-            temp.add(nums[i]);
-            helper(nums, i + 1, res, temp);
-            temp.remove(temp.size() - 1);
+            set.add(nums[i]);
+            list.add(nums[i]);
+            backtrack(nums, i + 1, res, list);
+            list.remove(list.size() - 1);
         }
     }
 }

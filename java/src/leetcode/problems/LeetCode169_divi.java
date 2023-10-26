@@ -7,8 +7,6 @@ package leetcode.problems;
  */
 public class LeetCode169_divi {
 
-    //study
-    // 这个做法和最近公共祖先题很像 都是分治： https://leetcode.cn/problems/lowest-common-ancestor-of-a-binary-tree/
     // 找出子问题
     public int majorityElement(int[] nums) {
         return majorityElementRec(nums, 0, nums.length - 1);

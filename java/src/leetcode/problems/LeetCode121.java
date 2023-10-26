@@ -4,7 +4,7 @@ package leetcode.problems;
  * @author wujingxinit@outlook.com
  * @date 2022/10/7 21:39
  */
-public class LeetCode121_dp_2d {
+public class LeetCode121 {
 
     public int maxProfit(int[] prices) {
         if (prices == null || prices.length == 0) {

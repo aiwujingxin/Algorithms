@@ -11,10 +11,6 @@ import java.util.Set;
  */
 public class LeetCode128_uf {
 
-    public static void main(String[] args) {
-        System.out.println(new LeetCode128_uf().longestConsecutive(new int[]{100, 99, 101}));
-    }
-
     public int longestConsecutive(int[] nums) {
         Map<Integer, Integer> fathers = new HashMap<>();
         Map<Integer, Integer> counts = new HashMap<>();

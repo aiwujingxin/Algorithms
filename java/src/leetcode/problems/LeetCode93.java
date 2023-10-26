@@ -5,9 +5,10 @@ import java.util.List;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2023/8/30 21:52
+ * @date 2023/10/27 04:42
  */
 public class LeetCode93 {
+
     public List<String> restoreIpAddresses(String s) {
         if (s == null || s.isEmpty() || s.length() > 15) {
             return new ArrayList<>();

@@ -3,28 +3,35 @@ package leetcode.problems;
 import common.ListNode;
 
 /**
- * @author jingxinwu
- * @date 2021-07-04 8:09 下午
+ * @author wujingxinit@outlook.com
+ * @date 2023/10/27 04:02
  */
 public class LeetCode86 {
 
     public ListNode partition(ListNode head, int x) {
-        ListNode small = new ListNode(0);
-        ListNode smallHead = small;
-        ListNode large = new ListNode(0);
-        ListNode largeHead = large;
-        while (head != null) {
-            if (head.val < x) {
-                small.next = head;
-                small = small.next;
-            } else {
-                large.next = head;
-                large = large.next;
-            }
-            head = head.next;
+        if (head == null || head.next == null) {
+            return head;
         }
-        large.next = null;
-        small.next = largeHead.next;
-        return smallHead.next;
+
+        ListNode dummy = new ListNode();
+        dummy.next = head;
+        ListNode cur = dummy;
+        while (cur.next != null) {
+            if (cur.next.val >= x) {
+                ListNode fast = cur.next;
+                while (fast.next != null && fast.next.val >= x) {
+                    fast = fast.next;
+                }
+                if (fast.next == null) {
+                    return dummy.next;
+                }
+                ListNode node = fast.next;
+                fast.next = fast.next.next;
+                node.next = cur.next;
+                cur.next = node;
+            }
+            cur = cur.next;
+        }
+        return dummy.next;
     }
 }
