@@ -9,11 +9,6 @@ import java.util.List;
  */
 public class LeetCode77 {
 
-
-    public static void main(String[] args) {
-        System.out.println(new LeetCode77().combine(4, 2));
-    }
-
     public List<List<Integer>> combine(int n, int k) {
         if (n < 0) {
             return new ArrayList<>();

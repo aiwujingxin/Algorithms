@@ -1,8 +1,9 @@
 package leetcode.problems;
 
 /**
- * @author jingxinwu
- * @date 2021-06-26 2:33 下午
+ * @author wujingxinit@outlook.com
+ * @date 2023/10/26 10:33
+ * @see LeetCode26
  */
 public class LeetCode80 {
 
@@ -15,9 +16,9 @@ public class LeetCode80 {
         while (fast < n) {
             if (nums[slow - 2] != nums[fast]) {
                 nums[slow] = nums[fast];
-                ++slow;
+                slow++;
             }
-            ++fast;
+            fast++;
         }
         return slow;
     }

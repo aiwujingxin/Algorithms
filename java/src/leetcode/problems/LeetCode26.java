@@ -7,31 +7,18 @@ package leetcode.problems;
 public class LeetCode26 {
 
     public int removeDuplicates(int[] nums) {
-        if (nums == null || nums.length == 0) {
+        int n = nums.length;
+        if (n == 0) {
             return 0;
         }
-        if (nums.length == 1) {
-            return 1;
-        }
-        int left = 0;
-        int right = 1;
-        while (right < nums.length) {
-            while (right < nums.length && nums[right] == nums[left]) {
-                right++;
+        int fast = 1, slow = 1;
+        while (fast < n) {
+            if (nums[fast] != nums[fast - 1]) {
+                nums[slow] = nums[fast];
+                slow++;
             }
-            if (right == nums.length) {
-                return left + 1;
-            }
-            left++;
-            swap(nums, left, right);
-            right++;
+            fast++;
         }
-        return left + 1;
-    }
-
-    private void swap(int[] nums, int left, int right) {
-        int t = nums[left];
-        nums[left] = nums[right];
-        nums[right] = t;
+        return slow;
     }
 }

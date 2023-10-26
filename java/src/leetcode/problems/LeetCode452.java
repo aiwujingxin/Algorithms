@@ -5,26 +5,24 @@ import java.util.Comparator;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2023/6/27 23:19
- * <a href="https://www.youtube.com/watch?v=5sE0cQVhfFo"></a>
+ * @date 2023/6/28 00:12
  */
-
 public class LeetCode452 {
 
+    // 感觉和跳跃游戏差不多
     public int findMinArrowShots(int[][] points) {
-        Arrays.sort(points, Comparator.comparingInt(a -> a[0]));
-        int res = 1;
-        int[] start = points[0];
-        for (int i = 1; i < points.length; i++) {
-            int[] curr = points[i];
-            if (curr[0] > start[1]) {
-                res++;
-                start = curr;
-            } else {
-                start[0] = Math.max(start[0], curr[0]);
-                start[1] = Math.min(start[1], curr[1]);
+        if (points.length == 0) {
+            return 0;
+        }
+        Arrays.sort(points, Comparator.comparingInt(point -> point[1]));
+        int pos = points[0][1];
+        int ans = 1;
+        for (int[] balloon : points) {
+            if (balloon[0] > pos) {
+                pos = balloon[1];
+                ans++;
             }
         }
-        return res;
+        return ans;
     }
 }

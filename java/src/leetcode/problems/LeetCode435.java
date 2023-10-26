@@ -23,7 +23,7 @@ public class LeetCode435 {
         int ans = 1;
         for (int i = 1; i < n; ++i) {
             if (intervals[i][0] >= right) {
-                ++ans;
+                ans++;
                 right = intervals[i][1];
             }
         }

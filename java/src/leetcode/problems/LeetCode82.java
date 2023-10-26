@@ -3,8 +3,8 @@ package leetcode.problems;
 import common.ListNode;
 
 /**
- * @author jingxinwu
- * @date 2021-06-26 3:36 下午
+ * @author wujingxinit@outlook.com
+ * @date 2023/10/26 13:30
  */
 public class LeetCode82 {
 
@@ -12,24 +12,21 @@ public class LeetCode82 {
         if (head == null || head.next == null) {
             return head;
         }
-
         ListNode dummy = new ListNode();
-        ListNode pre = dummy;
-        ListNode cur = head;
-        ListNode real = dummy;
+        dummy.next = head;
+        ListNode cur = dummy;
 
-        while (cur != null) {
-
-            if ((cur.val != pre.val || pre == dummy)
-                    && (cur.next != null && cur.val != cur.next.val)) {
-                real.next = cur;
-                real = cur;
+        while (cur.next != null && cur.next.next != null) {
+            int val = cur.next.val;
+            if (val == cur.next.next.val) {
+                while (cur.next != null && cur.next.val == val) {
+                    cur.next = cur.next.next;
+                }
+            } else {
+                cur = cur.next;
             }
-            pre = cur;
-            cur = cur.next;
-            real.next = null; // 断开连接，只加入真正有效的节点
         }
-
         return dummy.next;
     }
+
 }
