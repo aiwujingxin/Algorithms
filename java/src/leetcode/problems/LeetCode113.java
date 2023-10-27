@@ -7,26 +7,36 @@ import java.util.List;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2023/3/20 10:54
+ * @date 2023/10/27 18:35
  */
 public class LeetCode113 {
 
+    List<List<Integer>> res;
+
     public List<List<Integer>> pathSum(TreeNode root, int targetSum) {
-        List<List<Integer>> res = new ArrayList<>();
-        dfs(root, res, new ArrayList<>(), targetSum);
+        if (root == null) {
+            return new ArrayList<>();
+        }
+        res = new ArrayList<>();
+        dfs(root, targetSum, new ArrayList<>());
         return res;
     }
 
-    public void dfs(TreeNode root, List<List<Integer>> res, List<Integer> list, int targetSum) {
+    private void dfs(TreeNode root, int targetSum, List<Integer> list) {
         if (root == null) {
             return;
         }
-        list.add(root.val);
-        if (root.left == null && root.right == null && targetSum - root.val == 0) {
-            res.add(new ArrayList<>(list));
+        if (root.right == null && root.left == null) {
+            if (targetSum == root.val) {
+                list.add(root.val);
+                res.add(new ArrayList<>(list));
+                list.remove(list.size() - 1);
+            }
+            return;
         }
-        dfs(root.left, res, list, targetSum - root.val);
-        dfs(root.right, res, list, targetSum - root.val);
+        list.add(root.val);
+        dfs(root.left, targetSum - root.val, list);
+        dfs(root.right, targetSum - root.val, list);
         list.remove(list.size() - 1);
     }
 }

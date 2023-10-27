@@ -4,24 +4,29 @@ import common.TreeNode;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2023/8/1 13:16
+ * @date 2023/10/27 18:23
  */
+
 public class LeetCode111 {
+
+    int res = Integer.MAX_VALUE;
 
     public int minDepth(TreeNode root) {
         if (root == null) {
             return 0;
         }
-        return getHeight(root);
+        dfs(root, 1);
+        return res;
     }
 
-    public int getHeight(TreeNode root) {
+    private void dfs(TreeNode root, int cnt) {
         if (root == null) {
-            return Integer.MAX_VALUE;
+            return;
         }
         if (root.left == null && root.right == null) {
-            return 1;
+            res = Math.min(res, cnt);
         }
-        return Math.min(getHeight(root.left), getHeight(root.right)) + 1;
+        dfs(root.left, cnt + 1);
+        dfs(root.right, cnt + 1);
     }
 }

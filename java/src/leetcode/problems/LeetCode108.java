@@ -4,22 +4,30 @@ import common.TreeNode;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2022/9/23 21:13
+ * @date 2023/10/27 17:15
  */
 public class LeetCode108 {
 
     public TreeNode sortedArrayToBST(int[] nums) {
-        return dfs(nums, 0, nums.length - 1);
-    }
-
-    public TreeNode dfs(int[] nums, int left, int right) {
-        if (left > right) {
+        if (nums == null || nums.length == 0) {
             return null;
         }
-        int mid = (left + right) / 2;
-        TreeNode root = new TreeNode(nums[mid]);
-        root.left = dfs(nums, left, mid - 1);
-        root.right = dfs(nums, mid + 1, right);
+        return sortedArrayToBST(nums, 0, nums.length - 1);
+    }
+
+    public TreeNode sortedArrayToBST(int[] nums, int start, int end) {
+        if (start > end) {
+            return null;
+        }
+        if (start == end) {
+            return new TreeNode(nums[start]);
+        }
+        int index = (start + end) / 2;
+        TreeNode root = new TreeNode(nums[index]);
+        root.left = sortedArrayToBST(nums, start, index - 1);
+        root.right = sortedArrayToBST(nums, index + 1, end);
         return root;
     }
 }
+
+
