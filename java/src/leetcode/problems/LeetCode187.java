@@ -5,23 +5,21 @@ import java.util.HashSet;
 import java.util.List;
 
 /**
- * @author jingxinwu
- * @date 2021-08-13 1:54 上午
+ * @author wujingxinit@outlook.com
+ * @date 2023/10/28 11:35
  */
 public class LeetCode187 {
 
     public List<String> findRepeatedDnaSequences(String s) {
-        int L = 10, n = s.length();
-        HashSet<String> seen = new HashSet<>(), output = new HashSet<>();
-        // iterate over all sequences of length L
-        for (int start = 0; start < n - L + 1; ++start) {
-            String tmp = s.substring(start, start + L);
-            if (seen.contains(tmp)) {
-                output.add(tmp);
+        HashSet<String> set = new HashSet<>();
+        HashSet<String> res = new HashSet<>();
+        for (int i = 0; i + 10 <= s.length(); i++) {
+            String str = s.substring(i, i + 10);
+            if (set.contains(str)) {
+                res.add(str);
             }
-            seen.add(tmp);
+            set.add(str);
         }
-        return new ArrayList<>(output);
-
+        return new ArrayList<>(res);
     }
 }

@@ -8,34 +8,37 @@ import java.util.List;
 import java.util.Queue;
 
 /**
- * @author jingxinwu
- * @date 2021-08-13 2:10 上午
+ * @author wujingxinit@outlook.com
+ * @date 2023/10/28 11:21
  */
 public class LeetCode199 {
 
     public List<Integer> rightSideView(TreeNode root) {
-        var view = new ArrayList<Integer>();
         if (root == null) {
-            return view;
+            return new ArrayList<>();
         }
         Queue<TreeNode> queue = new LinkedList<>();
         queue.add(root);
+        List<List<Integer>> list = new ArrayList<>();
         while (!queue.isEmpty()) {
             int size = queue.size();
-            for (var i = 0; i < size; i++) {
-                var node = queue.poll();
+            List<Integer> level = new ArrayList<>();
+            for (int i = 0; i < size; i++) {
+                TreeNode node = queue.poll();
+                level.add(node.val);
                 if (node.left != null) {
                     queue.add(node.left);
                 }
                 if (node.right != null) {
                     queue.add(node.right);
                 }
-                if (i == size - 1) {
-                    view.add(node.val);
-                }
             }
+            list.add(level);
         }
-
-        return view;
+        List<Integer> res = new ArrayList<>();
+        for (List<Integer> level : list) {
+            res.add(level.get(level.size() - 1));
+        }
+        return res;
     }
 }

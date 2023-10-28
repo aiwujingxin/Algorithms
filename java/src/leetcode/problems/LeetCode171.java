@@ -1,16 +1,20 @@
 package leetcode.problems;
 
 /**
- * @author jingxinwu
- * @date 2021-12-15 12:09 AM
+ * @author wujingxinit@outlook.com
+ * @date 2023/10/28 14:03
  */
 public class LeetCode171 {
 
     public int titleToNumber(String columnTitle) {
-
-        return 0;
-        //TODO
-
+        if (columnTitle == null || columnTitle.isEmpty()) {
+            return 0;
+        }
+        int res = 0;
+        for (int i = 0; i < columnTitle.length(); i++) {
+            char c = columnTitle.charAt(i);
+            res = res * 26 + c - 'A' + 1;
+        }
+        return res;
     }
-
 }

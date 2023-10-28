@@ -1,18 +1,22 @@
 package leetcode.problems;
 
 /**
- * @author jingxinwu
- * @date 2021-12-12 3:05 PM
+ * @author wujingxinit@outlook.com
+ * @date 2023/10/28 11:29
  */
 public class LeetCode191 {
 
     public int hammingWeight(int n) {
-        int ret = 0;
-        for (int i = 0; i < 32; i++) {
-            if ((n & (1 << i)) != 0) {
-                ret++;
-            }
+        if (n == 0) {
+            return 0;
         }
-        return ret;
+        int res = 0;
+        for (int i = 0; i < 32; i++) {
+            if ((n & 1) == 1) {
+                res++;
+            }
+            n = n >> 1;
+        }
+        return res;
     }
 }

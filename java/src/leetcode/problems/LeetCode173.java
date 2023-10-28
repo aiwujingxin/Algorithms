@@ -6,32 +6,32 @@ import java.util.Stack;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2023/9/24 11:28
+ * @date 2023/10/28 11:53
  */
 public class LeetCode173 {
-    class BSTIterator {
 
-        private TreeNode cur;
-        private final Stack<TreeNode> stack;
+    class BSTIterator {
+        Stack<TreeNode> stack;
+        TreeNode root;
 
         public BSTIterator(TreeNode root) {
-            cur = root;
-            stack = new Stack<>();
+            this.stack = new Stack<>();
+            this.root = root;
         }
 
         public int next() {
-            while (cur != null) {
-                stack.push(cur);
-                cur = cur.left;
+            while (root != null) {
+                stack.push(root);
+                root = root.left;
             }
-            cur = stack.pop();
-            int ret = cur.val;
-            cur = cur.right;
-            return ret;
+            root = stack.pop();
+            int val = root.val;
+            root = root.right;
+            return val;
         }
 
         public boolean hasNext() {
-            return cur != null || !stack.isEmpty();
+            return root != null || !stack.empty();
         }
     }
 }

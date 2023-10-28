@@ -1,25 +1,37 @@
 package leetcode.problems;
 
 import java.util.Arrays;
+import java.util.Comparator;
+import java.util.Objects;
 
 /**
- * @author jingxinwu
- * @date 2021-08-13 12:26 上午
+ * @author wujingxinit@outlook.com
+ * @date 2023/10/28 11:43
  */
 public class LeetCode179 {
 
     public String largestNumber(int[] nums) {
-        int n = nums.length;
-        String[] numsToWord = new String[n];
-        for (int i = 0; i < n; i++) {
-            numsToWord[i] = String.valueOf(nums[i]);
+        if (nums == null || nums.length == 0) {
+            return "";
         }
-        Arrays.sort(numsToWord, (a, b) -> (b + a).compareTo(a + b));
+        String[] strings = new String[nums.length];
+        for (int i = 0; i < nums.length; i++) {
+            strings[i] = String.valueOf(nums[i]);
+        }
+
+        Arrays.sort(strings, new Comparator<String>() {
+            @Override
+            public int compare(String o1, String o2) {
+                return (o2 + o1).compareTo(o1 + o2);
+            }
+        });
         StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < n; i++) {
-            sb.append(numsToWord[i]);
+        for (String string : strings) {
+            if (sb.isEmpty() && Objects.equals(string, "0")) {
+                continue;
+            }
+            sb.append(string);
         }
-        String res = sb.toString();
-        return res.charAt(0) == '0' ? "0" : res;
+        return sb.isEmpty() ? "0" : sb.toString();
     }
 }

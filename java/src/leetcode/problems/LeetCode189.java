@@ -1,33 +1,28 @@
 package leetcode.problems;
 
-import java.util.Arrays;
-
 /**
- * @author jingxinwu
- * @date 2021-08-13 1:02 上午
+ * @author wujingxinit@outlook.com
+ * @date 2023/10/28 11:31
  */
 public class LeetCode189 {
 
-    public static void main(String[] args) {
-        int[] nums1 = new int[]{-1, -100, 3, 99};
-        rotate(nums1, 2);
-        System.out.println(Arrays.toString(nums1));
-    }
-
-    public static void rotate(int[] nums, int k) {
-        k %= nums.length;
+    public void rotate(int[] nums, int k) {
+        if (nums == null || nums.length == 0 || k == 0 || k % nums.length == 0) {
+            return;
+        }
+        k = k % nums.length;
+        reverse(nums, nums.length - k, nums.length - 1);
+        reverse(nums, 0, nums.length - 1 - k);
         reverse(nums, 0, nums.length - 1);
-        reverse(nums, 0, k - 1);
-        reverse(nums, k, nums.length - 1);
     }
 
-    public static void reverse(int[] nums, int start, int end) {
-        while (start < end) {
-            int temp = nums[start];
-            nums[start] = nums[end];
-            nums[end] = temp;
-            start += 1;
-            end -= 1;
+    private void reverse(int[] nums, int l, int r) {
+        while (l < r) {
+            int t = nums[l];
+            nums[l] = nums[r];
+            nums[r] = t;
+            l++;
+            r--;
         }
     }
 }
