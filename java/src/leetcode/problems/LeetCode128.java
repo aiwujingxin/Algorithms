@@ -1,10 +1,10 @@
 package leetcode.problems;
 
-import java.util.*;
+import java.util.HashSet;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2023/9/17 19:35
+ * @date 2023/10/29 16:42
  */
 public class LeetCode128 {
 
@@ -17,15 +17,16 @@ public class LeetCode128 {
             set.add(n);
         }
         int max = 1;
-        for (int num : nums) {
-            int t = 1;
-            if (!set.contains(num - 1)) {
-                while (set.contains(num + 1)) {
-                    num--;
-                    t++;
+        for (int num : set) {
+            int n = num;
+            int cnt = 1;
+            if (!set.contains(n - 1)) {
+                while (set.contains(n + 1)) {
+                    cnt++;
+                    n++;
                 }
             }
-            max = Math.max(max, t);
+            max = Math.max(max, cnt);
         }
         return max;
     }

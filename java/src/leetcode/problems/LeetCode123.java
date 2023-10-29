@@ -1,36 +1,24 @@
 package leetcode.problems;
 
 /**
- * @author aiwujingxin@gmail.com
- * @date 2022/7/7 19:14
+ * @author wujingxinit@outlook.com
+ * @date 2023/10/29 17:24
+ * @see LeetCode188
  */
 public class LeetCode123 {
 
     public int maxProfit(int[] prices) {
-
-        if (prices == null || prices.length <= 1) {
-            return 0;
+        int[][][] profit = new int[prices.length + 1][2][2 + 1];
+        for (int i = prices.length - 1; i >= 0; i--) {
+            for (int state = 1; state >= 0; state--) {
+                for (int j = 1; j <= 2; j++) {
+                    profit[i][state][j] = (state == 0) ?
+                            Math.max(profit[i + 1][1][j] - prices[i], profit[i + 1][state][j]) :
+                            Math.max(profit[i + 1][0][j - 1] + prices[i], profit[i + 1][state][j]);
+                }
+            }
         }
 
-        int[][] dp = new int[prices.length][5];
-        /*
-          0: 不买也不卖
-          1: 第一次买入
-          2: 第一次卖出
-          3: 第二次买入
-          4: 第二次卖出
-        *
-        **/
-        dp[0][0] = 0;
-        dp[0][1] = -prices[0];
-        dp[0][3] = -prices[0];
-        for (int i = 1; i < prices.length; i++) {
-            dp[i][0] = dp[i - 1][0];
-            dp[i][1] = Math.max(dp[i - 1][1], dp[i - 1][0] - prices[i]);
-            dp[i][2] = Math.max(dp[i - 1][2], dp[i - 1][1] + prices[i]);
-            dp[i][3] = Math.max(dp[i - 1][3], dp[i - 1][2] - prices[i]);
-            dp[i][4] = Math.max(dp[i - 1][4], dp[i - 1][3] + prices[i]);
-        }
-        return dp[dp.length - 1][4];
+        return profit[0][0][2];
     }
 }

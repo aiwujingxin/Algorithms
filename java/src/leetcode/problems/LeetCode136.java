@@ -2,10 +2,9 @@ package leetcode.problems;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2023/9/18 22:54
+ * @date 2023/10/29 17:36
  */
 public class LeetCode136 {
-
     public int singleNumber(int[] nums) {
         if (nums == null || nums.length == 0) {
             return -1;

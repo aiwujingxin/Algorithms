@@ -3,24 +3,30 @@ package leetcode.problems;
 import common.TreeNode;
 
 /**
- * @author jingxinwu
- * @date 2021-07-10 2:20 下午
+ * @author wujingxinit@outlook.com
+ * @date 2023/10/29 16:46
  */
 public class LeetCode129 {
 
-    public int sumNumbers(TreeNode root) {
-        return dfs(root, 0);
-    }
+    int sum = 0;
 
-    public int dfs(TreeNode root, int prevSum) {
+    public int sumNumbers(TreeNode root) {
         if (root == null) {
             return 0;
         }
-        int sum = prevSum * 10 + root.val;
-        if (root.left == null && root.right == null) {
-            return sum;
+        dfs(root, 0);
+        return sum;
+    }
+
+    private void dfs(TreeNode root, int val) {
+        if (root == null) {
+            return;
         }
-        return dfs(root.left, sum) + dfs(root.right, sum);
+        if (root.left == null && root.right == null) {
+            sum += val * 10 + root.val;
+            return;
+        }
+        dfs(root.left, val * 10 + root.val);
+        dfs(root.right, val * 10 + root.val);
     }
 }
-

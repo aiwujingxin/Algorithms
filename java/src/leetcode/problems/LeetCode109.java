@@ -4,34 +4,40 @@ import common.ListNode;
 import common.TreeNode;
 
 /**
- * @author jingxinwu
- * @date 2021-07-07 12:23 上午
+ * @author wujingxinit@outlook.com
+ * @date 2023/10/29 15:03
  */
 public class LeetCode109 {
 
     public TreeNode sortedListToBST(ListNode head) {
-
         if (head == null) {
             return null;
         }
-        return helper(head, null);
+        return sortedListToBST(head, null);
     }
 
-    private TreeNode helper(ListNode start, ListNode end) {
-
-        if (start == end) {
+    public TreeNode sortedListToBST(ListNode head, ListNode tail) {
+        if (head == tail) {
             return null;
         }
-        ListNode slow = start;
-        ListNode fast = start;
-        while (fast != end && fast.next != end) {
-            slow = slow.next;
-            fast = fast.next.next;
+        int len = getLen(head, tail);
+        ListNode cur = head;
+        for (int i = 0; i < len / 2; i++) {
+            cur = cur.next;
         }
-        TreeNode root = new TreeNode(slow.val);
-        root.left = helper(start, slow);
-        root.right = helper(slow.next, end);
+        TreeNode root = new TreeNode(cur.val);
+        root.left = sortedListToBST(head, cur);
+        root.right = sortedListToBST(cur.next, tail);
         return root;
     }
 
+    private int getLen(ListNode head, ListNode tail) {
+        int len = 0;
+        ListNode cur = head;
+        while (cur != tail) {
+            cur = cur.next;
+            len++;
+        }
+        return len;
+    }
 }

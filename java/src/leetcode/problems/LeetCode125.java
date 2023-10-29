@@ -6,10 +6,6 @@ package leetcode.problems;
  */
 public class LeetCode125 {
 
-    public static void main(String[] args) {
-        System.out.println(new LeetCode125().isPalindrome("0P"));
-    }
-
     public boolean isPalindrome(String s) {
 
         if (s == null || s.isEmpty()) {
