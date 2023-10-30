@@ -1,21 +1,16 @@
 package leetcode.problems;
 
 /**
- * @author jingxinwu
- * @date 2021-07-10 5:02 下午
+ * @author wujingxinit@outlook.com
+ * @date 2023/10/30 16:14
  */
 public class LeetCode130 {
-
     public void solve(char[][] board) {
-
         if (board == null || board.length == 0) {
             return;
         }
-
         for (int i = 0; i < board.length; i++) {
             for (int j = 0; j < board[i].length; j++) {
-                //边界，先把边界确定了下来
-                //与边界相连的O,置为B
                 if ((i == 0 || i == board.length - 1 || j == 0 || j == board[i].length - 1) && board[i][j] == 'O') {
                     dfs(board, i, j);
                 }

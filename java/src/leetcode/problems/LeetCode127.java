@@ -2,43 +2,61 @@ package leetcode.problems;
 
 import java.util.*;
 
-
+/**
+ * @author wujingxinit@outlook.com
+ * @date 2023/10/30 21:17
+ */
 public class LeetCode127 {
 
     public int ladderLength(String beginWord, String endWord, List<String> wordList) {
-        Set<String> words = new HashSet<>(wordList);
-        if (!wordList.contains(endWord)) {
+        if (beginWord.length() != endWord.length()) {
+            return -1;
+        }
+        HashSet<String> wordSet = new HashSet<>(wordList);
+        if (!wordSet.contains(endWord)) {
             return 0;
         }
-        int steps = 1;
-        Set<String> visited = new HashSet<>();
         Queue<String> queue = new LinkedList<>();
         queue.add(beginWord);
-        visited.add(beginWord);
-        int wordSize = beginWord.length();
+        int step = 0;
+        HashSet<String> set = new HashSet<>();
         while (!queue.isEmpty()) {
-            int qSize = queue.size();
-            for (int i = 0; i < qSize; i++) {
-                String curr = queue.poll();
-                if (endWord.equals(curr)) {
-                    return steps;
+            int size = queue.size();
+            for (int i = 0; i < size; i++) {
+                String cur = queue.poll();
+                if (Objects.equals(cur, endWord)) {
+                    return step + 1;
                 }
-                char[] wordChars = curr.toCharArray();
-                for (int wl = 0; wl < wordSize; wl++) {
-                    char temp = wordChars[wl];
-                    for (char c = 'a'; c <= 'z'; c++) {
-                        wordChars[wl] = c;
-                        String s = new String(wordChars);
-                        if (words.contains(s) && !visited.contains(s)) {
-                            queue.add(s);
-                            visited.add(s);
-                        }
-                    }
-                    wordChars[wl] = temp;
+                if (set.contains(cur)) {
+                    continue;
                 }
+                set.add(cur);
+                List<String> nexts = getNext(cur, wordSet, set);
+                queue.addAll(nexts);
             }
-            steps++;
+            step++;
         }
         return 0;
     }
+
+    private List<String> getNext(String cur, HashSet<String> wordSet, HashSet<String> set) {
+        List<String> list = new ArrayList<>();
+        char[] chars = cur.toCharArray();
+        for (int i = 0; i < chars.length; i++) {
+            char t = chars[i];
+            for (char a = 'a'; a <= 'z'; a++) {
+                chars[i] = a;
+                String s = new String(chars);
+                if (set.contains(s)) {
+                    continue;
+                }
+                if (wordSet.contains(s)) {
+                    list.add(s);
+                }
+            }
+            chars[i] = t;
+        }
+        return list;
+    }
+
 }

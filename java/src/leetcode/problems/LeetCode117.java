@@ -3,17 +3,14 @@ package leetcode.problems;
 import common.Node;
 
 /**
- * @author jingxinwu
- * @date 2021-07-08 1:43 上午
+ * @author wujingxinit@outlook.com
+ * @date 2023/10/30 16:22
  */
 public class LeetCode117 {
-
     public Node connect(Node root) {
-
         if (root == null) {
-            return root;
+            return null;
         }
-
         Node head = null;
         Node pre = null;
         Node cur = root;
@@ -26,7 +23,6 @@ public class LeetCode117 {
                     } else {
                         pre.next = cur.left;
                         pre = pre.next;
-
                     }
                 }
                 if (cur.right != null) {
@@ -34,20 +30,16 @@ public class LeetCode117 {
                         pre = cur.right;
                         head = cur.right;
                     } else {
-                        pre.next = cur.left;
+                        pre.next = cur.right;
                         pre = pre.next;
                     }
                 }
-
                 cur = cur.next;
-
             }
-
             cur = head;
             pre = null;
             head = null;
         }
         return root;
     }
-
 }

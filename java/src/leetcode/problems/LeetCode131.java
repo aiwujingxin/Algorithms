@@ -4,41 +4,37 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @author jingxinwu
- * @date 2021-07-10 3:31 下午
+ * @author wujingxinit@outlook.com
+ * @date 2023/10/30 21:51
  */
 public class LeetCode131 {
-
-    List<List<String>> list = new ArrayList<>();
-    boolean[][] dp;
 
     public List<List<String>> partition(String s) {
         if (s == null || s.isEmpty()) {
             return new ArrayList<>();
         }
         int n = s.length();
-        dp = new boolean[n][n];
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j <= i; j++) {
-                if (s.charAt(j) == s.charAt(i) && (i - j < 3 || dp[j + 1][i - 1])) {
-                    dp[j][i] = true;
-                }
+        boolean[][] dp = new boolean[n][n];
+        for (int i = n - 1; i >= 0; i--) {
+            for (int j = i; j < n; j++) {
+                dp[i][j] = s.charAt(i) == s.charAt(j) && (j - i < 3 || dp[i + 1][j - 1]);
             }
         }
-        backtrack(s, 0, new ArrayList<>());
-        return list;
+        List<List<String>> res = new ArrayList<>();
+        backtrack(s, 0, new ArrayList<>(), res, dp);
+        return res;
     }
 
-    private void backtrack(String s, int i, ArrayList<String> temp) {
-        if (i == s.length()) {
-            list.add(new ArrayList<>(temp));
+    private void backtrack(String s, int index, List<String> list, List<List<String>> res, boolean[][] dp) {
+        if (index == s.length()) {
+            res.add(new ArrayList<>(list));
             return;
         }
-        for (int j = i; j < s.length(); ++j) {
-            if (dp[i][j]) {
-                temp.add(s.substring(i, j + 1));
-                backtrack(s, j + 1, temp);
-                temp.remove(temp.size() - 1);
+        for (int i = index; i < s.length(); i++) {
+            if (dp[index][i]) {
+                list.add(s.substring(index, i + 1));
+                backtrack(s, i + 1, list, res, dp);
+                list.remove(list.size() - 1);
             }
         }
     }
