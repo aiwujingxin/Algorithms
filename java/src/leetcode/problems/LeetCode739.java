@@ -1,16 +1,12 @@
 package leetcode.problems;
 
-import java.util.*;
+import java.util.Stack;
 
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/9/17 14:49
  */
 public class LeetCode739 {
-
-    public static void main(String[] args) {
-        System.out.println(Arrays.toString(new LeetCode739().dailyTemperatures(new int[]{73, 74, 75, 71, 69, 72, 76, 73})));
-    }
 
     public int[] dailyTemperatures(int[] temperatures) {
         if (temperatures == null || temperatures.length == 0) {
