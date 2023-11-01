@@ -5,33 +5,25 @@ import common.Node;
 import java.util.HashMap;
 
 /**
- * @author jingxinwu
- * @date 2022-02-17 12:55 PM
+ * @author wujingxinit@outlook.com
+ * @date 2023/11/1 14:17
  */
-
 public class LeetCode138 {
 
-    HashMap<Node, Node> map = new HashMap<>();
+    HashMap<Node, Node> cache = new HashMap<>();
 
     public Node copyRandomList(Node head) {
-
         if (head == null) {
             return null;
         }
 
-        if (map.containsKey(head)) {
-            return map.get(head);
+        if (cache.get(head) != null) {
+            return cache.get(head);
         }
-
-        Node node = new Node(head.val);
-
-        //fix
-        map.put(head, node);
-
-        node.next = copyRandomList(head.next);
-        node.random = copyRandomList(head.random);
-
-        return node;
+        Node copyNode = new Node(head.val);
+        cache.put(head, copyNode);
+        copyNode.next = copyRandomList(head.next);
+        copyNode.random = copyRandomList(head.random);
+        return cache.get(head);
     }
-
 }

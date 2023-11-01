@@ -1,7 +1,5 @@
 package leetcode.problems;
 
-import java.util.Arrays;
-
 import basic.datastructure.advance.TreapTree;
 
 /**
@@ -9,13 +7,6 @@ import basic.datastructure.advance.TreapTree;
  * @date 2023/5/28 23:13
  */
 public class LeetCode480 {
-
-    public static void main(String[] args) {
-        System.out.println(
-                Arrays.toString(new LeetCode480().medianSlidingWindow(new int[] { 1, 3, -1, -3, 5, 3, 6, 7 }, 3)));
-        System.out.println(Arrays.toString(new LeetCode480().medianSlidingWindow(new int[] { 1, 4, 2, 3 }, 4)));
-
-    }
 
     public double[] medianSlidingWindow(int[] nums, int k) {
         double[] ans = new double[nums.length - k + 1];

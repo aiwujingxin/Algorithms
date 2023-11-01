@@ -33,7 +33,6 @@ public class LeetCode1139 {
                 }
             }
         }
-        System.out.println();
         return res * res;
     }
 }

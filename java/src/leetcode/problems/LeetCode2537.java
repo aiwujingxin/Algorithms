@@ -8,18 +8,13 @@ import java.util.HashMap;
  */
 public class LeetCode2537 {
 
-    public static void main(String[] args) {
-        System.out.println(new LeetCode2537().countGood(new int[]{1, 1, 1, 1, 1}, 10));
-        System.out.println(new LeetCode2537().countGood(new int[]{3, 1, 4, 3, 2, 2, 4}, 2));
-    }
-
     public long countGood(int[] nums, int k) {
         // 记录窗口内的元素对应个数
         HashMap<Integer, Integer> cnt = new HashMap<>();
         int left = 0;
         int right = 0;
         int pairs = 0;
-        long ans = 0;
+        long res = 0;
         // 枚举右边界
         while (right < nums.length) {
             // 更新pairs （若之前有x个num，则pairs+=x）
@@ -34,10 +29,10 @@ public class LeetCode2537 {
             }
             // 更新ans
             if (pairs >= k) {
-                ans += left + 1;
+                res += left + 1;
             }
             right++;
         }
-        return ans;
+        return res;
     }
 }

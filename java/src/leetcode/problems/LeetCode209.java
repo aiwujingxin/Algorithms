@@ -6,13 +6,6 @@ package leetcode.problems;
  */
 public class LeetCode209 {
 
-    //11
-    //[1,1,1,1,1,1,1,1]
-    public static void main(String[] args) {
-        System.out.println(new LeetCode209().minSubArrayLen(11, new int[]{1, 1, 1, 1, 1, 1, 1, 1}));
-    }
-
-
     //https://leetcode.com/problems/minimum-size-subarray-sum/discuss/365459/Java-Binary-Search-Solution
     public int minSubArrayLen(int s, int[] nums) {
         int n = nums.length;
@@ -47,9 +40,9 @@ public class LeetCode209 {
                 left = mid + 1;
             }
         }
-        if (right == nums.length - 1 && nums[right] < target) {
+        if (left == nums.length - 1 && nums[left] < target) {
             return -1;
         }
-        return right;
+        return left;
     }
 }
