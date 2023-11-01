@@ -7,7 +7,7 @@ import java.util.List;
  * @author jingxinwu
  * @date 2021-08-01 3:25 下午
  */
-public class LeetCode139_dp {
+public class LeetCode139 {
 
     public boolean wordBreak(String s, List<String> wordDict) {
         HashSet<String> set = new HashSet<>(wordDict);
@@ -17,7 +17,7 @@ public class LeetCode139_dp {
             for (int j = 0; j < i; j++) {
                 if (dp[j] && set.contains(s.substring(j, i))) {
                     dp[i] = true;
-                    break;
+                    break;//优化点
                 }
             }
         }

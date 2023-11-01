@@ -5,7 +5,7 @@ import java.util.LinkedList;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2023/9/20 22:34
+ * @date 2023/11/1 22:32
  */
 public class LeetCode146 {
 
@@ -16,54 +16,46 @@ public class LeetCode146 {
         int capacity;
 
         public LRUCache(int capacity) {
-            this.capacity = capacity;
             this.list = new LinkedList<>();
             this.map = new HashMap<>();
+            this.capacity = capacity;
         }
 
         public int get(int key) {
-            Node node = map.get(key);
-            if (node == null) {
+            if (!map.containsKey(key)) {
                 return -1;
             }
+            Node node = map.get(key);
             list.remove(node);
             list.addFirst(node);
-            return node.value;
+            return node.val;
         }
 
         public void put(int key, int value) {
-            Node node = map.get(key);
-            if (node != null) { //if exited
-                node.value = value;
+            if (map.containsKey(key)) {
+                Node node = map.get(key);
                 list.remove(node);
                 list.addFirst(node);
-            } else {
-                // 超过capacity
-                if (map.size() == capacity) {
-                    Node remove = list.pollLast();
-                    map.remove(remove.key);
-                    node = new Node(key, value);
-                    list.addFirst(node);
-                    map.put(key, node);
-                } else {
-                    node = new Node(key, value);
-                    map.put(key, node);
-                    list.addFirst(node);
-                }
+                node.val = value;
+                return;
             }
+            if (map.size() == capacity) {
+                Node node = list.removeLast();
+                map.remove(node.key);
+            }
+            Node node = new Node(key, value);
+            list.addFirst(node);
+            map.put(key, node);
         }
 
         static class Node {
-            public int value;
-            public int key;
+            int key;
+            int val;
 
-            public Node(int key, int value) {
+            public Node(int key, int val) {
                 this.key = key;
-                this.value = value;
+                this.val = val;
             }
         }
     }
-
-
 }
-

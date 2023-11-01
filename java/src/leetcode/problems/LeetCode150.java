@@ -3,34 +3,43 @@ package leetcode.problems;
 import java.util.Stack;
 
 /**
- * @author jingxinwu
- * @date 2021-08-05 2:24 上午
+ * @author wujingxinit@outlook.com
+ * @date 2023/11/1 23:08
  */
 public class LeetCode150 {
-
 
     public int evalRPN(String[] tokens) {
         if (tokens == null || tokens.length == 0) {
             return 0;
         }
+        int res = 0;
         Stack<Integer> stack = new Stack<>();
-        for (String s : tokens) {
-            switch (s) {
-                case "+" -> stack.push(stack.pop() + stack.pop());
-                case "-" -> {
-                    Integer one = stack.pop();
-                    Integer two = stack.pop();
-                    stack.push(two - one);
-                }
-                case "*" -> stack.push(stack.pop() * stack.pop());
-                case "/" -> {
-                    Integer a = stack.pop();
-                    Integer b = stack.pop();
+        for (String token : tokens) {
+            switch (token) {
+                case "*":
+                    stack.push(stack.pop() * stack.pop());
+                    break;
+                case "/":
+                    int a = stack.pop();
+                    int b = stack.pop();
                     stack.push(b / a);
-                }
-                default -> stack.push(Integer.valueOf(s));
+                    break;
+                case "+":
+                    stack.push(stack.pop() + stack.pop());
+                    break;
+                case "-":
+                    int c = stack.pop();
+                    int d = stack.pop();
+                    stack.push(d - c);
+                    break;
+                default:
+                    stack.push(Integer.parseInt(token));
+                    break;
             }
         }
-        return stack.pop();
+        while (!stack.isEmpty()) {
+            res += stack.pop();
+        }
+        return res;
     }
 }

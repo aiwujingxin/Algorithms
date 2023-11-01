@@ -3,21 +3,21 @@ package leetcode.problems;
 import common.ListNode;
 
 /**
- * @author jingxinwu
- * @date 2023.09.19 16:47
+ * @author wujingxinit@outlook.com
+ * @date 2023/11/1 22:47
  */
 public class LeetCode142 {
 
     public ListNode detectCycle(ListNode head) {
-        if (head == null) {
+        if (head == null || head.next == null) {
             return null;
         }
-        ListNode slow = head;
         ListNode fast = head;
+        ListNode slow = head;
         while (fast != null && fast.next != null) {
-            slow = slow.next;
             fast = fast.next.next;
-            if (slow == fast) {
+            slow = slow.next;
+            if (fast == slow) {
                 fast = head;
                 while (fast != slow) {
                     fast = fast.next;

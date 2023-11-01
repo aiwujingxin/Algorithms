@@ -103,29 +103,4 @@ public class Trie {
         }
         return false;
     }
-
-    boolean[] failed = new boolean[10001];
-
-    public boolean wordBreak(String s, int index) {
-        if (failed[index]) {
-            return false;
-        }
-        if (index >= s.length()) {
-            return true;
-        }
-        Node p = root;
-        for (int i = index; i < s.length(); i++) {
-            if (p.children[s.charAt(i) - 'a'] == null) {
-                return false;
-            }
-            p = p.children[s.charAt(i) - 'a'];
-            if (p.isEnd) {
-                if (canBreak(s, i + 1)) {
-                    return true;
-                }
-                failed[i + 1] = true;
-            }
-        }
-        return false;
-    }
 }

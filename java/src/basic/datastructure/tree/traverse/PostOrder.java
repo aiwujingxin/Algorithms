@@ -29,9 +29,6 @@ public class PostOrder implements Traverse {
     //https://zhuanlan.zhihu.com/p/80578741
     //https://www.youtube.com/watch?v=ZIgudgGOfDs
     // 根节点会两次入栈
-    // 到底进入的左子树，还是进入的右子树，需要记录
-    // 如果是右子树，那么就直接把节点弹出来， 不需要再进行访问了
-    // 递归记录调用的地址
     @Override
     public List<Integer> Iteration(TreeNode root) {
         List<Integer> list = new ArrayList<>();
@@ -40,24 +37,21 @@ public class PostOrder implements Traverse {
         }
         Stack<TreeNode> stack = new Stack<>();
         TreeNode cur = root;
-        TreeNode pre = null;  // 用于记录上一次访问的节点
+        TreeNode pre = null;
         while (cur != null || !stack.isEmpty()) {
             while (cur != null) {
                 stack.push(cur);
                 cur = cur.left;
             }
-            if (stack.isEmpty()) {
-                return list;
-            }
             // 连续不断的向上一层返回，连续退栈
             cur = stack.pop();
-            if (cur.right == null || pre == cur.right) { // 访问节点的条件, 没有右节点了， 或者刚访问完它的右节点
-                list.add(cur.val); // 访问
-                pre = cur; // 这一步是记录上一次访问的节点
+            if (cur.right == null || pre == cur.right) { // 没有右节点,或者刚访问完它的右节点
+                list.add(cur.val);
+                pre = cur;
                 cur = null; // 此处为了跳过下一次循环的访问左子节点的过程，直接进入栈的弹出阶段，因为但凡在栈中的节点，它们的左子节点都肯定被经过且已放入栈中。
-            } else { // 不访问节点的条件
-                stack.push(cur); // 将已弹出的根节点放回栈中
-                cur = cur.right; // 经过右子节点， 再借助最外层的while循环继续走
+            } else {
+                stack.push(cur);
+                cur = cur.right; // 访问右子树
             }
         }
         return list;
