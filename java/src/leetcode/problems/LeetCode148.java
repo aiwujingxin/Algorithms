@@ -1,15 +1,17 @@
 package leetcode.problems;
 
-import common.*;
+import common.ListNode;
 
 /**
- * @author aiwujingxin@gmail.com
- * @date 2022/9/12 21:47
+ * @author wujingxinit@outlook.com
+ * @date 2023/11/2 13:50
  */
-public class LeetCode148_mergesort {
+public class LeetCode148 {
 
     public ListNode sortList(ListNode head) {
-        if (head == null || head.next == null) return head;
+        if (head == null || head.next == null) {
+            return head;
+        }
         ListNode mid = getMid(head);
         ListNode head1 = mid.next;
         mid.next = null;
@@ -19,15 +21,15 @@ public class LeetCode148_mergesort {
     }
 
     private ListNode getMid(ListNode head) {
-        ListNode dummy = new ListNode(-1);
+        ListNode dummy = new ListNode();
         dummy.next = head;
-        ListNode s = dummy;
-        ListNode f = dummy;
-        while (f != null && f.next != null) {
-            s = s.next;
-            f = f.next.next;
+        ListNode slow = dummy;
+        ListNode fast = dummy;
+        while (fast != null && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
         }
-        return s;
+        return slow;
     }
 
     public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
@@ -37,22 +39,22 @@ public class LeetCode148_mergesort {
         if (l2 == null) {
             return l1;
         }
-        ListNode dummy = new ListNode(0);
-        ListNode temp = dummy;
+        ListNode dummy = new ListNode();
+        ListNode cur = dummy;
         while (l1 != null && l2 != null) {
             if (l1.val <= l2.val) {
-                temp.next = l1;
+                cur.next = l1;
                 l1 = l1.next;
             } else {
-                temp.next = l2;
+                cur.next = l2;
                 l2 = l2.next;
             }
-            temp = temp.next;
+            cur = cur.next;
         }
         if (l1 != null) {
-            temp.next = l1;
+            cur.next = l1;
         } else {
-            temp.next = l2;
+            cur.next = l2;
         }
         return dummy.next;
     }

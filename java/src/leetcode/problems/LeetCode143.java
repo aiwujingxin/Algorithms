@@ -3,56 +3,50 @@ package leetcode.problems;
 import common.ListNode;
 
 /**
- * @author jingxinwu
- * @date 2021-08-01 12:34 下午
+ * @author wujingxinit@outlook.com
+ * @date 2023/11/2 13:32
  */
 public class LeetCode143 {
 
-
     public void reorderList(ListNode head) {
-        if (head == null || head.next == null) {
+        if (head == null) {
             return;
         }
-        //寻找中点
-        ListNode mid = findMid(head);
-        //反转链表
-        ListNode l2 = mid.next;
-        mid.next = null;
-        l2 = revert(l2);
-        ListNode l1 = head;
-        //拼接链表
-        while (l1 != null && l2 != null) {
-            ListNode next = l1.next;
-            l1.next = l2;
-            l2 = l2.next;
-            l1.next.next = next;
-            l1 = next;
-        }
-    }
-
-
-    private ListNode findMid(ListNode head) {
-
-        ListNode slow = head;
-        ListNode fast = head;
-
+        ListNode dummy = new ListNode();
+        dummy.next = head;
+        ListNode slow = dummy;
+        ListNode fast = dummy;
         while (fast != null && fast.next != null) {
-            fast = fast.next.next;
             slow = slow.next;
+            fast = fast.next.next;
         }
-
-        return slow;
+        ListNode mid = slow;
+        ListNode rhead = mid.next;
+        mid.next = null;
+        rhead = reverse(rhead);
+        merge(head, rhead);
     }
 
+    private void merge(ListNode l1, ListNode l2) {
+        ListNode cur = l1;
+        while (l2 != null) {
+            ListNode next = cur.next;
+            cur.next = l2;
+            l2 = l2.next;
+            cur = cur.next;
+            cur.next = next;
+            cur = next;
+        }
+    }
 
-    private ListNode revert(ListNode mid) {
+    private ListNode reverse(ListNode head) {
         ListNode pre = null;
-        ListNode cur = mid;
+        ListNode cur = head;
         while (cur != null) {
-            ListNode temp = cur.next;
+            ListNode next = cur.next;
             cur.next = pre;
             pre = cur;
-            cur = temp;
+            cur = next;
         }
         return pre;
     }
