@@ -4,10 +4,12 @@ import basic.datastructure.liner.array.ArraySort;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 
 /**
  * @author wujingxinit@outlook.com
  * @date 2022/9/14 14:15
+ * @description 将元素均匀分布至桶中, 对桶内的元素排序,最后按顺序输出
  */
 public class BucketSort implements ArraySort {
 
@@ -23,26 +25,23 @@ public class BucketSort implements ArraySort {
             }
         }
         int bucketNum = (maxVal - minVal) / nums.length + 1;
-        ArrayList<ArrayList<Integer>> bucketArr = new ArrayList<>();
+        List<List<Integer>> buckets = new ArrayList<>();
         for (int i = 0; i < bucketNum; i++) {
-            bucketArr.add(new ArrayList<>());
+            buckets.add(new ArrayList<>());
         }
-
         for (int value : nums) {
             int num = (value - minVal) / nums.length;
-            bucketArr.get(num).add(value);
+            buckets.get(num).add(value);
         }
-        for (ArrayList<Integer> integers : bucketArr) {
-            Collections.sort(integers);
+        for (List<Integer> bucket : buckets) {
+            Collections.sort(bucket);
         }
-
-        int ndx = 0;
-        for (ArrayList<Integer> list : bucketArr) {
-            for (Integer n : list) {
-                nums[ndx++] = n;
+        int index = 0;
+        for (List<Integer> list : buckets) {
+            for (Integer num : list) {
+                nums[index++] = num;
             }
         }
         return nums;
     }
-
 }

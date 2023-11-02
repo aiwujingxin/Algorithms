@@ -5,8 +5,7 @@ import basic.datastructure.liner.array.ArraySort;
 /**
  * @author wujingxinit@outlook.com
  * @date 2022/9/14 14:14
- * 首先在未排序序列中找到最小元素，存放到排序序列的起始位置，然后，再从剩余未排序元素中继续寻找最小元素，然后放到第二个元素位置。
- * 以此类推，直到所有元素均排序完毕。
+ * @description 分为排好的和未排好顺序的. 在未排序序列中找到最小元素，存放到排序序列的当前位置
  */
 public class SelectSort implements ArraySort {
 

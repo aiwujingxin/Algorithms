@@ -5,40 +5,30 @@ import basic.datastructure.liner.array.ArraySort;
 /**
  * @author wujingxinit@outlook.com
  * @date 2022/9/14 23:07
+ * @description 利用数组下标来确定元素的位置
  */
 public class CountingSort implements ArraySort {
 
     @Override
     public int[] sortArray(int[] nums) {
-        int maxValue = getMaxValue(nums);
-        return countingSort(nums, maxValue);
-    }
-
-    private int[] countingSort(int[] arr, int maxValue) {
-        int bucketLen = maxValue + 1;
-        int[] bucket = new int[bucketLen];
-
-        for (int value : arr) {
-            bucket[value]++;
+        int max = nums[0];
+        for (int i = 1; i < nums.length; i++) {
+            max = Math.max(max, nums[i]);
         }
-
-        int sortedIndex = 0;
-        for (int j = 0; j < bucketLen; j++) {
-            while (bucket[j] > 0) {
-                arr[sortedIndex++] = j;
-                bucket[j]--;
+        int len = max + 1;
+        int[] count = new int[len];
+        // 统计
+        for (int num : nums) {
+            count[num]++;
+        }
+        int index = 0;
+        for (int i = 0; i < len; i++) {
+            while (count[i] > 0) {
+                nums[index] = i;
+                count[i]--;
+                index++;
             }
         }
-        return arr;
-    }
-
-    private int getMaxValue(int[] arr) {
-        int maxValue = arr[0];
-        for (int value : arr) {
-            if (maxValue < value) {
-                maxValue = value;
-            }
-        }
-        return maxValue;
+        return nums;
     }
 }

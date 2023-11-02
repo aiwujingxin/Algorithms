@@ -1,4 +1,4 @@
-package basic.algorithm.twoPoint;
+package basic.algorithm.twopoint;
 
 /**
  * @author wujingxinit@outlook.com

@@ -1,4 +1,4 @@
-package basic.algorithm.twoPoint;
+package basic.algorithm.twopoint;
 
 import leetcode.problems.LeetCode674;
 
