@@ -1,8 +1,8 @@
 package leetcode.problems;
 
 /**
- * @author jingxinwu
- * @date 2021-08-17 11:38 下午
+ * @author wujingxinit@outlook.com
+ * @date 2023/11/3 13:47
  */
 public class LeetCode213 {
 
@@ -18,11 +18,18 @@ public class LeetCode213 {
         if (nums.length == 2) {
             return Math.max(nums[0], nums[1]);
         }
+
         dp = new int[nums.length];
-        return Math.max(rob(nums, 1, nums.length - 1), rob(nums, 0, nums.length - 2));
+        return Math.max(rob(nums, 0, nums.length - 2), rob(nums, 1, nums.length - 1));
     }
 
     public int rob(int[] nums, int start, int end) {
+        if (start == end) {
+            return nums[start];
+        }
+        if (start + 1 == end) {
+            return Math.max(nums[start], nums[end]);
+        }
         dp[start] = nums[start];
         dp[start + 1] = Math.max(nums[start], nums[start + 1]);
         for (int i = start + 2; i <= end; i++) {

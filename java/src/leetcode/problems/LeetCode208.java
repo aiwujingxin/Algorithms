@@ -6,6 +6,4 @@ package leetcode.problems;
  * @see basic.datastructure.trie.Trie
  */
 public class LeetCode208 {
-
-
 }

@@ -2,47 +2,27 @@ package leetcode.problems;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2022/10/23 15:58
+ * @date 2023/11/3 13:27
  */
 public class LeetCode209 {
 
-    //https://leetcode.com/problems/minimum-size-subarray-sum/discuss/365459/Java-Binary-Search-Solution
-    public int minSubArrayLen(int s, int[] nums) {
-        int n = nums.length;
-        if (n == 0) {
+    public int minSubArrayLen(int target, int[] nums) {
+        if (nums == null || nums.length == 0) {
             return 0;
         }
         int res = Integer.MAX_VALUE;
-        int[] sum = new int[n + 1];
-        sum[0] = 0;
-        for (int i = 1; i <= n; i++) {
-            sum[i] = sum[i - 1] + nums[i - 1];
-        }
-        for (int i = 0; i < n; i++) {
-            int target = s + sum[i];
-            int border = binarySearch(target, 0, n, sum);
-            if (border > 0) {
-                res = Math.min(res, border - i);
+        int left = 0;
+        int right = 0;
+        int sum = 0;
+        while (right < nums.length) {
+            sum += nums[right];
+            while (sum >= target) {
+                res = Math.min(res, right - left + 1);
+                sum -= nums[left];
+                left++;
             }
+            right++;
         }
-        return (res != Integer.MAX_VALUE ? res : 0);
-    }
-
-    //find the index of first element that is bigger than or equals target
-    public int binarySearch(int target, int beg, int end, int[] nums) {
-        int left = beg;
-        int right = end;
-        while (left < right) {
-            int mid = (left + right) / 2;
-            if (nums[mid] >= target) {
-                right = mid;
-            } else {
-                left = mid + 1;
-            }
-        }
-        if (left == nums.length - 1 && nums[left] < target) {
-            return -1;
-        }
-        return left;
+        return res == Integer.MAX_VALUE ? 0 : res;
     }
 }

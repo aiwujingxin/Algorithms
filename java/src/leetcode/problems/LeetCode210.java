@@ -6,60 +6,46 @@ import java.util.List;
 import java.util.Queue;
 
 /**
- * @author jingxinwu
- * @date 2022-02-17 7:37 PM
+ * @author wujingxinit@outlook.com
+ * @date 2023/11/3 13:27
  */
 public class LeetCode210 {
-
-
     public int[] findOrder(int numCourses, int[][] prerequisites) {
 
-        List<Integer> list = new ArrayList<>();
+        int[] res = new int[numCourses];
+        int[] indegree = new int[numCourses];
+        List<Integer>[] graph = new List[numCourses];
 
-        int[] arr = new int[numCourses];
-
-        for (int[] ints : prerequisites) {
-            arr[ints[0]]++;
+        for (int i = 0; i < numCourses; i++) {
+            graph[i] = new ArrayList<>();
         }
 
+        for (int[] p : prerequisites) {
+            indegree[p[0]]++;
+            graph[p[1]].add(p[0]);
+        }
         Queue<Integer> queue = new LinkedList<>();
+        int cnt = 0;
 
-        for (int i = 0; i < arr.length; i++) {
-            if (arr[i] == 0) {
+        for (int i = 0; i < numCourses; i++) {
+            if (indegree[i] == 0) {
                 queue.add(i);
-                list.add(i);
+                res[cnt] = i;
+                cnt++;
             }
-
         }
         while (!queue.isEmpty()) {
-
             int cur = queue.poll();
 
-
-            for (int[] prerequisite : prerequisites) {
-
-                if (arr[prerequisite[0]] == 0) {
-                    continue;
-                }
-                if (prerequisite[1] == cur) {
-                    arr[prerequisite[0]]--;
-                }
-                if (arr[prerequisite[0]] == 0) {
-                    queue.add(prerequisite[0]);
-                    list.add(prerequisite[0]);
+            for (int next : graph[cur]) {
+                indegree[next]--;
+                if (indegree[next] == 0) {
+                    queue.add(next);
+                    res[cnt] = next;
+                    cnt++;
                 }
             }
         }
-
-        //fix
-        if (list.size() != numCourses) {
-            return new int[]{};
-        }
-        int[] res = new int[list.size()];
-        for (int i = 0; i < list.size(); i++) {
-            res[i] = list.get(i);
-        }
-        return res;
-
+        return cnt == numCourses ? res : new int[]{};
     }
 }

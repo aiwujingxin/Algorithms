@@ -4,25 +4,31 @@ import java.util.HashSet;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2022/9/27 14:38
+ * @date 2023/11/3 12:37
  */
 public class LeetCode202 {
 
-    //study
+
     public boolean isHappy(int n) {
         HashSet<Integer> set = new HashSet<>();
-        while (n != 1) {
-            int temp = 0;
-            while (n != 0) {
-                int digit = n % 10;
-                temp += digit * digit;
-                n /= 10;
+        while (!set.contains(n)) {
+            set.add(n);
+            n = getN(n);
+            if (n == 1) {
+                return true;
             }
-            if (!set.add(temp)) {
-                return false;
-            }
-            n = temp;
         }
-        return true;
+        return false;
+    }
+
+    private int getN(int n) {
+        int res = 0;
+        int exp = 10;
+        while (n > 0) {
+            int t = n % exp;
+            n = n / exp;
+            res += t * t;
+        }
+        return res;
     }
 }

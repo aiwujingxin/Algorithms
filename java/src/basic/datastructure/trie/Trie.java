@@ -47,7 +47,7 @@ public class Trie {
 
     public static class Node {
         public Node[] children = new Node[26];
-        boolean isEnd = false;
+        public boolean isEnd = false;
     }
 
     public String findRoot(String word) {

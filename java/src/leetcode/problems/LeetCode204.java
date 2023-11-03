@@ -2,26 +2,23 @@ package leetcode.problems;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2022/9/27 23:38
+ * @date 2023/11/3 12:47
  */
 public class LeetCode204 {
 
-    //study
     public int countPrimes(int n) {
-        boolean[] notPrime = new boolean[n];
-        int ans = 0;
-        for (int i = 2; i < n; ++i) {
-            if (!notPrime[i]) {
-                ans += 1;
-                for (int j = 2; i * j < n; j++) {
-                    notPrime[i * j] = true;
+
+        boolean[] notP = new boolean[n];
+        int res = 0;
+
+        for (int i = 2; i < n; i++) {
+            if (!notP[i]) {
+                res++;
+                for (int j = 0; j * i < n; j++) {
+                    notP[j * i] = true;
                 }
             }
         }
-        return ans;
+        return res;
     }
-
-    //线性规划
-    //二分查找
-
 }
