@@ -4,7 +4,7 @@ package leetcode.problems;
  * @author wujingxinit@outlook.com
  * @date 2023/10/15 14:36
  */
-public class LeetCode274_bs {
+public class LeetCode274 {
 
     public int hIndex(int[] citations) {
         int left = 0, right = 1000;

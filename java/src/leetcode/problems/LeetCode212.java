@@ -12,7 +12,7 @@ import java.util.Set;
  * @author aiwujingxin@gmail.com
  * @date 2022/7/6 22:17
  */
-public class LeetCode212_trie {
+public class LeetCode212 {
 
     Set<String> res = new HashSet<>();
 
