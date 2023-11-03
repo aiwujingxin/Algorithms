@@ -4,35 +4,32 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @author jingxinwu
- * @date 2021-08-18 12:34 上午
+ * @author wujingxinit@outlook.com
+ * @date 2023/11/3 14:21
  */
+
 public class LeetCode216 {
+    int k;
 
     public List<List<Integer>> combinationSum3(int k, int n) {
+        this.k = k;
         List<List<Integer>> res = new ArrayList<>();
-        helper(1, k, new ArrayList<>(), n, res);
+        backtrack(1, n, 0, res, new ArrayList<>());
         return res;
     }
 
-    public void helper(int begin, int k, ArrayList<Integer> temp, int target, List<List<Integer>> res) {
-        // 1.结束条件
-        if (target == 0 && temp.size() == k) {
-            res.add(new ArrayList<>(temp));
+    private void backtrack(int index, int target, int sum, List<List<Integer>> res, List<Integer> list) {
+        if (list.size() == k) {
+            if (sum == target) {
+                res.add(new ArrayList<>(list));
+            }
             return;
         }
-        // 2.选择列表
-        for (int i = begin; i <= 9; i++) {
-            // 大剪枝
-            if (target - i < 0) {
-                return;
-            }
-            // 选择
-            temp.add(i);
-            // 递归
-            helper(i + 1, k, temp, target - i, res);
-            // 撤销选择
-            temp.remove(temp.size() - 1);
+
+        for (int i = index; i <= 9; i++) {
+            list.add(i);
+            backtrack(i + 1, target, sum + i, res, list);
+            list.remove(list.size() - 1);
         }
     }
 }

@@ -1,60 +1,44 @@
 package leetcode.problems;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.PriorityQueue;
+import java.util.*;
 
 /**
- * @author aiwujingxin@gmail.com
- * @date 2022/8/1 21:56
+ * @author wujingxinit@outlook.com
+ * @date 2023/11/3 17:56
  */
 public class LeetCode218 {
-
     public List<List<Integer>> getSkyline(int[][] buildings) {
-        ArrayList<Pair> list = new ArrayList<>();
+        List<int[]> list = new ArrayList<>();
         for (int[] building : buildings) {
-            list.add(new Pair(building[0], building[2]));
-            list.add(new Pair(building[1], -building[2]));
+            list.add(new int[]{building[0], building[2]});
+            list.add(new int[]{building[1], -building[2]});
         }
-        Collections.sort(list);
+        list.sort(new Comparator<int[]>() {
+            @Override
+            public int compare(int[] o1, int[] o2) {
+                if (o1[0] == o2[0]) {
+                    return o2[1] - o1[1];
+                }
+                return o1[0] - o2[0];
+            }
+        });
         List<List<Integer>> ans = new ArrayList<>();
         PriorityQueue<Integer> pq = new PriorityQueue<>(Collections.reverseOrder());
         pq.add(0);
-
-        for (Pair it : list) {
+        for (int[] it : list) {
             int top = pq.peek();
-            if (it.height >= 0) {
-                pq.add(it.height);
+            if (it[1] >= 0) {
+                pq.add(it[1]);
             } else {
-                pq.remove(-it.height);
+                pq.remove(-it[1]);
             }
             if (top != pq.peek()) {
                 ArrayList<Integer> curr = new ArrayList<>();
-                curr.add(it.point);
+                curr.add(it[0]);
                 curr.add(pq.peek());
                 ans.add(curr);
             }
         }
-
         return ans;
-    }
-
-    static class Pair implements Comparable<Pair> {
-        int point;
-        int height;
-
-        Pair(int p, int h) {
-            this.point = p;
-            this.height = h;
-        }
-
-        public int compareTo(Pair p) {
-            if (this.point == p.point) {
-                return p.height - this.height;
-            } else {
-                return this.point - p.point;
-            }
-        }
     }
 }

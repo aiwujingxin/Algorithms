@@ -26,7 +26,7 @@ public class LeetCode212_dp {
                 if (s.substring(i).indexOf(word) == 0) {
                     for (String phrase : dp.get(i)) {
                         StringBuilder sb = new StringBuilder(phrase);
-                        if (phrase.length() > 0) {
+                        if (!phrase.isEmpty()) {
                             sb.append(" ");
                         }
 

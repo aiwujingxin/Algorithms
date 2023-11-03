@@ -1,53 +1,49 @@
 package leetcode.problems;
 
-import java.util.Deque;
-import java.util.LinkedList;
+import java.util.Stack;
 
 /**
- * @author jingxinwu
- * @date 2021-08-25 12:37 上午
+ * @author wujingxinit@outlook.com
+ * @date 2023/11/3 14:42
  */
 public class LeetCode227 {
 
     public int calculate(String s) {
-        if (s == null || s.trim().isEmpty()) {
+        if (s == null || s.isEmpty()) {
             return 0;
         }
-        Deque<Integer> stack = new LinkedList<>();
-        char preSign = '+';
+        s = s.trim();
+        char[] chars = s.toCharArray();
+        Stack<Integer> stack = new Stack<>();
+        char pre = '+';
         int num = 0;
-        int n = s.length();
-        for (int i = 0; i < n; ++i) {
-            //从字符串取数字
-            if (Character.isDigit(s.charAt(i))) {
-                num = num * 10 + s.charAt(i) - '0';
+        int n = chars.length;
+        for (int i = 0; i < n; i++) {
+            if (Character.isDigit(chars[i])) {
+                num = num * 10 + chars[i] - '0';
             }
-            //计算
             if (!Character.isDigit(s.charAt(i)) && s.charAt(i) != ' ' || i == n - 1) {
-                switch (preSign) {
+                switch (pre) {
                     case '+':
                         stack.push(num);
                         break;
                     case '-':
                         stack.push(-num);
                         break;
-                    //符号优先级
                     case '*':
                         stack.push(stack.pop() * num);
                         break;
-                    default:
+                    case '/':
                         stack.push(stack.pop() / num);
                 }
-                preSign = s.charAt(i);
+                pre = s.charAt(i);
                 num = 0;
             }
         }
-        int ans = 0;
+        int res = 0;
         while (!stack.isEmpty()) {
-            ans += stack.pop();
+            res += stack.pop();
         }
-        return ans;
-
+        return res;
     }
-
 }

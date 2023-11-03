@@ -1,7 +1,5 @@
 package leetcode.problems;
 
-import java.util.LinkedList;
-import java.util.Queue;
 import java.util.Stack;
 
 /**
@@ -10,69 +8,67 @@ import java.util.Stack;
  */
 public class LeetCode772 {
 
+    public static void main(String[] args) {
+        System.out.println(new LeetCode772().calculate("12*(8/(2*4))/2*(((8/4+7)/9)+3/3+2*2*2)"));
+        System.out.println(new LeetCode772().calculate("6*6*6*6*6/36/216"));
+        System.out.println(new LeetCode772().calculate("1*2*3*4*5"));
+        System.out.println(new LeetCode772().calculate("5*7/15*3"));
+    }
 
     public int calculate(String s) {
-        return (int) cal(s);
+        return dfs(s, 0)[0];
     }
 
-    public double cal(String expr) {
-        Queue<Character> exprQueue = new LinkedList<>();
-        for (int i = 0; i < expr.length(); i++) {
-            exprQueue.offer(expr.charAt(i));
-        }
-        return helper(exprQueue);
-    }
-
-    public int helper(Queue<Character> exprQueue) {
-
-        Stack<Integer> numStack = new Stack<>();
-        char c;
-        int n = 0;
+    public int[] dfs(String s, int index) {
+        Stack<Integer> stack = new Stack<>();
+        int num = 0;
         char sign = '+';
-        while (!exprQueue.isEmpty()) {
-            c = exprQueue.poll();
+        for (int i = index; i < s.length(); i++) {
+            char c = s.charAt(i);
             if (Character.isDigit(c)) {
-                n = 10 * n + c - '0';
+                num = 10 * num + c - '0';
             }
             if (c == '(') {
-                n = helper(exprQueue);
+                int[] res = dfs(s, i + 1);
+                num = res[0];
+                i = res[1];
             }
-            if ((!Character.isDigit(c) && c != ' ') || exprQueue.isEmpty()) {
+            if ((!Character.isDigit(c) && c != ' ') || i == s.length() - 1) {
                 int pre;
                 switch (sign) {
                     case '+':
-                        numStack.push(n);
+                        stack.push(num);
                         break;
                     case '-':
-                        numStack.push(-n);
+                        stack.push(-num);
                         break;
                     case '*':
-                        pre = numStack.pop();
-                        pre = pre * n;
-                        numStack.push(pre);
+                        pre = stack.pop();
+                        pre = pre * num;
+                        stack.push(pre);
                         break;
                     case '/':
-                        pre = numStack.pop();
-                        numStack.push(pre / n);
+                        pre = stack.pop();
+                        stack.push(pre / num);
+                        break;
                     default:
                         break;
 
                 }
                 sign = c;
-                n = 0;
+                num = 0;
             }
             if (c == ')') {
-                return sum(numStack);
+                return new int[]{sum(stack), i};
             }
         }
-        return sum(numStack);
-
+        return new int[]{sum(stack), s.length()};
     }
 
-    private int sum(Stack<Integer> numStack) {
+    private int sum(Stack<Integer> stack) {
         int res = 0;
-        while (!numStack.isEmpty()) {
-            res += numStack.pop();
+        while (!stack.isEmpty()) {
+            res += stack.pop();
         }
         return res;
     }

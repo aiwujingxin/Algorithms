@@ -3,8 +3,8 @@ package leetcode.problems;
 import common.TreeNode;
 
 /**
- * @author jingxinwu
- * @date 2022-02-23 1:33 PM
+ * @author wujingxinit@outlook.com
+ * @date 2023/11/3 14:36
  */
 public class LeetCode222 {
 
@@ -20,11 +20,9 @@ public class LeetCode222 {
             r = r.right;
             hr++;
         }
-        // 如果左右子树的高度相同，则是一棵满二叉树
         if (hl == hr) {
             return (int) Math.pow(2, hl) - 1;
         }
-        // 如果左右高度不同，则按照普通二叉树的逻辑计算
         return 1 + countNodes(root.left) + countNodes(root.right);
     }
 }
