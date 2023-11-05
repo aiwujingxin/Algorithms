@@ -1,9 +1,10 @@
 package basic.datastructure.tree.serialize;
 
-import basic.datastructure.tree.*;
-import common.*;
+import basic.datastructure.tree.Serialization;
+import common.TreeNode;
 
-import java.util.*;
+import java.util.LinkedList;
+import java.util.Queue;
 
 
 /**
@@ -21,13 +22,13 @@ public class LevelOrder {
             }
             StringBuilder res = new StringBuilder();
             Queue<TreeNode> queue = new LinkedList<>();
-            queue.offer(root);
+            queue.add(root);
             while (!queue.isEmpty()) {
                 TreeNode node = queue.poll();
                 if (node != null) {
                     res.append(node.val);
-                    queue.offer(node.left);
-                    queue.offer(node.right);
+                    queue.add(node.left);
+                    queue.add(node.right);
                 } else {
                     res.append(NULL);
                 }
@@ -35,7 +36,6 @@ public class LevelOrder {
                     res.append(COMMA);
                 }
             }
-            System.out.println(res);
             return res.toString();
         }
 
@@ -48,18 +48,18 @@ public class LevelOrder {
             String[] dataList = data.split(COMMA);
             TreeNode root = new TreeNode(Integer.parseInt(dataList[0]));
             Queue<TreeNode> queue = new LinkedList<>();
-            queue.offer(root);
+            queue.add(root);
             int index = 1;
             while (!queue.isEmpty()) {
                 TreeNode node = queue.poll();
                 if (!NULL.equals(dataList[index])) {
                     node.left = new TreeNode(Integer.parseInt(dataList[index]));
-                    queue.offer(node.left);
+                    queue.add(node.left);
                 }
                 index++;
                 if (!NULL.equals(dataList[index])) {
                     node.right = new TreeNode(Integer.parseInt(dataList[index]));
-                    queue.offer(node.right);
+                    queue.add(node.right);
                 }
                 index++;
             }

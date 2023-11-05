@@ -2,27 +2,31 @@ package leetcode.problems;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2023/10/15 14:36
+ * @date 2023/11/5 23:44
  */
 public class LeetCode274 {
 
     public int hIndex(int[] citations) {
-        int left = 0, right = 1000;
+        if (citations == null || citations.length == 0) {
+            return 0;
+        }
+        int left = 0;
+        int right = 1000;
         while (left < right) {
-            int mid = (left + right + 1) / 2;
-            if (check(mid, citations)) {
-                left = mid;
+            int h = (left + right + 1) / 2;
+            if (check(h, citations)) {
+                left = h;
             } else {
-                right = mid - 1;
+                right = h - 1;
             }
         }
         return left;
     }
 
-    public boolean check(int h, int[] arr) {
+    private boolean check(int h, int[] citations) {
         int cnt = 0;
-        for (int j : arr) {
-            if (j >= h) {
+        for (int citation : citations) {
+            if (citation >= h) {
                 cnt++;
             }
         }

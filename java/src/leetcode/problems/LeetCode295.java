@@ -5,43 +5,43 @@ import java.util.PriorityQueue;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2022/10/6 23:51
+ * @date 2023/11/6 00:42
  */
 public class LeetCode295 {
 
     class MedianFinder {
 
-        PriorityQueue<Integer> queMin;
-        PriorityQueue<Integer> queMax;
+        PriorityQueue<Integer> minQ;
+        PriorityQueue<Integer> maxQ;
 
-        /**
-         * initialize your data structure here.
-         */
         public MedianFinder() {
-            queMin = new PriorityQueue<>((a, b) -> (b - a));
-            queMax = new PriorityQueue<>(Comparator.comparingInt(a -> a));
+            maxQ = new PriorityQueue<>(new Comparator<Integer>() {
+                @Override
+                public int compare(Integer o1, Integer o2) {
+                    return o2 - o1;
+                }
+            });
+            minQ = new PriorityQueue<>();
         }
 
-        //queMin 中的数的数量比 queMax 多一个
         public void addNum(int num) {
-            if (queMin.isEmpty() || num < queMin.peek()) {
-                queMin.offer(num);
-                if (queMax.size() + 1 < queMin.size()) {
-                    queMax.offer(queMin.poll());
-                }
+            if (maxQ.isEmpty() || maxQ.peek() >= num) {
+                maxQ.add(num);
             } else {
-                queMax.offer(num);
-                if (queMax.size() > queMin.size()) {
-                    queMin.offer(queMax.poll());
-                }
+                minQ.add(num);
+            }
+            if (maxQ.size() > minQ.size() + 1) {
+                minQ.add(maxQ.poll());
+            } else if (minQ.size() > maxQ.size()) {
+                maxQ.add(minQ.poll());
             }
         }
 
         public double findMedian() {
-            if (queMin.size() > queMax.size()) {
-                return queMin.peek();
+            if (minQ.isEmpty() || maxQ.size() > minQ.size()) {
+                return maxQ.peek();
             }
-            return (queMin.peek() + queMax.peek()) / 2.0;
+            return (double) (maxQ.peek() + minQ.peek()) / 2;
         }
     }
 

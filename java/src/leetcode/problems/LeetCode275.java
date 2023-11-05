@@ -1,20 +1,24 @@
 package leetcode.problems;
 
 /**
- * @author jingxinwu
- * @date 2021-12-21 10:16 PM
+ * @author wujingxinit@outlook.com
+ * @date 2023/11/5 23:52
  */
 public class LeetCode275 {
 
     public int hIndex(int[] citations) {
+        if (citations == null || citations.length == 0) {
+            return 0;
+        }
         int n = citations.length;
-        int left = 0, right = n - 1;
+        int left = 0;
+        int right = n - 1;
         while (left < right) {
-            int mid = (left + right + 1) / 2;
-            if (citations[mid] >= n - mid) {
-                right = mid - 1;
+            int hIndex = (left + right + 1) / 2;
+            if (citations.length - hIndex >= citations[hIndex]) {
+                left = hIndex;
             } else {
-                left = mid;
+                right = hIndex - 1;
             }
         }
         return n - left <= citations[left] ? n - left : n - left - 1;

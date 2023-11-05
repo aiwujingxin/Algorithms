@@ -1,24 +1,26 @@
 package leetcode.problems;
 
-import java.util.Arrays;
-
 /**
  * @author wujingxinit@outlook.com
- * @date 2022/9/29 15:42
+ * @date 2023/11/6 00:23
  */
 public class LeetCode278 {
 
-    public int missingNumber(int[] nums) { //binary search
-        Arrays.sort(nums);
-        int left = 0, right = nums.length;
+    public int firstBadVersion(int n) {
+        int left = 1;
+        int right = n;
         while (left < right) {
-            int mid = (left + right) / 2;
-            if (nums[mid] > mid) {
+            int mid = (right - left) / 2 + left;
+            if (isBadVersion(mid)) {
                 right = mid;
             } else {
                 left = mid + 1;
             }
         }
         return left;
+    }
+
+    private boolean isBadVersion(int mid) {
+        return false;
     }
 }
