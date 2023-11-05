@@ -7,10 +7,6 @@ package leetcode.problems;
 public class LeetCode29 {
     //https://www.youtube.com/watch?v=XKuFGEGt5zo&t=199s
 
-    public static void main(String[] args) {
-        System.out.println(new LeetCode29().divide(32, 2));
-    }
-
     public int divide(int dividend, int divisor) {
         if (dividend == Integer.MIN_VALUE && divisor == -1) {
             return Integer.MAX_VALUE;

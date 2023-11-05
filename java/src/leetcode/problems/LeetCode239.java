@@ -16,25 +16,26 @@ public class LeetCode239 {
         PriorityQueue<int[]> queue = new PriorityQueue<>(new Comparator<int[]>() {
             @Override
             public int compare(int[] o1, int[] o2) {
-                if (o1[0] == o2[0]) {
-                    return o2[1] - o1[1];
+                if (o1[1] == o2[1]) {
+                    return o1[0] - o2[0];
                 }
-                return o2[0] - o1[0];
+                return o2[1] - o1[1];
             }
         });
+
         for (int i = 0; i < k; i++) {
-            queue.add(new int[]{nums[i], i});
+            queue.add(new int[]{i, nums[i]});
         }
-        int[] result = new int[nums.length - k + 1];
-        result[0] = queue.peek()[0];
+        int[] res = new int[nums.length - k + 1];
+        res[0] = queue.peek()[1];
 
         for (int i = k; i < nums.length; i++) {
-            queue.add(new int[]{nums[i], i});
-            while (queue.peek()[1] <= i - k) {
+            queue.add(new int[]{i, nums[i]});
+            while (!queue.isEmpty() && queue.peek()[0] < i - k + 1) {
                 queue.poll();
             }
-            result[i - k + 1] = queue.peek()[0];
+            res[i - k + 1] = queue.peek()[1];
         }
-        return result;
+        return res;
     }
 }

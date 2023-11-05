@@ -9,17 +9,14 @@ public class LeetCode80 {
 
     public int removeDuplicates(int[] nums) {
         int n = nums.length;
-        if (n <= 2) {
-            return n;
-        }
-        int slow = 2, fast = 2;
-        while (fast < n) {
-            if (nums[slow - 2] != nums[fast]) {
-                nums[slow] = nums[fast];
-                slow++;
+        int left = 2, right = 2;
+        while (right < n) {
+            if (nums[left - 2] != nums[right]) {
+                nums[left] = nums[right];
+                left++;
             }
-            fast++;
+            right++;
         }
-        return slow;
+        return left;
     }
 }

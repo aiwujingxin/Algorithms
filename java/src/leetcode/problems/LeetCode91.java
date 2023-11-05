@@ -7,7 +7,9 @@ package leetcode.problems;
 public class LeetCode91 {
 
     public int numDecodings(String s) {
-        if (s == null || s.isEmpty() || s.charAt(0) == '0') return 0;
+        if (s == null || s.isEmpty() || s.charAt(0) == '0') {
+            return 0;
+        }
         int[] dp = new int[s.length() + 1];
         dp[0] = 1;
         dp[1] = 1;

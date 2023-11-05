@@ -39,7 +39,7 @@ public class LeetCode36 {
             }
         }
 
-        // fix
+        // check box
         for (int i = 0; i < board.length; i = i + 3) {
             for (int j = 0; j < board[0].length; j = j + 3) {
                 HashSet<Character> set = new HashSet<>();

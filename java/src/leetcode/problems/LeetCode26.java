@@ -11,14 +11,14 @@ public class LeetCode26 {
         if (n == 0) {
             return 0;
         }
-        int fast = 1, slow = 1;
-        while (fast < n) {
-            if (nums[fast] != nums[fast - 1]) {
-                nums[slow] = nums[fast];
-                slow++;
+        int left = 1, right = 1;
+        while (right < n) {
+            if (nums[left - 1] != nums[right]) {
+                nums[left] = nums[right];
+                left++;
             }
-            fast++;
+            right++;
         }
-        return slow;
+        return left;
     }
 }
