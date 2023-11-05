@@ -8,21 +8,10 @@ import java.util.Arrays;
  */
 public class LeetCode259 {
 
-
-    //[-2,0,1,3,1]
-    //2
-
-    // -2 0 1 1 3
-
-    // -2 0 1
-    // -2 0 1
-    // -2 0 3
-    // -2 1 1
-
     public static void main(String[] args) {
-//        System.out.println(new LeetCode259().search(new int[]{-2, 0, 1, 1, 3}, 0, 4, 1));
+        System.out.println(new LeetCode259().search(new int[]{-2, 0, 1, 1, 3}, 0, 4, 1));
         System.out.println(new LeetCode259().threeSumSmaller(new int[]{-2, 0, 1, 3, 1}, 2));
-//                System.out.println(new LeetCode259().search(new int[]{-2, 0, 1, 1, 3}, 3, 4, 3));
+        System.out.println(new LeetCode259().search(new int[]{-2, 0, 1, 1, 3}, 3, 4, 3));
 
     }
 
@@ -45,25 +34,22 @@ public class LeetCode259 {
 
     // 最后一个比target小的数
     private int search(int[] nums, int start, int end, int target) {
-
         int left = start;
         int right = end;
-
-        while (left + 1 < right) {
+        while (left < right) {
             int mid = (left + right) / 2;
-            if (nums[mid] == target) {
-                right = mid - 1;
-            } else if (nums[mid] < target) {
-                left = mid;
-            } else if (nums[mid] > target) {
-                right = mid - 1;
+            if (nums[mid] >= target) {
+                right = mid;
+            } else {
+                left = mid + 1;
             }
-        }
-        if (nums[right] < target) {
-            return right;
         }
         if (nums[left] < target) {
             return left;
+        }
+        int res = left - 1;
+        if (nums[res] < target) {
+            return res;
         }
         return -1;
     }

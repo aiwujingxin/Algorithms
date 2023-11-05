@@ -1,8 +1,8 @@
 package leetcode.problems;
 
 /**
- * @author jingxinwu
- * @date 2021-10-10 2:11 下午
+ * @author wujingxinit@outlook.com
+ * @date 2023/11/5 16:44
  */
 public class LeetCode260 {
 
@@ -12,12 +12,12 @@ public class LeetCode260 {
         }
         int one = 0;
         int two = 0;
-        int xorsum = nums[0];
+        int n = nums[0];
         for (int i = 1; i < nums.length; i++) {
-            xorsum = xorsum ^ nums[i];
+            n = n ^ nums[i];
         }
-        int bit = xorsum & -xorsum;
-        //两个数在这一位上不一样，则两个被分成了两组
+        int bit = n & -n;  // 取出最后一个1
+        //两个数在这一位上不一样，则被分成了两组
         for (int num : nums) {
             if ((num & bit) != 0) {
                 one ^= num;
@@ -27,5 +27,4 @@ public class LeetCode260 {
         }
         return new int[]{one, two};
     }
-
 }
