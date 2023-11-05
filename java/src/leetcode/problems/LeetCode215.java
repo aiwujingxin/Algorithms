@@ -31,12 +31,10 @@ public class LeetCode215 {
     public int partition(int[] nums, int i, int j) {
         int pi = nums[i];
         while (i < j) {
-
             while (i < j && nums[j] <= pi) {
                 j--;
             }
             nums[i] = nums[j];
-
             while (i < j && nums[i] >= pi) {
                 i++;
             }

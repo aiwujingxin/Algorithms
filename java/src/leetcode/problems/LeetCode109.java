@@ -20,24 +20,18 @@ public class LeetCode109 {
         if (head == tail) {
             return null;
         }
-        int len = getLen(head, tail);
-        ListNode cur = head;
-        for (int i = 0; i < len / 2; i++) {
-            cur = cur.next;
+        ListNode dummy = new ListNode();
+        dummy.next = head;
+        ListNode slow = dummy;
+        ListNode fast = dummy;
+        while (fast != tail && fast.next != tail) {
+            slow = slow.next;
+            fast = fast.next.next;
         }
-        TreeNode root = new TreeNode(cur.val);
-        root.left = sortedListToBST(head, cur);
-        root.right = sortedListToBST(cur.next, tail);
+        TreeNode root = new TreeNode(slow.val);
+        root.left = sortedListToBST(head, slow);
+        root.right = sortedListToBST(slow.next, tail);
         return root;
     }
 
-    private int getLen(ListNode head, ListNode tail) {
-        int len = 0;
-        ListNode cur = head;
-        while (cur != tail) {
-            cur = cur.next;
-            len++;
-        }
-        return len;
-    }
 }

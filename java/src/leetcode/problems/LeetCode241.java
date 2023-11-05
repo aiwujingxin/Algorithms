@@ -9,7 +9,6 @@ import java.util.List;
  */
 public class LeetCode241 {
 
-
     public List<Integer> diffWaysToCompute(String input) {
         //校验
         if (input == null || input.isEmpty()) {
