@@ -11,15 +11,6 @@ import java.util.Stack;
  */
 public class MonotonicStack {
 
-    public static void main(String[] args) {
-        int[] nums = {4, 5, 2, 10, 8};
-        int[] nextGreater = new MonotonicStack().nextGreaterElement(nums);
-
-        for (int i = 0; i < nums.length; i++) {
-            System.out.println(nums[i] + " -> " + nextGreater[i]);
-        }
-    }
-
     public int[] nextGreaterElement(int[] nums) {
         if (nums == null || nums.length == 0) {
             return new int[]{};

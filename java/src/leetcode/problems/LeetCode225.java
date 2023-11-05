@@ -10,7 +10,6 @@ import java.util.Queue;
 public class LeetCode225 {
 
     class MyStack {
-
         Queue<Integer> queue1;
         Queue<Integer> queue2;
 
@@ -24,9 +23,9 @@ public class LeetCode225 {
             while (!queue1.isEmpty()) {
                 queue2.add(queue1.poll());
             }
-            Queue<Integer> temp = queue1;
+            Queue<Integer> t = queue1;
             queue1 = queue2;
-            queue2 = temp;
+            queue2 = t;
         }
 
         public int pop() {

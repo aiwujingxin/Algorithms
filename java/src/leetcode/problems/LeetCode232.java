@@ -4,42 +4,54 @@ import java.util.Stack;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2022/10/15 21:48
+ * @date 2023/11/5 14:14
  */
 public class LeetCode232 {
-    Stack<Integer> inStack;
-    Stack<Integer> outStack;
 
-    public void MyQueue() {
-        inStack = new Stack<>();
-        outStack = new Stack<>();
-    }
 
-    public void push(int x) {
-        inStack.push(x);
-    }
+    class MyQueue {
 
-    public int pop() {
-        if (outStack.isEmpty()) {
-            while (!inStack.isEmpty()) {
-                outStack.push(inStack.pop());
-            }
+        Stack<Integer> stack1;
+        Stack<Integer> stack2;
+
+        public MyQueue() {
+            stack1 = new Stack<>();
+            stack2 = new Stack<>();
         }
-        return outStack.pop();
-    }
 
-    public int peek() {
-        if (outStack.isEmpty()) {
-            while (!inStack.isEmpty()) {
-                outStack.push(inStack.pop());
-            }
+        public void push(int x) {
+            stack1.push(x);
         }
-        return outStack.peek();
+
+        public int pop() {
+            if (stack2.isEmpty()) {
+                while (!stack1.isEmpty()) {
+                    stack2.push(stack1.pop());
+                }
+            }
+            if (stack2.isEmpty()) {
+                return -1;
+            }
+            return stack2.pop();
+        }
+
+        public int peek() {
+            if (stack2.isEmpty()) {
+                while (!stack1.isEmpty()) {
+                    stack2.push(stack1.pop());
+                }
+            }
+            if (stack2.isEmpty()) {
+                return -1;
+            }
+            return stack2.peek();
+        }
+
+        public boolean empty() {
+            return stack2.isEmpty();
+        }
     }
-
-    public boolean empty() {
-        return inStack.isEmpty() && outStack.isEmpty();
-    }
-
-
 }
+
+
+

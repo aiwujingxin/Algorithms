@@ -1,10 +1,13 @@
 package leetcode.lists.offer;
 
-import java.util.*;
+import java.util.Comparator;
+import java.util.PriorityQueue;
+import java.util.Queue;
 
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/9/14 02:14
+ * @see basic.datastructure.liner.queue.MonotonicQueue
  */
 public class Offer59_I {
 
@@ -12,7 +15,7 @@ public class Offer59_I {
         if (nums == null || nums.length == 0) {
             return new int[]{};
         }
-        PriorityQueue<int[]> queue = new PriorityQueue<>(new Comparator<int[]>() {
+        Queue<int[]> queue = new PriorityQueue<>(new Comparator<int[]>() {
             @Override
             public int compare(int[] o1, int[] o2) {
                 if (o1[0] == o2[0]) {
@@ -34,33 +37,5 @@ public class Offer59_I {
             result[i - k + 1] = queue.peek()[0];
         }
         return result;
-    }
-
-    public int[] maxSlidingWindow_dq(int[] nums, int k) {
-        int n = nums.length;
-        Deque<Integer> deque = new LinkedList<>();
-        for (int i = 0; i < k; ++i) {
-            while (!deque.isEmpty() && nums[i] >= nums[deque.peekLast()]) {
-                deque.pollLast();
-            }
-            deque.offerLast(i);
-        }
-
-        int[] ans = new int[n - k + 1];
-        ans[0] = nums[deque.peekFirst()];
-        for (int i = k; i < n; ++i) {
-
-            while (!deque.isEmpty() && nums[i] >= nums[deque.peekLast()]) {
-                deque.pollLast();
-            }
-            deque.offerLast(i);
-
-            while (deque.peekFirst() <= i - k) {
-                deque.pollFirst();
-            }
-
-            ans[i - k + 1] = nums[deque.peekFirst()];
-        }
-        return ans;
     }
 }

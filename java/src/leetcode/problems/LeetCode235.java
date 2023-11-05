@@ -1,14 +1,10 @@
 package leetcode.problems;
 
-import common.*;
+import common.TreeNode;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2022/10/18 22:43
- * @see LeetCode1740
- * @see LeetCode236
- * @see LeetCode1650_LCA
- * @see LeetCode1676
+ * @date 2023/11/5 14:38
  */
 public class LeetCode235 {
 
@@ -22,14 +18,14 @@ public class LeetCode235 {
 
         TreeNode left = lowestCommonAncestor(root.left, p, q);
         TreeNode right = lowestCommonAncestor(root.right, p, q);
-
         if (left != null && right != null) {
             return root;
         }
+
         if (left != null) {
             return left;
         }
         return right;
-
     }
+
 }

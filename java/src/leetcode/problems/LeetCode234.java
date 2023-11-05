@@ -4,17 +4,15 @@ import common.ListNode;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2023/9/18 23:31
+ * @date 2023/11/5 14:35
  */
 public class LeetCode234 {
+
 
     ListNode cur;
 
     public boolean isPalindrome(ListNode head) {
-        if (head == null) {
-            return true;
-        }
-        cur = head;
+        this.cur = head;
         return check(head);
     }
 
@@ -25,10 +23,12 @@ public class LeetCode234 {
         if (!check(head.next)) {
             return false;
         }
-        if (head.val == cur.val) {
-            cur = cur.next;
-            return true;
+
+        if (head.val != cur.val) {
+            return false;
         }
-        return false;
+
+        cur = cur.next;
+        return true;
     }
 }

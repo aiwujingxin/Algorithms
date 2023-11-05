@@ -6,27 +6,28 @@ import java.util.Stack;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2022/9/28 22:37
+ * @date 2023/11/5 14:08
  */
 public class LeetCode230 {
 
     public int kthSmallest(TreeNode root, int k) {
+
         if (root == null) {
-            return -1;
+            return 0;
         }
         Stack<TreeNode> stack = new Stack<>();
-        while (root != null || !stack.empty()) {
+        stack.push(root);
+        while (!stack.isEmpty() || root != null) {
             while (root != null) {
-                stack.add(root);
+                stack.push(root);
                 root = root.left;
             }
             root = stack.pop();
-            k--;
-            if (k == 0) {
-                break;
+            if (k-- == 1) {
+                return root.val;
             }
             root = root.right;
         }
-        return root.val;
+        return -1;
     }
 }

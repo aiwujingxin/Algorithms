@@ -4,16 +4,12 @@ import common.ListNode;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2022/9/29 14:43
+ * @date 2023/11/5 14:41
  */
 public class LeetCode237 {
 
     public void deleteNode(ListNode node) {
-        if (node == null) {
-            return;
-        }
-        ListNode next = node.next;
-        node.val = next.val;
-        node.next = next.next;
+        node.val = node.next.val;
+        node.next = node.next.next;
     }
 }
