@@ -6,15 +6,11 @@ import java.util.List;
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/10/15 14:48
- * @see LeetCode169 > [n/2]
- * @see LeetCode75
- * @see LeetCode264
  */
 public class LeetCode229 {
 
-
     //可以利用反证法推断出满足这样条件的元素最多只有两个.
-    //利用摩尔投票法的核心思想，每次选择三个互不相同的元素进行删除（或称为「抵消」）
+    //利用摩尔投票法的核心思想，每次选择 “三个” 互不相同的元素进行删除（或称为「抵消」）
     public List<Integer> majorityElement(int[] nums) {
         int element1 = 0;
         int element2 = 0;
