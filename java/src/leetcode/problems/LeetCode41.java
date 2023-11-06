@@ -2,9 +2,10 @@ package leetcode.problems;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2023/10/19 18:10
+ * @date 2023/11/6 17:58
  */
 public class LeetCode41 {
+
     public int firstMissingPositive(int[] nums) {
         if (nums == null || nums.length == 0) {
             return 0;
@@ -16,14 +17,14 @@ public class LeetCode41 {
             }
         }
         for (int i = 0; i < n; ++i) {
-            int index = Math.abs(nums[i]);
+            int index = Math.abs(nums[i]) - 1;
             if (index < n) {
                 nums[index] = -Math.abs(nums[index]);
             }
         }
-        for (int i = 1; i < nums.length; i++) {
+        for (int i = 0; i < nums.length; i++) {
             if (nums[i] > 0) {
-                return i;
+                return i + 1;
             }
         }
         return n + 1;

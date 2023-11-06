@@ -26,7 +26,7 @@ public class LeetCode52 {
             return;
         }
         for (int col = 0; col < n; col++) {
-            if (!can(board, row, col)) {
+            if (!valid(board, row, col)) {
                 continue;
             }
             board[row][col] = 'Q';
@@ -35,7 +35,7 @@ public class LeetCode52 {
         }
     }
 
-    private boolean can(char[][] board, int x, int y) {
+    private boolean valid(char[][] board, int x, int y) {
         int n = board.length;
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {

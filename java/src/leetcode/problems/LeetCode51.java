@@ -20,24 +20,24 @@ public class LeetCode51 {
         return res;
     }
 
-    private void backtrack(char[][] board, int row, int n, List<String> tempList, List<List<String>> result) {
+    private void backtrack(char[][] board, int row, int n, List<String> list, List<List<String>> result) {
         if (row == n) {
-            result.add(new ArrayList<>(tempList));
+            result.add(new ArrayList<>(list));
             return;
         }
         for (int col = 0; col < n; col++) {
-            if (!can(board, row, col)) {
+            if (!valid(board, row, col)) {
                 continue;
             }
             board[row][col] = 'Q';
-            tempList.add(new String(board[row]));
-            backtrack(board, row + 1, n, tempList, result); // 以行为单位
+            list.add(new String(board[row]));
+            backtrack(board, row + 1, n, list, result); // 以行为单位
             board[row][col] = '.';
-            tempList.remove(tempList.size() - 1);
+            list.remove(list.size() - 1);
         }
     }
 
-    private boolean can(char[][] board, int x, int y) {
+    private boolean valid(char[][] board, int x, int y) {
         int n = board.length;
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
