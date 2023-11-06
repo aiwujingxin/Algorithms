@@ -6,12 +6,6 @@ package leetcode.problems;
  */
 public class LeetCode392 {
 
-    //"axc"
-    //"ahbgdc"
-    public static void main(String[] args) {
-        System.out.println(new LeetCode392().isSubsequence("axc", "ahbgdc"));
-    }
-
     public boolean isSubsequence(String s, String t) {
         boolean[][] dp = new boolean[s.length() + 1][t.length() + 1];
 

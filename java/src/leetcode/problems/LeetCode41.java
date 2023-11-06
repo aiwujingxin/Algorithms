@@ -16,14 +16,14 @@ public class LeetCode41 {
             }
         }
         for (int i = 0; i < n; ++i) {
-            int num = Math.abs(nums[i]);
-            if (num <= n) {
-                nums[num - 1] = -Math.abs(nums[num - 1]);
+            int index = Math.abs(nums[i]);
+            if (index < n) {
+                nums[index] = -Math.abs(nums[index]);
             }
         }
-        for (int i = 0; i < nums.length; i++) {
+        for (int i = 1; i < nums.length; i++) {
             if (nums[i] > 0) {
-                return i + 1;
+                return i;
             }
         }
         return n + 1;
