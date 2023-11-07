@@ -11,7 +11,7 @@ import java.util.Queue;
  * @author wujingxinit@outlook.com
  * @date 2023/6/6 23:48
  * @despription AC自动机
- * @link<a href="https://www.youtube.com/watch?v=D2jwopA4-P0"></a>
+ * @link <a href="https://www.youtube.com/watch?v=D2jwopA4-P0"></a>
  */
 /*
  * AC自动机（Aho-Corasick

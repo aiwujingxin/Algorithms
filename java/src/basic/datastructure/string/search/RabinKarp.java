@@ -5,4 +5,7 @@ package basic.datastructure.string.search;
  * @date 2023/6/7 00:09
  */
 public class RabinKarp {
+
+
+
 }

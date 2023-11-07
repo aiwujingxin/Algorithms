@@ -1,25 +1,24 @@
 package leetcode.problems;
 
 /**
- * @author jingxinwu
- * @date 2021-12-18 6:57 PM
+ * @author wujingxinit@outlook.com
+ * @date 2023/11/7 17:40
  */
 public class LeetCode303 {
 
     class NumArray {
 
-        int[] sums;
+        int[] sum;
 
         public NumArray(int[] nums) {
-            int n = nums.length;
-            sums = new int[n + 1];
-            for (int i = 1; i < sums.length; i++) {
-                sums[i] = sums[i - 1] + nums[i - 1];
+            sum = new int[nums.length + 1];
+            for (int i = 1; i <= nums.length; i++) {
+                sum[i] = sum[i - 1] + nums[i - 1];
             }
         }
 
-        public int sumRange(int i, int j) {
-            return sums[j + 1] - sums[i];
+        public int sumRange(int left, int right) {
+            return sum[right + 1] - sum[left];
         }
     }
 }

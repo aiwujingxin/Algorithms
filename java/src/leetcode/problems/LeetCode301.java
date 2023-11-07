@@ -4,15 +4,15 @@ import java.util.*;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2023/9/21 21:00
+ * @date 2023/11/7 18:18
  */
 public class LeetCode301 {
 
     public List<String> removeInvalidParentheses(String s) {
-        List<String> res = new ArrayList<>();
         if (s == null || s.isEmpty()) {
-            return res;
+            return new ArrayList<>();
         }
+        List<String> res = new ArrayList<>();
         Queue<String> queue = new LinkedList<>();
         HashSet<String> visited = new HashSet<>();
         queue.add(s);

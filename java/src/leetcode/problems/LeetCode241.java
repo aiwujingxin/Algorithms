@@ -9,18 +9,17 @@ import java.util.List;
  */
 public class LeetCode241 {
 
-    public List<Integer> diffWaysToCompute(String input) {
-        //校验
-        if (input == null || input.isEmpty()) {
+    public List<Integer> diffWaysToCompute(String expression) {
+        if (expression == null || expression.isEmpty()) {
             return new ArrayList<>();
         }
         List<Integer> res = new ArrayList<>();
-        for (int i = 0; i < input.length(); i++) {
-            char c = input.charAt(i);
+        for (int i = 0; i < expression.length(); i++) {
+            char c = expression.charAt(i);
             if (c == '+' || c == '-' || c == '*') {
                 // 拆成左右子问题
-                List<Integer> left = diffWaysToCompute(input.substring(0, i));
-                List<Integer> right = diffWaysToCompute(input.substring(i + 1));
+                List<Integer> left = diffWaysToCompute(expression.substring(0, i));
+                List<Integer> right = diffWaysToCompute(expression.substring(i + 1));
                 //遍历形成结果
                 for (int l : left) {
                     for (int r : right) {
@@ -28,7 +27,7 @@ public class LeetCode241 {
                             res.add(l + r);
                         } else if (c == '-') {
                             res.add(l - r);
-                        } else if (c == '*') {
+                        } else {
                             res.add(l * r);
                         }
                     }
@@ -36,7 +35,7 @@ public class LeetCode241 {
             }
         }
         if (res.isEmpty()) {
-            res.add(Integer.valueOf(input));
+            res.add(Integer.valueOf(expression));
         }
         return res;
     }
