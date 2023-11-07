@@ -1,30 +1,48 @@
 package leetcode.problems;
 
-import java.util.HashMap;
+import java.util.Arrays;
 
 /**
- * @author wujingxinit@outlook.com
- * @date 2022/10/4 17:31
+ * @author jingxinwu
+ * @date 2021-12-25 3:48 PM
  */
 public class LeetCode395 {
 
+    //https://leetcode.cn/problems/longest-substring-with-at-least-k-repeating-characters/solution/by-adoring-lederbergck6-mwic/
     public int longestSubstring(String s, int k) {
-        if (s.length() < k) {
-            return 0;
-        }
-        HashMap<Character, Integer> counter = new HashMap<>();
-        for (int i = 0; i < s.length(); i++) {
-            counter.put(s.charAt(i), counter.getOrDefault(s.charAt(i), 0) + 1);
-        }
-        for (char c : counter.keySet()) {
-            if (counter.get(c) < k) {
-                int res = 0;
-                for (String t : s.split(String.valueOf(c))) {
-                    res = Math.max(res, longestSubstring(t, k));
+        int n = s.length();
+        int ans = 0;
+        char[] ch = s.toCharArray();
+        int[] hash = new int[26];
+        for (int p = 1; p <= 26; p++) {
+            Arrays.fill(hash, 0);
+            int left = 0, right = 0;
+            int charCount = 0;
+            int validCount = 0;
+            while (right < n) {
+                hash[ch[right] - 'a']++;
+                if (hash[ch[right] - 'a'] == 1) {
+                    charCount++;
                 }
-                return res;
+                if (hash[ch[right] - 'a'] == k) {
+                    validCount++;
+                }
+                while (charCount > p) {
+                    if (hash[ch[left] - 'a'] == 1) {
+                        charCount--;
+                    }
+                    if (hash[ch[left] - 'a'] == k) {
+                        validCount--;
+                    }
+                    hash[ch[left] - 'a']--;
+                    left++;
+                }
+                if (charCount == validCount) {
+                    ans = Math.max(right - left + 1, ans);
+                }
+                right++;
             }
         }
-        return s.length();
+        return ans;
     }
 }

@@ -1,13 +1,14 @@
 package basic.algorithm.sort;
 
 import basic.datastructure.liner.array.ArraySort;
+import leetcode.problems.LeetCode327_mergeSort;
 
 /**
  * @author jingxinwu
  * @date 2021-06-06 1:46 下午
  * @see leetcode.problems.LeetCode315_mergeSort
  * @see leetcode.problems.LeetCode493_mergesort
- * @see leetcode.problems.LeetCode327_MergeSort
+ * @see LeetCode327_mergeSort
  * @see leetcode.lists.offer.Offer51
  */
 

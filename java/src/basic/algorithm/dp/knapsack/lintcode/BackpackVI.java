@@ -1,10 +1,12 @@
 package basic.algorithm.dp.knapsack.lintcode;
 
+import leetcode.problems.LeetCode377;
+
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/8/7 22:18
  * @description 完全背包 不同排列 方案数
- * @see leetcode.problems.LeetCode377_dp_1d
+ * @see LeetCode377
  */
 
 /*

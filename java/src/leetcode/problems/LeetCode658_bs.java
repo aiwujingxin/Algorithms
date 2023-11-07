@@ -12,16 +12,6 @@ public class LeetCode658_bs {
     //https://leetcode.cn/problems/find-k-closest-elements/solution/pai-chu-fa-shuang-zhi-zhen-er-fen-fa-python-dai-ma/
 
     //https://leetcode.com/problems/find-k-closest-elements/discuss/2636647/Java-oror-Explained-in-Detailoror-Binary-Search-oror-Two-Pointers-oror-Priority-Queue
-    public static void main(String[] args) {
-//        System.out.println(new LeetCode658_bs().findClosestElements(new int[]{1, 2, 3, 4, 5, 6}, 4, 4));
-//        System.out.println(new LeetCode658_bs().findClosestElements(new int[]{0, 0, 1, 2, 3, 3, 4, 7, 7, 8}, 3, 5));
-//        System.out.println(new LeetCode658_bs().findClosestElements(new int[]{1, 2, 3, 5, 6, 6, 6, 6, 6}, 4, 4));
-//        System.out.println(new LeetCode658_bs().findClosestElements(new int[]{1, 3, 3, 3, 3, 4, 5, 5, 5, 5}, 4, 4));
-//        System.out.println(new LeetCode658_bs().findClosestElements(new int[]{0, 2, 2, 3, 4, 6, 7, 8, 9, 9}, 4, 5));
-        System.out.println(new LeetCode658_bs().findClosestElements(new int[]{1, 2, 3, 4, 4, 4, 4, 5, 5}, 3, 3));
-
-
-    }
 
     // We'll take left=0 and right=arr.length-k and then apply binary search
     // to find first index which will be the smallest value in K the closest values.

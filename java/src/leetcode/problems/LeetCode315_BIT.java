@@ -19,8 +19,8 @@ public class LeetCode315_BIT {
         List<Integer> numsClone;
         int[] fenArr;
 
-        for (int idx = 0; idx < len; idx++) {
-            set.add(nums[idx]);
+        for (int num : nums) {
+            set.add(num);
         }
 
         numsClone = new ArrayList<>(set);

@@ -1,46 +1,34 @@
 package leetcode.problems;
 
+import java.util.Arrays;
+
 /**
  * @author aiwujingxin@gmail.com
- * @date 2022/7/21 23:01
+ * @date 2022/7/21 23:51
  */
 public class LeetCode410 {
 
-    //https://leetcode.com/problems/split-array-largest-sum/discuss/1899033/Java-oror-simple-and-easy-solution-oror-beats-100
-
-    //https://www.youtube.com/watch?v=Ksmmhee4lYE&t=272s
-
-
-    int[] nums;
-
     public int splitArray(int[] nums, int m) {
-        this.nums = nums;
-        int low = 0, high = 0, min = Integer.MAX_VALUE;
-        for (int num : nums) {
-            low = Math.max(low, num);
-            high += num;
+        int n = nums.length;
+
+        //我们可以令f[i][j] 表示将数组的前 i 个数分割为 j 段所能得到的最大连续子数组和的最小值
+        int[][] f = new int[n + 1][m + 1];
+        for (int i = 0; i <= n; i++) {
+            Arrays.fill(f[i], Integer.MAX_VALUE);
         }
-        while (low <= high) {
-            int mid = (low + high) / 2;
-            if (required_no_of_chunks(mid, m)) {
-                min = Math.min(min, mid);
-                high = mid - 1;
-            } else {
-                low = mid + 1;
+        int[] sub = new int[n + 1];
+        for (int i = 0; i < n; i++) {
+            sub[i + 1] = sub[i] + nums[i];
+        }
+        f[0][0] = 0;
+        for (int i = 1; i <= n; i++) {
+            for (int j = 1; j <= Math.min(i, m); j++) {
+                for (int k = 0; k < i; k++) {
+                    f[i][j] = Math.min(f[i][j], Math.max(f[k][j - 1], sub[i] - sub[k]));
+                }
             }
         }
-        return min;
+        return f[n][m];
     }
 
-    private boolean required_no_of_chunks(int mid, int m) {
-        int chunks = 0, i = 0;
-        while (i < nums.length) {
-            int val = 0;
-            while (i < nums.length && nums[i] + val <= mid) {
-                val += nums[i++];
-            }
-            chunks++;
-        }
-        return chunks <= m;
-    }
 }

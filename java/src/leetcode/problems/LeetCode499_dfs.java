@@ -24,7 +24,7 @@ public class LeetCode499_dfs {
         vis[ball[0]][ball[1]] = 0;
         char[] direct = new char[]{'d', 'l', 'r', 'u'};
         dfs(maze, ball, hole, new StringBuilder(), directions, direct, m, n, vis, -1, 0);
-        if (res.length() > 0) {
+        if (!res.isEmpty()) {
             return res;
         }
         return "impossible";

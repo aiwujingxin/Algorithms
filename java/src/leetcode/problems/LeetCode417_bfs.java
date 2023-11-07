@@ -18,8 +18,8 @@ public class LeetCode417_bfs {
 
     public List<List<Integer>> pacificAtlantic(int[][] heights) {
 
-        boolean[][] pacific = helper_bfs(heights, true);
-        boolean[][] atlantic = helper_bfs(heights, false);
+        boolean[][] pacific = bfs(heights, true);
+        boolean[][] atlantic = bfs(heights, false);
 
         List<List<Integer>> res = new LinkedList<>();
         for (int i = 0; i < heights.length; i++) {
@@ -33,7 +33,7 @@ public class LeetCode417_bfs {
     }
 
     //Time: O(M + N + M*N); Space:  O(M*N)
-    private boolean[][] helper_bfs(int[][] heights, boolean flag) {
+    private boolean[][] bfs(int[][] heights, boolean flag) {
         //flag true: pacific
         Queue<int[]> queue = new LinkedList<>();
         int fixJ = flag ? 0 : heights[0].length - 1;

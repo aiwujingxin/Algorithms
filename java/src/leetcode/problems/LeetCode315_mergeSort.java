@@ -47,6 +47,7 @@ public class LeetCode315_mergeSort {
             if (a[i] <= a[j]) {
                 temp[p] = a[i];
                 tempIndex[p] = index[i];
+                //计数
                 ans[index[i]] += (j - mid - 1);
                 ++i;
             } else {
@@ -59,6 +60,7 @@ public class LeetCode315_mergeSort {
         while (i <= mid) {
             temp[p] = a[i];
             tempIndex[p] = index[i];
+            //计数
             ans[index[i]] += (j - mid - 1);
             ++i;
             ++p;

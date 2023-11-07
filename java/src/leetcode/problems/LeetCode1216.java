@@ -7,7 +7,7 @@ package leetcode.problems;
  * <a href="https://www.youtube.com/watch?v=Xfk2lEByP9M">区间DP</a>
  * <p>
  * @see LeetCode516
- * @see LeetCode312_dp
+ * @see LeetCode312
  */
 public class LeetCode1216 {
     public boolean isValidPalindrome(String s, int k) {

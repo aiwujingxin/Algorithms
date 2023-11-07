@@ -7,6 +7,8 @@ package leetcode.problems;
 public class LeetCode378_bs {
 
 
+    // 相当于归并排序
+    // 用小根堆维护，以优化时间复杂度。
     //https://leetcode.com/problems/kth-smallest-element-in-a-sorted-matrix/discuss/2367160/JAVA-oror-Easy-Solution-oror-100-faster-code.
     public int kthSmallest(int[][] matrix, int k) {
         int n = matrix.length;

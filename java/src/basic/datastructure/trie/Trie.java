@@ -85,22 +85,4 @@ public class Trie {
         return false;
     }
 
-    public boolean canBreak(String s, int index) {
-        if (index >= s.length()) {
-            return true;
-        }
-        Node p = root;
-        for (int i = index; i < s.length(); i++) {
-            if (p.children[s.charAt(i) - 'a'] == null) {
-                return false;
-            }
-            p = p.children[s.charAt(i) - 'a'];
-            if (p.isEnd) {
-                if (canBreak(s, i + 1)) {
-                    return true;
-                }
-            }
-        }
-        return false;
-    }
 }

@@ -5,7 +5,7 @@ import common.*;
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/7/23 14:53
- * @see LeetCode333_dp_tree
+ * @see LeetCode333
  */
 public class LeetCode1373 {
 

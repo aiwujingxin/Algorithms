@@ -13,10 +13,10 @@ import java.io.InputStreamReader;
  * @link <a href="https://www.acwing.com/blog/content/4802/"></a>
  * @link <a href="https://leetcode.cn/circle/article/BO520a/"></a>
  * @see LeetCode1000_dp_3d 石子合并
- * @see LeetCode312_dp 戳气球
+ * @see LeetCode312 戳气球
  * @see LeetCode486_dp
  * @see LeetCode516
- * @see LeetCode647_dp
+ * @see LeetCode647
  * @see LeetCode678_dp
  */
 public class AcWing282 {

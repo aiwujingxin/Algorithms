@@ -48,6 +48,8 @@ public class LeetCode493_mergesort {
             } else if (nums[i] > nums[j]) {
                 temp[k] = nums[j];
                 j++;
+
+                // 计数
                 res += mid - i + 1;
             }
             k++;

@@ -1,30 +1,70 @@
 package leetcode.problems;
 
-import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2022/10/4 21:30
+ * @date 2022/12/18 16:53
  */
 public class LeetCode324 {
 
-    //https://www.youtube.com/watch?v=M2pnGMBo9Vs
+    //https://leetcode.com/problems/wiggle-sort-ii/solutions/77680/clear-java-o-n-avg-time-o-n-space-solution-using-3-way-partition/
+
     public void wiggleSort(int[] nums) {
-        if (nums == null || nums.length < 2) {
-            return;
+        int median = selectKth(nums, 0, nums.length - 1, nums.length % 2 == 0 ? nums.length / 2 : nums.length / 2 + 1);
+
+        List<Integer> leftArr = new ArrayList<>();
+        for (int i = 0; i <= median; i++) {
+            leftArr.add(nums[i]);
         }
-        Arrays.sort(nums);
-        int[] copy = Arrays.copyOf(nums, nums.length);
+        List<Integer> rightArr = new ArrayList<>();
+        for (int i = median + 1; i < nums.length; i++) {
+            rightArr.add(nums[i]);
+        }
+        for (int li = leftArr.size() - 1, ri = rightArr.size() - 1, i = 0; ri >= 0; li--, ri--, i += 2) { // right is same or shorter than left
+            nums[i] = leftArr.get(li);
+            nums[i + 1] = rightArr.get(ri);
+        }
+        if (nums.length % 2 != 0) {
+            nums[nums.length - 1] = leftArr.get(0);
+        }
+    }
 
-        int mid = (nums.length + 1) / 2 - 1;
+    private int selectKth(int[] nums, int start, int end, int k) {
+        int[] res = partition(nums, start, end);
+        int lb = res[0];
+        int hb = res[1];
+        if (k - 1 < lb) {
+            return selectKth(nums, start, lb - 1, k);
+        } else if (k - 1 > hb) {
+            return selectKth(nums, hb + 1, end, k);
+        } else {
+            return k - 1;
+        }
+    }
 
-        int end = nums.length - 1;
-        for (int i = 0; i < nums.length; i++) {
-            if (i % 2 == 1) { // i = 0, 2, 4, 6...
-                nums[i] = copy[end--];
+    private int[] partition(int[] nums, int left, int right) {
+        int pi = nums[left]; // use random is better in performance
+        int index = left;
+        while (index <= right) {
+            if (nums[index] == pi) {
+                index++;
+            } else if (nums[index] < pi) {
+                swap(nums, index++, left++);
             } else {
-                nums[i] = copy[mid--];
+                swap(nums, index, right--);
             }
         }
+        int[] res = new int[2];
+        res[0] = left;
+        res[1] = right;
+        return res;
+    }
+
+    private void swap(int[] nums, int i, int j) {
+        int tmp = nums[i];
+        nums[i] = nums[j];
+        nums[j] = tmp;
     }
 }

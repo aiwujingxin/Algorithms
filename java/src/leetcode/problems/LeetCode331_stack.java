@@ -9,11 +9,6 @@ import java.util.Stack;
 public class LeetCode331_stack {
 
     //https://leetcode.cn/problems/verify-preorder-serialization-of-a-binary-tree/solution/pai-an-jiao-jue-de-liang-chong-jie-fa-zh-66nt/
-
-    public static void main(String[] args) {
-        System.out.println(new LeetCode331_stack().isValidSerialization("9,3,4,#,#,1,#,#,2,#,6,#,#"));
-    }
-
     public boolean isValidSerialization(String preorder) {
         Stack<String> stack = new Stack<>();
         for (String s : preorder.split(",")) {
