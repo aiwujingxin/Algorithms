@@ -6,11 +6,6 @@ package leetcode.problems;
  */
 public class LeetCode1014 {
 
-    public static void main(String[] args) {
-        System.out.println(new LeetCode1014().maxScoreSightseeingPair(new int[]{8, 1, 5, 2, 6}));
-    }
-
-
     public int maxScoreSightseeingPair(int[] values) {
 
         if (values == null || values.length <= 1) {

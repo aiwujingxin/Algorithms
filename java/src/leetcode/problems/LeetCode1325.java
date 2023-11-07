@@ -7,7 +7,7 @@ import common.*;
  * @date 2023/7/20 22:34
  * @see LeetCode366
  * @see LeetCode814
- * @see LeetCode1080_v1
+ * @see LeetCode1080
  */
 public class LeetCode1325 {
 

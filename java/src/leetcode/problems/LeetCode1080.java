@@ -1,36 +1,26 @@
 package leetcode.problems;
 
-import common.*;
+import common.TreeNode;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2023/7/18 17:43
- * @see LeetCode1110_dfs
+ * @date 2023/7/28 21:45
  */
 public class LeetCode1080 {
 
     public TreeNode sufficientSubset(TreeNode root, int limit) {
-        return checkSufficientLeaf(root, 0, limit) ? root : null;
+        return checkSufficientLeaf(root, 0, limit);
     }
 
-    public boolean checkSufficientLeaf(TreeNode node, int sum, int limit) {
-        if (node == null) {
-            return false;
+    public TreeNode checkSufficientLeaf(TreeNode root, int sum, int limit) {
+        if (root == null) {
+            return null;
         }
-        if (node.left == null && node.right == null) {
-            return node.val + sum >= limit;
+        if (root.left == null && root.right == null) {
+            return root.val + sum < limit ? null : root;
         }
-
-        boolean left = checkSufficientLeaf(node.left, sum + node.val, limit);
-        boolean right = checkSufficientLeaf(node.right, sum + node.val, limit);
-
-        if (!left) {
-            node.left = null;
-        }
-        if (!right) {
-            node.right = null;
-        }
-        return left || right;
+        root.left = checkSufficientLeaf(root.left, sum + root.val, limit);
+        root.right = checkSufficientLeaf(root.right, sum + root.val, limit);
+        return root.left == null && root.right == null ? null : root;
     }
-
 }

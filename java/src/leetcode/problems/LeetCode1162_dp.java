@@ -25,13 +25,16 @@ public class LeetCode1162_dp {
                 if (grid[i][j] == 1) {
                     continue;
                 }
+                if (i < n - 1) {
+                    grid[i][j] = Math.min(grid[i][j], grid[i + 1][j] + 1);
+                }
 
-                if (i < n - 1) grid[i][j] = Math.min(grid[i][j], grid[i + 1][j] + 1);
-                if (j < m - 1) grid[i][j] = Math.min(grid[i][j], grid[i][j + 1] + 1);
+                if (j < m - 1) {
+                    grid[i][j] = Math.min(grid[i][j], grid[i][j + 1] + 1);
+                }
                 res = Math.max(res, grid[i][j]); //update the maximum
             }
         }
-
         return res == 201 ? -1 : res - 1;
     }
 }

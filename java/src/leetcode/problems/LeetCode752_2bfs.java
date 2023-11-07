@@ -1,105 +1,95 @@
 package leetcode.problems;
 
-
-import java.util.*;
+import java.util.Collections;
+import java.util.HashSet;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2023/6/3 01:59
+ * @date 2023/6/3 02:03
  */
 public class LeetCode752_2bfs {
 
-    String t, s;
-    Set<String> set = new HashSet<>();
+    //https://leetcode.cn/problems/open-the-lock/solution/java-752-da-kai-zhuan-pan-suo-bfsbian-li-z3w6/
 
-    public int openLock(String[] _ds, String _t) {
-        s = "0000";
-        t = _t;
-        if (s.equals(t)) {
-            return 0;
-        }
+    public int openLock(String[] deadends, String target) {
+        // 记录需要跳过的死亡密码
+        HashSet<String> deadSet = new HashSet<>();
+        Collections.addAll(deadSet, deadends);
+        // 记录已经穷举过的密码，防止走回头路
+        HashSet<String> visited = new HashSet<>();
+        HashSet<String> q1 = new HashSet<>();
+        HashSet<String> q2 = new HashSet<>();
 
-        Collections.addAll(set, _ds);
 
-        if (set.contains(s)) return -1;
-        return bfs();
-    }
+        // 从起点开始启动广度优先搜索
+        int step = 0;
+        q1.add("0000");
+        q2.add(target);
+        visited.add("0000");
 
-    int bfs() {
-        // d1 代表从起点 s 开始搜索（正向）
-        // d2 代表从结尾 t 开始搜索（反向）
-        Deque<String> d1 = new ArrayDeque<>(), d2 = new ArrayDeque<>();
-        /*
-         * m1 和 m2 分别记录两个方向出现的状态是经过多少次转换而来
-         * e.g.
-         * m1 = {"1000":1} 代表 "1000" 由 s="0000" 旋转 1 次而来
-         * m2 = {"9999":3} 代表 "9999" 由 t="9996" 旋转 3 次而来
-         */
-        Map<String, Integer> m1 = new HashMap<>(), m2 = new HashMap<>();
-        d1.addLast(s);
-        m1.put(s, 0);
-        d2.addLast(t);
-        m2.put(t, 0);
+        while (!q1.isEmpty() && !q2.isEmpty()) {
 
-        /*
-         * 只有两个队列都不空，才有必要继续往下搜索
-         * 如果其中一个队列空了，说明从某个方向搜到底都搜不到该方向的目标节点
-         * e.g.
-         * 例如，如果 d1 为空了，说明从 s 搜索到底都搜索不到 t，反向搜索也没必要进行了
-         */
-        while (!d1.isEmpty() && !d2.isEmpty()) {
-            int t;
-            if (d1.size() <= d2.size()) {
-                t = update(d1, m1, m2);
-            } else {
-                t = update(d2, m2, m1);
-            }
-            if (t != -1) {
-                return t;
-            }
-        }
-        return -1;
-    }
+            // 哈希集合在遍历的过程中不能修改，用 temp 存储扩散结果
+            HashSet<String> temp = new HashSet<>();
+            /* 将当前队列中的所有节点向周围扩散 */
+            for (String curr : q1) {
 
-    int update(Deque<String> deque, Map<String, Integer> cur, Map<String, Integer> other) {
-        int m = deque.size();
-        while (m-- > 0) {
-            String poll = deque.pollFirst();
-            char[] pcs = poll.toCharArray();
-            int step = cur.get(poll);
-            // 枚举替换哪个字符
-            for (int i = 0; i < 4; i++) {
-                // 能「正向转」也能「反向转」，这里直接枚举偏移量 [-1,1] 然后跳过 0
-                for (int j = -1; j <= 1; j++) {
-                    if (j == 0) continue;
+                /* 判断是否到达终点 */
+                if (deadSet.contains(curr)) {
+                    continue;
+                }
+                if (q2.contains(curr)) {
+                    return step;
+                }
 
-                    // 求得替换字符串 str
-                    int origin = pcs[i] - '0';
-                    int next = (origin + j) % 10;
-                    if (next == -1) next = 9;
+                // 双向BFS遍历，visited.add()一定要放到这里
+                // visited的更新是滞后于temp的更新的。这也是为何visited的位置相较于原始BFS算法不同的原因。
+                visited.add(curr);
 
-                    char[] clone = pcs.clone();
-                    clone[i] = (char) (next + '0');
-                    String str = String.valueOf(clone);
-
-                    if (set.contains(str)) {
-                        continue;
+                /* 将一个节点的相邻节点加入队列 */
+                for (int j = 0; j < 4; j++) {
+                    String next1 = addOne(curr, j);
+                    String next2 = minusOne(curr, j);
+                    if (!visited.contains(next1)) {
+                        temp.add(next1);
+                        // visited.add(next1);
                     }
-
-                    if (cur.containsKey(str)) {
-                        continue;
-                    }
-
-                    // 如果在「另一方向」找到过，说明找到了最短路，否则加入队列
-                    if (other.containsKey(str)) {
-                        return step + 1 + other.get(str);
-                    } else {
-                        deque.addLast(str);
-                        cur.put(str, step + 1);
+                    if (!visited.contains(next2)) {
+                        temp.add(next2);
+                        // visited.add(next2);
                     }
                 }
             }
+            /* 在这里增加步数 */
+            step++;
+            // temp 相当于 q1
+            // 这里交换 q1 q2，下一轮 while 就是扩散 q2
+            q1 = q2;
+            q2 = temp;
         }
+        // 如果穷举完都没找到目标密码，那就是找不到了
         return -1;
+    }
+
+    // 将 s[i] 向上拨动一次
+    public String addOne(String s, int i) {
+        char[] ch = s.toCharArray();
+        if (ch[i] == '9') {
+            ch[i] = '0';
+        } else {
+            ch[i]++;
+        }
+        return new String(ch);
+    }
+
+    // 将 s[i] 向下拨动一次
+    public String minusOne(String s, int i) {
+        char[] ch = s.toCharArray();
+        if (ch[i] == '0') {
+            ch[i] = '9';
+        } else {
+            ch[i]--;
+        }
+        return new String(ch);
     }
 }

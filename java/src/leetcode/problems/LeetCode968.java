@@ -4,28 +4,45 @@ import common.TreeNode;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2023/7/18 18:20
+ * @date 2023/7/18 18:43
  */
 public class LeetCode968 {
 
-    public int minCameraCover(TreeNode root) {
-        int[] array = dfs(root);
-        return array[1];
-    }
+    int res = 0;
 
-    public int[] dfs(TreeNode root) {
-        if (root == null) {
-            return new int[]{Integer.MAX_VALUE / 2, 0, 0};
+    public int minCameraCover(TreeNode root) {
+        // 对根节点的状态做检验,防止根节点是无覆盖状态 .
+        if (minCame(root) == 0) {
+            res++;
         }
-        int[] leftArray = dfs(root.left);
-        int[] rightArray = dfs(root.right);
-        int[] array = new int[3];
-        //0 root必须放置摄像头的情况下，覆盖整棵树需要的摄像头数目。
-        //1 覆盖整棵树需要的摄像头数目，无论 root 是否放置摄像头。
-        //2 覆盖两棵子树需要的摄像头数目，无论节点 root 本身是否被监控到。
-        array[0] = leftArray[2] + rightArray[2] + 1;
-        array[1] = Math.min(array[0], Math.min(leftArray[0] + rightArray[1], rightArray[0] + leftArray[1]));
-        array[2] = Math.min(array[0], leftArray[1] + rightArray[1]);
-        return array;
+        return res;
+    }
+    // 0 无覆盖,没有摄像头
+    // 1 有覆盖,  有摄像头
+    // 2 有覆盖, 没有摄像头
+
+    public int minCame(TreeNode root) {
+        if (root == null) {
+            // 空节点默认为 有覆盖状态，避免在叶子节点上放摄像头
+            return 2;
+        }
+        int left = minCame(root.left);
+        int right = minCame(root.right);
+
+        // 如果左右节点都覆盖了的话, 那么本节点的状态就应该是无覆盖,没有摄像头
+        if (left == 2 && right == 2) {
+            //(2,2)
+            return 0;
+        }
+        if (left == 0 || right == 0) {
+            // 左右节点都是无覆盖状态,那 根节点此时应该放一个摄像头
+            // (0,0) (0,1) (0,2) (1,0) (2,0)
+            // 状态值为 1 摄像头数 ++;
+            res++;
+            return 1;
+        }
+        // 左右节点的 状态为 (1,1) (1,2) (2,1) 也就是左右节点至少存在 1个摄像头，
+        // 那么本节点就是处于被覆盖状态
+        return 2;
     }
 }

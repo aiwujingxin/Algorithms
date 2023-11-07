@@ -8,17 +8,12 @@ import java.util.Comparator;
  * @date 2022/10/15 17:25
  */
 public class LeetCode1337 {
-    public static void main(String[] args) {
-        System.out.println(Arrays.toString(new LeetCode1337().kWeakestRows(new int[][]{{1, 1, 0, 0, 0}, {1, 1, 1, 1, 0}, {1, 0, 0, 0, 0}, {1, 1, 0, 0, 0}, {1, 1, 1, 1, 1}}, 3)));
-    }
-
 
     public int[] kWeakestRows(int[][] mat, int k) {
         if (mat == null || mat.length == 0) {
             return new int[]{};
         }
 
-        //2 4 1 2 5
         int[] sum = new int[mat.length];
         for (int i = 0; i < mat.length; i++) {
             int[] s = mat[i];

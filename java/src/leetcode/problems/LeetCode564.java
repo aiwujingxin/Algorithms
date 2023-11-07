@@ -9,10 +9,6 @@ public class LeetCode564 {
 
     //https://leetcode.com/problems/find-the-closest-palindrome/discuss/960052/Find-previous-and-next-palindromes-detailed-explanation
 
-    public static void main(String[] args) {
-        System.out.println(new LeetCode564().nearestPalindromic("999"));
-    }
-
     public String nearestPalindromic(String n) {
         long N = Long.parseLong(n);
         long S = previous(String.valueOf(N - 1).toCharArray());

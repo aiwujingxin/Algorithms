@@ -1,42 +1,30 @@
 package leetcode.problems;
 
 /**
- * @author aiwujingxin@gmail.com
- * @date 2022/7/29 00:28
+ * @author wujingxinit@outlook.com
+ * @date 2022/7/30 16:19
  */
 public class LeetCode813 {
 
+    double largestSumOfAverages(int[] nums, int K) {
+        /*
+            状态：数组A的每个元素，分割为K个相邻的数组
+            选择：枚举所有分割k的可能性，分割成k份 == 分割成k-1份+最后一份
+        */
 
-    //https://leetcode.com/problems/largest-sum-of-averages/discuss/916679/DFS-greater-DP-Progression-With-Explanation-O(kn2)O(kn)
-    public double largestSumOfAverages(int[] A, int K) {
-        return solve(A, 0, K, new double[A.length][K + 1]);
-    }
-
-    public double solve(int[] nums, int idx, int k, double[][] dp) {
-        if (k == 1) {
-            double sum = 0;
-            for (int i = idx; i < nums.length; i++) {
-                sum += nums[i];
-            }
-            return sum / (nums.length - idx);
+        double[] sum = new double[nums.length + 1];
+        double[][] dp = new double[nums.length + 1][K + 1];
+        for (int i = 1; i <= nums.length; ++i) {
+            sum[i] = sum[i - 1] + nums[i - 1];
         }
-
-        if (dp[idx][k] != 0) {
-            return dp[idx][k];
-        }
-
-        double max = 0;
-        for (int i = idx; i < nums.length; i++) {
-            double avg = 0;
-            for (int j = idx; j < i + 1; j++) {
-                avg += nums[j];
-            }
-            avg = avg / (i + 1 - idx);
-            if (i + 1 < nums.length && k > 1) {
-                double v = solve(nums, i + 1, k - 1, dp);
-                max = Math.max(max, avg + v);
+        for (int i = 1; i <= nums.length; ++i) {
+            dp[i][1] = sum[i] / i;
+            for (int k = 2; k <= K && k <= i; ++k) {
+                for (int j = 1; j < i; ++j) {
+                    dp[i][k] = Math.max(dp[i][k], dp[j][k - 1] + (sum[i] - sum[j]) / (i - j));
+                }
             }
         }
-        return dp[idx][k] = max;
+        return dp[nums.length][K];
     }
 }

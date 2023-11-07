@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @author jingxinwu
- * @date 2021-08-27 12:31 上午
+ * @author wujingxinit@outlook.com
+ * @date 2023/11/7 21:20
  */
 public class LeetCode241 {
 
@@ -17,17 +17,17 @@ public class LeetCode241 {
         for (int i = 0; i < expression.length(); i++) {
             char c = expression.charAt(i);
             if (c == '+' || c == '-' || c == '*') {
-                // 拆成左右子问题
                 List<Integer> left = diffWaysToCompute(expression.substring(0, i));
                 List<Integer> right = diffWaysToCompute(expression.substring(i + 1));
-                //遍历形成结果
-                for (int l : left) {
-                    for (int r : right) {
+                for (Integer l : left) {
+                    for (Integer r : right) {
                         if (c == '+') {
                             res.add(l + r);
-                        } else if (c == '-') {
+                        }
+                        if (c == '-') {
                             res.add(l - r);
-                        } else {
+                        }
+                        if (c == '*') {
                             res.add(l * r);
                         }
                     }
@@ -35,7 +35,7 @@ public class LeetCode241 {
             }
         }
         if (res.isEmpty()) {
-            res.add(Integer.valueOf(expression));
+            res.add(Integer.parseInt(expression));
         }
         return res;
     }

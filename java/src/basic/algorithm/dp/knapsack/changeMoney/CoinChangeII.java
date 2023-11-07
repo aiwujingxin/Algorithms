@@ -1,7 +1,7 @@
 package basic.algorithm.dp.knapsack.changeMoney;
 
 import basic.algorithm.dp.knapsack.ChangeMoney;
-import leetcode.problems.LeetCode518_dp_1d;
+import leetcode.problems.LeetCode518;
 
 /**
  * @author wujingxinit@outlook.com
@@ -9,7 +9,7 @@ import leetcode.problems.LeetCode518_dp_1d;
  * <a href="https://aaronice.gitbook.io/lintcode/knapsack_problems/coin-change-ii">...</a>
  * <a href="https://leetcode.cn/problems/coin-change-ii/">LeetCode518</a>
  * @description 完全背包 凑成总金额的硬币组合数
- * @see LeetCode518_dp_1d
+ * @see LeetCode518
  */
 public class CoinChangeII implements ChangeMoney {
 

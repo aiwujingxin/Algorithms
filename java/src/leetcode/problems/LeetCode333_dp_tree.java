@@ -6,7 +6,7 @@ import common.*;
  * @author wujingxinit@outlook.com
  * @date 2023/7/27 20:45
  * @see LeetCode1373
- * @see LeetCode549_dp_tree
+ * @see LeetCode549
  * @see LeetCode337_dp
  * @see LeetCode2378
  * @see LeetCode124

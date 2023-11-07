@@ -1,10 +1,11 @@
 package leetcode.problems;
 
-import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2023/5/31 23:32
+ * @date 2023/6/1 16:11
  */
 public class LeetCode1695 {
 
@@ -13,24 +14,17 @@ public class LeetCode1695 {
         int right = 0;
         int sum = 0;
         int max = 0;
-        HashMap<Integer, Integer> map = new HashMap<>();
+        Set<Integer> set = new HashSet<>();
         while (right < nums.length) {
-            int num = nums[right];
-            if (!map.containsKey(num)) {
-                map.put(num, map.getOrDefault(num, 0) + 1);
-                sum += num;
-                max = Math.max(max, sum);
-                right++;
-            } else {
-                while (map.containsKey(num)) {
-                    map.put(nums[left], map.get(nums[left]) - 1);
-                    if (map.get(nums[left]) == 0) {
-                        map.remove(nums[left]);
-                    }
-                    sum -= nums[left];
-                    left++;
-                }
+            while (set.contains(nums[right])) {
+                set.remove(nums[left]);
+                sum -= nums[left];
+                left++;
             }
+            set.add(nums[right]);
+            sum += nums[right];
+            max = Math.max(max, sum);
+            right++;
         }
         return max;
     }

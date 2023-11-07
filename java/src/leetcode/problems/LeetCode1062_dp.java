@@ -27,5 +27,4 @@ public class LeetCode1062_dp {
         }
         return max;
     }
-
 }
