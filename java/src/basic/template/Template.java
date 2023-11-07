@@ -1,4 +1,4 @@
-package basic.algorithm.other.template;
+package basic.template;
 
 import java.io.*;
 import java.util.*;
@@ -388,7 +388,7 @@ public class Template {
 
         static ArrayList<Integer> sieve(long size) {
 
-            ArrayList<Integer> pr = new ArrayList<Integer>();
+            ArrayList<Integer> pr = new ArrayList<>();
             boolean[] prime = new boolean[(int) size];
             for (int i = 2; i < prime.length; i++) prime[i] = true;
             for (int i = 2; i * i < prime.length; i++) {

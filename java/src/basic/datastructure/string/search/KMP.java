@@ -1,6 +1,6 @@
 package basic.datastructure.string.search;
 
-import basic.datastructure.string.*;
+import basic.datastructure.string.Search;
 import leetcode.problems.LeetCode214;
 import leetcode.problems.LeetCode28;
 
@@ -28,7 +28,7 @@ import leetcode.problems.LeetCode28;
 
 public class KMP implements Search {
 
-    public int search(String pat, String txt) {
+    public int search(String txt, String pat) {
         int M = pat.length();
         int N = txt.length();
         int[] next = makePrefix(pat);

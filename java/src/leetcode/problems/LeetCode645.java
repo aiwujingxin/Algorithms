@@ -1,7 +1,5 @@
 package leetcode.problems;
 
-import java.util.Arrays;
-
 /**
  * @author aiwujingxin@gmail.com
  * @date 2022/7/21 00:32

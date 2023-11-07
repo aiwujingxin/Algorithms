@@ -1,6 +1,7 @@
 package leetcode.problems;
 
 import basic.datastructure.string.search.KMP;
+import basic.datastructure.string.search.RabinKarp;
 
 /**
  * @author wujingxinit@outlook.com
@@ -31,5 +32,9 @@ public class LeetCode28 {
 
     public int strStr_kmp(String haystack, String needle) {
         return new KMP().search(haystack, needle);
+    }
+
+    public int strStr_RabinKarp(String haystack, String needle) {
+        return new RabinKarp().search(haystack, needle);
     }
 }
