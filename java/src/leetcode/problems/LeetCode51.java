@@ -6,43 +6,61 @@ import java.util.List;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2023/10/20 18:10
+ * @date 2023/11/8 18:22
  */
 public class LeetCode51 {
 
+    char[][] board;
+
     public List<List<String>> solveNQueens(int n) {
-        char[][] board = new char[n][n];
+        if (n <= 0) {
+            return new ArrayList<>();
+        }
+        this.board = new char[n][n];
         for (int i = 0; i < n; i++) {
             Arrays.fill(board[i], '.');
         }
         List<List<String>> res = new ArrayList<>();
-        backtrack(board, 0, n, new ArrayList<>(), res);
+        backtrack(n, 0, res, new ArrayList<>());
         return res;
     }
 
-    private void backtrack(char[][] board, int row, int n, List<String> list, List<List<String>> result) {
+    private void backtrack(int n, int row, List<List<String>> res, List<String> list) {
         if (row == n) {
-            result.add(new ArrayList<>(list));
+            res.add(new ArrayList<>(list));
             return;
         }
-        for (int col = 0; col < n; col++) {
-            if (!valid(board, row, col)) {
+        for (int j = 0; j < n; j++) {
+            if (!valid(board, row, j)) {
                 continue;
             }
-            board[row][col] = 'Q';
+            board[row][j] = 'Q';
             list.add(new String(board[row]));
-            backtrack(board, row + 1, n, list, result); // 以行为单位
-            board[row][col] = '.';
+            backtrack(n, row + 1, res, list);
+            board[row][j] = '.';
             list.remove(list.size() - 1);
         }
     }
 
-    private boolean valid(char[][] board, int x, int y) {
-        int n = board.length;
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < n; j++) {
-                if (board[i][j] == 'Q') {
-                    if (x == i || y == j || x + y == i + j || x - y == i - j) {
+    private boolean valid(char[][] board, int row, int col) {
+        if (board == null || board.length == 0) {
+            return true;
+        }
+        for (int j = 0; j < board[0].length; j++) {
+            if (board[row][j] == 'Q') {
+                return false;
+            }
+        }
+        for (int i = 0; i < board.length; i++) {
+            if (board[i][col] == 'Q') {
+                return false;
+            }
+        }
+
+        for (int i = 0; i < board.length; i++) {
+            for (int j = 0; j < board[0].length; j++) {
+                if (row + col == i + j || row - col == i - j) {
+                    if (board[i][j] == 'Q') {
                         return false;
                     }
                 }
