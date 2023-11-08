@@ -9,7 +9,7 @@ import java.util.*;
  */
 public class LeetCode310_dp {
 
-    Map<Integer, List<Integer>> map = new HashMap<>();
+    Map<Integer, List<Integer>> graph = new HashMap<>();
 
     // d1 stores the longest path downwards
     // d2 stores the second-longest path downwards (if d1[i] == d2[i], it means node has two longest paths)
@@ -22,11 +22,11 @@ public class LeetCode310_dp {
         p1 = new int[n];
         up = new int[n];
         for (int i = 0; i < n; i++) {
-            map.put(i, new ArrayList<>());
+            graph.put(i, new ArrayList<>());
         }
         for (int[] e : edges) {
-            map.get(e[0]).add(e[1]);
-            map.get(e[1]).add(e[0]);
+            graph.get(e[0]).add(e[1]);
+            graph.get(e[1]).add(e[0]);
         }
         List<Integer> res = new ArrayList<>();
 
@@ -50,7 +50,7 @@ public class LeetCode310_dp {
 
     private void dfs1(int u, int pa) {
         d1[u] = d2[u] = 0;
-        for (int ch : map.get(u)) {
+        for (int ch : graph.get(u)) {
             if (ch == pa) {
                 continue;
             }
@@ -67,7 +67,7 @@ public class LeetCode310_dp {
     }
 
     private void dfs2(int u, int pa) {
-        for (int ch : map.get(u)) {
+        for (int ch : graph.get(u)) {
             if (ch == pa) {
                 continue;
             }

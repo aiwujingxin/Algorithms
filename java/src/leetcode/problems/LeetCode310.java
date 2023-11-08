@@ -6,7 +6,7 @@ import java.util.*;
  * @author wujingxinit@outlook.com
  * @date 2023/5/19 17:51
  */
-public class LeetCode310_topo {
+public class LeetCode310 {
 
     public List<Integer> findMinHeightTrees(int n, int[][] edges) {
         List<Integer> res = new ArrayList<>();
@@ -15,16 +15,18 @@ public class LeetCode310_topo {
             return res;
         }
         int[] degree = new int[n];
-        Map<Integer, Set<Integer>> map = new HashMap<>();
+        Map<Integer, Set<Integer>> graph = new HashMap<>();
         for (int i = 0; i < n; i++) {
-            map.put(i, new HashSet<>());
+            graph.put(i, new HashSet<>());
         }
         for (int[] e : edges) {
-            map.get(e[0]).add(e[1]);
-            map.get(e[1]).add(e[0]);
+            graph.get(e[0]).add(e[1]);
+            graph.get(e[1]).add(e[0]);
             degree[e[0]]++;
             degree[e[1]]++;
         }
+
+        // 裁剪叶子节点
         Queue<Integer> queue = new LinkedList<>();
         for (int i = 0; i < n; i++) {
             if (degree[i] == 1) {
@@ -37,10 +39,10 @@ public class LeetCode310_topo {
             for (int i = 0; i < size; i++) {
                 int cur = queue.poll();
                 level.add(cur);
-                for (int parent : map.get(cur)) {
-                    degree[parent]--;
-                    if (degree[parent] == 1) {
-                        queue.add(parent);
+                for (int next : graph.get(cur)) {
+                    degree[next]--;
+                    if (degree[next] == 1) {
+                        queue.add(next);
                     }
                 }
             }
