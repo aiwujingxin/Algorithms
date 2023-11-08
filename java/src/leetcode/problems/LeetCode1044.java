@@ -24,37 +24,34 @@ public class LeetCode1044 {
                 right = mid - 1;
             }
         }
-
         return start == -1 ? "" : s.substring(start, start + left);
     }
 
-    long mod = (long) Math.pow(10, 11);
-    long mul = 26;
-
     private int find(String txt, int len) {
-        int ans = -1;
-
+        int mul = 26;
+        long mod = (long) Math.pow(10, 11);
         long base = 1;
         for (int i = 0; i < len - 1; i++) {
             base = base * mul % mod;
         }
-
         long hash = 0;
         for (int i = 0; i < len; i++) {
-            hash = (hash * mul + (txt.charAt(i))) % mod;
+            hash = (hash * mul + txt.charAt(i)) % mod;
         }
-
         Set<Long> set = new HashSet<>();
         set.add(hash);
-        for (int i = len; i < txt.length(); i++) {
-            hash = (mul * (hash - (txt.charAt(i - len) * base)) + (txt.charAt(i))) % mod;
+        int right = len;
+        while (right < txt.length()) {
+            // 缩小窗口，移出字符 ; 扩大窗口，移入字符
+            hash = (mul * (hash - (txt.charAt(right - len) * base)) + (txt.charAt(right))) % mod;
             if (hash < 0) {
                 hash = hash + mod;
             }
             if (!set.add(hash)) {
-                return i - len + 1;
+                return right - len + 1;
             }
+            right++;
         }
-        return ans;
+        return -1;
     }
 }
