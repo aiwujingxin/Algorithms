@@ -35,10 +35,10 @@ public class LeetCode310 {
         }
         while (!queue.isEmpty()) {
             int size = queue.size();
-            List<Integer> level = new ArrayList<>();
+            res = new ArrayList<>();
             for (int i = 0; i < size; i++) {
                 int cur = queue.poll();
-                level.add(cur);
+                res.add(cur);
                 for (int next : graph.get(cur)) {
                     degree[next]--;
                     if (degree[next] == 1) {
@@ -46,7 +46,6 @@ public class LeetCode310 {
                     }
                 }
             }
-            res = level;
         }
         return res;
     }

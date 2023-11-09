@@ -25,10 +25,10 @@ public class LeetCode316 {
             }
             count[c - 'a']--;
         }
-        StringBuilder res = new StringBuilder();
+        StringBuilder sb = new StringBuilder();
         for (char ch : stack) {
-            res.append(ch);
+            sb.append(ch);
         }
-        return res.toString();
+        return sb.toString();
     }
 }

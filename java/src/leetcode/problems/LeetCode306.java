@@ -7,8 +7,8 @@ package leetcode.problems;
 public class LeetCode306 {
 
     public boolean isAdditiveNumber(String num) {
-        for (int i = 1; i < num.length() - 1; ++i) {
-            for (int j = i + 1; j < num.length(); ++j) {
+        for (int i = 1; i < num.length(); i++) {
+            for (int j = i + 1; j < num.length(); j++) {
                 if (dfs(num, 0, i, j)) {
                     return true;
                 }
@@ -17,20 +17,20 @@ public class LeetCode306 {
         return false;
     }
 
-    private boolean dfs(String num, int start, int mid, int end) {
-        if (num.charAt(start) == '0' && mid > start + 1 || num.charAt(mid) == '0' && end > mid + 1) {
+    private boolean dfs(String num, int start, int end1, int end2) {
+        if (num.charAt(start) == '0' && end1 > start + 1 || num.charAt(end1) == '0' && end2 > end1 + 1) {
             return false;
         }
-        if (end == num.length()) {
+        if (end2 == num.length()) {
             return true;
         }
-        long nextNum = Long.parseLong(num.substring(start, mid)) + Long.parseLong(num.substring(mid, end));
-        for (int i = end + 1; i <= num.length(); ++i) {
-            long temp = Long.parseLong(num.substring(end, i));
-            if (temp > nextNum) {
+        long sum = Long.parseLong(num.substring(start, end1)) + Long.parseLong(num.substring(end1, end2));
+        for (int end3 = end2 + 1; end3 <= num.length(); end3++) {
+            long cur = Long.parseLong(num.substring(end2, end3));
+            if (cur > sum) {
                 return false;
             }
-            if (nextNum == temp && dfs(num, mid, end, i)) {
+            if (sum == cur && dfs(num, end1, end2, end3)) {
                 return true;
             }
         }

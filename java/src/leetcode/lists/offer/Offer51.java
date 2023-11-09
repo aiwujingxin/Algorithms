@@ -48,6 +48,7 @@ public class Offer51 {
             } else if (nums[i] > nums[j]) {
                 temp[k] = nums[j];
                 j++;
+                // 统计
                 res += mid - i + 1;
             }
             k++;

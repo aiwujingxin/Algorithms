@@ -1,11 +1,15 @@
 package leetcode.problems;
 
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/8/28 18:10
+ * @description 无根树 最长链
  */
 public class LeetCode310_dp {
 
