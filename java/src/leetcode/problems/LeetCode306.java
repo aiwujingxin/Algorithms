@@ -7,8 +7,8 @@ package leetcode.problems;
 public class LeetCode306 {
 
     public boolean isAdditiveNumber(String num) {
-        for (int i = 1; i <= num.length() - 2; ++i) {
-            for (int j = i + 1; j <= num.length() - 1; ++j) {
+        for (int i = 1; i < num.length() - 1; ++i) {
+            for (int j = i + 1; j < num.length(); ++j) {
                 if (dfs(num, 0, i, j)) {
                     return true;
                 }

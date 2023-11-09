@@ -1,46 +1,34 @@
 package leetcode.problems;
 
+import java.util.Stack;
+
 /**
  * @author jingxinwu
  * @date 2022-02-26 2:15 PM
+ * @description 单调栈+贪心
  */
 public class LeetCode316 {
 
-
-    //https://www.youtube.com/watch?v=SrlvMmfG8sA&t=347s
     public String removeDuplicateLetters(String s) {
-        StringBuilder sb = new StringBuilder();
+        Stack<Character> stack = new Stack<>();
         int[] count = new int[26];
-
-        // 去重
-        boolean[] used = new boolean[26];
-
-        char[] chs = s.toCharArray();
-
-        for (char c : chs) {
-            count[c - 'a']++;
+        for (char ch : s.toCharArray()) {
+            count[ch - 'a']++;
         }
-
-        for (char c : chs) {
+        for (int i = 0; i < s.length(); i++) {
+            char c = s.charAt(i);
+            if (!stack.contains(c)) {
+                while (!stack.isEmpty() && stack.peek() > c && count[stack.peek() - 'a'] > 0) {
+                    stack.pop();
+                }
+                stack.add(c);
+            }
             count[c - 'a']--;
-            if (used[c - 'a']) {
-                continue;
-            }
-
-            // 之后还有
-            while (sb.length() > 0 && sb.charAt(sb.length() - 1) > c
-                    && count[sb.charAt(sb.length() - 1) - 'a'] > 0) {
-
-                used[sb.charAt(sb.length() - 1) - 'a'] = false;
-                sb.deleteCharAt(sb.length() - 1);
-
-            }
-
-            sb.append(c);
-            used[c - 'a'] = true;
         }
-
-        return sb.toString();
+        StringBuilder res = new StringBuilder();
+        for (char ch : stack) {
+            res.append(ch);
+        }
+        return res.toString();
     }
-
 }

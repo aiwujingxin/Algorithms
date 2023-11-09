@@ -3,23 +3,22 @@ package leetcode.problems;
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/11/8 22:47
- * <a href="https://www.youtube.com/watch?v=Ci39lcoLbyw">...</a>
+ * <a href="https://cloud.tencent.com/developer/article/1880884"></a>
  */
 public class LeetCode312 {
 
-    public int maxCoins(int[] nums) {
+    int maxCoins(int[] nums) {
         int n = nums.length;
-        int[] arr = new int[n + 2];
-        arr[0] = arr[n + 1] = 1;
+        int[] points = new int[n + 2];
+        points[0] = points[n + 1] = 1;
         for (int i = 1; i <= n; i++) {
-            arr[i] = nums[i - 1];
+            points[i] = nums[i - 1];
         }
         int[][] dp = new int[n + 2][n + 2];
-        for (int len = 1; len <= n; len++) {
-            for (int j = 0; j + len <= n; j++) {
-                int left = j, right = j + len + 1;
-                for (int k = left + 1; k < right; k++) {
-                    dp[left][right] = Math.max(dp[left][right], dp[left][k] + dp[k][right] + arr[left] * arr[k] * arr[right]);
+        for (int i = n; i >= 0; i--) {
+            for (int j = i + 1; j < n + 2; j++) {
+                for (int k = i + 1; k < j; k++) {
+                    dp[i][j] = Math.max(dp[i][j], dp[i][k] + dp[k][j] + points[i] * points[j] * points[k]);
                 }
             }
         }

@@ -1,17 +1,10 @@
 package leetcode.problems;
 
-import java.util.Arrays;
-
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/3/14 19:19
  */
 public class LeetCode311 {
-
-    public static void main(String[] args) {
-        System.out.println(Arrays.deepToString(new LeetCode311().reverse(new int[][]{{1, 2, 3}, {4, 5, 6}})));
-    }
-
 
     public int[][] multiply(int[][] mat1, int[][] mat2) {
 
