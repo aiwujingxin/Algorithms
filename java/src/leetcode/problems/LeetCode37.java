@@ -2,7 +2,7 @@ package leetcode.problems;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2023/8/10 18:37
+ * @date 2023/11/10 12:29
  */
 public class LeetCode37 {
 
@@ -13,42 +13,42 @@ public class LeetCode37 {
         backtrack(board);
     }
 
-    public boolean backtrack(char[][] board) {
-        for (int i = 0; i < board.length; i++) {
-            for (int j = 0; j < board[0].length; j++) {
-                if (board[i][j] != '.') {
-                    continue;
-                }
-                for (char c = '1'; c <= '9'; c++) {
-                    if (isValid(board, i, j, c)) {
-                        board[i][j] = c;
-                        if (backtrack(board)) {
-                            return true;
+    private boolean backtrack(char[][] board) {
+        int n = board.length;
+        for (int row = 0; row < n; row++) {
+            for (int col = 0; col < n; col++) {
+                if (board[row][col] == '.') {
+                    for (char c = '1'; c <= '9'; c++) {
+                        if (valid(board, row, col, c)) {
+                            board[row][col] = c;
+                            if (backtrack(board)) {
+                                return true;
+                            }
+                            board[row][col] = '.';
                         }
-                        board[i][j] = '.';
                     }
+                    return false;
                 }
-                return false;
             }
         }
         return true;
     }
 
-    private boolean isValid(char[][] board, int row, int col, char c) {
-        for (int i = 0; i < 9; i++) {
+    private boolean valid(char[][] board, int row, int col, char c) {
+        int n = board.length;
+        for (int i = 0; i < n; i++) {
             if (board[row][i] == c) {
                 return false;
             }
         }
-        for (int j = 0; j < 9; j++) {
-            if (board[j][col] == c) {
+        for (int i = 0; i < n; i++) {
+            if (board[i][col] == c) {
                 return false;
             }
         }
-        int startRow = (row / 3) * 3;
-        int startCol = (col / 3) * 3;
-        for (int i = startRow; i < startRow + 3; i++) {
-            for (int j = startCol; j < startCol + 3; j++) {
+
+        for (int i = (row / 3) * 3; i < (row / 3) * 3 + 3; i++) {
+            for (int j = (col / 3) * 3; j < (col / 3) * 3 + 3; j++) {
                 if (board[i][j] == c) {
                     return false;
                 }

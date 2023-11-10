@@ -12,6 +12,7 @@ import java.io.InputStreamReader;
  * @link <a href="https://www.acwing.com/problem/content/description/284/"</a>
  * @link <a href="https://www.acwing.com/blog/content/4802/"></a>
  * @link <a href="https://leetcode.cn/circle/article/BO520a/"></a>
+ * @see LeetCode87 扰乱字符
  * @see LeetCode1000_dp_3d 石子合并
  * @see LeetCode312 戳气球
  * @see LeetCode486_dp

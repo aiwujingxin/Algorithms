@@ -6,7 +6,7 @@ import java.util.Objects;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2023/10/25 18:29
+ * @date 2023/11/10 12:44
  */
 public class LeetCode76 {
 
@@ -16,12 +16,14 @@ public class LeetCode76 {
         }
         int left = 0;
         int right = 0;
-        int len = Integer.MAX_VALUE;
-        int valid = 0;
+        int count = 0;
+
+
         int start = 0;
-        HashSet<Character> set = new HashSet<>();
-        HashMap<Character, Integer> tMap = new HashMap<>();
+        int len = Integer.MAX_VALUE;
         HashMap<Character, Integer> sMap = new HashMap<>();
+        HashMap<Character, Integer> tMap = new HashMap<>();
+        HashSet<Character> set = new HashSet<>();
         for (int i = 0; i < t.length(); i++) {
             tMap.put(t.charAt(i), tMap.getOrDefault(t.charAt(i), 0) + 1);
             set.add(t.charAt(i));
@@ -31,20 +33,19 @@ public class LeetCode76 {
             char c = s.charAt(right);
             sMap.put(c, sMap.getOrDefault(c, 0) + 1);
             if (Objects.equals(sMap.get(c), tMap.get(c))) {
-                valid++;
+                count++;
             }
-            while (valid == target) {
+
+            while (count == target && right - left + 1 >= t.length()) {
                 if (right - left + 1 < len) {
-                    start = left;
                     len = right - left + 1;
+                    start = left;
                 }
                 char d = s.charAt(left);
-                if (sMap.get(d) >= tMap.getOrDefault(d, 0)) {
-                    if (Objects.equals(sMap.get(d), tMap.getOrDefault(d, 0))) {
-                        valid--;
-                    }
-                    sMap.put(d, sMap.get(d) - 1);
+                if (Objects.equals(sMap.get(d), tMap.getOrDefault(d, 0))) {
+                    count--;
                 }
+                sMap.put(d, sMap.getOrDefault(d, 0) - 1);
                 left++;
             }
             right++;
