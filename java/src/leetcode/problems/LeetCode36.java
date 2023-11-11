@@ -1,10 +1,8 @@
 package leetcode.problems;
 
-import java.util.HashSet;
-
 /**
  * @author wujingxinit@outlook.com
- * @date 2023/10/20 10:44
+ * @date 2023/11/11 15:12
  */
 public class LeetCode36 {
 
@@ -12,48 +10,46 @@ public class LeetCode36 {
         if (board == null || board.length == 0) {
             return false;
         }
-        // check row
-        for (int i = 0; i < board.length; i++) {
-            HashSet<Character> set = new HashSet<>();
-            for (int j = 0; j < board[0].length; j++) {
-                if (board[i][j] == '.') {
-                    continue;
+        int n = board.length;
+
+        boolean[] used;
+        for (int i = 0; i < n; i++) {
+            used = new boolean[10];
+            for (int j = 0; j < n; j++) {
+                if (board[i][j] != '.') {
+                    if (used[board[i][j] - '0']) {
+                        return false;
+                    }
+                    used[board[i][j] - '0'] = true;
                 }
-                if (set.contains(board[i][j])) {
-                    return false;
-                }
-                set.add(board[i][j]);
             }
         }
-        // check col
-        for (int i = 0; i < board[0].length; i++) {
-            HashSet<Character> set = new HashSet<>();
-            for (int j = 0; j < board.length; j++) {
-                if (board[j][i] == '.') {
-                    continue;
+        for (int j = 0; j < n; j++) {
+            used = new boolean[10];
+            for (int i = 0; i < n; i++) {
+                if (board[i][j] != '.') {
+                    if (used[board[i][j] - '0']) {
+                        return false;
+                    }
+                    used[board[i][j] - '0'] = true;
                 }
-                if (set.contains(board[j][i])) {
-                    return false;
-                }
-                set.add(board[j][i]);
             }
         }
 
-        // check box
-        for (int i = 0; i < board.length; i = i + 3) {
-            for (int j = 0; j < board[0].length; j = j + 3) {
-                HashSet<Character> set = new HashSet<>();
-                for (int k = i; k < i + 3; k++) {
-                    for (int l = j; l < j + 3; l++) {
-                        if (board[k][l] == '.') {
-                            continue;
+        for (int row = 0; row < 9; row += 3) {
+            for (int col = 0; col < 9; col += 3) {
+                used = new boolean[10];
+                for (int i = 3 * (row / 3); i < 3 * (row / 3) + 3; i++) {
+                    for (int j = 3 * (col / 3); j < 3 * (col / 3) + 3; j++) {
+                        if (board[i][j] != '.') {
+                            if (used[board[i][j] - '0']) {
+                                return false;
+                            }
+                            used[board[i][j] - '0'] = true;
                         }
-                        if (set.contains(board[k][l])) {
-                            return false;
-                        }
-                        set.add(board[k][l]);
                     }
                 }
+
             }
         }
         return true;

@@ -2,18 +2,17 @@ package leetcode.problems;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2023/10/21 13:23
+ * @date 2023/11/11 15:57
  */
 public class LeetCode97 {
 
-    //https://leetcode.cn/problems/interleaving-string/solutions/335561/lei-si-lu-jing-wen-ti-zhao-zhun-zhuang-tai-fang-ch/
-
     public boolean isInterleave(String s1, String s2, String s3) {
-        int m = s1.length(), n = s2.length();
-        if (s3.length() != m + n) {
+        if (s1.length() + s2.length() != s3.length()) {
             return false;
         }
-        boolean[][] dp = new boolean[m + 1][n + 1];
+        int m = s1.length();
+        int n = s2.length();
+        boolean[][] dp = new boolean[s1.length() + 1][s2.length() + 1];
         dp[0][0] = true;
         for (int i = 1; i <= m && s1.charAt(i - 1) == s3.charAt(i - 1); i++) {
             dp[i][0] = true;
@@ -27,6 +26,7 @@ public class LeetCode97 {
                 int index = i + j - 1;
                 dp[i][j] = (dp[i - 1][j] && s3.charAt(index) == s1.charAt(i - 1))
                         || (dp[i][j - 1] && s3.charAt(index) == s2.charAt(j - 1));
+
             }
         }
         return dp[m][n];

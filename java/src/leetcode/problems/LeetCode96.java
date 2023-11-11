@@ -1,5 +1,7 @@
 package leetcode.problems;
 
+import java.util.HashMap;
+
 /**
  * @author wujingxinit@outlook.com
  * @date 2022/9/4 16:32
@@ -18,19 +20,23 @@ public class LeetCode96 {
         return G[n];
     }
 
+    HashMap<Integer, Integer> memo = new HashMap<>();
+
     public int numTrees_dfs(int n) {
-        if (n == 0) {
+        if (n <= 1) {
+            memo.put(n, 1);
             return 1;
         }
-        if (n == 1) {
-            return 1;
+        if (memo.get(n) != null) {
+            return memo.get(n);
         }
         int res = 0;
         for (int i = 0; i < n; i++) {
-            int left = numTrees_dfs(i);
-            int right = numTrees_dfs(n - i - 1);
+            int left = numTrees(i);
+            int right = numTrees(n - i - 1);
             res += left * right;
         }
+        memo.put(n, res);
         return res;
     }
 }

@@ -7,27 +7,24 @@ import java.util.List;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2023/10/21 13:27
- * @description 分治
+ * @date 2023/11/11 19:28
  */
 public class LeetCode95 {
 
     public List<TreeNode> generateTrees(int n) {
-        if (n == 0) {
-            return new ArrayList<>();
-        }
-        return generateTrees(1, n);
+        return generate(1, n);
     }
 
-    public List<TreeNode> generateTrees(int start, int end) {
-        List<TreeNode> res = new ArrayList<>();
+    public List<TreeNode> generate(int start, int end) {
         if (start > end) {
+            List<TreeNode> res = new ArrayList<>();
             res.add(null);
             return res;
         }
-        for (int i = start; i <= end; i++) {
-            List<TreeNode> left = generateTrees(start, i - 1);
-            List<TreeNode> right = generateTrees(i + 1, end);
+        List<TreeNode> res = new ArrayList<>();
+        for (int i = start; i < end; i++) {
+            List<TreeNode> left = generate(start, i - 1);
+            List<TreeNode> right = generate(i + 1, end);
             for (TreeNode l : left) {
                 for (TreeNode r : right) {
                     TreeNode root = new TreeNode(i);
