@@ -3,15 +3,13 @@ package leetcode.problems;
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/10/26 11:37
+ * @see LeetCode33
  */
 public class LeetCode81 {
 
     public boolean search(int[] nums, int target) {
         if (nums == null || nums.length == 0) {
             return false;
-        }
-        if (nums.length == 1) {
-            return nums[0] == target;
         }
         int left = 0;
         int right = nums.length - 1;
@@ -38,7 +36,6 @@ public class LeetCode81 {
                     }
                 }
             }
-
         }
         return false;
     }

@@ -2,7 +2,7 @@ package leetcode.problems;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2023/10/25 17:13
+ * @date 2023/11/11 21:17
  */
 public class LeetCode75 {
 
@@ -12,22 +12,25 @@ public class LeetCode75 {
         }
         int p0 = 0;
         int p2 = nums.length - 1;
-        int cur = 0;
-        while (cur <= p2) {
-            if (nums[cur] == 0) {
-                swap(nums, cur, p0);
-                cur++;
+        int index = 0;
+        while (index < nums.length) {
+            if (nums[index] == 0) {
+                swap(nums, index, p0);
+                index++;
                 p0++;
-            } else if (nums[cur] == 1) {
-                cur++;
-            } else if (nums[cur] == 2) {
-                swap(nums, cur, p2);
+            } else if (nums[index] == 1) {
+                index++;
+            } else {
+                swap(nums, index, p2);
                 p2--;
             }
         }
     }
 
-    public void swap(int[] nums, int i, int j) {
+    private void swap(int[] nums, int i, int j) {
+        if (i == j) {
+            return;
+        }
         int t = nums[i];
         nums[i] = nums[j];
         nums[j] = t;
