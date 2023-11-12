@@ -6,6 +6,7 @@ package leetcode.problems;
  */
 public class LeetCode204 {
 
+
     public int countPrimes(int n) {
 
         boolean[] notP = new boolean[n];
@@ -20,5 +21,25 @@ public class LeetCode204 {
             }
         }
         return res;
+    }
+
+    public int countPrimes_v2(int n) {
+        int ans = 0;
+        for (int i = 0; i < n; ++i) {
+            ans += isPrime(i) ? 1 : 0;
+        }
+        return ans;
+    }
+
+    public boolean isPrime(int x) {
+        if (x < 2) {
+            return false;
+        }
+        for (int i = 2; i * i <= x; ++i) {
+            if (x % i == 0) {
+                return false;
+            }
+        }
+        return true;
     }
 }
