@@ -6,7 +6,7 @@ import java.util.Arrays;
  * @author aiwujingxin@gmail.com
  * @date 2022/7/25 22:16
  */
-public class LeetCode354_dp {
+public class LeetCode354 {
 
     //https://leetcode.com/problems/russian-doll-envelopes/discuss/1734526/Java-LIS-Revisited-or-Binary-Search-Best-Explanation
     public int maxEnvelopes(int[][] envelopes) {

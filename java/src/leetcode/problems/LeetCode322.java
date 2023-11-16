@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2022/9/5 12:59
+ * @date 2023/11/17 00:06
  * @link <a href="https://aaronice.gitbook.io/lintcode/knapsack_problems/coin-change">...</a>
  */
 public class LeetCode322 {

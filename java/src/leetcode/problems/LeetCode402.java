@@ -8,10 +8,6 @@ import java.util.Stack;
  */
 public class LeetCode402 {
 
-    public static void main(String[] args) {
-        System.out.println(new LeetCode402().removeKdigits("100", 1));
-    }
-
     public String removeKdigits(String num, int k) {
         Stack<Character> stack = new Stack<>();
         int length = num.length();
@@ -38,7 +34,7 @@ public class LeetCode402 {
             }
         }
         st = st.substring(i);
-        if (st.length() == 0) {
+        if (st.isEmpty()) {
             return "0";
         }
         return st;

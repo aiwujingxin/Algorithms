@@ -6,93 +6,79 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * @author aiwujingxin@gmail.com
- * @date 2022/7/9 20:39
+ * @author wujingxinit@outlook.com
+ * @date 2023/11/16 20:15
+ * @link <a href="https://www.youtube.com/watch?v=WPASktChEA4">...</a>
  */
 public class LeetCode336 {
 
-    //https://www.youtube.com/watch?v=WPASktChEA4
-
     TrieNode root = new TrieNode();
-    int n;
     List<List<Integer>> res = new ArrayList<>();
 
     public List<List<Integer>> palindromePairs(String[] words) {
-        n = words.length;
-
+        int n = words.length;
         for (int i = 0; i < n; i++) {
             add(words[i], i);
         }
-
         for (int i = 0; i < n; i++) {
             search(words[i], i);
         }
-
         return res;
     }
 
     private void search(String word, int wordIndex) {
         TrieNode cur = root;
-        char[] chs = word.toCharArray();
-        for (int i = 0; i < chs.length; i++) {
-            int j = chs[i] - 'a';
-            //cur.wordIndex != -1 是否能走到这个字符
-            if (cur.wordIndex != -1 && isPalindrome(chs, i, chs.length - 1)) {// xyzll   zyx
-                // 剩余的是回文的话 ，就不用看了
+        char[] chars = word.toCharArray();
+        for (int i = 0; i < chars.length; i++) {
+            // 剩余的部分是回文 且 前一部分的回文单词存在: xyzll + zyx
+            if (isPalindrome(chars, i, chars.length - 1) && cur.wordIndex != -1) {
                 res.add(Arrays.asList(wordIndex, cur.wordIndex));
             }
-            if (cur.children[j] == null) {
+
+            if (cur.children[chars[i] - 'a'] == null) {
                 return;
             }
-            cur = cur.children[j];
+            cur = cur.children[chars[i] - 'a'];
         }
-
-        // aaaa 避免和自己够成
+        // 单词整体的回文单词存在 abcd + dcba
+        // 注意: 避免和自己够成 aaa
         if (cur.wordIndex != -1 && cur.wordIndex != wordIndex) {
             res.add(Arrays.asList(wordIndex, cur.wordIndex));
         }
 
-
-        // 当前存放的 剩余的都是restIsPalindrome 的list "zyx" |   "llxyz" or "llllxyz"
-        // zyx 已经走结束了，就看剩下的回文数 比如ll
-        for (int j : cur.restIsPalindrome) {
-            res.add(Arrays.asList(wordIndex, j));
+        // 单词整体的回文单词存在, 且那个单词剩余的部分是回文 "zyx" + ("llxyz" or "llllxyz")
+        for (int index : cur.restIsPalindrome) {
+            res.add(Arrays.asList(wordIndex, index));
         }
     }
 
     private void add(String word, int wordIndex) {
         TrieNode cur = root;
-        char[] chs = word.toCharArray();
-        for (int i = chs.length - 1; i >= 0; i--) {
-            int j = chs[i] - 'a';
-            if (isPalindrome(chs, 0, i)) {
+        char[] chars = word.toCharArray();
+        for (int i = chars.length - 1; i >= 0; i--) {
+            if (isPalindrome(chars, 0, i)) {
                 cur.restIsPalindrome.add(wordIndex);
             }
-
-            if (cur.children[j] == null) {
-                cur.children[j] = new TrieNode();
+            if (cur.children[chars[i] - 'a'] == null) {
+                cur.children[chars[i] - 'a'] = new TrieNode();
             }
-            cur = cur.children[j];
+            cur = cur.children[chars[i] - 'a'];
         }
-
         cur.wordIndex = wordIndex;
     }
 
     private boolean isPalindrome(char[] chs, int i, int j) {
         while (i < j) {
-            if (chs[i++] != chs[j--]) return false;
+            if (chs[i++] != chs[j--]) {
+                return false;
+            }
         }
-
         return true;
     }
 
     static class TrieNode {
         TrieNode[] children = new TrieNode[26];
         int wordIndex = -1;
-        List<Integer> restIsPalindrome;
-
-        TrieNode() {
-            restIsPalindrome = new ArrayList<>();
-        }
+        List<Integer> restIsPalindrome = new ArrayList<>();
     }
 }

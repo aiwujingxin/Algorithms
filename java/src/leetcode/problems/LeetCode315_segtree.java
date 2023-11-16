@@ -4,9 +4,9 @@ import java.util.*;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2022/7/23 19:31
+ * @date 2023/11/16 23:24
  */
-public class LeetCode315_SegmentTree {
+public class LeetCode315_segtree {
 
     public List<Integer> countSmaller(int[] nums) {
         int len = nums.length;

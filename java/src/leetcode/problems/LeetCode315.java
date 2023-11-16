@@ -7,7 +7,7 @@ import java.util.List;
  * @author wujingxinit@outlook.com
  * @date 2022/7/23 19:32
  */
-public class LeetCode315_mergeSort {
+public class LeetCode315 {
 
     private int[] index;
     private int[] temp;
