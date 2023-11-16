@@ -4,47 +4,41 @@ import common.ListNode;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2022/10/4 20:59
+ * @date 2023/11/16 17:54
  */
 public class LeetCode328 {
 
-    //[2,1,3,5,6,4,7]
-
     public ListNode oddEvenList(ListNode head) {
+        if (head == null) {
+            return null;
+        }
+        ListNode oddDummy = new ListNode();
+        ListNode evenDummy = new ListNode();
+        ListNode odd = oddDummy;
+        ListNode even = evenDummy;
 
-        if (head == null || head.next == null || head.next.next == null) {
-            return head;
+        ListNode cur = head;
+        int index = 1;
+
+        while (cur != null) {
+            if (index % 2 == 1) {
+                odd.next = cur;
+                odd = odd.next;
+            } else {
+                even.next = cur;
+                even = even.next;
+            }
+            index++;
+            ListNode next = cur.next;
+            cur.next = null;
+            cur = next;
         }
 
-        ListNode tail = head;
-        int count = 1;
-        while (tail.next != null) {
-            tail = tail.next;
-            count++;
+        cur = oddDummy;
+        while (cur.next != null) {
+            cur = cur.next;
         }
-        int n = count / 2;
-
-
-        ListNode odd = head;
-        ListNode event = head.next;
-
-        int k = 0;
-
-        while (k < n) {
-            odd.next = event.next;
-
-            tail.next = event;
-
-            event.next = null;
-
-            odd = odd.next;
-            event = odd.next;
-
-            tail = tail.next;
-
-            k++;
-        }
-
-        return head;
+        cur.next = evenDummy.next;
+        return oddDummy.next;
     }
 }

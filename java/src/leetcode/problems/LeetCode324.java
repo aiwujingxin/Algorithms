@@ -1,6 +1,7 @@
 package leetcode.problems;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -8,6 +9,19 @@ import java.util.List;
  * @date 2022/12/18 16:53
  */
 public class LeetCode324 {
+
+    public void wiggleSort_sort(int[] nums) {
+        Arrays.sort(nums);
+        int[] temp = new int[nums.length];
+        for (int i = 0; i < nums.length; i++) {
+            temp[i] = nums[i];
+        }
+        int mid = (nums.length + 1) / 2 - 1;
+        int end = nums.length - 1;
+        for (int i = 0; i < nums.length; i++) {
+            nums[i] = (i % 2 == 1) ? temp[end--] : temp[mid--];
+        }
+    }
 
     //https://leetcode.com/problems/wiggle-sort-ii/solutions/77680/clear-java-o-n-avg-time-o-n-space-solution-using-3-way-partition/
 
