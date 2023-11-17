@@ -13,7 +13,7 @@ public class LeetCode75 {
         int p0 = 0;
         int p2 = nums.length - 1;
         int index = 0;
-        while (index < nums.length) {
+        while (index <= p2) {
             if (nums[index] == 0) {
                 swap(nums, index, p0);
                 index++;

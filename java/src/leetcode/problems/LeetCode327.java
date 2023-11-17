@@ -1,7 +1,5 @@
 package leetcode.problems;
 
-import java.util.Arrays;
-
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/11/16 17:39
@@ -23,7 +21,6 @@ public class LeetCode327 {
             sum[i] = sum[i - 1] + (long) nums[i - 1];
         }
         mergeSort(sum, 0, sum.length - 1);
-        System.out.println(Arrays.toString(sum));
         return count;
     }
 
