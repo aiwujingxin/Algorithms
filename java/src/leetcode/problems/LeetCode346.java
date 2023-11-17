@@ -5,7 +5,7 @@ import java.util.Queue;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2023/3/16 18:25
+ * @date 2023.11.17 22:29
  */
 public class LeetCode346 {
 

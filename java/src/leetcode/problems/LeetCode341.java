@@ -6,7 +6,7 @@ import java.util.List;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2022/10/7 00:13
+ * @date 2023.07.17 22:12
  */
 public class LeetCode341 {
 
@@ -19,13 +19,13 @@ public class LeetCode341 {
     }
 
     public class NestedIterator implements Iterator<Integer> {
-        private final List<Integer> vals;
+        private final List<Integer> list;
         private final Iterator<Integer> cur;
 
         public NestedIterator(List<NestedInteger> nestedList) {
-            vals = new ArrayList<>();
+            this.list = new ArrayList<>();
             dfs(nestedList);
-            cur = vals.iterator();
+            this.cur = list.iterator();
         }
 
         @Override
@@ -41,7 +41,7 @@ public class LeetCode341 {
         private void dfs(List<NestedInteger> nestedList) {
             for (NestedInteger nest : nestedList) {
                 if (nest.isInteger()) {
-                    vals.add(nest.getInteger());
+                    list.add(nest.getInteger());
                 } else {
                     dfs(nest.getList());
                 }

@@ -4,7 +4,7 @@ import basic.datastructure.advance.BinaryIndexedTree;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2023/5/23 18:24
+ * @date 2023.11.08 22:26
  */
 public class LeetCode307_BitTree {
 

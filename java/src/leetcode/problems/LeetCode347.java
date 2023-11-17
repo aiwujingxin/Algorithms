@@ -7,19 +7,16 @@ import java.util.PriorityQueue;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2023/9/19 21:37
+ * @date 2023/11/17 22:34
  */
 public class LeetCode347 {
 
     public int[] topKFrequent(int[] nums, int k) {
-        if (nums == null || nums.length == 0) {
-            return new int[]{};
+        HashMap<Integer, Integer> map = new HashMap<>();
+        for (int i = 0; i < nums.length; i++) {
+            map.put(nums[i], map.getOrDefault(nums[i], 0) + 1);
         }
 
-        HashMap<Integer, Integer> map = new HashMap<>();
-        for (int num : nums) {
-            map.put(num, map.getOrDefault(num, 0) + 1);
-        }
         PriorityQueue<int[]> queue = new PriorityQueue<>(new Comparator<int[]>() {
             @Override
             public int compare(int[] o1, int[] o2) {
@@ -29,13 +26,16 @@ public class LeetCode347 {
 
         for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
             queue.add(new int[]{entry.getKey(), entry.getValue()});
+
             if (queue.size() > k) {
                 queue.poll();
             }
         }
         int[] res = new int[k];
-        for (int i = 0; i < k; i++) {
-            res[i] = queue.poll()[0];
+        int index = 0;
+        while (!queue.isEmpty()) {
+            res[index] = queue.poll()[0];
+            index++;
         }
         return res;
     }

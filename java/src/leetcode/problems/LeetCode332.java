@@ -5,6 +5,7 @@ import java.util.*;
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/11/16 20:15
+ * @description 欧拉回路
  */
 
 public class LeetCode332 {

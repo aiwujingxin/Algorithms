@@ -6,20 +6,6 @@ package leetcode.problems;
  */
 public class LeetCode371 {
 
-    public static void main(String[] args) {
-        System.out.println(new LeetCode371().getSum(1, 2));
-        System.out.println(new LeetCode371().getSum(-12, -8));
-
-        System.out.println(new LeetCode371().getSum(12213, 4564));
-        System.out.println(new LeetCode371().getSum(-12213, 4564));
-        System.out.println(new LeetCode371().getSum(-8888, 8888));
-        System.out.println(new LeetCode371().getSum(-8888, 4564));
-        System.out.println(new LeetCode371().getSum(-4564, 8888));
-        System.out.println(new LeetCode371().getSum(-1, 1));
-        System.out.println(new LeetCode371().getSum(1, -1));
-//        System.out.println(new LeetCode371().minus(8888, 4564));
-    }
-
     public int getSum(int a, int b) {
 
         int one = Math.max(a, b);

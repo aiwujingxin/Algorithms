@@ -17,10 +17,18 @@ public class LeetCode338 {
     private int countOnes(int x) {
         int cnt = 0;
         while (x > 0) {
-            //将 x 的二进制表示的最后一个 1 变成 0
-            x &= (x - 1);
+            //去掉最后一个 1
+            x = x & (x - 1);
             cnt++;
         }
         return cnt;
+    }
+
+    public int[] countBits_dp(int n) {
+        int[] dp = new int[n + 1];
+        for (int i = 1; i <= n; i++) {
+            dp[i] = dp[i & (i - 1)] + 1;
+        }
+        return dp;
     }
 }

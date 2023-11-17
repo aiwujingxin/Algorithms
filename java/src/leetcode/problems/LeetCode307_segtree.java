@@ -4,7 +4,7 @@ import basic.datastructure.advance.SegmentTree;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2023/5/23 18:08
+ * @date 2023.11.08 22:26
  */
 public class LeetCode307_segtree {
 

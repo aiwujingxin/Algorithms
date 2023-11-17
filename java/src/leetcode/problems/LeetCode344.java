@@ -2,14 +2,11 @@ package leetcode.problems;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2022/10/8 22:12
+ * @date 2023/11/17 22:28
  */
 public class LeetCode344 {
 
     public void reverseString(char[] s) {
-        if (s == null || s.length == 0) {
-            return;
-        }
         int l = 0;
         int r = s.length - 1;
         while (l < r) {

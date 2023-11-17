@@ -56,6 +56,7 @@ public class LeetCode336 {
         TrieNode cur = root;
         char[] chars = word.toCharArray();
         for (int i = chars.length - 1; i >= 0; i--) {
+            // 把剩余部分是回文串 则存放进restIsPalindrome, 以便正序时使用
             if (isPalindrome(chars, 0, i)) {
                 cur.restIsPalindrome.add(wordIndex);
             }

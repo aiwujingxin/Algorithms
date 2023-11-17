@@ -35,7 +35,7 @@ public class BinaryIndexedTree {
         return sum;
     }
 
-    // 保留最右边的1
+    // 最右边的1
     public int lowbit(int i) {
         return i & (-i);
     }

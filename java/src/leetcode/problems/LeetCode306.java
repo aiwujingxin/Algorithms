@@ -2,7 +2,7 @@ package leetcode.problems;
 
 /**
  * @author jingxinwu
- * @date 2022-01-10 11:31 PM
+ * @date 2023.11.10 00:05
  */
 public class LeetCode306 {
 
