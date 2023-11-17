@@ -22,30 +22,4 @@ public class LeetCode331 {
         }
         return stack.size() == 1 && stack.peek().equals("#");
     }
-
-    boolean valid = true;
-    int pos;
-
-    public boolean isValidSerialization_v1(String preorder) {
-        pos = 0;
-        String[] tokens = preorder.split(",");
-        dfs(tokens);
-        return valid && pos == tokens.length;
-    }
-
-    public void dfs(String[] tokens) {
-        if (pos >= tokens.length) {
-            valid = false;
-            return;
-        }
-        if ("#".equals(tokens[pos])) {
-            pos++;
-            return;
-        }
-        pos++;
-        // 左
-        dfs(tokens);
-        // 右
-        dfs(tokens);
-    }
 }

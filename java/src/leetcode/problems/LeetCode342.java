@@ -1,15 +1,16 @@
 package leetcode.problems;
 
 /**
- * @author jingxinwu
- * @date 2021-12-26 8:56 PM
+ * @author wujingxinit@outlook.com
+ * @date 2023/11/17 18:40
  */
 public class LeetCode342 {
 
-
     public boolean isPowerOfFour(int n) {
-
-        return n > 0 && (n & (n - 1)) == 0 && (n & 0xaaaaaaaa) == 0;
+        while (n > 1 && n % 4 == 0) {
+            n = n / 4;
+        }
+        return n == 1;
 
     }
 }

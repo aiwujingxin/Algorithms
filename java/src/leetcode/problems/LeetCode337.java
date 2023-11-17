@@ -1,10 +1,10 @@
 package leetcode.problems;
 
-import common.*;
+import common.TreeNode;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2023/9/17 21:07
+ * @date 2023/11/17 18:31
  */
 public class LeetCode337 {
 
@@ -23,10 +23,8 @@ public class LeetCode337 {
         int[] left = dfs(root.left);
         int[] right = dfs(root.right);
         int[] res = new int[2];
-        // 偷
-        res[0] = left[1] + right[1] + root.val;
-        // 不偷
-        res[1] = Math.max(left[1], left[0]) + Math.max(right[1], right[0]);
+        res[0] = Math.max(left[0], left[1]) + Math.max(right[0], right[1]);
+        res[1] = left[0] + right[0] + root.val;
         return res;
     }
 }

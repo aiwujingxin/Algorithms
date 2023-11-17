@@ -1,8 +1,8 @@
 package leetcode.problems;
 
 /**
- * @author jingxinwu
- * @date 2021-06-05 4:54 下午
+ * @author wujingxinit@outlook.com
+ * @date 2023/11/17 18:41
  */
 public class LeetCode343 {
 
@@ -16,24 +16,21 @@ public class LeetCode343 {
         if (n == 3) {
             return 2;
         }
-        int max;
         int[] dp = new int[n + 1];
         dp[0] = 0;
         dp[1] = 1;
         dp[2] = 2;
         dp[3] = 3;
-
-        for (int i = 4; i < n; i++) {
-            max = 0;
-            for (int j = 1; j < i / 2; j++) {
+        for (int i = 4; i <= n; i++) {
+            int t = 0;
+            for (int j = 1; j <= i / 2; j++) {
                 int product = dp[j] * dp[i - j];
-                if (max < product) {
-                    max = product;
+                if (t < product) {
+                    t = product;
                 }
-                dp[i] = max;
             }
+            dp[i] = t;
         }
-
-        return dp[dp.length - 1];
+        return dp[n];
     }
 }

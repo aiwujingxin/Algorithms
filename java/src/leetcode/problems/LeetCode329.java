@@ -2,43 +2,45 @@ package leetcode.problems;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2022/10/7 00:13
+ * @date 2023/11/16 18:08
  */
 public class LeetCode329 {
 
-    int[][] dirs = {{0, 1}, {1, 0}, {0, -1}, {-1, 0}};
 
     int[][] memo;
 
     public int longestIncreasingPath(int[][] matrix) {
-        if (matrix.length == 0) {
+        if (matrix == null) {
             return 0;
         }
-        int m = matrix.length, n = matrix[0].length;
+        int m = matrix.length;
+        int n = matrix[0].length;
         memo = new int[m][n];
-        int max = 1;
+        int res = 0;
         for (int i = 0; i < m; i++) {
             for (int j = 0; j < n; j++) {
-                int len = dfs(matrix, i, j, m, n);
-                max = Math.max(max, len);
+                res = Math.max(res, dfs(matrix, i, j));
             }
         }
-        return max;
+        return res;
     }
 
-    public int dfs(int[][] matrix, int i, int j, int m, int n) {
-        if (memo[i][j] != 0) {
-            return memo[i][j];
+    int[][] dirs = new int[][]{{-1, 0}, {1, 0}, {0, 1}, {0, -1}};
+
+    private int dfs(int[][] matrix, int row, int col) {
+        if (memo[row][col] != 0) {
+            return memo[row][col];
         }
         int res = 1;
-        for (int[] dir : dirs) {
-            int x = i + dir[0], y = j + dir[1];
-            if (x < 0 || x >= m || y < 0 || y >= n || matrix[x][y] <= matrix[i][j]) {
+        for (int i = 0; i < dirs.length; i++) {
+            int xn = row + dirs[i][0];
+            int yn = col + dirs[i][1];
+            if (xn < 0 || xn >= matrix.length || yn < 0 || yn >= matrix[0].length || matrix[xn][yn] <= matrix[row][col]) {
                 continue;
             }
-            res = Math.max(res, 1 + dfs(matrix, x, y, m, n));
+            res = Math.max(res, dfs(matrix, xn, yn) + 1);
         }
-        memo[i][j] = res;
+        memo[row][col] = res;
         return res;
     }
 }
