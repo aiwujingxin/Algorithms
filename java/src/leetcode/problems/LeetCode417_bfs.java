@@ -12,9 +12,8 @@ import java.util.Queue;
  */
 public class LeetCode417_bfs {
 
-
     //https://leetcode.com/problems/pacific-atlantic-water-flow/discuss/2517431/JAVA-or-DFS-%2B-recursion-or-BFS-%2B-iteration-or-two-solutions
-    private static final int[][] DIRECTIONS = new int[][]{{0, 1}, {1, 0}, {-1, 0}, {0, -1}};
+    private static final int[][] dirs = new int[][]{{0, 1}, {1, 0}, {-1, 0}, {0, -1}};
 
     public List<List<Integer>> pacificAtlantic(int[][] heights) {
 
@@ -51,7 +50,7 @@ public class LeetCode417_bfs {
             int[] node = queue.poll();
             int i = node[0], j = node[1];
             res[i][j] = true;
-            for (int[] dir : DIRECTIONS) {
+            for (int[] dir : dirs) {
                 int x = i + dir[0], y = j + dir[1];
                 if (x >= 0 && x < heights.length && y >= 0 && y < heights[0].length && heights[x][y] >= heights[i][j] && !res[x][y]) {
                     queue.add(new int[]{x, y});

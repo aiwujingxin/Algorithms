@@ -6,13 +6,6 @@ package leetcode.problems;
  */
 public class LeetCode493_mergesort {
 
-    public int[] mergeSort(int[] nums) {
-        this.nums = nums;
-        this.temp = new int[nums.length];
-        mergeSort(nums, 0, nums.length - 1);
-        return nums;
-    }
-
     int res = 0;
     int[] nums;
     int[] temp;
@@ -48,7 +41,6 @@ public class LeetCode493_mergesort {
             } else if (nums[i] > nums[j]) {
                 temp[k] = nums[j];
                 j++;
-
                 // 计数
                 res += mid - i + 1;
             }

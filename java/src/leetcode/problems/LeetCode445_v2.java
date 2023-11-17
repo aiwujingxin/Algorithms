@@ -5,8 +5,7 @@ import common.ListNode;
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/1/17 16:26
- * @link<a href=
- *         "https://leetcode.com/problems/add-two-numbers-ii/solutions/2645982/java-recursive-solution-95-fast-solution/">...</a>
+ * @link <a href="https://leetcode.com/problems/add-two-numbers-ii/solutions/2645982/java-recursive-solution-95-fast-solution/"></a>
  */
 
 public class LeetCode445_v2 {
