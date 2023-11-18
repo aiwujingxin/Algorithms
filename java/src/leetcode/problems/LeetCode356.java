@@ -1,8 +1,3 @@
-/*
- * @Date: 2023-03-31 23:29:21
- * @LastEditors: Jingxin Wu wujingxinit@outlook.com
- * @LastEditTime: 2023-04-26 13:09:47
- */
 package leetcode.problems;
 
 import java.util.ArrayList;
