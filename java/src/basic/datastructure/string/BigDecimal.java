@@ -10,7 +10,7 @@ package basic.datastructure.string;
 public interface BigDecimal {
     String addStrings(String s1, String s2);
 
-    String sub(String s1, String s2);
+    String subtract(String s1, String s2);
 
     String multiply(String s1, String s2);
 

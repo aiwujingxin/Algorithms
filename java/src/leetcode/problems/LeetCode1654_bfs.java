@@ -8,6 +8,7 @@ import java.util.Queue;
 /**
  * @author wujingxinit@outlook.com
  * @date 2022/10/19 22:41
+ * @description 贝祖定理
  * <a href="https://leetcode.com/problems/minimum-jumps-to-reach-home/discuss/935504/JAVA-BFS-and-DFS-solution">...</a>
  */
 public class LeetCode1654_bfs {
@@ -24,7 +25,6 @@ public class LeetCode1654_bfs {
         HashSet<String> visited = new HashSet<>();
         queue.add(new int[]{0, 0, 0});
 
-        //fix  direction
         visited.add(0 + "," + 0);
 
         while (!queue.isEmpty()) {
@@ -32,7 +32,6 @@ public class LeetCode1654_bfs {
             if (pos[0] == x) {
                 return pos[1];
             }
-            // 贝祖定理
             if (pos[0] + a < 6000 && !forbit.contains(pos[0] + a) && !visited.contains(pos[0] + a + "," + 0)) {
                 queue.add(new int[]{pos[0] + a, pos[1] + 1, 1});
                 visited.add(pos[0] + a + "," + 0);

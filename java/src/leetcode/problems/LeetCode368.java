@@ -7,41 +7,42 @@ import java.util.List;
 /**
  * @author aiwujingxin@gmail.com
  * @date 2023/2/15 22:00
+ * @description 构造DP结果
  */
 public class LeetCode368 {
 
     public List<Integer> largestDivisibleSubset(int[] nums) {
-        if (nums == null || nums.length == 0) {
-            return new ArrayList<>();
-        }
         Arrays.sort(nums);
-        int[] count = new int[nums.length];
-        int[] pre = new int[nums.length];
-        int max = 0;
-        int index = -1;
-
-        for (int i = 0; i < nums.length; i++) {
-            count[i] = 1;
-            pre[i] = -1;
-            for (int j = i - 1; j >= 0; j--) {
+        int n = nums.length;
+        int[] dp = new int[n];
+        int[] g = new int[n];
+        for (int i = 0; i < n; i++) {
+            int t = 1, pre = i;
+            for (int j = 0; j < i; j++) {
                 if (nums[i] % nums[j] == 0) {
-                    if (1 + count[j] > count[i]) {
-                        count[i] = count[j] + 1;
-                        pre[i] = j;
+                    if (dp[j] + 1 > t) {
+                        t = dp[j] + 1;
+                        pre = j;
                     }
                 }
             }
-            if (count[i] > max) {
-                max = count[i];
-                index = i;
-            }
+            dp[i] = t;
+            g[i] = pre;
         }
 
-        List<Integer> res = new ArrayList<>();
-        while (index != -1) {
-            res.add(nums[index]);
-            index = pre[index];
+        int max = -1, idx = -1;
+        for (int i = 0; i < n; i++) {
+            if (dp[i] > max) {
+                idx = i;
+                max = dp[i];
+            }
         }
-        return res;
+        // build res
+        List<Integer> ans = new ArrayList<>();
+        while (ans.size() != max) {
+            ans.add(nums[idx]);
+            idx = g[idx];
+        }
+        return ans;
     }
 }

@@ -6,6 +6,7 @@ import java.util.Random;
 /**
  * @author jingxinwu
  * @date 2022-02-23 6:44 PM
+ * @link <a href="https://www.youtube.com/watch?v=8DHwp1Rtp0Q">video,4分10秒</a>
  */
 public class LeetCode384 {
 
@@ -24,9 +25,6 @@ public class LeetCode384 {
 
     /**
      * Returns a random shuffling of the array.
-     * <p>
-     * <a href="https://www.youtube.com/watch?v=8DHwp1Rtp0Q">video</a> ,4分10秒
-     * <p>
      * i = 0  [0 n -1]   1 / n
      * i = 1  [1 n -1]   (n -1) /n *  (1 / n - 1) = 1 / n
      * i = 2  [2 n -3]   (n -1) /n *  (n - 2) /(n - 1) * (1 / n - 2) = 1 / n

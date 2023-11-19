@@ -1,88 +1,39 @@
 package leetcode.problems;
 
+import basic.datastructure.string.math.BigDecimal;
+
 /**
  * @author aiwujingxin@gmail.com
- * @date 2022/7/8 19:56
+ * @date 2023/11/19 21:55
  */
 public class LeetCode371 {
 
     public int getSum(int a, int b) {
+        while (b != 0) {
+            int carry = a & b;//     全为1得1,其他得0
+            a = a ^ b;//相加 但不进位  相同为0,不同为1
+            b = carry << 1;//进位
+        }
+        return a;
+    }
 
+    public int getSum_self(int a, int b) {
         int one = Math.max(a, b);
         int two = Math.min(a, b);
-
-        long res = 0;
-        if (one == 0) {
-            return two;
-        }
-        if (two == 0) {
-            return one;
-        }
-
+        long res;
         if (two > 0) {
-            res = add(one, two);
+            res = Long.parseLong(new BigDecimal().addStrings(String.valueOf(one), String.valueOf(two)));
         } else if (one < 0) {
-            res = -1 * add(Math.abs(one), Math.abs(two));
+            res = -1 * Long.parseLong(new BigDecimal().addStrings(String.valueOf(-one), String.valueOf(-two)));
         } else {
-            res = one > Math.abs(two) ? minus(one, Math.abs(two)) : -1 * minus(Math.abs(two), one);
+            res = Long.parseLong(new BigDecimal().subtract(String.valueOf(one), String.valueOf(-two)));
         }
-
         if (res < Integer.MIN_VALUE) {
-
             return Integer.MIN_VALUE;
         }
-
         if (res > Integer.MAX_VALUE) {
             return Integer.MAX_VALUE;
         }
-
         return (int) res;
-    }
-
-    // 大减小
-    public long minus(int a, int b) {
-        String one = String.valueOf(a);
-        String two = String.valueOf(b);
-        StringBuilder sb = new StringBuilder();
-
-        int i = one.length() - 1;
-        int j = two.length() - 1;
-        int flag = 0;
-        while (i >= 0 || j >= 0) {
-            int temp1 = i >= 0 ? (one.charAt(i) - '0') : 0;
-            int temp2 = j >= 0 ? (two.charAt(j) - '0') : 0;
-            int res;
-            if (temp1 + flag < temp2) {
-                res = 10 + temp1 + flag - temp2;
-                flag = -1;
-            } else {
-                res = temp1 - temp2 + flag;
-            }
-            sb.append(res);
-            i--;
-            j--;
-        }
-
-        return Long.parseLong(sb.reverse().toString());
-    }
-
-    public long add(int a, int b) {
-        String one = String.valueOf(a);
-        String two = String.valueOf(b);
-        StringBuilder sb = new StringBuilder();
-        int i = one.length() - 1;
-        int j = two.length() - 1;
-        int flag = 0;
-        while (i >= 0 || j >= 0) {
-            int temp1 = i >= 0 ? (one.charAt(i) - '0') : 0;
-            int temp2 = j >= 0 ? (two.charAt(j) - '0') : 0;
-            int sum = temp1 + temp2 + flag;
-            flag = sum / 10;
-            int r = sum % 10;
-            sb.append(r);
-            i--;
-            j--;
-        }
-        return Long.parseLong(sb.reverse().toString());
     }
 }

@@ -6,44 +6,29 @@ package basic.datastructure.string.math;
  */
 public class BigDecimal implements basic.datastructure.string.BigDecimal {
 
-    public static void main(String[] args) {
-        System.out.println(new BigDecimal().sub("-345", "-8765"));
-    }
-
-    public static boolean compare(String num1, String num2) {
-        if (num1.length() < num2.length()) {
-            return false;
-        } else if (num1.length() > num2.length()) {
-            return true;
-        } else {
-            return num1.compareTo(num2) > 0;
-        }
-    }
-
     @Override
     public String addStrings(String num1, String num2) {
-        int len1 = num1.length() - 1, len2 = num2.length() - 1;
-        char[] ch1 = num1.toCharArray();
-        char[] ch2 = num2.toCharArray();
+        int i = num1.length() - 1;
+        int j = num2.length() - 1;
         StringBuilder sb = new StringBuilder();
-        int remainder = 0;//计算余数
-        while (len1 >= 0 || len2 >= 0) {
-            int n1 = len1 >= 0 ? (ch1[len1--] - '0') : 0;
-            int n2 = len2 >= 0 ? (ch2[len2--] - '0') : 0;
-            int num = n1 + n2 + remainder;//求和对应数字
-            remainder = num / 10;//是否进位
-            sb.append(num % 10);// 添加到结果字符串中
+        int flag = 0;
+        while (i >= 0 || j >= 0) {
+            int n1 = i >= 0 ? (num1.charAt(i) - '0') : 0;
+            int n2 = j >= 0 ? (num2.charAt(j) - '0') : 0;
+            int num = n1 + n2 + flag;
+            flag = num / 10;
+            sb.append(num % 10);
+            i--;
+            j--;
         }
-        //是否还需要进位
-        if (remainder > 0) {
-            sb.append(remainder);
+        if (flag > 0) {
+            sb.append(flag);
         }
-        //反装即为结果
         return sb.reverse().toString();
     }
 
     @Override
-    public String sub(String num1, String num2) {
+    public String subtract(String num1, String num2) {
         if (num1 == null || num1.isEmpty() || num2 == null || num2.isEmpty()) {
             return "";
         }
@@ -58,8 +43,6 @@ public class BigDecimal implements basic.datastructure.string.BigDecimal {
             num2 = num2.substring(1);
         }
         boolean sign = true;//正负号
-        //让num1>num2 如果num1<num2 那么结果就是—(num2-num1)
-        //可以先将num1和num2交换和前面情况统一
         if (!compare(num1, num2)) {
             sign = false;
             String temp = num2;
@@ -145,5 +128,15 @@ public class BigDecimal implements basic.datastructure.string.BigDecimal {
             sb.append(j);
         }
         return sb.isEmpty() ? "0" : sb.toString();
+    }
+
+    public static boolean compare(String num1, String num2) {
+        if (num1.length() < num2.length()) {
+            return false;
+        } else if (num1.length() > num2.length()) {
+            return true;
+        } else {
+            return num1.compareTo(num2) > 0;
+        }
     }
 }

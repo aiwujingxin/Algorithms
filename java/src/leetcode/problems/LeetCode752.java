@@ -8,11 +8,6 @@ import java.util.*;
  */
 public class LeetCode752 {
 
-    public static void main(String[] args) {
-        System.out.println(new LeetCode752().openLock(new String[]{"0201", "0101", "0102", "1212", "2002"}, "0202"));
-    }
-
-
     public int openLock(String[] deadends, String target) {
         if (deadends == null || deadends.length == 0) {
             return 0;

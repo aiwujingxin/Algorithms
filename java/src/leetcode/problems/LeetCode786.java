@@ -1,13 +1,13 @@
 package leetcode.problems;
 
-import java.util.*;
+import java.util.PriorityQueue;
 
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/9/6 23:15
- * 多路归并
+ * @description 多路排序
  */
-public class LeetCode786_Q {
+public class LeetCode786 {
     //起始将 n−1 个序列的头部元素放入堆中，然后重复k 次操作得到第 k 小的值
     public int[] kthSmallestPrimeFraction(int[] arr, int k) {
         int n = arr.length;
