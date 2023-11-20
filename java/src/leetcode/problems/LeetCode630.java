@@ -1,9 +1,6 @@
 package leetcode.problems;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 
 /**
  * @author aiwujingxin@gmail.com
@@ -39,5 +36,20 @@ public class LeetCode630 {
             }
         }
         return list.size();
+    }
+
+    public int scheduleCourse_Q(int[][] courses) {
+        Arrays.sort(courses, (a, b) -> a[1] - b[1]);
+        PriorityQueue<Integer> q = new PriorityQueue<>((a, b) -> b - a);
+        int sum = 0;
+        for (int[] c : courses) {
+            int d = c[0], e = c[1];
+            sum += d;
+            q.add(d);
+            if (sum > e) {
+                sum -= q.poll();
+            }
+        }
+        return q.size();
     }
 }

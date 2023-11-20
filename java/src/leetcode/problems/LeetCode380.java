@@ -44,8 +44,7 @@ public class LeetCode380 {
         }
 
         public int getRandom() {
-            int randomIndex = random.nextInt(nums.size());
-            return nums.get(randomIndex);
+            return nums.get(random.nextInt(nums.size()));
         }
     }
 }

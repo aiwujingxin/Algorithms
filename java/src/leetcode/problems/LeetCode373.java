@@ -11,6 +11,7 @@ import java.util.PriorityQueue;
  * @description 多路排序
  */
 public class LeetCode373 {
+
     public List<List<Integer>> kSmallestPairs(int[] nums1, int[] nums2, int k) {
         List<List<Integer>> res = new ArrayList<>();
         if (nums1.length == 0 || nums2.length == 0 || k == 0) {
@@ -18,7 +19,7 @@ public class LeetCode373 {
         }
         PriorityQueue<int[]> pq = new PriorityQueue<>((a, b) -> (a[0] + a[1] - b[0] - b[1]));
         for (int i = 0; i < nums1.length && i < k; i++) {
-            pq.offer(new int[]{nums1[i], nums2[0], 0});
+            pq.add(new int[]{nums1[i], nums2[0], 0});
         }
         while (!pq.isEmpty() && k-- > 0) {
             int[] node = pq.poll();

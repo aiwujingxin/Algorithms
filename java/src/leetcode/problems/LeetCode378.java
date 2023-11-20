@@ -9,10 +9,6 @@ import java.util.PriorityQueue;
  */
 public class LeetCode378 {
 
-    // 用小根堆维护，以优化时间复杂度。
-    //https://leetcode.com/problems/kth-smallest-element-in-a-sorted-matrix/discuss/2367160/JAVA-oror-Easy-Solution-oror-100-faster-code.
-    //https://www.jiakaobo.com/leetcode/378.%20Kth%20Smallest%20Element%20in%20a%20Sorted%20Matrix.html
-
     public int kthSmallest(int[][] matrix, int k) {
         PriorityQueue<int[]> pq = new PriorityQueue<>((a, b) -> (a[0] - b[0]));
 
