@@ -2,7 +2,7 @@ package leetcode.problems;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2022/10/25 00:07
+ * @date 2023/11/21 23:04
  * @description 完全背包 方案数
  */
 public class LeetCode377 {

@@ -2,7 +2,7 @@ package leetcode.problems;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2022/10/22 11:24
+ * @date 2023/11/21 11:24
  * @description 两个DP数组
  */
 public class LeetCode376 {

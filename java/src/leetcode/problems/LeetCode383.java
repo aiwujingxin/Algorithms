@@ -1,41 +1,26 @@
 package leetcode.problems;
 
-import java.util.HashMap;
-
 /**
- * @author jingxinwu
- * @date 2021-12-26 9:08 PM
+ * @author wujingxinit@outlook.com
+ * @date 2023/11/21 21:59
  */
-
 public class LeetCode383 {
 
     public boolean canConstruct(String ransomNote, String magazine) {
-
-        if (ransomNote == null && magazine == null) {
-            return true;
-        }
-        if (magazine == null) {
+        if (magazine == null || magazine.length() < ransomNote.length()) {
             return false;
         }
-        if (ransomNote == null) {
-            return true;
+        int[] arr1 = new int[26];
+        for (int i = 0; i < ransomNote.length(); i++) {
+            arr1[ransomNote.charAt(i) - 'a']++;
         }
-
-        HashMap<Character, Integer> map = new HashMap<>();
-        for (Character c : magazine.toCharArray()) {
-            map.put(c, (map.getOrDefault(c, 0) + 1));
+        int[] arr2 = new int[26];
+        for (int i = 0; i < magazine.length(); i++) {
+            arr2[magazine.charAt(i) - 'a']++;
         }
-        for (int i = 0; i < ransomNote.toCharArray().length; i++) {
-            Character c = ransomNote.charAt(i);
-            if (!map.containsKey(c)) {
+        for (int i = 0; i < 26; i++) {
+            if (arr1[i] > arr2[i]) {
                 return false;
-            } else {
-                if (map.get(c) - 1 == 0) {
-                    map.remove(c);
-                } else {
-                    map.put(c, map.get(c) - 1);
-                }
-
             }
         }
         return true;

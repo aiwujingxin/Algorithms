@@ -22,9 +22,7 @@ public class LeetCode375 {
         }
         int ans = Integer.MAX_VALUE;
         for (int x = l; x <= r; x++) {
-            // 当选择的数位 x 时，至少需要 cur 才能猜中数字
             int cur = Math.max(dfs(l, x - 1), dfs(x + 1, r)) + x;
-            // 在所有我们可以决策的数值之间取最优
             ans = Math.min(ans, cur);
         }
         memo[l][r] = ans;

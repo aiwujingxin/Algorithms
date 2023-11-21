@@ -10,33 +10,38 @@ import java.util.Random;
  */
 public class LeetCode384 {
 
-    private final Random r = new Random();
-    private final int[] nums;
-    private final int[] orign;
+    class Solution {
 
-    public LeetCode384(int[] nums) {
-        this.nums = nums;
-        this.orign = Arrays.copyOf(nums, nums.length);
-    }
+        private final Random random = new Random();
+        private final int[] nums;
+        private final int[] orign;
 
-    public int[] reset() {
-        return orign;
-    }
-
-    /**
-     * Returns a random shuffling of the array.
-     * i = 0  [0 n -1]   1 / n
-     * i = 1  [1 n -1]   (n -1) /n *  (1 / n - 1) = 1 / n
-     * i = 2  [2 n -3]   (n -1) /n *  (n - 2) /(n - 1) * (1 / n - 2) = 1 / n
-     */
-
-    public int[] shuffle() {
-        for (int i = 0; i < nums.length; i++) {
-            int index = r.nextInt(nums.length - i);
-            int temp = nums[i];
-            nums[i] = nums[index];
-            nums[index] = temp;
+        public Solution(int[] nums) {
+            this.nums = nums;
+            this.orign = Arrays.copyOf(nums, nums.length);
         }
-        return nums;
+
+        public int[] reset() {
+            return orign;
+        }
+
+        /**
+         * i = 0  [0 n-1]   1/n
+         * i = 1  [1 n-1]   (n-1)/n * (1/n-1) = 1 / n  没有被选中 * 选择数字的概率
+         * i = 2  [2 n-3]   (n-1)/n * (n-2)/(n-1) * (1/n-2) = 1 / n
+         */
+        public int[] shuffle() {
+            for (int i = 0; i < nums.length; i++) {
+                int index = random.nextInt(nums.length - i);
+                swap(nums, i, index);
+            }
+            return nums;
+        }
+
+        private void swap(int[] nums, int i, int j) {
+            int temp = nums[i];
+            nums[i] = nums[j];
+            nums[j] = temp;
+        }
     }
 }

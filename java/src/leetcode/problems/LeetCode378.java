@@ -4,7 +4,7 @@ import java.util.PriorityQueue;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2022/10/4 23:59
+ * @date 2023/11/21 23:59
  * @description 多路排序
  */
 public class LeetCode378 {
