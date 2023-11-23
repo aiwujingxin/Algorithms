@@ -1,11 +1,10 @@
 package leetcode.problems;
 
 import java.util.HashMap;
-import java.util.Map;
 
 /**
  * @author jingxinwu
- * @date 2021-08-10 12:25 上午
+ * @date 2023/11/23 18:43
  */
 public class LeetCode166 {
 
@@ -13,32 +12,38 @@ public class LeetCode166 {
         if (numerator == 0) {
             return "0";
         }
-        StringBuilder fraction = new StringBuilder();
-        // If either one is negative (not both)
-        if (numerator < 0 ^ denominator < 0) {
-            fraction.append("-");
+
+        StringBuilder res = new StringBuilder();
+        String sign = (numerator > 0) ^ (denominator > 0) ? "-" : "";
+        res.append(sign);
+
+        long num = Math.abs((long) numerator);
+        long ldenominator = Math.abs((long) denominator);
+
+        res.append(num / ldenominator);
+        num %= ldenominator;
+
+        if (num == 0) {
+            return res.toString();
         }
-        // Convert to Long or else abs(-2147483648) overflows
-        long dividend = Math.abs(Long.valueOf(numerator));
-        long divisor = Math.abs(Long.valueOf(denominator));
-        fraction.append(dividend / divisor);
-        long remainder = dividend % divisor;
-        if (remainder == 0) {
-            return fraction.toString();
-        }
-        fraction.append(".");
-        Map<Long, Integer> map = new HashMap<>();
-        while (remainder != 0) {
-            if (map.containsKey(remainder)) {
-                fraction.insert(map.get(remainder), "(");
-                fraction.append(")");
+
+        res.append(".");
+        HashMap<Long, Integer> map = new HashMap<>();
+        map.put(num, res.length());
+
+        // 除法过程
+        while (num != 0) {
+            num *= 10;
+            res.append(num / ldenominator);
+            num %= ldenominator;
+            if (map.containsKey(num)) {
+                res.insert(map.get(num), "(");
+                res.append(")");
                 break;
+            } else {
+                map.put(num, res.length());
             }
-            map.put(remainder, fraction.length());
-            remainder *= 10; //余数*10
-            fraction.append(remainder / divisor); //商
-            remainder %= divisor; //余数
         }
-        return fraction.toString();
+        return res.toString();
     }
 }
