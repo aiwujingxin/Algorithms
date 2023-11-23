@@ -8,21 +8,10 @@ import common.TreeNode;
  */
 public class LeetCode104 {
 
-    public void flatten(TreeNode root) {
+    public int maxDepth(TreeNode root) {
         if (root == null) {
-            return;
+            return 0;
         }
-        flatten(root.left);
-        flatten(root.right);
-        TreeNode left = root.left;
-        TreeNode right = root.right;
-
-        root.left = null;
-        root.right = left;
-        TreeNode cur = root;
-        while (cur.right != null) {
-            cur = cur.right;
-        }
-        cur.right = right;
+        return Math.max(maxDepth(root.left), maxDepth(root.right)) + 1;
     }
 }

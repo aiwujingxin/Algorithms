@@ -28,7 +28,6 @@ public class LeetCode25 {
         ListNode pre = null;
         ListNode cur = head;
         while (cur != tail) {
-
             ListNode next = cur.next;
             cur.next = pre;
             pre = cur;

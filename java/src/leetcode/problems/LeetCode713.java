@@ -20,6 +20,4 @@ public class LeetCode713 {
         }
         return ret;
     }
-
-
 }
