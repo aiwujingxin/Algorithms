@@ -6,10 +6,6 @@ package leetcode.problems;
  */
 public class LeetCode14 {
 
-    public static void main(String[] args) {
-        System.out.println(new LeetCode14().longestCommonPrefix(new String[]{"abc", "abd", "abs"}));
-    }
-
     public String longestCommonPrefix(String[] strs) {
 
         int index = 0;

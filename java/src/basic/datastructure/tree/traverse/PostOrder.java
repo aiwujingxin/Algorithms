@@ -10,6 +10,7 @@ import java.util.Stack;
 /**
  * @author wujingxinit@outlook.com
  * @date 2022/9/7 11:50
+ * <a href="https://zhuanlan.zhihu.com/p/80578741"></a>
  */
 public class PostOrder implements Traverse {
 
@@ -26,32 +27,27 @@ public class PostOrder implements Traverse {
         return list;
     }
 
-    //https://zhuanlan.zhihu.com/p/80578741
-    //https://www.youtube.com/watch?v=ZIgudgGOfDs
-    // 根节点会两次入栈
     @Override
     public List<Integer> Iteration(TreeNode root) {
-        List<Integer> list = new ArrayList<>();
         if (root == null) {
-            return list;
+            return new ArrayList<>();
         }
+        List<Integer> list = new ArrayList<>();
         Stack<TreeNode> stack = new Stack<>();
-        TreeNode cur = root;
         TreeNode pre = null;
-        while (cur != null || !stack.isEmpty()) {
-            while (cur != null) {
-                stack.push(cur);
-                cur = cur.left;
+        while (!stack.isEmpty() || root != null) {
+            while (root != null) {
+                stack.push(root);
+                root = root.left;
             }
-            // 连续不断的向上一层返回，连续退栈
-            cur = stack.pop();
-            if (cur.right == null || pre == cur.right) { // 没有右节点,或者刚访问完它的右节点
-                list.add(cur.val);
-                pre = cur;
-                cur = null; // 此处为了跳过下一次循环的访问左子节点的过程，直接进入栈的弹出阶段，因为但凡在栈中的节点，它们的左子节点都肯定被经过且已放入栈中。
+            root = stack.pop();
+            if (root.right == null || root.right == pre) { // 可以访问根节点: 没有右节点,或者刚访问完它的右节点
+                list.add(root.val);
+                pre = root;
+                root = null; // 此处为了跳过下一次循环的访问左子节点的过程，直接进入栈的弹出阶段。
             } else {
-                stack.push(cur);
-                cur = cur.right; // 访问右子树
+                stack.push(root);// 根节点会两次入栈
+                root = root.right;// 访问右子树
             }
         }
         return list;

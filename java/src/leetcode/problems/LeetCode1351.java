@@ -6,26 +6,18 @@ package leetcode.problems;
  */
 public class LeetCode1351 {
 
-    public static void main(String[] args) {
-        System.out.println(new LeetCode1351().helper(new int[]{3, 2}));
-        System.out.println(new LeetCode1351().helper(new int[]{4, 3, 2, -1}));
-        System.out.println(new LeetCode1351().helper(new int[]{3, 2, 1, -1}));
-        System.out.println(new LeetCode1351().helper(new int[]{1, 1, -1, -2}));
-        System.out.println(new LeetCode1351().helper(new int[]{-1, -1, -2, -3}));
-    }
-
     public int countNegatives(int[][] grid) {
         if (grid == null || grid.length == 0) {
             return 0;
         }
         int count = 0;
         for (int[] nums : grid) {
-            count += helper(nums);
+            count += search(nums);
         }
         return count;
     }
 
-    private int helper(int[] nums) {
+    private int search(int[] nums) {
         int l = 0;
         int r = nums.length - 1;
         while (l < r) {

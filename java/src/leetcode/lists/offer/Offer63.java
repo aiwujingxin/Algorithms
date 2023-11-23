@@ -1,7 +1,5 @@
 package leetcode.lists.offer;
 
-import java.util.*;
-
 /**
  * @author jingxinwu
  * @date 2021-12-04 3:12 下午
@@ -21,7 +19,6 @@ public class Offer63 {
             dp[i][0] = Math.max(dp[i - 1][0], dp[i - 1][1] + prices[i]);
             dp[i][1] = Math.max(dp[i - 1][1], -prices[i]);
         }
-        System.out.println(Arrays.deepToString(dp));
         return dp[dp.length - 1][0];
     }
 
@@ -81,4 +78,5 @@ public class Offer63 {
         }
         return maxprofit;
     }
+
 }

@@ -8,10 +8,6 @@ import java.util.*;
  */
 public class Offer66 {
 
-    public static void main(String[] args) {
-        System.out.println(Arrays.toString(new Offer66().constructArr(new int[]{1, 2, 3, 4, 5})));
-    }
-
     public int[] constructArr(int[] nums) {
         if (nums == null || nums.length == 0) {
             return new int[]{};

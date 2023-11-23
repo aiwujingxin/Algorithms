@@ -9,9 +9,6 @@ import java.util.Stack;
  */
 public class LeetCode2104 {
 
-    public static void main(String[] args) {
-        System.out.println(new LeetCode2104().subArrayRanges(new int[]{1, 2, 3, 4, 5, 6}));
-    }
 
     public long subArrayRanges(int[] nums) {
         if (nums == null || nums.length == 0) {

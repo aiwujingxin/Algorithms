@@ -8,10 +8,6 @@ import java.util.PriorityQueue;
  */
 public class LeetCode1508 {
 
-    public static void main(String[] args) {
-        System.out.println(new LeetCode1508().rangeSum(new int[]{1, 2, 3, 4}, 4, 1, 5));
-    }
-
     public int rangeSum(int[] nums, int n, int left, int right) {
         if (nums == null || nums.length == 0) {
             return 0;

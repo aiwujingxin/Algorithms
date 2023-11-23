@@ -6,10 +6,6 @@ package leetcode.problems;
  */
 public class LeetCode8 {
 
-    public static void main(String[] args) {
-        System.out.println(new LeetCode8().myAtoi("-21474836482"));
-    }
-
     public int myAtoi(String s) {
         if (s == null || s.isEmpty()) {
             return 0;

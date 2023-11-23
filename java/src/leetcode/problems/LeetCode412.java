@@ -9,12 +9,6 @@ import java.util.List;
  */
 public class LeetCode412 {
 
-    public static void main(String[] args) {
-        System.out.println(new LeetCode412().fizzBuzz(3));
-        System.out.println(new LeetCode412().fizzBuzz(5));
-        System.out.println(new LeetCode412().fizzBuzz(15));
-    }
-
     public List<String> fizzBuzz(int n) {
         if (n == 0) {
             return new ArrayList<>();

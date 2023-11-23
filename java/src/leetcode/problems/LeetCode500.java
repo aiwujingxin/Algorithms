@@ -1,7 +1,6 @@
 package leetcode.problems;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 
@@ -20,12 +19,6 @@ public class LeetCode500 {
                 hash[c - 'a'] = i;
             }
         }
-    }
-
-    public static void main(String[] args) {
-        System.out.println(
-                Arrays.toString(new LeetCode500().findWords(new String[]{"Hello", "Alaska", "Dad", "Peace"})));
-        System.out.println(Arrays.toString(new LeetCode500().findWords(new String[]{"abdfs", "cccd", "a", "qwwewm"})));
     }
 
     public String[] findWords(String[] words) {

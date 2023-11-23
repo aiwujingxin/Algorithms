@@ -8,11 +8,6 @@ import java.util.Arrays;
  */
 public class LeetCode1886 {
 
-    public static void main(String[] args) {
-        System.out.println(new LeetCode1886().
-                findRotation(new int[][]{{1, 2, 3}, {4, 5, 6}, {7, 8, 9}}, new int[][]{{1, 2, 3}, {4, 5, 6}, {7, 8, 9}}));
-    }
-
     public boolean findRotation(int[][] mat, int[][] target) {
         if (eq(mat, target)) {
             return true;

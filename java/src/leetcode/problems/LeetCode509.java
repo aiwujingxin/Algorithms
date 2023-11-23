@@ -6,10 +6,6 @@ package leetcode.problems;
  */
 public class LeetCode509 {
 
-    public static void main(String[] args) {
-        System.out.println(new LeetCode509().fib(6));
-    }
-
     public int fib(int n) {
 
         if (n == 0) {

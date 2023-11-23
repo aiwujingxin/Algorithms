@@ -9,12 +9,6 @@ import java.util.Objects;
  */
 public class LeetCode2107 {
 
-    public static void main(String[] args) {
-        System.out.println(new LeetCode2107().shareCandies(new int[]{1, 2, 2, 3, 4, 3}, 3));
-        System.out.println(new LeetCode2107().shareCandies(new int[]{2, 2, 2, 2, 3, 3}, 2));
-        System.out.println(new LeetCode2107().shareCandies(new int[]{2, 4, 5}, 0));
-    }
-
     public int shareCandies(int[] candies, int k) {
         if (candies == null || candies.length == 0) {
             return 0;
@@ -22,7 +16,6 @@ public class LeetCode2107 {
         HashMap<Integer, Integer> origin = new HashMap<>();
         for (int candy : candies) {
             origin.put(candy, origin.getOrDefault(candy, 0) + 1);
-
         }
 
         int total = origin.size();

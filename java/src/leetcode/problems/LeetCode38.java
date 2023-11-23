@@ -6,10 +6,6 @@ package leetcode.problems;
  */
 public class LeetCode38 {
 
-    public static void main(String[] args) {
-        System.out.println(new LeetCode38().countAndSay(6));
-    }
-
     public String countAndSay(int n) {
         if (n == 0) {
             return "";

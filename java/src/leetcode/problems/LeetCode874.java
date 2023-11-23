@@ -9,10 +9,6 @@ import java.util.HashMap;
  */
 public class LeetCode874 {
 
-    public static void main(String[] args) {
-        System.out.println(new LeetCode874().subarraysDivByK(new int[]{5}, 5));
-    }
-
     public int subarraysDivByK(int[] nums, int k) {
         if (nums == null || nums.length == 0) {
             return 0;

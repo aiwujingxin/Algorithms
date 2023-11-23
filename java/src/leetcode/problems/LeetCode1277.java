@@ -9,12 +9,6 @@ import java.util.Map;
  */
 public class LeetCode1277 {
 
-    public static void main(String[] args) {
-        System.out.println(new LeetCode1277().countSquares(new int[][]{{0, 1, 1, 1}, {1, 1, 1, 1}, {0, 1, 1, 1}}));
-        System.out.println(new LeetCode1277().countSquares(new int[][]{{1, 0, 1}, {1, 1, 0}, {1, 1, 0}}));
-        System.out.println(new LeetCode1277().countSquares(new int[][]{{1, 1, 1, 1}, {1, 1, 1, 1}, {1, 1, 1, 1}, {1, 1, 1, 1}}));
-    }
-
     public int countSquares(int[][] matrix) {
 
         if (matrix == null || matrix.length == 0 || matrix[0].length == 0) {

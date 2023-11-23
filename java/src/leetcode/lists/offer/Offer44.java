@@ -6,11 +6,6 @@ package leetcode.lists.offer;
  */
 public class Offer44 {
 
-    public static void main(String[] args) {
-        //1 2 3 4 5 6 7 8 9 1 0 1 1 1 2 1 3
-        System.out.println(new Offer44().findNthDigit(29));
-    }
-
     public int findNthDigit(int n) {
         int start = 1;
         int digitNum = 1;

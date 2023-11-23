@@ -6,11 +6,6 @@ package leetcode.problems;
  */
 public class LeetCode2461 {
 
-    public static void main(String[] args) {
-        System.out.println(new LeetCode2461().maximumSubarraySum(new int[]{1, 5, 4, 2, 9, 9, 9}, 3));
-        System.out.println(new LeetCode2461().maximumSubarraySum(new int[]{4, 4, 4}, 3));
-    }
-
     public long maximumSubarraySum(int[] nums, int k) {
         int left = 0;
         int right = 0;

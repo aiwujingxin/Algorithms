@@ -8,13 +8,6 @@ import java.util.Stack;
  */
 public class LeetCode772 {
 
-    public static void main(String[] args) {
-        System.out.println(new LeetCode772().calculate("12*(8/(2*4))/2*(((8/4+7)/9)+3/3+2*2*2)"));
-        System.out.println(new LeetCode772().calculate("6*6*6*6*6/36/216"));
-        System.out.println(new LeetCode772().calculate("1*2*3*4*5"));
-        System.out.println(new LeetCode772().calculate("5*7/15*3"));
-    }
-
     public int calculate(String s) {
         return dfs(s, 0)[0];
     }

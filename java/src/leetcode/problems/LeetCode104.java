@@ -4,14 +4,25 @@ import common.TreeNode;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2023/10/27 15:02
+ * @date 2023/11/23 17:21
  */
 public class LeetCode104 {
 
-    public int maxDepth(TreeNode root) {
+    public void flatten(TreeNode root) {
         if (root == null) {
-            return 0;
+            return;
         }
-        return Math.max(maxDepth(root.left), maxDepth(root.right)) + 1;
+        flatten(root.left);
+        flatten(root.right);
+        TreeNode left = root.left;
+        TreeNode right = root.right;
+
+        root.left = null;
+        root.right = left;
+        TreeNode cur = root;
+        while (cur.right != null) {
+            cur = cur.right;
+        }
+        cur.right = right;
     }
 }

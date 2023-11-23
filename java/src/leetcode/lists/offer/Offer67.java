@@ -6,10 +6,6 @@ package leetcode.lists.offer;
  */
 public class Offer67 {
 
-    public static void main(String[] args) {
-        System.out.println(new Offer67().strToInt("9223372036854775808"));
-    }
-
     public int strToInt(String str) {
         if (str == null || str.isEmpty()) {
             return 0;

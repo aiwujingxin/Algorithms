@@ -1,7 +1,6 @@
 package leetcode.problems;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Objects;
 
 /**
@@ -28,8 +27,6 @@ public class LeetCode245 {
         for (int i = 0; i < bl.size(); i++) {
             b[i] = bl.get(i);
         }
-        System.out.println(Arrays.toString(b));
-        System.out.println(Arrays.toString(a));
 
         int min = Integer.MAX_VALUE;
         for (int i = 0; i < a.length; i++) {
@@ -37,8 +34,6 @@ public class LeetCode245 {
             if (!word1.equals(word2)) {
                 res = search(b, a[i]);
             } else {
-                System.out.println(Arrays.toString(b));
-                System.out.println(a[i]);
                 res = searchTarget(b, a[i]);
             }
             min = Math.min(Math.min(Math.abs(a[i] - res[0]), Math.abs(a[i] - res[1])), min);
