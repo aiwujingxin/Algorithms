@@ -6,6 +6,10 @@ package leetcode.problems;
  */
 public class LeetCode65 {
     public boolean isNumber(String s) {
+        if (s == null || s.isEmpty()) {
+            return false;
+        }
+        s = s.trim();
         int n = s.length();
         char[] chars = s.toCharArray();
         //1.判断e/E
@@ -20,9 +24,8 @@ public class LeetCode65 {
             }
         }
         boolean ans = true;
-        //idx不等于-1说明字符串中有e，得分成两部分判断，左侧可以任意数，右侧只能是整数，所以左侧mustInteger设为false，右侧为true
-        //否则字符串中没有e，直接调用check函数
-        if (idx != -1) {
+        if (idx != -1) {//有e
+            //“e”之前的子字符串允许是一个小数，后者只允许是整数。所以左侧mustInteger设为false，右侧为true
             ans &= check(chars, 0, idx - 1, false);
             ans &= check(chars, idx + 1, n - 1, true);
         } else {
@@ -32,6 +35,7 @@ public class LeetCode65 {
     }
 
     //判断是整数还是浮点数
+    //合法的小数的定义是：数字+最多一个小数点。合法的整数的定义是：数字+没有小数点。
     boolean check(char[] cs, int start, int end, boolean mustInteger) {
         if (start > end) {
             return false;

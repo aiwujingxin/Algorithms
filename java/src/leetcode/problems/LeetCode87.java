@@ -3,6 +3,7 @@ package leetcode.problems;
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/10/27 04:42
+ * <a href="https://leetcode.cn/problems/scramble-string/solutions/725484/gong-shui-san-xie-yi-ti-san-jie-di-gui-j-hybk/"></a>
  */
 public class LeetCode87 {
 
@@ -39,13 +40,12 @@ public class LeetCode87 {
             return false;
         }
         for (int k = 1; k < len; k++) {
-            // 对应了「s1 的 [0,i) & [i,n)」匹配「s2 的 [0,i) & [i,n)」
-            // 前半段 & 后半段
+            // (s1前 vs s2前) && (s1后 vs s2后)
             if (dfs(i, j, k) && dfs(i + k, j + k, len - k)) {
                 memo[i][j][len] = true;
                 return true;
             }
-            // 对应了「s1 的 [0,i) & [i,n)」匹配「s2 的 [n-i,n) & [0,n-i)」
+            // (s1前 vs s2后) && (s1后 vs s2前)
             if (dfs(i, j + len - k, k) && dfs(i + k, j, len - k)) {
                 memo[i][j][len] = true;
                 return true;

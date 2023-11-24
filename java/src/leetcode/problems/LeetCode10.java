@@ -3,16 +3,17 @@ package leetcode.problems;
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/10/24 11:46
+ * @link <a href="https://www.youtube.com/watch?v=qWxLyexGW1k"></a>
  */
 public class LeetCode10 {
 
-    //https://leetcode.com/problems/regular-expression-matching/discuss/2335781/JavaC%2B%2BPythonJavaScriptKotlin3LINES-O(n)timeBEATS-99.97-MEMORYSPEED-0ms-APRIL-2022
     public boolean isMatch(String s, String p) {
         if (p == null || p.isEmpty() || s == null || s.isEmpty()) {
             return true;
         }
         boolean[][] dp = new boolean[s.length() + 1][p.length() + 1];
         dp[0][0] = true;
+        // init
         for (int j = 2; j <= p.length(); j++) {
             dp[0][j] = p.charAt(j - 1) == '*' && dp[0][j - 2];
         }
@@ -21,6 +22,7 @@ public class LeetCode10 {
                 if (p.charAt(j - 1) == s.charAt(i - 1) || p.charAt(j - 1) == '.') {
                     dp[i][j] = dp[i - 1][j - 1];
                 } else if (p.charAt(j - 1) == '*')
+                    // 0个 ||  多个
                     dp[i][j] = dp[i][j - 2] || ((s.charAt(i - 1) == p.charAt(j - 2) || p.charAt(j - 2) == '.') && dp[i - 1][j]);
             }
         }

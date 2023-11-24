@@ -23,6 +23,7 @@ public class LeetCode60 {
 
         StringBuilder sb = new StringBuilder();
         for (int i = n - 1; i >= 0; i--) {
+            //落在第几组 确定第几个数字
             sb.append(nums.remove(k / factor[i]));
             k %= factor[i];
         }
