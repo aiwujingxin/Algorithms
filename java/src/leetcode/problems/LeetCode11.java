@@ -3,6 +3,7 @@ package leetcode.problems;
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/10/18 15:00
+ * @description 排除法
  */
 public class LeetCode11 {
 

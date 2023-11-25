@@ -24,6 +24,7 @@ public class LeetCode37 {
                             if (backtrack(board)) {
                                 return true;
                             }
+                            // 下游无论填什么都不符合，那么上游得重新填
                             board[row][col] = '.';
                         }
                     }

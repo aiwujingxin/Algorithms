@@ -15,9 +15,9 @@ public class LeetCode85 {
         int n = matrix[0].length;
         int[] heights = new int[n];
         int res = 0;
-        for (int i = 0; i < matrix.length; i++) {
-            for (int j = 0; j < matrix[0].length; j++) {
-                if (matrix[i][j] == '1') {
+        for (char[] row : matrix) {
+            for (int j = 0; j < row.length; j++) {
+                if (row[j] == '1') {
                     heights[j]++;
                 } else {
                     heights[j] = 0;
