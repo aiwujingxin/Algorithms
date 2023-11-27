@@ -10,8 +10,7 @@ import java.util.Map;
 public class LeetCode403 {
 
     Map<Integer, Integer> map = new HashMap<>();
-    // int[][] cache = new int[2009][2009];
-    Map<String, Boolean> cache = new HashMap<>();
+    Map<String, Boolean> memo = new HashMap<>();
 
     public boolean canCross(int[] stones) {
         int n = stones.length;
@@ -26,8 +25,8 @@ public class LeetCode403 {
 
     boolean dfs(int[] stones, int n, int u, int k) {
         String key = u + "_" + k;
-        if (cache.containsKey(key)) {
-            return cache.get(key);
+        if (memo.containsKey(key)) {
+            return memo.get(key);
         }
         if (u == n - 1) {
             return true;
@@ -39,13 +38,13 @@ public class LeetCode403 {
             int next = stones[u] + k + i;
             if (map.containsKey(next)) {
                 boolean cur = dfs(stones, n, map.get(next), k + i);
-                cache.put(key, cur);
+                memo.put(key, cur);
                 if (cur) {
                     return true;
                 }
             }
         }
-        cache.put(key, false);
+        memo.put(key, false);
         return false;
     }
 }
