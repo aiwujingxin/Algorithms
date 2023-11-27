@@ -13,16 +13,15 @@ public class LeetCode407 {
         int m = heights.length, n = heights[0].length;
         PriorityQueue<int[]> queue = new PriorityQueue<>((a, b) -> a[2] - b[2]);
         boolean[][] visited = new boolean[m][n];
-        for (int i = 0; i < n; i++) {
-            queue.add(new int[]{0, i, heights[0][i]});
-            queue.add(new int[]{m - 1, i, heights[m - 1][i]});
-            visited[0][i] = visited[m - 1][i] = true;
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                if (i == 0 || j == 0 || i == m - 1 || j == n - 1) {
+                    queue.add(new int[]{i, j, heights[i][j]});
+                    visited[i][j] = true;
+                }
+            }
         }
-        for (int i = 1; i < m - 1; i++) {
-            queue.add(new int[]{i, 0, heights[i][0]});
-            queue.add(new int[]{i, n - 1, heights[i][n - 1]});
-            visited[i][0] = visited[i][n - 1] = true;
-        }
+
         int[][] dirs = new int[][]{{1, 0}, {-1, 0}, {0, 1}, {0, -1}};
         int ans = 0;
         while (!queue.isEmpty()) {
