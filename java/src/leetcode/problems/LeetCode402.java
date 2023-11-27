@@ -3,6 +3,7 @@ package leetcode.problems;
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/11/27 15:02
+ * @description 单调栈+贪心
  */
 public class LeetCode402 {
 

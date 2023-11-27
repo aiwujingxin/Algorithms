@@ -3,18 +3,25 @@ package basic.algorithm.bit;
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/8/31 01:29
+ * @see leetcode.problems.LeetCode191 位1的个数
+ * @see leetcode.problems.LeetCode231
+ * @see leetcode.problems.LeetCode260
+ * @see leetcode.problems.LeetCode762
+ * @see leetcode.problems.LeetCode405
  */
 public interface BIT {
 
-    default void bit() {
-        // 取二进制最后一个1
-        // n & -n
-
-        // 去掉末尾 1
-        // n - (n & -n)
-        // n & (n - 1)
-
-        // 末尾是否为 1
-        // (n & 1) == 1
-    }
+    /*
+     * 取最后一个 1
+     *  (n & -n)
+     *
+     * 将 n 二进制表示的最低位 1 移除
+     * n & (n - 1)
+     *
+     * 末尾是否为 1
+     * (n & 1) == 1
+     *
+     * >> arithmetic shift
+     * >>> logic shift
+     * */
 }

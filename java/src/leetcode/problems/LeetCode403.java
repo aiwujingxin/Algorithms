@@ -23,19 +23,19 @@ public class LeetCode403 {
         return dfs(stones, stones.length, 1, 1);
     }
 
-    boolean dfs(int[] stones, int n, int u, int k) {
-        String key = u + "_" + k;
+    boolean dfs(int[] stones, int n, int index, int k) {
+        String key = index + "_" + k;
         if (memo.containsKey(key)) {
             return memo.get(key);
         }
-        if (u == n - 1) {
+        if (index == n - 1) {
             return true;
         }
         for (int i = -1; i <= 1; i++) {
             if (k + i == 0) {
                 continue;
             }
-            int next = stones[u] + k + i;
+            int next = stones[index] + k + i;
             if (map.containsKey(next)) {
                 boolean cur = dfs(stones, n, map.get(next), k + i);
                 memo.put(key, cur);
