@@ -2,28 +2,37 @@ package leetcode.problems;
 
 import common.TreeNode;
 
+import java.util.LinkedList;
+import java.util.Queue;
+
 /**
  * @author wujingxinit@outlook.com
- * @date 2023/8/28 22:24
+ * @date 2023/11/27 15:39
  */
 public class LeetCode404 {
 
-    int sum = 0;
-
     public int sumOfLeftLeaves(TreeNode root) {
-        sum = 0;
-        traverse(root);
+        if (root == null) {
+            return 0;
+        }
+        Queue<TreeNode> queue = new LinkedList<>();
+        queue.add(root);
+        int sum = 0;
+        while (!queue.isEmpty()) {
+            int size = queue.size();
+            for (int i = 0; i < size; i++) {
+                TreeNode node = queue.poll();
+                if (node.left != null) {
+                    queue.add(node.left);
+                    if (node.left.left == null && node.left.right == null) {
+                        sum += node.left.val;
+                    }
+                }
+                if (node.right != null) {
+                    queue.add(node.right);
+                }
+            }
+        }
         return sum;
     }
-
-    public void traverse(TreeNode root) {
-        if (root == null)
-            return;
-        if (root.left != null && root.left.left == null && root.left.right == null) {
-            sum += root.left.val;
-        }
-        traverse(root.left);
-        traverse(root.right);
-    }
-
 }

@@ -5,10 +5,9 @@ import java.util.Arrays;
 /**
  * @author aiwujingxin@gmail.com
  * @date 2022/7/9 11:06
+ * @link <a href="https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iv/discuss/1007170/Java-Recursive-greater-Memoization-greater-3D-Bottom-Up-greater-2D-Bottom-Up">...</a>
  */
 public class LeetCode188 {
-
-    // https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iv/discuss/1007170/Java-Recursive-greater-Memoization-greater-3D-Bottom-Up-greater-2D-Bottom-Up
 
     public int maxProfit(int k, int[] prices) {
         int[][][] memo = new int[prices.length][2][k + 1];
@@ -18,10 +17,10 @@ public class LeetCode188 {
             }
         }
         //0, buy 1, sell
-        return maxProfit(0, 0, k, prices, memo);
+        return dfs(0, 0, k, prices, memo);
     }
 
-    private int maxProfit(int i, int state, int k, int[] prices, int[][][] memo) {
+    private int dfs(int i, int state, int k, int[] prices, int[][][] memo) {
         if (i >= prices.length || k == 0) {
             return 0;
         }
@@ -30,9 +29,9 @@ public class LeetCode188 {
         }
         return memo[i][state][k] = (state == 0) ?
                 // If we are currently only allowed to 'buy', We can either buy the current stock or move onto the next stock
-                Math.max(maxProfit(i + 1, 1, k, prices, memo) - prices[i], maxProfit(i + 1, state, k, prices, memo)) :
+                Math.max(dfs(i + 1, 1, k, prices, memo) - prices[i], dfs(i + 1, state, k, prices, memo)) :
                 //If we are currently only allowed to 'sell', We can either sell at the current stock or move onto the next stock
-                Math.max(maxProfit(i + 1, 0, k - 1, prices, memo) + prices[i], maxProfit(i + 1, state, k, prices, memo));
+                Math.max(dfs(i + 1, 0, k - 1, prices, memo) + prices[i], dfs(i + 1, state, k, prices, memo));
     }
 
     public int maxProfit_dp(int k, int[] prices) {

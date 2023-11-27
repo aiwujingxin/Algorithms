@@ -1,42 +1,33 @@
 package leetcode.problems;
 
-import java.util.Stack;
-
 /**
- * @author jingxinwu
- * @date 2022-01-23 11:14 PM
+ * @author wujingxinit@outlook.com
+ * @date 2023/11/27 15:02
  */
 public class LeetCode402 {
 
     public String removeKdigits(String num, int k) {
-        Stack<Character> stack = new Stack<>();
-        int length = num.length();
-        for (int i = 0; i < length; ++i) {
-            char digit = num.charAt(i);
-            while (!stack.isEmpty() && k > 0 && stack.peek() > digit) {
-                stack.pop();
-                k--;
-            }
-            stack.push(digit);
-        }
-        for (int i = 0; i < k; ++i) {
-            stack.pop();
-        }
-        StringBuilder sb = new StringBuilder();
-        while (!stack.isEmpty()) {
-            sb.append(stack.pop());
-        }
-        String st = sb.reverse().toString().trim();
-        int i = 0;
-        for (; i < st.length(); i++) {
-            if (st.charAt(i) != '0') {
-                break;
-            }
-        }
-        st = st.substring(i);
-        if (st.isEmpty()) {
+        if (num.length() <= k) {
             return "0";
         }
-        return st;
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < num.length(); i++) {
+            while (!sb.isEmpty() && sb.charAt(sb.length() - 1) > num.charAt(i) && k > 0) {
+                sb.deleteCharAt(sb.length() - 1);
+                k--;
+            }
+            sb.append(num.charAt(i));
+        }
+        int index = 0;
+        while (index < sb.length() && sb.charAt(index) == '0') {
+            index++;
+        }
+        if (index == sb.length()) {
+            return "0";
+        }
+        if (index < sb.length() - k) {
+            return sb.substring(index, sb.length() - k);
+        }
+        return sb.substring(0, sb.length() - k);
     }
 }
