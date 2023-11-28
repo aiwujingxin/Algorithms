@@ -1,25 +1,28 @@
 package leetcode.problems;
 
 /**
- * @author jingxinwu
- * @date 2022-03-01 7:44 PM
+ * @author wujingxinit@outlook.com
+ * @date 2023/11/28 18:50
  */
 public class LeetCode415 {
 
     public String addStrings(String num1, String num2) {
-        int i = num1.length() - 1, j = num2.length() - 1, add = 0;
-        StringBuilder ans = new StringBuilder();
-        while (i >= 0 || j >= 0 || add != 0) {
-            int x = i >= 0 ? num1.charAt(i) - '0' : 0;
-            int y = j >= 0 ? num2.charAt(j) - '0' : 0;
-            int result = x + y + add;
-            ans.append(result % 10);
-            add = result / 10;
-            i--;
-            j--;
+        int m = num1.length() - 1;
+        int n = num2.length() - 1;
+        int flag = 0;
+        StringBuilder res = new StringBuilder();
+        while (m >= 0 || n >= 0) {
+            int a = m >= 0 ? (num1.charAt(m) - '0') : 0;
+            int b = n >= 0 ? (num2.charAt(n) - '0') : 0;
+            int sum = a + b + flag;
+            res.insert(0, (sum % 10));
+            flag = sum / 10;
+            m--;
+            n--;
         }
-        // 计算完以后的答案需要翻转过来
-        ans.reverse();
-        return ans.toString();
+        if (flag == 1) {
+            res.insert(0, 1);
+        }
+        return res.toString();
     }
 }

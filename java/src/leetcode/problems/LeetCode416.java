@@ -1,12 +1,15 @@
 package leetcode.problems;
 
 /**
- * @author jingxinwu
- * @date 2021-12-13 1:07 AM
+ * @author wujingxinit@outlook.com
+ * @date 2023/11/28 18:54
  */
 public class LeetCode416 {
 
     public boolean canPartition(int[] nums) {
+        if (nums == null || nums.length == 0) {
+            return false;
+        }
         int sum = 0;
         for (int n : nums) {
             sum += n;
@@ -19,44 +22,11 @@ public class LeetCode416 {
         dp[0] = true;
         for (int num : nums) {
             for (int i = target; i >= 0; i--) {
-                if (i - num >= 0) {
+                if (i >= num) {
                     dp[i] = dp[i] || dp[i - num];
                 }
             }
         }
         return dp[target];
-    }
-
-    public boolean canPartition_2d(int[] nums) {
-        int n = nums.length;
-        if (n < 2) {
-            return false;
-        }
-        int sum = 0, maxNum = 0;
-        for (int num : nums) {
-            sum += num;
-            maxNum = Math.max(maxNum, num);
-        }
-        if (sum % 2 != 0) {
-            return false;
-        }
-        int target = sum / 2;
-        if (maxNum > target) {
-            return false;
-        }
-        boolean[][] dp = new boolean[n + 1][target + 1];
-        for (int i = 0; i <= n; i++) {
-            dp[i][0] = true;
-        }
-        for (int i = 1; i <= n; i++) {
-            for (int j = 1; j <= target; j++) {
-                if (j >= nums[i - 1]) {
-                    dp[i][j] = dp[i - 1][j] | dp[i - 1][j - nums[i - 1]];
-                } else {
-                    dp[i][j] = dp[i - 1][j];
-                }
-            }
-        }
-        return dp[n][target];
     }
 }

@@ -5,28 +5,22 @@ import java.util.List;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2022/9/29 00:23
+ * @date 2023/11/28 16:47
  */
 public class LeetCode412 {
 
     public List<String> fizzBuzz(int n) {
-        if (n == 0) {
-            return new ArrayList<>();
-        }
         List<String> list = new ArrayList<>();
-        int index = 1;
-        while (index <= n) {
-            if (index % 3 == 0 && index % 5 == 0) {
+        for (int i = 1; i <= n; i++) {
+            if (i % 3 == 0 && i % 5 == 0) {
                 list.add("FizzBuzz");
-            } else if (index % 5 == 0) {
-                list.add("Buzz");
-            } else if (index % 3 == 0) {
+            } else if (i % 3 == 0) {
                 list.add("Fizz");
-
+            } else if (i % 5 == 0) {
+                list.add("Buzz");
             } else {
-                list.add(String.valueOf(index));
+                list.add(String.valueOf(i));
             }
-            index++;
         }
         return list;
     }
