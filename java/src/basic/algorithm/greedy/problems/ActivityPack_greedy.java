@@ -1,4 +1,4 @@
-package basic.algorithm.greedy;
+package basic.algorithm.greedy.problems;
 
 import basic.algorithm.dp.liner.ActivityPack;
 

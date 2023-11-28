@@ -2,23 +2,28 @@ package leetcode.problems;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2023/10/29 17:24
- * @see LeetCode188
+ * @date 2023/11/28 22:37
  */
 public class LeetCode123 {
 
     public int maxProfit(int[] prices) {
-        int[][][] profit = new int[prices.length + 1][2][2 + 1];
-        for (int i = prices.length - 1; i >= 0; i--) {
-            for (int state = 1; state >= 0; state--) {
-                for (int j = 1; j <= 2; j++) {
-                    profit[i][state][j] = (state == 0) ?
-                            Math.max(profit[i + 1][1][j] - prices[i], profit[i + 1][state][j]) :
-                            Math.max(profit[i + 1][0][j - 1] + prices[i], profit[i + 1][state][j]);
-                }
-            }
+        if (prices == null || prices.length == 0) {
+            return 0;
         }
-
-        return profit[0][0][2];
+        // init值有讲究
+        int hold1 = Integer.MIN_VALUE;
+        int sold1 = 0;
+        int hold2 = Integer.MIN_VALUE;
+        int sold2 = 0;
+        for (int price : prices) {
+            int hold1t = hold1;
+            int sold1t = sold1;
+            int hold2t = hold2;
+            hold1 = Math.max(-price, hold1t);
+            sold1 = Math.max(hold1t + price, sold1t);
+            hold2 = Math.max(sold1t - price, hold2t);
+            sold2 = Math.max(hold2t + price, sold2);
+        }
+        return Math.max(sold1, sold2);
     }
 }

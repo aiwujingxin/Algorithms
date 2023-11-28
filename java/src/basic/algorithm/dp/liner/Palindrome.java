@@ -1,4 +1,4 @@
-package basic.algorithm.dp.string;
+package basic.algorithm.dp.liner;
 
 /**
  * @author wujingxinit@outlook.com

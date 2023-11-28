@@ -5,12 +5,6 @@ import java.util.Arrays;
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/10/30 22:01
- * @see LeetCode5
- * @see LeetCode131
- * @see LeetCode139
- * @see LeetCode140
- * @see LeetCode647
- * @see LeetCode516
  */
 public class LeetCode132 {
 
