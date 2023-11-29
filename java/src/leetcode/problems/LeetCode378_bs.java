@@ -24,15 +24,15 @@ public class LeetCode378_bs {
     public boolean check(int[][] matrix, int mid, int k, int n) {
         int i = n - 1;
         int j = 0;
-        int num = 0;
+        int cnt = 0;
         while (i >= 0 && j < n) {
             if (matrix[i][j] <= mid) {
-                num += i + 1;
+                cnt += i + 1;
                 j++;
             } else {
                 i--;
             }
         }
-        return num >= k;
+        return cnt >= k;
     }
 }
