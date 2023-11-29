@@ -6,7 +6,7 @@ import java.util.List;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2023/9/20 21:17
+ * @date 2023/11/29 18:45
  */
 public class LeetCode438 {
 
@@ -14,24 +14,28 @@ public class LeetCode438 {
         if (s == null || s.isEmpty()) {
             return new ArrayList<>();
         }
-        int left = 0;
-        int right = 0;
-        int[] sArr = new int[26];
         int[] pArr = new int[26];
-        int count = 0;
+        int[] sArr = new int[26];
+
         HashSet<Character> set = new HashSet<>();
         for (int i = 0; i < p.length(); i++) {
             pArr[p.charAt(i) - 'a']++;
             set.add(p.charAt(i));
         }
-        List<Integer> res = new ArrayList<>();
+
+        int target = set.size();
+        int count = 0;
+        int left = 0;
+        int right = 0;
+        List<Integer> list = new ArrayList<>();
         while (right < s.length()) {
-            char c = s.charAt(right);
+            int c = s.charAt(right);
             sArr[c - 'a']++;
+
             if (sArr[c - 'a'] == pArr[c - 'a']) {
                 count++;
             }
-            while (left < right && right - left + 1 > p.length()) {
+            while (right - left + 1 > p.length()) {
                 char d = s.charAt(left);
                 if (sArr[d - 'a'] == pArr[d - 'a']) {
                     count--;
@@ -39,11 +43,11 @@ public class LeetCode438 {
                 sArr[d - 'a']--;
                 left++;
             }
-            if (right - left + 1 == p.length() && count == set.size()) {
-                res.add(left);
+            if (count == target) {
+                list.add(left);
             }
             right++;
         }
-        return res;
+        return list;
     }
 }

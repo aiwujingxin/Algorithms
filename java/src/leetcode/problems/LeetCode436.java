@@ -1,10 +1,11 @@
 package leetcode.problems;
 
 import java.util.Arrays;
+import java.util.Comparator;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2023/10/18 22:58
+ * @date 2023/11/29 17:51
  */
 public class LeetCode436 {
 
@@ -13,38 +14,41 @@ public class LeetCode436 {
             return new int[]{};
         }
         int n = intervals.length;
-        int[][] startIntervals = new int[n][2];
+        int[][] _intervals = new int[intervals.length][];
         for (int i = 0; i < n; i++) {
-            startIntervals[i][0] = intervals[i][0];
-            startIntervals[i][1] = i;
+            _intervals[i] = new int[]{intervals[i][0], intervals[i][1], i};
         }
-        Arrays.sort(startIntervals, (o1, o2) -> o1[0] - o2[0]);
-
-        int[] ans = new int[intervals.length];
-
-        for (int i = 0; i < intervals.length; i++) {
-            int end = intervals[i][1];
-            int index = find(startIntervals, end);
-            ans[i] = index;
+        Arrays.sort(_intervals, new Comparator<int[]>() {
+            @Override
+            public int compare(int[] o1, int[] o2) {
+                return o1[0] - o2[0];
+            }
+        });
+        int[] res = new int[n];
+        for (int i = 0; i < n; i++) {
+            int index = find(_intervals, intervals[i][1]);
+            if (index == -1 || i == index) {
+                res[i] = -1;
+            }
+            res[i] = index;
         }
-        return ans;
+        return res;
     }
 
-    private int find(int[][] startIntervals, int end) {
-
+    private int find(int[][] intervals, int target) {
         int left = 0;
-        int right = startIntervals.length - 1;
+        int right = intervals.length - 1;
         while (left < right) {
             int mid = (left + right) / 2;
-            if (startIntervals[mid][0] < end) {
+            if (intervals[mid][0] < target) {
                 left = mid + 1;
             } else {
                 right = mid;
             }
         }
-        if (startIntervals[left][0] < end) {
+        if (intervals[left][0] < target) {
             return -1;
         }
-        return startIntervals[left][1];
+        return intervals[left][2];
     }
 }

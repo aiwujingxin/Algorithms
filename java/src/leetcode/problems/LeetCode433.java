@@ -4,73 +4,60 @@ import java.util.*;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2022/10/20 22:34
+ * @date 2023/11/29 15:46
  */
 public class LeetCode433 {
 
-    char[] ch = new char[]{'A', 'C', 'G', 'T'};
-
-    //"AAAAAAAA"
-    //"CCCCCCCC"
-    //["AAAAAAAA","AAAAAAAC","AAAAAACC","AAAAACCC","AAAACCCC","AACACCCC","ACCACCCC","ACCCCCCC","CCCCCCCA","CCCCCCCC"]
-    public static void main(String[] args) {
-        System.out.println(new LeetCode433().minMutation("AAAAAAAA", "CCCCCCCC", new String[]{"AAAAAAAA", "AAAAAAAC", "AAAAAACC", "AAAAACCC", "AAAACCCC", "AACACCCC", "ACCACCCC", "ACCCCCCC", "CCCCCCCA", "CCCCCCCC"}));
-
-    }
-
-    public int minMutation(String start, String end, String[] bank) {
-
-        if (start.equals(end)) {
-            return 0;
+    public int minMutation(String startGene, String endGene, String[] bank) {
+        if (bank == null || bank.length == 0) {
+            return -1;
         }
-        HashSet<String> bset = new HashSet<>(Arrays.asList(bank));
-
+        HashSet<String> set = new HashSet<>(Arrays.asList(bank));
+        if (!set.contains(endGene)) {
+            return -1;
+        }
         HashSet<String> visited = new HashSet<>();
-        Queue<String> queue = new LinkedList<>();
-        queue.add(start);
-        visited.add(start);
-
         int step = 0;
+        Queue<String> queue = new LinkedList<>();
+        queue.add(startGene);
+        char[] chars = new char[]{'A', 'C', 'G', 'T'};
         while (!queue.isEmpty()) {
-            step++;
-
             int size = queue.size();
-            while (size > 0) {
+            for (int i = 0; i < size; i++) {
                 String cur = queue.poll();
-                List<String> nexts = getList(cur);
-                for (String next : nexts) {
-                    if (Objects.equals(next, end) && bset.contains(next)) {
-                        return step;
-                    }
-                    if (!bset.contains(next)) {
-                        continue;
-                    }
-                    if (visited.contains(next)) {
-                        continue;
-                    }
-
-                    queue.add(next);
-                    visited.add(next);
+                if (Objects.equals(cur, endGene)) {
+                    return step;
                 }
-                size--;
+                if (visited.contains(cur)) {
+                    continue;
+                }
+                visited.add(cur);
+                List<String> next = getList(cur, chars, visited, set);
+                queue.addAll(next);
             }
+            step++;
         }
         return -1;
     }
 
-    private List<String> getList(String cur) {
+
+    private List<String> getList(String cur, char[] chars, HashSet<String> visited, HashSet<String> set) {
         List<String> list = new ArrayList<>();
-        char[] chars = cur.toCharArray();
-        for (int i = 0; i < chars.length; i++) {
-            char t = chars[i];
-            for (char c : ch) {
-                if (t == c) {
+        char[] cs = cur.toCharArray();
+        for (int i = 0; i < cs.length; i++) {
+            char t = cs[i];
+            for (char c : chars) {
+                if (c == t) {
                     continue;
                 }
-                chars[i] = c;
-                list.add(new String(chars));
+                cs[i] = c;
+                String s = new String(cs);
+                if (visited.contains(s) || !set.contains(s)) {
+                    continue;
+                }
+                list.add(s);
             }
-            chars[i] = t;
+            cs[i] = t;
         }
         return list;
     }

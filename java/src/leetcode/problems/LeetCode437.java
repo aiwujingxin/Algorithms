@@ -1,34 +1,35 @@
 package leetcode.problems;
 
-import common.*;
+import common.TreeNode;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2023/9/17 23:34
+ * @date 2023/11/29 18:44
  */
 public class LeetCode437 {
+    int res = 0;
 
-    int res;
-
-    public int pathSum(TreeNode root, int target) {
+    public int pathSum(TreeNode root, int targetSum) {
         if (root == null) {
             return 0;
         }
-        dfs(root, target);
-
-        pathSum(root.left, target);
-        pathSum(root.right, target);
+        dfs(root, 0, targetSum);
+        pathSum(root.left, targetSum);
+        pathSum(root.right, targetSum);
         return res;
     }
 
-    private void dfs(TreeNode root, long target) {
+    private void dfs(TreeNode root, long sum, int targetSum) {
         if (root == null) {
             return;
         }
-        if (target == root.val) {
+        sum += root.val;
+        if (sum == targetSum) {
             res++;
         }
-        dfs(root.left, target - root.val);
-        dfs(root.right, target - root.val);
+        dfs(root.left, sum, targetSum);
+        dfs(root.right, sum, targetSum);
     }
 }
+
+

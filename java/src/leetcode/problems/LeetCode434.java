@@ -1,21 +1,30 @@
 package leetcode.problems;
 
 /**
- * @author jingxinwu
- * @date 2021-12-26 9:24 PM
+ * @author wujingxinit@outlook.com
+ * @date 2023/11/29 17:11
  */
 public class LeetCode434 {
 
-
     public int countSegments(String s) {
-        int segmentCount = 0;
-
-        for (int i = 0; i < s.length(); i++) {
-            if ((i == 0 || s.charAt(i - 1) == ' ') && s.charAt(i) != ' ') {
-                segmentCount++;
-            }
+        if (s == null || s.isEmpty()) {
+            return 0;
         }
-
-        return segmentCount;
+        int n = s.length();
+        int cnt = 0;
+        int index = 0;
+        while (index < n) {
+            while (index < n && s.charAt(index) == ' ') {
+                index++;
+            }
+            if (index == n) {
+                return cnt;
+            }
+            while (index < n && s.charAt(index) != ' ') {
+                index++;
+            }
+            cnt++;
+        }
+        return cnt;
     }
 }

@@ -9,7 +9,7 @@ import java.util.Queue;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2023/7/8 16:22
+ * @date 2023/11/29 15:39
  */
 public class LeetCode429 {
 
@@ -17,21 +17,21 @@ public class LeetCode429 {
         if (root == null) {
             return new ArrayList<>();
         }
-        List<List<Integer>> list = new ArrayList<>();
+        List<List<Integer>> res = new ArrayList<>();
         Queue<Node> queue = new LinkedList<>();
         queue.add(root);
         while (!queue.isEmpty()) {
-            List<Integer> level = new ArrayList<>();
             int size = queue.size();
+            List<Integer> list = new ArrayList<>();
             for (int i = 0; i < size; i++) {
                 Node node = queue.poll();
-                level.add(node.val);
+                list.add(node.val);
                 for (Node ch : node.children) {
                     queue.add(ch);
                 }
             }
-            list.add(level);
+            res.add(list);
         }
-        return list;
+        return res;
     }
 }

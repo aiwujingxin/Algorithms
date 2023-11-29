@@ -7,10 +7,6 @@ package leetcode.problems;
  */
 public class LeetCode427 {
 
-    public static void main(String[] args) {
-        System.out.println(new LeetCode427().construct(new int[][]{{0, 1}, {1, 0}}));
-    }
-
     public Node construct(int[][] grid) {
         if (grid == null || grid.length == 0) {
             return new Node();
