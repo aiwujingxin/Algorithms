@@ -3,6 +3,7 @@ package leetcode.problems;
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/3/16 23:43
+ * @see LeetCode1004
  */
 public class LeetCode487 {
 
@@ -28,5 +29,26 @@ public class LeetCode487 {
             max = Math.max(Math.max(max, dp[i][0]), dp[i][1]);
         }
         return max;
+    }
+
+    public int findMaxConsecutiveOnes_sd(int[] nums) {
+        int ans = 1;
+        int cnt = 0;
+        int right = 0;
+        int left = 0;
+        while (right < nums.length) {
+            if (nums[right] == 0) {
+                cnt++;
+            }
+            while (cnt > 1) {
+                if (nums[right] == 0) {
+                    cnt--;
+                }
+                left++;
+            }
+            ans = Math.max(ans, right - left + 1);
+            right++;
+        }
+        return ans;
     }
 }

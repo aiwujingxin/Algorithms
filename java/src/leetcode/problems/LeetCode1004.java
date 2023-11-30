@@ -6,18 +6,18 @@ package leetcode.problems;
  */
 public class LeetCode1004 {
 
-    public int longestOnes(int[] nums, int K) {
+    public int longestOnes(int[] nums, int k) {
         int N = nums.length;
         int res = 0;
         int left = 0, right = 0;
-        int zeros = 0;
+        int count = 0;
         while (right < N) {
             if (nums[right] == 0) {
-                zeros++;
+                count++;
             }
-            while (zeros > K) {
+            while (count > k) {
                 if (nums[left] == 0) {
-                    zeros--;
+                    count--;
                 }
                 left++;
             }

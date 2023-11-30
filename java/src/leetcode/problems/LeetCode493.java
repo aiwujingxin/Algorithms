@@ -4,7 +4,7 @@ package leetcode.problems;
  * @author wujingxinit@outlook.com
  * @date 2023/7/17 21:11
  */
-public class LeetCode493_mergesort {
+public class LeetCode493 {
 
     int res = 0;
     int[] nums;

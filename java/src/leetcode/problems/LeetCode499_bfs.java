@@ -56,6 +56,6 @@ public class LeetCode499_bfs {
             }
         }
 
-        return way[hole[0]][hole[1]].equals("") ? "impossible" : way[hole[0]][hole[1]];
+        return way[hole[0]][hole[1]].isEmpty() ? "impossible" : way[hole[0]][hole[1]];
     }
 }
