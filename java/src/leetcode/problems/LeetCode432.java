@@ -1,103 +1,138 @@
 package leetcode.problems;
 
+
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2023/11/30 18:58
+ * @date 2023/11/30 22:13
  */
-
 public class LeetCode432 {
 
     class AllOne {
 
-        private final Map<String, Node> map;
-        private final Node head;
-        private final Node tail;
-
-        public AllOne() {
-            map = new HashMap<>();
-            head = new Node(0, "");
-            tail = new Node(0, "");
-            head.next = tail;
-            tail.pre = head;
-        }
+        private final DoubleLinkedList list = new DoubleLinkedList();
+        private final Map<String, Node> map = new HashMap<>();
 
         public void inc(String key) {
-            Node node = map.get(key);
-            if (node == null) {
-                // 插入头部
-                node = new Node(1, key);
-                insertNode(head, node, head.next);
-                map.put(key, node);
-            } else {
-                // 向后移动
-                node.count += 1;
-                Node temp = node.next;
-                while (temp != tail && temp.count < node.count) {
-                    temp = temp.next;
-                }
-                //  temp为tail或者第一个大于等于node的节点
-                //  第一步，将node从当前位置移除
-                removeNode(node);
-                //  第二步，将node插入temp之前
-                insertNode(temp.pre, node, temp);
-            }
 
+            Node node = map.get(key);
+
+            if (node == null) {
+                if (list.head.next.freq == 1) {
+                    list.head.next.set.add(key);
+                    map.put(key, list.head.next);
+                } else {
+                    Node newNode = new Node(1);
+                    newNode.set.add(key);
+                    Node next = list.head.next;
+                    list.addFront(next, newNode);
+                    map.put(key, newNode);
+                }
+            } else {
+                Node next = node.next;
+                if (node.next.freq != node.freq + 1) {
+                    next = new Node(node.freq + 1);
+                    list.addBack(node, next);
+                }
+
+                node.set.remove(key);
+                next.set.add(key);
+
+                map.put(key, next);
+                if (node.set.isEmpty()) {
+                    list.delete(node);
+                }
+            }
         }
 
         public void dec(String key) {
-            Node node = map.get(key);
-            if (node != null) {
-                node.count = node.count - 1;
-                if (node.count == 0) {
-                    removeNode(node);
-                    map.remove(key);
-                } else {
-                    Node temp = node.pre;
-                    while (temp != head && node.count < temp.count) {
-                        temp = temp.pre;
-                    }
-                    removeNode(node);
-                    insertNode(temp, node, temp.next);
-                }
+            if (!map.containsKey(key)) {
+                return;
             }
+
+            Node node = map.get(key);
+            if (node.freq == 1) {
+                node.set.remove(key);
+                if (node.set.isEmpty()) {
+                    list.delete(node);
+                }
+                map.remove(key);
+                return;
+            }
+
+            Node prev = node.prev;
+            if (prev.freq + 1 != node.freq) {
+                prev = new Node(node.freq - 1);
+                list.addFront(node, prev);
+            }
+
+            node.set.remove(key);
+            prev.set.add(key);
+
+            if (node.set.isEmpty()) {
+                list.delete(node);
+            }
+
+            map.put(key, prev);
         }
 
+
         public String getMaxKey() {
-            return tail.pre == head ? "" : tail.pre.val;
+            return list.head.next == list.tail ? "" : list.tail.prev.set.iterator().next();
         }
 
         public String getMinKey() {
-            return head.next == tail ? "" : head.next.val;
+            return list.head.next == list.tail ? "" : list.head.next.set.iterator().next();
         }
 
-        private void removeNode(Node node) {
-            node.pre.next = node.next;
-            node.next.pre = node.pre;
-            node.pre = null;
-            node.next = null;
-        }
+        static class DoubleLinkedList {
+            public Node head;
+            public Node tail;
 
-        private void insertNode(Node pre, Node node, Node next) {
-            node.pre = pre;
-            node.next = next;
+            public DoubleLinkedList() {
+                this.head = new Node(-5);
+                this.tail = new Node(-5);
 
-            pre.next = node;
-            next.pre = node;
+                head.next = tail;
+                tail.prev = head;
+            }
+
+            public void addFront(Node cur, Node node) {
+                node.next = cur;
+                node.prev = cur.prev;
+
+                cur.prev.next = node;
+                cur.prev = node;
+            }
+
+            public void addBack(Node cur, Node node) {
+                node.next = cur.next;
+                node.prev = cur;
+
+                cur.next.prev = node;
+                cur.next = node;
+            }
+
+            public void delete(Node node) {
+                node.prev.next = node.next;
+                node.next.prev = node.prev;
+            }
         }
 
         static class Node {
-            public Node(Integer count, String val) {
-                this.val = val;
-                this.count = count;
-            }
+            public int freq;
+            public Set<String> set;
+            public Node prev;
+            public Node next;
 
-            Integer count;
-            String val;
-            Node pre;
-            Node next;
+            public Node(int freq) {
+                this.freq = freq;
+                this.set = new HashSet<>();
+            }
         }
     }
 }
