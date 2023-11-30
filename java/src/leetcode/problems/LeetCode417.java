@@ -1,51 +1,66 @@
 package leetcode.problems;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2022/10/12 22:37
+ * @date 2023/11/30 14:49
  */
 public class LeetCode417 {
 
-    //https://leetcode.cn/problems/pacific-atlantic-water-flow/solution/java-si-lu-qing-xi-dai-ma-jian-ji-by-ven-4cds/
+    int m;
+    int n;
+
+    int[][] heights;
+
+    int[][] dirs = new int[][]{{-1, 0}, {1, 0}, {0, -1}, {0, 1}};
 
     public List<List<Integer>> pacificAtlantic(int[][] heights) {
-        int m = heights.length, n = heights[0].length;
-        boolean[][] pac = new boolean[m][n];
-        boolean[][] atl = new boolean[m][n];
+        this.m = heights.length;
+        this.n = heights[0].length;
+        this.heights = heights;
 
-        for (int col = 0; col < n; col++) {
-            dfs(0, col, m, n, pac, heights[0][col], heights);
-            dfs(m - 1, col, m, n, atl, heights[m - 1][col], heights);
+        List<List<Integer>> list = new ArrayList<>();
+        boolean[][] a = new boolean[m][n];
+        boolean[][] b = new boolean[m][n];
+        for (int i = 0; i < m; i++) {
+            dfs(i, 0, a);
+            dfs(i, n - 1, b);
+        }
+        for (int i = 0; i < n; i++) {
+            dfs(0, i, a);
+            dfs(m - 1, i, b);
         }
 
-        for (int row = 0; row < m; row++) {
-            dfs(row, 0, m, n, pac, heights[row][0], heights);
-            dfs(row, n - 1, m, n, atl, heights[row][n - 1], heights);
-        }
-        List<List<Integer>> result = new ArrayList<>();
-        for (int i = 0; i < m; i++)
+        for (int i = 0; i < m; i++) {
             for (int j = 0; j < n; j++) {
-                if (pac[i][j] && atl[i][j]) {
-                    result.add(Arrays.asList(i, j));
+                if (a[i][j] && b[i][j]) {
+                    List<Integer> t = new ArrayList<>();
+                    t.add(i);
+                    t.add(j);
+                    list.add(t);
                 }
             }
-        return result;
+        }
+        return list;
     }
 
-    private void dfs(int row, int col, int rows, int cols, boolean[][] visited, int prevHeight, int[][] heights) {
-        if (row < 0 || row >= rows || col < 0 || col >= cols || visited[row][col] || prevHeight > heights[row][col]) {
-            return;
+    private void dfs(int i, int j, boolean[][] visited) {
+        visited[i][j] = true;
+        for (int[] dir : dirs) {
+            int nx = i + dir[0];
+            int ny = j + dir[1];
+            if (nx < 0 || ny < 0 || nx > m - 1 || ny > n - 1) {
+                continue;
+            }
+            if (heights[nx][ny] < heights[i][j]) {
+                continue;
+            }
+            if (visited[nx][ny]) {
+                continue;
+            }
+            dfs(nx, ny, visited);
         }
-
-        visited[row][col] = true;
-        dfs(row + 1, col, rows, cols, visited, heights[row][col], heights);
-        dfs(row - 1, col, rows, cols, visited, heights[row][col], heights);
-        dfs(row, col + 1, rows, cols, visited, heights[row][col], heights);
-        dfs(row, col - 1, rows, cols, visited, heights[row][col], heights);
     }
 }

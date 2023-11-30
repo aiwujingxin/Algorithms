@@ -27,4 +27,23 @@ public class LeetCode386 {
             dfs(cur * 10 + i, limit);
         }
     }
+
+    public List<Integer> lexicalOrder_v1(int n) {
+        List<Integer> rets = new ArrayList<>();
+        rets.add(1);
+        int i = 1;
+
+        while (rets.size() < n) {
+            if (i * 10 <= n) {
+                i = i * 10;
+            } else {
+                while (i + 1 > n || (i % 10 == 9)) {
+                    i = i / 10;
+                }
+                i += 1;
+            }
+            rets.add(i);
+        }
+        return rets;
+    }
 }
