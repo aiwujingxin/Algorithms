@@ -6,17 +6,11 @@ package leetcode.problems;
  */
 public class LeetCode931 {
 
-    public static void main(String[] args) {
-//        System.out.println(new LeetCode931().minFallingPathSum(new int[][]{{2, 1, 3}, {6, 5, 4}, {7, 8, 9}}));
-        System.out.println(new LeetCode931().minFallingPathSum(new int[][]{{-19, 57}, {-40, -5}}));
-    }
-
     public int minFallingPathSum(int[][] matrix) {
         if (matrix == null || matrix.length == 0) {
             return 0;
         }
         int[][] dp = new int[matrix.length + 1][matrix[0].length + 2];
-
 
         for (int i = 1; i <= matrix.length; i++) {
             for (int j = 1; j <= matrix[0].length; j++) {

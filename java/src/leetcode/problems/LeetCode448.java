@@ -1,11 +1,13 @@
 package leetcode.problems;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2023/9/19 00:06
+ * @date 2023/12/1 17:29
  */
+
 public class LeetCode448 {
 
     public List<Integer> findDisappearedNumbers(int[] nums) {
@@ -14,10 +16,10 @@ public class LeetCode448 {
         }
         List<Integer> list = new ArrayList<>();
         for (int i = 0; i < nums.length; i++) {
-            int num = Math.abs(nums[i]);
-            if (nums[num - 1] > 0) {
-                nums[num - 1] = -nums[num - 1];
-            }
+            int index = Math.abs(nums[i]);
+            index--;
+            if (nums[index] > 0)
+                nums[index] = -nums[index];
         }
         for (int i = 0; i < nums.length; i++) {
             if (nums[i] > 0) {

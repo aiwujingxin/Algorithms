@@ -1,10 +1,11 @@
 package basic.datastructure.tree.serialize;
 
-import basic.datastructure.tree.*;
-import common.*;
+import basic.datastructure.tree.Serialization;
+import common.TreeNode;
 import leetcode.problems.LeetCode449;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author wujingxinit@outlook.com
@@ -15,13 +16,12 @@ public class BSTCodec {
 
     public class Codec implements Serialization {
 
-        @Override
         public String serialize(TreeNode root) {
             if (root == null) {
                 return null;
             }
             List<String> list = new ArrayList<>();
-            dfs1(root, list);
+            preOrder(root, list);
             int n = list.size();
             StringBuilder sb = new StringBuilder();
             for (int i = 0; i < n; i++) {
@@ -33,44 +33,44 @@ public class BSTCodec {
             return sb.toString();
         }
 
-        void dfs1(TreeNode root, List<String> list) {
+        void preOrder(TreeNode root, List<String> list) {
             if (root == null) {
                 return;
             }
             list.add(String.valueOf(root.val));
-            dfs1(root.left, list);
-            dfs1(root.right, list);
+            preOrder(root.left, list);
+            preOrder(root.right, list);
         }
 
-        @Override
         public TreeNode deserialize(String s) {
             if (s == null) {
                 return null;
             }
-            String[] ss = s.split(COMMA);
-            return dfs2(ss, 0, ss.length - 1);
+            String[] list = s.split(COMMA);
+            return buildTree(list, 0, list.length - 1);
         }
 
-        TreeNode dfs2(String[] ss, int l, int r) {
-            if (l > r) {
+        TreeNode buildTree(String[] list, int start, int end) {
+            if (start > end) {
                 return null;
             }
-            int ll = l + 1, rr = r, t = Integer.parseInt(ss[l]);
-            while (ll < rr) {
-                int mid = ll + rr >> 1;
-                if (Integer.parseInt(ss[mid]) > t) {
-                    rr = mid;
+            int val = Integer.parseInt(list[start]);
+            int left = start + 1, right = end;
+            while (left < right) {
+                int mid = (left + right) / 2;
+                if (Integer.parseInt(list[mid]) > val) {
+                    right = mid;
                 } else {
-                    ll = mid + 1;
+                    left = mid + 1;
                 }
             }
-            if (Integer.parseInt(ss[rr]) <= t) {
-                rr++;
+            if (Integer.parseInt(list[right]) <= val) {
+                right++;
             }
-            TreeNode ans = new TreeNode(t);
-            ans.left = dfs2(ss, l + 1, rr - 1);
-            ans.right = dfs2(ss, rr, r);
-            return ans;
+            TreeNode root = new TreeNode(val);
+            root.left = buildTree(list, start + 1, right - 1);
+            root.right = buildTree(list, right, end);
+            return root;
         }
     }
 }
