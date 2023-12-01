@@ -1,6 +1,9 @@
 package leetcode.problems;
 
 
+import basic.datastructure.liner.list.DoubleLinkedList;
+import basic.datastructure.liner.list.Node;
+
 import java.util.HashMap;
 
 /**
@@ -13,7 +16,7 @@ public class LeetCode460 {
 
     class LFUCache {
 
-        HashMap<Integer, DoublyLinkedList> freqMap = new HashMap<>();
+        HashMap<Integer, DoubleLinkedList> freqMap = new HashMap<>();
         HashMap<Integer, Node> map = new HashMap<>();
         int capacity;
         int minFreq;
@@ -43,7 +46,7 @@ public class LeetCode460 {
             }
             Node newNode = new Node(key, value);
             map.put(key, newNode);
-            freqMap.computeIfAbsent(1, k -> new DoublyLinkedList()).addFirst(newNode);
+            freqMap.computeIfAbsent(1, k -> new DoubleLinkedList()).addFirst(newNode);
             minFreq = 1;
         }
 
@@ -59,61 +62,8 @@ public class LeetCode460 {
                 }
             }
             node.freq++;
-            freqMap.computeIfAbsent(node.freq, k -> new DoublyLinkedList()).addFirst(node);
+            freqMap.computeIfAbsent(node.freq, k -> new DoubleLinkedList()).addFirst(node);
             return node;
-        }
-
-        static class Node {
-            int key;
-            int val;
-            Node next;
-            Node prev;
-            int freq = 1;
-
-            Node(int key, int value) {
-                this.key = key;
-                this.val = value;
-            }
-        }
-
-        static class DoublyLinkedList {
-            Node head;
-            Node tail;
-
-            DoublyLinkedList() {
-                head = new Node(-1, -1);
-                tail = new Node(-1, -1);
-                head.next = tail;
-                tail.prev = head;
-            }
-
-            void addFirst(Node node) {
-                Node next = head.next;
-
-                head.next = node;
-                node.prev = head;
-
-                node.next = next;
-                next.prev = node;
-            }
-
-            Node removeLast() {
-                Node node = tail.prev;
-                node.prev.next = tail;
-                tail.prev = node.prev;
-                return node;
-            }
-
-            void remove(Node node) {
-                Node prev = node.prev;
-                Node next = node.next;
-                prev.next = next;
-                next.prev = prev;
-            }
-
-            boolean isEmpty() {
-                return head.next == tail;
-            }
         }
     }
 }

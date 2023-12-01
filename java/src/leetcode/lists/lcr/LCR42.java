@@ -1,6 +1,8 @@
 package leetcode.lists.lcr;
 
-import java.util.LinkedList;
+
+import basic.datastructure.liner.list.DoubleLinkedList;
+import basic.datastructure.liner.list.Node;
 
 /**
  * @author wujingxinit@outlook.com
@@ -10,21 +12,20 @@ public class LCR42 {
 
     class RecentCounter {
 
-        LinkedList<Integer> list;
+        DoubleLinkedList list;
 
         public RecentCounter() {
-            list = new LinkedList<>();
+            list = new DoubleLinkedList();
         }
 
         public int ping(int t) {
-            while (!list.isEmpty() && t - list.getFirst() > 3000) {
+            while (!list.isEmpty() && t - list.getFirst().val > 3000) {
                 list.removeFirst();
             }
-            list.addLast(t);
+            list.addLast(new Node(t));
             return list.size();
         }
     }
-
 }
 
 

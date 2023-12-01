@@ -1,10 +1,11 @@
 package leetcode.problems;
 
 
+import basic.datastructure.liner.list.DoubleLinkedList;
+import basic.datastructure.liner.list.Node;
+
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Map;
-import java.util.Set;
 
 /**
  * @author wujingxinit@outlook.com
@@ -44,7 +45,7 @@ public class LeetCode432 {
 
                 map.put(key, next);
                 if (node.set.isEmpty()) {
-                    list.delete(node);
+                    list.remove(node);
                 }
             }
         }
@@ -58,7 +59,7 @@ public class LeetCode432 {
             if (node.freq == 1) {
                 node.set.remove(key);
                 if (node.set.isEmpty()) {
-                    list.delete(node);
+                    list.remove(node);
                 }
                 map.remove(key);
                 return;
@@ -74,12 +75,11 @@ public class LeetCode432 {
             prev.set.add(key);
 
             if (node.set.isEmpty()) {
-                list.delete(node);
+                list.remove(node);
             }
 
             map.put(key, prev);
         }
-
 
         public String getMaxKey() {
             return list.head.next == list.tail ? "" : list.tail.prev.set.iterator().next();
@@ -87,52 +87,6 @@ public class LeetCode432 {
 
         public String getMinKey() {
             return list.head.next == list.tail ? "" : list.head.next.set.iterator().next();
-        }
-
-        static class DoubleLinkedList {
-            public Node head;
-            public Node tail;
-
-            public DoubleLinkedList() {
-                this.head = new Node(-5);
-                this.tail = new Node(-5);
-
-                head.next = tail;
-                tail.prev = head;
-            }
-
-            public void addFront(Node cur, Node node) {
-                node.next = cur;
-                node.prev = cur.prev;
-
-                cur.prev.next = node;
-                cur.prev = node;
-            }
-
-            public void addBack(Node cur, Node node) {
-                node.next = cur.next;
-                node.prev = cur;
-
-                cur.next.prev = node;
-                cur.next = node;
-            }
-
-            public void delete(Node node) {
-                node.prev.next = node.next;
-                node.next.prev = node.prev;
-            }
-        }
-
-        static class Node {
-            public int freq;
-            public Set<String> set;
-            public Node prev;
-            public Node next;
-
-            public Node(int freq) {
-                this.freq = freq;
-                this.set = new HashSet<>();
-            }
         }
     }
 }
