@@ -9,8 +9,6 @@ import (
  * @date 2023/1/19 16:23
  */
 
-//https://www.youtube.com/watch?v=T1UJIojpUCs
-
 func findMaximumXOR(nums []int) int {
 	type TrieNode struct {
 		children [2]*TrieNode

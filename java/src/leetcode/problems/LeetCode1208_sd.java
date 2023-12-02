@@ -12,7 +12,7 @@ public class LeetCode1208_sd {
         for (int i = 0; i < n; i++) {
             diff[i] = Math.abs(s.charAt(i) - t.charAt(i));
         }
-        int maxLength = 0;
+        int max = 0;
         int left = 0, right = 0;
         int count = 0;
         while (right < n) {
@@ -21,9 +21,9 @@ public class LeetCode1208_sd {
                 count -= diff[left];
                 left++;
             }
-            maxLength = Math.max(maxLength, right - left + 1);
+            max = Math.max(max, right - left + 1);
             right++;
         }
-        return maxLength;
+        return max;
     }
 }

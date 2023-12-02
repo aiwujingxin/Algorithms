@@ -7,26 +7,22 @@ package leetcode.problems;
 public class LeetCode419 {
 
     public int countBattleships(char[][] board) {
-        if (board == null || board.length == 0) {
-            return 0;
-        }
-        int m = board.length;
-        int n = board[0].length;
-        int res = 0;
-        for (int i = 0; i < m; i++) {
-            for (int j = 0; j < n; j++) {
+        int row = board.length;
+        int col = board[0].length;
+        int ans = 0;
+        for (int i = 0; i < row; ++i) {
+            for (int j = 0; j < col; ++j) {
                 if (board[i][j] == 'X') {
-                    board[i][j] = '.';
-                    for (int k = j + 1; k < n; k++) {
-                        board[i][k] = '.';
+                    if (i > 0 && board[i - 1][j] == 'X') {
+                        continue;
                     }
-                    for (int k = i + 1; k < n; k++) {
-                        board[k][j] = '.';
+                    if (j > 0 && board[i][j - 1] == 'X') {
+                        continue;
                     }
-                    res++;
+                    ans++;
                 }
             }
         }
-        return res;
+        return ans;
     }
 }

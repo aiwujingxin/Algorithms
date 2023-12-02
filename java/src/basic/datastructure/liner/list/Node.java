@@ -30,4 +30,20 @@ public class Node {
         this.val = freq;
         this.freq = freq;
     }
+
+    public void add(String key) {
+        this.set.add(key);
+    }
+
+    public void remove(String key) {
+        this.set.remove(key);
+    }
+
+    public boolean isEmpty() {
+        return this.set.isEmpty();
+    }
+
+    public String getValue() {
+        return this.set.iterator().next();
+    }
 }

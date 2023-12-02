@@ -6,29 +6,6 @@ package basic.datastructure.liner.list;
  */
 public class DoubleLinkedList {
 
-    public static void main(String[] args) {
-        DoubleLinkedList list = new DoubleLinkedList();
-        list.addLast(new Node(1, 1));
-        list.addLast(new Node(2, 2));
-        list.addLast(new Node(3, 3));
-        list.addLast(new Node(4, 4));
-        list.addLast(new Node(5, 5));
-        list.addLast(new Node(2, 2));
-        System.out.println(list);
-        System.out.println(list.size());
-        System.out.println(list.getFirst().val);
-        System.out.println("remove");
-
-        System.out.println(list.removeFirst().val);
-
-        System.out.println(list.removeFirst().val);
-        System.out.println(list.removeFirst().val);
-        System.out.println(list.removeFirst().val);
-        System.out.println(list.removeFirst().val);
-        System.out.println(list.removeFirst().val);
-
-    }
-
     public Node head;
     public Node tail;
     public int size;
@@ -71,7 +48,6 @@ public class DoubleLinkedList {
         size--;
         return ele;
     }
-
 
     public Node removeLast() {
         Node node = tail.prev;
@@ -127,7 +103,6 @@ public class DoubleLinkedList {
         return size;
     }
 
-    @Override
     public String toString() {
         Node cur = head.next;
         StringBuilder sb = new StringBuilder();

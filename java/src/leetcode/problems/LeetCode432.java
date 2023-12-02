@@ -19,34 +19,29 @@ public class LeetCode432 {
         private final Map<String, Node> map = new HashMap<>();
 
         public void inc(String key) {
-
             Node node = map.get(key);
-
             if (node == null) {
-                if (list.head.next.freq == 1) {
-                    list.head.next.set.add(key);
-                    map.put(key, list.head.next);
+                if (!list.isEmpty() && list.getFirst().freq == 1) {
+                    list.getFirst().add(key);
+                    map.put(key, list.getFirst());
                 } else {
                     Node newNode = new Node(1);
-                    newNode.set.add(key);
-                    Node next = list.head.next;
-                    list.addFront(next, newNode);
+                    newNode.add(key);
+                    list.addFirst(newNode);
                     map.put(key, newNode);
                 }
-            } else {
-                Node next = node.next;
-                if (node.next.freq != node.freq + 1) {
-                    next = new Node(node.freq + 1);
-                    list.addBack(node, next);
-                }
-
-                node.set.remove(key);
-                next.set.add(key);
-
-                map.put(key, next);
-                if (node.set.isEmpty()) {
-                    list.remove(node);
-                }
+                return;
+            }
+            Node next = node.next;
+            if (node.next.freq != node.freq + 1) {
+                next = new Node(node.freq + 1);
+                list.addBack(node, next);
+            }
+            node.remove(key);
+            next.add(key);
+            map.put(key, next);
+            if (node.isEmpty()) {
+                list.remove(node);
             }
         }
 
@@ -57,8 +52,8 @@ public class LeetCode432 {
 
             Node node = map.get(key);
             if (node.freq == 1) {
-                node.set.remove(key);
-                if (node.set.isEmpty()) {
+                node.remove(key);
+                if (node.isEmpty()) {
                     list.remove(node);
                 }
                 map.remove(key);
@@ -71,10 +66,10 @@ public class LeetCode432 {
                 list.addFront(node, prev);
             }
 
-            node.set.remove(key);
-            prev.set.add(key);
+            node.remove(key);
+            prev.add(key);
 
-            if (node.set.isEmpty()) {
+            if (node.isEmpty()) {
                 list.remove(node);
             }
 
@@ -82,11 +77,11 @@ public class LeetCode432 {
         }
 
         public String getMaxKey() {
-            return list.head.next == list.tail ? "" : list.tail.prev.set.iterator().next();
+            return list.isEmpty() ? "" : list.getLast().getValue();
         }
 
         public String getMinKey() {
-            return list.head.next == list.tail ? "" : list.head.next.set.iterator().next();
+            return list.isEmpty() ? "" : list.getFirst().getValue();
         }
     }
 }

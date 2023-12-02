@@ -1,10 +1,10 @@
-package leetcode.lists.lcr;
+package leetcode.problems;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2023/9/25 22:37
+ * @date 2023/11/29 14:35
  */
-public class LCR67 {
+public class LeetCode421 {
 
     public int findMaximumXOR(int[] nums) {
         if (nums == null || nums.length == 0) {
@@ -48,7 +48,6 @@ public class LCR67 {
         }
         return res;
     }
-
 
     static class TrieNode {
         TrieNode[] children;

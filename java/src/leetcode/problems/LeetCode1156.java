@@ -9,10 +9,6 @@ public class LeetCode1156 {
 
     //https://leetcode.cn/problems/swap-for-longest-repeated-character-substring/solution/bi-jiao-jian-dan-de-jie-ti-fang-fa-by-ji-siie/
 
-    public static void main(String[] args) {
-        System.out.println(new LeetCode1156().maxRepOpt1("aaabaaa"));
-    }
-
     public int maxRepOpt1(String text) {
         int[] cntTotal = new int[26];
         for (char ch : text.toCharArray()) {
