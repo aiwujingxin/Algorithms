@@ -6,6 +6,7 @@ import java.util.Map;
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/11/27 20:41
+ * @description 递归会有重复状态
  */
 public class LeetCode403 {
 
@@ -31,6 +32,7 @@ public class LeetCode403 {
         if (index == n - 1) {
             return true;
         }
+        // choice
         for (int i = -1; i <= 1; i++) {
             if (k + i == 0) {
                 continue;

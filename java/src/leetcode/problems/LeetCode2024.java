@@ -21,7 +21,7 @@ public class LeetCode2024 {
             freq[charArray[right] - 'A']++;
             maxCount = Math.max(maxCount, freq[charArray[right] - 'A']);
 
-            if (right - left + 1 > maxCount + k) {
+            while (right - left + 1 > maxCount + k) {
                 freq[charArray[left] - 'A']--;
                 left++;
             }

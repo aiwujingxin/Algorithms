@@ -13,12 +13,23 @@ public class LeetCode401 {
         List<String> ans = new ArrayList<>();
         for (int h = 0; h < 12; ++h) {
             for (int m = 0; m < 60; ++m) {
-                if (Integer.bitCount(h) + Integer.bitCount(m) == turnedOn) {
+                if (cal(h) + cal(m) == turnedOn) {
                     ans.add(h + ":" + (m < 10 ? "0" : "") + m);
                 }
             }
         }
         return ans;
+    }
+
+    private int cal(int num) {
+        int cnt = 0;
+        while (num > 0) {
+            if ((num & 1) == 1) {
+                cnt++;
+            }
+            num >>= 1;
+        }
+        return cnt;
     }
 
     public List<String> readBinaryWatch_self(int turnedOn) {

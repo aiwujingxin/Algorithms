@@ -26,7 +26,9 @@ public class LeetCode405 {
         if (num == 0) return "0";
         String res = "";
         while (num != 0) {
+            // & 相与
             res = map[num & 15] + res;
+            // 无符号右移
             num = (num >>> 4);
         }
         return res;

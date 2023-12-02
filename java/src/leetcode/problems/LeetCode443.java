@@ -33,7 +33,6 @@ public class LeetCode443 {
             }
             left = right;
         }
-        System.out.println(chars);
         return index;
     }
 }
