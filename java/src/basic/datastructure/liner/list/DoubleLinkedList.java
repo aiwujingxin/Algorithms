@@ -3,6 +3,9 @@ package basic.datastructure.liner.list;
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/12/1 11:46
+ * @see leetcode.problems.LeetCode146 LRU
+ * @see leetcode.problems.LeetCode432 全O(1)
+ * @see leetcode.problems.LeetCode460 LFU
  */
 public class DoubleLinkedList {
 
@@ -117,4 +120,5 @@ public class DoubleLinkedList {
         return "[" + sb.substring(0, sb.length() - 1) + "]";
     }
 }
+
 
