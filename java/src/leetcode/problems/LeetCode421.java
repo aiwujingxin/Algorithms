@@ -2,58 +2,56 @@ package leetcode.problems;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2023/11/29 14:35
+ * @date 2023/12/3 12:08
  */
 public class LeetCode421 {
-
     public int findMaximumXOR(int[] nums) {
         if (nums == null || nums.length == 0) {
             return 0;
         }
-        TrieNode root = new TrieNode();
+        TrieNode trie = new TrieNode();
         for (int num : nums) {
-            TrieNode node = root;
+            TrieNode root = trie;
             for (int bit = 31; bit >= 0; bit--) {
-                int curr = (num >> bit) & 1;
-                if (node.children[curr] == null) {
-                    node.children[curr] = new TrieNode();
+                int val = (num >> bit) & 1;
+                if (root.children[val] == null) {
+                    root.children[val] = new TrieNode();
                 }
-                node = node.children[curr];
+                root = root.children[val];
             }
         }
+
         int res = Integer.MIN_VALUE;
+
         for (int num : nums) {
-            TrieNode node = root;
-            int sum = 0;
+            int t = 0;
+            TrieNode root = trie;
             for (int bit = 31; bit >= 0; bit--) {
-                int curr = (num >> bit) & 1;
-                if (curr == 0) {
-                    if (node.children[1] != null) {
-                        sum += (1 << bit);
-                        node = node.children[1];
+
+                int val = (num >> bit) & 1;
+
+                if (val == 1) {
+                    if (root.children[0] != null) {
+                        root = root.children[0];
+                        t += (1 << bit);
                     } else {
-                        node = node.children[0];
+                        root = root.children[1];
                     }
                 } else {
-                    if (node.children[0] != null) {
-                        sum += (1 << bit);
-                        node = node.children[0];
+                    if (root.children[1] != null) {
+                        root = root.children[1];
+                        t += (1 << bit);
                     } else {
-                        node = node.children[1];
+                        root = root.children[0];
                     }
                 }
-
             }
-            res = Math.max(res, sum);
+            res = Math.max(res, t);
         }
         return res;
     }
 
     static class TrieNode {
-        TrieNode[] children;
-
-        TrieNode() {
-            children = new TrieNode[2];
-        }
+        TrieNode[] children = new TrieNode[2];
     }
 }

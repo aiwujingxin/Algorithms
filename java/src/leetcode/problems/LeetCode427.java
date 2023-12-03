@@ -1,42 +1,41 @@
 package leetcode.problems;
 
-
 /**
  * @author wujingxinit@outlook.com
- * @date 2023/7/10 19:55
+ * @date 2023/12/3 12:08
  */
 public class LeetCode427 {
 
     public Node construct(int[][] grid) {
         if (grid == null || grid.length == 0) {
-            return new Node();
+            return null;
         }
         return dfs(grid, 0, grid.length - 1, 0, grid[0].length - 1);
     }
 
-    public Node dfs(int[][] grid, int s_row, int e_row, int s_col, int e_col) {
-        if (s_row > e_row || s_col > e_col) {
+    private Node dfs(int[][] grid, int top, int down, int left, int right) {
+        if (top > down || left > right) {
             return null;
         }
+        int value = grid[top][left];
         int sum = 0;
-        for (int i = s_row; i <= e_row; i++) {
-            for (int j = s_col; j <= e_col; j++) {
-                sum += grid[i][j];
+        for (int i = top; i <= down; i++) {
+            for (int j = left; j <= right; j++) {
+                sum += grid[top][left];
             }
         }
-        Node root = new Node();
-        int fill = (e_row - s_row + 1) * (e_col - s_col + 1);
-        if (sum == fill || sum == 0) {
-            root.isLeaf = true;
-            root.val = sum == fill;
-        } else {
-            int midRow = s_row + (e_row - s_row) / 2;
-            int midCol = s_col + (e_col - s_col) / 2;
-            root.topLeft = dfs(grid, s_row, midRow, s_col, midCol);
-            root.topRight = dfs(grid, s_row, midRow, midCol + 1, e_col);
-            root.bottomLeft = dfs(grid, midRow + 1, e_row, s_col, midCol);
-            root.bottomRight = dfs(grid, midRow + 1, e_row, midCol + 1, e_col);
+        boolean isLeaf = sum == 0 || sum == (down - top + 1) * (right - left + 1);
+        Node root = new Node(value == 1, isLeaf);
+
+        if (isLeaf) {
+            return root;
         }
+        int rowmid = (top + down) / 2;
+        int colmid = (left + right) / 2;
+        root.topLeft = dfs(grid, top, rowmid, left, colmid);
+        root.bottomLeft = dfs(grid, rowmid + 1, down, left, colmid);
+        root.topRight = dfs(grid, top, rowmid, colmid + 1, right);
+        root.bottomRight = dfs(grid, rowmid + 1, down, colmid + 1, right);
         return root;
     }
 
@@ -76,5 +75,4 @@ public class LeetCode427 {
             this.bottomRight = bottomRight;
         }
     }
-
 }

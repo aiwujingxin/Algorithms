@@ -8,7 +8,6 @@ import common.TreeNode;
  */
 public class LeetCode701 {
 
-
     //https://leetcode.com/problems/insert-into-a-binary-search-tree/discuss/2029370/JAVA-0ms-100-faster-BOTH-recursive-and-iterative
     public TreeNode insertIntoBST(TreeNode root, int val) {
         if (root == null) {

@@ -1,13 +1,12 @@
 package basic.datastructure.advance;
 
-import leetcode.problems.LeetCode98;
-import leetcode.problems.LeetCode99;
-
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/1/4 15:49
- * @see LeetCode98 检查一个树是否是二叉搜索树
- * @see LeetCode99 根据递增排序的序列生成二权搜索树
+ * @see leetcode.problems.LeetCode98 检查一个树是否是二叉搜索树
+ * @see leetcode.problems.LeetCode99 根据递增排序的序列生成二权搜索树
+ * @see leetcode.problems.LeetCode701 插入
+ * @see leetcode.problems.LeetCode450 删除
  */
 public class BinarySearchTree {
 
@@ -35,41 +34,28 @@ public class BinarySearchTree {
         return root;
     }
 
-    public void delete(int val) {
-        root = deleteNode(root, val);
-    }
-
-    private TreeNode deleteNode(TreeNode root, int val) {
-        if (root == null) {
-            return null;
-        }
-
-        if (val < root.val) {
-            root.left = deleteNode(root.left, val);
-        } else if (val > root.val) {
-            root.right = deleteNode(root.right, val);
-        } else {
-            if (root.left == null && root.right == null) {
-                root = null;
-            } else if (root.left == null) {
-                root = root.right;
-            } else if (root.right == null) {
-                root = root.left;
-            } else {
-                TreeNode successor = findMin(root.right);
-                root.val = successor.val;
-                root.right = deleteNode(root.right, successor.val);
+    public TreeNode deleteNode(TreeNode root, int key) {
+        if (root == null) return null;
+        if (root.val == key) {
+            if (root.left == null) {
+                return root.right;
             }
+            if (root.right == null) {
+                return root.left;
+            }
+            //从当前节点的左子树中选择值最大的节点
+            TreeNode t = root.left;
+            while (t.right != null) {
+                t = t.right;
+            }
+            t.right = root.right;
+            return root.left;
+        } else if (root.val < key) {
+            root.right = deleteNode(root.right, key);
+        } else {
+            root.left = deleteNode(root.left, key);
         }
-
         return root;
-    }
-
-    private TreeNode findMin(TreeNode node) {
-        while (node.left != null) {
-            node = node.left;
-        }
-        return node;
     }
 
     public boolean search(int val) {
@@ -82,7 +68,8 @@ public class BinarySearchTree {
         }
         if (val == root.val) {
             return true;
-        } else if (val < root.val) {
+        }
+        if (val < root.val) {
             return searchNode(root.left, val);
         } else {
             return searchNode(root.right, val);
