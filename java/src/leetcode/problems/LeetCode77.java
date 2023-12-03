@@ -26,7 +26,6 @@ public class LeetCode77 {
             res.add(new ArrayList<>(list));
         }
         for (int i = index; i <= n; i++) {
-
             list.add(i);
             backtrack(i + 1, n, res, k, list);
             list.remove(list.size() - 1);

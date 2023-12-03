@@ -2,7 +2,7 @@ package leetcode.problems;
 
 import java.util.*;
 
-public class LeetCode490_bfs {
+public class LeetCode490 {
 
     public boolean hasPath(int[][] maze, int[] start, int[] destination) {
         boolean[][] visited = new boolean[maze.length][maze[0].length];

@@ -101,7 +101,7 @@ public class LeetCode407_uf {
         }
     }
 
-    class WaterCounter {
+    static class WaterCounter {
         int m, n;
         UnionFind ut;
 

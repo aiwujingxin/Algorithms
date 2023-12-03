@@ -13,17 +13,9 @@ public class LeetCode40 {
     /*
      * [10,1,2,7,6,1,5]
      * 8
-     *
      * 首先sort 是为了防止 [1,7][7,1]这样的重复结果
-     *
-     * */
-    /*
-     * [10,1,2,7,6,1,5]
-     * 8
-     *
      * sort 完了之后 加锁 可以防止 [1,7][1`,7]这样的重复结果, 1` ～ 1`` 等重复的数字，都会在当前层的set控制住，不会向下递归，
      * 所以结果里不会出现[1, XXXXX], [1`,XXXX]的情况
-     *
      * */
     public List<List<Integer>> combinationSum2(int[] candidates, int target) {
         if (candidates == null || candidates.length == 0) {

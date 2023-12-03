@@ -5,46 +5,37 @@ import java.util.HashSet;
 import java.util.List;
 
 /**
- * @author jingxinwu
+ * @author wujingxinit@outlook.com
  * @date 2023/10/19 15:12
  */
 public class LeetCode47 {
 
     public List<List<Integer>> permuteUnique(int[] nums) {
+        boolean[] used = new boolean[nums.length];
         List<List<Integer>> res = new ArrayList<>();
-
-        if (nums == null || nums.length == 0) {
-            return res;
-        }
-        backtrack(0, res, nums);
+        backtrack(nums, new ArrayList<>(), res, used);
         return res;
     }
 
-    private void backtrack(int index, List<List<Integer>> res, int[] nums) {
-        if (index == nums.length) {
-            List<Integer> temp = new ArrayList<>();
-            for (int num : nums) {
-                temp.add(num);
-            }
-            res.add(new ArrayList<>(temp));
+    void backtrack(int[] nums, List<Integer> list, List<List<Integer>> res, boolean[] used) {
+        if (list.size() == nums.length) {
+            res.add(new ArrayList<>(list));
             return;
         }
-        HashSet<Integer> visited = new HashSet<>();
-        for (int i = index; i < nums.length; i++) {
-            if (visited.contains(nums[i])) {
+        HashSet<Integer> set = new HashSet<>();
+        for (int i = 0; i < nums.length; i++) {
+            if (used[i]) {
                 continue;
             }
-            visited.add(nums[i]);
-            swap(nums, index, i);
-            backtrack(index + 1, res, nums);
-            swap(nums, index, i);
+            if (set.contains(nums[i])) {
+                continue;
+            }
+            set.add(nums[i]);
+            list.add(nums[i]);
+            used[i] = true;
+            backtrack(nums, list, res, used);
+            list.remove(list.size() - 1);
+            used[i] = false;
         }
     }
-
-    private void swap(int[] nums, int i, int j) {
-        int temp = nums[i];
-        nums[i] = nums[j];
-        nums[j] = temp;
-    }
-
 }

@@ -5,39 +5,31 @@ import java.util.List;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2023/9/16 23:30
+ * @date 2023/8/1 12:54
  */
 public class LeetCode46 {
 
     public List<List<Integer>> permute(int[] nums) {
-        if (nums == null || nums.length == 0) {
-            return new ArrayList<>();
-        }
+        boolean[] used = new boolean[nums.length];
         List<List<Integer>> res = new ArrayList<>();
-        backtrack(nums, 0, res);
+        backtrack(nums, new ArrayList<>(), res, used);
         return res;
     }
 
-    private void backtrack(int[] nums, int index, List<List<Integer>> res) {
-        if (index == nums.length) {
-            List<Integer> t = new ArrayList<>();
-            for (int num : nums) {
-                t.add(num);
-            }
-            res.add(t);
+    void backtrack(int[] nums, List<Integer> list, List<List<Integer>> res, boolean[] used) {
+        if (list.size() == nums.length) {
+            res.add(new ArrayList<>(list));
             return;
         }
-        for (int i = index; i < nums.length; i++) {
-            swap(nums, i, index);
-            backtrack(nums, index + 1, res);
-            swap(nums, i, index);
+        for (int i = 0; i < nums.length; i++) {
+            if (used[i]) {
+                continue;
+            }
+            list.add(nums[i]);
+            used[i] = true;
+            backtrack(nums, list, res, used);
+            list.remove(list.size() - 1);
+            used[i] = false;
         }
     }
-
-    private void swap(int[] nums, int i, int index) {
-        int t = nums[i];
-        nums[i] = nums[index];
-        nums[index] = t;
-    }
 }
-

@@ -8,7 +8,7 @@ import java.util.Queue;
  * @author wujingxinit@outlook.com
  * @date 2023/4/26 15:53
  */
-public class LeetCode499_bfs {
+public class LeetCode499 {
 
 
     public String findShortestWay(int[][] maze, int[] ball, int[] hole) {
@@ -25,7 +25,7 @@ public class LeetCode499_bfs {
         int[] dy = new int[]{0, 0, -1, 1};
 
         String[] dirs = new String[]{"u", "d", "l", "r"};
-        //构造队列
+
         Queue<int[]> queue = new LinkedList<>();
         queue.offer(ball);
 
