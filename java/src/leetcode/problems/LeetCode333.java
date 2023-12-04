@@ -6,24 +6,6 @@ import common.TreeNode;
  * @author wujingxinit@outlook.com
  * @date 2023/7/27 20:45
  * @description 给定一个二叉树，找到其中最大的二叉搜索树（BST）子树，并返回该子树的大小。其中，最大指的是子树节点数最多的。
- * @see LeetCode124
- * @see LeetCode298
- * @see LeetCode337
- * @see LeetCode543
- * @see LeetCode549
- * @see LeetCode687
- * @see LeetCode823
- * @see LeetCode1120
- * @see LeetCode1245
- * @see LeetCode1372
- * @see LeetCode1373
- * @see LeetCode1377
- * @see LeetCode1448
- * @see LeetCode2378
- * 换根DP
- * @see LeetCode310_dp
- * @see LeetCode834
- * @see LeetCode2581
  */
 public class LeetCode333 {
 

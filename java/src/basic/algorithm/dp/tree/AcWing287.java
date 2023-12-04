@@ -78,6 +78,4 @@ public class AcWing287 {
 
     private static final int[] up = new int[N];
     private static final int[] down = new int[N];
-
-
 }
