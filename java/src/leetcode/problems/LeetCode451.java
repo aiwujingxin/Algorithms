@@ -1,10 +1,11 @@
 package leetcode.problems;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.Comparator;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2023/10/18 23:15
+ * @date 2023/12/4 15:25
  */
 public class LeetCode451 {
 
@@ -12,26 +13,27 @@ public class LeetCode451 {
         if (s == null || s.isEmpty()) {
             return "";
         }
-        HashMap<Character, Integer> map = new HashMap<>();
+        int[] arr = new int[256];
         for (int i = 0; i < s.length(); i++) {
-            map.put(s.charAt(i), map.getOrDefault(s.charAt(i), 0) + 1);
+            arr[s.charAt(i) - '0']++;
+        }
+        int[][] nums = new int[256][];
+        for (int i = 0; i < arr.length; i++) {
+            nums[i] = new int[]{arr[i], i};
         }
 
-        List<int[]> list = new ArrayList<>();
-        for (Map.Entry<Character, Integer> entry : map.entrySet()) {
-            list.add(new int[]{entry.getValue(), entry.getKey()});
-        }
-        list.sort(new Comparator<int[]>() {
+        Arrays.sort(nums, new Comparator<int[]>() {
             @Override
             public int compare(int[] o1, int[] o2) {
                 return o2[0] - o1[0];
             }
         });
+        System.out.println(Arrays.toString(arr));
+        System.out.println(Arrays.deepToString(nums));
         StringBuilder sb = new StringBuilder();
-        for (int[] ints : list) {
-            int cnt = ints[0];
-            for (int j = 0; j < cnt; j++) {
-                sb.append((char) ints[1]);
+        for (int[] num : nums) {
+            for (int j = 0; j < num[0]; j++) {
+                sb.append((char) ('0' + num[1]));
             }
         }
         return sb.toString();

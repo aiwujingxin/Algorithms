@@ -4,11 +4,9 @@ import java.util.Stack;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2023/10/22 20:57
+ * @date 2023/12/4 15:47
  */
 public class LeetCode456 {
-
-    //https://www.youtube.com/watch?v=jZsATHFXyNw
 
     public boolean find132pattern(int[] nums) {
         int numk = Integer.MIN_VALUE;

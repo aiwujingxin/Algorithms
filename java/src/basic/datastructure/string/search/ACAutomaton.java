@@ -5,7 +5,7 @@ import java.util.*;
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/6/6 23:48
- * @despription AC自动机
+ * @description  AC自动机
  * @link <a href="https://www.youtube.com/watch?v=D2jwopA4-P0"></a>
  */
 /*

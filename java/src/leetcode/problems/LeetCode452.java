@@ -16,18 +16,18 @@ public class LeetCode452 {
     //（2）通过贪心方案我们知道序列中包含了cnt个相互之间没有交集的区间，所以对于一个合法方案，必然至少包含cnt个点，所以cnt<=ans
     // 和跳跃游戏差不多
     public int findMinArrowShots(int[][] points) {
-        if (points.length == 0) {
+        if (points == null || points.length == 0) {
             return 0;
         }
         Arrays.sort(points, Comparator.comparingInt(point -> point[1]));
+        int res = 1;
         int end = points[0][1];
-        int ans = 1;
-        for (int[] balloon : points) {
-            if (balloon[0] > end) {
-                end = balloon[1];
-                ans++;
+        for (int i = 1; i < points.length; i++) {
+            if (points[i][0] > end) {
+                end = points[i][1];
+                res++;
             }
         }
-        return ans;
+        return res;
     }
 }

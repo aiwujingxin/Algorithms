@@ -14,7 +14,7 @@ public class LeetCode1162_dp {
                 if (grid[i][j] == 1) {
                     continue;
                 }
-                grid[i][j] = 201; //201 here cuz as the despription, the size won't exceed 100.
+                grid[i][j] = 201; //201 here cuz as the description, the size won't exceed 100.
                 if (i > 0) grid[i][j] = Math.min(grid[i][j], grid[i - 1][j] + 1);
                 if (j > 0) grid[i][j] = Math.min(grid[i][j], grid[i][j - 1] + 1);
             }
