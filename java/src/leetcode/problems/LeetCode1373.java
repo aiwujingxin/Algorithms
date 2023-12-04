@@ -1,6 +1,6 @@
 package leetcode.problems;
 
-import common.*;
+import common.TreeNode;
 
 /**
  * @author wujingxinit@outlook.com
@@ -26,10 +26,8 @@ public class LeetCode1373 {
         if (root.val <= left[1] || root.val >= right[0]) { // 不是二叉搜索树
             return new int[]{Integer.MIN_VALUE, Integer.MAX_VALUE, 0};
         }
-
-        int s = left[2] + right[2] + root.val; // 这棵子树的所有节点值之和
-        ans = Math.max(ans, s);
-
-        return new int[]{Math.min(left[0], root.val), Math.max(right[1], root.val), s};
+        int val = left[2] + right[2] + root.val; // 这棵子树的所有节点值之和
+        ans = Math.max(ans, val);
+        return new int[]{Math.min(left[0], root.val), Math.max(right[1], root.val), val};
     }
 }

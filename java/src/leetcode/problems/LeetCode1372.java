@@ -23,9 +23,9 @@ public class LeetCode1372 {
         }
         int[] leftRes = dfs(root.left);
         int[] rightRes = dfs(root.right);
-        int l = leftRes[1] + 1;
-        int r = rightRes[0] + 1;
-        ans = Math.max(ans, Math.max(l, r));
-        return new int[]{l, r};
+        int left = leftRes[1] + 1;
+        int right = rightRes[0] + 1;
+        ans = Math.max(ans, Math.max(left, right));
+        return new int[]{left, right};
     }
 }

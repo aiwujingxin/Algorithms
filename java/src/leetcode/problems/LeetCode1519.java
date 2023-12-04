@@ -16,7 +16,7 @@ public class LeetCode1519 {
     int n;
     boolean[] visited;
 
-    HashMap<Integer, List<Integer>> map = new HashMap<>();
+    Map<Integer, List<Integer>> graph = new HashMap<>();
 
     public int[] countSubTrees(int n, int[][] edges, String labels) {
         this.n = n;
@@ -28,10 +28,10 @@ public class LeetCode1519 {
         return ans;
     }
 
-    private HashMap<Character, Integer> dfs(int node) {
+    private Map<Character, Integer> dfs(int node) {
         char c = labels[node];
-        HashMap<Character, Integer> cntMap = new HashMap<>();
-        if (map.get(node).isEmpty()) {
+        Map<Character, Integer> cntMap = new HashMap<>();
+        if (graph.get(node).isEmpty()) {
             ans[node] = 1;
             cntMap.put(c, 1);
             return cntMap;
@@ -40,8 +40,8 @@ public class LeetCode1519 {
             return cntMap;
         }
         visited[node] = true;
-        for (int child : map.get(node)) {
-            HashMap<Character, Integer> childMap = dfs(child);
+        for (int child : graph.get(node)) {
+            Map<Character, Integer> childMap = dfs(child);
             for (Map.Entry<Character, Integer> entry : childMap.entrySet()) {
                 cntMap.put(entry.getKey(), cntMap.getOrDefault(entry.getKey(), 0) + entry.getValue());
             }
@@ -53,11 +53,11 @@ public class LeetCode1519 {
 
     private void build(int[][] edges) {
         for (int i = 0; i < n; i++) {
-            map.putIfAbsent(i, new ArrayList<>());
+            graph.putIfAbsent(i, new ArrayList<>());
         }
         for (int[] edge : edges) {
-            map.get(edge[0]).add(edge[1]);
-            map.get(edge[1]).add(edge[0]);
+            graph.get(edge[0]).add(edge[1]);
+            graph.get(edge[1]).add(edge[0]);
         }
     }
 }

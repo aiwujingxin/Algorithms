@@ -36,13 +36,15 @@ public class LeetCode2581 {
         return res;
     }
 
-    private int dfs(int cur, int father) {
+    private int dfs(int cur, int pa) {
         int v = 0;
         for (Integer next : edg[cur]) {
-            if (next == father) {
+            if (next == pa) {
                 continue;
             }
-            if (guess[cur].contains(next)) v++;
+            if (guess[cur].contains(next)) {
+                v++;
+            }
             v += dfs(next, cur);
         }
         return v;
