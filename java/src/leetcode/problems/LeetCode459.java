@@ -1,7 +1,5 @@
 package leetcode.problems;
 
-import java.util.Arrays;
-
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/12/4 17:04
@@ -11,7 +9,13 @@ public class LeetCode459 {
 
     public boolean repeatedSubstringPattern(String s) {
         int n = s.length();
-        for (int i = 1; i <= Math.sqrt(n); i++) {
+        if (n == 1) {
+            return false;
+        }
+        for (int i = 1; i <= n / 2; i++) {
+            if (s.length() % i != 0) {
+                continue;
+            }
             if (check(s, i, i)) {
                 return true;
             }
@@ -36,19 +40,39 @@ public class LeetCode459 {
         return k == s.length();
     }
 
-    public boolean repeatedSubstringPattern_KMP(String s) {
-        int n = s.length();
-        int[] next = new int[n];
-        Arrays.fill(next, -1);
-        for (int i = 1; i < n; ++i) {
-            int j = next[i - 1];
-            while (j != -1 && s.charAt(i) != s.charAt(j + 1)) {
-                j = next[j];
+    public boolean repeatedSubstringPattern_opt(String s) {
+        if (s.length() == 1) {
+            return false;
+        }
+        for (int i = 2; i <= s.length(); i++) {
+            if (s.length() % i != 0) {
+                continue;
             }
-            if (s.charAt(j + 1) == s.charAt(i)) {
-                next[i] = j + 1;
+            if (!isP(i)) {
+                continue;
+            }
+            // 分成i段，每段长len
+            int len = s.length() / i;
+            boolean isMatch = true;
+            for (int j = len; j < s.length(); j++) {
+                if (s.charAt(j) != s.charAt(j % len)) {
+                    isMatch = false;
+                    break;
+                }
+            }
+            if (isMatch) {
+                return true;
             }
         }
-        return next[n - 1] != -1 && n % (n - next[n - 1] - 1) == 0;
+        return false;
+    }
+
+    public boolean isP(int num) {
+        for (int i = 2; i < Math.sqrt(num); i++) {
+            if (num % 2 == 0) {
+                return false;
+            }
+        }
+        return true;
     }
 }
