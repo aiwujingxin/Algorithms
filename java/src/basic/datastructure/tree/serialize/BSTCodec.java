@@ -16,6 +16,8 @@ public class BSTCodec {
 
     public class Codec implements Serialization {
 
+        String COMMA = ",";
+
         public String serialize(TreeNode root) {
             if (root == null) {
                 return null;
@@ -46,7 +48,7 @@ public class BSTCodec {
             if (s == null) {
                 return null;
             }
-            String[] list = s.split(COMMA);
+            String[] list = s.split(",");
             return buildTree(list, 0, list.length - 1);
         }
 
@@ -64,12 +66,15 @@ public class BSTCodec {
                     left = mid + 1;
                 }
             }
-            if (Integer.parseInt(list[right]) <= val) {
-                right++;
-            }
             TreeNode root = new TreeNode(val);
-            root.left = buildTree(list, start + 1, right - 1);
-            root.right = buildTree(list, right, end);
+            if (left == list.length) {
+                return root;
+            }
+            if (Integer.parseInt(list[left]) <= val) {
+                left++;
+            }
+            root.left = buildTree(list, start + 1, left - 1);
+            root.right = buildTree(list, left, end);
             return root;
         }
     }

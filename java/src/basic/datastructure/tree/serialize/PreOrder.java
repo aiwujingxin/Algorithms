@@ -1,7 +1,7 @@
 package basic.datastructure.tree.serialize;
 
-import basic.datastructure.tree.*;
-import common.*;
+import basic.datastructure.tree.Serialization;
+import common.TreeNode;
 
 /**
  * @author wujingxinit@outlook.com
@@ -12,6 +12,8 @@ public class PreOrder {
     public class Codec implements Serialization {
 
         private int desIndex = 0;
+        String COMMA = ",";
+        String NULL = "null";
 
         @Override
         public String serialize(TreeNode root) {

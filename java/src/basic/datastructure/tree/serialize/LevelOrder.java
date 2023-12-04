@@ -15,6 +15,10 @@ public class LevelOrder {
     //https://leetcode.cn/problems/serialize-and-deserialize-binary-tree/solution/297-er-cha-shu-de-xu-lie-hua-yu-fan-xu-l-647c/
     // Encodes a tree to a single string.
     public class Codec implements Serialization {
+
+        String COMMA = ",";
+        String NULL = "null";
+
         @Override
         public String serialize(TreeNode root) {
             if (root == null) {

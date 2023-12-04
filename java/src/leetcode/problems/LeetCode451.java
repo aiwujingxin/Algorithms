@@ -28,8 +28,6 @@ public class LeetCode451 {
                 return o2[0] - o1[0];
             }
         });
-        System.out.println(Arrays.toString(arr));
-        System.out.println(Arrays.deepToString(nums));
         StringBuilder sb = new StringBuilder();
         for (int[] num : nums) {
             for (int j = 0; j < num[0]; j++) {

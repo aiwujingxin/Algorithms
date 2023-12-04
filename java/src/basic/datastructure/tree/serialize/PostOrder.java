@@ -13,6 +13,9 @@ public class PostOrder {
 
     public class Codec implements Serialization {
 
+        String COMMA = ",";
+        String NULL = "null";
+
         @Override
         public String serialize(TreeNode root) {
             if (root == null) {
