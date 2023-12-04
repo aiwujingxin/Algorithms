@@ -2,7 +2,6 @@ package leetcode.problems;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashSet;
 import java.util.List;
 
 /**
@@ -21,15 +20,13 @@ public class LeetCode90 {
         return res;
     }
 
-    private void backtrack(int[] nums, int index, List<List<Integer>> res, List<Integer> list) {
+    private void backtrack(int[] nums, int start, List<List<Integer>> res, List<Integer> list) {
         res.add(new ArrayList<>(list));
-
-        HashSet<Integer> set = new HashSet<>();
-        for (int i = index; i < nums.length; i++) {
-            if (set.contains(nums[i])) {
+        for (int i = start; i < nums.length; i++) {
+            // 剪枝逻辑，值相同的相邻树枝，只遍历第一条
+            if (i > start && nums[i] == nums[i - 1]) {
                 continue;
             }
-            set.add(nums[i]);
             list.add(nums[i]);
             backtrack(nums, i + 1, res, list);
             list.remove(list.size() - 1);

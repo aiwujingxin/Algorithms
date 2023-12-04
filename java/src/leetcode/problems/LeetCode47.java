@@ -1,7 +1,7 @@
 package leetcode.problems;
 
 import java.util.ArrayList;
-import java.util.HashSet;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -13,6 +13,7 @@ public class LeetCode47 {
     public List<List<Integer>> permuteUnique(int[] nums) {
         boolean[] used = new boolean[nums.length];
         List<List<Integer>> res = new ArrayList<>();
+        Arrays.sort(nums);
         backtrack(nums, new ArrayList<>(), res, used);
         return res;
     }
@@ -22,15 +23,14 @@ public class LeetCode47 {
             res.add(new ArrayList<>(list));
             return;
         }
-        HashSet<Integer> set = new HashSet<>();
         for (int i = 0; i < nums.length; i++) {
             if (used[i]) {
                 continue;
             }
-            if (set.contains(nums[i])) {
+            // 新添加的剪枝逻辑，固定相同的元素在排列中的相对位置
+            if (i > 0 && nums[i] == nums[i - 1] && used[i - 1]) {
                 continue;
             }
-            set.add(nums[i]);
             list.add(nums[i]);
             used[i] = true;
             backtrack(nums, list, res, used);

@@ -11,11 +11,10 @@ import leetcode.problems.*;
  * <p>组合总和
  * @see LeetCode39
  * @see LeetCode40
+ * @see LeetCode77
  * <p>全排列
  * @see LeetCode46
  * @see LeetCode47
- * <p>组合
- * @see LeetCode77
  * <p>N皇后
  * @see LeetCode51
  * @see LeetCode52

@@ -18,9 +18,9 @@ public class LeetCode78 {
         return res;
     }
 
-    private void backtrack(int[] nums, int index, List<List<Integer>> res, ArrayList<Integer> list) {
+    private void backtrack(int[] nums, int start, List<List<Integer>> res, ArrayList<Integer> list) {
         res.add(new ArrayList<>(list));
-        for (int i = index; i < nums.length; i++) {
+        for (int i = start; i < nums.length; i++) {
             list.add(nums[i]);
             backtrack(nums, i + 1, res, list);
             list.remove(list.size() - 1);

@@ -18,14 +18,11 @@ public class LeetCode39 {
     }
 
     private void backtrack(int[] candidates, int index, int target, List<Integer> list, List<List<Integer>> res) {
-        if (index == candidates.length) {
+        if (target == 0) {
+            res.add(new ArrayList<>(list));
             return;
         }
         if (target < 0) {
-            return;
-        }
-        if (target == 0) {
-            res.add(new ArrayList<>(list));
             return;
         }
         for (int i = index; i < candidates.length; i++) {

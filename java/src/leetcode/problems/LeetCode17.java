@@ -10,11 +10,6 @@ import java.util.List;
  */
 public class LeetCode17 {
 
-
-    public static void main(String[] args) {
-        System.out.println(new LeetCode17().letterCombinations("23"));
-    }
-
     HashMap<Integer, String> map;
     List<String> res;
 
