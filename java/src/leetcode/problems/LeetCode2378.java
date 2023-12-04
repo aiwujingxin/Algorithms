@@ -11,11 +11,6 @@ import java.util.List;
  */
 public class LeetCode2378 {
 
-    public static void main(String[] args) {
-        System.out.println(new LeetCode2378().maxScore(new int[][]{{-1, -1}, {0, 5}, {0, -6}, {0, 7}}));
-        System.out.println(new LeetCode2378().maxScore(new int[][]{{-1, -1}, {0, 5}, {0, 10}, {2, 6}, {2, 4}}));
-    }
-
     HashMap<Integer, List<Integer>> map = new HashMap<>();
     HashMap<Integer, Integer> wightMap = new HashMap<>();
 
@@ -45,7 +40,7 @@ public class LeetCode2378 {
         }
 
         /*
-         * Example: 
+         * Example:
          * weight(from.child1) + dp[child1][1] + dp[child2][0] + dp[child3][0]
          * weight(from.child2) + dp[child2][1] + dp[child1][0] + dp[child3][0]
          * weight(from.child3) + dp[child3][1] + dp[child1][0] + dp[child2][0]
