@@ -1,42 +1,55 @@
 package leetcode.problems;
 
 /**
- * @author aiwujingxin@gmail.com
- * @date 2022/6/19 21:21
+ * @author wujingxinit@outlook.com
+ * @date 2023/12/5 11:04
  */
 public class LeetCode463 {
 
-    static int[] dx = {0, 1, 0, -1};
-    static int[] dy = {1, 0, -1, 0};
-
     public int islandPerimeter(int[][] grid) {
-        int n = grid.length, m = grid[0].length;
-        int ans = 0;
-        for (int i = 0; i < n; ++i) {
-            for (int j = 0; j < m; ++j) {
+
+        if (grid == null || grid.length == 0) {
+            return 0;
+        }
+        int m = grid.length;
+        int n = grid[0].length;
+        int res = 0;
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                boolean needCheckTop = true;
+                boolean needCheckDown = true;
+                boolean needCheckLeft = true;
+                boolean needCheckRight = true;
                 if (grid[i][j] == 1) {
-                    ans += dfs(i, j, grid, n, m);
+                    if (i == 0) {
+                        needCheckTop = false;
+                    }
+                    if (i == m - 1) {
+                        needCheckDown = false;
+                    }
+                    if (j == 0) {
+                        needCheckLeft = false;
+                    }
+                    if (j == n - 1) {
+                        needCheckRight = false;
+                    }
+                    int t = 4;
+                    if (needCheckLeft && grid[i][j - 1] == 1) {
+                        t--;
+                    }
+                    if (needCheckRight && grid[i][j + 1] == 1) {
+                        t--;
+                    }
+                    if (needCheckTop && grid[i - 1][j] == 1) {
+                        t--;
+                    }
+                    if (needCheckDown && grid[i + 1][j] == 1) {
+                        t--;
+                    }
+                    res += t;
                 }
             }
         }
-        return ans;
-    }
-
-    public int dfs(int x, int y, int[][] grid, int n, int m) {
-        if (x < 0 || x >= n || y < 0 || y >= m || grid[x][y] == 0) {
-            return 1;
-        }
-        if (grid[x][y] == 2) {
-            return 0;
-        }
-        grid[x][y] = 2;
-        int res = 0;
-        for (int i = 0; i < 4; ++i) {
-            int tx = x + dx[i];
-            int ty = y + dy[i];
-            res += dfs(tx, ty, grid, n, m);
-        }
         return res;
     }
-
 }
