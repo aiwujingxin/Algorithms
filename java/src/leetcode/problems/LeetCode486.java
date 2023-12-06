@@ -24,20 +24,4 @@ public class LeetCode486 {
                 nums[j] - dfs(nums, i, j - 1, momo));
         return momo[i][j];
     }
-
-    public boolean PredictTheWinner_dp(int[] nums) {
-        int n = nums.length;
-        int[][] dp = new int[n][n];
-        for (int i = 0; i < n; i++) {
-            dp[i][i] = nums[i];
-        }
-
-        // dp[i][j] 表示作为先手，在区间 nums[i..j] 里进行选择可以获得的 相对分数。
-        for (int i = n - 2; i >= 0; i--) {
-            for (int j = i + 1; j < n; j++) {
-                dp[i][j] = Math.max(nums[i] - dp[i + 1][j], nums[j] - dp[i][j - 1]);
-            }
-        }
-        return dp[0][n - 1] >= 0;
-    }
 }

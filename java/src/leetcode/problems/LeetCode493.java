@@ -2,7 +2,7 @@ package leetcode.problems;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2023/7/17 21:11
+ * @date 2023/12/6 13:50
  */
 public class LeetCode493 {
 
@@ -20,44 +20,52 @@ public class LeetCode493 {
         return res;
     }
 
-    public void mergeSort(int[] nums, int start, int end) {
-        if (start >= end) {
+    private void mergeSort(int[] nums, int left, int right) {
+        if (left >= right) {
             return;
         }
-        int mid = (start + end) / 2;
-        mergeSort(nums, start, mid);
-        mergeSort(nums, mid + 1, end);
-        merge(nums, mid, start, end);
+        int mid = (right - left) / 2 + left;
+        mergeSort(nums, left, mid);
+        mergeSort(nums, mid + 1, right);
+        merge(nums, left, mid, right);
     }
 
-    public void merge(int[] nums, int mid, int start, int end) {
-        int i = start;
-        int j = mid + 1;
-        int k = start;
-        while (i < mid + 1 && j <= end) {
+    private void merge(int[] nums, int left, int mid, int right) {
+        int i = left, j = mid + 1;
+        int k = left;
+
+        // 统计
+        int l = left, r = mid + 1;
+        while (l <= mid) {
+            while (r <= right && nums[l] > 2L * (long) nums[r]) {
+                r++;
+            }
+            res += r - mid - 1;
+            l++;
+        }
+
+        while (i <= mid && j <= right) {
             if (nums[i] <= nums[j]) {
                 temp[k] = nums[i];
                 i++;
-            } else if (nums[i] > nums[j]) {
+            } else {
                 temp[k] = nums[j];
                 j++;
-                // 计数
-                res += mid - i + 1;
             }
             k++;
         }
-        while (i < mid + 1) {
+        while (i <= mid) {
             temp[k] = nums[i];
-            k++;
             i++;
-        }
-        while (j <= end) {
-            temp[k] = nums[j];
             k++;
-            j++;
         }
-        for (int l = start; l <= end; l++) {
-            nums[l] = temp[l];
+        while (j <= right) {
+            temp[k] = nums[j];
+            j++;
+            k++;
+        }
+        for (int n = left; n <= right; n++) {
+            nums[n] = temp[n];
         }
     }
 }
