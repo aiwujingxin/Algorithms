@@ -10,7 +10,7 @@ import basic.datastructure.graph.bipartite.*;
 public class LeetCode886 {
 
     public boolean possibleBipartition(int n, int[][] dislikes) {
-//        return new BipartiteGraph_bfs().isBipartite(n + 1, dislikes);
+//        return new BipartiteGraph_dfs().isBipartite(n + 1, dislikes);
         return new BipartiteGraph_bfs().isBipartite(n + 1, dislikes);
     }
 }
