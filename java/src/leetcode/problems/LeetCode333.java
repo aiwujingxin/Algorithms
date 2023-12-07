@@ -9,7 +9,7 @@ import common.TreeNode;
  */
 public class LeetCode333 {
 
-    private int ans; // 二叉搜索树可以为空
+    private int ans;
 
     public int largestBSTSubtree(TreeNode root) {
         dfs(root);
@@ -20,16 +20,16 @@ public class LeetCode333 {
         if (root == null) {
             return new int[]{Integer.MAX_VALUE, Integer.MIN_VALUE, 0};
         }
-
-        int[] left = dfs(root.left); // 递归左子树
-        int[] right = dfs(root.right); // 递归右子树
-        if (root.val <= left[1] || root.val >= right[0]) { // 不是二叉搜索树
+        int[] left = dfs(root.left);
+        int[] right = dfs(root.right);
+        if (root.val <= left[1] || root.val >= right[0]) {
             return new int[]{Integer.MIN_VALUE, Integer.MAX_VALUE, 0};
         }
-
-        int s = left[2] + right[2] + 1; // 这棵子树的所有节点值之和
-        ans = Math.max(ans, s);
-
-        return new int[]{Math.min(left[0], root.val), Math.max(right[1], root.val), s};
+        int[] res = new int[3];
+        res[0] = Math.min(left[0], root.val);
+        res[1] = Math.min(right[1], root.val);
+        res[2] = left[2] + right[2] + 1;
+        ans = Math.max(ans, res[2]);
+        return res;
     }
 }

@@ -11,18 +11,18 @@ public class LeetCode549 {
     private int max = 0;
 
     public int longestConsecutive(TreeNode root) {
-        longestPath(root);
+        dfs(root);
         return max;
     }
 
-    public int[] longestPath(TreeNode root) {
+    public int[] dfs(TreeNode root) {
         if (root == null) {
             return new int[]{0, 0};
         }
         int inc = 1;
         int dec = 1;
         if (root.left != null) {
-            int[] left = longestPath(root.left);
+            int[] left = dfs(root.left);
             if (root.left.val == root.val + 1) {
                 inc += left[0];
             }
@@ -31,7 +31,7 @@ public class LeetCode549 {
             }
         }
         if (root.right != null) {
-            int[] right = longestPath(root.right);
+            int[] right = dfs(root.right);
             if (root.right.val == root.val + 1) {
                 inc = Math.max(inc, right[0] + 1);
             }

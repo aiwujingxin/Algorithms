@@ -9,7 +9,7 @@ import common.TreeNode;
  */
 public class LeetCode1373 {
 
-    private int ans; // 二叉搜索树可以为空
+    private int ans;
 
     public int maxSumBST(TreeNode root) {
         dfs(root);
@@ -21,12 +21,12 @@ public class LeetCode1373 {
             return new int[]{Integer.MAX_VALUE, Integer.MIN_VALUE, 0};
         }
 
-        int[] left = dfs(root.left); // 递归左子树
-        int[] right = dfs(root.right); // 递归右子树
-        if (root.val <= left[1] || root.val >= right[0]) { // 不是二叉搜索树
+        int[] left = dfs(root.left);
+        int[] right = dfs(root.right);
+        if (root.val <= left[1] || root.val >= right[0]) {
             return new int[]{Integer.MIN_VALUE, Integer.MAX_VALUE, 0};
         }
-        int val = left[2] + right[2] + root.val; // 这棵子树的所有节点值之和
+        int val = left[2] + right[2] + root.val;
         ans = Math.max(ans, val);
         return new int[]{Math.min(left[0], root.val), Math.max(right[1], root.val), val};
     }

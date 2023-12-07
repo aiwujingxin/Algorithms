@@ -11,7 +11,6 @@ public class LeetCode687 {
     int res;
 
     public int longestUnivaluePath(TreeNode root) {
-        res = 0;
         dfs(root);
         return res;
     }

@@ -44,5 +44,4 @@ public class LeetCode295 {
             return (double) (maxQ.peek() + minQ.peek()) / 2;
         }
     }
-
 }

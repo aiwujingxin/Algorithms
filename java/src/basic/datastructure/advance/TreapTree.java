@@ -1,13 +1,13 @@
 package basic.datastructure.advance;
 
-import leetcode.problems.LeetCode480;
+import leetcode.problems.LeetCode480_treap;
 
 import java.util.Random;
 
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/5/23 11:47
- * @see LeetCode480
+ * @see LeetCode480_treap
  */
 
 public class TreapTree {

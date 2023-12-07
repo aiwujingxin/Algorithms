@@ -11,16 +11,16 @@ public class LeetCode1245 {
 
     int ans = 0;
 
-    Map<Integer, List<Integer>> map = new HashMap<>();
+    Map<Integer, List<Integer>> graph = new HashMap<>();
 
     public int treeDiameter(int[][] edges) {
         int n = edges.length + 1;
         for (int i = 0; i < n; i++) {
-            map.putIfAbsent(i, new ArrayList<>());
+            graph.putIfAbsent(i, new ArrayList<>());
         }
         for (int[] edge : edges) {
-            map.get(edge[0]).add(edge[1]);
-            map.get(edge[1]).add(edge[0]);
+            graph.get(edge[0]).add(edge[1]);
+            graph.get(edge[1]).add(edge[0]);
         }
         dfs(0, -1);
         return ans;
@@ -28,7 +28,7 @@ public class LeetCode1245 {
 
     public int dfs(int x, int fa) {
         int maxLen = 0;
-        for (int a : map.get(x)) {
+        for (int a : graph.get(x)) {
             if (a == fa) {
                 continue;
             }

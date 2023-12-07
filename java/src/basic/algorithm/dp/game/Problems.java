@@ -1,16 +1,18 @@
 package basic.algorithm.dp.game;
 
+import leetcode.problems.*;
+
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/12/5 22:07
- * @see leetcode.problems.LeetCode292
- * @see leetcode.problems.LeetCode464
- * @see leetcode.problems.LeetCode1025
- * @see leetcode.problems.LeetCode486 预测赢家
- * @see leetcode.problems.LeetCode877 石子游戏
- * @see leetcode.problems.LeetCode1140 石子游戏 II
- * @see leetcode.problems.LeetCode1406 石子游戏 III
- * @see leetcode.problems.LeetCode1510 石子游戏 IV
+ * @see LeetCode292
+ * @see LeetCode464
+ * @see LeetCode1025
+ * @see LeetCode486 预测赢家
+ * @see LeetCode877 石子游戏
+ * @see LeetCode1140 石子游戏 II
+ * @see LeetCode1406 石子游戏 III
+ * @see LeetCode1510 石子游戏 IV
  */
 public interface Problems {
 

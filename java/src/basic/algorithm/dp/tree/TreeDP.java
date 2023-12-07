@@ -11,9 +11,9 @@ import leetcode.problems.*;
  * @see LeetCode333
  * @see LeetCode337
  * @see LeetCode543
- * @see LeetCode549
- * @see LeetCode687
- * @see LeetCode823
+ * @see LeetCode549 二叉树中最长的连续序列
+ * @see LeetCode687 最长同值路径
+ * @see LeetCode823 带因子的二叉树
  * @see LeetCode1120
  * @see LeetCode1245
  * @see LeetCode1372
@@ -26,5 +26,5 @@ import leetcode.problems.*;
  * @see LeetCode834
  * @see LeetCode2581
  */
-public abstract class TreeDP {
+public interface TreeDP {
 }

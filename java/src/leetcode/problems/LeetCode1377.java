@@ -11,7 +11,7 @@ public class LeetCode1377 {
 
     public double frogPosition(int n, int[][] edges, int t, int target) {
         List<Integer>[] graph = new List[n + 1];
-        for (int i = 0; i < n; i++) {
+        for (int i = 0; i <= n; i++) {
             graph[i] = new ArrayList<>();
         }
         graph[1].add(0); // 减少额外判断的小技巧
@@ -32,7 +32,7 @@ public class LeetCode1377 {
         }
         long ans = 0;
         for (Integer next : graph[node]) {
-            if (next != node) {
+            if (next != fa) {
                 ans += dfs(graph, next, node, t - 1, target);
                 if (ans != 0) {
                     return ans * (graph[node].size() - 1);

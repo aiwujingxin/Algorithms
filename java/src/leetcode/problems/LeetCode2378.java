@@ -50,8 +50,6 @@ public class LeetCode2378 {
          *       weight(from.child2) + dp[child2][1] - dp[child2][1] + (dp[child1][0] + dp[child2][0] + dp[child3][0])
          *       weight(from.child3) + dp[child3][1] - dp[child3][1] + (dp[child1][0] + dp[child2][0] + dp[child3][0]))
          */
-        System.out.println("sum " + sum + " diff " + diff);
-
         //选择一个叶子节点的未选中最大值 + 节点到该叶子节点的边的值 + 其他叶子节点的被选中和未选中的最大值
         return new long[]{diff + sum, sum};
     }

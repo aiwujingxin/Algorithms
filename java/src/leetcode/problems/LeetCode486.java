@@ -13,7 +13,6 @@ public class LeetCode486 {
         }
         int n = nums.length;
         memo = new Integer[n][n];
-
         return dfs(nums, 0, n - 1) >= 0;
     }
 
