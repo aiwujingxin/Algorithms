@@ -24,6 +24,7 @@ import leetcode.problems.*;
  * <p>其他
  * @see LeetCode17
  * @see LeetCode254 剪枝
+ * @see LeetCode491
  */
 public interface Backtrack {
 }

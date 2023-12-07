@@ -41,7 +41,7 @@ public class LeetCode487 {
                 cnt++;
             }
             while (cnt > 1) {
-                if (nums[right] == 0) {
+                if (nums[left] == 0) {
                     cnt--;
                 }
                 left++;

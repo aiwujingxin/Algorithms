@@ -1,9 +1,3 @@
-/*
- * @Author: aiwujingxin@gmail.com
- * @Date: 2023-04-19 22:24:06
- * @LastEditTime: 2023-04-21 23:18:12
- * @LastEditors: Jingxin Wu wujingxinit@outlook.com
- */
 package leetcode.problems;
 
 public class LeetCode484 {
