@@ -66,7 +66,7 @@ public class LeetCode480 {
     private void remove(int idx) {
         if (minSet.contains(idx)) {
             minSet.remove(idx);
-            if (maxSet.size() == minSet.size() + 2) {
+            if (maxSet.size() > minSet.size() + 1) {
                 minSet.add(maxSet.pollFirst());
             }
         } else {
