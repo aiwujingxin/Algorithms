@@ -13,25 +13,28 @@ public class LeetCode132 {
             return 0;
         }
         int n = s.length();
-        boolean[][] dp = new boolean[n][n];
+        boolean[][] isPal = new boolean[n][n];
         for (int i = n - 1; i >= 0; i--) {
             for (int j = i; j < n; j++) {
-                dp[i][j] = s.charAt(i) == s.charAt(j) && (j - i < 3 || dp[i + 1][j - 1]);
+                isPal[i][j] = s.charAt(i) == s.charAt(j) && (j - i < 3 || isPal[i + 1][j - 1]);
             }
         }
-        int[] f = new int[n];
-        Arrays.fill(f, Integer.MAX_VALUE);
-        for (int i = 0; i < n; ++i) {
-            if (dp[0][i]) {
-                f[i] = 0;
-            } else {
-                for (int j = 0; j < i; ++j) {
-                    if (dp[j + 1][i]) {
-                        f[i] = Math.min(f[i], f[j] + 1);
+
+        //令dp[i]表示从0到i的字符串可被拆分为最少的回文数的个数
+        int[] dp = new int[n];
+        Arrays.fill(dp, Integer.MAX_VALUE / 2);
+        dp[0] = 1;
+        for (int i = 1; i < n; i++) {
+            for (int j = 0; j <= i; j++) {
+                if (isPal[j][i]) {
+                    if (j == 0) {
+                        dp[i] = 1;
+                    } else {
+                        dp[i] = Math.min(dp[i], dp[j - 1] + 1);
                     }
                 }
             }
         }
-        return f[n - 1];
+        return dp[n - 1] - 1;
     }
 }

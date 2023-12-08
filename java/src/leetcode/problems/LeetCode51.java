@@ -12,6 +12,8 @@ public class LeetCode51 {
 
     char[][] board;
 
+    List<List<String>> res = new ArrayList<>();
+
     public List<List<String>> solveNQueens(int n) {
         if (n <= 0) {
             return new ArrayList<>();
@@ -20,12 +22,11 @@ public class LeetCode51 {
         for (int i = 0; i < n; i++) {
             Arrays.fill(board[i], '.');
         }
-        List<List<String>> res = new ArrayList<>();
-        backtrack(n, 0, res, new ArrayList<>());
+        backtrack(n, 0, new ArrayList<>());
         return res;
     }
 
-    private void backtrack(int n, int row, List<List<String>> res, List<String> list) {
+    private void backtrack(int n, int row, List<String> list) {
         if (row == n) {
             res.add(new ArrayList<>(list));
             return;
@@ -36,16 +37,13 @@ public class LeetCode51 {
             }
             board[row][j] = 'Q';
             list.add(new String(board[row]));
-            backtrack(n, row + 1, res, list);
+            backtrack(n, row + 1, list);
             board[row][j] = '.';
             list.remove(list.size() - 1);
         }
     }
 
     private boolean valid(char[][] board, int row, int col) {
-        if (board == null || board.length == 0) {
-            return true;
-        }
         for (int j = 0; j < board[0].length; j++) {
             if (board[row][j] == 'Q') {
                 return false;

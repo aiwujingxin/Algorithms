@@ -44,9 +44,6 @@ public class LeetCode52 {
     }
 
     private boolean valid(char[][] board, int row, int col) {
-        if (board == null || board.length == 0) {
-            return true;
-        }
         for (int j = 0; j < board[0].length; j++) {
             if (board[row][j] == 'Q') {
                 return false;

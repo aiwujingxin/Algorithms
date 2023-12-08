@@ -26,5 +26,5 @@ import leetcode.problems.*;
  * @see LeetCode834
  * @see LeetCode2581
  */
-public interface TreeDP {
+public interface Problems {
 }

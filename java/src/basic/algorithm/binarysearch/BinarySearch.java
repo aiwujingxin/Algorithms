@@ -3,6 +3,7 @@ package basic.algorithm.binarysearch;
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/5/1 13:02
+ * @see leetcode.problems.LeetCode34
  * <a href="https://leetcode.cn/problems/find-first-and-last-position-of-element-in-sorted-array/">...</a>
  */
 public class BinarySearch implements basic.datastructure.liner.array.BinarySearch {

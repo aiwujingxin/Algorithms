@@ -7,7 +7,7 @@ import java.util.Arrays;
  * @date 2023/6/26 22:06
  * <a href="https://www.baeldung.com/cs/tsp-dynamic-programming"></a>
  */
-public class TSP_dp {
+public class TSP_DP {
 
     public static int tsp(int[][] distance) {
         int N = distance.length;

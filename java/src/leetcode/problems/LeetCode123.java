@@ -16,13 +16,13 @@ public class LeetCode123 {
         int hold2 = Integer.MIN_VALUE;
         int sold2 = 0;
         for (int price : prices) {
-            int hold1t = hold1;
-            int sold1t = sold1;
-            int hold2t = hold2;
-            hold1 = Math.max(-price, hold1t);
-            sold1 = Math.max(hold1t + price, sold1t);
-            hold2 = Math.max(sold1t - price, hold2t);
-            sold2 = Math.max(hold2t + price, sold2);
+            int hold1temp = hold1;
+            int sold1temp = sold1;
+            int hold2temp = hold2;
+            hold1 = Math.max(-price, hold1temp);
+            sold1 = Math.max(hold1temp + price, sold1temp);
+            hold2 = Math.max(sold1temp - price, hold2temp);
+            sold2 = Math.max(hold2temp + price, sold2);
         }
         return Math.max(sold1, sold2);
     }

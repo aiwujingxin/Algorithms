@@ -2,6 +2,7 @@ package basic.algorithm.sort;
 
 import basic.datastructure.liner.array.ArraySort;
 import leetcode.problems.LeetCode315;
+import leetcode.problems.LeetCode327;
 import leetcode.problems.LeetCode493;
 
 /**
@@ -9,7 +10,7 @@ import leetcode.problems.LeetCode493;
  * @date 2021-06-06 1:46 下午
  * @see LeetCode315
  * @see LeetCode493
- * @see leetcode.problems.LeetCode327
+ * @see LeetCode327
  * @see leetcode.lists.offer.Offer51
  */
 

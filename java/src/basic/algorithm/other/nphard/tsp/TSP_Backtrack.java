@@ -5,7 +5,7 @@ package basic.algorithm.other.nphard.tsp;
  * @date 2023/6/26 22:30
  */
 
-public class TSP_backtrack {
+public class TSP_Backtrack {
 
     public static int tsp(int[][] distance) {
         int N = distance.length;

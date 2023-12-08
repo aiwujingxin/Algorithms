@@ -5,6 +5,7 @@ import java.util.*;
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/11/1 23:33
+ * @see LeetCode139
  */
 public class LeetCode140 {
 
@@ -21,26 +22,26 @@ public class LeetCode140 {
                 }
             }
         }
-        List<String> res = new ArrayList<>();
-        if (dp[n]) {
-            backtrack(s, n, set, dp, new ArrayDeque<>(), res);
-            return res;
+        if (!dp[n]) {
+            return new ArrayList<>();
         }
+        List<String> res = new ArrayList<>();
+        backtrack(s, n, set, dp, new ArrayDeque<>(), res);
         return res;
     }
 
 
-    private void backtrack(String s, int len, Set<String> wordSet, boolean[] dp, Deque<String> path, List<String> res) {
-        if (len == 0) {
-            res.add(String.join(" ", path));
+    private void backtrack(String s, int n, Set<String> wordSet, boolean[] dp, Deque<String> list, List<String> res) {
+        if (n == 0) {
+            res.add(String.join(" ", list));
             return;
         }
-        for (int i = len - 1; i >= 0; i--) {
-            String suffix = s.substring(i, len);
+        for (int i = n - 1; i >= 0; i--) {
+            String suffix = s.substring(i, n);
             if (wordSet.contains(suffix) && dp[i]) {
-                path.addFirst(suffix);
-                backtrack(s, i, wordSet, dp, path, res);
-                path.removeFirst();
+                list.addFirst(suffix);
+                backtrack(s, i, wordSet, dp, list, res);
+                list.removeFirst();
             }
         }
     }

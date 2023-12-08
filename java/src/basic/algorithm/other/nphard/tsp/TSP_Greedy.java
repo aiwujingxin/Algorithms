@@ -4,7 +4,7 @@ package basic.algorithm.other.nphard.tsp;
  * @author wujingxinit@outlook.com
  * @date 2023/6/26 22:33
  */
-public class TSP_greedy {
+public class TSP_Greedy {
     public static int tsp(int[][] distance) {
         int N = distance.length;
         boolean[] visited = new boolean[N];

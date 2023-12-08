@@ -16,9 +16,7 @@ public class HeapSort implements ArraySort {
         }
         // 从后向前遍历
         for (int i = n - 1; i > 0; i--) {
-            int temp = nums[0];
-            nums[0] = nums[i];
-            nums[i] = temp;
+            swap(nums, 0, i);
             heapify(nums, i, 0);
         }
         return nums;
@@ -36,11 +34,14 @@ public class HeapSort implements ArraySort {
             bigger = r;
         }
         if (i != bigger) {
-            int temp = nums[i];
-            nums[i] = nums[bigger];
-            nums[bigger] = temp;
+            swap(nums, i, bigger);
             heapify(nums, n, bigger);
         }
     }
 
+    private void swap(int[] nums, int i, int j) {
+        int t = nums[i];
+        nums[i] = nums[j];
+        nums[j] = t;
+    }
 }

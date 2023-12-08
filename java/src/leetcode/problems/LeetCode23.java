@@ -16,7 +16,7 @@ public class LeetCode23 {
     }
 
     public ListNode mergeKLists(ListNode[] lists, int start, int end) {
-        if (start >= end) {
+        if (start == end) {
             return lists[start];
         }
         int mid = (start + end) / 2;

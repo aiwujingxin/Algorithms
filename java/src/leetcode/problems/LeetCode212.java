@@ -35,13 +35,9 @@ public class LeetCode212 {
     }
 
     public void dfs(char[][] board, boolean[][] visited, String str, int x, int y, Trie trie) {
-        if (x < 0 || x >= board.length || y < 0 || y >= board[0].length) {
+        if (x < 0 || x >= board.length || y < 0 || y >= board[0].length || visited[x][y]) {
             return;
         }
-        if (visited[x][y]) {
-            return;
-        }
-
         str += board[x][y];
         if (!trie.startsWith(str)) {
             return;

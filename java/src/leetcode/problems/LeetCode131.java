@@ -30,7 +30,6 @@ public class LeetCode131 {
             res.add(new ArrayList<>(list));
             return;
         }
-        int n = dp.length;
         for (int i = index; i < s.length(); i++) {
             if (dp[index][i]) {
                 list.add(s.substring(index, i + 1));

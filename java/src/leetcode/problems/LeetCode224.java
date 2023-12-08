@@ -51,13 +51,13 @@ public class LeetCode224 {
                 num = 0;
             }
             if (c == ')') {
-                return new int[]{sum(stack), i};
+                return new int[]{getSum(stack), i};
             }
         }
-        return new int[]{sum(stack), s.length()};
+        return new int[]{getSum(stack), s.length()};
     }
 
-    private int sum(Stack<Integer> stack) {
+    private int getSum(Stack<Integer> stack) {
         int res = 0;
         while (!stack.isEmpty()) {
             res += stack.pop();

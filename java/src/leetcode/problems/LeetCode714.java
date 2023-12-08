@@ -19,5 +19,4 @@ public class LeetCode714 {
         }
         return dp[dp.length - 1][0];
     }
-
 }

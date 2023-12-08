@@ -58,5 +58,4 @@ public class LeetCode127 {
         }
         return list;
     }
-
 }

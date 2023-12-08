@@ -10,39 +10,38 @@ import java.util.Queue;
  */
 public class LeetCode4 {
 
-    Queue<Integer> queue1;
-    Queue<Integer> queue2;
+    Queue<Integer> maxQ;
+    Queue<Integer> minQ;
 
     public double findMedianSortedArrays(int[] nums1, int[] nums2) {
-        queue1 = new PriorityQueue<>(new Comparator<Integer>() {
+        maxQ = new PriorityQueue<>(new Comparator<Integer>() {
             @Override
             public int compare(Integer o1, Integer o2) {
                 return o2 - o1;
             }
         });
-        queue2 = new PriorityQueue<>();
+        minQ = new PriorityQueue<>();
 
         add(nums1);
         add(nums2);
 
         if ((nums1.length + nums2.length) % 2 == 1) {
-            return queue1.peek();
+            return maxQ.peek();
         }
-        return ((double) queue1.peek() + (double) queue2.peek()) / 2;
+        return ((double) maxQ.peek() + (double) minQ.peek()) / 2;
     }
 
     private void add(int[] nums) {
         for (int num : nums) {
-            if (queue1.isEmpty() || queue1.peek() >= num) {
-                queue1.add(num);
+            if (maxQ.isEmpty() || maxQ.peek() >= num) {
+                maxQ.add(num);
             } else {
-                queue2.add(num);
+                minQ.add(num);
             }
-
-            if (queue1.size() > queue2.size() + 1) {
-                queue2.add(queue1.poll());
-            } else if (queue2.size() > queue1.size()) {
-                queue1.add(queue2.poll());
+            if (maxQ.size() > minQ.size() + 1) {
+                minQ.add(maxQ.poll());
+            } else if (minQ.size() > maxQ.size()) {
+                maxQ.add(minQ.poll());
             }
         }
     }

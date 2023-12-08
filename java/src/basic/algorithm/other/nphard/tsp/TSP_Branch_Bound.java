@@ -6,7 +6,7 @@ package basic.algorithm.other.nphard.tsp;
  * <a href="https://www.bilibili.com/video/BV1fY4y1e7JU/?spm_id_from=333.788.top_right_bar_window_history.content.click&vd_source=88e5a3e60377510439e11f13b5878c25">...</a>
  * <a href="https://www.bilibili.com/video/BV1KK411p72i/?spm_id_from=333.337.search-card.all.click&vd_source=88e5a3e60377510439e11f13b5878c25">...</a>
  */
-public class TSP_branch_Bound {
+public class TSP_Branch_Bound {
 
     public static void main(String[] args) {
         int[][] distance = {
