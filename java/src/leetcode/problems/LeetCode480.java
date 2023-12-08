@@ -58,7 +58,7 @@ public class LeetCode480 {
         }
         if (maxSet.size() > minSet.size() + 1) {
             minSet.add(maxSet.pollFirst());
-        } else if (minSet.size() > maxSet.size()) {
+        } else if (maxSet.size() < minSet.size()) {
             maxSet.add(minSet.pollFirst());
         }
     }
