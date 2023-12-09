@@ -15,7 +15,7 @@ import java.io.InputStreamReader;
  * @see LeetCode87 扰乱字符
  * @see LeetCode1000_dp_3d 石子合并
  * @see LeetCode312 戳气球
- * @see LeetCode486_dp
+ * @see LeetCode486
  * @see LeetCode516
  * @see LeetCode647
  * @see LeetCode678_dp
