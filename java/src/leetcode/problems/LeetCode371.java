@@ -1,6 +1,6 @@
 package leetcode.problems;
 
-import basic.datastructure.string.math.BigDecimal;
+import basic.datastructure.string.nubmer.BigDecimal;
 
 /**
  * @author aiwujingxin@gmail.com

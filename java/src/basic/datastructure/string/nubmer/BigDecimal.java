@@ -1,4 +1,4 @@
-package basic.datastructure.string.math;
+package basic.datastructure.string.nubmer;
 
 /**
  * @author jingxinwu

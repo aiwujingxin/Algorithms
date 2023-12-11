@@ -24,23 +24,23 @@ public class LevelOrder {
             if (root == null) {
                 return "";
             }
-            StringBuilder res = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             Queue<TreeNode> queue = new LinkedList<>();
             queue.add(root);
             while (!queue.isEmpty()) {
                 TreeNode node = queue.poll();
                 if (node != null) {
-                    res.append(node.val);
+                    sb.append(node.val);
                     queue.add(node.left);
                     queue.add(node.right);
                 } else {
-                    res.append(NULL);
+                    sb.append(NULL);
                 }
                 if (!queue.isEmpty()) {
-                    res.append(COMMA);
+                    sb.append(COMMA);
                 }
             }
-            return res.toString();
+            return sb.toString();
         }
 
         // Decodes your encoded data to tree.
@@ -49,20 +49,20 @@ public class LevelOrder {
             if (data.isEmpty()) {
                 return null;
             }
-            String[] dataList = data.split(COMMA);
-            TreeNode root = new TreeNode(Integer.parseInt(dataList[0]));
+            String[] list = data.split(COMMA);
+            TreeNode root = new TreeNode(Integer.parseInt(list[0]));
             Queue<TreeNode> queue = new LinkedList<>();
             queue.add(root);
             int index = 1;
             while (!queue.isEmpty()) {
                 TreeNode node = queue.poll();
-                if (!NULL.equals(dataList[index])) {
-                    node.left = new TreeNode(Integer.parseInt(dataList[index]));
+                if (!NULL.equals(list[index])) {
+                    node.left = new TreeNode(Integer.parseInt(list[index]));
                     queue.add(node.left);
                 }
                 index++;
-                if (!NULL.equals(dataList[index])) {
-                    node.right = new TreeNode(Integer.parseInt(dataList[index]));
+                if (!NULL.equals(list[index])) {
+                    node.right = new TreeNode(Integer.parseInt(list[index]));
                     queue.add(node.right);
                 }
                 index++;

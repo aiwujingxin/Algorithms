@@ -15,9 +15,9 @@ import java.util.Set;
 public class LeetCode212 {
 
     Set<String> res = new HashSet<>();
+    Trie trie = new Trie();
 
     public List<String> findWords(char[][] board, String[] words) {
-        Trie trie = new Trie();
         for (String word : words) {
             trie.insert(word);
         }
@@ -34,7 +34,7 @@ public class LeetCode212 {
         return new ArrayList<>(res);
     }
 
-    public void dfs(char[][] board, boolean[][] visited, String str, int x, int y, Trie trie) {
+    public void dfs(char[][] board, boolean[][] visited, String str, int x, int y) {
         if (x < 0 || x >= board.length || y < 0 || y >= board[0].length || visited[x][y]) {
             return;
         }
@@ -48,10 +48,10 @@ public class LeetCode212 {
         }
 
         visited[x][y] = true;
-        dfs(board, visited, str, x - 1, y, trie);
-        dfs(board, visited, str, x + 1, y, trie);
-        dfs(board, visited, str, x, y - 1, trie);
-        dfs(board, visited, str, x, y + 1, trie);
+        dfs(board, visited, str, x - 1, y);
+        dfs(board, visited, str, x + 1, y);
+        dfs(board, visited, str, x, y - 1);
+        dfs(board, visited, str, x, y + 1);
         visited[x][y] = false;
     }
 }
