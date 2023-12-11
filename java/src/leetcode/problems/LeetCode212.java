@@ -27,7 +27,7 @@ public class LeetCode212 {
         boolean[][] visited = new boolean[m][n];
         for (int i = 0; i < m; i++) {
             for (int j = 0; j < n; j++) {
-                dfs(board, visited, "", i, j, trie);
+                dfs(board, visited, "", i, j);
             }
         }
 
