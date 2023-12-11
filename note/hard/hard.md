@@ -5,9 +5,9 @@
 ## 10. 正则表达式匹配
 
 ![LeetCode10.png](pic/LeetCode10.png)
-## 23. 合并 K 个升序链表
+## 25. K 个一组翻转链表
 
-![LeetCode23.png](pic/LeetCode23.png)
+![LeetCode25∂.png](pic/LeetCode25.png)
 
 ## 32. 最长有效括号
 
