@@ -1,4 +1,4 @@
-package basic.datastructure.liner.stack;
+package basic.datastructure.stack;
 
 import leetcode.problems.LeetCode739;
 
@@ -32,5 +32,4 @@ public class MonotonicStack {
 
         return result;
     }
-
 }

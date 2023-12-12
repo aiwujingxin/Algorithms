@@ -1,4 +1,4 @@
-package basic.datastructure.liner.array;
+package basic.datastructure.array;
 
 import leetcode.problems.*;
 

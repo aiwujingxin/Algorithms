@@ -24,7 +24,7 @@ public class LeetCode37 {
                         if (valid(board, row, col, c)) {
                             // 填完传递给下一层
                             board[row][col] = c;
-                            if (backtrack(board)) {
+                            if (backtrack(board)) {//只要找到一个答案，后续的递归穷举都会被阻断。
                                 return true;
                             }
                             // 下一层无论填什么都不符合，那么得重新填

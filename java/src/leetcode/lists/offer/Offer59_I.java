@@ -7,7 +7,7 @@ import java.util.Queue;
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/9/14 02:14
- * @see basic.datastructure.liner.queue.MonotonicQueue
+ * @see basic.datastructure.queue.MonotonicQueue
  */
 public class Offer59_I {
 

@@ -6,7 +6,7 @@ package basic.algorithm.binarysearch;
  * @see leetcode.problems.LeetCode34
  * <a href="https://leetcode.cn/problems/find-first-and-last-position-of-element-in-sorted-array/">...</a>
  */
-public class BinarySearch implements basic.datastructure.liner.array.BinarySearch {
+public class BinarySearch implements basic.datastructure.array.BinarySearch {
 
     //34. 在排序数组中查找元素的第一个和最后一个位置
     @Override

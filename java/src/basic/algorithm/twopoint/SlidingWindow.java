@@ -16,7 +16,7 @@ public interface SlidingWindow {
 
       for (int i = 0, j = 0; i < n; i ++ )
       {
-          while (j < i && check(i, j)) j ++ ;
+          while (j < i && check(i, j)) {j ++ ;}
           // 具体问题的逻辑
       }
       常见问题分类：

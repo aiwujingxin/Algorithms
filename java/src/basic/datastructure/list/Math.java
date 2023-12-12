@@ -1,4 +1,4 @@
-package basic.datastructure.liner.list;
+package basic.datastructure.list;
 
 /**
  * @author wujingxinit@outlook.com

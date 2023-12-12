@@ -1,6 +1,6 @@
 package basic.algorithm.sort;
 
-import basic.datastructure.liner.array.ArraySort;
+import basic.datastructure.array.ArraySort;
 
 import java.util.ArrayList;
 import java.util.List;

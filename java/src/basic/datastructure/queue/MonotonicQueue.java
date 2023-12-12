@@ -1,4 +1,4 @@
-package basic.datastructure.liner.queue;
+package basic.datastructure.queue;
 
 
 import java.util.ArrayDeque;
@@ -7,6 +7,7 @@ import java.util.Deque;
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/8/30 22:04
+ * @see leetcode.problems.LeetCode239
  * @link <a href="https://leetcode.com/problems/sliding-window-maximum/discuss/2651803/Java-O(n)-solution-using-deque">...</a>
  */
 public class MonotonicQueue {
