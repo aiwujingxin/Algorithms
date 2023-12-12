@@ -10,7 +10,7 @@ public class TwoCostPack {
         int N = 3; // Number of items
         int[] weights = {2, 3, 4}; // Weights of items
         int[] volumes = {1, 2, 3}; // Volumes of items
-        int[] values = {5, 7, 10}; // Values of items
+        int[] values = {1, 1, 1}; // Values of items
         int W = 5; // Max weight
         int V = 4; // Max volume
         int result = new TwoCostPack().backPack(N, weights, volumes, values, W, V);
