@@ -2,7 +2,7 @@ package leetcode.problems;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2023/11/11 21:17
+ * @date 2023/12/12 21:26
  */
 public class LeetCode75 {
 
@@ -16,21 +16,18 @@ public class LeetCode75 {
         while (index <= p2) {
             if (nums[index] == 0) {
                 swap(nums, index, p0);
-                index++;
                 p0++;
-            } else if (nums[index] == 1) {
                 index++;
-            } else {
+            } else if (nums[index] == 2) {
                 swap(nums, index, p2);
                 p2--;
+            } else {
+                index++;
             }
         }
     }
 
     private void swap(int[] nums, int i, int j) {
-        if (i == j) {
-            return;
-        }
         int t = nums[i];
         nums[i] = nums[j];
         nums[j] = t;

@@ -2,7 +2,7 @@ package leetcode.problems;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2023/11/11 21:36
+ * @date 2023/12/12 21:39
  * @see LeetCode26
  */
 public class LeetCode80 {
@@ -15,7 +15,6 @@ public class LeetCode80 {
         int right = 2;
         int left = 2;
         while (right < n) {
-            //窗口一样
             if (nums[left - 2] != nums[right]) {
                 nums[left] = nums[right];
                 left++;

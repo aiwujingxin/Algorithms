@@ -13,7 +13,7 @@ public class LeetCode26 {
         }
         int left = 1, right = 1;
         while (right < n) {
-            if (nums[right - 1] != nums[right]) {
+            if (nums[left - 1] != nums[right]) {
                 nums[left] = nums[right];
                 left++;
             }
