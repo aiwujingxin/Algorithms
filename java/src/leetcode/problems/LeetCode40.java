@@ -7,6 +7,7 @@ import java.util.List;
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/10/20 10:09
+ * @description 添加了排序和剪枝的逻辑，其他都不变
  */
 public class LeetCode40 {
 

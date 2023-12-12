@@ -3,6 +3,8 @@ package leetcode.problems;
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/11/10 12:29
+ * @description 回溯
+ * 当前有矛盾就重新填，如果当前层都不符合，则需要返回上一层重新填
  */
 public class LeetCode37 {
 
@@ -20,11 +22,12 @@ public class LeetCode37 {
                 if (board[row][col] == '.') {
                     for (char c = '1'; c <= '9'; c++) {
                         if (valid(board, row, col, c)) {
+                            // 填完传递给下一层
                             board[row][col] = c;
                             if (backtrack(board)) {
                                 return true;
                             }
-                            // 下游无论填什么都不符合，那么上游得重新填
+                            // 下一层无论填什么都不符合，那么得重新填
                             board[row][col] = '.';
                         }
                     }

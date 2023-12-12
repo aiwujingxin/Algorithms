@@ -16,7 +16,10 @@ public class LeetCode46 {
         return res;
     }
 
-    void backtrack(int[] nums, List<Integer> list, List<List<Integer>> res, boolean[] used) {
+    /**
+     * @param used 标记已经在路径上的元素避免重复选择
+     */
+    private void backtrack(int[] nums, List<Integer> list, List<List<Integer>> res, boolean[] used) {
         if (list.size() == nums.length) {
             res.add(new ArrayList<>(list));
             return;
@@ -25,8 +28,8 @@ public class LeetCode46 {
             if (used[i]) {
                 continue;
             }
-            list.add(nums[i]);
             used[i] = true;
+            list.add(nums[i]);
             backtrack(nums, list, res, used);
             list.remove(list.size() - 1);
             used[i] = false;

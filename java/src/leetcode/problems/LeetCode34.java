@@ -3,6 +3,7 @@ package leetcode.problems;
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/10/20 11:19
+ * @description 二分模板
  */
 public class LeetCode34 {
     public int[] searchRange(int[] nums, int target) {

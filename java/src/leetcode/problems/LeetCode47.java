@@ -27,12 +27,15 @@ public class LeetCode47 {
             if (used[i]) {
                 continue;
             }
-            // 新添加的剪枝逻辑，固定相同的元素在排列中的相对位置
-            if (i > 0 && nums[i] == nums[i - 1] && used[i - 1]) {
+            // 剪枝逻辑，固定相同的元素在排列中的相对位置 保证相同元素在排列中的相对位置保持不变： 2 -> 2' -> 2''
+            //!used[i - 1] 这种剪枝逻辑剪得干净利落, 从源头就剪掉了
+            // used[i - 1] 仅仅维护了 2'' -> 2' -> 2 的相对顺序
+            if (i > 0 && nums[i] == nums[i - 1] && !used[i - 1]) {
+                // 如果前面的相邻相等元素没有用过，则跳过; 2' 只有在 2 已经被使用的情况下才会被选择
                 continue;
             }
-            list.add(nums[i]);
             used[i] = true;
+            list.add(nums[i]);
             backtrack(nums, list, res, used);
             list.remove(list.size() - 1);
             used[i] = false;
