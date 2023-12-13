@@ -4,7 +4,7 @@ import common.ListNode;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2023/11/11 20:51
+ * @date 2023/12/13 13:39
  */
 public class LeetCode83 {
 
@@ -12,11 +12,9 @@ public class LeetCode83 {
         if (head == null || head.next == null) {
             return head;
         }
-
         ListNode cur = head;
-
-        while (cur.next != null) {
-            if (cur.val == cur.next.val) {
+        while (cur != null) {
+            if (cur.next != null && cur.val == cur.next.val) {
                 cur.next = cur.next.next;
             } else {
                 cur = cur.next;

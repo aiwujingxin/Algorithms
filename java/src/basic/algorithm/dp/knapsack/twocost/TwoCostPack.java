@@ -11,14 +11,15 @@ public class TwoCostPack {
 
     public static void main(String[] args) {
         int N = 15; // Number of items
-        int V = 20; // Max volume
-        int W = 15; // Max weight
-        int[] volumes = {1, 2, 3, 4, 2, 1, 5, 1, 1, 2, 1, 2, 5, 2, 1}; // Volumes of items
-        int[] weights = {2, 4, 4, 5, 3, 2, 4, 5, 3, 2, 2, 3, 6, 3, 3}; // Weights of items
-        int[] values = {3, 4, 5, 6, 4, 3, 3, 2, 5, 2, 4, 5, 2, 5, 7}; // Values of items
-        int[] values1 = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}; // Values of items
-        System.out.println(new TwoCostPack().backPack(N, V, W, volumes, weights, values));
+        int V = 40; // Max volume
+        int W = 30; // Max weight
+        int[] volumes = {1, 2, 3, 4, 2, 1, 5, 1, 1, 2, 1, 2, 5, 2, 1, 12, 3, 4, 5, 6, 7, 8, 9, 0, 21, 13, 13, 1, 32}; // Volumes of items
+        int[] weights = {2, 4, 4, 5, 3, 2, 4, 5, 3, 2, 2, 3, 6, 3, 3, 12, 13, 5, 6, 7, 13, 4, 5, 1, 7, 1, 12, 42, 3}; // Weights of items
+        int[] values1 = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}; // Values of items
+        //        int[] values = {3, 4, 5, 6, 4, 3, 3, 2, 5, 2, 4, 5, 2, 5, 7}; // Values of items
+
         System.out.println(new TwoCostPack().backPack(N, V, W, volumes, weights, values1));
+        System.out.println(new TwoCostPack().backPack_2d(N, V, W, volumes, weights, values1));
     }
 
     List<Integer> result = new ArrayList<>();
@@ -51,16 +52,41 @@ public class TwoCostPack {
         return dp[N][W][V];
     }
 
+
+    static class TreePosition {
+        int number;
+        TreePosition parentNode;
+
+        public TreePosition(int number, TreePosition parentNode) {
+            this.number = number;
+            this.parentNode = parentNode;
+        }
+    }
+
     // 空间优化
     public int backPack_2d(int N, int V, int M, int[] volumes, int[] weights, int[] values) {
         int[][] dp = new int[V + 1][M + 1];
+        TreePosition[][] dpTree = new TreePosition[V + 1][M + 1];
         for (int i = 1; i <= N; i++) {
             for (int j = V; j >= volumes[i - 1]; j--) {
                 for (int k = M; k >= weights[i - 1]; k--) {
-                    dp[j][k] = Math.max(dp[j - volumes[i - 1]][k - weights[i - 1]] + values[i - 1], dp[j][k]);
+                    if (dp[j - volumes[i - 1]][k - weights[i - 1]] + values[i - 1] > dp[j][k]) {
+                        dp[j][k] = dp[j - volumes[i - 1]][k - weights[i - 1]] + values[i - 1];
+                        dpTree[j][k] = new TreePosition(i, dpTree[j - volumes[i - 1]][k - weights[i - 1]]);
+                    }
                 }
             }
         }
+        List<Integer> result = new ArrayList<>();
+        TreePosition treePosition = dpTree[V][M];
+        while (treePosition != null) {
+            result.add(treePosition.number - 1);
+            treePosition = treePosition.parentNode;
+        }
+        for (Integer index : result) {
+            System.out.println("选择物品 " + index + ",它的价值" + values[index] + ".");
+        }
+        System.out.println("最大价值 " + dp[V][M]);
         return dp[V][M];
     }
 }

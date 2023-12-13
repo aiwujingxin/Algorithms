@@ -7,33 +7,41 @@ import java.util.List;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2023/11/11 19:28
+ * @date 2023/12/13 12:49
  */
 public class LeetCode95 {
 
     public List<TreeNode> generateTrees(int n) {
-        return generate(1, n);
+        if (n == 0) {
+            return new ArrayList<>();
+        }
+        return dfs(1, n);
     }
 
-    public List<TreeNode> generate(int start, int end) {
+    private List<TreeNode> dfs(int start, int end) {
         if (start > end) {
-            List<TreeNode> res = new ArrayList<>();
-            res.add(null);
-            return res;
+            List<TreeNode> list = new ArrayList<>();
+            list.add(null);
+            return list;
         }
-        List<TreeNode> res = new ArrayList<>();
-        for (int i = start; i < end; i++) {
-            List<TreeNode> left = generate(start, i - 1);
-            List<TreeNode> right = generate(i + 1, end);
+        if (start == end) {
+            List<TreeNode> list = new ArrayList<>();
+            list.add(new TreeNode(start));
+            return list;
+        }
+        List<TreeNode> list = new ArrayList<>();
+        for (int i = start; i <= end; i++) {
+            List<TreeNode> left = dfs(start, i - 1);
+            List<TreeNode> right = dfs(i + 1, end);
             for (TreeNode l : left) {
                 for (TreeNode r : right) {
                     TreeNode root = new TreeNode(i);
                     root.left = l;
                     root.right = r;
-                    res.add(root);
+                    list.add(root);
                 }
             }
         }
-        return res;
+        return list;
     }
 }
