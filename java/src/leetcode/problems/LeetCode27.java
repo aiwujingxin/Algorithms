@@ -9,11 +9,13 @@ public class LeetCode27 {
     public int removeElement(int[] nums, int val) {
         int n = nums.length;
         int left = 0;
-        for (int right = 0; right < n; right++) {
+        int right = 0;
+        while (right < n){
             if (val != nums[right]) {
                 nums[left] = nums[right];
                 left++;
             }
+            right++;
         }
         return left;
     }
