@@ -1,5 +1,7 @@
 package leetcode.problems;
 
+import java.util.Random;
+
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/11/3 13:53
@@ -29,6 +31,8 @@ public class LeetCode215 {
 
 
     public int partition(int[] nums, int i, int j) {
+        int ri = new Random().nextInt(j - i + 1) + i; // 随机选一个作为我们的主元
+        swap(nums, ri, i);
         int pi = nums[i];
         while (i < j) {
             while (i < j && nums[j] <= pi) {
@@ -42,5 +46,11 @@ public class LeetCode215 {
         }
         nums[i] = pi;
         return i;
+    }
+
+    private void swap(int[] nums, int ri, int i) {
+        int temp = nums[i];
+        nums[i] = nums[ri];
+        nums[ri] = temp;
     }
 }
