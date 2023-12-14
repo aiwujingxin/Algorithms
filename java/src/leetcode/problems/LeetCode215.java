@@ -12,21 +12,22 @@ public class LeetCode215 {
         if (nums == null || nums.length == 0) {
             return 0;
         }
-        return find(nums, 0, nums.length - 1, k);
+        return findKthLargest(nums, 0, nums.length - 1, k);
     }
 
-    public int find(int[] nums, int start, int end, int k) {
-        if (start >= end) {
-            return nums[start];
+
+    public int findKthLargest(int[] nums, int start, int end, int k) {
+        if (start > end) {
+            return -1;
         }
         int index = partition(nums, start, end);
         if (index + 1 == k) {
-            return nums[index + 1];
+            return nums[index];
         }
         if (index + 1 < k) {
-            return find(nums, index + 1, end, k);
+            return findKthLargest(nums, index + 1, end, k);
         }
-        return find(nums, start, index - 1, k);
+        return findKthLargest(nums, start, index - 1, k);
     }
 
 
@@ -48,9 +49,9 @@ public class LeetCode215 {
         return i;
     }
 
-    private void swap(int[] nums, int ri, int i) {
-        int temp = nums[i];
-        nums[i] = nums[ri];
-        nums[ri] = temp;
+    public void swap(int[] nums, int i, int j) {
+        int t = nums[i];
+        nums[i] = nums[j];
+        nums[j] = t;
     }
 }

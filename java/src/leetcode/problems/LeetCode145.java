@@ -8,7 +8,7 @@ import java.util.Stack;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2023/11/1 22:58
+ * @date 2023/12/14 22:26
  */
 public class LeetCode145 {
 
@@ -16,12 +16,12 @@ public class LeetCode145 {
         if (root == null) {
             return new ArrayList<>();
         }
-        List<Integer> list = new ArrayList<>();
         Stack<TreeNode> stack = new Stack<>();
+        List<Integer> list = new ArrayList<>();
         TreeNode pre = null;
         while (!stack.isEmpty() || root != null) {
             while (root != null) {
-                stack.push(root);
+                stack.add(root);
                 root = root.left;
             }
             root = stack.pop();
@@ -30,7 +30,7 @@ public class LeetCode145 {
                 pre = root;
                 root = null;
             } else {
-                stack.push(root);
+                stack.add(root);
                 root = root.right;
             }
         }
