@@ -4,22 +4,20 @@ import common.ListNode;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2023/11/11 20:56
+ * @date 2023/12/13 13:40
  */
 public class LeetCode82 {
 
     public ListNode deleteDuplicates(ListNode head) {
         if (head == null || head.next == null) {
-            return head;
+            return null;
         }
-
         ListNode dummy = new ListNode();
         dummy.next = head;
         ListNode cur = dummy;
-        while (cur.next != null && cur.next.next != null) {
-            //基准
+        while (cur.next != null) {
             int val = cur.next.val;
-            if (val == cur.next.next.val) {
+            if (cur.next.next != null && cur.next.next.val == val) {
                 while (cur.next != null && cur.next.val == val) {
                     cur.next = cur.next.next;
                 }

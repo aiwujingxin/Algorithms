@@ -4,7 +4,7 @@ import common.TreeNode;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2023/11/23 17:21
+ * @date 2023/12/14 16:57
  */
 public class LeetCode114 {
 
@@ -17,9 +17,8 @@ public class LeetCode114 {
 
         TreeNode left = root.left;
         TreeNode right = root.right;
-        root.left = null;
         root.right = left;
-
+        root.left = null;
         TreeNode cur = root;
         while (cur.right != null) {
             cur = cur.right;

@@ -5,7 +5,7 @@ import java.util.List;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2023/11/23 17:26
+ * @date 2023/12/14 17:13
  */
 public class LeetCode131 {
 
@@ -21,19 +21,19 @@ public class LeetCode131 {
             }
         }
         List<List<String>> res = new ArrayList<>();
-        backtrack(dp, s, 0, res, new ArrayList<>());
+        backtrack(dp, 0, s, res, new ArrayList<>());
         return res;
     }
 
-    private void backtrack(boolean[][] dp, String s, int index, List<List<String>> res, List<String> list) {
+    private void backtrack(boolean[][] dp, int index, String s, List<List<String>> res, List<String> list) {
         if (index == s.length()) {
             res.add(new ArrayList<>(list));
             return;
         }
-        for (int i = index; i < s.length(); i++) {
-            if (dp[index][i]) {
-                list.add(s.substring(index, i + 1));
-                backtrack(dp, s, i + 1, res, list);
+        for (int j = index; j < s.length(); j++) {
+            if (dp[index][j]) {
+                list.add(s.substring(index, j + 1));
+                backtrack(dp, j + 1, s, res, list);
                 list.remove(list.size() - 1);
             }
         }
