@@ -4,7 +4,7 @@ import common.ListNode;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2023/10/27 04:02
+ * @date 2023/12/18 17:18
  */
 public class LeetCode86 {
 
@@ -16,19 +16,20 @@ public class LeetCode86 {
         ListNode dummy = new ListNode();
         dummy.next = head;
         ListNode cur = dummy;
-        while (cur.next != null) {
-            if (cur.next.val >= x) {
-                ListNode fast = cur.next;
-                while (fast.next != null && fast.next.val >= x) {
-                    fast = fast.next;
+
+        while (cur != null) {
+            if (cur.next != null && cur.next.val >= x) {
+                ListNode t = cur.next;
+                while (t.next != null && t.next.val >= x) {
+                    t = t.next;
                 }
-                if (fast.next == null) {
+                if (t.next == null) {
                     return dummy.next;
                 }
-                ListNode node = fast.next;
-                fast.next = fast.next.next;
-                node.next = cur.next;
-                cur.next = node;
+                ListNode next = t.next.next;
+                t.next.next = cur.next;
+                cur.next = t.next;
+                t.next = next;
             }
             cur = cur.next;
         }

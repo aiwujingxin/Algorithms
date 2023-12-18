@@ -6,10 +6,9 @@ import java.util.List;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2023/10/18 15:20
+ * @date 2023/12/18 16:38
  */
 public class LeetCode17 {
-
     HashMap<Integer, String> map;
     List<String> res;
 
@@ -36,12 +35,11 @@ public class LeetCode17 {
             res.add(sb.toString());
             return;
         }
-        int num = digits.charAt(index) - '0';
-        for (int i = 0; i < map.get(num).length(); i++) {
-            sb.append(map.get(num).charAt(i));
-
+        for (int i = 0; i < map.get(digits.charAt(index) - '0').length(); i++) {
+            sb.append(map.get(digits.charAt(index) - '0').charAt(i));
             backtrack(digits, index + 1, sb);
             sb.deleteCharAt(sb.length() - 1);
         }
     }
 }
+

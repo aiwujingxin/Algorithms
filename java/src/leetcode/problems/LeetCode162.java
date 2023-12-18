@@ -2,7 +2,7 @@ package leetcode.problems;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2023/11/1 17:03
+ * @date 2023/12/18 20:36
  */
 public class LeetCode162 {
 
@@ -14,7 +14,7 @@ public class LeetCode162 {
         int right = nums.length - 1;
         while (left < right) {
             int mid = (left + right) / 2;
-            if (nums[mid] < nums[mid + 1]) {
+            if (nums[mid + 1] > nums[mid]) {
                 left = mid + 1;
             } else {
                 right = mid;
