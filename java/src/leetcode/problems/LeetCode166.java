@@ -3,8 +3,8 @@ package leetcode.problems;
 import java.util.HashMap;
 
 /**
- * @author jingxinwu
- * @date 2023/11/23 18:43
+ * @author wujingxinit@outlook.com
+ * @date 2023/12/18 14:15
  */
 public class LeetCode166 {
 
@@ -12,9 +12,8 @@ public class LeetCode166 {
         if (numerator == 0) {
             return "0";
         }
-
         StringBuilder res = new StringBuilder();
-        String sign = (numerator > 0) ^ (denominator > 0) ? "-" : "";
+        String sign = ((numerator > 0) ^ (denominator > 0)) ? "-" : "";
         res.append(sign);
 
         long num = Math.abs((long) numerator);
@@ -28,10 +27,10 @@ public class LeetCode166 {
         }
 
         res.append(".");
+
         HashMap<Long, Integer> map = new HashMap<>();
         map.put(num, res.length());
 
-        // 除法过程
         while (num != 0) {
             num *= 10;
             res.append(num / ldenominator);
