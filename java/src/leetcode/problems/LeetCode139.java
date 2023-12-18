@@ -5,15 +5,16 @@ import java.util.List;
 
 /**
  * @author jingxinwu
- * @date 2021-08-01 3:25 下午
+ * @date 2023/11/1 23:31
  */
 public class LeetCode139 {
 
     public boolean wordBreak(String s, List<String> wordDict) {
         HashSet<String> set = new HashSet<>(wordDict);
-        boolean[] dp = new boolean[s.length() + 1];
+        int n = s.length();
+        boolean[] dp = new boolean[n + 1];
         dp[0] = true;
-        for (int i = 1; i <= s.length(); i++) {
+        for (int i = 1; i <= n; i++) {
             for (int j = 0; j < i; j++) {
                 if (dp[j] && set.contains(s.substring(j, i))) {
                     dp[i] = true;
@@ -21,6 +22,6 @@ public class LeetCode139 {
                 }
             }
         }
-        return dp[s.length()];
+        return dp[n];
     }
 }
