@@ -4,41 +4,39 @@ import java.util.Arrays;
 import java.util.Stack;
 
 /**
- * @author jingxinwu
- * @date 2021-12-12 5:21 PM
+ * @author wujingxinit@outlook.com
+ * @date 2023/12/19 21:44
+ * @description 两次单调栈
  */
 public class LeetCode503 {
 
     public int[] nextGreaterElements(int[] nums) {
-
-        int n = nums.length;
-        int[] ret = new int[n];
-        Arrays.fill(ret, -1);
-        Stack<Integer> stack = new Stack<>();
-        for (int i = 0; i < n * 2 - 1; i++) {
-            while (!stack.isEmpty() && nums[stack.peek()] < nums[i % n]) {
-                ret[stack.pop()] = nums[i % n];
-            }
-            stack.push(i % n);
+        if (nums == null || nums.length == 0) {
+            return new int[]{};
         }
-        return ret;
-
-    }
-
-    public int[] nextGreaterElementsV2(int[] nums) {
+        int n = nums.length;
         Stack<Integer> stack = new Stack<>();
-        int[] res = new int[nums.length];
-        for (int i = (nums.length << 1) - 1; i >= 0; i--) {
-            int num = nums[i % nums.length];
-            while (!stack.isEmpty() && stack.peek() <= num) {
-                stack.pop();
+        int[] res = new int[n];
+        Arrays.fill(res, Integer.MIN_VALUE);
+        for (int i = 0; i < nums.length; i++) {
+            while (!stack.isEmpty() && nums[i] > nums[stack.peek()]) {
+                int index = stack.pop();
+                res[index] = nums[i];
             }
-            if (i <= nums.length - 1) {
-                res[i] = stack.isEmpty() ? -1 : stack.peek();
+            stack.push(i);
+        }
+        for (int i = 0; i < n; i++) {
+            while (!stack.isEmpty() && nums[i] > nums[stack.peek()]) {
+                int index = stack.pop();
+                res[index] = nums[i];
             }
-            stack.push(num);
+            stack.push(i);
+        }
+        for (int i = 0; i < n; i++) {
+            if (res[i] == Integer.MIN_VALUE) {
+                res[i] = -1;
+            }
         }
         return res;
     }
-
 }
