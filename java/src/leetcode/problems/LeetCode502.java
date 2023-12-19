@@ -1,7 +1,8 @@
 package leetcode.problems;
 
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.List;
 import java.util.PriorityQueue;
 
 /**
@@ -11,30 +12,33 @@ import java.util.PriorityQueue;
  */
 public class LeetCode502 {
 
-    public int findMaximizedCapital(int k, int w, int[] profits, int[] capital) {
-        int n = profits.length;
-        int curr = 0;
-        int[][] arr = new int[n][2];
-
-        for (int i = 0; i < n; ++i) {
-            arr[i][0] = capital[i];
-            arr[i][1] = profits[i];
+    public int findMaximizedCapital(int k, int w, int[] Profits, int[] Capital) {
+        List<int[]> proj = new ArrayList<>();
+        for (int i = 0; i < Profits.length; i++) {
+            proj.add(new int[]{Capital[i], Profits[i]});
         }
-        Arrays.sort(arr, (a, b) -> a[0] - b[0]);
-
-        PriorityQueue<Integer> queue = new PriorityQueue<>(new Comparator<Integer>() {
+        proj.sort(new Comparator<int[]>() {
+            @Override
+            public int compare(int[] o1, int[] o2) {
+                return o1[0] - o2[0];
+            }
+        });
+        PriorityQueue<Integer> pq = new PriorityQueue<>(new Comparator<Integer>() {
             @Override
             public int compare(Integer o1, Integer o2) {
                 return o2 - o1;
             }
         });
-        for (int i = 0; i < k; ++i) {
-            while (curr < n && arr[curr][0] <= w) {
-                queue.add(arr[curr][1]);
-                curr++;
+        int count = 0;
+        int i = 0;
+        while (count < k) {
+            while (i < proj.size() && proj.get(i)[0] <= w) {
+                pq.offer(proj.get(i)[1]);
+                i++;
             }
-            if (!queue.isEmpty()) {
-                w += queue.poll();
+            if (!pq.isEmpty()) {
+                w += pq.poll();
+                count++;
             } else {
                 break;
             }
