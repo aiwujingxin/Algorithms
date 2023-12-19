@@ -3,41 +3,44 @@ package leetcode.problems;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2023/10/20 00:25
- * @description 单词
+ * @date 2023/12/19 17:38
  * @see LeetCode438
  */
 public class LeetCode30 {
 
     public List<Integer> findSubstring(String s, String[] words) {
-        int n = s.length(), m = words.length, w = words[0].length();
-        Map<String, Integer> target = new HashMap<>();
-        for (String str : words) {
-            target.put(str, target.getOrDefault(str, 0) + 1);
+        if (s == null || s.isEmpty()) {
+            return new ArrayList<>();
         }
+        HashMap<String, Integer> target = new HashMap<>();
+        for (String word : words) {
+            target.put(word, target.getOrDefault(word, 0) + 1);
+        }
+        int len = words[0].length();
+        int cnt = words.length;
         List<Integer> ans = new ArrayList<>();
-        for (int left = 0; left < w; left++) {
-            Map<String, Integer> window = new HashMap<>();
-            // 滑动窗口的大小固定是 m * w
-            for (int right = left; right + w <= n; right += w) {
-                String cur = s.substring(right, right + w);
+        for (int left = 0; left < len; left++) {
+            HashMap<String, Integer> window = new HashMap<>();
+            int right = left;
+            while (right + len <= s.length()) {
+                String cur = s.substring(right, right + len);
                 window.put(cur, window.getOrDefault(cur, 0) + 1);
-                if (right >= left + (m * w)) {
-                    int index = right - m * w;
-                    String delete = s.substring(index, index + w);
-                    if (window.get(delete) == 1) {
-                        window.remove(delete);
+                if (right - left + 1 > cnt * len) {
+                    int index = right - cnt * len;
+                    String d = s.substring(index, index + len);
+                    if (window.get(d) == 1) {
+                        window.remove(d);
                     } else {
-                        window.put(delete, window.get(delete) - 1);
+                        window.put(d, window.get(d) - 1);
                     }
                 }
                 if (window.equals(target)) {
-                    ans.add(right - (m - 1) * w);
+                    ans.add(right - len * (cnt - 1));
                 }
+                right += len;
             }
         }
         return ans;
