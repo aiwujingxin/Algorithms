@@ -1,25 +1,24 @@
 package leetcode.problems;
 
-import basic.datastructure.list.DoubleLinkedList;
-import basic.datastructure.list.Node;
-
+import java.util.Deque;
 import java.util.HashMap;
+import java.util.LinkedList;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2023/11/1 22:32
+ * @date 2023/12/19 15:37
  */
 public class LeetCode146 {
 
     class LRUCache {
 
-        DoubleLinkedList list;
         HashMap<Integer, Node> map;
+        Deque<Node> list;
         int capacity;
 
         public LRUCache(int capacity) {
-            this.list = new DoubleLinkedList();
             this.map = new HashMap<>();
+            this.list = new LinkedList<>();
             this.capacity = capacity;
         }
 
@@ -30,15 +29,15 @@ public class LeetCode146 {
             Node node = map.get(key);
             list.remove(node);
             list.addFirst(node);
-            return node.val;
+            return node.value;
         }
 
         public void put(int key, int value) {
             if (map.containsKey(key)) {
                 Node node = map.get(key);
+                node.value = value;
                 list.remove(node);
                 list.addFirst(node);
-                node.val = value;
                 return;
             }
             if (map.size() == capacity) {
@@ -46,8 +45,18 @@ public class LeetCode146 {
                 map.remove(node.key);
             }
             Node node = new Node(key, value);
-            list.addFirst(node);
             map.put(key, node);
+            list.addFirst(node);
+        }
+
+        static class Node {
+            int key;
+            int value;
+
+            public Node(int key, int value) {
+                this.key = key;
+                this.value = value;
+            }
         }
     }
 }

@@ -2,7 +2,7 @@ package leetcode.problems;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2023/12/12 21:39
+ * @date 2023/12/19 14:37
  * @see LeetCode26
  * @see LeetCode27
  */
@@ -12,10 +12,9 @@ public class LeetCode80 {
         if (nums == null || nums.length == 0) {
             return 0;
         }
-        int n = nums.length;
-        int right = 2;
         int left = 2;
-        while (right < n) {
+        int right = 2;
+        while (right < nums.length) {
             if (nums[left - 2] != nums[right]) {
                 nums[left] = nums[right];
                 left++;
@@ -24,4 +23,5 @@ public class LeetCode80 {
         }
         return left;
     }
+
 }

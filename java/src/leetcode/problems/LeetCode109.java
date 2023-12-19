@@ -5,7 +5,7 @@ import common.TreeNode;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2023/12/14 18:10
+ * @date 2023/12/19 14:34
  */
 public class LeetCode109 {
 
@@ -21,6 +21,7 @@ public class LeetCode109 {
         dummy.next = head;
         ListNode slow = dummy;
         ListNode fast = dummy;
+
         while (fast != tail && fast.next != tail) {
             slow = slow.next;
             fast = fast.next.next;
