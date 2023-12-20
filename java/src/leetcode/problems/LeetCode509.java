@@ -2,29 +2,24 @@ package leetcode.problems;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2022/10/6 13:38
+ * @date 2023/12/20 18:40
  */
 public class LeetCode509 {
 
     public int fib(int n) {
-
         if (n == 0) {
             return 0;
         }
         if (n == 1) {
             return 1;
         }
-        if (n == 2) {
-            return 1;
+        int a = 0;
+        int b = 1;
+        for (int i = 1; i < n; i++) {
+            int t = b;
+            b = a + b;
+            a = t;
         }
-        int[] dp = new int[n + 1];
-        dp[0] = 0;
-        dp[1] = 1;
-        dp[2] = 1;
-
-        for (int i = 3; i <= n; i++) {
-            dp[i] = dp[i - 1] + dp[i - 2];
-        }
-        return dp[dp.length - 1];
+        return b;
     }
 }

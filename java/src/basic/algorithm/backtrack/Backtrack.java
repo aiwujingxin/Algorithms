@@ -1,4 +1,4 @@
-package basic.algorithm.backrack;
+package basic.algorithm.backtrack;
 
 import leetcode.problems.*;
 
