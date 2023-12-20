@@ -14,6 +14,7 @@ import java.util.Map;
 public class LeetCode501 {
 
     HashMap<Integer, Integer> map;
+    int max = Integer.MIN_VALUE;
 
     public int[] findMode(TreeNode root) {
         if (root == null) {
@@ -21,10 +22,6 @@ public class LeetCode501 {
         }
         map = new HashMap<>();
         dfs(root);
-        int max = Integer.MIN_VALUE;
-        for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
-            max = Math.max(max, entry.getValue());
-        }
         List<Integer> list = new ArrayList<>();
         for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
             if (entry.getValue() == max) {
@@ -43,6 +40,7 @@ public class LeetCode501 {
             return;
         }
         map.put(root.val, map.getOrDefault(root.val, 0) + 1);
+        max = Math.max(max, map.get(root.val));
         dfs(root.left);
         dfs(root.right);
     }
