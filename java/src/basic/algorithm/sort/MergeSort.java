@@ -10,7 +10,7 @@ import leetcode.problems.LeetCode493;
  * @see LeetCode315
  * @see LeetCode493
  * @see LeetCode327
- * @see leetcode.lists.offer.Offer51
+ * @see leetcode.lists.lcr.LCR170
  */
 
 public class MergeSort implements ArraySort {

@@ -5,7 +5,7 @@ import common.TreeNode;
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/8/29 00:15
- * @see leetcode.lists.offer.Offer26
+ * @see leetcode.lists.lcr.LCR145 //diff with LCR145
  */
 public class LeetCode572 {
 
@@ -24,7 +24,7 @@ public class LeetCode572 {
             return false;
         }
         if (t == null) {
-            return false; //diff with offer26
+            return false; //diff with LCR145
         }
         if (s.val != t.val) {
             return false;
