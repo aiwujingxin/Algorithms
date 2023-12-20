@@ -8,6 +8,7 @@ package basic.algorithm.bit;
  * @see leetcode.problems.LeetCode260
  * @see leetcode.problems.LeetCode762
  * @see leetcode.problems.LeetCode405
+ * @see leetcode.problems.LeetCode371  两整数之和
  */
 public interface BIT {
 

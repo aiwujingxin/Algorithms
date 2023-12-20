@@ -1,6 +1,9 @@
 package basic.datastructure.string;
 
-import leetcode.problems.*;
+import leetcode.problems.LeetCode439;
+import leetcode.problems.LeetCode7;
+import leetcode.problems.LeetCode8;
+import leetcode.problems.LeetCode93;
 
 /**
  * @author wujingxinit@outlook.com
@@ -8,10 +11,8 @@ import leetcode.problems.*;
  * @link <a href="https://leetcode.cn/problems/parsing-a-boolean-expression/">1106. 解析布尔表达式</a>
  * @see LeetCode93 93. 复原 IP 地址
  * @see LeetCode439 439. 三元表达式解析器
- * @see LeetCode394 394. 字符串解码
- * @see LeetCode10 10. 正则表达式匹配
- * @see LeetCode44 44. 通配符匹配
  * @see LeetCode8 8. 字符串转换整数 (atoi)
+ * @see LeetCode7 整数反转
  */
 public interface Parse {
 }

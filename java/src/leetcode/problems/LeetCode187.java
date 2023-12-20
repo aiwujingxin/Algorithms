@@ -8,7 +8,7 @@ import java.util.Set;
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/10/28 11:35
- * @see basic.datastructure.string.search.RabinKarp
+ * @see basic.datastructure.string.impl.RabinKarp
  */
 public class LeetCode187 {
 

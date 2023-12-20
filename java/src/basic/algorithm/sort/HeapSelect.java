@@ -1,6 +1,5 @@
 package basic.algorithm.sort;
 
-import basic.datastructure.array.TopK;
 import basic.datastructure.heap.MaxHeap;
 
 /**

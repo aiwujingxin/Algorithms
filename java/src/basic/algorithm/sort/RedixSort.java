@@ -1,12 +1,10 @@
 package basic.algorithm.sort;
 
-import basic.datastructure.array.ArraySort;
-
 /**
  * @author aiwujingxin@gmail.com
  * @date 2022/6/13 23:15
  * @link <a href="https://www.bilibili.com/video/BV1YM4y1A7wi/"></a>
- * @link  leetcode.solution.pic.redixSort.png
+ * @link 见leetcode.solution.pic.redixSort.png 有图解
  */
 public class RedixSort implements ArraySort {
 

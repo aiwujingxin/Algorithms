@@ -5,6 +5,7 @@ import leetcode.problems.*;
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/8/21 22:08
+ * @link <a href="https://labuladong.github.io/algo/di-san-zha-24031/bao-li-sou-96f79/hui-su-sua-c26da/">labuladong</a>
  * <p>子集
  * @see LeetCode78
  * @see LeetCode90

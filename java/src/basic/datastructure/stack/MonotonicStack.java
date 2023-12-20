@@ -7,7 +7,7 @@ import java.util.Stack;
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/8/30 21:59
- * @see LeetCode739
+ * @see LeetCode739 每日温度
  */
 public class MonotonicStack {
 

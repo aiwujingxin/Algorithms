@@ -25,15 +25,15 @@ public class LevelOrder implements Traverse {
             return new ArrayList<>();
         }
         List<Integer> list = new ArrayList<>();
-        Queue<TreeNode> q = new LinkedList<>();
-        q.add(root);
-        while (!q.isEmpty()) {
-            TreeNode node = q.poll();
+        Queue<TreeNode> queue = new LinkedList<>();
+        queue.add(root);
+        while (!queue.isEmpty()) {
+            TreeNode node = queue.poll();
             if (node.left != null) {
-                q.add(node.left);
+                queue.add(node.left);
             }
             if (node.right != null) {
-                q.add(node.right);
+                queue.add(node.right);
             }
         }
         return list;
