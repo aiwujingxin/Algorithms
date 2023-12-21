@@ -1,11 +1,12 @@
 package leetcode.problems;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.HashMap;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2023/3/5 21:54
+ * @date 2023/12/21 21:27
+ * @description 同余定理
+ * (preSum[i]−preSum[j]) mod k==0 ⟺ (preSum[i] mod k) == (preSum[j] mod k)
  */
 public class LeetCode523 {
 
@@ -15,11 +16,15 @@ public class LeetCode523 {
         for (int i = 1; i <= n; i++) {
             sum[i] = sum[i - 1] + nums[i - 1];
         }
-        Set<Integer> set = new HashSet<>();
-        for (int i = 2; i <= n; i++) {
-            set.add(sum[i - 2] % k);
-            if (set.contains(sum[i] % k)) {
-                return true;
+        HashMap<Integer, Integer> map = new HashMap<>();
+        for (int i = 0; i <= n; i++) {
+            int key = sum[i] % k;
+            if (map.containsKey(key)) {
+                if (i - map.get(key) >= 2) {
+                    return true;
+                }
+            } else {
+                map.put(key, i);
             }
         }
         return false;
