@@ -5,7 +5,6 @@ import java.util.HashMap;
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/10/22 20:30
- * @see LeetCode560
  */
 public class LeetCode874 {
 
