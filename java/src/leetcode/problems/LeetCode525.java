@@ -1,40 +1,38 @@
 package leetcode.problems;
 
-import java.util.Arrays;
 import java.util.HashMap;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2023/10/18 22:49
+ * @date 2023/12/22 16:15
  */
 public class LeetCode525 {
 
     public int findMaxLength(int[] nums) {
-        if (nums == null || nums.length == 0) {
+        if (nums == null || nums.length <= 1) {
             return 0;
         }
+        int n = nums.length;
         for (int i = 0; i < nums.length; i++) {
             if (nums[i] == 0) {
                 nums[i] = -1;
             }
         }
-        int[] presum = new int[nums.length];
-        presum[0] = nums[0];
-        for (int i = 1; i < nums.length; i++) {
-            presum[i] = presum[i - 1] + nums[i];
+
+        int[] sum = new int[n + 1];
+        for (int i = 1; i <= n; i++) {
+            sum[i] = sum[i - 1] + nums[i - 1];
         }
-        HashMap<Integer, Integer> map = new HashMap<>();
         int max = 0;
-        System.out.println(Arrays.toString(presum));
-        map.put(0, -1);
-        for (int i = 0; i < presum.length; i++) {
-            if (map.containsKey(presum[i])) {
-                max = Math.max(max, i - map.get(presum[i]));
-            }
-            if (!map.containsKey(presum[i])) {
-                map.put(presum[i], i);
+        HashMap<Integer, Integer> map = new HashMap<>();
+        for (int i = 0; i <= n; i++) {
+            if (map.containsKey(sum[i])) {
+                max = Math.max(max, i - map.get(sum[i]));
+            } else {
+                map.put(sum[i], i);
             }
         }
+
         return max;
     }
 }

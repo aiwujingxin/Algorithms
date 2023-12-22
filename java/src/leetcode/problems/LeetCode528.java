@@ -4,9 +4,16 @@ import java.util.Random;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2023/6/5 17:42
+ * @date 2023/12/22 16:38
  */
 public class LeetCode528 {
+
+    /*
+    * nums   [1    ,2,     3,     4]
+      presum [1,    3,     6,     10]
+      控制   [[1], [2-3], [3-6], [7-10]]
+    * random [1-10]
+    * */
     class Solution {
         int[] presum;
 
@@ -18,8 +25,6 @@ public class LeetCode528 {
             }
         }
 
-        //拉平去看
-        //第一个大于等于
         public int pickIndex() {
             int rand = new Random().nextInt(presum[presum.length - 1]) + 1;
             int left = 0;
