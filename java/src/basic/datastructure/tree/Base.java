@@ -14,6 +14,7 @@ package basic.datastructure.tree;
  * @see leetcode.problems.LeetCode101 对称二叉树 https://leetcode.cn/problems/symmetric-tree/
  * @see leetcode.problems.LeetCode110 平衡二叉树 https://leetcode.cn/problems/balanced-binary-tree/
  * @see leetcode.problems.LeetCode1609 奇偶树 https://leetcode.cn/problems/even-odd-tree/
+ * @see leetcode.problems.LeetCode572
  */
 public interface Base {
 

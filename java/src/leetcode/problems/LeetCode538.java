@@ -19,5 +19,4 @@ public class LeetCode538 {
         }
         return root;
     }
-
 }

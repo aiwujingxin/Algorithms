@@ -3,6 +3,7 @@ package leetcode.problems;
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/12/21 21:19
+ * @see LeetCode1143
  */
 public class LeetCode522 {
 

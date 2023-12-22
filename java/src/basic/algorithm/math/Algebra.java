@@ -15,6 +15,7 @@ import leetcode.problems.*;
  * @see LeetCode398
  * @see LeetCode382
  * 概率
+ * @see LeetCode497
  * @see LeetCode528
  */
 public interface Algebra {

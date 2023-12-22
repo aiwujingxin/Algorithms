@@ -9,10 +9,6 @@ import java.util.HashMap;
  */
 public class LeetCode525 {
 
-    public static void main(String[] args) {
-        System.out.println(new LeetCode525().findMaxLength(new int[]{0, 0, 1, 0, 0, 0, 1, 1}));
-    }
-
     public int findMaxLength(int[] nums) {
         if (nums == null || nums.length == 0) {
             return 0;

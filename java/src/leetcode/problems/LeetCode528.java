@@ -5,7 +5,6 @@ import java.util.Random;
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/6/5 17:42
- * @see LeetCode497
  */
 public class LeetCode528 {
     class Solution {

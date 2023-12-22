@@ -5,7 +5,6 @@ import java.util.Objects;
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/12/21 20:54'
- * @see LeetCode1143
  */
 public class LeetCode521 {
 
