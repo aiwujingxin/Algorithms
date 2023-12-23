@@ -2,7 +2,7 @@ package leetcode.problems;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2023/12/12 10:16
+ * @date 2023/12/23 19:26
  */
 public class LeetCode29 {
 
@@ -13,27 +13,20 @@ public class LeetCode29 {
         if (divisor == 1) {
             return dividend;
         }
-        boolean flag = (dividend > 0) ^ (divisor > 0);
-        int ldividend = dividend;
-        int ldivisor = divisor;
-        if (dividend > 0) {
-            ldividend = -dividend;
-        }
-        if (divisor > 0) {
-            ldivisor = -divisor;
-        }
+        int sign = (dividend > 0) ^ (divisor > 0) ? -1 : 1;
+        int ldividend = -Math.abs(dividend);
+        int ldivisor = -Math.abs(divisor);
         int res = 0;
-        while (ldividend <= ldivisor) {
+        while (ldividend < ldivisor) {
             int temp = ldivisor;
-            int cnt = 1;
-            while (ldividend - temp <= temp) {
-                cnt = cnt * 2;
+            int t = 1;
+            while (ldividend - temp < temp) {
                 temp = temp * 2;
+                t = t * 2;
             }
-            ldividend -= ldivisor * cnt;
-            res += cnt;
+            ldividend -= ldivisor * t;
+            res += t;
         }
-        return flag ? -res : res;
+        return sign * res;
     }
 }
-
