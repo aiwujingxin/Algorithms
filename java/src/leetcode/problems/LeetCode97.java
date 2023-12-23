@@ -2,7 +2,7 @@ package leetcode.problems;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2023/12/13 12:20
+ * @date 2023/12/23 23:53
  */
 public class LeetCode97 {
 
@@ -14,11 +14,19 @@ public class LeetCode97 {
         int n = s2.length();
         boolean[][] dp = new boolean[m + 1][n + 1];
         dp[0][0] = true;
-        for (int i = 1; i <= m && s1.charAt(i - 1) == s3.charAt(i - 1); i++) {
-            dp[i][0] = true;
+        for (int i = 1; i <= m; i++) {
+            if (s1.charAt(i - 1) == s3.charAt(i - 1)) {
+                dp[i][0] = true;
+            } else {
+                break;
+            }
         }
-        for (int j = 1; j <= n && s2.charAt(j - 1) == s3.charAt(j - 1); j++) {
-            dp[0][j] = true;
+        for (int i = 1; i <= n; i++) {
+            if (s2.charAt(i - 1) == s3.charAt(i - 1)) {
+                dp[0][i] = true;
+            } else {
+                break;
+            }
         }
         for (int i = 1; i <= m; i++) {
             for (int j = 1; j <= n; j++) {
@@ -32,4 +40,3 @@ public class LeetCode97 {
         return dp[m][n];
     }
 }
-

@@ -2,9 +2,7 @@ package leetcode.problems;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2023/12/19 14:37
- * @see LeetCode26
- * @see LeetCode27
+ * @date 2023/12/23 23:43
  */
 public class LeetCode80 {
 
@@ -23,5 +21,4 @@ public class LeetCode80 {
         }
         return left;
     }
-
 }

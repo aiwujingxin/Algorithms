@@ -4,13 +4,13 @@ import common.ListNode;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2023/12/13 13:40
+ * @date 2023/12/23 23:45
  */
 public class LeetCode82 {
 
     public ListNode deleteDuplicates(ListNode head) {
         if (head == null || head.next == null) {
-            return null;
+            return head;
         }
         ListNode dummy = new ListNode();
         dummy.next = head;
