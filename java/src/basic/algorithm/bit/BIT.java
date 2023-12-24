@@ -9,6 +9,8 @@ package basic.algorithm.bit;
  * @see leetcode.problems.LeetCode762
  * @see leetcode.problems.LeetCode405
  * @see leetcode.problems.LeetCode371  两整数之和
+ * @see leetcode.problems.LeetCode136 136. 只出现一次的数字
+ * @see leetcode.problems.LeetCode137 137. 只出现一次的数字 II
  */
 public interface BIT {
 

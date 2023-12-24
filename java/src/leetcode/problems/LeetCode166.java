@@ -4,45 +4,45 @@ import java.util.HashMap;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2023/12/18 14:15
+ * @date 2023/12/24 22:50
  */
 public class LeetCode166 {
 
     public String fractionToDecimal(int numerator, int denominator) {
+        StringBuilder sb = new StringBuilder();
         if (numerator == 0) {
             return "0";
         }
-        StringBuilder res = new StringBuilder();
-        String sign = ((numerator > 0) ^ (denominator > 0)) ? "-" : "";
-        res.append(sign);
-
-        long num = Math.abs((long) numerator);
+        String sign = (numerator > 0) ^ (denominator > 0) ? "-" : "";
+        long lnumerator = Math.abs((long) numerator);
         long ldenominator = Math.abs((long) denominator);
 
-        res.append(num / ldenominator);
-        num %= ldenominator;
-
+        sb.append(sign);
+        long num = lnumerator % ldenominator;
         if (num == 0) {
-            return res.toString();
+            sb.append(lnumerator / ldenominator);
+            return sb.toString();
         }
 
-        res.append(".");
+        sb.append(lnumerator / ldenominator);
+        sb.append(".");
+        lnumerator = lnumerator % ldenominator;
 
         HashMap<Long, Integer> map = new HashMap<>();
-        map.put(num, res.length());
-
-        while (num != 0) {
-            num *= 10;
-            res.append(num / ldenominator);
-            num %= ldenominator;
-            if (map.containsKey(num)) {
-                res.insert(map.get(num), "(");
-                res.append(")");
-                break;
+        while (lnumerator > 0) {
+            lnumerator = lnumerator * 10;
+            long t = lnumerator / ldenominator;
+            lnumerator = lnumerator % ldenominator;
+            if (!map.containsKey(lnumerator)) {
+                sb.append(t);
+                map.put(lnumerator, sb.length());
             } else {
-                map.put(num, res.length());
+                sb.insert(map.get(lnumerator), "(");
+                sb.append(t);
+                sb.append(")");
+                return sb.toString();
             }
         }
-        return res.toString();
+        return sb.toString();
     }
 }

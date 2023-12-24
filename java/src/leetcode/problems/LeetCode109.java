@@ -5,11 +5,14 @@ import common.TreeNode;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2023/12/19 14:34
+ * @date 2023/12/24 23:47
  */
 public class LeetCode109 {
 
     public TreeNode sortedListToBST(ListNode head) {
+        if (head == null) {
+            return null;
+        }
         return sortedListToBST(head, null);
     }
 

@@ -25,4 +25,20 @@ public class LeetCode222 {
         }
         return 1 + countNodes(root.left) + countNodes(root.right);
     }
+
+    public int countNodes_dfs(TreeNode root) {
+        if (root == null) {
+            return 0;
+        }
+        return dfs(root);
+    }
+
+    private int dfs(TreeNode root) {
+        if (root == null) {
+            return 0;
+        }
+        int left = dfs(root.left);
+        int right = dfs(root.right);
+        return left + right + 1;
+    }
 }

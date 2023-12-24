@@ -17,6 +17,10 @@ import leetcode.problems.*;
  * 概率
  * @see LeetCode497
  * @see LeetCode528
+ * 计算
+ * @see LeetCode371 加
+ * @see LeetCode166 除
+ * @see LeetCode29 除
  */
 public interface Algebra {
 }
