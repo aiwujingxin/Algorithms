@@ -12,22 +12,22 @@ public class LeetCode117 {
         if (root == null) {
             return null;
         }
-        Node cur = root;
-        while (cur != null) {
-            Node nextHead = new Node();
-            Node nextCur = nextHead;
-            while (cur != null) {
-                if (cur.left != null) {
-                    nextCur.next = cur.left;
-                    nextCur = nextCur.next;
+        Node head = root;
+        while (head != null) {
+            Node dummy = new Node();
+            Node cur = dummy;
+            while (head != null) {
+                if (head.left != null) {
+                    cur.next = head.left;
+                    cur = cur.next;
                 }
-                if (cur.right != null) {
-                    nextCur.next = cur.right;
-                    nextCur = nextCur.next;
+                if (head.right != null) {
+                    cur.next = head.right;
+                    cur = cur.next;
                 }
-                cur = cur.next;
+                head = head.next;
             }
-            cur = nextHead.next;
+            head = dummy.next;
         }
         return root;
     }
