@@ -8,7 +8,6 @@ import java.util.PriorityQueue;
 /**
  * @author aiwujingxin@gmail.com
  * @date 2023/11/2123:05
- * @description 多路排序
  */
 public class LeetCode373 {
 

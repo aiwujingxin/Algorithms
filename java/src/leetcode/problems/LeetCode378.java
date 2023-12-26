@@ -5,7 +5,6 @@ import java.util.PriorityQueue;
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/11/21 23:59
- * @description 多路排序
  */
 public class LeetCode378 {
 
@@ -48,15 +47,15 @@ public class LeetCode378 {
     }
 
     public boolean check(int[][] matrix, int mid, int k, int n) {
-        int i = n - 1;
-        int j = 0;
+        int left = n - 1;
+        int right = 0;
         int cnt = 0;
-        while (i >= 0 && j < n) {
-            if (matrix[i][j] <= mid) {
-                cnt += i + 1;
-                j++;
+        while (left >= 0 && right < n) {
+            if (matrix[left][right] <= mid) {
+                cnt += left + 1;
+                right++;
             } else {
-                i--;
+                left--;
             }
         }
         return cnt >= k;
