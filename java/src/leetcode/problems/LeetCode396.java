@@ -2,27 +2,28 @@ package leetcode.problems;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2023/11/22 21:32
+ * @date 2023/12/26 17:22
  */
 public class LeetCode396 {
 
     public int maxRotateFunction(int[] nums) {
+        if (nums == null || nums.length == 0) {
+            return 0;
+        }
         int sum = 0;
-        int f = 0;
+        for (int num : nums) {
+            sum += num;
+        }
         int n = nums.length;
-
+        int pre = 0;
         for (int i = 0; i < n; i++) {
-            sum += nums[i];
-            f += i * nums[i];
+            pre += i * nums[i];
         }
-
-        int res = f;
-
+        int max = pre;
         for (int i = 1; i < n; i++) {
-            f = f + sum - n * nums[n - i];
-            res = Math.max(res, f);
+            pre = pre + (sum - (n) * nums[n - i]);
+            max = Math.max(pre, max);
         }
-
-        return res;
+        return max;
     }
 }

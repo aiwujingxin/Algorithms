@@ -15,8 +15,8 @@ import leetcode.problems.*;
  * @see LeetCode398
  * @see LeetCode382
  * 概率
- * @see LeetCode497
  * @see LeetCode528
+ * @see LeetCode497
  * 计算
  * @see LeetCode371 加
  * @see LeetCode166 除
