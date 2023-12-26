@@ -4,7 +4,7 @@ package basic.algorithm.sort;
  * @author wujingxinit@outlook.com
  * @date 2022/9/14 14:09
  */
-public class ShellSort implements ArraySort {
+public class ShellSort implements Sort {
     @Override
     public int[] sortArray(int[] nums) {
         for (int dk = nums.length / 2; dk >= 1; dk /= 2) {

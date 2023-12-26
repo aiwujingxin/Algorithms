@@ -12,7 +12,7 @@ public class LeetCode1062_bs {
         int left = 0, right = s.length() - 1;
         while (left < right) {
             int mid = (right + left + 1) / 2;
-            if (search(mid, s)) {
+            if (check(mid, s)) {
                 left = mid;
             } else {
                 right = mid - 1;
@@ -21,7 +21,7 @@ public class LeetCode1062_bs {
         return left;
     }
 
-    public boolean search(int L, String s) {
+    public boolean check(int L, String s) {
         HashSet<Integer> seen = new HashSet<>();
         for (int start = 0; start < s.length() - L + 1; ++start) {
             String tmp = s.substring(start, start + L);

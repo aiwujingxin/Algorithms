@@ -10,15 +10,16 @@ public class LeetCode1539 {
         if (arr[0] > k) {
             return k;
         }
-        int l = 0, r = arr.length;
-        while (l < r) {
-            int mid = l + (r - l) / 2;
-            if (arr[mid] - mid - 1 >= k) {
-                r = mid;
+        int left = 0;
+        int right = arr.length;
+        while (left < right) {
+            int mid = left + (right - left) / 2;
+            if (arr[mid] - mid - 1 < k) {
+                left = mid + 1;
             } else {
-                l = mid + 1;
+                right = mid;
             }
         }
-        return k - (arr[l - 1] - (l - 1) - 1) + arr[l - 1];
+        return k - (arr[left - 1] - (left - 1) - 1) + arr[left - 1];
     }
 }

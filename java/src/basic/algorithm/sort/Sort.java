@@ -7,7 +7,7 @@ package basic.algorithm.sort;
  * @see leetcode.problems.LeetCode215
  * @see leetcode.problems.LeetCode347
  */
-public interface ArraySort {
+public interface Sort {
 
     int[] sortArray(int[] nums);
 }

@@ -6,7 +6,7 @@ import java.util.Random;
  * @author wujingxinit@outlook.com
  * @date 2022/9/14 22:47
  */
-public class QuickSort implements ArraySort {
+public class QuickSort implements Sort {
     @Override
     public int[] sortArray(int[] nums) {
         quickSort(nums, 0, nums.length - 1);

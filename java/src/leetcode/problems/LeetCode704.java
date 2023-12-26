@@ -6,19 +6,19 @@ package leetcode.problems;
  */
 public class LeetCode704 {
 
-    //https://leetcode-cn.com/problems/binary-search/solution/er-fen-cha-zhao-xiang-jie-by-labuladong/
-
     public int search(int[] nums, int target) {
-        int low = 0, high = nums.length - 1;
-        while (low <= high) {
-            int mid = (high - low) / 2 + low;
+        int left = 0;
+        int right = nums.length - 1;
+        while (left <= right) {
+            int mid = (right - left) / 2 + left;
             int num = nums[mid];
             if (num == target) {
                 return mid;
-            } else if (num > target) {
-                high = mid - 1;
+            }
+            if (num > target) {
+                right = mid - 1;
             } else {
-                low = mid + 1;
+                left = mid + 1;
             }
         }
         return -1;

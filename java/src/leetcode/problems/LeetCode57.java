@@ -14,8 +14,8 @@ public class LeetCode57 {
             return new int[][]{newInterval};
         }
         List<int[]> list = new ArrayList<>();
-        int m = findStart(intervals, newInterval[0]);
-        int n = flndEnd(intervals, newInterval[1]);
+        int m = leftBound(intervals, newInterval[0]);
+        int n = rightBound(intervals, newInterval[1]);
         for (int i = 0; i < m - 1; i++) {
             list.add(intervals[i]);
         }
@@ -36,7 +36,7 @@ public class LeetCode57 {
         return res;
     }
 
-    private int findStart(int[][] intervals, int target) {
+    private int leftBound(int[][] intervals, int target) {
         int left = 0;
         int right = intervals.length - 1;
         while (left < right) {
@@ -53,7 +53,7 @@ public class LeetCode57 {
         return left;
     }
 
-    private int flndEnd(int[][] intervals, int target) {
+    private int rightBound(int[][] intervals, int target) {
         int left = 0;
         int right = intervals.length - 1;
         while (left < right) {

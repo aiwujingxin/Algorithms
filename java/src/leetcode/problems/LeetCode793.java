@@ -10,26 +10,26 @@ public class LeetCode793 {
         if (k == 0) {
             return 5;
         }
-        long a = search1(k + 1);
-        long b = search2(k - 1);
+        long a = leftBound(k + 1);
+        long b = rightBound(k - 1);
         return (int) (a - b - 1);
     }
 
-    private long search1(int target) {
+    private long leftBound(int target) {
         long left = 0;
         long right = Long.MAX_VALUE;
         while (left < right) {
             long mid = (right - left) / 2 + left;
-            if (trailingZeroes(mid) >= target) {
-                right = mid;
-            } else {
+            if (trailingZeroes(mid) < target) {
                 left = mid + 1;
+            } else {
+                right = mid;
             }
         }
         return left;
     }
 
-    private long search2(int target) {
+    private long rightBound(int target) {
         long left = 0;
         long right = Long.MAX_VALUE;
         while (left < right) {
@@ -40,7 +40,6 @@ public class LeetCode793 {
                 left = mid;
             }
         }
-
         return left;
     }
 

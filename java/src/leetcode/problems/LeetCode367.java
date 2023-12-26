@@ -10,12 +10,12 @@ public class LeetCode367 {
         long left = 0, right = num;
         while (left < right) {
             long mid = (left + right + 1) >> 1;
-            if (mid * mid <= num) {
-                left = mid;
-            } else {
+            if (mid * mid > num) {
                 right = mid - 1;
+            } else {
+                left = mid;
             }
         }
-        return right * right == num;
+        return left * left == num;
     }
 }

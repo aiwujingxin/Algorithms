@@ -5,7 +5,7 @@ package basic.algorithm.sort;
  * @date 2022/9/14 23:07
  * @description 利用数组下标来确定元素的位置
  */
-public class CountingSort implements ArraySort {
+public class CountingSort implements Sort {
 
     @Override
     public int[] sortArray(int[] nums) {

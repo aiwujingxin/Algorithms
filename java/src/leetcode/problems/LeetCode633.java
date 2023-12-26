@@ -6,24 +6,18 @@ package leetcode.problems;
  */
 public class LeetCode633 {
 
-    public static void main(String[] args) {
-        System.out.println(new LeetCode633().judgeSquareSum(2147483646));
-        System.out.println(new LeetCode633().judgeSquareSum(999999999));
-    }
-
-    //https://leetcode.com/problems/sum-of-square-numbers/discuss/2622127/JAVA-or-Binary-Search
-
     public boolean judgeSquareSum(int c) {
-        long s = 0;
-        long e = (long) Math.sqrt(c);
-        while (s <= e) {
-            long mid = s * s + e * e;
+        long left = 0;
+        long right = (long) Math.sqrt(c);
+        while (left <= right) {
+            long mid = left * left + right * right;
             if (mid == (long) c) {
                 return true;
-            } else if (mid > (long) c) {
-                e--;
+            }
+            if (mid > (long) c) {
+                right--;
             } else {
-                s++;
+                left++;
             }
         }
         return false;

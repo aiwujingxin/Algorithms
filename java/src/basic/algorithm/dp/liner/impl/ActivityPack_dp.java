@@ -10,7 +10,6 @@ import java.util.Arrays;
  */
 public class ActivityPack_dp implements ActivityPack {
 
-    //https://www.cs.princeton.edu/~wayne/cs423/lectures/dynamic-programming-4up.pdf
     @Override
     public int activityPack(int[][] periods) {
         int[] s = new int[periods.length];
@@ -71,6 +70,4 @@ public class ActivityPack_dp implements ActivityPack {
         }
         System.out.println("Max compatibile solution DP memorized: " + solution);
     }
-
-
 }

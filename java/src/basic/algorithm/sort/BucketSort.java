@@ -9,7 +9,7 @@ import java.util.List;
  * @date 2022/9/14 14:15
  * @description 将元素均匀分布至桶中, 对桶内的元素排序,最后按顺序输出
  */
-public class BucketSort implements ArraySort {
+public class BucketSort implements Sort {
 
     @Override
     public int[] sortArray(int[] nums) {

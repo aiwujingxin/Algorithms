@@ -5,8 +5,9 @@ package basic.algorithm.sort;
  * @date 2022/6/13 23:15
  * @link <a href="https://www.bilibili.com/video/BV1YM4y1A7wi/"></a>
  * @link 见leetcode.solution.pic.redixSort.png 有图解
+ * @description 时间复杂度 O(n)
  */
-public class RedixSort implements ArraySort {
+public class RedixSort implements Sort {
 
     public int[] sortArray(int[] nums) {
         if (nums == null || nums.length < 2) {

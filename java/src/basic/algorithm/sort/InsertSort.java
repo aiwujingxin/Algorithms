@@ -5,7 +5,7 @@ package basic.algorithm.sort;
  * @author jingxinwu
  * @date 2021-06-06 4:45 下午
  */
-public class InsertSort implements ArraySort {
+public class InsertSort implements Sort {
 
 
     //将数组分为已排序区间和未排序区间两部分，

@@ -12,7 +12,7 @@ public class LCR6 {
         }
         int n = numbers.length;
         for (int i = 0; i < n; i++) {
-            int find = bsearch(numbers, i + 1, target - numbers[i]);
+            int find = rightBound(numbers, i + 1, target - numbers[i]);
             if (find != -1 && numbers[find] == target - numbers[i]) {
                 return new int[]{i, find};
             }
@@ -20,15 +20,15 @@ public class LCR6 {
         return new int[]{};
     }
 
-    private int bsearch(int[] numbers, int start, int num) {
+    private int rightBound(int[] numbers, int start, int num) {
         int left = start;
         int right = numbers.length - 1;
         while (left < right) {
             int mid = (left + right + 1) / 2;
-            if (numbers[mid] <= num) {
-                left = mid;
-            } else {
+            if (numbers[mid] > num) {
                 right = mid - 1;
+            } else {
+                left = mid;
             }
         }
         return left;

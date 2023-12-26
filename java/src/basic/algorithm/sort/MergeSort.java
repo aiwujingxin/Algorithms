@@ -13,7 +13,7 @@ import leetcode.problems.LeetCode493;
  * @see leetcode.lists.lcr.LCR170
  */
 
-public class MergeSort implements ArraySort {
+public class MergeSort implements Sort {
 
     int[] arr;
 

@@ -7,7 +7,7 @@ import java.util.List;
  * @author wujingxinit@outlook.com
  * @date 2022/9/14 23:03
  */
-public class RedixSort_negative implements ArraySort {
+public class RedixSort_negative implements Sort {
 
     //https://leetcode.cn/problems/sort-an-array/solution/912-pai-xu-shu-zu-ji-chu-pai-xu-suan-fa-1qt5f/
     @Override

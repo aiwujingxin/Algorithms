@@ -11,16 +11,17 @@ public class LeetCode719 {
     //https://leetcode.com/problems/find-k-th-smallest-pair-distance/discuss/1676700/Java-or-Two-Solution-or-Binary-Search-OR-Sliding-Window
     public int smallestDistancePair(int[] nums, int k) {
         Arrays.sort(nums);
-        int lo = 0, hi = nums[nums.length - 1] - nums[0];
-        while (lo < hi) { //Find the smallest workable number, i.e. find the first T in a ...FFFFTTTT... sequence
-            int mid = lo + (hi - lo) / 2;
+        int left = 0;
+        int right = nums[nums.length - 1] - nums[0];
+        while (left < right) { //Find the smallest workable number, i.e. find the first T in a ...FFFFTTTT... sequence
+            int mid = left + (right - left) / 2;
             if (cover(nums, mid, k)) {
-                hi = mid; //is the number we guess enough to cover k?
+                left = mid + 1;
             } else {
-                lo = mid + 1;
+                right = mid; //is the number we guess enough to cover k?
             }
         }
-        return lo;
+        return left;
     }
 
     //Return true if we have enough number to cover k, false otherwise.
@@ -38,6 +39,6 @@ public class LeetCode719 {
             }
             cnt += lo - i;
         }
-        return cnt >= k;
+        return cnt < k;
     }
 }

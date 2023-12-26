@@ -24,8 +24,7 @@ public class LCR73 {
         int right = max;
         while (left < right) {
             int mid = (left + right) / 2;
-            int time = getTime(piles, mid);
-            if (time <= h) {
+            if (getTime(piles, mid) <= h) {
                 right = mid;
             } else {
                 left = mid + 1;
