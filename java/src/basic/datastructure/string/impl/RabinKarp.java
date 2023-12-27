@@ -8,6 +8,7 @@ import basic.datastructure.string.Search;
  * @see leetcode.problems.LeetCode1044
  * @see leetcode.problems.LeetCode187
  * @see leetcode.problems.LeetCode28
+ * @see leetcode.problems.LeetCode718
  */
 public class RabinKarp implements Search {
 
