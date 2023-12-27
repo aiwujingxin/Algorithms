@@ -16,8 +16,8 @@ public class LeetCode1044 {
         int start = -1;
         while (left < right) {
             int mid = (right - left + 1) / 2 + left;
-            int index;
-            if ((index = find(s, mid)) > -1) {
+            int index = find(s, mid);
+            if (index > -1) {
                 start = index;
                 left = mid;
             } else {
@@ -30,9 +30,9 @@ public class LeetCode1044 {
     private int find(String txt, int len) {
         int mul = 26;
         long mod = (long) Math.pow(10, 11);
-        long base = 1;
+        long pow = 1;
         for (int i = 0; i < len - 1; i++) {
-            base = base * mul % mod;
+            pow = pow * mul % mod;
         }
         long hash = 0;
         for (int i = 0; i < len; i++) {
@@ -43,7 +43,7 @@ public class LeetCode1044 {
         int right = len;
         while (right < txt.length()) {
             // 缩小窗口，移出字符 ; 扩大窗口，移入字符
-            hash = (mul * (hash - (txt.charAt(right - len) * base)) + (txt.charAt(right))) % mod;
+            hash = (mul * (hash - (txt.charAt(right - len) * pow)) + (txt.charAt(right))) % mod;
             if (hash < 0) {
                 hash = hash + mod;
             }

@@ -1,6 +1,7 @@
 package basic.datastructure.tree.traverse;
 
-import basic.datastructure.tree.Traverse;
+import basic.datastructure.tree.TraverseDFS;
+import basic.datastructure.tree.TraverseIteration;
 import common.TreeNode;
 
 import java.util.ArrayList;
@@ -12,7 +13,7 @@ import java.util.Stack;
  * @date 2022/9/7 11:50
  * <a href="https://zhuanlan.zhihu.com/p/80578741"></a>
  */
-public class PostOrder implements Traverse {
+public class PostOrder implements TraverseIteration , TraverseDFS {
 
     List<Integer> list = new ArrayList<>();
 

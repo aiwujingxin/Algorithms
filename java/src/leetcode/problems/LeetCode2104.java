@@ -1,6 +1,5 @@
 package leetcode.problems;
 
-import java.util.Arrays;
 import java.util.Stack;
 
 /**
@@ -8,7 +7,6 @@ import java.util.Stack;
  * @date 2023/10/31 22:31
  */
 public class LeetCode2104 {
-
 
     public long subArrayRanges(int[] nums) {
         if (nums == null || nums.length == 0) {

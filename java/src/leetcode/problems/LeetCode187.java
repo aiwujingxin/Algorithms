@@ -49,19 +49,22 @@ public class LeetCode187 {
         }
         Set<Integer> set = new HashSet<>();
         Set<String> res = new HashSet<>();
-        int hash = 0; //滑动哈希
-        int pow = (int) Math.pow(4, 9);// 删除高位时用
+        int hash = 0; //滚动哈希
+        int mul = 4; // 进制
+        int pow = 1;
+        for (int i = 0; i < 9; i++) { // len(模式串)-1
+            pow = (pow * mul);
+        }
         int left = 0;
         int right = 0;
         while (right < nums.length) {
-            hash = 4 * hash + nums[right];// 4进制，每次让先前的的数字乘以进制，加上新的数字
+            hash = mul * hash + nums[right];
             if (right - left + 1 == 10) {
                 if (set.contains(hash)) {
                     res.add(s.substring(left, right + 1));
                 }
                 set.add(hash);
-                // 滑动窗口删除高位数字
-                hash = hash - nums[left] * pow;
+                hash = hash - nums[left] * pow; // 滑动窗口删除高位数字
                 left++;
             }
             right++;

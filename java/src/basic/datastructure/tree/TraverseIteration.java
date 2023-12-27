@@ -12,10 +12,9 @@ import java.util.List;
  * @see leetcode.problems.LeetCode145 后序遍历 https://leetcode.cn/problems/binary-tree-postorder-traversal/
  * @see leetcode.problems.LeetCode102 后序遍历 https://leetcode.cn/problems/binary-tree-level-order-traversal/
  * @see leetcode.problems.LeetCode107 二叉树的层序遍历 II  https://leetcode.cn/problems/binary-tree-level-order-traversal-ii/
+ * @see leetcode.problems.LeetCode538 538. 把二叉搜索树转换为累加树
  */
-public interface Traverse {
-
-    List<Integer> DFS(TreeNode root);
+public interface TraverseIteration {
 
     List<Integer> Iteration(TreeNode root);
 }

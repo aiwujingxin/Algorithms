@@ -17,4 +17,5 @@ import leetcode.problems.*;
  * @see LeetCode214 最短回文串
  */
 public interface Palindrome {
+    String longestPalindrome(String s);
 }
