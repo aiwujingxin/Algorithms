@@ -1,5 +1,6 @@
 package leetcode.problems;
 
+import java.util.HashSet;
 import java.util.Stack;
 
 /**
@@ -10,25 +11,31 @@ import java.util.Stack;
 public class LeetCode316 {
 
     public String removeDuplicateLetters(String s) {
-        Stack<Character> stack = new Stack<>();
-        int[] count = new int[26];
-        for (char ch : s.toCharArray()) {
-            count[ch - 'a']++;
+        if (s == null || s.isEmpty()) {
+            return "";
         }
+        int[] arr = new int[26];
         for (int i = 0; i < s.length(); i++) {
-            char c = s.charAt(i);
-            if (!stack.contains(c)) {
-                while (!stack.isEmpty() && stack.peek() > c && count[stack.peek() - 'a'] > 0) {
-                    stack.pop();
-                }
-                stack.add(c);
+            arr[s.charAt(i) - 'a']++;
+        }
+        Stack<Character> stack = new Stack<>();
+        HashSet<Character> set = new HashSet<>();
+        for (int i = 0; i < s.length(); i++) {
+            arr[s.charAt(i) - 'a']--;
+            if (set.contains(s.charAt(i))) {
+                continue;
             }
-            count[c - 'a']--;
+            while (!stack.isEmpty() && (stack.peek() >= s.charAt(i)) && (arr[stack.peek() - 'a'] > 0)) {
+                set.remove(stack.peek());
+                stack.pop();
+            }
+            set.add(s.charAt(i));
+            stack.push(s.charAt(i));
         }
         StringBuilder sb = new StringBuilder();
-        for (char ch : stack) {
-            sb.append(ch);
+        while (!stack.isEmpty()) {
+            sb.append(stack.pop());
         }
-        return sb.toString();
+        return sb.reverse().toString();
     }
 }

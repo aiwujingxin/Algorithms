@@ -5,10 +5,12 @@ import leetcode.problems.*;
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/8/22 13:01
- * 数字
- * @see LeetCode263 丑数
+ * <p>
+ * 单序列I
+ * @see LeetCode204
  * @see LeetCode264 丑数II
- * 单序列
+ * @see LeetCode313
+ * 单序列II
  * @see LeetCode53 最大和的连续子数组
  * @see LeetCode153 最大乘积连续子数组
  * @see LeetCode300 最长递增子序列 LIS

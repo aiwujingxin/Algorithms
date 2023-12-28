@@ -4,7 +4,7 @@ import java.util.Stack;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2023/11/3 14:42
+ * @date 2023/12/28 11:06
  */
 public class LeetCode227 {
 
@@ -13,16 +13,19 @@ public class LeetCode227 {
             return 0;
         }
         s = s.trim();
-        char[] chars = s.toCharArray();
         Stack<Integer> stack = new Stack<>();
+        char[] chars = s.toCharArray();
         char pre = '+';
         int num = 0;
         int n = chars.length;
         for (int i = 0; i < n; i++) {
-            if (Character.isDigit(chars[i])) {
+            if (s.charAt(i) == ' ') {
+                continue;
+            }
+            if (isDigit(chars[i])) {
                 num = num * 10 + chars[i] - '0';
             }
-            if (!Character.isDigit(s.charAt(i)) && s.charAt(i) != ' ' || i == n - 1) {
+            if (!isDigit(s.charAt(i)) || i == n - 1) {
                 switch (pre) {
                     case '+':
                         stack.push(num);
@@ -45,5 +48,9 @@ public class LeetCode227 {
             res += stack.pop();
         }
         return res;
+    }
+
+    private boolean isDigit(char token) {
+        return token >= '0' && token <= '9';
     }
 }

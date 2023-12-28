@@ -4,7 +4,7 @@ import java.util.Random;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2023/11/3 13:53
+ * @date 2023/12/28 10:27
  */
 public class LeetCode215 {
 
@@ -14,7 +14,6 @@ public class LeetCode215 {
         }
         return findKthLargest(nums, 0, nums.length - 1, k);
     }
-
 
     public int findKthLargest(int[] nums, int start, int end, int k) {
         if (start > end) {
@@ -30,10 +29,9 @@ public class LeetCode215 {
         return findKthLargest(nums, start, index - 1, k);
     }
 
-
-    public int partition(int[] nums, int i, int j) {
-        int ri = new Random().nextInt(j - i + 1) + i; // 随机选一个作为我们的主元
-        swap(nums, ri, i);
+    private int partition(int[] nums, int i, int j) {
+        int rand = new Random().nextInt(j - i + 1) + i;
+        swap(nums, rand, i);
         int pi = nums[i];
         while (i < j) {
             while (i < j && nums[j] <= pi) {
@@ -49,9 +47,9 @@ public class LeetCode215 {
         return i;
     }
 
-    public void swap(int[] nums, int i, int j) {
-        int t = nums[i];
-        nums[i] = nums[j];
-        nums[j] = t;
+    private void swap(int[] nums, int rand, int i) {
+        int t = nums[rand];
+        nums[rand] = nums[i];
+        nums[i] = t;
     }
 }

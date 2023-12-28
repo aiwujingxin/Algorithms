@@ -17,4 +17,8 @@ public class LeetCode258 {
         }
         return num;
     }
+
+    public int addDigits_math(int num) {
+        return (num - 1) % 9 + 1;
+    }
 }

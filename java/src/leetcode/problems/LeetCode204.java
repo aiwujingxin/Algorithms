@@ -2,44 +2,25 @@ package leetcode.problems;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2023/11/3 12:47
+ * @date 2023/12/27 16:05
  */
 public class LeetCode204 {
 
-
     public int countPrimes(int n) {
-
-        boolean[] notP = new boolean[n];
-        int res = 0;
-
+        if (n <= 1) {
+            return 0;
+        }
+        boolean[] dp = new boolean[n];
+        int cnt = 0;
+        dp[1] = true;
         for (int i = 2; i < n; i++) {
-            if (!notP[i]) {
-                res++;
+            if (!dp[i]) {
+                cnt++;
                 for (int j = 0; j * i < n; j++) {
-                    notP[j * i] = true;
+                    dp[i * j] = true;
                 }
             }
         }
-        return res;
-    }
-
-    public int countPrimes_v2(int n) {
-        int ans = 0;
-        for (int i = 0; i < n; ++i) {
-            ans += isPrime(i) ? 1 : 0;
-        }
-        return ans;
-    }
-
-    public boolean isPrime(int x) {
-        if (x < 2) {
-            return false;
-        }
-        for (int i = 2; i * i <= x; ++i) {
-            if (x % i == 0) {
-                return false;
-            }
-        }
-        return true;
+        return cnt;
     }
 }

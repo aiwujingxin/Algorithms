@@ -2,7 +2,7 @@ package leetcode.problems;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2023/11/5 16:44
+ * @date 2023/12/28 16:05
  */
 public class LeetCode260 {
 
@@ -10,21 +10,26 @@ public class LeetCode260 {
         if (nums == null || nums.length == 0) {
             return new int[]{};
         }
-        int one = 0;
-        int two = 0;
-        int n = nums[0];
+        int t = nums[0];
         for (int i = 1; i < nums.length; i++) {
-            n = n ^ nums[i];
+            t = t ^ nums[i];
         }
-        int bit = n & -n;  // 取出最后一个1
-        //两个数在这一位上不一样，则被分成了两组
-        for (int num : nums) {
-            if ((num & bit) != 0) {
-                one ^= num;
-            } else {
-                two ^= num;
+        int flag = t & (-t);
+        int index;
+        for (index = 0; index < 32; index++) {
+            if (1 << index == flag) {
+                break;
             }
         }
-        return new int[]{one, two};
+        int a = 0;
+        int b = 0;
+        for (int num : nums) {
+            if ((((num >> index) & 1) == 1)) {
+                a = a ^ num;
+            } else {
+                b = b ^ num;
+            }
+        }
+        return new int[]{a, b};
     }
 }
