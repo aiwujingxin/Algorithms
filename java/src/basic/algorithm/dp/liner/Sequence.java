@@ -20,6 +20,7 @@ import leetcode.problems.*;
  * 双序列
  * @see LeetCode72 编辑距离
  * @see LeetCode1143 最长公共子序列 LCS
+ * @see LeetCode718 最长公共子串
  * @see LeetCode115 不同的子序列
  * 合唱团
  */
