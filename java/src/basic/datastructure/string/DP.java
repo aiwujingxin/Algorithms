@@ -10,6 +10,7 @@ import leetcode.problems.LeetCode44;
  * @see LeetCode394 394. 字符串解码
  * @see LeetCode10 10. 正则表达式匹配
  * @see LeetCode44 44. 通配符匹配
+ * @see basic.algorithm.dp.liner.Sequence
  */
 public interface DP {
 }

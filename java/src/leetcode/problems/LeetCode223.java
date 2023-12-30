@@ -18,7 +18,7 @@ public class LeetCode223 {
         int bottomMax = Math.max(ay1, by1);
 
         if (leftMax < rightMin && topMin > bottomMax) {
-            overlap = Math.abs(rightMin - leftMax) * Math.abs(topMin - bottomMax);
+            overlap = (rightMin - leftMax) * (topMin - bottomMax);
         }
         return area1 + area2 - overlap;
     }

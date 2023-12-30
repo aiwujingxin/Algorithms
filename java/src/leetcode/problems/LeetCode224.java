@@ -1,5 +1,7 @@
 package leetcode.problems;
 
+import java.util.LinkedList;
+import java.util.Queue;
 import java.util.Stack;
 
 /**
@@ -9,55 +11,43 @@ import java.util.Stack;
 public class LeetCode224 {
 
     public int calculate(String s) {
-        return dfs(s, 0)[0];
+        Queue<Character> queue = new LinkedList<>();
+        for (char c : s.toCharArray()) {
+            queue.add(c);
+        }
+        return dfs(queue);
     }
 
-    public int[] dfs(String s, int index) {
+    private int dfs(Queue<Character> queue) {
         Stack<Integer> stack = new Stack<>();
+        char perSign = '+';
         int num = 0;
-        char sign = '+';
-        for (int i = index; i < s.length(); i++) {
-            char c = s.charAt(i);
+        while (!queue.isEmpty()) {
+            char c = queue.poll();
             if (Character.isDigit(c)) {
-                num = 10 * num + c - '0';
+                num = 10 * num + (c - '0');
             }
+            // 遇到左括号开始递归计算 num
             if (c == '(') {
-                int[] res = dfs(s, i + 1);
-                num = res[0];
-                i = res[1];
+                num = dfs(queue);
             }
-            if ((!Character.isDigit(c) && c != ' ') || i == s.length() - 1) {
-                int pre;
-                switch (sign) {
+            if ((!Character.isDigit(c) && c != ' ') || queue.isEmpty()) {
+                switch (perSign) {
                     case '+':
                         stack.push(num);
                         break;
                     case '-':
                         stack.push(-num);
                         break;
-                    case '*':
-                        pre = stack.pop();
-                        pre = pre * num;
-                        stack.push(pre);
-                        break;
-                    case '/':
-                        pre = stack.pop();
-                        stack.push(pre / num);
-                        break;
-                    default:
-                        break;
                 }
-                sign = c;
                 num = 0;
+                perSign = c;
             }
+            // 遇到右括号返回递归结果
             if (c == ')') {
-                return new int[]{getSum(stack), i};
+                break;
             }
         }
-        return new int[]{getSum(stack), s.length()};
-    }
-
-    private int getSum(Stack<Integer> stack) {
         int res = 0;
         while (!stack.isEmpty()) {
             res += stack.pop();

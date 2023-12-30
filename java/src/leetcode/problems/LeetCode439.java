@@ -6,6 +6,16 @@ package leetcode.problems;
  */
 public class LeetCode439 {
 
+    /*
+     * "T?2:3"
+     *  "2"
+     *
+     * "F?1:T?4:5"
+     * "4"
+     *
+     *"T?T?F:5:3"
+     * "F"
+     * */
     public String parseTernary(String expression) {
         int count = 0; // 用于找到与最开始的?匹配的:
         for (int i = 1; i < expression.length() - 1; i++) {

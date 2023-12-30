@@ -1,34 +1,36 @@
 package leetcode.problems;
 
 import java.util.Arrays;
+import java.util.Comparator;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2023/12/26 22:51
+ * @date 2023/12/30 19:07
  */
-public class LeetCode300_bs {
+public class LeetCode646 {
 
-    public int lengthOfLIS(int[] nums) {
-        if (nums == null || nums.length == 0) {
-            return 0;
-        }
-        int n = nums.length;
+    public int findLongestChain(int[][] pairs) {
+        Arrays.sort(pairs, new Comparator<int[]>() {
+            @Override
+            public int compare(int[] o1, int[] o2) {
+                return o1[0] - o2[0];
+            }
+        });
+        int n = pairs.length;
         int[] dp = new int[n + 1];
         Arrays.fill(dp, Integer.MAX_VALUE);
         dp[0] = Integer.MIN_VALUE;
         int res = 0;
-        for (int num : nums) {
+        for (int[] pair : pairs) {
+            int num = pair[0];
             int insertIndex = leftBound(dp, num);
-            dp[insertIndex] = Math.min(dp[insertIndex], num);
+            dp[insertIndex] = Math.min(dp[insertIndex], pair[1]);
             res = Math.max(res, insertIndex);
         }
         return res;
     }
 
     public int leftBound(int[] nums, int target) {
-        if (nums == null || nums.length == 0) {
-            return 0;
-        }
         int left = 0;
         int right = nums.length - 1;
         while (left < right) {
@@ -45,3 +47,5 @@ public class LeetCode300_bs {
         return left;
     }
 }
+
+

@@ -10,9 +10,9 @@ public class LeetCode283 {
         if (nums == null || nums.length == 0) {
             return;
         }
-
-        int n = nums.length, left = 0, right = 0;
-
+        int n = nums.length;
+        int left = 0;
+        int right = 0;
         while (right < n) {
             if (nums[right] != 0) {
                 swap(nums, left, right);
