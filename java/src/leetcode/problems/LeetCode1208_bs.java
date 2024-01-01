@@ -14,22 +14,22 @@ public class LeetCode1208_bs {
         }
         int maxLength = 0;
         for (int i = 1; i <= n; i++) {
-            int start = binarySearch(accDiff, i, accDiff[i] - maxCost);
+            int start = leftBound(accDiff, i, accDiff[i] - maxCost);
             maxLength = Math.max(maxLength, i - start);
         }
         return maxLength;
     }
 
-    public int binarySearch(int[] accDiff, int endIndex, int target) {
-        int low = 0, high = endIndex;
-        while (low < high) {
-            int mid = (high - low) / 2 + low;
+    public int leftBound(int[] accDiff, int endIndex, int target) {
+        int left = 0, right = endIndex;
+        while (left < right) {
+            int mid = (right - left) / 2 + left;
             if (accDiff[mid] < target) {
-                low = mid + 1;
+                left = mid + 1;
             } else {
-                high = mid;
+                right = mid;
             }
         }
-        return low;
+        return left;
     }
 }

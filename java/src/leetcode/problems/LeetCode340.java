@@ -10,24 +10,24 @@ import java.util.Map;
 public class LeetCode340 {
 
     public int lengthOfLongestSubstringKDistinct(String s, int k) {
-        Map<Character, Integer> counts = new HashMap<>();
-        int maxLength = 0;
+        Map<Character, Integer> map = new HashMap<>();
+        int max = 0;
         int left = 0;
         int right = 0;
         while (right < s.length()) {
-            char curr = s.charAt(right);
-            counts.put(curr, counts.getOrDefault(curr, 0) + 1);
-            while (counts.size() > k) {
-                char prev = s.charAt(left);
-                counts.put(prev, counts.get(prev) - 1);
-                if (counts.get(prev) == 0) {
-                    counts.remove(prev);
+            char c = s.charAt(right);
+            map.put(c, map.getOrDefault(c, 0) + 1);
+            while (map.size() > k) {
+                char d = s.charAt(left);
+                map.put(d, map.get(d) - 1);
+                if (map.get(d) == 0) {
+                    map.remove(d);
                 }
                 left++;
             }
-            maxLength = Math.max(maxLength, right - left + 1);
+            max = Math.max(max, right - left + 1);
             right++;
         }
-        return maxLength;
+        return max;
     }
 }

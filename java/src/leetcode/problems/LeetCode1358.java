@@ -13,22 +13,22 @@ public class LeetCode1358 {
 
     private int getSubArr(String s, int k) {
         int n = s.length();
-        int[] cnt = new int[3];
-        int m = 0;
+        int[] window = new int[3];
+        int cnt = 0;
         int left = 0;
         int right = 0;
         int res = 0;
         while (right < n) {
-            int indexR = s.charAt(right) - 'a';
-            cnt[indexR]++;
-            if (cnt[indexR] == 1) {
-                m++;
+            int c = s.charAt(right) - 'a';
+            window[c]++;
+            if (window[c] == 1) {
+                cnt++;
             }
-            while (m > k) {
-                int indexL = s.charAt(left) - 'a';
-                cnt[indexL]--;
-                if (cnt[indexL] == 0) {
-                    m--;
+            while (cnt > k) {
+                int d = s.charAt(left) - 'a';
+                window[d]--;
+                if (window[d] == 0) {
+                    cnt--;
                 }
                 left++;
             }

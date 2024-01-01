@@ -1,6 +1,6 @@
 package leetcode.problems;
 
-import java.util.*;
+import java.util.Arrays;
 
 /**
  * @author wujingxinit@outlook.com
@@ -13,7 +13,10 @@ public class LeetCode1477 {
         int n = arr.length;
         int[] best = new int[n];
         Arrays.fill(best, Integer.MAX_VALUE);
-        int sum = 0, left = 0, ans = Integer.MAX_VALUE, bestSoFar = Integer.MAX_VALUE;
+        int sum = 0;
+        int left = 0;
+        int ans = Integer.MAX_VALUE;
+        int bestSoFar = Integer.MAX_VALUE;
         int right = 0;
         while (right < n) {
             sum += arr[right];

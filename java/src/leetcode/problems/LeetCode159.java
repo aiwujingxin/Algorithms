@@ -9,35 +9,28 @@ import java.util.HashMap;
 public class LeetCode159 {
 
     public int lengthOfLongestSubstringTwoDistinct(String s) {
-        if (s == null || s.length() == 0) {
+        if (s == null || s.isEmpty()) {
             return 0;
         }
-        if (s.length() == 1) {
-            return 1;
-        }
-
         HashMap<Character, Integer> map = new HashMap<>();
-
         int left = 0;
         int right = 0;
         int max = 0;
-
         while (right < s.length()) {
-
-            map.put(s.charAt(right), map.getOrDefault(s.charAt(right), 0) + 1);
-            right++;
-
-            if (map.size() <= 2) {
-                max = Math.max(max, right - left);
-            }
-
+            char c = s.charAt(right);
+            map.put(c, map.getOrDefault(c, 0) + 1);
             while (left < right && map.size() > 2) {
-                map.put(s.charAt(left), map.getOrDefault(s.charAt(left), 0) - 1);
-                if (map.get(s.charAt(left)) == 0) {
-                    map.remove(s.charAt(left));
+                char d = s.charAt(left);
+                map.put(d, map.get(d) - 1);
+                if (map.get(d) == 0) {
+                    map.remove(d);
                 }
                 left++;
             }
+            if (map.size() <= 2) {
+                max = Math.max(max, right - left + 1);
+            }
+            right++;
         }
 
         return max;

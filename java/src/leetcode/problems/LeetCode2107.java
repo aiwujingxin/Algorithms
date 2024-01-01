@@ -36,7 +36,7 @@ public class LeetCode2107 {
             if (Objects.equals(map.get(candies[right]), origin.get(candies[right]))) {
                 count++;
             }
-            if (right - left + 1 > k && left < right) {
+            if (left < right && right - left + 1 > k) {
                 if (Objects.equals(map.get(candies[left]), origin.get(candies[left]))) {
                     count--;
                 }

@@ -5,6 +5,7 @@ import java.util.*;
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/7/7 16:54
+ * @link <a href="https://leetcode.cn/problems/count-zero-request-servers/solutions/2320098/chi-xian-hua-dong-chuang-kou-pythonjavac-b573/">...</a>
  * 离线查询
  * 1851. 包含每个查询的最小区间
  * 1938. 查询最大基因差

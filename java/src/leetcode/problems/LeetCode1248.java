@@ -3,9 +3,9 @@ package leetcode.problems;
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/6/19 22:31
- * <a href="https://leetcode.cn/problems/number-of-substrings-containing-all-three-characters/solution/bao-han-suo-you-san-chong-zi-fu-de-zi-zi-fu-chuan-/">...</a>
+ * @link <a href="https://leetcode.cn/problems/number-of-substrings-containing-all-three-characters/solution/bao-han-suo-you-san-chong-zi-fu-de-zi-zi-fu-chuan-/">...</a>
  */
-public class LeetCode1248_sd {
+public class LeetCode1248 {
 
     public int numberOfSubarrays(int[] nums, int k) {
         return getSubArr(nums, k) - getSubArr(nums, k - 1);

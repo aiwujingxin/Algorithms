@@ -7,23 +7,26 @@ package leetcode.problems;
  */
 public class LeetCode1156 {
 
-    //https://leetcode.cn/problems/swap-for-longest-repeated-character-substring/solution/bi-jiao-jian-dan-de-jie-ti-fang-fa-by-ji-siie/
-
     public int maxRepOpt1(String text) {
-        int[] cntTotal = new int[26];
+        int[] freq = new int[26];
         for (char ch : text.toCharArray()) {
-            cntTotal[ch - 'a'] += 1;
+            freq[ch - 'a']++;
         }
-        int[] cnt = new int[26];
-        int ans = 0, maxCount = 0, right = 0, left = 0;
+        int[] window = new int[26];
+        int ans = 0;
+        int maxCount = 0;
+        int left = 0;
+        int right = 0;
         while (right < text.length()) {
-            int idx = text.charAt(right) - 'a';
-            cnt[idx]++;
-            if (cntTotal[idx] - 1 > maxCount) {
-                maxCount = Math.max(maxCount, cnt[idx]);
+            char c = text.charAt(right);
+            window[c - 'a']++;
+
+            if (freq[c - 'a'] - 1 > maxCount) {
+                maxCount = Math.max(maxCount, window[c - 'a']);
             }
+
             while (right - left + 1 > maxCount + 1) {
-                cnt[text.charAt(left) - 'a']--;
+                window[text.charAt(left) - 'a']--;
                 left++;
             }
             ans = Math.max(ans, right - left + 1);

@@ -40,6 +40,7 @@ public class LeetCode487 {
             if (nums[right] == 0) {
                 cnt++;
             }
+            //找出最大的窗口，使得窗口内的0的个数不超过1个。
             while (cnt > 1) {
                 if (nums[left] == 0) {
                     cnt--;

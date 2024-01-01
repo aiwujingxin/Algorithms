@@ -21,7 +21,10 @@ public class LeetCode3 {
             map.put(c, map.getOrDefault(c, 0) + 1);
             while (map.get(c) > 1) {
                 char d = s.charAt(left);
-                map.put(d, map.getOrDefault(d, 0) - 1);
+                map.put(d, map.get(d) - 1);
+                if (map.get(d) == 0) {
+                    map.remove(d);
+                }
                 left++;
             }
             res = Math.max(res, right - left + 1);
