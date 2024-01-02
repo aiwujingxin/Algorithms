@@ -1,7 +1,5 @@
 package leetcode.problems;
 
-import java.util.Arrays;
-
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/12/5 23:09
@@ -10,8 +8,7 @@ public class LeetCode1406 {
 
     public String stoneGameIII(int[] stoneValue) {
         int n = stoneValue.length;
-        int[] memo = new int[n];
-        Arrays.fill(memo, Integer.MIN_VALUE);
+        Integer[] memo = new Integer[n];
         int s = dfs(stoneValue, 0, memo);
         if (s == 0) {
             return "Tie";
@@ -22,11 +19,11 @@ public class LeetCode1406 {
         return "Bob";
     }
 
-    private int dfs(int[] stoneValue, int cur, int[] memo) {
+    private int dfs(int[] stoneValue, int cur, Integer[] memo) {
         if (cur == stoneValue.length) {
             return 0;
         }
-        if (memo[cur] != Integer.MIN_VALUE) {
+        if (memo[cur] != null) {
             return memo[cur];
         }
         int res = Integer.MIN_VALUE;

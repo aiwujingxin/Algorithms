@@ -14,14 +14,14 @@ public class LeetCode1140 {
             sum[i] = sum[i + 1] + piles[i];
         }
         int[][] memo = new int[n][n];
-        return dfs(piles, 0, 1, memo, sum);
+        return dfs(n, 0, 1, memo, sum);
     }
 
-    private int dfs(int[] piles, int index, int M, int[][] memo, int[] sum) {
-        if (index == piles.length) {
+    private int dfs(int n, int index, int M, int[][] memo, int[] sum) {
+        if (index == n) {
             return 0;
         }
-        if (piles.length - index <= 2 * M) {
+        if (n - index <= 2 * M) {
             return sum[index];
         }
         if (memo[index][M] != 0) {
@@ -30,7 +30,7 @@ public class LeetCode1140 {
         int min = Integer.MAX_VALUE;
         for (int i = 1; i <= 2 * M; i++) {
             // 限制对手的值到最小
-            min = Math.min(min, dfs(piles, index + i, Math.max(M, i), memo, sum));
+            min = Math.min(min, dfs(n, index + i, Math.max(M, i), memo, sum));
         }
         // 减去对手的值 得到本轮自己得到的最大值
         return memo[index][M] = sum[index] - min;

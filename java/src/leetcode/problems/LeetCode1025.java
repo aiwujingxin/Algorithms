@@ -13,12 +13,13 @@ public class LeetCode1025 {
 
     public boolean dfs(int n, Boolean[] memo) {
         if (n == 1) {
+            memo[1] = false;
             return false;
         }
-        boolean canWin = false;
         if (memo[n] != null) {
             return memo[n];
         }
+        boolean canWin = false;
         for (int i = 1; i <= n / 2; i++) {
             if (n % i == 0 && !dfs(n - i, memo)) {
                 canWin = true;

@@ -3,7 +3,6 @@ package leetcode.problems;
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/11/6 01:11
- * @see LeetCode27
  */
 public class LeetCode283 {
     public void moveZeroes(int[] nums) {

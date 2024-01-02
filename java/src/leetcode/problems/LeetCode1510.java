@@ -15,7 +15,7 @@ public class LeetCode1510 {
         if (memo[n] != null) {
             return memo[n];
         }
-        for (int i = (int) Math.sqrt(n); i > 0; i--) {
+        for (int i = 1; i < (int) Math.sqrt(n); i++) {
             if (!dfs(n - (i * i), memo)) {
                 return memo[n] = true;
             }

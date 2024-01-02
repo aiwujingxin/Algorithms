@@ -2,8 +2,7 @@ package leetcode.problems;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2023/11/6 01:20
- * @link <a href="https://leetcode.cn/problems/nim-game/solutions/370009/ji-yi-hua-di-gui-dong-tai-gui-hua-guan-cha-gui-lu-/">...</a>
+ * @date 2024.01.02 19:33
  */
 public class LeetCode292 {
 
@@ -16,34 +15,18 @@ public class LeetCode292 {
         return dfs(n, memo);
     }
 
-    private boolean dfs(int n, Boolean[] memo) {
-        if (n < 0) {
-            return false;
+    private Boolean dfs(int n, Boolean[] memo) {
+        if (n <= 3) {
+            return true;
         }
         if (memo[n] != null) {
             return memo[n];
         }
         boolean res = false;
-        for (int i = 1; i < 4; i++) {
-            if (n >= i) {
-                res |= !dfs(n - i, memo);
-            }
+        for (int i = 1; i <= 3; i++) {
+            res = res || !dfs(n - i, memo);
         }
-        return memo[n] = res;
-    }
-
-    public boolean canWinNim_dp(int n) {
-        if (n <= 3) {
-            return true;
-        }
-        boolean[] dp = new boolean[n + 1];
-        dp[1] = true;
-        dp[2] = true;
-        dp[3] = true;
-        for (int i = 4; i <= n; i++) {
-            // 如果 3 种选择，只要有一种对方输掉，自己就可以赢
-            dp[i] = !dp[i - 1] || !dp[i - 2] || !dp[i - 3];
-        }
-        return dp[n];
+        memo[n] = res;
+        return res;
     }
 }
