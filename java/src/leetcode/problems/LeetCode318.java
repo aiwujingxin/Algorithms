@@ -2,27 +2,31 @@ package leetcode.problems;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2023.11.09 22:35
+ * @date 2024/1/3 15:22
  */
 public class LeetCode318 {
 
     public int maxProduct(String[] words) {
         int n = words.length;
-        int[] masks = new int[n];
-        for (int i = 0; i < n; i++) {
-            for (char c : words[i].toCharArray()) {
-                //压缩字符至int保存
-                //如果可以将判断两个单词是否有公共字母的时间复杂度降低到 O(1)
-                masks[i] |= 1 << (c - 'a');
-            }
+        int[] ints = new int[n];
+        for (int i = 0; i < words.length; i++) {
+            ints[i] = convert(words[i]);
         }
-        int res = 0;
+        int max = 0;
         for (int i = 0; i < n; i++) {
             for (int j = i + 1; j < n; j++) {
-                if ((masks[i] & masks[j]) == 0) {
-                    res = Math.max(res, words[i].length() * words[j].length());
+                if ((ints[i] & ints[j]) == 0) {
+                    max = Math.max(max, words[i].length() * words[j].length());
                 }
             }
+        }
+        return max;
+    }
+
+    private int convert(String s) {
+        int res = 0;
+        for (int i = 0; i < s.length(); i++) {
+            res |= 1 << (s.charAt(i) - 'a');
         }
         return res;
     }

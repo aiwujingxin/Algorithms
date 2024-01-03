@@ -7,23 +7,20 @@ package leetcode.problems;
 public class LeetCode91 {
 
     public int numDecodings(String s) {
-        if (s == null || s.isEmpty() || s.charAt(0) == '0') {
-            return 0;
-        }
-        int n = s.length();
-        int[] dp = new int[n];
+        if (s == null || s.isEmpty() || s.charAt(0) == '0') return 0;
+        int[] dp = new int[s.length() + 1];
         dp[0] = 1;
-        for (int i = 1; i < n; i++) {
+        dp[1] = 1;
+        for (int i = 1; i < s.length(); i++) {
+            //  0 不能单独拿出来看
             if (s.charAt(i) != '0') {
-                dp[i] = dp[i - 1];
+                dp[i + 1] += dp[i];
             }
-            if (s.charAt(i - 1) != '0') {
-                int num = Integer.parseInt(s.substring(i - 1, i + 1));
-                if (num >= 10 && num <= 26) {
-                    dp[i] += (i - 2 < 0) ? 1 : dp[i - 2];
-                }
+            int num = Integer.parseInt(s.substring(i - 1, i + 1));
+            if (num >= 10 && num <= 26) {
+                dp[i + 1] += dp[i - 1];
             }
         }
-        return dp[n - 1];
+        return dp[s.length()];
     }
 }

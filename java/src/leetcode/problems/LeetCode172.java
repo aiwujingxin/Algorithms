@@ -8,9 +8,9 @@ public class LeetCode172 {
 
     public int trailingZeroes(int n) {
         int ans = 0;
-        while (n >= 5) {
-            ans += n / 5;
+        while (n != 0) {
             n = n / 5;
+            ans += n;
         }
         return ans;
     }

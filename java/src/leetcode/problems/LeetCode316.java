@@ -1,12 +1,10 @@
 package leetcode.problems;
 
-import java.util.HashSet;
 import java.util.Stack;
 
 /**
- * @author jingxinwu
- * @date 2023.11.09 22:30
- * @description 单调栈+贪心
+ * @author wujingxinit@outlook.com
+ * @date 2024/1/3 14:58
  */
 public class LeetCode316 {
 
@@ -14,22 +12,22 @@ public class LeetCode316 {
         if (s == null || s.isEmpty()) {
             return "";
         }
-        int[] arr = new int[26];
-        for (int i = 0; i < s.length(); i++) {
-            arr[s.charAt(i) - 'a']++;
-        }
         Stack<Character> stack = new Stack<>();
-        HashSet<Character> set = new HashSet<>();
+        int[] freq = new int[26];
         for (int i = 0; i < s.length(); i++) {
-            arr[s.charAt(i) - 'a']--;
-            if (set.contains(s.charAt(i))) {
+            freq[s.charAt(i) - 'a']++;
+        }
+        boolean[] used = new boolean[26];
+        for (int i = 0; i < s.length(); i++) {
+            freq[s.charAt(i) - 'a']--;
+            if (used[s.charAt(i) - 'a']) {
                 continue;
             }
-            while (!stack.isEmpty() && (stack.peek() >= s.charAt(i)) && (arr[stack.peek() - 'a'] > 0)) {
-                set.remove(stack.peek());
+            while (!stack.isEmpty() && freq[stack.peek() - 'a'] > 0 && s.charAt(i) < stack.peek()) {
+                used[stack.peek() - 'a'] = false;
                 stack.pop();
             }
-            set.add(s.charAt(i));
+            used[s.charAt(i) - 'a'] = true;
             stack.push(s.charAt(i));
         }
         StringBuilder sb = new StringBuilder();

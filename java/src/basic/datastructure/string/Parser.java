@@ -29,7 +29,7 @@ import leetcode.problems.*;
  * @see LeetCode7 整数反转
  * 1106. 解析布尔表达式
  */
-public interface Math {
+public interface Parser {
     String addStrings(String s1, String s2);
 
     String subtract(String s1, String s2);

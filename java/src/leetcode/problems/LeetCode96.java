@@ -8,21 +8,9 @@ import java.util.HashMap;
  */
 public class LeetCode96 {
 
-    public int numTrees(int n) {
-        int[] G = new int[n + 1];
-        G[0] = 1;
-        G[1] = 1;
-        for (int i = 2; i <= n; ++i) {
-            for (int j = 1; j <= i; ++j) {
-                G[i] += G[j - 1] * G[i - j];
-            }
-        }
-        return G[n];
-    }
-
     HashMap<Integer, Integer> memo = new HashMap<>();
 
-    public int numTrees_dfs(int n) {
+    public int numTrees(int n) {
         if (n == 0) {
             return 1;
         }
@@ -34,11 +22,23 @@ public class LeetCode96 {
         }
         int res = 0;
         for (int i = 0; i < n; i++) {
-            int left = numTrees_dfs(i);
-            int right = numTrees_dfs(n - i - 1);
+            int left = numTrees(i);
+            int right = numTrees(n - i - 1);
             res += left * right;
         }
         memo.put(n, res);
         return res;
+    }
+
+    public int numTrees_dp(int n) {
+        int[] G = new int[n + 1];
+        G[0] = 1;
+        G[1] = 1;
+        for (int i = 2; i <= n; ++i) {
+            for (int j = 1; j <= i; ++j) {
+                G[i] += G[j - 1] * G[i - j];
+            }
+        }
+        return G[n];
     }
 }

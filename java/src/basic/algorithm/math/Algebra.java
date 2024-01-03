@@ -21,6 +21,21 @@ import leetcode.problems.*;
  * @see LeetCode371 加
  * @see LeetCode166 除
  * @see LeetCode29 除
+ * 约瑟夫环
+ * <a href="https://www.bilibili.com/video/BV1so4y1o7KJ?p=1&vd_source=88e5a3e60377510439e11f13b5878c25"></a>
+ * @see LeetCode1823
+ * 质数
+ * @see LeetCode204
+ * @see LeetCode762
+ * @see LeetCode2521
+ * @see LeetCode459
+ * 因数
+ * @see LeetCode254
+ * 平方数
+ * @see LeetCode319
+ * 阶乘
+ * @see LeetCode172
+ * @see LeetCode793
  */
 public interface Algebra {
 }

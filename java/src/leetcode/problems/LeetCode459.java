@@ -48,7 +48,7 @@ public class LeetCode459 {
             if (s.length() % i != 0) {
                 continue;
             }
-            if (!isP(i)) {
+            if (!isPrime(i)) {
                 continue;
             }
             // 分成i段，每段长len
@@ -67,9 +67,12 @@ public class LeetCode459 {
         return false;
     }
 
-    public boolean isP(int num) {
-        for (int i = 2; i < Math.sqrt(num); i++) {
-            if (num % 2 == 0) {
+    public boolean isPrime(int x) {
+        if (x < 2) {
+            return false;
+        }
+        for (int i = 2; i * i <= x; ++i) {
+            if (x % i == 0) {
                 return false;
             }
         }

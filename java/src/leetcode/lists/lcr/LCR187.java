@@ -9,14 +9,6 @@ import java.util.List;
  */
 public class LCR187 {
 
-    public static void main(String[] args) {
-        System.out.println(new LCR187().lastRemaining(5, 3));
-        System.out.println(new LCR187().lastRemaining(10, 17));
-
-        //case
-        System.out.println(new LCR187().lastRemaining(71989, 111059));
-    }
-
     public int lastRemaining(int n, int m) {
         if (n == 0) {
             return 0;
