@@ -20,5 +20,4 @@ public class LeetCode547_uf {
         }
         return unionFind.getCount();
     }
-
 }

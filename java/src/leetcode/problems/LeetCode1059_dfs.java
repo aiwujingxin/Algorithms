@@ -6,7 +6,7 @@ import java.util.*;
  * @author wujingxinit@outlook.com
  * @date 2023/8/30 15:25
  */
-public class LeetCode1059 {
+public class LeetCode1059_dfs {
 
     HashMap<Integer, List<Integer>> adj = new HashMap<>();
     int destination;

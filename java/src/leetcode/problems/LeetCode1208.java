@@ -4,7 +4,7 @@ package leetcode.problems;
  * @author wujingxinit@outlook.com
  * @date 2023/6/1 19:21
  */
-public class LeetCode1208_bs {
+public class LeetCode1208 {
 
     public int equalSubstring(String s, String t, int maxCost) {
         int n = s.length();

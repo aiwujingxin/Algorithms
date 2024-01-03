@@ -4,7 +4,7 @@ package leetcode.problems;
  * @author aiwujingxin@gmail.com
  * @date 2022/7/27 23:26
  */
-public class LeetCode629_dp {
+public class LeetCode629 {
 
 
     /**

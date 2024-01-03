@@ -37,5 +37,4 @@ public class LeetCode2126_bit {
         }
         return cnt;
     }
-
 }

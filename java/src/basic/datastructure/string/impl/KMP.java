@@ -2,6 +2,7 @@ package basic.datastructure.string.impl;
 
 import basic.datastructure.string.Search;
 import leetcode.problems.LeetCode1392;
+import leetcode.problems.LeetCode1764_kmp;
 import leetcode.problems.LeetCode214;
 import leetcode.problems.LeetCode28;
 
@@ -14,6 +15,7 @@ import leetcode.problems.LeetCode28;
  * @see LeetCode214
  * @see LeetCode28
  * @see LeetCode1392
+ * @see LeetCode1764_kmp
  */
 
 public class KMP implements Search {

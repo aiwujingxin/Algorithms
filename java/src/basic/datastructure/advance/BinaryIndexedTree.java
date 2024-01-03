@@ -6,7 +6,13 @@ package basic.datastructure.advance;
  * @link <a href="https://leetcode.cn/problems/range-sum-query-mutable/solution/guan-yu-ge-lei-qu-jian-he-wen-ti-ru-he-x-41hv/">模版</a>
  * @link <a href="https://www.youtube.com/watch?v=v2Q4ZjPeFuc">讲解</a>
  * @see leetcode.problems.LeetCode307_BitTree
+ * @see leetcode.problems.LeetCode308
+ * @see leetcode.problems.LeetCode315_BitTree
  * @see leetcode.problems.LeetCode327_BitTree
+ * @see leetcode.problems.LeetCode315_BitTree
+ * @see leetcode.problems.LeetCode493_bittree
+ * @see leetcode.problems.LeetCode673_BitTree
+ * @see leetcode.problems.LeetCode693_bittree
  * @see leetcode.problems.LeetCode1649
  */
 public class BinaryIndexedTree {

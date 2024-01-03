@@ -11,7 +11,7 @@ import java.util.Map;
  * @date 2023/8/28 18:10
  * @description 无根树 最长链
  */
-public class LeetCode310_dp {
+public class LeetCode310_treedp {
 
     Map<Integer, List<Integer>> graph = new HashMap<>();
 

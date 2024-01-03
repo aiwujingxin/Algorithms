@@ -9,11 +9,9 @@ import java.util.Arrays;
 public class LeetCode2126 {
 
     public boolean asteroidsDestroyed(int mass, int[] asteroids) {
-
         if (asteroids == null || asteroids.length == 0) {
             return true;
         }
-
         Arrays.sort(asteroids);
         long sum = 0;
         for (int i = 0; i < asteroids.length; i++) {
@@ -22,8 +20,6 @@ public class LeetCode2126 {
             }
             sum += asteroids[i];
         }
-
         return true;
-
     }
 }

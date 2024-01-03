@@ -6,7 +6,7 @@ import java.util.*;
  * @author wujingxinit@outlook.com
  * @date 2023/8/29 17:38
  */
-public class LeetCode947_dfs {
+public class LeetCode947 {
 
     public int removeStones(int[][] stones) {
         Set<int[]> visited = new HashSet<>();
