@@ -21,7 +21,7 @@ public class LeetCode315_BitTree {
         for (int num : nums) {
             set.add(num);
         }
-        // 排名表
+        // 排名表 离散化 树状数组 底层的数组空间会更紧凑，更易于维护
         Map<Integer, Integer> map = new HashMap<>();
         int rank = 1;
         for (Integer num : set) {

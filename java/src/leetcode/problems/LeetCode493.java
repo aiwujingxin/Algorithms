@@ -7,14 +7,12 @@ package leetcode.problems;
 public class LeetCode493 {
 
     int res = 0;
-    int[] nums;
     int[] temp;
 
     public int reversePairs(int[] nums) {
         if (nums == null || nums.length == 0) {
             return 0;
         }
-        this.nums = nums;
         this.temp = new int[nums.length];
         mergeSort(nums, 0, nums.length - 1);
         return res;

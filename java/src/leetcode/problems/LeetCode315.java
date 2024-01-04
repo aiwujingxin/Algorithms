@@ -9,21 +9,18 @@ import java.util.List;
  */
 public class LeetCode315 {
 
-    private int[] index;
-    private int[] temp;
-    private int[] tempIndex;
+    private int[][] temp;
     private int[] ans;
 
     public List<Integer> countSmaller(int[] nums) {
-        this.index = new int[nums.length];
-        this.temp = new int[nums.length];
-        this.tempIndex = new int[nums.length];
+        this.temp = new int[nums.length][];
+        int[][] arrs = new int[nums.length][];
         this.ans = new int[nums.length];
         for (int i = 0; i < nums.length; ++i) {
-            index[i] = i;
+            arrs[i] = new int[]{nums[i], i};
         }
         int l = 0, r = nums.length - 1;
-        mergeSort(nums, l, r);
+        mergeSort(arrs, l, r);
         List<Integer> list = new ArrayList<>();
         for (int num : ans) {
             list.add(num);
@@ -31,49 +28,44 @@ public class LeetCode315 {
         return list;
     }
 
-    public void mergeSort(int[] a, int l, int r) {
-        if (l >= r) {
+    public void mergeSort(int[][] nums, int left, int right) {
+        if (left >= right) {
             return;
         }
-        int mid = (l + r) >> 1;
-        mergeSort(a, l, mid);
-        mergeSort(a, mid + 1, r);
-        merge(a, l, mid, r);
+        int mid = (left + right) >> 1;
+        mergeSort(nums, left, mid);
+        mergeSort(nums, mid + 1, right);
+        merge(nums, left, mid, right);
     }
 
-    public void merge(int[] a, int l, int mid, int r) {
-        int i = l, j = mid + 1, p = l;
-        while (i <= mid && j <= r) {
-            if (a[i] <= a[j]) {
-                temp[p] = a[i];
-                tempIndex[p] = index[i];
+    public void merge(int[][] nums, int left, int mid, int right) {
+        int i = left, j = mid + 1, k = left;
+        while (i <= mid && j <= right) {
+            if (nums[i][0] <= nums[j][0]) {
+                temp[k] = nums[i];
                 //计数
-                ans[index[i]] += (j - mid - 1);
-                ++i;
+                ans[nums[i][1]] += (j - mid - 1);
+                i++;
             } else {
-                temp[p] = a[j];
-                tempIndex[p] = index[j];
-                ++j;
+                temp[k] = nums[j];
+                j++;
             }
-            ++p;
+            k++;
         }
         while (i <= mid) {
-            temp[p] = a[i];
-            tempIndex[p] = index[i];
+            temp[k] = nums[i];
             //计数
-            ans[index[i]] += (j - mid - 1);
-            ++i;
-            ++p;
+            ans[nums[i][0]] += (j - mid - 1);
+            i++;
+            k++;
         }
-        while (j <= r) {
-            temp[p] = a[j];
-            tempIndex[p] = index[j];
-            ++j;
-            ++p;
+        while (j <= right) {
+            temp[k] = nums[j];
+            j++;
+            k++;
         }
-        for (int k = l; k <= r; ++k) {
-            a[k] = temp[k];
-            index[k] = tempIndex[k];
+        for (int n = left; n <= right; ++n) {
+            nums[n] = temp[n];
         }
     }
 }

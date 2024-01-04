@@ -7,19 +7,19 @@ import leetcode.problems.LeetCode493;
 /**
  * @author jingxinwu
  * @date 2021-06-06 1:46 下午
+ * @see leetcode.lists.lcr.LCR170
  * @see LeetCode315
  * @see LeetCode493
  * @see LeetCode327
- * @see leetcode.lists.lcr.LCR170
  */
 
 public class MergeSort implements Sort {
 
-    int[] arr;
+    int[] temp;
 
     @Override
     public int[] sortArray(int[] nums) {
-        arr = new int[nums.length];
+        this.temp = new int[nums.length];
         mergeSort(nums, 0, nums.length - 1);
         return nums;
     }
@@ -39,26 +39,26 @@ public class MergeSort implements Sort {
         int k = left;
         while (i <= mid && j <= right) {
             if (nums[i] <= nums[j]) {
-                arr[k] = nums[i];
+                temp[k] = nums[i];
                 i++;
             } else {
-                arr[k] = nums[j];
+                temp[k] = nums[j];
                 j++;
             }
             k++;
         }
         while (i <= mid) {
-            arr[k] = nums[i];
+            temp[k] = nums[i];
             i++;
             k++;
         }
         while (j <= right) {
-            arr[k] = nums[j];
+            temp[k] = nums[j];
             j++;
             k++;
         }
         for (int n = left; n <= right; n++) {
-            nums[n] = arr[n];
+            nums[n] = temp[n];
         }
     }
 }

@@ -18,14 +18,14 @@ public class LeetCode1219 {
         for (int i = 0; i < m; ++i) {
             for (int j = 0; j < n; ++j) {
                 if (grid[i][j] != 0) {
-                    dfs(i, j, 0);
+                    backtrack(i, j, 0);
                 }
             }
         }
         return ans;
     }
 
-    public void dfs(int x, int y, int gold) {
+    public void backtrack(int x, int y, int gold) {
         gold += grid[x][y];
         ans = Math.max(ans, gold);
 
@@ -36,7 +36,7 @@ public class LeetCode1219 {
             int nx = x + dirs[d][0];
             int ny = y + dirs[d][1];
             if (nx >= 0 && nx < m && ny >= 0 && ny < n && grid[nx][ny] > 0) {
-                dfs(nx, ny, gold);
+                backtrack(nx, ny, gold);
             }
         }
         grid[x][y] = rec;

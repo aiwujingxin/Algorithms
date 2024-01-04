@@ -23,9 +23,8 @@ public class LeetCode307_BitTree {
         }
 
         public void update(int index, int val) {
-            int delta = val - nums[index];
+            bitTree.update(index + 1, val - nums[index]);
             nums[index] = val;
-            bitTree.update(index + 1, delta);
         }
 
         public int sumRange(int left, int right) {

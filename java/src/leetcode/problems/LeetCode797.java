@@ -1,6 +1,9 @@
 package leetcode.problems;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * @author aiwujingxin@gmail.com
@@ -28,13 +31,11 @@ public class LeetCode797 {
         List<List<Integer>> list = new ArrayList<>();
         List<Integer> temp = new ArrayList<>();
         temp.add(0);
-
-        dfs(0, list, map, temp, graph.length);
-
+        backtrack(0, list, map, temp, graph.length);
         return list;
     }
 
-    private void dfs(Integer start, List<List<Integer>> list, Map<Integer, List<Integer>> map, List<Integer> temp, int n) {
+    private void backtrack(Integer start, List<List<Integer>> list, Map<Integer, List<Integer>> map, List<Integer> temp, int n) {
         if (start == n - 1) {
             list.add(new ArrayList<>(temp));
             return;
@@ -42,7 +43,7 @@ public class LeetCode797 {
 
         for (int j = 0; j < map.get(start).size(); j++) {
             temp.add(map.get(start).get(j));
-            dfs(map.get(start).get(j), list, map, temp, n);
+            backtrack(map.get(start).get(j), list, map, temp, n);
             temp.remove(temp.size() - 1);
         }
     }

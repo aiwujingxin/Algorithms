@@ -6,7 +6,7 @@ package leetcode.problems;
  */
 public class LeetCode327 {
 
-    long[] arr;
+    long[] temp;
 
     int count;
     int lower;
@@ -14,7 +14,7 @@ public class LeetCode327 {
 
     public int countRangeSum(int[] nums, int lower, int upper) {
         long[] sum = new long[nums.length + 1];
-        arr = new long[nums.length + 1];
+        temp = new long[nums.length + 1];
         this.lower = lower;
         this.upper = upper;
         for (int i = 1; i <= nums.length; i++) {
@@ -39,41 +39,41 @@ public class LeetCode327 {
         int k = left;
 
         // 计数
-        int low = mid + 1, high = mid + 1;
+        int l = mid + 1, r = mid + 1;
         int t = left;
         while (t <= mid) {
-            while (low <= right && nums[low] - nums[t] < lower) {
-                low++;
+            while (l <= right && nums[l] - nums[t] < lower) {
+                l++;
             }
-            while (high <= right && nums[high] - nums[t] <= upper) {
-                high++;
+            while (r <= right && nums[r] - nums[t] <= upper) {
+                r++;
             }
-            count += high - low;
+            count += r - l;
             t++;
         }
 
         while (i <= mid && j <= right) {
             if (nums[i] <= nums[j]) {
-                arr[k] = nums[i];
+                temp[k] = nums[i];
                 i++;
             } else {
-                arr[k] = nums[j];
+                temp[k] = nums[j];
                 j++;
             }
             k++;
         }
         while (i <= mid) {
-            arr[k] = nums[i];
+            temp[k] = nums[i];
             i++;
             k++;
         }
         while (j <= right) {
-            arr[k] = nums[j];
+            temp[k] = nums[j];
             j++;
             k++;
         }
         for (int n = left; n <= right; n++) {
-            nums[n] = arr[n];
+            nums[n] = temp[n];
         }
     }
 }
