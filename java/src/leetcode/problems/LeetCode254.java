@@ -15,11 +15,11 @@ public class LeetCode254 {
     public List<List<Integer>> getFactors(int n) {
         this.m = n;
         List<List<Integer>> res = new ArrayList<>();
-        dfs(n, new ArrayList<>(), res, 2);
+        backtrack(n, new ArrayList<>(), res, 2);
         return res;
     }
 
-    private void dfs(int num, List<Integer> list, List<List<Integer>> res, int minnum) {
+    private void backtrack(int num, List<Integer> list, List<List<Integer>> res, int minnum) {
         if (num < m) {
             list.add(num);
             res.add(new ArrayList<>(list));
@@ -30,7 +30,7 @@ public class LeetCode254 {
         for (int i = minnum; i * i <= num; i++) {
             if (num % i == 0) {
                 list.add(i);
-                dfs(num / i, list, res, i);
+                backtrack(num / i, list, res, i);
                 list.remove(list.size() - 1);
             }
         }

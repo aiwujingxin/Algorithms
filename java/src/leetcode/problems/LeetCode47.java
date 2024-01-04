@@ -18,7 +18,7 @@ public class LeetCode47 {
         return res;
     }
 
-    void backtrack(int[] nums, List<Integer> list, List<List<Integer>> res, boolean[] used) {
+    public void backtrack(int[] nums, List<Integer> list, List<List<Integer>> res, boolean[] used) {
         if (list.size() == nums.length) {
             res.add(new ArrayList<>(list));
             return;
