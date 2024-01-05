@@ -1,12 +1,10 @@
 package basic.datastructure.string.impl;
 
-import basic.datastructure.string.Parser;
-
 /**
  * @author jingxinwu
  * @date 2022-01-03 6:12 PM
  */
-public class BigDecimal implements Parser {
+public class BigDecimal implements basic.datastructure.string.BigDecimal {
 
     @Override
     public String addStrings(String num1, String num2) {

@@ -1,10 +1,10 @@
 package leetcode.problems;
 
-import java.util.Stack;
-
 /**
  * @author wujingxinit@outlook.com
- * @date 2024/1/4 18:20
+ * @date 2024/1/5 12:37
+ * @description 贪心 到了不得不做的时候才做，这个时候就是最优解
+ * @see LeetCode921
  */
 public class LeetCode1541 {
 
@@ -12,38 +12,25 @@ public class LeetCode1541 {
         if (s == null || s.isEmpty()) {
             return 0;
         }
-
-        Stack<Character> stack = new Stack<>();
-        for (int i = 0; i < s.length(); i++) {
-            char c = s.charAt(i);
-            if (c == ')' && stack.size() >= 2) {
-                char a = stack.pop();
-                char b = stack.pop();
-                if (a == ')' && b == '(') {
-
-                } else {
-                    stack.push(b);
-                    stack.push(a);
-                    stack.push(c);
-                }
-            } else {
-                stack.push(c);
-            }
-        }
+        int count = 0;
         int res = 0;
-        // 出栈
-        while (!stack.isEmpty()) {
-            if (stack.pop() == '(') {
-                res += 2;
+        for (int i = 0; i < s.length(); i++) {
+            if (s.charAt(i) == '(') {
+                count++;
             } else {
-                if (stack.isEmpty()) {
-                    res += 2;
+                // 匹配
+                if (i + 1 < s.length() && s.charAt(i + 1) == ')') {
+                    i++;
                 } else {
-                    res += 1;
-                    stack.pop();
+                    res++; // 加一个右括号
                 }
+                count--;
+            }
+            if (count < 0) { //右括号太多了，必须补充一个左括号
+                res++;
+                count = 0;
             }
         }
-        return res;
+        return res + count * 2;
     }
 }

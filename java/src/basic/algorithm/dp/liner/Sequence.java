@@ -23,6 +23,8 @@ import leetcode.problems.*;
  * @see LeetCode1143 最长公共子序列 LCS
  * @see LeetCode718 最长公共子串
  * @see LeetCode115 不同的子序列
+ * @see LeetCode10 10. 正则表达式匹配
+ * @see LeetCode44 44. 通配符匹配
  * 合唱团
  */
 public interface Sequence {

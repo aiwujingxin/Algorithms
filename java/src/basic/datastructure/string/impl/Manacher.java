@@ -1,7 +1,5 @@
 package basic.datastructure.string.impl;
 
-import basic.datastructure.string.Palindrome;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,7 +7,7 @@ import java.util.List;
  * @author wujingxinit@outlook.com
  * @date 2023/12/27 21:23
  */
-public class Manacher implements Palindrome {
+public class Manacher {
 
     public String longestPalindrome(String s) {
         int start = 0, end = -1;

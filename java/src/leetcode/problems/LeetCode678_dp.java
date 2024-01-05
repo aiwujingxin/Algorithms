@@ -5,10 +5,10 @@ package leetcode.problems;
  * @date 2023/3/13 22:46
  */
 public class LeetCode678_dp {
-    private Boolean[][] dp;
+    private Boolean[][] memo;
 
     public boolean checkValidString(String s) {
-        dp = new Boolean[s.length() + 1][s.length() + 1];
+        memo = new Boolean[s.length() + 1][s.length() + 1];
         return check(s, 0, 0);
     }
 
@@ -21,8 +21,8 @@ public class LeetCode678_dp {
             return count == 0;
         }
 
-        if (dp[start][count] != null) {
-            return dp[start][count];
+        if (memo[start][count] != null) {
+            return memo[start][count];
         }
         char c = s.charAt(start);
         boolean res = false;
@@ -35,7 +35,7 @@ public class LeetCode678_dp {
         } else {
             res = (check(s, start + 1, count + 1) || check(s, start + 1, count - 1) || check(s, start + 1, count));
         }
-        dp[start][count] = res;
+        memo[start][count] = res;
         return res;
     }
 }

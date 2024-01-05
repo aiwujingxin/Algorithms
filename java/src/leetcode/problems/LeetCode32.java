@@ -1,5 +1,7 @@
 package leetcode.problems;
 
+import java.util.Stack;
+
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/11/6 17:44
@@ -22,6 +24,24 @@ public class LeetCode32 {
                 }
             }
             res = Math.max(res, dp[i]);
+        }
+        return res;
+    }
+
+    public int longestValidParentheses_stack(String s) {
+        Stack<Integer> stack = new Stack<>();
+        int res = 0;
+        for (int i = 0; i < s.length(); i++) {
+            if (s.charAt(i) == '(') {
+                stack.push(i);
+            } else {
+                if (!stack.isEmpty() && s.charAt(stack.peek()) == '(') {
+                    stack.pop();
+                    res = Math.max(res, i - (stack.isEmpty() ? -1 : stack.peek()));
+                } else {
+                    stack.push(i);
+                }
+            }
         }
         return res;
     }
