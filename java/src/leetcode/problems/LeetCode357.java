@@ -2,8 +2,7 @@ package leetcode.problems;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2023/11/19 15:09
- * @description 排列组合
+ * @date 2024/1/6 13:20
  */
 public class LeetCode357 {
 
@@ -11,14 +10,18 @@ public class LeetCode357 {
         if (n == 0) {
             return 1;
         }
-        if (n == 1) {
-            return 10;
-        }
-        int res = 10, cur = 9;
-        for (int i = 0; i < n - 1; i++) {
-            cur *= 9 - i;
-            res += cur;
+        int res = 1;
+        for (int len = 1; len <= n; len++) {
+            res += A(10, len) - A(9, len - 1);
         }
         return res;
+    }
+
+    private int A(int n, int m) {
+        int ret = 1;
+        for (int i = n; i > n - m; i--) {
+            ret *= i;
+        }
+        return ret;
     }
 }

@@ -1,7 +1,7 @@
 package basic.datastructure.string;
 
 import basic.datastructure.string.impl.InfixToSuffix;
-import leetcode.lists.classic.Classic0814;
+import leetcode.lists.interview.Inter0814;
 import leetcode.problems.*;
 
 /**
@@ -24,7 +24,7 @@ import leetcode.problems.*;
  * 其他解析
  * @see LeetCode93 93. 复原 IP 地址
  * @see LeetCode439 439. 三元表达式解析器
- * @see Classic0814 布尔运算
+ * @see Inter0814 布尔运算
  * @see LeetCode7 整数反转
  * 1106. 解析布尔表达式
  * 回文

@@ -12,31 +12,32 @@ import java.util.Queue;
  */
 public class Topological_bfs implements Topological {
 
-    int[] indgree;
-
     public int[] findOrder(int n, int[][] edges) {
-        indgree = new int[n];
-        List<Integer>[] graph = buildGraph(n, edges);
-        Queue<Integer> q = new LinkedList<>();
-
+        List<Integer>[] graph = new List[n];
+        int[] indgree = new int[n];
+        for (int i = 0; i < n; i++) {
+            graph[i] = new LinkedList<>();
+        }
+        for (int[] edge : edges) {
+            graph[edge[1]].add(edge[0]);
+            indgree[edge[0]]++;
+        }
+        Queue<Integer> queue = new LinkedList<>();
         for (int i = 0; i < n; i++) {
             if (indgree[i] == 0) {
-                q.offer(i);
+                queue.add(i);
             }
         }
-
-        // 记录拓扑排序结果
         int[] res = new int[n];
         int count = 0;
-        while (!q.isEmpty()) {
-            int cur = q.poll();
-            // 弹出节点的顺序即为拓扑排序结果
+        while (!queue.isEmpty()) {
+            int cur = queue.poll();
             res[count] = cur;
             count++;
             for (int next : graph[cur]) {
                 indgree[next]--;
                 if (indgree[next] == 0) {
-                    q.offer(next);
+                    queue.add(next);
                 }
             }
         }
@@ -44,18 +45,5 @@ public class Topological_bfs implements Topological {
             return new int[]{};
         }
         return res;
-    }
-
-    List<Integer>[] buildGraph(int numCourses, int[][] prerequisites) {
-        List<Integer>[] graph = new LinkedList[numCourses];
-        for (int i = 0; i < numCourses; i++) {
-            graph[i] = new LinkedList<>();
-        }
-        for (int[] edge : prerequisites) {
-            int from = edge[1], to = edge[0];
-            graph[from].add(to);
-            indgree[to]++;
-        }
-        return graph;
     }
 }

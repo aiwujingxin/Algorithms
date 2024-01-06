@@ -5,6 +5,7 @@ import java.util.Arrays;
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/12/8 17:17
+ * @see LeetCode2376
  */
 public class LeetCode1012 {
 

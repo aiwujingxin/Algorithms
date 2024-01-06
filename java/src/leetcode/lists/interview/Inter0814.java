@@ -1,4 +1,4 @@
-package leetcode.lists.classic;
+package leetcode.lists.interview;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -8,7 +8,7 @@ import java.util.Map;
  * @date 2023/12/30 11:15
  */
 
-public class Classic0814 {
+public class Inter0814 {
 
     Map<String, int[]> memo;
 

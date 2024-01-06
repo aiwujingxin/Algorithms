@@ -3,8 +3,9 @@ package basic.algorithm.math.impl;
 /**
  * @author wujingxinit@outlook.com
  * @date 2024/1/3 22:53
+ * @description 质数
  */
-public class IsPrime {
+public class Prime {
 
     public boolean isPrime(int x) {
         if (x < 2) {

@@ -5,6 +5,7 @@ import java.util.HashSet;
 /**
  * @author wujingxinit@outlook.com
  * @date 2024/1/3 22:55
+ * @description 因子
  */
 public class Factors {
 

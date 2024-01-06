@@ -9,8 +9,7 @@ import leetcode.problems.*;
  * @see LeetCode523
  * @see LeetCode874
  * <p>
- * 水塘抽样
- * <a href="https://github.com/jiajunhua/labuladong-fucking-algorithm/blob/master/%E9%AB%98%E9%A2%91%E9%9D%A2%E8%AF%95%E7%B3%BB%E5%88%97/%E6%B0%B4%E5%A1%98%E6%8A%BD%E6%A0%B7.md"></a>
+ * 水塘抽样 <a href="https://github.com/jiajunhua/labuladong-fucking-algorithm/blob/master/%E9%AB%98%E9%A2%91%E9%9D%A2%E8%AF%95%E7%B3%BB%E5%88%97/%E6%B0%B4%E5%A1%98%E6%8A%BD%E6%A0%B7.md"></a>
  * @see LeetCode384
  * @see LeetCode398
  * @see LeetCode382
@@ -21,8 +20,7 @@ import leetcode.problems.*;
  * @see LeetCode371 加
  * @see LeetCode166 除
  * @see LeetCode29 除
- * 约瑟夫环
- * <a href="https://www.bilibili.com/video/BV1so4y1o7KJ?p=1&vd_source=88e5a3e60377510439e11f13b5878c25"></a>
+ * 约瑟夫环 <a href="https://www.bilibili.com/video/BV1so4y1o7KJ?p=1&vd_source=88e5a3e60377510439e11f13b5878c25"></a>
  * @see LeetCode1823
  * 质数
  * @see LeetCode204

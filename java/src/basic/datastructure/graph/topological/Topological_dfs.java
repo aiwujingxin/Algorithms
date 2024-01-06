@@ -4,7 +4,6 @@ import basic.datastructure.graph.Topological;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -19,7 +18,13 @@ public class Topological_dfs implements Topological {
     boolean hasCycle = false;
 
     public int[] findOrder(int n, int[][] edges) {
-        List<Integer>[] graph = buildGraph(n, edges);
+        List<Integer>[] graph = new List[n];
+        for (int i = 0; i < n; i++) {
+            graph[i] = new ArrayList<>();
+        }
+        for (int[] edge : edges) {
+            graph[edge[1]].add(edge[0]);
+        }
 
         visited = new boolean[n];
         onPath = new boolean[n];
@@ -58,17 +63,5 @@ public class Topological_dfs implements Topological {
         // 后序代码位置
         postorder.add(s);
         onPath[s] = false;
-    }
-
-    List<Integer>[] buildGraph(int numCourses, int[][] prerequisites) {
-        List<Integer>[] graph = new LinkedList[numCourses];
-        for (int i = 0; i < numCourses; i++) {
-            graph[i] = new LinkedList<>();
-        }
-        for (int[] edge : prerequisites) {
-            int from = edge[1], to = edge[0];
-            graph[from].add(to);
-        }
-        return graph;
     }
 }

@@ -8,6 +8,7 @@ import java.util.Queue;
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/11/3 13:00
+ * @description 拓扑排序
  */
 public class LeetCode207 {
     public boolean canFinish(int numCourses, int[][] prerequisites) {
