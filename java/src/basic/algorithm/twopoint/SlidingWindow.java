@@ -5,7 +5,7 @@ import leetcode.problems.*;
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/6/1 16:51
- * @description 滑动窗口是一个比较特殊的双指针，所以单独拿出来整理
+ * @description 滑动窗口  滑动窗口是一个比较特殊的双指针，所以单独拿出来整理
  * 滑动窗口是数组/字符串问题中常用的抽象概念。是可以将两个边界向某一方向“滑动”的窗口
  * 窗口通常是在数组/字符串中由开始和结束索引定义的一系列元素的集合，即 [i,j]。
  * 详细见xmind

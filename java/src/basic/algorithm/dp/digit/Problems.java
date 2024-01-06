@@ -3,6 +3,7 @@ package basic.algorithm.dp.digit;
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/12/8 17:12
+ * @description 数位 DP
  * @link <a href="https://leetcode.cn/problems/number-of-digit-one/solutions/1750339/by-endlesscheng-h9ua/"></a>
  * @link <a href="https://www.bilibili.com/video/BV1rS4y1s721/?spm_id_from=333.337.search-card.all.click&vd_source=88e5a3e60377510439e11f13b5878c25">视频</a>
  * @link <a href="https://leetcode.cn/problems/count-numbers-with-unique-digits/solutions/2295107/shu-wei-dpmo-ban-he-ti-xing-zong-jie-by-wleng/">题目</a>

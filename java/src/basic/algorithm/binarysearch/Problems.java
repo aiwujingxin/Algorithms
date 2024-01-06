@@ -5,6 +5,7 @@ import leetcode.problems.*;
 /**
  * @author wujingxinit@outlook.com
  * @date 2022/9/14 14:27
+ * @description 二分查找
  * 基础
  * @see LeetCode34
  * @see LeetCode57

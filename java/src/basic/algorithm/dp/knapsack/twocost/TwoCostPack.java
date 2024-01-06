@@ -6,6 +6,7 @@ import java.util.List;
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/8/8 16:37
+ * @description 二维费用背包
  */
 public class TwoCostPack {
 

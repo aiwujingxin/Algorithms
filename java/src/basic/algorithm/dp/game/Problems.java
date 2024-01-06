@@ -5,7 +5,7 @@ import leetcode.problems.*;
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/12/5 22:07
- * @description 对方赢不了就是自己能赢
+ * @description 博弈类 DP : 对方赢不了就是自己能赢
  * @see LeetCode292
  * @see LeetCode1025
  * @see LeetCode464

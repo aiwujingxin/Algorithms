@@ -5,6 +5,7 @@ import leetcode.problems.*;
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/12/5 00:27
+ * @description 树形 DP
  * @link <a href="https://leetcode.cn/circle/discuss/saUFdd/">...</a>
  * @see LeetCode124
  * @see LeetCode298
@@ -22,7 +23,7 @@ import leetcode.problems.*;
  * @see LeetCode1448
  * @see LeetCode2378
  * 换根DP
- * @see LeetCode310_treedp
+ * @see LeetCode310_treedp 经典中的经典
  * @see LeetCode834
  * @see LeetCode2581
  */

@@ -4,7 +4,7 @@ package basic.algorithm.dp.knapsack.group;
  * @author wujingxinit@outlook.com
  * @date 2023/8/4 11:47
  */
-public class GroupPack_2d {
+public class GroupPack_2d implements Problems {
 
     public int groupKnapsack(int n, int m, int[] groupSizes, int[][] values, int[][] weights) {
         int[][] dp = new int[n + 1][m + 1];

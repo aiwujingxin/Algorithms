@@ -1,8 +1,9 @@
-package basic.algorithm.bit;
+package basic.algorithm.bitwise;
 
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/8/31 01:29
+ * @description 位运算
  * @see leetcode.problems.LeetCode191 位1的个数
  * @see leetcode.problems.LeetCode231
  * @see leetcode.problems.LeetCode260
