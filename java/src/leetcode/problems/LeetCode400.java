@@ -8,7 +8,6 @@ package leetcode.problems;
 public class LeetCode400 {
 
     public int findNthDigit(int n) {
-        n--;
         int len = 1;
         while (len * 9 * Math.pow(10, len - 1) < n) {
             n -= (int) (len * 9 * Math.pow(10, len - 1));
