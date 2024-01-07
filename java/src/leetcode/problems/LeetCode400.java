@@ -8,23 +8,14 @@ package leetcode.problems;
 public class LeetCode400 {
 
     public int findNthDigit(int n) {
-        int start = 1;
-        int digitNum = 1;
-        long base = 9;
-
-        while (n > digitNum * base) {
-            n -= (int) (digitNum * base);
-            start *= 10;
-            base *= 10;
-            digitNum++;
+        n--;
+        int len = 1;
+        while (len * 9 * Math.pow(10, len - 1) < n) {
+            n -= (int) (len * 9 * Math.pow(10, len - 1));
+            len++;
         }
-
-        start += (n - 1) / digitNum;
-
-        String s = String.valueOf(start);
-        char c = s.charAt((n - 1) % digitNum);
-
-        return c - '0';
+        int number = (int) Math.pow(10, len - 1) + (n - 1) / len;
+        return String.valueOf(number).charAt((n - 1) % len) - '0';
     }
 }
 

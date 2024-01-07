@@ -4,44 +4,43 @@ import java.util.Arrays;
 import java.util.Random;
 
 /**
- * @author jingxinwu
- * @date 2022-02-23 6:44 PM
- * @link <a href="https://www.youtube.com/watch?v=8DHwp1Rtp0Q">video,4分10秒</a>
+ * @author wujingxinit@outlook.com
+ * @date 2024/1/7 20:59
  */
 public class LeetCode384 {
 
     class Solution {
 
-        private final Random random = new Random();
-        private final int[] nums;
-        private final int[] orign;
+        int[] nums;
+        int[] arr;
+        Random random = new Random();
 
         public Solution(int[] nums) {
-            this.nums = nums;
-            this.orign = Arrays.copyOf(nums, nums.length);
+            this.nums = Arrays.copyOf(nums, nums.length);
+            this.arr = nums;
         }
 
         public int[] reset() {
-            return orign;
+            return this.nums;
         }
 
         /**
          * i = 0  [0 n-1]   1/n
-         * i = 1  [1 n-1]   (n-1)/n * (1/n-1) = 1 / n  没有被选中 * 选择数字的概率
+         * i = 1  [1 n-1]   (n-1)/n * (1/n-1) = 1 / n  没有被选中 * 选择该下标的概率
          * i = 2  [2 n-3]   (n-1)/n * (n-2)/(n-1) * (1/n-2) = 1 / n
          */
         public int[] shuffle() {
             for (int i = 0; i < nums.length; i++) {
-                int index = random.nextInt(nums.length - i);
-                swap(nums, i, index);
+                int rand = i + random.nextInt(arr.length - i);
+                swap(arr, i, rand);
             }
-            return nums;
+            return arr;
         }
 
-        private void swap(int[] nums, int i, int j) {
-            int temp = nums[i];
-            nums[i] = nums[j];
-            nums[j] = temp;
+        private void swap(int[] arr, int i, int j) {
+            int t = arr[i];
+            arr[i] = arr[j];
+            arr[j] = t;
         }
     }
 }
