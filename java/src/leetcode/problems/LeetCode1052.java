@@ -6,57 +6,37 @@ package leetcode.problems;
  */
 public class LeetCode1052 {
 
-    public static void main(String[] args) {
-        System.out.println(new LeetCode1052().maxSatisfied(new int[]{1, 0, 1, 2, 1, 1, 7, 5}, new int[]{0, 1, 0, 1, 0, 1, 0, 1}, 3));
-        System.out.println(new LeetCode1052().maxSatisfied(new int[]{1}, new int[]{0}, 1));
-        System.out.println(new LeetCode1052().maxSatisfied(new int[]{8, 8}, new int[]{1, 0}, 2));
-        System.out.println(new LeetCode1052().maxSatisfied(new int[]{4, 10, 10}, new int[]{1, 1, 0}, 2));
-        System.out.println(new LeetCode1052().maxSatisfied(new int[]{5, 8}, new int[]{0, 1}, 1));
-        System.out.println(new LeetCode1052().maxSatisfied(new int[]{2, 6, 6, 9}, new int[]{0, 0, 1, 1}, 1));
-    }
-
     public int maxSatisfied(int[] customers, int[] grumpy, int minutes) {
-        int n = customers.length;
-        int ans = 0;
-
-        // 窗口长度为minutes且当grumpy[i] = 1 的最大值 并记录窗口的位置
-        // 加上其他时间 则为答案
-
-        int right = 0;
         int left = 0;
-
-        int winEnd = 0;
-        int maxSum = 0;
-
+        int right = 0;
+        int max = Integer.MIN_VALUE;
         int sum = 0;
+        int l = 0;
+        int r = 0;
+        int n = customers.length;
         while (right < n) {
-            if (grumpy[right] == 1) {
-                sum += customers[right];
-            }
-
+            sum += grumpy[right] == 1 ? customers[right] : 0;
             while (right - left + 1 > minutes) {
-                if (grumpy[left] == 1) {
-                    sum -= customers[left];
-                }
+                sum -= grumpy[left] == 1 ? customers[left] : 0;
                 left++;
             }
-            if (sum > maxSum) {
-                maxSum = sum;
-                winEnd = right;
+            if (right - left + 1 == minutes) {
+                if (sum > max) {
+                    max = sum;
+                    l = left;
+                    r = right;
+                }
             }
             right++;
         }
-//        System.out.println("winEnd : " + winEnd);
+        int res = 0;
         for (int i = 0; i < n; i++) {
-            int winStart = Math.max(winEnd - minutes + 1, 0);
-            if (i <= winEnd && i >= winStart) {
-                ans += customers[i];
+            if (i >= l && i <= r) {
+                res += customers[i];
             } else {
-                if (grumpy[i] == 0) {
-                    ans += customers[i];
-                }
+                res += grumpy[i] == 0 ? customers[i] : 0;
             }
         }
-        return ans;
+        return res;
     }
 }

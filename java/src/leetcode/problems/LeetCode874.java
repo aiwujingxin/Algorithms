@@ -1,31 +1,106 @@
 package leetcode.problems;
 
-import java.util.HashMap;
+import java.util.HashSet;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2023/10/22 20:30
+ * @date 2024/1/8 18:13
  */
 public class LeetCode874 {
 
-    public int subarraysDivByK(int[] nums, int k) {
-        if (nums == null || nums.length == 0) {
-            return 0;
+    public int robotSim(int[] commands, int[][] obstacles) {
+        int x = 0;
+        int y = 0;
+        HashSet<String> set = new HashSet<>();
+        for (int i = 0; i < obstacles.length; i++) {
+            set.add(obstacles[i][0] + "_" + obstacles[i][1]);
         }
-        int cnt = 0;
-        HashMap<Integer, Integer> map = new HashMap<>();
-        map.put(0, 1);
-        int sum = 0;
-        for (int num : nums) {
-            sum += num;
-            // 这里要格外注意java负数取模的特性:-5%2=-1
-            int mod = (sum % k + k) % k;
-            // 根据同余定理:sum[j]%k==sum[i-1]%k时,sum[i,j]%k==0
-            if (map.containsKey(mod)) {
-                cnt += map.get(mod);
+
+        char direction = 'U';
+        int max = 0;
+        for (int i = 0; i < commands.length; i++) {
+
+            if (commands[i] == -2) {
+                direction = turnLeft(direction);
+            } else if (commands[i] == -1) {
+                direction = turnRight(direction);
+            } else {
+                int step = commands[i];
+
+                switch (direction) {
+                    case 'U':
+                        for (int u = 1; u <= step; u++) {
+                            if (set.contains(x + "_" + (y + u))) {
+                                break;
+                            }
+                        }
+                        break;
+                    case 'D':
+                        int d;
+                        for (d = 1; d <= step; d++) {
+                            if (set.contains(x + "_" + (y - d))) {
+                                break;
+                            }
+                        }
+                        y = y - (d - 1);
+                        break;
+                    case 'L':
+                        int l;
+                        for (l = 1; l <= step; l++) {
+                            if (set.contains((x - l) + "_" + y)) {
+                                break;
+                            }
+
+                        }
+                        x -= (l - 1);
+                        break;
+                    case 'R':
+                        int r;
+                        for (r = 1; r <= step; r++) {
+                            if (set.contains((x + r) + "_" + y)) {
+                                break;
+                            }
+                        }
+                        x += (r - 1);
+                        break;
+                }
             }
-            map.put(mod, map.getOrDefault(mod, 0) + 1);
+            // System.out.println("x " + x + " y " + y);
+            max = Math.max(max, x * x + y * y);
         }
-        return cnt;
+
+        return max;
+    }
+
+    private char turnRight(char direction) {
+        if (direction == 'U') {
+            return 'R';
+        }
+        if (direction == 'R') {
+            return 'D';
+        }
+        if (direction == 'L') {
+            return 'U';
+        }
+        if (direction == 'D') {
+            return 'L';
+        }
+        return ' ';
+    }
+
+    private char turnLeft(char direction) {
+        if (direction == 'U') {
+            return 'L';
+        }
+        if (direction == 'R') {
+            return 'U';
+        }
+        if (direction == 'L') {
+            return 'D';
+        }
+        if (direction == 'D') {
+            return 'R';
+        }
+        return ' ';
     }
 }
