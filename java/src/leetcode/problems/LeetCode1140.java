@@ -8,13 +8,12 @@ public class LeetCode1140 {
 
     public int stoneGameII(int[] piles) {
         int n = piles.length;
-        int[] sum = new int[n];
-        sum[n - 1] = piles[n - 1];
-        for (int i = n - 2; i >= 0; i--) {
-            sum[i] = sum[i + 1] + piles[i];
+        int[] presum = new int[n + 1];
+        for (int i = n - 1; i >= 0; i--) {
+            presum[i] = presum[i + 1] + piles[i];
         }
         int[][] memo = new int[n][n];
-        return dfs(n, 0, 1, memo, sum);
+        return dfs(n, 0, 1, memo, presum);
     }
 
     private int dfs(int n, int index, int M, int[][] memo, int[] sum) {

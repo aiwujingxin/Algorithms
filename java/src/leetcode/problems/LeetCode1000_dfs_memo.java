@@ -16,8 +16,8 @@ public class LeetCode1000_dfs_memo {
         int n = stones.length;
         if ((n - 1) % (k - 1) != 0) return -1;
         preSum = new int[n + 1];
-        for (int i = 0; i < n; i++) {
-            preSum[i + 1] = preSum[i] + stones[i];
+        for (int i = 1; i <= n; i++) {
+            preSum[i] = preSum[i + 1] + stones[i + 1];
         }
         memo = new int[n][n];
         for (int i = 0; i < n; i++) {

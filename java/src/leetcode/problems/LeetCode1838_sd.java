@@ -10,17 +10,18 @@ public class LeetCode1838_sd {
 
     public int maxFrequency(int[] nums, int k) {
         int n = nums.length;
-        int left = 0, right = 0, window = 0;
+        int left = 0;
+        int right = 0;
+        int window = 0;
         Arrays.sort(nums);
         while (right < n) {
             int max = nums[right];
-            int count = right - left + 1;
             window += nums[right];
-            right++;
-            if (max * count - window > k) {
+            if (max * (right - left + 1) - window > k) {
                 window -= nums[left];
                 left++;
             }
+            right++;
         }
         return right - left;
     }

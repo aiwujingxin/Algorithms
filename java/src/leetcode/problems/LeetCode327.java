@@ -13,14 +13,15 @@ public class LeetCode327 {
     int upper;
 
     public int countRangeSum(int[] nums, int lower, int upper) {
-        long[] sum = new long[nums.length + 1];
-        temp = new long[nums.length + 1];
+        long[] presum = new long[nums.length + 1];
+        int n = nums.length;
+        temp = new long[n + 1];
         this.lower = lower;
         this.upper = upper;
-        for (int i = 1; i <= nums.length; i++) {
-            sum[i] = sum[i - 1] + (long) nums[i - 1];
+        for (int i = 1; i <= n; i++) {
+            presum[i] = presum[i - 1] + (long) nums[i - 1];
         }
-        mergeSort(sum, 0, sum.length - 1);
+        mergeSort(presum, 0, presum.length - 1);
         return count;
     }
 

@@ -19,17 +19,17 @@ public class LeetCode525 {
             }
         }
 
-        int[] sum = new int[n + 1];
+        int[] presum = new int[n + 1];
         for (int i = 1; i <= n; i++) {
-            sum[i] = sum[i - 1] + nums[i - 1];
+            presum[i] = presum[i - 1] + nums[i - 1];
         }
         int max = 0;
         HashMap<Integer, Integer> map = new HashMap<>();
         for (int i = 0; i <= n; i++) {
-            if (map.containsKey(sum[i])) {
-                max = Math.max(max, i - map.get(sum[i]));
+            if (map.containsKey(presum[i])) {
+                max = Math.max(max, i - map.get(presum[i]));
             } else {
-                map.put(sum[i], i);
+                map.put(presum[i], i);
             }
         }
 

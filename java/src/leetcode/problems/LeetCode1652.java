@@ -11,16 +11,16 @@ public class LeetCode1652 {
         if (k == 0) {
             return new int[n];
         }
-        int[] sum = new int[n + 1];
+        int[] presum = new int[n + 1];
         for (int i = 1; i <= n; i++) {
-            sum[i] = sum[i - 1] + code[i - 1];
+            presum[i] = presum[i - 1] + code[i - 1];
         }
         if (k > 0) {
             for (int i = 0; i < n; i++) {
                 if (i + k < n) {
-                    code[i] = sum[i + k + 1] - sum[i + 1];
+                    code[i] = presum[i + k + 1] - presum[i + 1];
                 } else {
-                    code[i] = (sum[n] - sum[i + 1]) + sum[k - (n - i) + 1];
+                    code[i] = (presum[n] - presum[i + 1]) + presum[k - (n - i) + 1];
                 }
             }
         }
@@ -28,9 +28,9 @@ public class LeetCode1652 {
             k = -k;
             for (int i = 0; i < n; i++) {
                 if (i >= k) {
-                    code[i] = sum[i] - sum[i - k];
+                    code[i] = presum[i] - presum[i - k];
                 } else {
-                    code[i] = sum[i] + (sum[n] - sum[n - (k - i)]);
+                    code[i] = presum[i] + (presum[n] - presum[n - (k - i)]);
                 }
             }
         }

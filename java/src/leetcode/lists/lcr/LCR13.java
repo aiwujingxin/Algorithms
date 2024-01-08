@@ -11,9 +11,11 @@ public class LCR13 {
         int[][] sumMatrix;
 
         public NumMatrix(int[][] matrix) {
-            sumMatrix = new int[matrix.length + 1][matrix[0].length + 1];
-            for (int i = 1; i <= matrix.length; i++) {
-                for (int j = 1; j <= matrix[0].length; j++) {
+            int m = matrix.length;
+            int n = matrix[0].length;
+            sumMatrix = new int[m + 1][+1];
+            for (int i = 1; i <= m; i++) {
+                for (int j = 1; j <= n; j++) {
                     sumMatrix[i][j] = sumMatrix[i][j - 1] + sumMatrix[i - 1][j] - sumMatrix[i - 1][j - 1] + matrix[i - 1][j - 1];
                 }
             }

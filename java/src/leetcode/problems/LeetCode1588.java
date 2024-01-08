@@ -9,8 +9,8 @@ public class LeetCode1588 {
     public int sumOddLengthSubarrays(int[] arr) {
         int n = arr.length;
         int[] prefixSums = new int[n + 1];
-        for (int i = 0; i < n; i++) {
-            prefixSums[i + 1] = prefixSums[i] + arr[i];
+        for (int i = 1; i <= n; i++) {
+            prefixSums[i] = prefixSums[i - 1] + arr[i - 1];
         }
         int sum = 0;
         for (int start = 0; start < n; start++) {

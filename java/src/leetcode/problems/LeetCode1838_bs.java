@@ -8,7 +8,8 @@ import java.util.Arrays;
  */
 public class LeetCode1838_bs {
 
-    int[] nums, sum;
+    int[] nums;
+    int[] presum;
     int n, k;
 
     public int maxFrequency(int[] _nums, int _k) {
@@ -16,9 +17,9 @@ public class LeetCode1838_bs {
         k = _k;
         n = nums.length;
         Arrays.sort(nums);
-        sum = new int[n + 1];
+        presum = new int[n + 1];
         for (int i = 1; i <= n; i++) {
-            sum[i] = sum[i - 1] + nums[i - 1];
+            presum[i] = presum[i - 1] + nums[i - 1];
         }
         int l = 0, r = n;
         while (l < r) {
@@ -35,7 +36,7 @@ public class LeetCode1838_bs {
     boolean check(int len) {
         for (int l = 0; l + len - 1 < n; l++) {
             int r = l + len - 1;
-            int cur = sum[r + 1] - sum[l];
+            int cur = presum[r + 1] - presum[l];
             int t = nums[r] * len;
             if (t - cur <= k) {
                 return true;
