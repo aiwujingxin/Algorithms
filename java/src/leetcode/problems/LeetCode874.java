@@ -12,28 +12,27 @@ public class LeetCode874 {
         int x = 0;
         int y = 0;
         HashSet<String> set = new HashSet<>();
-        for (int i = 0; i < obstacles.length; i++) {
-            set.add(obstacles[i][0] + "_" + obstacles[i][1]);
+        for (int[] obstacle : obstacles) {
+            set.add(obstacle[0] + "_" + obstacle[1]);
         }
-
         char direction = 'U';
         int max = 0;
-        for (int i = 0; i < commands.length; i++) {
-
-            if (commands[i] == -2) {
+        for (int command : commands) {
+            if (command == -2) {
                 direction = turnLeft(direction);
-            } else if (commands[i] == -1) {
+            } else if (command == -1) {
                 direction = turnRight(direction);
             } else {
-                int step = commands[i];
-
+                int step = command;
                 switch (direction) {
                     case 'U':
-                        for (int u = 1; u <= step; u++) {
+                        int u;
+                        for (u = 1; u <= step; u++) {
                             if (set.contains(x + "_" + (y + u))) {
                                 break;
                             }
                         }
+                        y += (u - 1);
                         break;
                     case 'D':
                         int d;
@@ -42,7 +41,7 @@ public class LeetCode874 {
                                 break;
                             }
                         }
-                        y = y - (d - 1);
+                        y -= (d - 1);
                         break;
                     case 'L':
                         int l;
@@ -65,7 +64,6 @@ public class LeetCode874 {
                         break;
                 }
             }
-            // System.out.println("x " + x + " y " + y);
             max = Math.max(max, x * x + y * y);
         }
 
