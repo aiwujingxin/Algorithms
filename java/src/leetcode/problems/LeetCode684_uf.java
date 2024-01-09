@@ -1,6 +1,6 @@
 package leetcode.problems;
 
-import basic.datastructure.advance.UnionFind;
+import knowledge.advstructure.UnionFind;
 
 /**
  * @author aiwujingxin@gmail.com

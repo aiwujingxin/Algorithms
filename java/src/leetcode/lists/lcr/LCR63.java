@@ -1,6 +1,7 @@
 package leetcode.lists.lcr;
 
-import basic.datastructure.trie.Trie;
+
+import knowledge.datastructure.trie.Trie;
 
 import java.util.List;
 

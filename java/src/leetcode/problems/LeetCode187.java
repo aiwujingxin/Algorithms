@@ -9,7 +9,7 @@ import java.util.Set;
  * @author wujingxinit@outlook.com
  * @date 2023/10/28 11:35
  * @description RabinKarp解法
- * @see basic.datastructure.string.impl.RabinKarp
+ * @see knowledge.datastructure.string.impl.RabinKarp
  */
 public class LeetCode187 {
 

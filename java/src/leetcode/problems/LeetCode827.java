@@ -1,6 +1,6 @@
 package leetcode.problems;
 
-import basic.datastructure.advance.UnionFind;
+import knowledge.advstructure.UnionFind;
 
 import java.util.HashSet;
 

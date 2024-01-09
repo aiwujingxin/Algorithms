@@ -1,7 +1,7 @@
 package leetcode.problems;
 
 
-import basic.datastructure.advance.*;
+import knowledge.advstructure.*;
 
 import java.util.*;
 

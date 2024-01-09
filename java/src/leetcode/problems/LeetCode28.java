@@ -1,7 +1,8 @@
 package leetcode.problems;
 
-import basic.datastructure.string.impl.KMP;
-import basic.datastructure.string.impl.RabinKarp;
+
+import knowledge.datastructure.string.impl.KMP;
+import knowledge.datastructure.string.impl.RabinKarp;
 
 /**
  * @author wujingxinit@outlook.com

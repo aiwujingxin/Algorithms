@@ -1,8 +1,8 @@
 package leetcode.lists.lcr;
 
 
-import basic.datastructure.list.DoubleLinkedList;
-import basic.datastructure.list.Node;
+import knowledge.datastructure.list.DoubleLinkedList;
+import knowledge.datastructure.list.Node;
 
 /**
  * @author wujingxinit@outlook.com

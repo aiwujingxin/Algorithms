@@ -51,5 +51,4 @@ public class LCR65 {
         public TrieNode() {
         }
     }
-
 }

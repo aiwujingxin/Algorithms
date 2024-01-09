@@ -1,6 +1,7 @@
 package leetcode.problems;
 
-import basic.algorithm.prefixanddiff.MatrixDiff;
+
+import knowledge.algorithm.prefixanddiff.MatrixDiff;
 
 /**
  * @author wujingxinit@outlook.com

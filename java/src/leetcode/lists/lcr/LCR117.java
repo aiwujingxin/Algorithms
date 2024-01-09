@@ -1,6 +1,6 @@
 package leetcode.lists.lcr;
 
-import basic.datastructure.advance.*;
+import knowledge.advstructure.*;
 
 /**
  * @author wujingxinit@outlook.com

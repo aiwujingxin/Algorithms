@@ -1,6 +1,6 @@
 package leetcode.problems;
 
-import basic.datastructure.advance.BinaryIndexedTree;
+import knowledge.advstructure.BinaryIndexedTree;
 
 import java.util.*;
 

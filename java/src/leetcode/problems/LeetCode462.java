@@ -4,7 +4,7 @@ package leetcode.problems;
  * @author wujingxinit@outlook.com
  * @date 2023/12/4 18:30
  * @description 贪心
- * @see basic.algorithm.sort.QuickSelect
+ * @see knowledge.algorithm.sort.QuickSelect
  */
 public class LeetCode462 {
 

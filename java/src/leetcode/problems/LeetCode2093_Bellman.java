@@ -1,6 +1,6 @@
 package leetcode.problems;
 
-import basic.datastructure.graph.shortestpath.*;
+import knowledge.graph.shortestpath.Dijkstra;
 
 /**
  * @author wujingxinit@outlook.com

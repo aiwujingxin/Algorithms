@@ -1,6 +1,7 @@
 package leetcode.lists.lcr;
 
-import basic.datastructure.trie.Trie;
+
+import knowledge.datastructure.trie.Trie;
 
 /**
  * @author wujingxinit@outlook.com
