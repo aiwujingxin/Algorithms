@@ -3,7 +3,7 @@ package leetcode.problems;
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/11/17 00:48
- * @see knowledge.algorithm.sort.QuickSelect
+ * @see knowledge.algorithms.sort.QuickSelect
  * @see LeetCode75
  */
 public class LeetCode324 {

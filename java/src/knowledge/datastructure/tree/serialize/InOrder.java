@@ -1,7 +1,7 @@
 package knowledge.datastructure.tree.serialize;
 
 import common.*;
-import knowledge.datastructure.tree.Serialization;
+import knowledge.datastructure.tree.Serialize;
 
 /**
  * @author wujingxinit@outlook.com
@@ -9,7 +9,7 @@ import knowledge.datastructure.tree.Serialization;
  */
 public class InOrder {
 
-    public class Codec implements Serialization {
+    public class Codec implements Serialize {
 
         @Override
         public TreeNode deserialize(String data) {

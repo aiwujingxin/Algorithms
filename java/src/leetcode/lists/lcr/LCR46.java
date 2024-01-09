@@ -13,7 +13,7 @@ import java.util.Queue;
  */
 public class LCR46 {
     public List<Integer> rightSideView(TreeNode root) {
-        var view = new ArrayList<Integer>();
+        List<Integer> view = new ArrayList<>();
         if (root == null) {
             return view;
         }
@@ -21,8 +21,8 @@ public class LCR46 {
         queue.add(root);
         while (!queue.isEmpty()) {
             int size = queue.size();
-            for (var i = 0; i < size; i++) {
-                var node = queue.poll();
+            for (int i = 0; i < size; i++) {
+                TreeNode node = queue.poll();
                 if (node.left != null) {
                     queue.add(node.left);
                 }

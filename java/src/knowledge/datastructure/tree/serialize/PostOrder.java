@@ -1,7 +1,7 @@
 package knowledge.datastructure.tree.serialize;
 
 import common.*;
-import knowledge.datastructure.tree.Serialization;
+import knowledge.datastructure.tree.Serialize;
 
 import java.util.*;
 
@@ -11,7 +11,7 @@ import java.util.*;
  */
 public class PostOrder {
 
-    public class Codec implements Serialization {
+    public class Codec implements Serialize {
 
         String COMMA = ",";
         String NULL = "null";

@@ -6,6 +6,7 @@ import java.util.Map;
 /**
  * @author wujingxinit@outlook.com
  * @date 2024/1/3 19:48
+ * @see LeetCode392
  */
 public class LeetCode792 {
 

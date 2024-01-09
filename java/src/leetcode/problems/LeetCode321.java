@@ -12,7 +12,7 @@ public class LeetCode321 {
     public int[] maxNumber(int[] nums1, int[] nums2, int k) {
         int[] res = new int[0];
         for (int i = 0; i <= nums1.length && i <= k; i++) {
-            var j = k - i;
+            int j = k - i;
             if (j >= 0 && j <= nums2.length) {
                 int[] ints = merge(subMaxNumber(nums1, i), subMaxNumber(nums2, j));
                 if (compare(ints, 0, res, 0)) {
@@ -66,7 +66,7 @@ public class LeetCode321 {
         }
         int[] result = new int[stack.size()];
         int index = 0;
-        for (var num : stack) {
+        for (int num : stack) {
             result[index++] = num;
         }
         return result;

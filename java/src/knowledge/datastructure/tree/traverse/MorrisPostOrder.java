@@ -1,7 +1,7 @@
 package knowledge.datastructure.tree.traverse;
 
 import common.TreeNode;
-import knowledge.datastructure.tree.TraverseIteration;
+import knowledge.datastructure.tree.Iteration;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,7 +10,7 @@ import java.util.List;
  * @author wujingxinit@outlook.com
  * @date 2023/12/27 21:48
  */
-public class MorrisPostOrder implements TraverseIteration {
+public class MorrisPostOrder implements Iteration {
 
     List<Integer> list = new ArrayList<>();
 

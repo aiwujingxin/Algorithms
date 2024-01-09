@@ -7,9 +7,9 @@ package leetcode.problems;
 public class LeetCode2509 {
 
     public int[] cycleLengthQueries(int n, int[][] queries) {
-        var m = queries.length;
-        var ans = new int[m];
-        for (var i = 0; i < m; ++i) {
+        int m = queries.length;
+        int[] ans = new int[m];
+        for (int i = 0; i < m; ++i) {
             int res = 1, a = queries[i][0], b = queries[i][1];
             while (a != b) {
                 if (a > b) {

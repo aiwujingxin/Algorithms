@@ -38,13 +38,17 @@ public class LCP56 {
     }
 
     public int getIndex(char c) {
-        return switch (c) {
-            case '^' -> 0;
-            case 'v' -> 1;
-            case '<' -> 2;
-            case '>' -> 3;
-            default -> -1;
-        };
+        switch (c) {
+            case '^':
+                return 0;
+            case 'v':
+                return 1;
+            case '<':
+                return 2;
+            case '>':
+                return 3;
+        }
+        return -1;
     }
 }
 

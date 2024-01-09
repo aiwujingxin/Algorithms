@@ -7,9 +7,9 @@ package leetcode.problems;
 public class LeetCode1234 {
 
     public int balancedString(String S) {
-        var s = S.toCharArray();
-        var cnt = new int['X']; // 也可以用哈希表，不过数组更快一些
-        for (var c : s) {
+        char[] s = S.toCharArray();
+        int[] cnt = new int['X']; // 也可以用哈希表，不过数组更快一些
+        for (int c : s) {
             ++cnt[c];
         }
         int n = s.length, m = n / 4;

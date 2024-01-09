@@ -17,4 +17,15 @@ package knowledge.datastructure.heap;
  * @see knowledge.graph.shortestpath.Dijkstra
  */
 public interface Problems {
+
+    default int findKthLargest(int[] nums, int k) {
+        MaxHeap<Integer> pq = new MaxHeap<>(nums.length + 1);
+        for (int j : nums) {
+            pq.insert(j);
+            if (pq.size() > k) {
+                pq.delMax();
+            }
+        }
+        return pq.Max();
+    }
 }

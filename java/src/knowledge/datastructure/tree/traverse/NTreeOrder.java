@@ -1,8 +1,8 @@
 package knowledge.datastructure.tree.traverse;
 
 import common.TreeNode;
-import knowledge.datastructure.tree.TraverseDFS;
-import knowledge.datastructure.tree.TraverseIteration;
+import knowledge.datastructure.tree.DFS;
+import knowledge.datastructure.tree.Iteration;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -13,7 +13,7 @@ import java.util.Queue;
  * @author wujingxinit@outlook.com
  * @date 2023/8/1 13:01
  */
-public class NTreeOrder implements TraverseIteration, TraverseDFS {
+public class NTreeOrder implements Iteration, DFS {
 
     @Override
     public List<Integer> DFS(TreeNode root) {

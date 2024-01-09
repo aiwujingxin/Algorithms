@@ -1,7 +1,7 @@
 package knowledge.datastructure.tree.serialize;
 
 import common.TreeNode;
-import knowledge.datastructure.tree.Serialization;
+import knowledge.datastructure.tree.Serialize;
 
 /**
  * @author wujingxinit@outlook.com
@@ -9,7 +9,7 @@ import knowledge.datastructure.tree.Serialization;
  */
 public class PreOrder {
 
-    public class Codec implements Serialization {
+    public class Codec implements Serialize {
 
         private int desIndex = 0;
         String COMMA = ",";

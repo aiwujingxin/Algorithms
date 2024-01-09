@@ -9,5 +9,5 @@ package knowledge.datastructure.stack;
  * LeetCode907
  * LeetCode2281
  */
-public class MonotonicStack {
+public interface MonotonicStack {
 }

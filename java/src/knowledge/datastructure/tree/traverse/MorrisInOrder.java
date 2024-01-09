@@ -1,7 +1,7 @@
 package knowledge.datastructure.tree.traverse;
 
 import common.TreeNode;
-import knowledge.datastructure.tree.TraverseIteration;
+import knowledge.datastructure.tree.Iteration;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,7 +11,7 @@ import java.util.List;
  * @date 2023/12/27 21:40
  * @description Morris中顺遍历
  */
-public class MorrisInOrder implements TraverseIteration {
+public class MorrisInOrder implements Iteration {
 
     public static void main(String[] args) {
         // Creating a sample binary tree

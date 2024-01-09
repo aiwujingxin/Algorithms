@@ -1,7 +1,7 @@
 package leetcode.problems;
 
 
-import knowledge.algorithm.sort.QuickSort;
+import knowledge.algorithms.sort.QuickSort;
 
 /**
  * @author jingxinwu

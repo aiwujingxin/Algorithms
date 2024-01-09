@@ -1,6 +1,7 @@
 package leetcode.problems;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author wujingxinit@outlook.com
@@ -9,35 +10,24 @@ import java.util.*;
 public class LeetCode2374 {
 
     public int edgeScore(int[] edges) {
-        HashMap<Integer, Long> map = new HashMap<>();
+        int n = edges.length;
+        List<Integer>[] graph = new List[n];
+        for (int i = 0; i < n; i++) {
+            graph[i] = new ArrayList<>();
+        }
         for (int i = 0; i < edges.length; i++) {
-            map.put(edges[i], map.getOrDefault(edges[i], 0L) + i);
+            graph[edges[i]].add(i);
         }
-        List<Map.Entry<Integer, Long>> res = new ArrayList<>(map.entrySet());
-        res.sort(new Comparator<Map.Entry<Integer, Long>>() {
-            @Override
-            public int compare(Map.Entry<Integer, Long> entry1, Map.Entry<Integer, Long> entry2) {
-                if (!Objects.equals(entry1.getValue(), entry2.getValue())) {
-                    return entry2.getValue().compareTo(entry1.getValue());
-                }
-                return entry1.getKey().compareTo(entry2.getKey());
+        long max = 0;
+        int res = -1;
+        for (int i = 0; i < graph.length; i++) {
+            long sum = 0;
+            for (int j = 0; j < graph[i].size(); j++) {
+                sum += graph[i].get(j);
             }
-        });
-        return res.get(0).getKey();
-    }
-
-    public int edgeScore_fast(int[] edges) {
-        int len = edges.length;
-        long[] count = new long[len];
-        int res = 0;
-        for (int i = 0; i < len; i++) {
-            count[edges[i]] += i;
-        }
-        long max = Integer.MIN_VALUE;
-        for (int i = 0; i < len; i++) {
-            if (count[i] > max) {
+            if (sum > max) {
+                max = sum;
                 res = i;
-                max = count[i];
             }
         }
         return res;

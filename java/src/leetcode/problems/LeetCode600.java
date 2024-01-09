@@ -15,7 +15,7 @@ public class LeetCode600 {
         s = Integer.toBinaryString(n).toCharArray();
         int m = s.length;
         dp = new int[m][2];
-        for (var i = 0; i < m; i++) Arrays.fill(dp[i], -1);
+        for (int i = 0; i < m; i++) Arrays.fill(dp[i], -1);
         return dfs(0, false, true);
     }
 

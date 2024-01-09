@@ -80,7 +80,7 @@ public class LeetCode355 {
             return res;
         }
 
-        static class Tweet {
+        class Tweet {
             private final int id;
             private final int time;
             private Tweet next;

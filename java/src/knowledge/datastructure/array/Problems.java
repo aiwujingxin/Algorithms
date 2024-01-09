@@ -5,10 +5,10 @@ package knowledge.datastructure.array;
  * @date 2023/12/20 23:01
  * <p>
  * 二分
- * @see knowledge.algorithm.binarysearch 二分模板
+ * @see knowledge.algorithms.binarysearch 二分模板
  * <p>
  * 排序
- * @see knowledge.algorithm.sort 排序
+ * @see knowledge.algorithms.sort 排序
  * @see leetcode.problems.LeetCode215 topK
  * <p>
  * 区间问题
@@ -22,7 +22,7 @@ package knowledge.datastructure.array;
  * @see leetcode.problems.LeetCode452 用最少数量的箭引爆气球
  * @see leetcode.problems.LeetCode453 最小操作次数使数组元素相等
  * 前缀和
- * @see knowledge.algorithm.prefixanddiff
+ * @see knowledge.algorithms.prefixanddiff
  * <p>
  * 动态规划
  * @see knowledge.dp.liner

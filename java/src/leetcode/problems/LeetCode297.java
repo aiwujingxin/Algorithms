@@ -1,6 +1,7 @@
 package leetcode.problems;
 
 import common.TreeNode;
+import knowledge.datastructure.tree.Serialize;
 
 import java.util.LinkedList;
 import java.util.Queue;
@@ -8,7 +9,7 @@ import java.util.Queue;
 /**
  * @author wujingxinit@outlook.com
  * @date 2022/9/7 23:40
- * @see knowledge.datastructure.tree.Serialization
+ * @see Serialize
  */
 public class LeetCode297 {
     public class Codec {
