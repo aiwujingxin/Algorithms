@@ -5,20 +5,25 @@ package leetcode.problems;
  * @date 2022/7/21 00:32
  */
 public class LeetCode645 {
-    //https://leetcode.com/problems/set-mismatch/discuss/1089560/JS-Python-Java-C%2B%2B-or-(Updated)-Easy-O(1)-Space-Solution-w-Explanation
+
     public int[] findErrorNums(int[] nums) {
-        int N = nums.length;
-        int sum = N * (N + 1) / 2;
-        int[] ans = new int[2];
-        boolean[] seen = new boolean[N + 1];
-        for (int num : nums) {
-            sum -= num;
-            if (seen[num]) {
-                ans[0] = num;
+        int n = nums.length;
+        for (int i = 0; i < n; i++) {
+            while (nums[i] > 0 && nums[i] <= n && nums[i] != nums[nums[i] - 1]) {
+                swap(nums, i, nums[i] - 1);
             }
-            seen[num] = true;
         }
-        ans[1] = sum + ans[0];
-        return ans;
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i] != i + 1) {
+                return new int[]{nums[i], i + 1};
+            }
+        }
+        return new int[]{-1, -1};
+    }
+
+    private void swap(int[] nums, int index1, int index2) {
+        int temp = nums[index1];
+        nums[index1] = nums[index2];
+        nums[index2] = temp;
     }
 }

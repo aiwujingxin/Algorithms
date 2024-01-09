@@ -5,33 +5,28 @@ import java.util.Arrays;
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/11/5 23:30
- * @see LeetCode41
  */
 public class LeetCode268 {
 
     public int missingNumber(int[] nums) {
-        if (nums == null || nums.length == 0) {
-            return 0;
-        }
-        int has = Integer.MAX_VALUE;
-        for (int i = 0; i < nums.length; i++) {
-            int index = Math.abs(nums[i]);
-            if (index >= nums.length) {
-                continue;
-            }
-            if (nums[index] == 0) {
-                has = index;
-            }
-            if (nums[index] > 0) {
-                nums[index] = -nums[index];
+        int n = nums.length;
+        for (int i = 0; i < n; i++) {
+            if (nums[i] < n && nums[i] != i) {
+                swap(nums, nums[i], i--);
             }
         }
-        for (int i = 0; i < nums.length; i++) {
-            if (nums[i] >= 0 && has != i) {
+        for (int i = 0; i < n; i++) {
+            if (nums[i] != i) {
                 return i;
             }
         }
-        return nums.length;
+        return n;
+    }
+
+    void swap(int[] nums, int i, int j) {
+        int c = nums[i];
+        nums[i] = nums[j];
+        nums[j] = c;
     }
 
     public int missingNumber_bs(int[] nums) {

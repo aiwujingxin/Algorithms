@@ -36,6 +36,7 @@ public class LeetCode42 {
         return res;
     }
 
+    // 最优解
     public int trap_twopoint(int[] height) {
         if (height == null || height.length == 0) {
             return 0;

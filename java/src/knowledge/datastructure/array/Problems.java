@@ -30,9 +30,15 @@ package knowledge.datastructure.array;
  * 矩阵问题
  * @see leetcode.problems.LeetCode498
  * <p>
- * 类查找问题
- * @see leetcode.problems.LeetCode41 41. 缺失的第一个正数
- * @see leetcode.problems.LeetCode268 268. 丢失的数字
+ * indexing sort 原址排序 当数字只在[1-n] 可以使用该方法排序
+ * @see leetcode.problems.LeetCode268
+ * @see leetcode.problems.LeetCode41
+ * @see leetcode.problems.LeetCode287
+ * @see leetcode.problems.LeetCode442
+ * @see leetcode.problems.LeetCode448
+ * @see leetcode.problems.LeetCode645
+ * @see leetcode.problems.LeetCode2471
+ * LeetCode2459
  */
 public interface Problems {
 }

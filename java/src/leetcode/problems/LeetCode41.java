@@ -9,20 +9,21 @@ public class LeetCode41 {
     public int firstMissingPositive(int[] nums) {
         int n = nums.length;
         for (int i = 0; i < n; i++) {
-            if (nums[i] <= 0) {
-                nums[i] = n + 1;
+            while (nums[i] > 0 && nums[i] <= n && nums[i] != nums[nums[i] - 1]) {
+                swap(nums, i, nums[i] - 1);
             }
         }
         for (int i = 0; i < n; i++) {
-            int index = Math.abs(nums[i]) - 1;
-            if (index < n)
-                nums[index] = -Math.abs(nums[index]);
-        }
-        for (int i = 0; i < n; i++) {
-            if (nums[i] >= 0) {
+            if (nums[i] != i + 1) {
                 return i + 1;
             }
         }
         return n + 1;
+    }
+
+    private void swap(int[] nums, int index1, int index2) {
+        int temp = nums[index1];
+        nums[index1] = nums[index2];
+        nums[index2] = temp;
     }
 }

@@ -40,26 +40,17 @@ public class LeetCode2471 {
         int cnt = 0, n = nums.length;
         int[] sorted = Arrays.copyOf(nums, n);
         Arrays.sort(sorted);
-
         // Map<num, idx>  记录值正确的索引下标
         Map<Integer, Integer> rightIdxMap = new HashMap<>();
         for (int i = 0; i < n; i++) {
             rightIdxMap.put(sorted[i], i);
         }
-
         for (int i = 0; i < n; i++) {
-            while (true) {
-                int rightIdx = rightIdxMap.get(nums[i]);
-                // 不在正确的位置则交换到正确的位置
-                if (rightIdx != i) {
-                    cnt++;
-                    swap(nums, i, rightIdx);
-                } else {
-                    break;
-                }
+            while (rightIdxMap.get(nums[i]) != i) {
+                swap(nums, i, rightIdxMap.get(nums[i]));
+                cnt++;
             }
         }
-
         return cnt;
     }
 
