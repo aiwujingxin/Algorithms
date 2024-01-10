@@ -1,5 +1,6 @@
 package leetcode.problems;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Stack;
 
@@ -15,13 +16,14 @@ public class LeetCode496 {
             map.put(nums1[i], i);
         }
         int[] res = new int[nums1.length];
+        Arrays.fill(res, -1);
         Stack<Integer> stack = new Stack<>();
-        for (int i = nums2.length - 1; i >= 0; i--) {
-            while (!stack.isEmpty() && nums2[stack.peek()] < nums2[i]) {
-                stack.pop();
-            }
-            if (map.containsKey(nums2[i])) {
-                res[map.get(nums2[i])] = stack.isEmpty() ? -1 : nums2[stack.peek()];
+        for (int i = 0; i < nums2.length; i++) {
+            while (!stack.isEmpty() && nums1[stack.peek()] < nums1[i]) {
+                int index = stack.pop();
+                if (map.containsKey(nums2[index])) {
+                    res[map.get(nums2[index])] = nums2[i];
+                }
             }
             stack.push(i);
         }

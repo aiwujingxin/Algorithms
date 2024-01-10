@@ -9,9 +9,6 @@ import java.util.Stack;
 public class LeetCode739 {
 
     public int[] dailyTemperatures(int[] temperatures) {
-        if (temperatures == null || temperatures.length == 0) {
-            return new int[]{};
-        }
         int n = temperatures.length;
         Stack<Integer> stack = new Stack<>();
         int[] res = new int[n];
@@ -26,17 +23,14 @@ public class LeetCode739 {
     }
 
     public int[] dailyTemperatures_reverse(int[] temperatures) {
-        if (temperatures == null || temperatures.length == 0) {
-            return new int[]{};
-        }
-        //        7 5 6 7 8 9 10
+        int n = temperatures.length;
         Stack<Integer> stack = new Stack<>();
-        int[] ans = new int[temperatures.length];
-        for (int i = temperatures.length - 1; i >= 0; i--) {
-            while (!stack.empty() && temperatures[i] >= temperatures[stack.peek()]) {
+        int[] ans = new int[n];
+        for (int i = n - 1; i >= 0; i--) {
+            while (!stack.isEmpty() && temperatures[i] >= temperatures[stack.peek()]) {
                 stack.pop();
             }
-            ans[i] = stack.empty() ? 0 : stack.peek() - i;
+            ans[i] = stack.isEmpty() ? 0 : stack.peek() - i;
             stack.push(i);
         }
         return ans;

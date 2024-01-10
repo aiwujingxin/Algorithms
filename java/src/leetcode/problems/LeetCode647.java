@@ -9,21 +9,17 @@ public class LeetCode647 {
         if (s == null || s.isEmpty()) {
             return 0;
         }
-        int count = s.length();
+        int count = 0;
         int n = s.length();
-        boolean[][] dp = new boolean[n + 1][n + 1];
-        for (int i = 0; i < n; i++) {
-            dp[i][i] = true;
-        }
+        boolean[][] dp = new boolean[n][n];
         for (int i = n - 1; i >= 0; i--) {
-            for (int j = i + 1; j < n; j++) {
-                dp[i][j] = s.charAt(i) == s.charAt(j) && (dp[i + 1][j - 1] || j - i + 1 < 3);
+            for (int j = i; j < n; j++) {
+                dp[i][j] = s.charAt(i) == s.charAt(j) && (j - i <= 2 || dp[i + 1][j - 1]);
                 if (dp[i][j]) {
                     count++;
                 }
             }
         }
-
         return count;
     }
 }

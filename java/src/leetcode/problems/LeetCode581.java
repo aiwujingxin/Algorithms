@@ -8,32 +8,32 @@ import java.util.Stack;
  */
 public class LeetCode581 {
 
-    //https://www.youtube.com/watch?v=jbrAZ9Tf0ew
-
     public int findUnsortedSubarray(int[] nums) {
         if (nums == null || nums.length == 0) {
             return 0;
         }
-        Stack<Integer> incr = new Stack<>();
-        Stack<Integer> decr = new Stack<>();
         int n = nums.length;
-        int start = n;
-        int end = -1;
+        Stack<Integer> stack = new Stack<>();
+        int left = n;
+        int right = -1;
+        // 从左向右比它大的数
         for (int i = 0; i < n; i++) {
-            while (!incr.empty() && nums[i] < nums[incr.peek()]) {
-                start = Math.min(start, incr.pop());
+            while (!stack.isEmpty() && nums[stack.peek()] > nums[i]) {
+                left = Math.min(left, stack.pop());
             }
-            incr.push(i);
+            stack.push(i);
         }
+        stack = new Stack<>();
+
         for (int i = n - 1; i >= 0; i--) {
-            while (!decr.empty() && nums[i] > nums[decr.peek()]) {
-                end = Math.max(end, decr.pop());
+            while (!stack.isEmpty() && nums[stack.peek()] < nums[i]) {
+                right = Math.max(right, stack.pop());
             }
-            decr.push(i);
+            stack.push(i);
         }
-        if (end == -1) {
+        if (right == left) {
             return 0;
         }
-        return end - start + 1;
+        return right - left > 0 ? right - left + 1 : 0;
     }
 }
