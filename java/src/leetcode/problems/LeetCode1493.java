@@ -6,21 +6,31 @@ package leetcode.problems;
  */
 public class LeetCode1493 {
 
-
     public int longestSubarray(int[] nums) {
-        int n = nums.length, res = 0, cnt = 0;
-        for (int i = 0, j = 0; i < n; i++) {
-            if (nums[i] == 0) {
-                cnt++;
-            }
-            while (cnt > 1) {
-                if (nums[j] == 0) {
-                    cnt--;
-                }
-                j++;
-            }
-            res = Math.max(res, i - j);
+        if (nums == null || nums.length == 0) {
+            return 0;
         }
-        return res;
+
+        int left = 0;
+        int right = 0;
+        int n = nums.length;
+        int max = 0;
+        int cnt0 = 0;
+        while (right < n) {
+            if (nums[right] == 0) {
+                cnt0++;
+            }
+            while (left < right && cnt0 > 1) {
+                if (nums[left] == 0) {
+                    cnt0--;
+                }
+                left++;
+            }
+            if (cnt0 <= 1) {
+                max = Math.max(right - left, max);
+            }
+            right++;
+        }
+        return max;
     }
 }
