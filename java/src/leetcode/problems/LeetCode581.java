@@ -16,17 +16,15 @@ public class LeetCode581 {
         Stack<Integer> stack = new Stack<>();
         int left = n;
         int right = -1;
-        // 从左向右比它大的数
         for (int i = 0; i < n; i++) {
-            while (!stack.isEmpty() && nums[stack.peek()] > nums[i]) {
+            while (!stack.isEmpty() && nums[i] < nums[stack.peek()]) {
                 left = Math.min(left, stack.pop());
             }
             stack.push(i);
         }
         stack = new Stack<>();
-
         for (int i = n - 1; i >= 0; i--) {
-            while (!stack.isEmpty() && nums[stack.peek()] < nums[i]) {
+            while (!stack.isEmpty() && nums[i] > nums[stack.peek()]) {
                 right = Math.max(right, stack.pop());
             }
             stack.push(i);

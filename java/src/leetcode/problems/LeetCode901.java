@@ -30,7 +30,7 @@ public class LeetCode901 {
                 return 1;
             }
             int ans = 1;
-            while (!stack.isEmpty() && list.get(stack.peek()) < price) {
+            while (!stack.isEmpty() && price >= list.get(stack.peek())) {
                 ans += this.res.get(stack.pop());
             }
             // add ele
@@ -38,8 +38,6 @@ public class LeetCode901 {
             stack.push(list.size() - 1);
 
             res.add(ans);
-            System.out.println(list);
-            System.out.println(res);
             return ans;
         }
     }

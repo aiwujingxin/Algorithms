@@ -3,7 +3,7 @@ package knowledge.datastructure.array;
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/12/20 23:01
- * <p>
+ * @description 数组
  * 二分
  * @see knowledge.algorithms.binarysearch 二分模板
  * <p>

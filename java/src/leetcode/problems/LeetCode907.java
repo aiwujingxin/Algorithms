@@ -1,33 +1,40 @@
 package leetcode.problems;
 
-import java.util.HashMap;
+import java.util.Stack;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2023/6/13 22:46
+ * @date 2024/1/13 22:33
  */
 public class LeetCode907 {
 
-    public int totalFruit(int[] fruits) {
-        if (fruits == null || fruits.length == 0) {
-            return 0;
-        }
-        HashMap<Integer, Integer> map = new HashMap<>();
-        int left = 0;
-        int right = 0;
-        int ans = 0;
-        while (right < fruits.length) {
-            map.put(fruits[right], map.getOrDefault(fruits[right], 0) + 1);
-            while (map.size() > 2 && left < right) {
-                map.put(fruits[left], map.get(fruits[left]) - 1);
-                if (map.get(fruits[left]) == 0) {
-                    map.remove(fruits[left]);
-                }
-                left++;
+    public int sumSubarrayMins(int[] arr) {
+        int n = arr.length;
+        int[] leftMin = new int[n];
+        int[] rightMin = new int[n];
+        Stack<Integer> stack = new Stack<>();
+        for (int i = 0; i < n; i++) {
+            while (!stack.isEmpty() && arr[i] <= arr[stack.peek()]) {
+                stack.pop();
             }
-            ans = Math.max(right - left + 1, ans);
-            right++;
+            leftMin[i] = stack.isEmpty() ? -1 : stack.peek();
+            stack.push(i);
         }
-        return ans;
+        stack = new Stack<>();
+        for (int i = n - 1; i >= 0; i--) {
+            while (!stack.isEmpty() && arr[i] < arr[stack.peek()]) {
+                stack.pop();
+            }
+            rightMin[i] = stack.isEmpty() ? n : stack.peek();
+            stack.push(i);
+        }
+        long ans = 0;
+        final int MOD = 1000000007;
+        for (int i = 0; i < n; i++) {
+            long lmin = i - leftMin[i];
+            long rmin = rightMin[i] - i;
+            ans += (lmin * rmin) * arr[i] % MOD;
+        }
+        return (int) (ans % MOD);
     }
 }

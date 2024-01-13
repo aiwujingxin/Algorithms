@@ -5,6 +5,7 @@ import java.util.Stack;
 /**
  * @author wujingxinit@outlook.com
  * @date 2024/1/10 21:55
+ * @description 尽量得符合模型，该逆向遍历还是得逆向遍历
  */
 public class LeetCode1475 {
 
@@ -18,11 +19,11 @@ public class LeetCode1475 {
             res[i] = prices[i];
         }
         Stack<Integer> stack = new Stack<>();
-        for (int i = 0; i < n; i++) {
-            while (!stack.isEmpty() && prices[i] <= prices[stack.peek()]) {
-                int index = stack.pop();
-                res[index] = prices[index] - prices[i];
+        for (int i = n - 1; i >= 0; i--) {
+            while (!stack.isEmpty() && prices[i] < prices[stack.peek()]) {
+                stack.pop();
             }
+            res[i] = stack.isEmpty() ? prices[i] : prices[i] - prices[stack.peek()];
             stack.push(i);
         }
         return res;

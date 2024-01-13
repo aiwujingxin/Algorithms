@@ -7,6 +7,7 @@ import leetcode.problems.*;
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/8/31 14:15
+ * @description 字符串
  * 计算器
  * @see InfixToSuffix 中缀转后缀
  * @see LeetCode150 逆波兰表达式求值 ["2","1","+","3","*"] => ((2 + 1) * 3) = 9

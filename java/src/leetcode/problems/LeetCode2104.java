@@ -5,6 +5,7 @@ import java.util.Stack;
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/10/31 22:31
+ * @see leetcode.problems.LeetCode907
  */
 public class LeetCode2104 {
 
@@ -25,12 +26,12 @@ public class LeetCode2104 {
                 stack1.pop();
             }
             left_min[i] = stack1.empty() ? -1 : stack1.peek();
-            stack1.add(i);
+            stack1.push(i);
             while (!stack2.empty() && nums[i] > nums[stack2.peek()]) {
                 stack2.pop();
             }
             left_max[i] = stack2.empty() ? -1 : stack2.peek();
-            stack2.add(i);
+            stack2.push(i);
         }
         stack1 = new Stack<>();
         stack2 = new Stack<>();
@@ -39,20 +40,18 @@ public class LeetCode2104 {
                 stack1.pop();
             }
             right_min[i] = stack1.empty() ? n : stack1.peek();
-            stack1.add(i);
+            stack1.push(i);
 
             while (!stack2.empty() && nums[i] >= nums[stack2.peek()]) {
                 stack2.pop();
             }
             right_max[i] = stack2.empty() ? n : stack2.peek();
-            stack2.add(i);
+            stack2.push(i);
         }
         long res = 0;
         for (int i = 0; i < n; i++) {
             int lmin = i - left_min[i];
             int rmin = right_min[i] - i;
-
-
             int lmax = i - left_max[i];
             int rmax = right_max[i] - i;
             res += ((long) lmax * rmax - (long) lmin * rmin) * nums[i];

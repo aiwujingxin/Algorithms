@@ -5,6 +5,7 @@ import leetcode.problems.*;
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/12/22 10:57
+ * @description 链表
  * 必须
  * @see LeetCode146
  * 环形链表

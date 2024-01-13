@@ -13,27 +13,27 @@ public class LeetCode84 {
             return 0;
         }
         int n = heights.length;
-        int[] left = new int[n];
+        int[] leftMin = new int[n];
         Stack<Integer> stack = new Stack<>();
         for (int i = 0; i < n; i++) {
             while (!stack.isEmpty() && heights[i] <= heights[stack.peek()]) {
                 stack.pop();
             }
-            left[i] = stack.isEmpty() ? 0 : (stack.peek() + 1);
+            leftMin[i] = stack.isEmpty() ? -1 : stack.peek();
             stack.push(i);
         }
-        int[] right = new int[n];
+        int[] rightMin = new int[n];
         stack = new Stack<>();
         for (int i = n - 1; i >= 0; i--) {
             while (!stack.isEmpty() && heights[i] <= heights[stack.peek()]) {
                 stack.pop();
             }
-            right[i] = stack.isEmpty() ? n - 1 : (stack.peek() - 1);
+            rightMin[i] = stack.isEmpty() ? n : stack.peek();
             stack.push(i);
         }
         int res = 0;
         for (int i = 0; i < n; i++) {
-            res = Math.max(res, heights[i] * (right[i] - left[i] + 1));
+            res = Math.max(res, heights[i] * ((rightMin[i] - 1) - (leftMin[i] + 1) + 1));
         }
         return res;
     }

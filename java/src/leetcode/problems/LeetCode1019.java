@@ -17,7 +17,7 @@ public class LeetCode1019 {
         HashMap<ListNode, Integer> map = new HashMap<>();
         Stack<ListNode> stack = new Stack<>();
         while (cur != null) {
-            while (!stack.isEmpty() && stack.peek().val < cur.val) {
+            while (!stack.isEmpty() && cur.val > stack.peek().val) {
                 ListNode node = stack.pop();
                 map.put(node, cur.val);
             }
@@ -29,7 +29,7 @@ public class LeetCode1019 {
         int[] res = new int[len];
         int index = 0;
         while (cur != null) {
-            res[index] = map.get(cur) != null ?  map.get(cur) :0;
+            res[index] = map.get(cur) != null ? map.get(cur) : 0;
             index++;
             cur = cur.next;
         }

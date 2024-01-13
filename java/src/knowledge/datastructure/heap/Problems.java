@@ -3,6 +3,7 @@ package knowledge.datastructure.heap;
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/12/26 23:16
+ * @description 优先队列 PriorityQueue
  * @see leetcode.problems.LeetCode4
  * @see leetcode.problems.LeetCode239
  * @see leetcode.problems.LeetCode253

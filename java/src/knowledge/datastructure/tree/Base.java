@@ -3,6 +3,7 @@ package knowledge.datastructure.tree;
 /**
  * @author wujingxinit@outlook.com
  * @date 2022/9/7 12:22
+ * @description 树
  * 基本属性
  * @see leetcode.problems.LeetCode104 二叉树的深度
  * @see leetcode.problems.LeetCode222 完全二叉树的节点个数
