@@ -10,38 +10,52 @@ import java.util.Objects;
  */
 public class LeetCode988 {
 
-
     String res = "";
-    String temp = "";
 
     public String smallestFromLeaf(TreeNode root) {
-        if (root == null) {
-            return "";
-        }
-        backtrack(root);
+        backtrack(root, new StringBuilder());
         return res;
     }
 
-    private void backtrack(TreeNode root) {
+    private void backtrack(TreeNode root, StringBuilder sb) {
         if (root == null) {
             return;
         }
         if (root.left == null && root.right == null) {
-            temp = (char) (root.val + 'a') + temp;
-            if (Objects.equals(res, "")) {
-                res = temp;
-                temp = temp.substring(1);
-                return;
+            sb.append((char) ('a' + root.val));
+            String s = sb.toString();
+            s = new StringBuilder(s).reverse().toString();
+            if (Objects.equals(res, "") || can(res, s)) {
+                res = s;
             }
-            if (temp.compareTo(res) < 0) {
-                res = temp;
-            }
-            temp = temp.substring(1);
+            sb.deleteCharAt(sb.length() - 1);
             return;
         }
-        temp = (char) (root.val + 'a') + temp;
-        backtrack(root.left);
-        backtrack(root.right);
-        temp = temp.substring(1);
+        sb.append((char) ('a' + root.val));
+        backtrack(root.left, sb);
+        backtrack(root.right, sb);
+        sb.deleteCharAt(sb.length() - 1);
+    }
+
+    private boolean can(String a, String b) {
+        if (a.equals(b)) {
+            return false;
+        }
+        int i1 = 0;
+        int i2 = 0;
+        while (i1 < a.length() && i2 < b.length()) {
+            if (a.charAt(i1) > b.charAt(i2)) {
+                return true;
+            }
+            if (a.charAt(i1) < b.charAt(i2)) {
+                return false;
+            }
+            i1++;
+            i2++;
+        }
+        if (i1 == a.length()) {
+            return false;
+        }
+        return true;
     }
 }

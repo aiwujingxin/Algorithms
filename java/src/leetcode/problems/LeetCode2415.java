@@ -2,40 +2,47 @@ package leetcode.problems;
 
 import common.TreeNode;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Queue;
 
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/7/29 11:58
  */
-public class LeetCode2415_bfs {
+public class LeetCode2415 {
 
     public TreeNode reverseOddLevels(TreeNode root) {
+        if (root == null) {
+            return null;
+        }
         Queue<TreeNode> queue = new LinkedList<>();
         queue.add(root);
         int depth = 0;
+
         while (!queue.isEmpty()) {
-            LinkedList<TreeNode> level = new LinkedList<>();
+            List<TreeNode> list = new ArrayList<>();
             int size = queue.size();
             for (int i = 0; i < size; i++) {
                 TreeNode node = queue.poll();
+                list.add(node);
                 if (node.left != null) {
-                    level.add(node.left);
                     queue.add(node.left);
                 }
                 if (node.right != null) {
-                    level.add(node.right);
                     queue.add(node.right);
                 }
             }
-            if (depth % 2 == 0) {
-                int n = queue.size();
-                for (int i = 0; i < n / 2; i++) {
-                    TreeNode x = level.get(i);
-                    TreeNode y = level.get(n - 1 - i);
-                    int temp = x.val;
-                    x.val = y.val;
-                    y.val = temp;
+            if (depth % 2 == 1) {
+                int left = 0;
+                int right = list.size() - 1;
+                while (left < right) {
+                    int t = list.get(left).val;
+                    list.get(left).val = list.get(right).val;
+                    list.get(right).val = t;
+                    left++;
+                    right--;
                 }
             }
             depth++;
