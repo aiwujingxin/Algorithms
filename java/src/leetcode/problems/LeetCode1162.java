@@ -8,7 +8,7 @@ import java.util.Queue;
  * @author wujingxinit@outlook.com
  * @date 2022/10/12 22:37
  */
-public class LeetCode1162_bfs {
+public class LeetCode1162 {
 
     //https://leetcode.com/problems/as-far-from-land-as-possible/discuss/360996/A-very-typical-O(v)-BFS-JAVA-17-ms-faster-than-100.00
     int[][] directions = new int[][]{{-1, 0}, {1, 0}, {0, -1}, {0, 1}};

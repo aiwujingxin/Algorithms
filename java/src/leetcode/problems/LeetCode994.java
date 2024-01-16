@@ -1,8 +1,6 @@
 package leetcode.problems;
 
-import java.util.ArrayDeque;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.LinkedList;
 import java.util.Queue;
 
 /**
@@ -11,45 +9,57 @@ import java.util.Queue;
  */
 public class LeetCode994 {
 
-    int[] dr = new int[]{-1, 0, 1, 0};
-    int[] dc = new int[]{0, -1, 0, 1};
-
     public int orangesRotting(int[][] grid) {
-        int R = grid.length, C = grid[0].length;
-        Queue<Integer> queue = new ArrayDeque<>();
-        Map<Integer, Integer> depth = new HashMap<>();
-        for (int r = 0; r < R; ++r) {
-            for (int c = 0; c < C; ++c) {
-                if (grid[r][c] == 2) {
-                    int code = r * C + c;
-                    queue.add(code);
-                    depth.put(code, 0);
+        if (grid == null || grid.length == 0) {
+            return 0;
+        }
+        Queue<int[]> queue = new LinkedList<>();
+
+        int m = grid.length;
+        int n = grid[0].length;
+        boolean[][] visited = new boolean[m][n];
+
+        int count = 0;
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                if (grid[i][j] == 2) {
+                    queue.add(new int[]{i, j});
+                }
+                if (grid[i][j] == 1) {
+                    count++;
                 }
             }
         }
-        int ans = 0;
+        if (count == 0) {
+            return 0;
+        }
+        int[][] dirs = new int[][]{{-1, 0}, {1, 0}, {0, -1}, {0, 1}};
+        int step = 0;
         while (!queue.isEmpty()) {
-            int code = queue.remove();
-            int r = code / C, c = code % C;
-            for (int k = 0; k < 4; ++k) {
-                int nr = r + dr[k];
-                int nc = c + dc[k];
-                if (0 <= nr && nr < R && 0 <= nc && nc < C && grid[nr][nc] == 1) {
-                    grid[nr][nc] = 2;
-                    int ncode = nr * C + nc;
-                    queue.add(ncode);
-                    depth.put(ncode, depth.get(code) + 1);
-                    ans = depth.get(ncode);
+            int size = queue.size();
+            if (count == 0) {
+                return step;
+            }
+            for (int i = 0; i < size; i++) {
+                int[] cur = queue.poll();
+                for (int[] dir : dirs) {
+                    int nx = cur[0] + dir[0];
+                    int ny = cur[1] + dir[1];
+                    if (nx < 0 || nx >= m || ny < 0 || ny >= n) {
+                        continue;
+                    }
+                    if (grid[nx][ny] == 1) {
+                        if (visited[nx][ny]) {
+                            continue;
+                        }
+                        visited[nx][ny] = true;
+                        queue.add(new int[]{nx, ny});
+                        count--;
+                    }
                 }
             }
+            step++;
         }
-        for (int[] row : grid) {
-            for (int v : row) {
-                if (v == 1) {
-                    return -1;
-                }
-            }
-        }
-        return ans;
+        return -1;
     }
 }

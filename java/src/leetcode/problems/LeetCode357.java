@@ -1,27 +1,48 @@
 package leetcode.problems;
 
+import java.util.Arrays;
+
 /**
  * @author wujingxinit@outlook.com
- * @date 2024/1/6 13:20
+ * @date 2024/1/7 01:05
  */
 public class LeetCode357 {
 
+    char[] chars;
+    int[][] memo;
+
     public int countNumbersWithUniqueDigits(int n) {
-        if (n == 0) {
-            return 1;
+        String s = String.valueOf((int) Math.pow(10, n) - 1);
+        chars = s.toCharArray();
+        int m = chars.length;
+        memo = new int[m][1 << 10];
+        for (int i = 0; i < m; i++) {
+            Arrays.fill(memo[i], -1);
         }
-        int res = 1;
-        for (int len = 1; len <= n; len++) {
-            res += A(10, len) - A(9, len - 1);
-        }
-        return res;
+        return dfs(0, 0, true, false) + 1;
     }
 
-    private int A(int n, int m) {
-        int ret = 1;
-        for (int i = n; i > n - m; i--) {
-            ret *= i;
+    private int dfs(int i, int mask, boolean isLimit, boolean isNum) {
+        if (!isLimit && isNum && memo[i][mask] != -1) {
+            return memo[i][mask];
         }
-        return ret;
+        if (i == chars.length) {
+            return isNum ? 1 : 0;
+        }
+        int res = 0;
+        if (!isNum) {
+            res = dfs(i + 1, mask, false, false);
+        }
+        int low = isNum ? 0 : 1;
+        int upper = isLimit ? chars[i] - '0' : 9;
+        for (int d = low; d <= upper; d++) {
+            if ((mask >> d & 1) == 0) {
+                res += dfs(i + 1, mask | (1 << d), isLimit && (upper == d), true);
+            }
+        }
+        if (!isLimit && isNum) {
+            memo[i][mask] = res;
+        }
+        return res;
     }
 }

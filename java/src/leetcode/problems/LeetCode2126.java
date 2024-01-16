@@ -1,25 +1,40 @@
 package leetcode.problems;
 
-import java.util.Arrays;
-
 /**
  * @author aiwujingxin@gmail.com
- * @date 2022/6/23 22:39
+ * @date 2022/6/23 23:34
  */
 public class LeetCode2126 {
 
     public boolean asteroidsDestroyed(int mass, int[] asteroids) {
-        if (asteroids == null || asteroids.length == 0) {
-            return true;
+        //根据数据范围，最多不超过17位
+        long[] sum = new long[17];
+        int[] min = new int[17];
+        for (int asteroid : asteroids) {
+            int h = getH(asteroid);
+            if (asteroid < min[h] || min[h] == 0) {
+                min[h] = asteroid;
+            }
+            sum[h] += asteroid;
         }
-        Arrays.sort(asteroids);
-        long sum = 0;
-        for (int i = 0; i < asteroids.length; i++) {
-            if (sum < asteroids[i]) {
+        long cur = mass;
+        for (int i = 0; i < 17; i++) {
+            if (cur >= min[i]) {
+                cur += sum[i];
+            } else {
                 return false;
             }
-            sum += asteroids[i];
         }
         return true;
+    }
+
+    //获得二进制有几位，从0开始
+    public int getH(int x) {
+        int cnt = 0;
+        while (x != 1) {
+            x >>= 1;
+            cnt++;
+        }
+        return cnt;
     }
 }

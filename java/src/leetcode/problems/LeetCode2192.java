@@ -6,7 +6,7 @@ import java.util.*;
  * @author wujingxinit@outlook.com
  * @date 2023/8/31 18:05
  */
-public class LeetCode2192_topo {
+public class LeetCode2192 {
 
     public List<List<Integer>> getAncestors(int n, int[][] edges) {
         Map<Integer, List<Integer>> graph = new HashMap<>();

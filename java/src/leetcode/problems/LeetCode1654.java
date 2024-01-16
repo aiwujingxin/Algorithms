@@ -11,7 +11,7 @@ import java.util.Queue;
  * @description 贝祖定理
  * <a href="https://leetcode.com/problems/minimum-jumps-to-reach-home/discuss/935504/JAVA-BFS-and-DFS-solution">...</a>
  */
-public class LeetCode1654_bfs {
+public class LeetCode1654 {
 
     public int minimumJumps(int[] forbidden, int a, int b, int x) {
         if (x == 0) {

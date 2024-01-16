@@ -27,5 +27,4 @@ public class LeetCode787_dp {
         }
         return ans == INF ? -1 : ans;
     }
-
 }

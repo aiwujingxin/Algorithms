@@ -8,7 +8,7 @@ import java.util.Queue;
  * @author wujingxinit@outlook.com
  * @date 2023/4/22 22:37
  */
-public class LeetCode505_dijkstra {
+public class LeetCode505 {
 
     // 最短路径
     public int shortestDistance(int[][] maze, int[] start, int[] destination) {

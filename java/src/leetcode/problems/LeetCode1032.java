@@ -7,7 +7,7 @@ import java.util.Queue;
  * @author wujingxinit@outlook.com
  * @date 2023/6/6 23:51
  */
-public class LeetCode1032_ac {
+public class LeetCode1032 {
 
     class StreamChecker {
         TrieNode root;

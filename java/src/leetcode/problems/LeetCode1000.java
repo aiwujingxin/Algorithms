@@ -7,7 +7,7 @@ import java.util.Arrays;
  * @date 2023/2/11 21:59
  * <a href="https://leetcode.cn/problems/minimum-cost-to-merge-stones/solution/yi-dong-you-yi-dao-nan-yi-bu-bu-shuo-ming-si-lu-he/">...</a>
  */
-public class LeetCode1000_dfs_memo {
+public class LeetCode1000 {
 
     int[][] memo;
     int[] preSum;

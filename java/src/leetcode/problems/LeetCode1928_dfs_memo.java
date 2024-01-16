@@ -17,10 +17,10 @@ public class LeetCode1928_dfs_memo {
             graph[edge[0]].add(new int[]{edge[1], edge[2]});
             graph[edge[1]].add(new int[]{edge[0], edge[2]});
         }
-        return DFS(graph, 0, maxTime, passingFees, new Integer[1001][maxTime + 1]);
+        return dfs(graph, 0, maxTime, passingFees, new Integer[1001][maxTime + 1]);
     }
 
-    private int DFS(List<int[]>[] graph, int src, int remTime, int[] passingFees, Integer[][] dp) {
+    private int dfs(List<int[]>[] graph, int src, int remTime, int[] passingFees, Integer[][] dp) {
         if (remTime < 0)
             return -1;
         if (dp[src][remTime] != null)
@@ -29,7 +29,7 @@ public class LeetCode1928_dfs_memo {
             return (dp[src][remTime] = passingFees[src]);
         int min = -1;
         for (int[] e : graph[src]) {
-            int x = DFS(graph, e[0], remTime - e[1], passingFees, dp);
+            int x = dfs(graph, e[0], remTime - e[1], passingFees, dp);
             if (min == -1)
                 min = x;
             else if (x != -1)

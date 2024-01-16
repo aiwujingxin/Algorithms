@@ -7,7 +7,7 @@ import java.util.*;
  * @author wujingxinit@outlook.com
  * @date 2023/9/1 16:32
  */
-public class LeetCode851_bfs {
+public class LeetCode851_topo {
     public int[] loudAndRich(int[][] richer, int[] quiet) {
         Map<Integer, List<Integer>> graph = new HashMap<>();
         int[] degree = new int[quiet.length];

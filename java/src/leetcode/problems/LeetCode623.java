@@ -11,7 +11,7 @@ import java.util.Queue;
  * @author aiwujingxin@gmail.com
  * @date 2022/6/17 21:47
  */
-public class LeetCode623_bfs {
+public class LeetCode623 {
 
     public TreeNode addOneRow(TreeNode root, int val, int depth) {
         if (depth == 1) {

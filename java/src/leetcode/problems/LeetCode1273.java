@@ -36,7 +36,6 @@ public class LeetCode1273 {
             node_cnt[u] = 0;
         }
     }
-
 }
 
 

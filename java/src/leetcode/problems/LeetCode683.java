@@ -6,7 +6,7 @@ import java.util.TreeSet;
  * @author wujingxinit@outlook.com
  * @date 2023/6/1 18:01
  */
-public class LeetCode683_treeset {
+public class LeetCode683 {
 
     //https://leetcode.cn/problems/k-empty-slots/solution/k-ge-kong-hua-pen-by-beney-2-22uh/
 
