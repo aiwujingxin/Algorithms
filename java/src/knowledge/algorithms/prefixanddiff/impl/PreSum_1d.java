@@ -7,5 +7,5 @@ import leetcode.problems.LeetCode303;
  * @date 2023/5/1 12:49
  * @see LeetCode303 一维
  */
-public class ArrayPreSum {
+public class PreSum_1d {
 }

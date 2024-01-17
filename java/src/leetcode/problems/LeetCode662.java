@@ -10,7 +10,7 @@ import java.util.Queue;
  * @author jingxinwu
  * @date 2022-03-01 7:14 PM
  */
-public class LeetCode662_bfs {
+public class LeetCode662 {
 
     public int widthOfBinaryTree(TreeNode root) {
         Queue<AnnotatedNode> queue = new LinkedList<>();

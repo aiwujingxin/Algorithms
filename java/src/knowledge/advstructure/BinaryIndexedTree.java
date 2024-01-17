@@ -1,5 +1,7 @@
 package knowledge.advstructure;
 
+import leetcode.problems.LeetCode683_bittree;
+
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/5/23 18:32
@@ -14,7 +16,7 @@ package knowledge.advstructure;
  * @see leetcode.problems.LeetCode327_BitTree
  * @see leetcode.problems.LeetCode493_bittree
  * @see leetcode.problems.LeetCode673_BitTree
- * @see leetcode.problems.LeetCode693_bittree
+ * @see LeetCode683_bittree
  * @see leetcode.problems.LeetCode1649
  */
 public class BinaryIndexedTree {

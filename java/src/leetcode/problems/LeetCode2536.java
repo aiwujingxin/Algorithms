@@ -1,7 +1,7 @@
 package leetcode.problems;
 
 
-import knowledge.algorithms.prefixanddiff.impl.MatrixDiff;
+import knowledge.algorithms.prefixanddiff.impl.PreDiff_2d;
 
 /**
  * @author wujingxinit@outlook.com
@@ -10,7 +10,7 @@ import knowledge.algorithms.prefixanddiff.impl.MatrixDiff;
 public class LeetCode2536 {
 
     public int[][] rangeAddQueries(int n, int[][] queries) {
-        MatrixDiff pm = new MatrixDiff();
+        PreDiff_2d pm = new PreDiff_2d();
         pm.PreDiff(new int[n][n]);
         for (int[] q : queries) {
             int r1 = q[0], c1 = q[1], r2 = q[2], c2 = q[3];

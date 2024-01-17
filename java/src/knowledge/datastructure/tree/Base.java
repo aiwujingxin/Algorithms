@@ -1,5 +1,7 @@
 package knowledge.datastructure.tree;
 
+import leetcode.problems.LeetCode662;
+
 /**
  * @author wujingxinit@outlook.com
  * @date 2022/9/7 12:22
@@ -9,7 +11,7 @@ package knowledge.datastructure.tree;
  * @see leetcode.problems.LeetCode222 完全二叉树的节点个数
  * @see leetcode.problems.LeetCode543 二叉树的直径 https://leetcode.cn/problems/diameter-of-binary-tree/
  * @see leetcode.problems.LeetCode563 二叉树的坡度 https://leetcode.cn/problems/binary-tree-tilt/
- * @see leetcode.problems.LeetCode662_bfs  二叉树最大宽度 https://leetcode.cn/problems/maximum-width-of-binary-tree/
+ * @see LeetCode662  二叉树最大宽度 https://leetcode.cn/problems/maximum-width-of-binary-tree/
  * <p>
  * 验证
  * @see leetcode.problems.LeetCode98 验证二叉搜索树 https://leetcode.cn/problems/validate-binary-search-tree/

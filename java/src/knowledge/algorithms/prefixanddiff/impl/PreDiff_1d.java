@@ -10,7 +10,7 @@ import leetcode.problems.LeetCode370;
  * @see LeetCode370
  * @see LeetCode1109
  */
-public class ArrayDiff {
+public class PreDiff_1d {
 
     private int[] diff;
 

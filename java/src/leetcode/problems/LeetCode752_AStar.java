@@ -5,10 +5,10 @@ import java.util.*;
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/6/3 02:00
+ * <a href="https://leetcode.cn/problems/open-the-lock/solution/gong-shui-san-xie-yi-ti-shuang-jie-shuan-wyr9/"></a>
  */
 public class LeetCode752_AStar {
 
-    //https://leetcode.cn/problems/open-the-lock/solution/gong-shui-san-xie-yi-ti-shuang-jie-shuan-wyr9/
 
     String s, t;
     Set<String> set = new HashSet<>();

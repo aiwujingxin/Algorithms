@@ -6,11 +6,10 @@ package leetcode.problems;
  */
 public class LeetCode629 {
 
-
     /**
-     * https://leetcode.cn/problems/k-inverse-pairs-array/solution/python-ji-yi-hua-di-gui-by-himymben-bujz/
+     * <a href="https://leetcode.cn/problems/k-inverse-pairs-array/solution/python-ji-yi-hua-di-gui-by-himymben-bujz/">...</a>
      * <p>
-     * https://leetcode.com/problems/k-inverse-pairs-array/discuss/2293256/JAVA-DP-oror-Detailed-Explanation-oror-Easy-to-Understand-oror-Clean-Code-with-Comments
+     * <a href="https://leetcode.com/problems/k-inverse-pairs-array/discuss/2293256/JAVA-DP-oror-Detailed-Explanation-oror-Easy-to-Understand-oror-Clean-Code-with-Comments">...</a>
      * dp[n][k] = dp[n][k - 1] + dp[n - 1][k] - dp[n - 1][k - n]
      */
 

@@ -7,7 +7,7 @@ import leetcode.problems.LeetCode2536;
  * @date 2023/5/27 23:58
  * @see LeetCode2536
  */
-public class MatrixDiff {
+public class PreDiff_2d {
 
     int[][] diff;
     int n;

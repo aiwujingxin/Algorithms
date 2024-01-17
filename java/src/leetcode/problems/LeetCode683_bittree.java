@@ -4,7 +4,7 @@ package leetcode.problems;
  * @author wujingxinit@outlook.com
  * @date 2023/6/1 18:00
  */
-public class LeetCode693_bittree {
+public class LeetCode683_bittree {
 
     private int[] it;
     private int length;

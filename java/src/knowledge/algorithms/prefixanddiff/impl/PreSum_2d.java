@@ -7,5 +7,5 @@ import leetcode.problems.LeetCode304;
  * @date 2023/8/22 13:27
  * @see LeetCode304
  */
-public class MatrixPreSum {
+public class PreSum_2d {
 }
