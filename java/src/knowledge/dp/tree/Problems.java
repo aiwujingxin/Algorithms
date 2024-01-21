@@ -5,8 +5,8 @@ import leetcode.problems.*;
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/12/5 00:27
- * @description 树形 DP
- * @link <a href="https://leetcode.cn/circle/discuss/saUFdd/">...</a>
+ * @description 树形DP
+ * @link <a href="https://leetcode.cn/circle/discuss/saUFdd/">题集</a>
  * @see LeetCode124
  * @see LeetCode298
  * @see LeetCode333

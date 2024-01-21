@@ -5,7 +5,7 @@ import leetcode.problems.*;
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/8/22 13:01
- * @description 线性 DP 理论上也是最基础的 DP
+ * @description 线性DP 理论上也是最基础的DP
  * <p>
  * 单序列I
  * @see LeetCode204

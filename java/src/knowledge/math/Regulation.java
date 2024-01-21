@@ -5,7 +5,7 @@ import leetcode.problems.*;
 /**
  * @author wujingxinit@outlook.com
  * @date 2024/1/7 22:49
- * @description 找规律题
+ * @description 找规律
  * 约瑟夫环 <a href="https://godweiyang.com/2020/03/19/leetcode-interview-62/">...</a>
  * @see LeetCode390
  * @see LeetCode1823

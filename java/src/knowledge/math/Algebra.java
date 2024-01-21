@@ -5,6 +5,7 @@ import leetcode.problems.*;
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/12/21 22:06
+ * @description 代数
  * 同余定理
  * @see LeetCode523
  * @see LeetCode974
