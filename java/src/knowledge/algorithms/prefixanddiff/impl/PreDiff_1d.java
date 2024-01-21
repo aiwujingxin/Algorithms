@@ -1,20 +1,23 @@
 package knowledge.algorithms.prefixanddiff.impl;
 
+import leetcode.problems.LeetCode1094;
 import leetcode.problems.LeetCode1109;
 import leetcode.problems.LeetCode370;
 
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/5/1 12:58
+ * @description 差分数组 差分数组的前缀和就是原数组
  * @link <a href="https://labuladong.github.io/algo/di-yi-zhan-da78c/shou-ba-sh-48c1d/xiao-er-me-c304e/">...</a>
  * @see LeetCode370
+ * @see LeetCode1094
  * @see LeetCode1109
  */
 public class PreDiff_1d {
 
-    private int[] diff;
+    private final int[] diff;
 
-    public void PreDiff(int[] nums) {
+    public PreDiff_1d(int[] nums) {
         assert nums.length > 0;
         diff = new int[nums.length];
         diff[0] = nums[0];

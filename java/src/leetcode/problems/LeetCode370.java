@@ -14,11 +14,11 @@ public class LeetCode370 {
                 diff[update[1] + 1] -= update[2];
             }
         }
-        int[] res = new int[length];
-        res[0] = diff[0];
-        for (int i = 1; i < diff.length; i++) {
-            res[i] = res[i - 1] + diff[i];
+        int[] nums = new int[length];
+        nums[0] = diff[0];
+        for (int i = 1; i < length; i++) {
+            nums[i] = nums[i - 1] + diff[i];
         }
-        return res;
+        return nums;
     }
 }

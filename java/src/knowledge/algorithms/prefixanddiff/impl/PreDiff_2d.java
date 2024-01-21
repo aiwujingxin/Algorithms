@@ -1,11 +1,13 @@
 package knowledge.algorithms.prefixanddiff.impl;
 
+import leetcode.problems.LeetCode2132;
 import leetcode.problems.LeetCode2536;
 
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/5/27 23:58
  * @see LeetCode2536
+ * @see LeetCode2132
  */
 public class PreDiff_2d {
 
@@ -13,18 +15,18 @@ public class PreDiff_2d {
     int n;
     int m;
 
-    public void PreDiff(int[][] nums) {
+    public PreDiff_2d(int[][] nums) {
         n = nums.length;
         m = nums[0].length;
         diff = new int[n + 2][m + 2];
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < m; j++) {
-                insert(i, j, i, j, nums[i][j]);
+                update(i, j, i, j, nums[i][j]);
             }
         }
     }
 
-    public void insert(int r1, int c1, int r2, int c2, int k) {
+    public void update(int r1, int c1, int r2, int c2, int k) {
         diff[r1 + 1][c1 + 1] += k;
         diff[r1 + 1][c2 + 2] -= k;
         diff[r2 + 2][c1 + 1] -= k;

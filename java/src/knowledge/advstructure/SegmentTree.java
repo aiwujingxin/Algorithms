@@ -20,7 +20,7 @@ public class SegmentTree {
     }
 
     // 后序遍历
-    public void buildTree(int[] nums, int node, int start, int end) {
+    private void buildTree(int[] nums, int node, int start, int end) {
         // 叶子节点
         if (start == end) {
             segmentTree[node] = nums[start];
