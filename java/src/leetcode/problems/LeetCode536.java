@@ -8,14 +8,6 @@ import common.TreeNode;
  */
 public class LeetCode536 {
 
-    public static void main(String[] args) {
-        System.out.println(new LeetCode536().findRIndex("-4(2(3)(1))(6(5)(7))"));
-        System.out.println(new LeetCode536().str2tree("-1"));
-        System.out.println(new LeetCode536().getValue("-1"));
-        System.out.println(new LeetCode536().getValue("-2313"));
-    }
-
-    //4(2(3)(1))(6(5)(7))
     public TreeNode str2tree(String s) {
         if (s == null || s.isEmpty()) {
             return null;

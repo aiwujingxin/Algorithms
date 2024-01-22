@@ -25,7 +25,6 @@ public class LeetCode2451 {
             list.add(w);
             map.put(d, list);
         }
-        System.out.println(map);
         for (Map.Entry<String, List<String>> entry : map.entrySet()) {
             if (entry.getValue().size() == 1) {
                 return entry.getValue().get(0);

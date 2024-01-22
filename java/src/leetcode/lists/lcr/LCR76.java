@@ -6,10 +6,6 @@ package leetcode.lists.lcr;
  */
 public class LCR76 {
 
-    public static void main(String[] args) {
-        System.out.println(new LCR76().findKthLargest(new int[]{3, 2, 1, 5, 6, 4, 7, 8, 9}, 2));
-    }
-
     public int findKthLargest(int[] nums, int k) {
         if (nums == null || nums.length == 0) {
             return 0;

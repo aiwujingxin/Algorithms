@@ -8,10 +8,6 @@ import java.util.Stack;
  */
 public class LCR36 {
 
-    public static void main(String[] args) {
-        System.out.println(new LCR36().evalRPN(new String[]{"2", "1", "+", "3", "*"}));
-    }
-
     public int evalRPN(String[] tokens) {
         if (tokens == null || tokens.length == 0) {
             return 0;

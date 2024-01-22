@@ -4,29 +4,26 @@ import common.TreeNode;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2023/7/18 15:42
+ * @date 2024/1/22 15:42
  */
 public class LeetCode1026 {
 
-    int ans;
+    int res = 0;
 
     public int maxAncestorDiff(TreeNode root) {
-        dfs(root);
-        return ans;
+        if (root == null) {
+            return 0;
+        }
+        dfs(root, root.val, root.val);
+        return res;
     }
 
-    private int[] dfs(TreeNode root) {
+    public void dfs(TreeNode root, int min, int max) {
         if (root == null) {
-            return new int[]{Integer.MAX_VALUE, Integer.MIN_VALUE};
+            return;
         }
-        int mn = root.val;
-        int mx = root.val;
-        int[] left = dfs(root.left);
-        int[] right = dfs(root.right);
-        // 思路可以少写很多代码
-        mn = Math.min(mn, Math.min(left[0], right[0]));
-        mx = Math.max(mx, Math.max(left[1], right[1]));
-        ans = Math.max(ans, Math.max(root.val - mn, mx - root.val));
-        return new int[]{mn, mx};
+        res = Math.max(res, Math.max(root.val - min, max - root.val));
+        dfs(root.left, Math.min(min, root.val), Math.max(max, root.val));
+        dfs(root.right, Math.min(min, root.val), Math.max(max, root.val));
     }
 }

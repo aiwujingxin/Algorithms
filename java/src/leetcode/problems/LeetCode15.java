@@ -10,10 +10,6 @@ import java.util.List;
  */
 public class LeetCode15 {
 
-    public static void main(String[] args) {
-        System.out.println(new LeetCode15().threeSum(new int[]{-1, 0, 1, 2, -1, -4}));
-    }
-
     public List<List<Integer>> threeSum(int[] nums) {
         if (nums == null || nums.length == 0) {
             return new ArrayList<>();

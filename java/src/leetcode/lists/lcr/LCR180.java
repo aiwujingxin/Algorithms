@@ -8,10 +8,6 @@ import java.util.*;
  */
 
 public class LCR180 {
-    public static void main(String[] args) {
-        System.out.println(Arrays.deepToString(new LCR180().findContinuousSequence(9)));
-        System.out.println(Arrays.deepToString(new LCR180().findContinuousSequence(15)));
-    }
 
     public int[][] findContinuousSequence(int target) {
         List<List<Integer>> res = new ArrayList<>();

@@ -10,9 +10,6 @@ import java.util.List;
  * @date 2023/9/28 21:15
  */
 public class LCR82 {
-    public static void main(String[] args) {
-        System.out.println(new LCR82().combinationSum2(new int[]{10, 1, 2, 7, 6, 1, 5}, 8));
-    }
 
     public List<List<Integer>> combinationSum2(int[] candidates, int target) {
         if (candidates == null || candidates.length == 0) {

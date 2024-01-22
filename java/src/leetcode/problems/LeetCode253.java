@@ -22,10 +22,6 @@ public class LeetCode253 {
      * 输入：intervals = [[7,10],[2,4]]
      * 输出：1
      **/
-    public static void main(String[] args) {
-        System.out.println(new LeetCode253().minMeetingRooms(new int[][]{{0, 30}, {5, 10}, {15, 20}}));
-    }
-
     //https://www.cnblogs.com/lightwindy/p/8577794.html
     public int minMeetingRooms(int[][] intervals) {
         if (intervals == null || intervals.length == 0) {

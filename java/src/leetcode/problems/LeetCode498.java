@@ -21,10 +21,6 @@ public class LeetCode498 {
                 list.add(new Point(j, -i, mat[i][j]));
             }
         }
-
-        for (Point point : list) {
-            System.out.println(point.x + " " + point.y + point.v);
-        }
         list.sort(new Comparator<Point>() {
             @Override
             public int compare(Point o1, Point o2) {

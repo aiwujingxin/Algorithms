@@ -5,13 +5,6 @@ package leetcode.problems;
  * @date 2023/7/4 23:16
  */
 public class LeetCode2730 {
-
-    public static void main(String[] args) {
-        System.out.println(new LeetCode2730().longestSemiRepetitiveSubstring("5512233"));
-        System.out.println(new LeetCode2730().longestSemiRepetitiveSubstring("5494"));
-        System.out.println(new LeetCode2730().longestSemiRepetitiveSubstring("24489929009"));
-    }
-
     public int longestSemiRepetitiveSubstring(String s) {
         if (s == null || s.length() == 0) {
             return 0;

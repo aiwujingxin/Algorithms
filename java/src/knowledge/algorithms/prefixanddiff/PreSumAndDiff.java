@@ -8,14 +8,6 @@ package knowledge.algorithms.prefixanddiff;
  */
 public interface PreSumAndDiff {
 
-    default void suffix(int[] nums) {
-        int n = nums.length;
-        int[] presum = new int[n + 1];
-        for (int i = n - 1; i >= 0; i--) {
-            presum[i] = presum[i + 1] + nums[i];
-        }
-    }
-
     default void preSum(int[] nums) {
         int n = nums.length;
         int[] presum = new int[n + 1];
@@ -23,4 +15,13 @@ public interface PreSumAndDiff {
             presum[i] = presum[i - 1] + nums[i - 1];
         }
     }
+
+    default void suffix(int[] nums) {
+        int n = nums.length;
+        int[] suffixsum = new int[n + 1];
+        for (int i = n - 1; i >= 0; i--) {
+            suffixsum[i] = suffixsum[i + 1] + nums[i];
+        }
+    }
+
 }

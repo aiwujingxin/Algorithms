@@ -19,11 +19,6 @@ public class LeetCode696 {
      * res +=Min（连续的 0的个数， 连续的 1 的个数）
      **/
 
-    public static void main(String[] args) {
-        System.out.println(new LeetCode696().countBinarySubstrings("00110011"));
-        System.out.println(new LeetCode696().countBinarySubstrings("10101"));
-    }
-
     public int countBinarySubstrings(String s) {
         if (s == null || s.isEmpty()) {
             return 0;

@@ -5,13 +5,6 @@ package leetcode.lists.lcr;
  * @date 2023/9/25 18:21
  */
 public class LCR73 {
-
-    public static void main(String[] args) {
-        System.out.println(new LCR73().minEatingSpeed(new int[]{3, 6, 7, 11}, 8));
-        System.out.println(new LCR73().minEatingSpeed(new int[]{30, 11, 23, 4, 20}, 5));
-        System.out.println(new LCR73().minEatingSpeed(new int[]{30, 11, 23, 4, 20}, 6));
-    }
-
     public int minEatingSpeed(int[] piles, int h) {
         if (piles == null || piles.length == 0) {
             return 0;

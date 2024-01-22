@@ -14,10 +14,6 @@ public class LCR135 {
     int n;
     char[] num, loop = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9'};
 
-    public static void main(String[] args) {
-        System.out.println(Arrays.toString(new LCR135().printNumbers(3)));
-    }
-
     public int[] printNumbers(int n) {
         this.n = n;
         result = new ArrayList<>(); // 数字字符串集

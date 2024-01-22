@@ -36,7 +36,6 @@ public class LeetCode361 {
             }
         }
 
-        System.out.println(Arrays.toString(up));
         int[] down = new int[n];
         //sweep from bottom-right to top-left
         for (int i = m - 1; i >= 0; i--) {

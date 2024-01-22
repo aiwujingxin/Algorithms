@@ -14,7 +14,6 @@ public class LeetCode1170 {
         for (int w = 0; w < words.length; w++) {
             arr[w] = getCnt(words[w]);
         }
-        System.out.println(Arrays.toString(arr));
         Arrays.sort(arr);
         int[] res = new int[queries.length];
         for (int i = 0; i < queries.length; i++) {

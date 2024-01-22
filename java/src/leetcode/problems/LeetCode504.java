@@ -6,10 +6,6 @@ package leetcode.problems;
  */
 public class LeetCode504 {
 
-    public static void main(String[] args) {
-        System.out.println(new LeetCode504().convertToBase7(-7));
-    }
-
     public String convertToBase7(int num) {
         String sign = "";
         if (num < 0) {

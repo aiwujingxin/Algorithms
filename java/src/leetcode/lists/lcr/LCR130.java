@@ -10,10 +10,6 @@ import java.util.Queue;
  */
 public class LCR130 {
 
-    public static void main(String[] args) {
-        System.out.println(new LCR130().cal(1, 2));
-    }
-
     public int movingCount(int m, int n, int k) {
         int[][] dic = new int[][]{{-1, 0}, {1, 0}, {0, 1}, {0, -1}};
         Queue<int[]> queue = new LinkedList<>();

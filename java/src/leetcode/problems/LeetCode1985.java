@@ -23,7 +23,6 @@ public class LeetCode1985 {
                 return o2.length() - o1.length();
             }
         });
-        System.out.println(Arrays.toString(nums));
         return nums[nums.length - k];
     }
 }

@@ -9,15 +9,6 @@ import java.util.List;
  */
 public class LCR87 {
 
-    //255.255.255.255
-    public static void main(String[] args) {
-        System.out.println(new LCR87().restoreIpAddresses("25525511135"));
-        System.out.println(new LCR87().restoreIpAddresses("0000"));
-        System.out.println(new LCR87().restoreIpAddresses("1111"));
-        System.out.println(new LCR87().restoreIpAddresses("010010"));
-        System.out.println(new LCR87().restoreIpAddresses("10203040"));
-    }
-
     public List<String> restoreIpAddresses(String s) {
 
         if (s == null || s.isEmpty() || s.length() > 15) {

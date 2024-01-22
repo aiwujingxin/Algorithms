@@ -8,13 +8,6 @@ import java.util.*;
  */
 public class LeetCode672 {
 
-    public static void main(String[] args) {
-        System.out.println(new LeetCode672().flipLights(1, 1));
-        System.out.println(new LeetCode672().flipLights(2, 1));
-        System.out.println(new LeetCode672().flipLights(3, 1));
-        System.out.println(new LeetCode672().flipLights(3, 3));
-    }
-
     public int flipLights(int n, int presses) {
 
         if (n == 0) {
@@ -25,9 +18,9 @@ public class LeetCode672 {
         }
 
         int[] arr = new int[n];
-        for (int i = 0; i < n; i++) {
-            arr[i] = 1; //开
-        }
+        //开
+        Arrays.fill(arr, 1);
+
         Queue<int[]> queue = new LinkedList<>();
         HashSet<String> visited = new HashSet<>();
         int count = 0;

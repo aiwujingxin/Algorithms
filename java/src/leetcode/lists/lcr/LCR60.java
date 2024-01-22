@@ -8,11 +8,6 @@ import java.util.*;
  */
 public class LCR60 {
 
-    public static void main(String[] args) {
-        System.out.println(Arrays.toString(new LCR60().topKFrequent(new int[]{1, 1, 1, 2, 2, 3}, 2)));
-        System.out.println(Arrays.toString(new LCR60().topKFrequent(new int[]{1, 1, 1, 2, 2, 3, 3, 4, 5, 5, 6, 6, 6, 6}, 2)));
-    }
-
     public int[] topKFrequent(int[] nums, int k) {
         if (nums == null || nums.length == 0) {
             return new int[]{};

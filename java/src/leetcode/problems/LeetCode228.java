@@ -28,7 +28,6 @@ public class LeetCode228 {
                 right++;
             }
             add(list, nums, left, right);
-            System.out.println(right);
             left = right + 1;
             right = left;
         }

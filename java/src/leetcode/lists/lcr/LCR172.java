@@ -6,10 +6,6 @@ package leetcode.lists.lcr;
  */
 public class LCR172 {
 
-    public static void main(String[] args) {
-        System.out.println(new LCR172().search(new int[]{5, 7, 7, 8, 8, 10}, 8));
-    }
-
     public int search(int[] nums, int target) {
         if (nums == null || nums.length == 0) {
             return 0;

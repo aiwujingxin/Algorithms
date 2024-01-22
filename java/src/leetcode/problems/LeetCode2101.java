@@ -8,12 +8,6 @@ import java.util.*;
  */
 public class LeetCode2101 {
 
-    public static void main(String[] args) {
-//        System.out.println(new LeetCode2101().maximumDetonation(new int[][]{{65, 59, 3}, {69, 51, 7}}));
-        System.out.println(new LeetCode2101().maximumDetonation(new int[][]{{1, 2, 3}, {2, 3, 1}, {3, 4, 2}, {4, 5, 3}, {5, 6, 4}}));
-
-    }
-
     int[][] bombs;
 
     public int maximumDetonation(int[][] bombs) {

@@ -12,21 +12,17 @@ import java.util.Set;
 public class LeetCode320 {
 
     // todo 题解
-    public static void main(String[] args) {
-        System.out.println(new LeetCode320().generateAbbreviations("wordawqwertyu").size());
-    }
-
     public List<String> generateAbbreviations(String word) {
-        if (word == null || word.length() == 0) {
+        if (word == null || word.isEmpty()) {
             return new ArrayList<>();
         }
         Set<String> res = new HashSet<>();
         res.add(word);
-        helper(word, res, 0);
+        backtrack(word, res, 0);
         return new ArrayList<>(res);
     }
 
-    private void helper(String word, Set<String> res, int start) {
+    private void backtrack(String word, Set<String> res, int start) {
         if (start == word.length()) {
             return;
         }
@@ -37,7 +33,7 @@ public class LeetCode320 {
                 res.add(sb);
                 // important fixed bug 下一次开始的位置
                 int left = word.length() - 1 - j;
-                helper(sb, res, sb.length() - left);
+                backtrack(sb, res, sb.length() - left);
                 word = t;
             }
         }

@@ -17,10 +17,6 @@ public class LeetCode163 {
      * 输出: ["2", "4->49", "51->74", "76->99"]
      * */
 
-    public static void main(String[] args) {
-        System.out.println(new LeetCode163().findMissingRanges(new int[]{0, 1, 3, 50, 75}, 0, 99));
-    }
-
     public List<String> findMissingRanges(int[] nums, int lower, int upper) {
         List<String> res = new LinkedList<>();
         int prev = lower - 1;

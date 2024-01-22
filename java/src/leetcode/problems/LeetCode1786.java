@@ -11,10 +11,6 @@ import java.util.*;
  */
 public class LeetCode1786 {
 
-    public static void main(String[] args) {
-        System.out.println(new LeetCode1786().countRestrictedPaths(5, new int[][]{{1, 2, 3}, {1, 3, 3}, {2, 3, 1}, {1, 4, 2}, {5, 2, 2}, {3, 5, 1}, {5, 4, 10}}));
-    }
-
     List<int[]>[] graph;
     int N;
     final int MOD = 1000000007;

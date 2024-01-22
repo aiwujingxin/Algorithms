@@ -33,7 +33,6 @@ public class LCR48 {
                 }
                 sb.append(",");
             }
-            System.out.println(sb);
             return sb.toString();
         }
 

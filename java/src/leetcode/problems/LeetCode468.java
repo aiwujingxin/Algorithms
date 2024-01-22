@@ -6,14 +6,9 @@ package leetcode.problems;
  */
 public class LeetCode468 {
 
-    public static void main(String[] args) {
-        System.out.println(new LeetCode468().validIPAddress("172.16.254.1"));
-        System.out.println(new LeetCode468().validIPAddress("2001:0db8:85a3:0:0:8A2E:0370:7334:"));
-    }
-
     public String validIPAddress(String queryIP) {
 
-        if (queryIP == null || queryIP.length() == 0) {
+        if (queryIP == null || queryIP.isEmpty()) {
             return "Neither";
         }
 
@@ -42,8 +37,7 @@ public class LeetCode468 {
 
         for (String ip6 : ip6s) {
 
-            //fix
-            if (ip6.length() < 1 || ip6.length() > 4) {
+            if (ip6.isEmpty() || ip6.length() > 4) {
                 return false;
             }
 

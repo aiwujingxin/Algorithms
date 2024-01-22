@@ -22,7 +22,6 @@ public class LCR74 {
                 return o1[0] - o2[0];
             }
         });
-        System.out.println(Arrays.deepToString(intervals));
 
         List<int[]> list = new ArrayList<>();
         list.add(intervals[0]);

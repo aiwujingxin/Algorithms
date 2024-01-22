@@ -6,10 +6,6 @@ package leetcode.problems;
  */
 public class LeetCode351 {
 
-    public static void main(String[] args) {
-        System.out.println(new LeetCode351().numberOfPatterns(3, 3));
-    }
-
     public int numberOfPatterns(int m, int n) {
         int[][] skip = new int[10][10];
         //这个skip数组是为了记录跳跃的点数，比如说从1到3，就跳跃2

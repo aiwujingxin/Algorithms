@@ -6,12 +6,6 @@ package leetcode.problems;
  */
 public class LeetCode1529 {
 
-    public static void main(String[] args) {
-        LeetCode1529 leetCode1529 = new LeetCode1529();
-        System.out.println(leetCode1529.minFlips("00001111111111"));
-    }
-
-
     public int minFlips(String target) {
         int flips = 0;
         char prev = '0';

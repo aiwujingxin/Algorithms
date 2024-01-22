@@ -8,10 +8,6 @@ import java.util.Stack;
  */
 public class LeetCode1006 {
 
-    public static void main(String[] args) {
-        System.out.println(new LeetCode1006().clumsy(2));
-    }
-
     public int clumsy(int n) {
         if (n == 1) {
             return 1;

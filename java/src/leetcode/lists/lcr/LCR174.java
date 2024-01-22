@@ -31,7 +31,6 @@ public class LCR174 {
             res = root.val;
             find = true;
         }
-        System.out.println(root.val);
         dfs(root.left);
     }
 }

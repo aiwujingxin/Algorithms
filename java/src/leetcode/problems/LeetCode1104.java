@@ -9,10 +9,6 @@ import java.util.List;
  */
 public class LeetCode1104 {
 
-    public static void main(String[] args) {
-        System.out.println(new  LeetCode1104().pathInZigZagTree(12));
-    }
-
     public List<Integer> pathInZigZagTree(int target) {
         List<Integer> res = new ArrayList<>();
         int depth = (int) (Math.log(target) / Math.log(2)) + 1;     // ln(target) / ln(2)

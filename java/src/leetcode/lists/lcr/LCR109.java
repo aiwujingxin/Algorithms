@@ -7,10 +7,6 @@ import java.util.*;
  * @date 2023/9/26 14:34
  */
 public class LCR109 {
-    public static void main(String[] args) {
-        System.out.println(new LCR109().openLock(new String[]{"0201", "0101", "0102", "1212", "2002"}, "0202"));
-    }
-
     public int openLock(String[] deadends, String target) {
         HashSet<String> set = new HashSet<>(Arrays.asList(deadends));
         if (set.contains(target) || set.contains("0000")) {

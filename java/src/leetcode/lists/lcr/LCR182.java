@@ -6,10 +6,6 @@ package leetcode.lists.lcr;
  */
 public class LCR182 {
 
-    public static void main(String[] args) {
-        System.out.println(new LCR182().reverseLeftWords("abcdefg", 2));
-    }
-
     public String reverseLeftWords(String s, int n) {
         if (s == null || s.isEmpty()) {
             return s;
