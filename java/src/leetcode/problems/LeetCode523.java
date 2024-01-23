@@ -6,7 +6,6 @@ import java.util.HashMap;
  * @author wujingxinit@outlook.com
  * @date 2023/12/21 21:27
  * @description 同余定理
- * (preSum[i]−preSum[j]) mod k==0 ⟺ (preSum[i] mod k) == (preSum[j] mod k)
  */
 public class LeetCode523 {
 
@@ -18,13 +17,13 @@ public class LeetCode523 {
         }
         HashMap<Integer, Integer> map = new HashMap<>();
         for (int i = 0; i <= n; i++) {
-            int key = presum[i] % k;
-            if (map.containsKey(key)) {
-                if (i - map.get(key) >= 2) {
+            int mod = presum[i] % k;
+            if (map.containsKey(mod)) {
+                if (i - map.get(mod) >= 2) {
                     return true;
                 }
             } else {
-                map.put(key, i);
+                map.put(mod, i);
             }
         }
         return false;

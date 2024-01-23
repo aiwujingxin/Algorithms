@@ -12,15 +12,17 @@ public class LeetCode974 {
         if (nums == null || nums.length == 0) {
             return 0;
         }
+        int n = nums.length;
         int cnt = 0;
+        int[] presum = new int[n + 1];
+        for (int i = 1; i <= n; i++) {
+            presum[i] = presum[i - 1] + nums[i - 1];
+        }
         HashMap<Integer, Integer> map = new HashMap<>();
-        map.put(0, 1);
-        int sum = 0;
-        for (int num : nums) {
-            sum += num;
-            // 这里要格外注意java负数取模的特性:-5%2=-1
+        for (int sum : presum) {
+            // 注意java负数取模的特性:-5%2=-1
             int mod = (sum % k + k) % k;
-            // 根据同余定理:sum[j]%k==sum[i-1]%k时,sum[i,j]%k==0
+            // 根据同余定理
             if (map.containsKey(mod)) {
                 cnt += map.get(mod);
             }

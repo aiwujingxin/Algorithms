@@ -7,6 +7,7 @@ import java.util.PriorityQueue;
 /**
  * @author jingxinwu
  * @date 2023.09.19 17:04
+ * @link <a href="https://www.cnblogs.com/lightwindy/p/8577794.html">...</a>
  */
 public class LeetCode253 {
 
@@ -22,7 +23,6 @@ public class LeetCode253 {
      * 输入：intervals = [[7,10],[2,4]]
      * 输出：1
      **/
-    //https://www.cnblogs.com/lightwindy/p/8577794.html
     public int minMeetingRooms(int[][] intervals) {
         if (intervals == null || intervals.length == 0) {
             return 0;
@@ -33,13 +33,13 @@ public class LeetCode253 {
                 return o1[0] - o2[0];
             }
         });
-        PriorityQueue<Integer> q = new PriorityQueue<>();
+        PriorityQueue<Integer> queue = new PriorityQueue<>();
         for (int[] interval : intervals) {
-            if (!q.isEmpty() && q.peek() <= interval[0]) {
-                q.poll();
+            if (!queue.isEmpty() && queue.peek() <= interval[0]) {
+                queue.poll();
             }
-            q.add(interval[1]);
+            queue.add(interval[1]);
         }
-        return q.size();
+        return queue.size();
     }
 }

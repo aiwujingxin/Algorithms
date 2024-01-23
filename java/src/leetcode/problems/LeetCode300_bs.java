@@ -19,7 +19,9 @@ public class LeetCode300_bs {
         int res = 0;
         for (int num : nums) {
             int insertIndex = leftBound(dp, num);
-            dp[insertIndex] = Math.min(dp[insertIndex], num);
+            if (dp[insertIndex] >= num) {
+                dp[insertIndex] = num;
+            }
             res = Math.max(res, insertIndex);
         }
         return res;

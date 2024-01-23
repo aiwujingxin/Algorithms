@@ -1,6 +1,6 @@
 package leetcode.problems;
 
-import java.util.*;
+import java.util.HashMap;
 
 /**
  * @author wujingxinit@outlook.com
@@ -12,16 +12,18 @@ public class LeetCode560 {
         if (nums == null || nums.length == 0) {
             return 0;
         }
+        int n = nums.length;
+        int[] presum = new int[n + 1];
+        for (int i = 1; i <= n; i++) {
+            presum[i] = presum[i - 1] + nums[i - 1];
+        }
         int cnt = 0;
         HashMap<Integer, Integer> map = new HashMap<>();
-        map.put(0, 1);
-        int sum = 0;
-        for (int num : nums) {
-            sum += num;
-            if (map.containsKey(sum - k)) {
-                cnt += map.get(sum - k);
+        for (int num : presum) {
+            if (map.containsKey(num - k)) {
+                cnt += map.get(num - k);
             }
-            map.put(sum, map.getOrDefault(sum, 0) + 1);
+            map.put(num, map.getOrDefault(num, 0) + 1);
         }
         return cnt;
     }
