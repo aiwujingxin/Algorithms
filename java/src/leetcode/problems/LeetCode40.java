@@ -21,12 +21,12 @@ public class LeetCode40 {
         return res;
     }
 
-    private void backtrack(int[] candidates, int start, int target, List<Integer> list, List<List<Integer>> res) {
-        if (target == 0) {
-            res.add(new ArrayList<>(list));
+    private void backtrack(int[] candidates, int start, int target, List<Integer> path, List<List<Integer>> res) {
+        if (target < 0) {
             return;
         }
-        if (target < 0) {
+        if (target == 0) {
+            res.add(new ArrayList<>(path));
             return;
         }
         for (int i = start; i < candidates.length; i++) {
@@ -34,9 +34,9 @@ public class LeetCode40 {
             if (i > start && candidates[i] == candidates[i - 1]) {
                 continue;
             }
-            list.add(candidates[i]);
-            backtrack(candidates, i + 1, target - candidates[i], list, res);
-            list.remove(list.size() - 1);
+            path.add(candidates[i]);
+            backtrack(candidates, i + 1, target - candidates[i], path, res);
+            path.remove(path.size() - 1);
         }
     }
 }

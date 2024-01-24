@@ -2,8 +2,8 @@ package leetcode.problems;
 
 
 
-import knowledge.datastructure.list.DoubleLinkedList;
-import knowledge.datastructure.list.Node;
+import knowledge.datastructure.linkedlist.DoubleLinkedList;
+import knowledge.datastructure.linkedlist.Node;
 
 import java.util.HashMap;
 

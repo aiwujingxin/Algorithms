@@ -11,41 +11,10 @@ import java.util.Map;
 public class LeetCode673_BitTree {
 
     int n;
-    int[][] tr = new int[2010][2];
-
-    int lowbit(int x) {
-        return x & -x;
-    }
-
-    int[] query(int x) {
-        int len = 0, cnt = 0;
-        for (int i = x; i > 0; i -= lowbit(i)) {
-            if (len == tr[i][0]) {
-                cnt += tr[i][1];
-            } else if (len < tr[i][0]) {
-                len = tr[i][0];
-                cnt = tr[i][1];
-            }
-        }
-        return new int[]{len, cnt};
-    }
-
-    void add(int x, int[] info) {
-        for (int i = x; i <= n; i += lowbit(i)) {
-            int len = tr[i][0], cnt = tr[i][1];
-            if (len == info[0]) {
-                cnt += info[1];
-            } else if (len < info[0]) {
-                len = info[0];
-                cnt = info[1];
-            }
-            tr[i][0] = len;
-            tr[i][1] = cnt;
-        }
-    }
+    int[][] tree = new int[2010][2];
 
     public int findNumberOfLIS(int[] nums) {
-        n = nums.length;
+        this.n = nums.length;
         // 离散化
         int[] tmp = nums.clone();
         Arrays.sort(tmp);
@@ -64,5 +33,37 @@ public class LeetCode673_BitTree {
         }
         int[] ans = query(n);
         return ans[1];
+    }
+
+
+    int[] query(int x) {
+        int len = 0, cnt = 0;
+        for (int i = x; i > 0; i -= lowbit(i)) {
+            if (len == tree[i][0]) {
+                cnt += tree[i][1];
+            } else if (len < tree[i][0]) {
+                len = tree[i][0];
+                cnt = tree[i][1];
+            }
+        }
+        return new int[]{len, cnt};
+    }
+
+    void add(int x, int[] info) {
+        for (int i = x; i <= n; i += lowbit(i)) {
+            int len = tree[i][0], cnt = tree[i][1];
+            if (len == info[0]) {
+                cnt += info[1];
+            } else if (len < info[0]) {
+                len = info[0];
+                cnt = info[1];
+            }
+            tree[i][0] = len;
+            tree[i][1] = cnt;
+        }
+    }
+
+    int lowbit(int x) {
+        return x & -x;
     }
 }

@@ -1,5 +1,6 @@
 package knowledge.advstructure;
 
+import leetcode.problems.LeetCode218_segtree;
 import leetcode.problems.LeetCode307_segtree;
 
 /**
@@ -7,6 +8,7 @@ import leetcode.problems.LeetCode307_segtree;
  * @date 2022/7/19 00:37
  * @link <a href="https://www.youtube.com/watch?v=e_bK-dgPvfM">讲解</a>
  * @see LeetCode307_segtree
+ * @see LeetCode218_segtree
  */
 public class SegmentTree {
 

@@ -8,7 +8,7 @@ import java.util.HashSet;
  * @author wujingxinit@outlook.com
  * @date 2023/7/21 16:51
  */
-public class LeetCode865_v1 {
+public class LeetCode865_lca {
 
     HashSet<Integer> set;
     int maxDepth;

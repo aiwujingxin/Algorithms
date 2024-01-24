@@ -18,9 +18,9 @@ public class LeetCode47 {
         return res;
     }
 
-    public void backtrack(int[] nums, List<Integer> list, List<List<Integer>> res, boolean[] used) {
-        if (list.size() == nums.length) {
-            res.add(new ArrayList<>(list));
+    public void backtrack(int[] nums, List<Integer> path, List<List<Integer>> res, boolean[] used) {
+        if (path.size() == nums.length) {
+            res.add(new ArrayList<>(path));
             return;
         }
         for (int i = 0; i < nums.length; i++) {
@@ -35,9 +35,9 @@ public class LeetCode47 {
                 continue;
             }
             used[i] = true;
-            list.add(nums[i]);
-            backtrack(nums, list, res, used);
-            list.remove(list.size() - 1);
+            path.add(nums[i]);
+            backtrack(nums, path, res, used);
+            path.remove(path.size() - 1);
             used[i] = false;
         }
     }

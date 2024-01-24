@@ -1,4 +1,4 @@
-package knowledge.datastructure.list;
+package knowledge.datastructure.linkedlist;
 
 import leetcode.problems.*;
 
@@ -6,11 +6,14 @@ import leetcode.problems.*;
  * @author wujingxinit@outlook.com
  * @date 2023/12/22 10:57
  * @description 链表
- * 必须
+ * <p>
+ * LRU
  * @see LeetCode146
+ * <p>
  * 环形链表
  * @see LeetCode141
  * @see LeetCode142
+ * <p>
  * 删除节点
  * @see LeetCode237
  * @see LeetCode19

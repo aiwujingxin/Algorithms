@@ -17,18 +17,18 @@ public class LeetCode39 {
         return res;
     }
 
-    private void backtrack(int[] candidates, int start, int target, List<Integer> list, List<List<Integer>> res) {
-        if (target == 0) {
-            res.add(new ArrayList<>(list));
-            return;
-        }
+    private void backtrack(int[] candidates, int start, int target, List<Integer> path, List<List<Integer>> res) {
         if (target < 0) {
             return;
         }
+        if (target == 0) {
+            res.add(new ArrayList<>(path));
+            return;
+        }
         for (int i = start; i < candidates.length; i++) {
-            list.add(candidates[i]);
-            backtrack(candidates, i, target - candidates[i], list, res);
-            list.remove(list.size() - 1);
+            path.add(candidates[i]);
+            backtrack(candidates, i, target - candidates[i], path, res);
+            path.remove(path.size() - 1);
         }
     }
 }

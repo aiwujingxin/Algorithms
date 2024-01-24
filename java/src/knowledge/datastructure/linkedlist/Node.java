@@ -1,4 +1,4 @@
-package knowledge.datastructure.list;
+package knowledge.datastructure.linkedlist;
 
 import java.util.HashSet;
 import java.util.Set;

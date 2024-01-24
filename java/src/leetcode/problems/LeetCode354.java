@@ -31,7 +31,9 @@ public class LeetCode354 {
         for (int[] envelope : envelopes) {
             int num = envelope[1];
             int insertIndex = leftBound(dp, num);
-            dp[insertIndex] = Math.min(dp[insertIndex], num);
+            if (dp[insertIndex] >= num) {
+                dp[insertIndex] = num;
+            }
             res = Math.max(res, insertIndex);
         }
         return res;

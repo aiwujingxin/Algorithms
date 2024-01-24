@@ -6,16 +6,15 @@ import leetcode.problems.*;
  * @author wujingxinit@outlook.com
  * @date 2023/8/21 22:08
  * @description 回溯算法
- * @link <a href="https://labuladong.github.io/algo/di-san-zha-24031/bao-li-sou-96f79/hui-su-sua-c26da/">labuladong</a>
+ * @link <a href="https://labuladong.github.io/algo/di-san-zha-24031/bao-li-sou-96f79/hui-su-sua-56e11/">labuladong</a>
+ * <p>全排列
+ * @see LeetCode46
+ * @see LeetCode47
  * <p>子集
  * @see LeetCode78
  * @see LeetCode90
  * </>组合
  * @see LeetCode77
- * <p>全排列
- * @see LeetCode46
- * @see LeetCode47
- * <p>组合总和
  * @see LeetCode39
  * @see LeetCode40
  * <p>N皇后
