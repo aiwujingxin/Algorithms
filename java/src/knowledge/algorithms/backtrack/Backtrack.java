@@ -7,16 +7,16 @@ import leetcode.problems.*;
  * @date 2023/8/21 22:08
  * @description 回溯算法
  * @link <a href="https://labuladong.github.io/algo/di-san-zha-24031/bao-li-sou-96f79/hui-su-sua-56e11/">labuladong</a>
- * <p>全排列
- * @see LeetCode46
- * @see LeetCode47
- * <p>子集
- * @see LeetCode78
- * @see LeetCode90
+ * <p>排列
+ * @see LeetCode46 元素无重不可复选
+ * @see LeetCode47 元素重复不可复选
  * </>组合
- * @see LeetCode77
- * @see LeetCode39
- * @see LeetCode40
+ * @see LeetCode77 元素无重不可复选
+ * @see LeetCode40 元素重复不可复选
+ * @see LeetCode39 元素无重可复选
+ * <p>子集
+ * @see LeetCode78 元素无重不可复选
+ * @see LeetCode90 元素重复不可复选
  * <p>N皇后
  * @see LeetCode51
  * @see LeetCode52
