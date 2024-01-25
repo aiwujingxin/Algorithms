@@ -1,6 +1,8 @@
 package leetcode.problems;
 
-import java.util.*;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.Queue;
 
 /**
  * @author aiwujingxin@gmail.com
@@ -8,79 +10,51 @@ import java.util.*;
  */
 public class LeetCode1361 {
 
-    //https://leetcode.com/problems/validate-binary-tree-nodes/discuss/1814452/Java-Simple-Solution-Using-DFS
-
     public boolean validateBinaryTreeNodes(int n, int[] leftChild, int[] rightChild) {
-
-        // build graph
-        HashMap<Integer, List<Integer>> graph = new HashMap<>();
-        int[] indegree = new int[n];
-        for (int i = 0; i < n; i++) {
-            graph.put(i, new ArrayList<>());
-        }
-        // 判断孩子个数
+        int[] indrgee = new int[n];
+        int[] outdrgee = new int[n];
         for (int i = 0; i < n; i++) {
             if (leftChild[i] != -1) {
-                graph.get(i).add(leftChild[i]);
-                indegree[leftChild[i]]++;
+                indrgee[leftChild[i]]++;
+                outdrgee[i]++;
             }
             if (rightChild[i] != -1) {
-                graph.get(i).add(rightChild[i]);
-                indegree[rightChild[i]]++;
-            }
-            if (graph.get(i).size() > 2) {
-                return false;
+                indrgee[rightChild[i]]++;
+                outdrgee[i]++;
             }
         }
-
-        int components = 0;
-
-        // 判断入度
-        for (int j : indegree) {
-            // root 节点
-            if (j == 0) {
-                components++;
-                if (components > 1) {
-                    return false;
-                }
-            }
-            if (j > 1) {
-                return false;
-            }
-        }
-
-        // 判断环
-        int[] visited = new int[n];
-
+        int root = -1;
         for (int i = 0; i < n; i++) {
-            if (visited[i] == 0) {
-                if (isCyclic(graph, i, visited)) {
+            if (indrgee[i] == 0) {
+                if (root == -1) {
+                    root = i;
+                } else {
                     return false;
                 }
-
+            }
+            if (indrgee[i] > 1 || outdrgee[i] > 2) {
+                return false;
             }
         }
-        return true;
-    }
-
-    // 判断有无环 todo 1 ？ 2 ？
-    public boolean isCyclic(HashMap<Integer, List<Integer>> graph, int src, int[] visited) {
-        if (visited[src] == 2) {
-            return true;
+        if (root == -1) {
+            return false;
         }
-
-        visited[src] = 2;
-
-        for (int i : graph.get(src)) {
-            if (visited[i] != 1) {
-                if (isCyclic(graph, i, visited)) {
-                    return true;
-                }
+        Queue<Integer> queue = new LinkedList<>();
+        queue.add(root);
+        HashSet<Integer> set = new HashSet<>();
+        while (!queue.isEmpty()) {
+            int node = queue.poll();
+            if (set.contains(node)) {
+                return false;
+            }
+            set.add(node);
+            if (leftChild[node] != -1) {
+                queue.add(leftChild[node]);
+            }
+            if (rightChild[node] != -1) {
+                queue.add(rightChild[node]);
             }
         }
-
-        visited[src] = 1;
-
-        return false;
+        return set.size() == n;
     }
 }

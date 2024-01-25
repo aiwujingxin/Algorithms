@@ -20,10 +20,10 @@ public class LeetCode2265 {
         if (root == null) {
             return new int[]{0, 0};
         }
-        int[] l = dfs(root.left);
-        int[] r = dfs(root.right);
-        int sum = (l[0] + r[0] + root.val);
-        int nodeNum = (l[1] + r[1] + 1);
+        int[] left = dfs(root.left);
+        int[] right = dfs(root.right);
+        int sum = left[0] + right[0] + root.val;
+        int nodeNum = left[1] + right[1] + 1;
         if (sum / nodeNum == root.val) {
             cnt++;
         }

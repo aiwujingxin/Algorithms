@@ -11,20 +11,20 @@ public class LeetCode1022 {
     int ans;
 
     public int sumRootToLeaf(TreeNode root) {
-        findSum(root, 0);
+        dfs(root, 0);
         return ans;
     }
 
-    public void findSum(TreeNode t, int sum) {
-        if (t.left == null && t.right == null) {
-            ans += sum * 2 + t.val;
+    public void dfs(TreeNode root, int sum) {
+        if (root.left == null && root.right == null) {
+            ans += sum * 2 + root.val;
             return;
         }
-        if (t.left != null) {
-            findSum(t.left, 2 * sum + t.val);
+        if (root.left != null) {
+            dfs(root.left, 2 * sum + root.val);
         }
-        if (t.right != null) {
-            findSum(t.right, 2 * sum + t.val);
+        if (root.right != null) {
+            dfs(root.right, 2 * sum + root.val);
         }
     }
 }

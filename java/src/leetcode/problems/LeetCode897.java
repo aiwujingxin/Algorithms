@@ -4,30 +4,27 @@ import common.TreeNode;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2023/8/29 00:36
+ * @date 2024/1/25 00:36
  */
 public class LeetCode897 {
 
-    private TreeNode resNode;
+    private TreeNode cur;
 
     public TreeNode increasingBST(TreeNode root) {
-        TreeNode dummyNode = new TreeNode(-1);
-        resNode = dummyNode;
-        inorder(root);
-        return dummyNode.right;
+        TreeNode newRoot = new TreeNode();
+        cur = newRoot;
+        dfs(root);
+        return newRoot.right;
     }
 
-    public void inorder(TreeNode node) {
+    public void dfs(TreeNode node) {
         if (node == null) {
             return;
         }
-        inorder(node.left);
-
-        // 在中序遍历的过程中修改节点指向
-        resNode.right = node;
+        dfs(node.left);
         node.left = null;
-        resNode = node;
-
-        inorder(node.right);
+        cur.right = node;
+        cur = cur.right;
+        dfs(node.right);
     }
 }
