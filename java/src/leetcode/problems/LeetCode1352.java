@@ -11,27 +11,28 @@ public class LeetCode1352 {
 
     class ProductOfNumbers {
 
-        private List<Integer> products;
+        List<Long> psum;
 
         public ProductOfNumbers() {
-            products = new ArrayList<>();
-            products.add(1);
+            this.psum = new ArrayList<>();
         }
 
         public void add(int num) {
             if (num == 0) {
-                products = new ArrayList<>();
-                products.add(1);
+                this.psum = new ArrayList<>();
             } else {
-                products.add(products.get(products.size() - 1) * num);
+                if (psum.isEmpty()) {
+                    psum.add(1L);
+                }
+                psum.add(psum.get(psum.size() - 1) * num);
             }
         }
 
         public int getProduct(int k) {
-            if (products.size() <= k) {
+            if (psum.size() <= k) {
                 return 0;
             }
-            return products.get(products.size() - 1) / products.get(products.size() - 1 - k);
+            return (int) (psum.get(psum.size() - 1) / psum.get(psum.size() - 1 - k));
         }
     }
 }

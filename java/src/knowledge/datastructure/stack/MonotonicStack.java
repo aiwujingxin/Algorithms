@@ -5,7 +5,8 @@ import java.util.Stack;
 /**
  * @author wujingxinit@outlook.com
  * @date 2024/1/13 22:08
- * @description 单调栈 解决如下问题：
+ * @description 单调栈
+ * <解决问题>
  * 每个位置都求：
  * 0）当前位置的 左侧比当前位置的数字小，且距离最近的位置 在哪
  * 1）当前位置的 右侧比当前位置的数字小，且距离最近的位置 在哪

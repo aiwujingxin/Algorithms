@@ -6,17 +6,17 @@ import leetcode.problems.*;
  * @author wujingxinit@outlook.com
  * @date 2022/9/14 14:27
  * @description 二分查找
- * 基础
+ * <基础>
  * @see LeetCode34
  * @see LeetCode57
  * @see LeetCode35 35. 搜索插入位置
  * @see LeetCode33 33. 搜索旋转排序数组
  * @see LeetCode81 81. 搜索旋转排序数组 II
  * @see LeetCode704 704. 二分查找
- * find k
+ * <find k>
  * @see LeetCode1539 1539. 第 k 个缺失的正整数
  * @see LeetCode719 719. 找出第 K 小的数对距离
- * find
+ * <find>
  * @see LeetCode153 153. 寻找旋转排序数组中的最小值
  * @see LeetCode162 162. 寻找峰值
  * @see LeetCode268 268. 丢失的数字

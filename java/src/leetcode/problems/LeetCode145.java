@@ -9,6 +9,7 @@ import java.util.Stack;
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/12/30 10:18
+ * @description 根节点两次入栈
  */
 public class LeetCode145 {
 

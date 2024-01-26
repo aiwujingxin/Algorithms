@@ -1,45 +1,47 @@
 package leetcode.problems;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
+import java.util.*;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2023/8/2 21:41
+ * @date 2024/1/26 12:52
  */
 public class LeetCode2368 {
 
-    List<Integer>[] list;
-    HashSet<Integer> set;
-    HashSet<Integer> vistied;
-
     public int reachableNodes(int n, int[][] edges, int[] restricted) {
-        set = new HashSet<>();
-        vistied = new HashSet<>();
-        for (int r : restricted) {
-            set.add(r);
+        List<Integer>[] graph = new List[n];
+        HashSet<Integer> set = new HashSet<>();
+        for (int j : restricted) {
+            set.add(j);
         }
-        list = new ArrayList[n];
+        if (set.contains(0)) {
+            return 0;
+        }
         for (int i = 0; i < n; i++) {
-            list[i] = new ArrayList<>();
+            graph[i] = new ArrayList<>();
         }
         for (int[] edge : edges) {
-            list[edge[0]].add(edge[1]);
-            list[edge[1]].add(edge[0]);
+            graph[edge[0]].add(edge[1]);
+            graph[edge[1]].add(edge[0]);
         }
-        dfs(0);
-        vistied.add(0);
-        return vistied.size();
-    }
+        HashSet<Integer> visited = new HashSet<>();
+        Queue<Integer> queue = new LinkedList<>();
+        queue.add(0);
 
-    private void dfs(int i) {
-        for (int a : list[i]) {
-            if (set.contains(a) || vistied.contains(a)) {
+        while (!queue.isEmpty()) {
+            int node = queue.poll();
+
+            if (set.contains(node)) {
                 continue;
             }
-            vistied.add(a);
-            dfs(a);
+            if (visited.contains(node)) {
+                continue;
+            }
+            visited.add(node);
+            for (int next : graph[node]) {
+                queue.add(next);
+            }
         }
+        return visited.size();
     }
 }

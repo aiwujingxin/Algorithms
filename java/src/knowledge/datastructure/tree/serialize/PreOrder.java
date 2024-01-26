@@ -43,12 +43,12 @@ public class PreOrder {
         }
 
         private TreeNode decode(String[] vals) {
-            String nodeVal = vals[desIndex++];
+            String val = vals[desIndex++];
             // 边界条件
-            if (nodeVal.equals(NULL)) {
+            if (val.equals(NULL)) {
                 return null;
             }
-            TreeNode node = new TreeNode(Integer.parseInt(nodeVal));
+            TreeNode node = new TreeNode(Integer.parseInt(val));
             node.left = decode(vals);
             node.right = decode(vals);
             return node;

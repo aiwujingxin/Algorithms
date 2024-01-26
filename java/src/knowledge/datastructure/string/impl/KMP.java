@@ -12,8 +12,8 @@ import leetcode.problems.LeetCode28;
  * @description KMP 算法的主要思想是提前判断如何重新开始查找，而这种判断只取决于模式本身。
  * @link <a href="https://www.ruanyifeng.com/blog/2013/05/Knuth%E2%80%93Morris%E2%80%93Pratt_algorithm.html">讲解</a>
  * @link <a href="https://www.youtube.com/watch?v=3IFxpozBs2I">code</a>
- * @see LeetCode214
  * @see LeetCode28
+ * @see LeetCode214
  * @see LeetCode1392
  * @see LeetCode1764_kmp
  */
