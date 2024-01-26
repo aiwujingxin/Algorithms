@@ -28,44 +28,44 @@ public class LeetCode315 {
         return list;
     }
 
-    public void mergeSort(int[][] nums, int left, int right) {
+    public void mergeSort(int[][] arrs, int left, int right) {
         if (left >= right) {
             return;
         }
         int mid = (left + right) >> 1;
-        mergeSort(nums, left, mid);
-        mergeSort(nums, mid + 1, right);
-        merge(nums, left, mid, right);
+        mergeSort(arrs, left, mid);
+        mergeSort(arrs, mid + 1, right);
+        merge(arrs, left, mid, right);
     }
 
-    public void merge(int[][] nums, int left, int mid, int right) {
+    public void merge(int[][] arrs, int left, int mid, int right) {
         int i = left, j = mid + 1, k = left;
         while (i <= mid && j <= right) {
-            if (nums[i][0] <= nums[j][0]) {
-                temp[k] = nums[i];
+            if (arrs[i][0] <= arrs[j][0]) {
+                temp[k] = arrs[i];
                 //计数
-                ans[nums[i][1]] += (j - mid - 1);
+                ans[arrs[i][1]] += (j - mid - 1);
                 i++;
             } else {
-                temp[k] = nums[j];
+                temp[k] = arrs[j];
                 j++;
             }
             k++;
         }
         while (i <= mid) {
-            temp[k] = nums[i];
+            temp[k] = arrs[i];
             //计数
-            ans[nums[i][0]] += (j - mid - 1);
+            ans[arrs[i][1]] += (j - mid - 1);
             i++;
             k++;
         }
         while (j <= right) {
-            temp[k] = nums[j];
+            temp[k] = arrs[j];
             j++;
             k++;
         }
         for (int n = left; n <= right; ++n) {
-            nums[n] = temp[n];
+            arrs[n] = temp[n];
         }
     }
 }
