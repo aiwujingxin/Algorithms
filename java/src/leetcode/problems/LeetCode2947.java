@@ -14,10 +14,10 @@ public class LeetCode2947 {
         }
 
         int ans = 0;
-        for (int i = 2; i < presum.length; i++) {
-            for (int j = i & 1; j < i; j += 2) {
+        for (int i = 1; i < presum.length; i++) {
+            for (int j = 0; j < i; j++) {
                 int d = presum[i] - presum[j];
-                if (d == (i - j) / 2 && d * d % k == 0) {
+                if ((i - j) % 2 == 0 && d == (i - j) / 2 && d * d % k == 0) {
                     ans++;
                 }
             }

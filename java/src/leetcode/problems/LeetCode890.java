@@ -6,7 +6,7 @@ import java.util.List;
 
 /**
  * @author aiwujingxin@gmail.com
- * @date 2022/6/13 21:25
+ * @date 2024.01.08 21:25
  */
 public class LeetCode890 {
     public List<String> findAndReplacePattern(String[] words, String pattern) {
