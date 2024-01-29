@@ -7,6 +7,20 @@ package leetcode.problems;
  */
 public class LeetCode1545 {
     public char findKthBit(int n, int k) {
+        StringBuilder sb = new StringBuilder();
+        sb.append("0");
+        while (sb.length() < k) {
+            int i = sb.length() - 1;
+            sb.append("1");
+            while (i >= 0) {
+                char c = sb.charAt(i--) == '1' ? '0' : '1';
+                sb.append(c);
+            }
+        }
+        return sb.charAt(k - 1);
+    }
+
+    public char findKthBit_dfs(int n, int k) {
         if (k == 1) {
             return '0';
         }
