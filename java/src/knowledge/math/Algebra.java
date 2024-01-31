@@ -26,6 +26,7 @@ import leetcode.problems.*;
  * @see LeetCode762
  * @see LeetCode2521
  * @see LeetCode459
+ * @see LeetCode2507
  * <因数>
  * @see LeetCode254
  * <平方数>
