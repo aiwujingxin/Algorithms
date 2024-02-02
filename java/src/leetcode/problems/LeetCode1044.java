@@ -5,7 +5,7 @@ import java.util.Set;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2023/11/8 00:01
+ * @date 2024/02/01 00:01
  * @see LeetCode718
  */
 public class LeetCode1044 {
@@ -16,8 +16,8 @@ public class LeetCode1044 {
         int right = n;
         int start = -1;
         while (left < right) {
-            int mid = (right - left + 1) / 2 + left;
-            int index = find(s, mid);
+            int mid = (right + left + 1) / 2;
+            int index = search(s, mid);
             if (index > -1) {
                 start = index;
                 left = mid;
@@ -28,7 +28,7 @@ public class LeetCode1044 {
         return start == -1 ? "" : s.substring(start, start + left);
     }
 
-    private int find(String txt, int len) {
+    private int search(String txt, int len) {
         int mul = 26;
         long mod = (long) Math.pow(10, 11);
         long pow = 1;
@@ -44,7 +44,8 @@ public class LeetCode1044 {
         int right = len;
         while (right < txt.length()) {
             // 缩小窗口，移出字符 ; 扩大窗口，移入字符
-            hash = (mul * (hash - (txt.charAt(right - len) * pow)) + (txt.charAt(right))) % mod;
+            hash = hash - txt.charAt(right - len) * pow;
+            hash = (mul * hash + txt.charAt(right)) % mod;
             if (hash < 0) {
                 hash = hash + mod;
             }

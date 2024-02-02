@@ -20,7 +20,7 @@ public class RabinKarp implements Search {
         long mod = 1658598167;
         long pow = 1;
         for (int i = 0; i < n - 1; i++) {
-            pow = (pow * mul) % mod; // 计算过程中不断求模，避免溢出
+            pow = pow * mul % mod; // 计算过程中不断求模，避免溢出
         }
         // 计算模式串的哈希值
         long patHash = 0;

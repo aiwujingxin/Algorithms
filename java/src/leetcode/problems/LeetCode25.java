@@ -4,7 +4,7 @@ import common.ListNode;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2023/11/6 17:35
+ * @date 2024/2/1 18:07
  */
 public class LeetCode25 {
 
@@ -19,14 +19,17 @@ public class LeetCode25 {
             }
             tail = tail.next;
         }
-        ListNode newHead = reverse(head, tail);
+        ListNode nextHead = reverse(head, tail);
         head.next = reverseKGroup(tail, k);
-        return newHead;
+        return nextHead;
     }
 
-    private ListNode reverse(ListNode head, ListNode tail) {
-        ListNode pre = null;
+    public ListNode reverse(ListNode head, ListNode tail) {
+        if (head == tail) {
+            return head;
+        }
         ListNode cur = head;
+        ListNode pre = null;
         while (cur != tail) {
             ListNode next = cur.next;
             cur.next = pre;

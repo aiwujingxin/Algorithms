@@ -2,31 +2,29 @@ package leetcode.problems;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2023/7/4 23:16
+ * @date 2024/2/2 11:44
  */
 public class LeetCode2730 {
+
     public int longestSemiRepetitiveSubstring(String s) {
-        if (s == null || s.length() == 0) {
-            return 0;
-        }
+        int n = s.length();
         int left = 0;
         int right = 1;
-        int ans = 1;
         int count = 0;
-        while (right < s.length()) {
+        int max = 1;
+        while (right < n) {
             if (s.charAt(right) == s.charAt(right - 1)) {
                 count++;
             }
-            if (count > 1) {
-                left++;
-                while (s.charAt(left) != s.charAt(left - 1)) {
-                    left++;
+            while (left < right && count > 1) {
+                if (s.charAt(left) == s.charAt(left + 1)) {
+                    count--;
                 }
-                count = 1;
+                left++;
             }
-            ans = Math.max(ans, right - left + 1);
+            max = Math.max(right - left + 1, max);
             right++;
         }
-        return ans;
+        return max;
     }
 }

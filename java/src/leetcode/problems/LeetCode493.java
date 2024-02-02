@@ -18,35 +18,26 @@ public class LeetCode493 {
         return res;
     }
 
-    private void mergeSort(int[] nums, int left, int right) {
-        if (left >= right) {
+    private void mergeSort(int[] nums, int lo, int hi) {
+        if (lo >= hi) {
             return;
         }
-        int mid = (right - left) / 2 + left;
-        mergeSort(nums, left, mid);
-        mergeSort(nums, mid + 1, right);
-        merge(nums, left, mid, right);
+        int mid = (hi - lo) / 2 + lo;
+        mergeSort(nums, lo, mid);
+        mergeSort(nums, mid + 1, hi);
+        merge(nums, lo, mid, hi);
     }
 
-    private void merge(int[] nums, int left, int mid, int right) {
-        int i = left, j = mid + 1;
-        int k = left;
-
-        // 统计
-        int l = left, r = mid + 1;
-        while (l <= mid) {
-            while (r <= right && nums[l] > 2L * (long) nums[r]) {
-                r++;
-            }
-            res += r - mid - 1;
-            l++;
-        }
-
-        while (i <= mid && j <= right) {
+    private void merge(int[] nums, int lo, int mid, int hi) {
+        int i = lo, j = mid + 1;
+        int k = lo;
+        while (i <= mid && j <= hi) {
             if (nums[i] <= nums[j]) {
                 temp[k] = nums[i];
                 i++;
             } else {
+                int index = leftBound(nums, lo, mid, (long) 2 * nums[j]);
+                res += mid - index + 1;
                 temp[k] = nums[j];
                 j++;
             }
@@ -57,13 +48,32 @@ public class LeetCode493 {
             i++;
             k++;
         }
-        while (j <= right) {
+        while (j <= hi) {
+            int index = leftBound(nums, lo, mid, (long) 2 * nums[j]);
+            res += mid - index + 1;
             temp[k] = nums[j];
             j++;
             k++;
         }
-        for (int n = left; n <= right; n++) {
+        for (int n = lo; n <= hi; n++) {
             nums[n] = temp[n];
         }
+    }
+
+    int leftBound(int[] nums, int start, int end, long target) {
+        int left = start;
+        int right = end;
+        while (left < right) {
+            int mid = (left + right) / 2;
+            if (nums[mid] <= target) {
+                left = mid + 1;
+            } else {
+                right = mid;
+            }
+        }
+        if (nums[left] <= target) {
+            return left + 1;
+        }
+        return left;
     }
 }
