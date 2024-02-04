@@ -6,10 +6,6 @@ package leetcode.problems;
  */
 public class LeetCode1763 {
 
-    public static void main(String[] args) {
-        System.out.println(new LeetCode1763().longestNiceSubstring("HkhBubUYy"));
-    }
-
     public String longestNiceSubstring(String s) {
         int n = s.length();
         int max = 0;
@@ -19,7 +15,6 @@ public class LeetCode1763 {
             int left = 0;
             int right = 0;
             int[] freq = new int[256];
-
 
             int[] charCnt = new int[26];
             int cnt = 0;
@@ -44,8 +39,6 @@ public class LeetCode1763 {
                 if (cal(freq) >= i && max < right - left + 1) {
                     max = right - left + 1;
                     l = left;
-                    System.out.println(" i " + i + " cnt " + i + " l " + l + " max " + max);
-
                 }
                 right++;
             }

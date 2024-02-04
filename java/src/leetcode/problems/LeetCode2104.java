@@ -4,57 +4,59 @@ import java.util.Stack;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2023/10/31 22:31
+ * @date 2024/2/4 12:00
  * @see leetcode.problems.LeetCode907
  */
 public class LeetCode2104 {
-
     public long subArrayRanges(int[] nums) {
         if (nums == null || nums.length == 0) {
             return 0;
         }
         int n = nums.length;
-        // 左侧最近的比它小的数的下标，minRight 表示右侧最近的比它小的数的下标
-        int[] left_min = new int[n];
-        int[] left_max = new int[n];
-        int[] right_min = new int[n];
-        int[] right_max = new int[n];
+        int[] leftMin = new int[n];
+        int[] leftMax = new int[n];
+
         Stack<Integer> stack1 = new Stack<>();
         Stack<Integer> stack2 = new Stack<>();
-        for (int i = 0; i < nums.length; i++) {
-            while (!stack1.empty() && nums[i] < nums[stack1.peek()]) {
+        for (int i = 0; i < n; i++) {
+            while (!stack1.isEmpty() && nums[stack1.peek()] <= nums[i]) {
                 stack1.pop();
             }
-            left_min[i] = stack1.empty() ? -1 : stack1.peek();
+            leftMax[i] = stack1.isEmpty() ? -1 : stack1.peek();
             stack1.push(i);
-            while (!stack2.empty() && nums[i] > nums[stack2.peek()]) {
+
+            while (!stack2.isEmpty() && nums[stack2.peek()] >= nums[i]) {
                 stack2.pop();
             }
-            left_max[i] = stack2.empty() ? -1 : stack2.peek();
+            leftMin[i] = stack2.isEmpty() ? -1 : stack2.peek();
             stack2.push(i);
         }
+        int[] rightMin = new int[n];
+        int[] rightMax = new int[n];
         stack1 = new Stack<>();
         stack2 = new Stack<>();
         for (int i = n - 1; i >= 0; i--) {
-            while (!stack1.empty() && nums[i] <= nums[stack1.peek()]) {
+            while (!stack1.isEmpty() && nums[stack1.peek()] < nums[i]) {
                 stack1.pop();
             }
-            right_min[i] = stack1.empty() ? n : stack1.peek();
+            rightMax[i] = stack1.isEmpty() ? n : stack1.peek();
             stack1.push(i);
 
-            while (!stack2.empty() && nums[i] >= nums[stack2.peek()]) {
+            while (!stack2.isEmpty() && nums[stack2.peek()] > nums[i]) {
                 stack2.pop();
             }
-            right_max[i] = stack2.empty() ? n : stack2.peek();
+            rightMin[i] = stack2.isEmpty() ? n : stack2.peek();
             stack2.push(i);
         }
         long res = 0;
         for (int i = 0; i < n; i++) {
-            int lmin = i - left_min[i];
-            int rmin = right_min[i] - i;
-            int lmax = i - left_max[i];
-            int rmax = right_max[i] - i;
-            res += ((long) lmax * rmax - (long) lmin * rmin) * nums[i];
+            long leftMaxCount = i - leftMax[i];
+            long rightMaxCount = rightMax[i] - i;
+            long max = nums[i] * (leftMaxCount * rightMaxCount);
+            long leftMinCount = i - leftMin[i];
+            long rightMinCount = rightMin[i] - i;
+            long min = nums[i] * (leftMinCount * rightMinCount);
+            res += max - min;
         }
         return res;
     }
