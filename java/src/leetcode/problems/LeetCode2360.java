@@ -1,13 +1,14 @@
 package leetcode.problems;
 
 
-import java.util.*;
+import java.util.LinkedList;
+import java.util.Queue;
 
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/9/7 23:40
- * @see LeetCode2127
  * @link <a href="https://leetcode.cn/problems/longest-cycle-in-a-graph/solutions/1710861/by-flix-gcit/">...</a>
+ * @see LeetCode2127
  */
 public class LeetCode2360 {
 

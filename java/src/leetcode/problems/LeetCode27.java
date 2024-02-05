@@ -10,7 +10,7 @@ public class LeetCode27 {
         int n = nums.length;
         int left = 0;
         int right = 0;
-        while (right < n){
+        while (right < n) {
             if (val != nums[right]) {
                 nums[left] = nums[right];
                 left++;

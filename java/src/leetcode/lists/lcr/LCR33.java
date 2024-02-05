@@ -12,7 +12,7 @@ public class LCR33 {
         if (strs == null || strs.length == 0) {
             return new ArrayList<>();
         }
-        HashMap<String, List<String>>  map  = new HashMap<>();
+        HashMap<String, List<String>> map = new HashMap<>();
         for (String str : strs) {
             char[] chars = str.toCharArray();
             Arrays.sort(chars);
@@ -21,7 +21,7 @@ public class LCR33 {
             map.get(s).add(str);
         }
         List<List<String>> list = new ArrayList<>();
-        for(Map.Entry<String, List<String>> entry : map.entrySet()){
+        for (Map.Entry<String, List<String>> entry : map.entrySet()) {
             list.add(entry.getValue());
         }
         return list;

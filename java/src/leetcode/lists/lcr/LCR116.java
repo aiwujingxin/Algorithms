@@ -1,6 +1,6 @@
 package leetcode.lists.lcr;
 
-import knowledge.advstructure.*;
+import knowledge.advstructure.UnionFind;
 
 /**
  * @author wujingxinit@outlook.com

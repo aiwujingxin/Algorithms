@@ -1,8 +1,10 @@
 package leetcode.problems;
 
-import java.util.*;
-
 import common.TreeNode;
+
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.Queue;
 
 public class LeetCode1660 {
 

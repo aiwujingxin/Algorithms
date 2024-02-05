@@ -24,7 +24,7 @@ public class LeetCode2761 {
         }
         List<List<Integer>> list = new ArrayList<>();
         for (int i = 2; i <= n / 2; i++) {
-            if (set.contains(n - i) &&  set.contains(i)) {
+            if (set.contains(n - i) && set.contains(i)) {
                 List<Integer> l = new ArrayList<>();
                 l.add(i);
                 l.add(n - i);

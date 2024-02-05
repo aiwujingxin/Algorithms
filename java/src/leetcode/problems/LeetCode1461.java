@@ -28,7 +28,7 @@ public class LeetCode1461 {
         set.add(num);
         for (int i = k; i < s.length(); i++) {
             if ((num >> (k - 1) & 1) == 1) {
-                num -= (int) Math.pow(2, k-1);
+                num -= (int) Math.pow(2, k - 1);
             }
             num <<= 1;
             num |= (s.charAt(i) - '0');

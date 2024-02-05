@@ -21,6 +21,7 @@ public class LCR64 {
                 trie.insert(d);
             }
         }
+
         public boolean search(String searchWord) {
             return trie.searchUpdate(searchWord, trie.root, 0, false);
         }

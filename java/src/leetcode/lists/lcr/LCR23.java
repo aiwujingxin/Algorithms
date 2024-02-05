@@ -19,8 +19,8 @@ public class LCR23 {
         ListNode pb = headB;
 
         while (pa != pb) {
-            pa = pa == null? headB:pa.next;
-            pb = pb == null? headA:pb.next;
+            pa = pa == null ? headB : pa.next;
+            pb = pb == null ? headA : pb.next;
         }
         return pa;
     }

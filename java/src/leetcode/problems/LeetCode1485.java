@@ -1,9 +1,9 @@
 package leetcode.problems;
 
+import common.Node;
+
 import java.util.HashMap;
 import java.util.Map;
-
-import common.Node;
 
 public class LeetCode1485 {
 

@@ -1,7 +1,10 @@
 package leetcode.problems;
 
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Queue;
 
 /**
  * @author wujingxinit@outlook.com
@@ -10,7 +13,7 @@ import java.util.*;
 public class LeetCode802 {
 
     //https://leetcode.cn/problems/find-eventual-safe-states/solutions/916564/gtalgorithm-san-ju-hua-jiao-ni-wan-zhuan-xf5o/
-    
+
     public List<Integer> eventualSafeNodes(int[][] graph) {
         int n = graph.length;
         // 反图，邻接表存储

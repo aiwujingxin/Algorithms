@@ -3,7 +3,7 @@ package leetcode.problems;
 
 import knowledge.graph.shortestpath.Dijkstra;
 
-import java.util.*;
+import java.util.List;
 
 /**
  * @author wujingxinit@outlook.com

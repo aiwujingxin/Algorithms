@@ -1,8 +1,9 @@
 package leetcode.lists.lcp;
 
-import common.*;
+import common.TreeNode;
 
-import java.util.*;
+import java.util.LinkedList;
+import java.util.Queue;
 
 /**
  * @author wujingxinit@outlook.com

@@ -1,6 +1,6 @@
 package leetcode.lists.lcr;
 
-import common.*;
+import common.ListNode;
 
 /**
  * @author wujingxinit@outlook.com

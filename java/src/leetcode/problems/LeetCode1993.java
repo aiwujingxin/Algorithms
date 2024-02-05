@@ -58,7 +58,7 @@ public class LeetCode1993 {
             deque.offer(num);// 当前节点入队列
             // 遍历其所有的子孙结点
             while (!deque.isEmpty()) {
-               Integer node =  deque.poll();
+                Integer node = deque.poll();
                 for (int each : map.get(node)) {
                     if (lockUser[each] != 0) {
                         lockUser[each] = 0;
