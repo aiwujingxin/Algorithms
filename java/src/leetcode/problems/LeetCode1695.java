@@ -1,31 +1,29 @@
 package leetcode.problems;
 
-import java.util.HashSet;
-import java.util.Set;
-
 /**
  * @author wujingxinit@outlook.com
- * @date 2023/6/1 16:11
+ * @date 2024/2/9 13:10
  */
 public class LeetCode1695 {
 
     public int maximumUniqueSubarray(int[] nums) {
+        int n = nums.length;
         int left = 0;
         int right = 0;
         int sum = 0;
-        int max = 0;
-        Set<Integer> set = new HashSet<>();
-        while (right < nums.length) {
-            while (set.contains(nums[right])) {
-                set.remove(nums[left]);
+        int res = 0;
+        int[] freq = new int[100001];
+        while (right < n) {
+            sum += nums[right];
+            freq[nums[right]]++;
+            while (left < right && freq[nums[right]] > 1) {
                 sum -= nums[left];
+                freq[nums[left]]--;
                 left++;
             }
-            set.add(nums[right]);
-            sum += nums[right];
-            max = Math.max(max, sum);
             right++;
+            res = Math.max(res, sum);
         }
-        return max;
+        return sum;
     }
 }

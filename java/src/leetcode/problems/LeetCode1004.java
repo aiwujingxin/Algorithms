@@ -2,28 +2,31 @@ package leetcode.problems;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2023/5/31 23:45
+ * @date 2024/2/9 16:55
  */
 public class LeetCode1004 {
 
     public int longestOnes(int[] nums, int k) {
-        int N = nums.length;
-        int res = 0;
-        int left = 0, right = 0;
-        int count = 0;
-        while (right < N) {
+        int n = nums.length;
+        int left = 0;
+        int right = 0;
+        int cnt = 0;
+        int max = 0;
+        while (right < n) {
             if (nums[right] == 0) {
-                count++;
+                cnt++;
             }
-            while (count > k) {
+            while (left < right && cnt > k) {
                 if (nums[left] == 0) {
-                    count--;
+                    cnt--;
                 }
                 left++;
             }
-            res = Math.max(res, right - left + 1);
+            if (cnt <= k) {
+                max = Math.max(right - left + 1, max);
+            }
             right++;
         }
-        return res;
+        return max;
     }
 }
