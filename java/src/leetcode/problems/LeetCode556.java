@@ -1,61 +1,42 @@
 package leetcode.problems;
 
-import java.util.Arrays;
-
 /**
  * @author jingxinwu
- * @date 2021-12-12 5:22 PM
+ * @date 2024-2-17 5:22 PM
  */
 public class LeetCode556 {
 
     public int nextGreaterElement(int n) {
-
-        char[] digits = String.valueOf(n).toCharArray();
-        int len = digits.length;
-        int[] arr = new int[len];
-        int a = 0;
-        while (n > 0) {
-            arr[a] = (n % 10);
-            n = n / 10;
-            a++;
+        char[] nums = Integer.toString(n).toCharArray();
+        int i = nums.length - 2;
+        while (i >= 0 && nums[i] >= nums[i + 1]) {
+            i--;
         }
-
-        int i = 1;
-        while (i < arr.length && arr[i] >= arr[i - 1]) {
-            i++;
-        }
-        if (i == arr.length) {
+        if (i < 0) {
             return -1;
         }
-
-        int j = 0;
-        while (j < arr.length & arr[j] <= arr[i]) {
-            j++;
+        int j = nums.length - 1;
+        while (j >= 0 && nums[i] >= nums[j]) {
+            j--;
         }
-        swap(arr, i, j);
-
-        Arrays.sort(arr, 0, i);
-        int[] temp = new int[i];
-        System.arraycopy(arr, 0, temp, 0, i);
-        for (int index = 0; index < i; index++) {
-            arr[index] = temp[i - index - 1];
-        }
-
-        long sum = 0;
-
-        for (int m = arr.length - 1; m >= 0; m--) {
-            sum = sum * 10 + arr[m];
-        }
-
-        if (sum > Integer.MAX_VALUE) {
-            return -1;
-        }
-        return (int) sum;
+        swap(nums, i, j);
+        reverse(nums, i + 1, nums.length - 1);
+        long ans = Long.parseLong(new String(nums));
+        return ans > Integer.MAX_VALUE ? -1 : (int) ans;
     }
 
-    public void swap(int[] arr, int i, int j) {
-        int temp = arr[i];
-        arr[i] = arr[j];
-        arr[j] = temp;
+    public void reverse(char[] nums, int left, int right) {
+        int i = left, j = right;
+        while (i < j) {
+            swap(nums, i, j);
+            i++;
+            j--;
+        }
+    }
+
+    public void swap(char[] nums, int i, int j) {
+        char temp = nums[i];
+        nums[i] = nums[j];
+        nums[j] = temp;
     }
 }

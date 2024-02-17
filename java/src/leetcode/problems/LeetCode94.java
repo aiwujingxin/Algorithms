@@ -1,10 +1,8 @@
 package leetcode.problems;
 
-import common.TreeNode;
+import common.*;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Stack;
+import java.util.*;
 
 /**
  * @author wujingxinit@outlook.com
@@ -16,9 +14,9 @@ public class LeetCode94 {
         if (root == null) {
             return new ArrayList<>();
         }
-        Stack<TreeNode> stack = new Stack<>();
         List<Integer> list = new ArrayList<>();
-        while (!stack.empty() || root != null) {
+        Stack<TreeNode> stack = new Stack<>();
+        while (!stack.isEmpty() || root != null) {
             while (root != null) {
                 stack.push(root);
                 root = root.left;

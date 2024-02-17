@@ -1,6 +1,6 @@
 package leetcode.problems;
 
-import java.util.Stack;
+import java.util.*;
 
 /**
  * @author wujingxinit@outlook.com
@@ -14,18 +14,18 @@ public class LeetCode32 {
         }
         int n = s.length();
         int[] dp = new int[n];
-        int res = 0;
-        for (int i = 1; i < n; i++) {
+        int max = 0;
+        for (int i = 0; i < n; i++) {
             if (s.charAt(i) == ')') {
-                if (s.charAt(i - 1) == '(') {
-                    dp[i] = (i >= 2 ? dp[i - 2] : 0) + 2;
-                } else if (i - dp[i - 1] > 0 && s.charAt(i - dp[i - 1] - 1) == '(') {
-                    dp[i] = dp[i - 1] + 2 + (i - dp[i - 1] >= 2 ? dp[i - dp[i - 1] - 2] : 0);
+                if (i > 0 && s.charAt(i - 1) == '(') {
+                    dp[i] = 2 + (i - 2 >= 0 ? dp[i - 2] : 0);
+                } else if (i > 0 && i - dp[i - 1] - 1 >= 0 && s.charAt(i - dp[i - 1] - 1) == '(') {
+                    dp[i] = 2 + dp[i - 1] + (i - dp[i - 1] - 2 >= 0 ? dp[i - dp[i - 1] - 2] : 0);
                 }
             }
-            res = Math.max(res, dp[i]);
+            max = Math.max(max, dp[i]);
         }
-        return res;
+        return max;
     }
 
     public int longestValidParentheses_stack(String s) {

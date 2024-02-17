@@ -1,6 +1,6 @@
 package leetcode.problems;
 
-import java.util.HashSet;
+import java.util.*;
 
 /**
  * @author wujingxinit@outlook.com
@@ -9,24 +9,21 @@ import java.util.HashSet;
 public class LeetCode128 {
 
     public int longestConsecutive(int[] nums) {
-        if (nums == null || nums.length == 0) {
-            return 0;
-        }
         HashSet<Integer> set = new HashSet<>();
         for (int n : nums) {
             set.add(n);
         }
-        int max = 1;
-        for (int num : set) {
-            int n = num;
-            int cnt = 1;
+        int max = 0;
+        for (Integer n : set) {
             if (!set.contains(n - 1)) {
-                while (set.contains(n + 1)) {
-                    cnt++;
-                    n++;
+                int t = n;
+                int len = 0;
+                while (set.contains(t)) {
+                    len++;
+                    t++;
                 }
+                max = Math.max(max, len);
             }
-            max = Math.max(max, cnt);
         }
         return max;
     }

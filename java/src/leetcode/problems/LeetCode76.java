@@ -1,8 +1,6 @@
 package leetcode.problems;
 
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Objects;
+import java.util.*;
 
 /**
  * @author wujingxinit@outlook.com
@@ -11,45 +9,41 @@ import java.util.Objects;
 public class LeetCode76 {
 
     public String minWindow(String s, String t) {
-        if (s == null || s.isEmpty() || (s.length() < t.length())) {
-            return "";
-        }
         int left = 0;
         int right = 0;
-        int count = 0;
-
-
-        int start = 0;
-        int len = Integer.MAX_VALUE;
-        HashMap<Character, Integer> sMap = new HashMap<>();
-        HashMap<Character, Integer> tMap = new HashMap<>();
+        int cnt = 0;
+        int n = s.length();
         HashSet<Character> set = new HashSet<>();
+        int[] sArr = new int[256];
+        int[] tArr = new int[256];
         for (int i = 0; i < t.length(); i++) {
-            tMap.put(t.charAt(i), tMap.getOrDefault(t.charAt(i), 0) + 1);
+            tArr[t.charAt(i) - 'A']++;
             set.add(t.charAt(i));
         }
         int target = set.size();
-        while (right < s.length()) {
+        int l = 0;
+        int len = Integer.MAX_VALUE;
+        while (right < n) {
             char c = s.charAt(right);
-            sMap.put(c, sMap.getOrDefault(c, 0) + 1);
-            if (Objects.equals(sMap.get(c), tMap.get(c))) {
-                count++;
+            sArr[c - 'A']++;
+            if (sArr[c - 'A'] == tArr[c - 'A']) {
+                cnt++;
             }
-
-            while (count == target && right - left + 1 >= t.length()) {
-                if (right - left + 1 < len) {
+            while (left <= right && cnt == target) {
+                if (len > right - left + 1) {
                     len = right - left + 1;
-                    start = left;
+                    l = left;
                 }
+
                 char d = s.charAt(left);
-                if (Objects.equals(sMap.get(d), tMap.getOrDefault(d, 0))) {
-                    count--;
+                if (sArr[d - 'A'] == tArr[d - 'A']) {
+                    cnt--;
                 }
-                sMap.put(d, sMap.getOrDefault(d, 0) - 1);
+                sArr[d - 'A']--;
                 left++;
             }
             right++;
         }
-        return len == Integer.MAX_VALUE ? "" : s.substring(start, start + len);
+        return len == Integer.MAX_VALUE ? "" : s.substring(l, l + len);
     }
 }

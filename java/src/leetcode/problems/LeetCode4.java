@@ -1,8 +1,6 @@
 package leetcode.problems;
 
-import java.util.Comparator;
-import java.util.PriorityQueue;
-import java.util.Queue;
+import java.util.*;
 
 /**
  * @author wujingxinit@outlook.com
@@ -10,38 +8,31 @@ import java.util.Queue;
  */
 public class LeetCode4 {
 
-    Queue<Integer> maxQ;
-    Queue<Integer> minQ;
+    PriorityQueue<Integer> minQ;
+    PriorityQueue<Integer> maxQ;
 
     public double findMedianSortedArrays(int[] nums1, int[] nums2) {
-        maxQ = new PriorityQueue<>(new Comparator<Integer>() {
-            @Override
-            public int compare(Integer o1, Integer o2) {
-                return o2 - o1;
-            }
-        });
         minQ = new PriorityQueue<>();
-
+        maxQ = new PriorityQueue<>((o1, o2) -> o2 - o1);
         add(nums1);
         add(nums2);
-
-        if ((nums1.length + nums2.length) % 2 == 1) {
-            return maxQ.peek();
+        if (maxQ.size() > minQ.size()) {
+            return (double) maxQ.peek();
         }
-        return ((double) maxQ.peek() + (double) minQ.peek()) / 2;
+        return ((double) maxQ.peek() + minQ.peek()) / 2;
     }
 
-    private void add(int[] nums) {
+    public void add(int[] nums) {
         for (int num : nums) {
             if (maxQ.isEmpty() || maxQ.peek() >= num) {
                 maxQ.add(num);
             } else {
                 minQ.add(num);
             }
-            if (maxQ.size() > minQ.size() + 1) {
-                minQ.add(maxQ.poll());
-            } else if (minQ.size() > maxQ.size()) {
+            if (maxQ.size() < minQ.size()) {
                 maxQ.add(minQ.poll());
+            } else if (minQ.size() + 1 < maxQ.size()) {
+                minQ.add(maxQ.poll());
             }
         }
     }

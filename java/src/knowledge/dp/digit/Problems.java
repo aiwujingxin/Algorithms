@@ -1,5 +1,6 @@
 package knowledge.dp.digit;
 
+import leetcode.lists.lcci.*;
 import leetcode.problems.*;
 
 /**
@@ -13,7 +14,7 @@ import leetcode.problems.*;
  * @see LeetCode2376 2376. 统计特殊整数
  * @see LeetCode1012
  * @see LeetCode233 233. 数字 1 的个数
- * @see leetcode.lists.interview.Inter1706 2出现的次数
+ * @see LCCI1706 2出现的次数
  * @see LeetCode600
  * @see LeetCode902
  * @see LeetCode1397

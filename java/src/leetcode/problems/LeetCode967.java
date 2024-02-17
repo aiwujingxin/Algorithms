@@ -21,7 +21,7 @@ public class LeetCode967 {
         return res;
     }
 
-    private void backtrack(HashSet<String> list, int n, int k, StringBuilder sb) {
+    private void backtrack(HashSet<String> set, int n, int k, StringBuilder sb) {
         if (sb.length() > n) {
             return;
         }
@@ -29,25 +29,25 @@ public class LeetCode967 {
             if (sb.length() > 1 && sb.charAt(0) == '0') {
                 return;
             }
-            list.add(sb.toString());
+            set.add(sb.toString());
             return;
         }
         if (sb.isEmpty()) {
             for (int i = 1; i <= 9; i++) {
                 sb.append(i);
-                backtrack(list, n, k, sb);
+                backtrack(set, n, k, sb);
                 sb.deleteCharAt(sb.length() - 1);
             }
         } else {
             int last = sb.charAt(sb.length() - 1) - '0';
             if (last + k <= 9 && last + k >= 0) {
                 sb.append(last + k);
-                backtrack(list, n, k, sb);
+                backtrack(set, n, k, sb);
                 sb.deleteCharAt(sb.length() - 1);
             }
             if (last - k <= 9 && last - k >= 0) {
                 sb.append((last - k));
-                backtrack(list, n, k, sb);
+                backtrack(set, n, k, sb);
                 sb.deleteCharAt(sb.length() - 1);
             }
         }

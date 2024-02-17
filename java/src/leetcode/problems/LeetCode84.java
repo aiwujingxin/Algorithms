@@ -1,6 +1,6 @@
 package leetcode.problems;
 
-import java.util.Stack;
+import java.util.*;
 
 /**
  * @author wujingxinit@outlook.com
@@ -9,32 +9,29 @@ import java.util.Stack;
 public class LeetCode84 {
 
     public int largestRectangleArea(int[] heights) {
-        if (heights == null || heights.length == 0) {
-            return 0;
-        }
         int n = heights.length;
-        int[] leftMin = new int[n];
         Stack<Integer> stack = new Stack<>();
+        int[] left = new int[n];
+        int[] right = new int[n];
         for (int i = 0; i < n; i++) {
-            while (!stack.isEmpty() && heights[i] <= heights[stack.peek()]) {
+            while (!stack.isEmpty() && heights[stack.peek()] >= heights[i]) {
                 stack.pop();
             }
-            leftMin[i] = stack.isEmpty() ? -1 : stack.peek();
+            left[i] = stack.isEmpty() ? 0 : stack.peek() + 1;
             stack.push(i);
         }
-        int[] rightMin = new int[n];
-        stack = new Stack<>();
+        stack.clear();
         for (int i = n - 1; i >= 0; i--) {
-            while (!stack.isEmpty() && heights[i] <= heights[stack.peek()]) {
+            while (!stack.isEmpty() && heights[stack.peek()] >= heights[i]) {
                 stack.pop();
             }
-            rightMin[i] = stack.isEmpty() ? n : stack.peek();
+            right[i] = stack.isEmpty() ? n - 1 : stack.peek() - 1;
             stack.push(i);
         }
-        int res = 0;
+        int max = 0;
         for (int i = 0; i < n; i++) {
-            res = Math.max(res, heights[i] * ((rightMin[i] - 1) - (leftMin[i] + 1) + 1));
+            max = Math.max(max, heights[i] * (right[i] - left[i] + 1));
         }
-        return res;
+        return max;
     }
 }

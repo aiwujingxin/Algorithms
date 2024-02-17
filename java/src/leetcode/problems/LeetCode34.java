@@ -12,7 +12,7 @@ public class LeetCode34 {
         return new int[]{leftBound(nums, target), rightBound(nums, target)};
     }
 
-    private int leftBound(int[] nums, int target) {
+    public int leftBound(int[] nums, int target) {
         int left = 0;
         int right = nums.length - 1;
         while (left < right) {
@@ -29,7 +29,7 @@ public class LeetCode34 {
         return left;
     }
 
-    private int rightBound(int[] nums, int target) {
+    public int rightBound(int[] nums, int target) {
         int left = 0;
         int right = nums.length - 1;
         while (left < right) {

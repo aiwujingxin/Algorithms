@@ -1,6 +1,6 @@
 package leetcode.problems;
 
-import common.ListNode;
+import common.*;
 
 /**
  * @author wujingxinit@outlook.com
@@ -15,35 +15,36 @@ public class LeetCode23 {
         return mergeKLists(lists, 0, lists.length - 1);
     }
 
-    public ListNode mergeKLists(ListNode[] lists, int start, int end) {
-        if (start == end) {
-            return lists[start];
+    public ListNode mergeKLists(ListNode[] lists, int left, int right) {
+        if (left >= right) {
+            return lists[left];
         }
-        int mid = (start + end) / 2;
-
-        ListNode l1 = mergeKLists(lists, start, mid);
-        ListNode l2 = mergeKLists(lists, mid + 1, end);
-        return merge(l1, l2);
+        int mid = (left + right) / 2;
+        ListNode list1 = mergeKLists(lists, left, mid);
+        ListNode list2 = mergeKLists(lists, mid + 1, right);
+        return mergeTwoLists(list1, list2);
     }
 
-    private ListNode merge(ListNode l1, ListNode l2) {
+    public ListNode mergeTwoLists(ListNode list1, ListNode list2) {
+        if (list1 == null) {
+            return list2;
+        }
+        if (list2 == null) {
+            return list1;
+        }
         ListNode dummy = new ListNode();
         ListNode cur = dummy;
-        while (l1 != null && l2 != null) {
-            if (l1.val <= l2.val) {
-                cur.next = l1;
-                l1 = l1.next;
+        while (list1 != null || list2 != null) {
+            int v1 = list1 == null ? Integer.MAX_VALUE : list1.val;
+            int v2 = list2 == null ? Integer.MAX_VALUE : list2.val;
+            if (v1 < v2) {
+                cur.next = list1;
+                list1 = list1.next;
             } else {
-                cur.next = l2;
-                l2 = l2.next;
+                cur.next = list2;
+                list2 = list2.next;
             }
             cur = cur.next;
-        }
-        if (l1 != null) {
-            cur.next = l1;
-        }
-        if (l2 != null) {
-            cur.next = l2;
         }
         return dummy.next;
     }

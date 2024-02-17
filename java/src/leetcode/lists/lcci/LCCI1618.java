@@ -1,10 +1,10 @@
-package leetcode.lists.interview;
+package leetcode.lists.lcci;
 
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/8/31 14:20
  */
-public class Inter1618 {
+public class LCCI1618 {
 
     public boolean patternMatching(String pattern, String value) {
         if (pattern.isEmpty()) {

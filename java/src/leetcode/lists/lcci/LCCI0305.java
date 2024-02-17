@@ -1,4 +1,4 @@
-package leetcode.lists.interview;
+package leetcode.lists.lcci;
 
 
 import java.util.Stack;
@@ -7,7 +7,7 @@ import java.util.Stack;
  * @author wujingxinit@outlook.com
  * @date 2023/12/5 21:15
  */
-public class Inter0305 {
+public class LCCI0305 {
 
     class SortedStack {
 

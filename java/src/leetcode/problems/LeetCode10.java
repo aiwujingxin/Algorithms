@@ -9,9 +9,6 @@ package leetcode.problems;
 public class LeetCode10 {
 
     public boolean isMatch(String s, String p) {
-        if (p == null || p.isEmpty() || s == null || s.isEmpty()) {
-            return true;
-        }
         boolean[][] dp = new boolean[s.length() + 1][p.length() + 1];
         dp[0][0] = true;
         // init s 空串的情况

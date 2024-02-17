@@ -1,6 +1,6 @@
 package leetcode.problems;
 
-import java.util.HashSet;
+import java.util.*;
 
 /**
  * @author wujingxinit@outlook.com
@@ -8,10 +8,6 @@ import java.util.HashSet;
  */
 
 public class LeetCode1461 {
-
-    public static void main(String[] args) {
-        System.out.println(new LeetCode1461().hasAllCodes("00110110", 2));
-    }
 
     public boolean hasAllCodes(String s, int k) {
         if (s.length() < k) {
@@ -24,7 +20,6 @@ public class LeetCode1461 {
             num <<= 1;
         }
         num >>= 1;
-        System.out.println(num);
         set.add(num);
         for (int i = k; i < s.length(); i++) {
             if ((num >> (k - 1) & 1) == 1) {
@@ -34,7 +29,6 @@ public class LeetCode1461 {
             num |= (s.charAt(i) - '0');
             set.add(num);
         }
-        System.out.println(set);
         return set.size() == (int) Math.pow(2, k);
     }
 }

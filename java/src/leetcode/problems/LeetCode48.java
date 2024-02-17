@@ -10,13 +10,14 @@ public class LeetCode48 {
         if (matrix == null || matrix.length == 0) {
             return;
         }
-        for (int i = 0; i < matrix.length / 2; i++) {
+        int n = matrix.length;
+        for (int i = 0; i < n / 2; i++) {
             int[] t = matrix[i];
-            matrix[i] = matrix[matrix.length - 1 - i];
-            matrix[matrix.length - 1 - i] = t;
+            matrix[i] = matrix[n - i - 1];
+            matrix[n - i - 1] = t;
         }
-        for (int i = 0; i < matrix.length; i++) {
-            for (int j = 0; j < i; j++) {
+        for (int i = 0; i < n; i++) {
+            for (int j = i; j < n; j++) {
                 int t = matrix[i][j];
                 matrix[i][j] = matrix[j][i];
                 matrix[j][i] = t;

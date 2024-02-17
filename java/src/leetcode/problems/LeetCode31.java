@@ -10,40 +10,35 @@ public class LeetCode31 {
         if (nums == null || nums.length == 0) {
             return;
         }
-        // 从右向左找第一个下降的点
-        int i = nums.length - 1;
-        while (i >= 1 && nums[i - 1] >= nums[i]) {
-            i--;
+        int n = nums.length;
+        int first = n - 2;
+        while (first >= 0 && nums[first] >= nums[first + 1]) {
+            first--;
         }
-        i--;
-        if (i < 0) {
-            reverse(nums, 0, nums.length - 1);
+        if (first == -1) {
+            reverse(nums, 0, n - 1);
             return;
         }
-        // 从右向左找第一个比nums[i]大的数
-        int j = nums.length - 1;
-        while (j >= 0 && nums[j] <= nums[i]) {
-            j--;
+        int second = n - 1;
+        while (second > first && nums[second] <= nums[first]) {
+            second--;
         }
-        if (j <= 0) {
-            return;
-        }
-        swap(nums, i, j);
-        reverse(nums, i + 1, nums.length - 1);
+        swap(nums, second, first);
+        reverse(nums, first + 1, n - 1);
     }
 
-    private void reverse(int[] nums, int i, int j) {
-        while (i < j) {
-            swap(nums, i, j);
-            i++;
-            j--;
+    public void reverse(int[] nums, int left, int right) {
+        while (left < right) {
+            swap(nums, left, right);
+            left++;
+            right--;
         }
     }
 
-    private void swap(int[] nums, int i, int j) {
-        int t = nums[i];
-        nums[i] = nums[j];
-        nums[j] = t;
+    public void swap(int[] nums, int left, int right) {
+        int t = nums[left];
+        nums[left] = nums[right];
+        nums[right] = t;
     }
 
 }

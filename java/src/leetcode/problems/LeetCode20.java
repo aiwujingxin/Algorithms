@@ -1,6 +1,6 @@
 package leetcode.problems;
 
-import java.util.Stack;
+import java.util.*;
 
 /**
  * @author wujingxinit@outlook.com
@@ -10,7 +10,7 @@ public class LeetCode20 {
 
     public boolean isValid(String s) {
         if (s == null || s.isEmpty()) {
-            return true;
+            return false;
         }
         Stack<Character> stack = new Stack<>();
         for (int i = 0; i < s.length(); i++) {
@@ -24,7 +24,7 @@ public class LeetCode20 {
                 if ((c == ')' && stack.peek() == '(') || (c == ']' && stack.peek() == '[') || (c == '}' && stack.peek() == '{')) {
                     stack.pop();
                 } else {
-                    stack.push(c);
+                    return false;
                 }
             }
         }

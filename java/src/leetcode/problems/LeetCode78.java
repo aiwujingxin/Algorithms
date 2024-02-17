@@ -1,7 +1,6 @@
 package leetcode.problems;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 /**
  * @author wujingxinit@outlook.com
@@ -10,9 +9,6 @@ import java.util.List;
 public class LeetCode78 {
 
     public List<List<Integer>> subsets(int[] nums) {
-        if (nums == null || nums.length == 0) {
-            return new ArrayList<>();
-        }
         List<List<Integer>> res = new ArrayList<>();
         backtrack(nums, 0, res, new ArrayList<>());
         return res;

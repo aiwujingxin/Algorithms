@@ -1,17 +1,12 @@
 package leetcode.problems;
 
-import java.util.HashMap;
+import java.util.*;
 
 /**
  * @author wujingxinit@outlook.com
  * @date 2024/1/30 11:43
  */
 public class LeetCode1566 {
-
-    public static void main(String[] args) {
-
-        System.out.println(new LeetCode1566().containsPattern(new int[]{1, 2, 4, 4, 4, 4}, 1, 3));
-    }
 
     public boolean containsPattern(int[] arr, int m, int k) {
         int n = arr.length;

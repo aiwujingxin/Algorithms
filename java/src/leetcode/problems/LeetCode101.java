@@ -1,6 +1,6 @@
 package leetcode.problems;
 
-import common.TreeNode;
+import common.*;
 
 /**
  * @author wujingxinit@outlook.com
@@ -9,9 +9,6 @@ import common.TreeNode;
 public class LeetCode101 {
 
     public boolean isSymmetric(TreeNode root) {
-        if (root == null) {
-            return true;
-        }
         return isSymmetric(root.left, root.right);
     }
 
@@ -19,7 +16,6 @@ public class LeetCode101 {
         if (left == null && right == null) {
             return true;
         }
-
         if (left == null || right == null || left.val != right.val) {
             return false;
         }

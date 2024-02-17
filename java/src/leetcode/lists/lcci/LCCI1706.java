@@ -1,4 +1,4 @@
-package leetcode.lists.interview;
+package leetcode.lists.lcci;
 
 import java.util.Arrays;
 
@@ -6,7 +6,7 @@ import java.util.Arrays;
  * @author wujingxinit@outlook.com
  * @date 2024/1/7 00:44
  */
-public class Inter1706 {
+public class LCCI1706 {
 
     char[] s;
     int[][] memo;

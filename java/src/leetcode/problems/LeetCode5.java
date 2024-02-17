@@ -11,20 +11,18 @@ public class LeetCode5 {
             return "";
         }
         int n = s.length();
-        boolean[][] dp = new boolean[n][n];
-        int max = 0;
         int left = 0;
-        int right = 0;
+        int len = 0;
+        boolean[][] dp = new boolean[n][n];
         for (int i = n - 1; i >= 0; i--) {
             for (int j = i; j < n; j++) {
-                dp[i][j] = s.charAt(i) == s.charAt(j) && (j - i <= 2 || dp[i + 1][j - 1]);
-                if (dp[i][j] && j - i + 1 > max) {
-                    max = j - i + 1;
+                dp[i][j] = s.charAt(i) == s.charAt(j) && ((j - i <= 2) || dp[i + 1][j - 1]);
+                if (dp[i][j] && j - i + 1 > len) {
+                    len = j - i + 1;
                     left = i;
-                    right = j + 1;
                 }
             }
         }
-        return s.substring(left, right);
+        return s.substring(left, left + len);
     }
 }

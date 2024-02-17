@@ -1,6 +1,6 @@
 package leetcode.problems;
 
-import common.TreeNode;
+import common.*;
 
 /**
  * @author wujingxinit@outlook.com
@@ -9,23 +9,16 @@ import common.TreeNode;
 public class LeetCode98 {
 
     public boolean isValidBST(TreeNode root) {
-        if (root == null) {
-            return true;
-        }
-        return isValidBST(root, null, null) && isValidBST(root, null, null);
+        return isValidBST(root, null, null);
     }
 
-    public boolean isValidBST(TreeNode root, TreeNode min, TreeNode max) {
+    public boolean isValidBST(TreeNode root, TreeNode max, TreeNode min) {
         if (root == null) {
             return true;
         }
-
-        if (min != null && root.val <= min.val) {
+        if (max != null && max.val <= root.val || min != null && min.val >= root.val) {
             return false;
         }
-        if (max != null && root.val >= max.val) {
-            return false;
-        }
-        return isValidBST(root.left, min, root) && isValidBST(root.right, root, max);
+        return isValidBST(root.left, root, min) && isValidBST(root.right, max, root);
     }
 }

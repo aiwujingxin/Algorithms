@@ -1,6 +1,6 @@
 package leetcode.problems;
 
-import java.util.HashMap;
+import java.util.*;
 
 /**
  * @author wujingxinit@outlook.com
@@ -14,22 +14,20 @@ public class LeetCode3 {
         }
         int left = 0;
         int right = 0;
-        int res = 0;
+        int n = s.length();
+        int max = 0;
         HashMap<Character, Integer> map = new HashMap<>();
-        while (right < s.length()) {
+        while (right < n) {
             char c = s.charAt(right);
             map.put(c, map.getOrDefault(c, 0) + 1);
-            while (map.get(c) > 1) {
+            while (left < right && map.get(c) > 1) {
                 char d = s.charAt(left);
                 map.put(d, map.get(d) - 1);
-                if (map.get(d) == 0) {
-                    map.remove(d);
-                }
                 left++;
             }
-            res = Math.max(res, right - left + 1);
+            max = Math.max(max, right - left + 1);
             right++;
         }
-        return res;
+        return max;
     }
 }

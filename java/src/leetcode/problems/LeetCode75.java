@@ -15,19 +15,20 @@ public class LeetCode75 {
         int index = 0;
         while (index <= p2) {
             if (nums[index] == 0) {
-                swap(nums, index, p0);
+                swap(nums, p0, index);
                 p0++;
                 index++;
-            } else if (nums[index] == 2) {
-                swap(nums, index, p2);
-                p2--;
-            } else {
+            } else if (nums[index] == 1) {
                 index++;
+
+            } else if (nums[index] == 2) {
+                swap(nums, p2, index);
+                p2--;
             }
         }
     }
 
-    private void swap(int[] nums, int i, int j) {
+    public void swap(int[] nums, int i, int j) {
         int t = nums[i];
         nums[i] = nums[j];
         nums[j] = t;

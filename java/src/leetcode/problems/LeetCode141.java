@@ -1,6 +1,6 @@
 package leetcode.problems;
 
-import common.ListNode;
+import common.*;
 
 /**
  * @author wujingxinit@outlook.com
@@ -8,14 +8,11 @@ import common.ListNode;
  */
 public class LeetCode141 {
     public boolean hasCycle(ListNode head) {
-        if (head == null || head.next == null) {
-            return false;
-        }
         ListNode slow = head;
         ListNode fast = head;
         while (fast != null && fast.next != null) {
-            slow = slow.next;
             fast = fast.next.next;
+            slow = slow.next;
             if (slow == fast) {
                 return true;
             }

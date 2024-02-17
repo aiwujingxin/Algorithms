@@ -1,8 +1,6 @@
 package leetcode.problems;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 /**
  * @author wujingxinit@outlook.com
@@ -14,16 +12,17 @@ public class LeetCode15 {
         if (nums == null || nums.length == 0) {
             return new ArrayList<>();
         }
-        Arrays.sort(nums);
         List<List<Integer>> res = new ArrayList<>();
+        Arrays.sort(nums);
         for (int i = 0; i < nums.length; i++) {
-            if (i > 0 && nums[i - 1] == nums[i]) {
+            if (i > 0 && nums[i] == nums[i - 1]) {
                 continue;
             }
             int left = i + 1;
             int right = nums.length - 1;
             while (left < right) {
-                if (nums[left] + nums[right] + nums[i] == 0) {
+                int t = nums[i] + nums[left] + nums[right];
+                if (t == 0) {
                     List<Integer> l = new ArrayList<>();
                     l.add(nums[i]);
                     l.add(nums[left]);
@@ -37,12 +36,11 @@ public class LeetCode15 {
                     }
                     left++;
                     right--;
-                } else if (nums[left] + nums[right] + nums[i] < 0) {
+                } else if (t < 0) {
                     left++;
                 } else {
                     right--;
                 }
-
             }
         }
         return res;

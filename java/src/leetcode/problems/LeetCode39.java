@@ -1,7 +1,6 @@
 package leetcode.problems;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 /**
  * @author wujingxinit@outlook.com
@@ -9,26 +8,23 @@ import java.util.List;
  */
 public class LeetCode39 {
     public List<List<Integer>> combinationSum(int[] candidates, int target) {
-        if (candidates == null || candidates.length == 0) {
-            return new ArrayList<>();
-        }
         List<List<Integer>> res = new ArrayList<>();
-        backtrack(candidates, 0, target, new ArrayList<>(), res);
+        backtrack(res, 0, new ArrayList<>(), candidates, target, 0);
         return res;
     }
 
-    private void backtrack(int[] candidates, int start, int target, List<Integer> path, List<List<Integer>> res) {
-        if (target < 0) {
+    public void backtrack(List<List<Integer>> res, int start, List<Integer> list, int[] candidates, int target, int sum) {
+        if (sum > target) {
             return;
         }
-        if (target == 0) {
-            res.add(new ArrayList<>(path));
+        if (sum == target) {
+            res.add(new ArrayList<>(list));
             return;
         }
         for (int i = start; i < candidates.length; i++) {
-            path.add(candidates[i]);
-            backtrack(candidates, i, target - candidates[i], path, res);
-            path.remove(path.size() - 1);
+            list.add(candidates[i]);
+            backtrack(res, i, list, candidates, target, sum + candidates[i]);
+            list.remove(list.size() - 1);
         }
     }
 }

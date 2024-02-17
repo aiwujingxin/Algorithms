@@ -23,7 +23,6 @@ public class LeetCode2981 {
                 zero2++;
             }
         }
-        System.out.println("sum1 " + sum1 + " sum2 " + sum2 + " zero1 " + zero1 + " zero2 " + zero2);
         long minSum1 = sum1 + zero1, minSum2 = sum2 + zero2;
         if (zero1 == 0 && minSum1 < minSum2 || zero2 == 0 && minSum1 > minSum2) {
             return -1;

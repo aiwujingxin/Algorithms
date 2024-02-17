@@ -1,7 +1,6 @@
 package leetcode.problems;
 
-import java.util.Arrays;
-import java.util.Comparator;
+import java.util.*;
 
 /**
  * @author wujingxinit@outlook.com
@@ -23,6 +22,6 @@ public class LeetCode1985 {
                 return o2.length() - o1.length();
             }
         });
-        return nums[nums.length - k];
+        return nums[k - 1];
     }
 }

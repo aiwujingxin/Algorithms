@@ -1,11 +1,8 @@
 package leetcode.problems;
 
-import common.TreeNode;
+import common.*;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Queue;
+import java.util.*;
 
 /**
  * @author wujingxinit@outlook.com
@@ -17,7 +14,6 @@ public class LeetCode102 {
         if (root == null) {
             return new ArrayList<>();
         }
-
         Queue<TreeNode> queue = new LinkedList<>();
         queue.add(root);
         List<List<Integer>> res = new ArrayList<>();

@@ -1,7 +1,6 @@
 package leetcode.problems;
 
-import java.util.Comparator;
-import java.util.PriorityQueue;
+import java.util.*;
 
 /**
  * @author wujingxinit@outlook.com
@@ -19,7 +18,7 @@ public class LeetCode1962 {
         int sum = 0;
         for (int i = 0; i < piles.length; i++) {
             queue.add(piles[i]);
-            sum = piles[i];
+            sum += piles[i];
         }
 
         while (k > 0) {
