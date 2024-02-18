@@ -21,7 +21,7 @@ public class LeetCode152 {
             int mn = min[i - 1];
             max[i] = Math.max(Math.max(mx * nums[i], mn * nums[i]), nums[i]);
             min[i] = Math.min(Math.min(mx * nums[i], mn * nums[i]), nums[i]);
-            res = Math.max(res, Math.max(max[i], min[i]));
+            res = Math.max(Math.max(max[i], min[i]), res);
         }
         return res;
     }

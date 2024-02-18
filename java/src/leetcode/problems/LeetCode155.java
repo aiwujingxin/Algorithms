@@ -10,48 +10,44 @@ public class LeetCode155 {
 
     class MinStack {
 
-        Stack<Integer> stack;
-        Stack<Integer> minStack;
+        Stack<Integer> stack1;
+        Stack<Integer> stack2;
 
         public MinStack() {
-            stack = new Stack<>();
-            minStack = new Stack<>();
+            stack1 = new Stack<>();
+            stack2 = new Stack<>();
         }
 
         public void push(int val) {
-            if (stack.empty()) {
-                stack.push(val);
-                minStack.push(val);
-                return;
-            }
-            if (val > minStack.peek()) {
-                minStack.push(minStack.peek());
+            if (stack2.isEmpty() || val < stack2.peek()) {
+                stack1.push(val);
+                stack2.push(val);
             } else {
-                minStack.push(val);
+                stack1.push(val);
+                stack2.push(stack2.peek());
             }
-            stack.push(val);
         }
 
         public void pop() {
-            if (stack.empty()) {
+            if (stack1.isEmpty()) {
                 return;
             }
-            stack.pop();
-            minStack.pop();
+            stack1.pop();
+            stack2.pop();
         }
 
         public int top() {
-            if (stack.empty()) {
+            if (stack1.isEmpty()) {
                 return -1;
             }
-            return stack.peek();
+            return stack1.peek();
         }
 
         public int getMin() {
-            if (minStack.empty()) {
+            if (stack2.isEmpty()) {
                 return -1;
             }
-            return minStack.peek();
+            return stack2.peek();
         }
     }
 

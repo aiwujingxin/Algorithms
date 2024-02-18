@@ -9,15 +9,12 @@ import common.ListNode;
 public class LeetCode160 {
 
     public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
-        if (headA == null || headB == null) {
-            return null;
+        ListNode ha = headA;
+        ListNode hb = headB;
+        while (ha != hb) {
+            ha = ha == null ? headB : ha.next;
+            hb = hb == null ? headA : hb.next;
         }
-        ListNode pa = headA;
-        ListNode pb = headB;
-        while (pa != pb) {
-            pa = pa == null ? headB : pa.next;
-            pb = pb == null ? headA : pb.next;
-        }
-        return pa;
+        return ha;
     }
 }

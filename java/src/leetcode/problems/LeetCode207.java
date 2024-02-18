@@ -12,30 +12,28 @@ import java.util.Queue;
  */
 public class LeetCode207 {
     public boolean canFinish(int numCourses, int[][] prerequisites) {
-
         int[] indegree = new int[numCourses];
         List<Integer>[] graph = new List[numCourses];
-
         for (int i = 0; i < numCourses; i++) {
             graph[i] = new ArrayList<>();
         }
-
         for (int[] p : prerequisites) {
-            indegree[p[0]]++;
             graph[p[1]].add(p[0]);
+            indegree[p[0]]++;
         }
-        Queue<Integer> queue = new LinkedList<>();
         int cnt = 0;
-
-        for (int i = 0; i < numCourses; i++) {
+        Queue<Integer> queue = new LinkedList<>();
+        for (int i = 0; i < indegree.length; i++) {
             if (indegree[i] == 0) {
-                queue.add(i);
                 cnt++;
+                queue.add(i);
             }
+        }
+        if (cnt == 0) {
+            return false;
         }
         while (!queue.isEmpty()) {
             int cur = queue.poll();
-
             for (int next : graph[cur]) {
                 indegree[next]--;
                 if (indegree[next] == 0) {

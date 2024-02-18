@@ -1,6 +1,5 @@
 package leetcode.problems;
 
-import java.util.Deque;
 import java.util.HashMap;
 import java.util.LinkedList;
 
@@ -12,46 +11,44 @@ public class LeetCode146 {
 
     class LRUCache {
 
-        HashMap<Integer, Node> map;
-        Deque<Node> list;
+        HashMap<Integer, Node> map = new HashMap<>();
+        LinkedList<Node> list = new LinkedList<>();
         int capacity;
 
         public LRUCache(int capacity) {
-            this.map = new HashMap<>();
-            this.list = new LinkedList<>();
             this.capacity = capacity;
         }
 
         public int get(int key) {
-            if (!map.containsKey(key)) {
+            Node node = map.get(key);
+            if (node == null) {
                 return -1;
             }
-            Node node = map.get(key);
             list.remove(node);
             list.addFirst(node);
             return node.value;
         }
 
         public void put(int key, int value) {
-            if (map.containsKey(key)) {
-                Node node = map.get(key);
+            Node node = map.get(key);
+            if (node != null) {
                 node.value = value;
                 list.remove(node);
                 list.addFirst(node);
-                return;
+            } else {
+                if (map.size() >= capacity) {
+                    Node r = list.removeLast();
+                    map.remove(r.key);
+                }
+                node = new Node(key, value);
+                list.addFirst(node);
+                map.put(key, node);
             }
-            if (map.size() == capacity) {
-                Node node = list.removeLast();
-                map.remove(node.key);
-            }
-            Node node = new Node(key, value);
-            map.put(key, node);
-            list.addFirst(node);
         }
 
         static class Node {
-            int key;
-            int value;
+            public int key;
+            public int value;
 
             public Node(int key, int value) {
                 this.key = key;
