@@ -22,33 +22,6 @@ public class LeetCode287 {
         nums[index2] = temp;
     }
 
-    public int findDuplicate_bs(int[] nums) {
-        if (nums == null || nums.length == 0) {
-            return 0;
-        }
-        int n = nums.length;
-        int left = 1, right = n - 1;
-        while (left < right) {
-            int mid = (left + right) >> 1;
-            if (check(mid, nums)) {
-                left = mid + 1;
-            } else {
-                right = mid;
-            }
-        }
-        return left;
-    }
-
-    private boolean check(int mid, int[] nums) {
-        int cnt = 0;
-        for (int num : nums) {
-            if (num <= mid) {
-                cnt++;
-            }
-        }
-        return cnt <= mid;
-    }
-
     //快慢指针
     public int findDuplicate_point(int[] nums) {
         if (nums == null || nums.length < 2) {

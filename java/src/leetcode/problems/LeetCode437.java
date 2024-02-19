@@ -22,16 +22,15 @@ public class LeetCode437 {
         return res;
     }
 
-    private void dfs(TreeNode root, long sum, int targetSum) {
+    public void dfs(TreeNode root, long sum, int targetSum) {
         if (root == null) {
             return;
         }
-        sum += root.val;
-        if (sum == targetSum) {
+        if (sum + root.val == targetSum) {
             res++;
         }
-        dfs(root.left, sum, targetSum);
-        dfs(root.right, sum, targetSum);
+        dfs(root.left, sum + root.val, targetSum);
+        dfs(root.right, sum + root.val, targetSum);
     }
 
     public int pathSum_opt(TreeNode root, int targetSum) {

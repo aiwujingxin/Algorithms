@@ -8,26 +8,23 @@ import common.ListNode;
  */
 public class LeetCode234 {
 
-
     ListNode cur;
 
     public boolean isPalindrome(ListNode head) {
         this.cur = head;
-        return check(head);
+        return dfs(head);
     }
 
-    private boolean check(ListNode head) {
+    public boolean dfs(ListNode head) {
         if (head == null) {
             return true;
         }
-        if (!check(head.next)) {
+        if (!dfs(head.next)) {
             return false;
         }
-
         if (head.val != cur.val) {
             return false;
         }
-
         cur = cur.next;
         return true;
     }

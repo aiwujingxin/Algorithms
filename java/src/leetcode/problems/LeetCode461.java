@@ -7,11 +7,11 @@ package leetcode.problems;
 public class LeetCode461 {
 
     public int hammingDistance(int x, int y) {
-        int s = x ^ y;
         int res = 0;
-        while (s != 0) {
-            res += s & 1;
-            s >>= 1;
+        for (int i = 1; i <= 32; i++) {
+            if ((x & (1 << i)) != (y & (1 << i))) {
+                res++;
+            }
         }
         return res;
     }

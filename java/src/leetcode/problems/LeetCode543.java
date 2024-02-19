@@ -7,17 +7,15 @@ import common.TreeNode;
  * @date 2023/9/19 00:04
  */
 public class LeetCode543 {
+
     int max = 0;
 
     public int diameterOfBinaryTree(TreeNode root) {
-        if (root == null) {
-            return 0;
-        }
         dfs(root);
         return max;
     }
 
-    private int dfs(TreeNode root) {
+    public int dfs(TreeNode root) {
         if (root == null) {
             return 0;
         }

@@ -7,29 +7,26 @@ package leetcode.problems;
 public class LeetCode494 {
 
     public int findTargetSumWays(int[] nums, int target) {
-        if (nums == null || nums.length == 0) {
-            return 0;
-        }
         int sum = 0;
-        for (int i = 0; i < nums.length; i++) {
-            sum += nums[i];
+        for (int n : nums) {
+            sum += n;
         }
-        if ((sum + target) % 2 != 0) {
+        if ((target + sum) % 2 == 1) {
             return 0;
         }
-        int total = (sum + target) / 2;
-        if (total < 0) {
+        int amount = (target + sum) / 2;
+        if (amount < 0) {
             return 0;
         }
-        int[] dp = new int[total + 1];
+        int[] dp = new int[amount + 1];
         dp[0] = 1;
-        for (int num : nums) {
-            for (int i = total; i >= 0; i--) {
-                if (i >= num) {
-                    dp[i] += dp[i - num];
+        for (int n : nums) {
+            for (int i = amount; i >= 0; i--) {
+                if (i >= n) {
+                    dp[i] += dp[i - n];
                 }
             }
         }
-        return dp[total];
+        return dp[amount];
     }
 }

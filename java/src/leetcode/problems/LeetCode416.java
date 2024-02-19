@@ -7,14 +7,11 @@ package leetcode.problems;
 public class LeetCode416 {
 
     public boolean canPartition(int[] nums) {
-        if (nums == null || nums.length == 0) {
-            return false;
-        }
         int sum = 0;
         for (int n : nums) {
             sum += n;
         }
-        if (sum % 2 == 1) {
+        if (sum % 2 != 0) {
             return false;
         }
         int target = sum / 2;
@@ -23,7 +20,7 @@ public class LeetCode416 {
         for (int num : nums) {
             for (int i = target; i >= 0; i--) {
                 if (i >= num) {
-                    dp[i] = dp[i] || dp[i - num];
+                    dp[i] |= dp[i - num];
                 }
             }
         }

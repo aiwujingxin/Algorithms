@@ -7,19 +7,18 @@ package leetcode.problems;
 public class LeetCode238 {
 
     public int[] productExceptSelf(int[] nums) {
-        if (nums == null || nums.length == 0) {
-            return new int[]{};
+        int n = nums.length;
+        int[] prefix = new int[n];
+        prefix[0] = 1;
+        for (int i = 1; i < n; i++) {
+            prefix[i] = prefix[i - 1] * nums[i - 1];
         }
-        int[] arr = new int[nums.length];
-        arr[0] = 1;
-        for (int i = 1; i < nums.length; i++) {
-            arr[i] = arr[i - 1] * nums[i - 1];
-        }
-        int t = nums[nums.length - 1];
-        for (int i = nums.length - 2; i >= 0; i--) {
-            arr[i] = arr[i] * t;
+        int[] res = new int[n];
+        int t = 1;
+        for (int i = n - 1; i >= 0; i--) {
+            res[i] = prefix[i] * t;
             t = t * nums[i];
         }
-        return arr;
+        return res;
     }
 }

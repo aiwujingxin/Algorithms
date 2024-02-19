@@ -1,7 +1,6 @@
 package leetcode.problems;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 
 /**
@@ -11,39 +10,34 @@ import java.util.List;
 public class LeetCode438 {
 
     public List<Integer> findAnagrams(String s, String p) {
-        if (s == null || s.isEmpty()) {
-            return new ArrayList<>();
-        }
-        int[] pArr = new int[26];
-        int[] sArr = new int[26];
-
-        HashSet<Character> set = new HashSet<>();
+        int[] sFreq = new int[26];
+        int[] pFreq = new int[26];
+        int target = 0;
         for (int i = 0; i < p.length(); i++) {
-            pArr[p.charAt(i) - 'a']++;
-            set.add(p.charAt(i));
+            if (pFreq[p.charAt(i) - 'a'] == 0) {
+                target++;
+            }
+            pFreq[p.charAt(i) - 'a']++;
         }
-
-        int target = set.size();
-        int count = 0;
         int left = 0;
         int right = 0;
+        int cnt = 0;
         List<Integer> list = new ArrayList<>();
         while (right < s.length()) {
-            int c = s.charAt(right);
-            sArr[c - 'a']++;
-
-            if (sArr[c - 'a'] == pArr[c - 'a']) {
-                count++;
+            char c = s.charAt(right);
+            sFreq[c - 'a']++;
+            if (sFreq[c - 'a'] == pFreq[c - 'a']) {
+                cnt++;
             }
             while (right - left + 1 > p.length()) {
                 char d = s.charAt(left);
-                if (sArr[d - 'a'] == pArr[d - 'a']) {
-                    count--;
+                if (sFreq[d - 'a'] == pFreq[d - 'a']) {
+                    cnt--;
                 }
-                sArr[d - 'a']--;
+                sFreq[d - 'a']--;
                 left++;
             }
-            if (count == target) {
+            if (cnt == target && right - left + 1 == p.length()) {
                 list.add(left);
             }
             right++;

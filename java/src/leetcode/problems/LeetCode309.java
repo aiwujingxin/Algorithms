@@ -7,9 +7,6 @@ package leetcode.problems;
 public class LeetCode309 {
 
     public int maxProfit(int[] prices) {
-        if (prices == null || prices.length == 0) {
-            return 0;
-        }
         int n = prices.length;
         int[][] dp = new int[n][3];
         dp[0][0] = 0;

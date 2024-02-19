@@ -16,7 +16,7 @@ public class LeetCode337 {
         return Math.max(res[0], res[1]);
     }
 
-    private int[] dfs(TreeNode root) {
+    public int[] dfs(TreeNode root) {
         if (root == null) {
             return new int[]{0, 0};
         }
