@@ -15,25 +15,20 @@ public class LeetCode347 {
             map.put(num, map.getOrDefault(num, 0) + 1);
         }
 
-        PriorityQueue<int[]> queue = new PriorityQueue<>(new Comparator<int[]>() {
-            @Override
-            public int compare(int[] o1, int[] o2) {
-                return o1[1] - o2[1];
-            }
-        });
+        PriorityQueue<int[]> pq = new PriorityQueue<>(Comparator.comparingInt(o -> o[1]));
 
         for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
-            queue.add(new int[]{entry.getKey(), entry.getValue()});
-
-            if (queue.size() > k) {
-                queue.poll();
+            pq.add(new int[]{entry.getKey(), entry.getValue()});
+            if (pq.size() > k) {
+                pq.poll();
             }
         }
-        int[] res = new int[k];
-        int index = 0;
-        while (!queue.isEmpty()) {
-            res[index] = queue.poll()[0];
-            index++;
+        int n = Math.min(k, pq.size());
+        int[] res = new int[n];
+
+        while (!pq.isEmpty()) {
+            res[n - 1] = pq.poll()[0];
+            n--;
         }
         return res;
     }

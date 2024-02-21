@@ -6,34 +6,31 @@ package leetcode.problems;
  */
 public class LeetCode394 {
 
-
     public String decodeString(String s) {
-        if (s == null || s.isEmpty()) {
-            return "";
-        }
         return dfs(s, 0)[0];
     }
 
-    private String[] dfs(String s, int index) {
-        int sum = 0;
+    public String[] dfs(String s, int index) {
+        int num = 0;
         StringBuilder sb = new StringBuilder();
         while (index < s.length()) {
-            if (s.charAt(index) >= '0' && s.charAt(index) >= '9') {
-                sum = sum * 10 + s.charAt(index) - '0';
-            } else if (s.charAt(index) == '[') {
-                String[] temp = dfs(s, index + 1);
-                index = Integer.parseInt(temp[0]);
-                while (sum > 0) {
-                    sb.append(temp[1]);
-                    sum--;
+            char c = s.charAt(index);
+            if (Character.isDigit(c)) {
+                num = num * 10 + c - '0';
+            } else if (c == '[') {
+                String[] res = dfs(s, index + 1);
+                for (int i = 0; i < num; i++) {
+                    sb.append(res[0]);
                 }
-            } else if (s.charAt(index) == ']') {
-                return new String[]{String.valueOf(index), sb.toString()};
+                index = Integer.parseInt(res[1]);
+                num = 0;
+            } else if (c == ']') {
+                return new String[]{sb.toString(), String.valueOf(index)};
             } else {
-                sb.append(s.charAt(index));
+                sb.append(c);
             }
             index++;
         }
-        return new String[]{sb.toString()};
+        return new String[]{sb.toString(), String.valueOf(index)};
     }
 }

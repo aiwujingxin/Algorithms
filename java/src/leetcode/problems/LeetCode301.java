@@ -9,50 +9,60 @@ import java.util.*;
 public class LeetCode301 {
 
     public List<String> removeInvalidParentheses(String s) {
-        if (s == null || s.isEmpty()) {
-            return new ArrayList<>();
-        }
-        List<String> res = new ArrayList<>();
         Queue<String> queue = new LinkedList<>();
-        HashSet<String> visited = new HashSet<>();
         queue.add(s);
-        visited.add(s);
-        boolean found = false;
+        HashSet<String> res = new HashSet<>();
+        if (check(s)) {
+            List<String> list = new ArrayList<>();
+            list.add(s);
+            return list;
+        }
+        HashSet<String> set = new HashSet<>();
+        set.add(s);
         while (!queue.isEmpty()) {
-            String cur = queue.poll();
-            if (isValid(cur)) {
-                res.add(cur);
-                found = true;
-            }
-            if (found) {
-                continue;
-            }
-            for (int i = 0; i < cur.length(); i++) {
-                if (cur.charAt(i) != '(' && cur.charAt(i) != ')') {
-                    continue;
+            int size = queue.size();
+            for (int i = 0; i < size; i++) {
+                String node = queue.poll();
+                for (int index = 0; index < node.length(); index++) {
+                    if (node.charAt(index) >= 'a' && node.charAt(index) <= 'z') {
+                        continue;
+                    }
+                    String ss = node.substring(0, index) + node.substring(index + 1, node.length());
+                    if (check(ss)) {
+                        res.add(ss);
+                    } else {
+                        if (set.contains(ss)) {
+                            continue;
+                        }
+                        set.add(ss);
+                        queue.add(ss);
+                    }
                 }
-                String t = cur.substring(0, i) + cur.substring(i + 1);
-                if (visited.contains(t)) {
-                    continue;
-                }
-                queue.add(t);
-                visited.add(t);
+            }
+            if (!res.isEmpty()) {
+                return new ArrayList<>(res);
             }
         }
-        return res;
+        return new ArrayList<>();
     }
 
-    boolean isValid(String s) {
-        int count = 0;
+    public boolean check(String s) {
+        if (s.isEmpty()) {
+            return true;
+        }
+        int left = 0;
+        int right = 0;
         for (int i = 0; i < s.length(); i++) {
-            char c = s.charAt(i);
-            if (c == '(') {
-                count++;
+            if (s.charAt(i) == '(') {
+                left++;
             }
-            if (c == ')' && count-- == 0) {
+            if (s.charAt(i) == ')') {
+                right++;
+            }
+            if (left < right) {
                 return false;
             }
         }
-        return count == 0;
+        return left == right;
     }
 }

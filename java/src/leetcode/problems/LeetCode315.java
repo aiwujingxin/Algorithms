@@ -1,7 +1,6 @@
 package leetcode.problems;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 /**
  * @author wujingxinit@outlook.com
@@ -9,63 +8,68 @@ import java.util.List;
  */
 public class LeetCode315 {
 
-    private int[][] temp;
-    private int[] ans;
+    int[][] temp;
+    int[] counts;
 
     public List<Integer> countSmaller(int[] nums) {
-        this.temp = new int[nums.length][];
-        int[][] arrs = new int[nums.length][];
-        this.ans = new int[nums.length];
-        for (int i = 0; i < nums.length; ++i) {
-            arrs[i] = new int[]{nums[i], i};
+        int n = nums.length;
+        int[][] arr = new int[n][];
+        temp = new int[n][];
+        counts = new int[n];
+        for (int i = 0; i < n; i++) {
+            arr[i] = new int[]{nums[i], i};
         }
-        int l = 0, r = nums.length - 1;
-        mergeSort(arrs, l, r);
+        mergeSort(arr, 0, n - 1);
         List<Integer> list = new ArrayList<>();
-        for (int num : ans) {
-            list.add(num);
+        for (int i = 0; i < n; i++) {
+            list.add(counts[i]);
         }
         return list;
     }
 
-    public void mergeSort(int[][] arrs, int left, int right) {
-        if (left >= right) {
+    public void mergeSort(int[][] arr, int lo, int hi) {
+        if (lo >= hi) {
             return;
         }
-        int mid = (left + right) >> 1;
-        mergeSort(arrs, left, mid);
-        mergeSort(arrs, mid + 1, right);
-        merge(arrs, left, mid, right);
+        int mid = (lo + hi) / 2;
+        mergeSort(arr, lo, mid);
+        mergeSort(arr, mid + 1, hi);
+        merge(arr, lo, mid, hi);
     }
 
-    public void merge(int[][] arrs, int left, int mid, int right) {
-        int i = left, j = mid + 1, k = left;
-        while (i <= mid && j <= right) {
-            if (arrs[i][0] <= arrs[j][0]) {
-                temp[k] = arrs[i];
-                //计数
-                ans[arrs[i][1]] += (j - mid - 1);
+    public void merge(int[][] arr, int lo, int mid, int hi) {
+        int i = lo;
+        int k = lo;
+        int j = mid + 1;
+
+        while (i <= mid && j <= hi) {
+            if (arr[i][0] <= arr[j][0]) {
+                counts[arr[i][1]] += j - mid - 1;
+                temp[k] = arr[i];
+                k++;
                 i++;
             } else {
-                temp[k] = arrs[j];
+                temp[k] = arr[j];
+                k++;
                 j++;
             }
-            k++;
         }
+
         while (i <= mid) {
-            temp[k] = arrs[i];
-            //计数
-            ans[arrs[i][1]] += (j - mid - 1);
+            temp[k] = arr[i];
+            counts[arr[i][1]] += j - mid - 1;
+            k++;
             i++;
-            k++;
         }
-        while (j <= right) {
-            temp[k] = arrs[j];
+
+        while (j <= hi) {
+            temp[k] = arr[j];
+            k++;
             j++;
-            k++;
         }
-        for (int n = left; n <= right; ++n) {
-            arrs[n] = temp[n];
+
+        for (int index = lo; index <= hi; index++) {
+            arr[index] = temp[index];
         }
     }
 }

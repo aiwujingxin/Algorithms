@@ -11,13 +11,13 @@ public class LeetCode621 {
     // (n+1)*(maxCount - 1) + maxCountSame
     // 3) 比较 整个长度
     public int leastInterval(char[] tasks, int n) {
-        int[] dict = new int[26];
+        int[] freq = new int[26];
         for (char task : tasks) {
-            dict[task - 'A']++;
+            freq[task - 'A']++;
         }
         int maxCount = 0;
         int maxCountSame = 0;
-        for (int num : dict) {
+        for (int num : freq) {
             if (num > maxCount) {
                 maxCount = num;
                 maxCountSame = 1;

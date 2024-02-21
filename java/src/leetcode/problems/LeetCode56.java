@@ -1,9 +1,6 @@
 package leetcode.problems;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 
 /**
  * @author wujingxinit@outlook.com
@@ -12,30 +9,25 @@ import java.util.List;
 public class LeetCode56 {
 
     public int[][] merge(int[][] intervals) {
-        if (intervals == null || intervals.length == 0) {
-            return new int[][]{};
-        }
-        List<int[]> list = new ArrayList<>();
-        Arrays.sort(intervals, new Comparator<int[]>() {
-            @Override
-            public int compare(int[] o1, int[] o2) {
-                if (o1[0] == o2[0]) {
-                    return o1[1] - o2[1];
-                }
-                return o1[0] - o2[0];
+        Arrays.sort(intervals, (o1, o2) -> {
+            if (o1[0] == o2[0]) {
+                return o1[1] - o2[1];
             }
+            return o1[0] - o2[0];
         });
+        List<int[]> list = new ArrayList<>();
         list.add(intervals[0]);
-        for (int[] interval : intervals) {
+        for (int i = 1; i < intervals.length; i++) {
             int[] last = list.get(list.size() - 1);
-            if (interval[0] > last[1]) {
-                list.add(interval);
+            int[] cur = intervals[i];
+            if (cur[0] > last[1]) {
+                list.add(cur);
             } else {
-                int[] t = new int[2];
-                t[0] = Math.min(last[0], interval[0]);
-                t[1] = Math.max(last[1], interval[1]);
                 list.remove(list.size() - 1);
-                list.add(t);
+                int[] ints = new int[2];
+                ints[0] = Math.min(cur[0], last[0]);
+                ints[1] = Math.max(cur[1], last[1]);
+                list.add(ints);
             }
         }
         int[][] res = new int[list.size()][];
