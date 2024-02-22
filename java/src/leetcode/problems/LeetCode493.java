@@ -6,74 +6,58 @@ package leetcode.problems;
  */
 public class LeetCode493 {
 
-    int res = 0;
     int[] temp;
+    int res;
 
     public int reversePairs(int[] nums) {
         if (nums == null || nums.length == 0) {
             return 0;
         }
-        this.temp = new int[nums.length];
+        int n = nums.length;
+        this.temp = new int[n];
         mergeSort(nums, 0, nums.length - 1);
         return res;
     }
 
-    private void mergeSort(int[] nums, int lo, int hi) {
+    public void mergeSort(int[] nums, int lo, int hi) {
         if (lo >= hi) {
             return;
         }
-        int mid = (hi - lo) / 2 + lo;
+        int mid = (lo + hi) / 2;
         mergeSort(nums, lo, mid);
         mergeSort(nums, mid + 1, hi);
         merge(nums, lo, mid, hi);
     }
 
-    private void merge(int[] nums, int lo, int mid, int hi) {
-        int i = lo, j = mid + 1;
+    public void merge(int[] nums, int lo, int mid, int hi) {
+        int i = lo;
         int k = lo;
+        int j = mid + 1;
+
+        int ii = i;
+        int jj = j;
+        while (ii <= mid) {
+            while (jj <= hi && (long) nums[ii] > 2 * (long) nums[jj]) {
+                jj++;
+            }
+            res += jj - mid - 1;
+            ii++;
+        }
         while (i <= mid && j <= hi) {
             if (nums[i] <= nums[j]) {
-                temp[k] = nums[i];
-                i++;
+                temp[k++] = nums[i++];
             } else {
-                int index = leftBound(nums, lo, mid, (long) 2 * nums[j]);
-                res += mid - index + 1;
-                temp[k] = nums[j];
-                j++;
+                temp[k++] = nums[j++];
             }
-            k++;
         }
         while (i <= mid) {
-            temp[k] = nums[i];
-            i++;
-            k++;
+            temp[k++] = nums[i++];
         }
         while (j <= hi) {
-            int index = leftBound(nums, lo, mid, (long) 2 * nums[j]);
-            res += mid - index + 1;
-            temp[k] = nums[j];
-            j++;
-            k++;
+            temp[k++] = nums[j++];
         }
-        for (int n = lo; n <= hi; n++) {
-            nums[n] = temp[n];
+        for (int x = lo; x <= hi; x++) {
+            nums[x] = temp[x];
         }
-    }
-
-    int leftBound(int[] nums, int start, int end, long target) {
-        int left = start;
-        int right = end;
-        while (left < right) {
-            int mid = (left + right) / 2;
-            if (nums[mid] <= target) {
-                left = mid + 1;
-            } else {
-                right = mid;
-            }
-        }
-        if (nums[left] <= target) {
-            return left + 1;
-        }
-        return left;
     }
 }

@@ -1,8 +1,6 @@
 package knowledge.algorithms.sort;
 
-import leetcode.problems.LeetCode315;
-import leetcode.problems.LeetCode327;
-import leetcode.problems.LeetCode493;
+import leetcode.problems.*;
 
 /**
  * @author jingxinwu
@@ -39,26 +37,19 @@ public class MergeSort implements Sort {
         int k = lo;
         while (i <= mid && j <= hi) {
             if (nums[i] <= nums[j]) {
-                temp[k] = nums[i];
-                i++;
+                temp[k++] = nums[i++];
             } else {
-                temp[k] = nums[j];
-                j++;
+                temp[k++] = nums[j++];
             }
-            k++;
         }
         while (i <= mid) {
-            temp[k] = nums[i];
-            i++;
-            k++;
+            temp[k++] = nums[i++];
         }
         while (j <= hi) {
-            temp[k] = nums[j];
-            j++;
-            k++;
+            temp[k++] = nums[j++];
         }
-        for (int n = lo; n <= hi; n++) {
-            nums[n] = temp[n];
+        for (int x = lo; x <= hi; x++) {
+            nums[x] = temp[x];
         }
     }
 }

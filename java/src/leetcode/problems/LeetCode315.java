@@ -45,31 +45,23 @@ public class LeetCode315 {
         while (i <= mid && j <= hi) {
             if (arr[i][0] <= arr[j][0]) {
                 counts[arr[i][1]] += j - mid - 1;
-                temp[k] = arr[i];
-                k++;
-                i++;
+                temp[k++] = arr[i++];
             } else {
-                temp[k] = arr[j];
-                k++;
-                j++;
+                temp[k++] = arr[j++];
             }
         }
 
         while (i <= mid) {
-            temp[k] = arr[i];
             counts[arr[i][1]] += j - mid - 1;
-            k++;
-            i++;
+            temp[k++] = arr[i++];
         }
 
         while (j <= hi) {
-            temp[k] = arr[j];
-            k++;
-            j++;
+            temp[k++] = arr[j++];
         }
 
-        for (int index = lo; index <= hi; index++) {
-            arr[index] = temp[index];
+        for (int x = lo; x <= hi; x++) {
+            arr[x] = temp[x];
         }
     }
 }
