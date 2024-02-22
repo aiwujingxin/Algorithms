@@ -10,12 +10,7 @@ import java.util.Comparator;
 public class LeetCode1637 {
 
     public int maxWidthOfVerticalArea(int[][] points) {
-        Arrays.sort(points, new Comparator<int[]>() {
-            @Override
-            public int compare(int[] o1, int[] o2) {
-                return o1[0] - o2[1];
-            }
-        });
+        Arrays.sort(points, Comparator.comparingInt(o -> o[0]));
         int max = 0;
         for (int i = 1; i < points.length; i++) {
             max = Math.max(max, points[i][0] - points[i - 1][0]);

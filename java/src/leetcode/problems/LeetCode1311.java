@@ -54,7 +54,7 @@ public class LeetCode1311 {
         List<Map.Entry<String, Integer>> res = new ArrayList<>(map.entrySet());
 
         // 使用自定义的Comparator进行排序
-        res.sort(new Comparator<Map.Entry<String, Integer>>() {
+        res.sort(new Comparator<>() {
             @Override
             public int compare(Map.Entry<String, Integer> entry1, Map.Entry<String, Integer> entry2) {
                 int valueComparison = entry1.getValue().compareTo(entry2.getValue());

@@ -19,12 +19,7 @@ public class LeetCode506 {
             arr[i] = new int[]{score[i], i};
         }
         String[] res = new String[n];
-        Arrays.sort(arr, new Comparator<int[]>() {
-            @Override
-            public int compare(int[] o1, int[] o2) {
-                return o2[0] - o1[0];
-            }
-        });
+        Arrays.sort(arr, (o1, o2) -> o2[0] - o1[0]);
         for (int i = 0; i < n; i++) {
             if (i == 0) {
                 res[arr[i][1]] = "Gold Medal";

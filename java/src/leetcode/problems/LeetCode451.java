@@ -22,12 +22,7 @@ public class LeetCode451 {
             nums[i] = new int[]{arr[i], i};
         }
 
-        Arrays.sort(nums, new Comparator<int[]>() {
-            @Override
-            public int compare(int[] o1, int[] o2) {
-                return o2[0] - o1[0];
-            }
-        });
+        Arrays.sort(nums, (o1, o2) -> o2[0] - o1[0]);
         StringBuilder sb = new StringBuilder();
         for (int[] num : nums) {
             for (int j = 0; j < num[0]; j++) {

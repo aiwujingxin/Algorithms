@@ -15,14 +15,11 @@ public class LCR183 {
         if (nums == null || nums.length == 0) {
             return new int[]{};
         }
-        Queue<int[]> queue = new PriorityQueue<>(new Comparator<int[]>() {
-            @Override
-            public int compare(int[] o1, int[] o2) {
-                if (o1[0] == o2[0]) {
-                    return o2[1] - o1[1];
-                }
-                return o2[0] - o1[0];
+        Queue<int[]> queue = new PriorityQueue<>((o1, o2) -> {
+            if (o1[0] == o2[0]) {
+                return o2[1] - o1[1];
             }
+            return o2[0] - o1[0];
         });
         for (int i = 0; i < k; ++i) {
             queue.offer(new int[]{nums[i], i});

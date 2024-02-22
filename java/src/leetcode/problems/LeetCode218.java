@@ -13,14 +13,11 @@ public class LeetCode218 {
             list.add(new int[]{building[0], building[2]});
             list.add(new int[]{building[1], -building[2]});
         }
-        list.sort(new Comparator<int[]>() {
-            @Override
-            public int compare(int[] o1, int[] o2) {
-                if (o1[0] == o2[0]) {
-                    return o2[1] - o1[1];
-                }
-                return o1[0] - o2[0];
+        list.sort((o1, o2) -> {
+            if (o1[0] == o2[0]) {
+                return o2[1] - o1[1];
             }
+            return o1[0] - o2[0];
         });
         List<List<Integer>> ans = new ArrayList<>();
         PriorityQueue<Integer> pq = new PriorityQueue<>(Collections.reverseOrder());

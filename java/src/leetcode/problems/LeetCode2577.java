@@ -1,7 +1,6 @@
 package leetcode.problems;
 
 import java.util.Arrays;
-import java.util.Comparator;
 import java.util.PriorityQueue;
 import java.util.Queue;
 
@@ -23,12 +22,9 @@ public class LeetCode2577 {
             Arrays.fill(ints, -1);
         }
         result[0][0] = 0;
-        Queue<Position> queue = new PriorityQueue<>(new Comparator<Position>() {
-            @Override
-            public int compare(Position o1, Position o2) {
-                return result[o1.x][o1.y] - result[o2.x][o2.y];
-            }
-        });
+        Queue<Position> queue = new PriorityQueue<>((o1, o2) ->
+                result[o1.x][o1.y] - result[o2.x][o2.y]
+        );
         queue.add(new Position(0, 0));
         while (!queue.isEmpty()) {
             Position p = queue.poll();

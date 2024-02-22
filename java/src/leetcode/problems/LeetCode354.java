@@ -13,14 +13,11 @@ public class LeetCode354 {
 
     public int maxEnvelopes(int[][] envelopes) {
 
-        Arrays.sort(envelopes, new Comparator<int[]>() {
-            @Override
-            public int compare(int[] o1, int[] o2) {
-                if (o1[0] == o2[0]) {
-                    return o2[1] - o1[1];
-                }
-                return o1[0] - o2[0];
+        Arrays.sort(envelopes, (o1, o2) -> {
+            if (o1[0] == o2[0]) {
+                return o2[1] - o1[1];
             }
+            return o1[0] - o2[0];
         });
 
         //dp[i] 代表着表示h的前 i 个元素可以组成的长度为 j 的最长严格递增子序列的末尾元素的最小值

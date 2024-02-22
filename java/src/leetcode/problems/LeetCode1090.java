@@ -16,12 +16,7 @@ public class LeetCode1090 {
         for (int i = 0; i < n; i++) {
             arr[i] = new int[]{values[i], labels[i]};
         }
-        Arrays.sort(arr, new Comparator<int[]>() {
-            @Override
-            public int compare(int[] o1, int[] o2) {
-                return o2[0] - o1[0];
-            }
-        });
+        Arrays.sort(arr, (o1, o2) -> o2[0] - o1[0]);
         int sum = 0;
         int count = 0;
         HashMap<Integer, Integer> map = new HashMap<>();

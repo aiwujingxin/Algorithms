@@ -1,7 +1,6 @@
 package leetcode.problems;
 
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
 
 /**
@@ -19,14 +18,11 @@ public class LeetCode1329 {
         }
         int m = mat.length;
         int n = mat[0].length;
-        arrs.sort(new Comparator<Node>() {
-            @Override
-            public int compare(Node o1, Node o2) {
-                if (o1.y - o1.x == o2.y - o2.x) {
-                    return o1.val - o2.val;
-                }
-                return (o1.y - o1.x) - (o2.y - o2.x);
+        arrs.sort((o1, o2) -> {
+            if (o1.y - o1.x == o2.y - o2.x) {
+                return o1.val - o2.val;
             }
+            return (o1.y - o1.x) - (o2.y - o2.x);
         });
         int index = 0;
         for (int i = 0; i < m; i++) {

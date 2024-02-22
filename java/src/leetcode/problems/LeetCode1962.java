@@ -9,12 +9,7 @@ import java.util.*;
 public class LeetCode1962 {
 
     public int minStoneSum(int[] piles, int k) {
-        PriorityQueue<Integer> queue = new PriorityQueue<>(new Comparator<Integer>() {
-            @Override
-            public int compare(Integer o1, Integer o2) {
-                return o2 - o1;
-            }
-        });
+        PriorityQueue<Integer> queue = new PriorityQueue<>((o1, o2) -> o2 - o1);
         int sum = 0;
         for (int i = 0; i < piles.length; i++) {
             queue.add(piles[i]);

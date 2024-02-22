@@ -26,14 +26,11 @@ public class LeetCode1333 {
             list.add(restaurant);
         }
 
-        Collections.sort(list, new Comparator<int[]>() {
-            @Override
-            public int compare(int[] o1, int[] o2) {
-                if (o1[1] == o2[1]) {
-                    return o2[0] - o1[0];
-                }
-                return o2[1] - o1[1];
+        list.sort((o1, o2) -> {
+            if (o1[1] == o2[1]) {
+                return o2[0] - o1[0];
             }
+            return o2[1] - o1[1];
         });
         List<Integer> res = new ArrayList<>();
         for (int i = 0; i < list.size(); i++) {

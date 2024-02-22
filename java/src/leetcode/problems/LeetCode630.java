@@ -11,7 +11,7 @@ import java.util.PriorityQueue;
 public class LeetCode630 {
 
     public int scheduleCourse(int[][] courses) {
-        Arrays.sort(courses, (a, b) -> a[1] - b[1]);
+        Arrays.sort(courses, Comparator.comparingInt(a -> a[1]));
         PriorityQueue<Integer> q = new PriorityQueue<>((a, b) -> b - a);
         int sum = 0;
         for (int[] c : courses) {

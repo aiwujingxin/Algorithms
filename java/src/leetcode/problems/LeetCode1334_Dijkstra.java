@@ -23,12 +23,7 @@ public class LeetCode1334_Dijkstra {
         int res = -1;
 
         for (int i = 0; i < n; i++) {
-            Queue<int[]> pq = new PriorityQueue<>(new Comparator<int[]>() {
-                @Override
-                public int compare(int[] o1, int[] o2) {
-                    return o1[1] - o2[1];
-                }
-            });
+            Queue<int[]> pq = new PriorityQueue<>(Comparator.comparingInt(o -> o[1]));
             boolean[] visited = new boolean[n];
             int count = 0;
             pq.add(new int[]{i, 0});

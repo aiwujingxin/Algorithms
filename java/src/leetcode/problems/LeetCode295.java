@@ -15,12 +15,7 @@ public class LeetCode295 {
         PriorityQueue<Integer> maxQ;
 
         public MedianFinder() {
-            maxQ = new PriorityQueue<>(new Comparator<Integer>() {
-                @Override
-                public int compare(Integer o1, Integer o2) {
-                    return o2 - o1;
-                }
-            });
+            maxQ = new PriorityQueue<>((o1, o2) -> o2 - o1);
             minQ = new PriorityQueue<>();
         }
 

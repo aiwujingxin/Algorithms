@@ -16,14 +16,11 @@ public class ActivityPack_greedy implements ActivityPack {
 
     public int activityPack(int[][] periods) {
 
-        Arrays.sort(periods, new Comparator<int[]>() {
-            @Override
-            public int compare(int[] o1, int[] o2) {
-                if (o1[1] == o2[1]) {
-                    return o1[0] - o2[0];
-                }
-                return o1[1] - o2[1];
+        Arrays.sort(periods, (o1, o2) -> {
+            if (o1[1] == o2[1]) {
+                return o1[0] - o2[0];
             }
+            return o1[1] - o2[1];
         });
 
 

@@ -20,12 +20,7 @@ public class LCR60 {
         for (int num : nums) {
             map.put(num, map.getOrDefault(num, 0) + 1);
         }
-        PriorityQueue<int[]> queue = new PriorityQueue<>(new Comparator<int[]>() {
-            @Override
-            public int compare(int[] o1, int[] o2) {
-                return o1[1] - o2[1];
-            }
-        });
+        PriorityQueue<int[]> queue = new PriorityQueue<>(Comparator.comparingInt(o -> o[1]));
 
         for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
             queue.add(new int[]{entry.getKey(), entry.getValue()});

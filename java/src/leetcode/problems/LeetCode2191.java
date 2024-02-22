@@ -15,12 +15,7 @@ public class LeetCode2191 {
         for (int i = 0; i < n; i++) {
             arr[i] = new int[]{nums[i], convert(mapping, nums[i])};
         }
-        Arrays.sort(arr, new Comparator<int[]>() {
-            @Override
-            public int compare(int[] o1, int[] o2) {
-                return o1[1] - o2[1];
-            }
-        });
+        Arrays.sort(arr, Comparator.comparingInt(o -> o[1]));
         int[] res = new int[n];
         for (int i = 0; i < arr.length; i++) {
             res[i] = arr[i][0];

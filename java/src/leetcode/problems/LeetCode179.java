@@ -19,12 +19,7 @@ public class LeetCode179 {
             strings[i] = String.valueOf(nums[i]);
         }
 
-        Arrays.sort(strings, new Comparator<String>() {
-            @Override
-            public int compare(String o1, String o2) {
-                return (o2 + o1).compareTo(o1 + o2);
-            }
-        });
+        Arrays.sort(strings, (o1, o2) -> (o2 + o1).compareTo(o1 + o2));
         StringBuilder sb = new StringBuilder();
         for (String string : strings) {
             if (sb.isEmpty() && Objects.equals(string, "0")) {

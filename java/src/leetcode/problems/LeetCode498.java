@@ -1,7 +1,6 @@
 package leetcode.problems;
 
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
 
 /**
@@ -20,18 +19,15 @@ public class LeetCode498 {
                 list.add(new Point(j, -i, mat[i][j]));
             }
         }
-        list.sort(new Comparator<Point>() {
-            @Override
-            public int compare(Point o1, Point o2) {
-                if (o1.y - o1.x == o2.y - o2.x) {
-                    if ((o1.y - o1.x) % 2 == 0) {
-                        return o1.x - o2.x;
-                    } else {
-                        return o2.x - o1.x;
-                    }
+        list.sort((o1, o2) -> {
+            if (o1.y - o1.x == o2.y - o2.x) {
+                if ((o1.y - o1.x) % 2 == 0) {
+                    return o1.x - o2.x;
                 } else {
-                    return o2.y - o2.x - (o1.y - o1.x);
+                    return o2.x - o1.x;
                 }
+            } else {
+                return o2.y - o2.x - (o1.y - o1.x);
             }
         });
 

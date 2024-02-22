@@ -17,7 +17,7 @@ public class LeetCode791 {
         for (int i = 0; i < order.length(); i++) {
             orderMap.put(order.charAt(i), i);
         }
-        Collections.sort(list, new Comparator<Character>() {
+        list.sort(new Comparator<>() {
             @Override
             public int compare(Character o1, Character o2) {
                 return orderMap.getOrDefault(o1, -1) - orderMap.getOrDefault(o2, -1);

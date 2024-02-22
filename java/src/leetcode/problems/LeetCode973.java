@@ -11,11 +11,7 @@ import java.util.PriorityQueue;
 public class LeetCode973 {
 
     public int[][] kClosest(int[][] points, int k) {
-        PriorityQueue<int[]> pq = new PriorityQueue<int[]>(new Comparator<int[]>() {
-            public int compare(int[] array1, int[] array2) {
-                return array2[0] - array1[0];
-            }
-        });
+        PriorityQueue<int[]> pq = new PriorityQueue<>((array1, array2) -> array2[0] - array1[0]);
         for (int i = 0; i < k; ++i) {
             pq.offer(new int[]{points[i][0] * points[i][0] + points[i][1] * points[i][1], i});
         }

@@ -1,6 +1,9 @@
 package leetcode.problems;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * @author wujingxinit@outlook.com
@@ -20,14 +23,11 @@ public class LeetCode1636 {
         for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
             list.add(new int[]{entry.getKey(), entry.getValue()});
         }
-        Collections.sort(list, new Comparator<int[]>() {
-            @Override
-            public int compare(int[] o1, int[] o2) {
-                if (o1[1] == o2[1]) {
-                    return o1[0] - o2[0];
-                }
-                return o1[1] - o2[1];
+        list.sort((o1, o2) -> {
+            if (o1[1] == o2[1]) {
+                return o1[0] - o2[0];
             }
+            return o1[1] - o2[1];
         });
         int[] res = new int[n];
         int index = 0;

@@ -17,18 +17,8 @@ public class LeetCode502 {
         for (int i = 0; i < Profits.length; i++) {
             proj.add(new int[]{Capital[i], Profits[i]});
         }
-        proj.sort(new Comparator<int[]>() {
-            @Override
-            public int compare(int[] o1, int[] o2) {
-                return o1[0] - o2[0];
-            }
-        });
-        PriorityQueue<Integer> pq = new PriorityQueue<>(new Comparator<Integer>() {
-            @Override
-            public int compare(Integer o1, Integer o2) {
-                return o2 - o1;
-            }
-        });
+        proj.sort(Comparator.comparingInt(o -> o[0]));
+        PriorityQueue<Integer> pq = new PriorityQueue<>((o1, o2) -> o2 - o1);
         int count = 0;
         int i = 0;
         while (count < k) {

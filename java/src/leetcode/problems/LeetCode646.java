@@ -10,41 +10,20 @@ import java.util.Comparator;
 public class LeetCode646 {
 
     public int findLongestChain(int[][] pairs) {
-        Arrays.sort(pairs, new Comparator<int[]>() {
-            @Override
-            public int compare(int[] o1, int[] o2) {
-                return o1[0] - o2[0];
-            }
-        });
+        Arrays.sort(pairs, Comparator.comparingInt(o -> o[0]));
         int n = pairs.length;
-        int[] dp = new int[n + 1];
-        Arrays.fill(dp, Integer.MAX_VALUE);
-        dp[0] = Integer.MIN_VALUE;
+        int[] dp = new int[n];
         int res = 0;
-        for (int[] pair : pairs) {
-            int num = pair[0];
-            int insertIndex = leftBound(dp, num);
-            dp[insertIndex] = Math.min(dp[insertIndex], pair[1]);
-            res = Math.max(res, insertIndex);
+        for (int i = 0; i < n; i++) {
+            dp[i] = 1;
+            for (int j = 0; j < i; j++) {
+                if (pairs[j][1] < pairs[i][0]) {
+                    dp[i] = Math.max(dp[j] + 1, dp[i]);
+                }
+            }
+            res = Math.max(res, dp[i]);
         }
         return res;
-    }
-
-    public int leftBound(int[] nums, int target) {
-        int left = 0;
-        int right = nums.length - 1;
-        while (left < right) {
-            int mid = (left + right) / 2;
-            if (nums[mid] < target) {
-                left = mid + 1;
-            } else {
-                right = mid;
-            }
-        }
-        if (nums[left] < target) {
-            return left + 1;
-        }
-        return left;
     }
 }
 

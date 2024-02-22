@@ -18,12 +18,7 @@ public class LeetCode436 {
         for (int i = 0; i < n; i++) {
             _intervals[i] = new int[]{intervals[i][0], intervals[i][1], i};
         }
-        Arrays.sort(_intervals, new Comparator<int[]>() {
-            @Override
-            public int compare(int[] o1, int[] o2) {
-                return o1[0] - o2[0];
-            }
-        });
+        Arrays.sort(_intervals, Comparator.comparingInt(o -> o[0]));
         int[] res = new int[n];
         for (int i = 0; i < n; i++) {
             int index = find(_intervals, intervals[i][1]);

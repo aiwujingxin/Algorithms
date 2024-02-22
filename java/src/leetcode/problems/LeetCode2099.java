@@ -12,14 +12,11 @@ import java.util.PriorityQueue;
 public class LeetCode2099 {
 
     public int[] maxSubsequence(int[] nums, int k) {
-        PriorityQueue<int[]> queue = new PriorityQueue<>(new Comparator<int[]>() {
-            @Override
-            public int compare(int[] o1, int[] o2) {
-                if (o1[0] == o2[0]) {
-                    return o1[1] - o2[1];
-                }
-                return o1[0] - o2[0];
+        PriorityQueue<int[]> queue = new PriorityQueue<>((o1, o2) -> {
+            if (o1[0] == o2[0]) {
+                return o1[1] - o2[1];
             }
+            return o1[0] - o2[0];
         });
         for (int i = 0; i < nums.length; i++) {
             queue.add(new int[]{nums[i], i});
@@ -32,12 +29,7 @@ public class LeetCode2099 {
             int[] node = queue.poll();
             list.add(new int[]{node[0], node[1]});
         }
-        list.sort(new Comparator<int[]>() {
-            @Override
-            public int compare(int[] o1, int[] o2) {
-                return o1[1] - o2[1];
-            }
-        });
+        list.sort(Comparator.comparingInt(o -> o[1]));
         int[] res = new int[k];
         for (int i = 0; i < list.size(); i++) {
             res[i] = list.get(i)[0];

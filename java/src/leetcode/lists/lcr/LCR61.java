@@ -13,12 +13,7 @@ public class LCR61 {
 
     public List<List<Integer>> kSmallestPairs(int[] nums1, int[] nums2, int k) {
 
-        PriorityQueue<int[]> queue = new PriorityQueue<>(new Comparator<int[]>() {
-            @Override
-            public int compare(int[] o1, int[] o2) {
-                return o2[0] + o2[1] - (o1[0] + o1[1]);
-            }
-        });
+        PriorityQueue<int[]> queue = new PriorityQueue<>((o1, o2) -> o2[0] + o2[1] - (o1[0] + o1[1]));
         for (int i = 0; i < nums1.length; i++) {
             for (int j = 0; j < nums2.length; j++) {
                 queue.add(new int[]{nums1[i], nums2[j]});
