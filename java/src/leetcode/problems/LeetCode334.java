@@ -1,6 +1,5 @@
 package leetcode.problems;
 
-import java.util.Arrays;
 import java.util.Stack;
 
 /**
@@ -35,35 +34,24 @@ public class LeetCode334 {
 
     public boolean increasingTriplet_LIS(int[] nums) {
         int n = nums.length;
-        int[] dp = new int[n + 1];
-        Arrays.fill(dp, Integer.MAX_VALUE);
-        dp[0] = Integer.MIN_VALUE;
-        int res = 0;
+        int[] dp = new int[n];
+        int len = 0;
         for (int num : nums) {
-            int index = leftBound(dp, num);
-            dp[index] = Math.min(dp[index], num);
-            res = Math.max(res, index);
-        }
-        return res >= 3;
-    }
-
-    public int leftBound(int[] nums, int target) {
-        if (nums == null || nums.length == 0) {
-            return 0;
-        }
-        int left = 0;
-        int right = nums.length - 1;
-        while (left < right) {
-            int mid = (left + right) / 2;
-            if (nums[mid] < target) {
-                left = mid + 1;
-            } else {
-                right = mid;
+            int left = 0;
+            int right = len;
+            while (left < right) {
+                int mid = (left + right) / 2;
+                if (dp[mid] < num) {
+                    left = mid + 1;
+                } else {
+                    right = mid;
+                }
+            }
+            dp[left] = num;
+            if (left == len) {
+                len++;
             }
         }
-        if (nums[left] < target) {
-            return left + 1;
-        }
-        return left;
+        return len >= 3;
     }
 }

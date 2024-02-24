@@ -1,10 +1,8 @@
 package leetcode.problems;
 
-import java.util.Arrays;
-
 /**
  * @author jingxinwu
- * @date 2021-12-26 10:15 PM
+ * @date 2024-02-25 10:15 PM
  */
 public class LeetCode673 {
 
@@ -14,32 +12,30 @@ public class LeetCode673 {
             return 1;
         }
         int[] dp = new int[n];
-        int[] count = new int[n];
-        Arrays.fill(dp, 1);
-        Arrays.fill(count, 1);
-        int maxLength = 0;
-        for (int i = 1; i < n; i++) {
+        int[] g = new int[n];
+        int len = 0;
+        for (int i = 0; i < n; i++) {
+            dp[i] = g[i] = 1;
             for (int j = 0; j < i; j++) {
                 if (nums[i] > nums[j]) {
                     if (dp[j] + 1 > dp[i]) {
                         dp[i] = dp[j] + 1;
-                        count[i] = count[j];
+                        g[i] = g[j];
                     } else if (dp[j] + 1 == dp[i]) {
                         //可能找到若干个j, i 都可以接在后面, 则都需要算进去
-                        count[i] += count[j];
+                        g[i] += g[j];
                     }
                 }
             }
-            maxLength = Math.max(maxLength, dp[i]);
+            len = Math.max(len, dp[i]);
         }
 
         int res = 0;
         for (int i = 0; i < n; i++) {
-            if (dp[i] == maxLength) {
-                res += count[i];
+            if (dp[i] == len) {
+                res += g[i];
             }
         }
         return res;
     }
-
 }

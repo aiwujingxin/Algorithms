@@ -13,7 +13,7 @@ public class LeetCode120 {
             return 0;
         }
         int n = triangle.size();
-        int[] dp = new int[triangle.get(n - 1).size()];
+        int[] dp = new int[n];
         dp[0] = triangle.get(0).get(0);
         for (int i = 1; i < n; i++) {
             List<Integer> cur = triangle.get(i);
@@ -28,9 +28,20 @@ public class LeetCode120 {
             }
         }
         int res = Integer.MAX_VALUE;
-        for (int i = 0; i < dp.length; i++) {
-            res = Math.min(res, dp[i]);
+        for (int d : dp) {
+            res = Math.min(res, d);
         }
         return res;
+    }
+
+    public int minimumTotal_opt(List<List<Integer>> triangle) {
+        int n = triangle.size();
+        int[] dp = new int[n + 1];
+        for (int i = n - 1; i >= 0; i--) {
+            for (int j = 0; j <= i; j++) {
+                dp[j] = Math.min(dp[j], dp[j + 1]) + triangle.get(i).get(j);
+            }
+        }
+        return dp[0];
     }
 }

@@ -70,7 +70,7 @@ public class SkipList {
         return node;
     }
 
-    private static int randomLevel() {
+    private int randomLevel() {
         int level = 1;
         double DEFAULT_P_FACTORY = 0.25;
         while (Math.random() < DEFAULT_P_FACTORY && level < DEFAULT_MAX_LEVEL) {

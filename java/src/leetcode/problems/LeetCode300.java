@@ -7,9 +7,6 @@ package leetcode.problems;
 public class LeetCode300 {
 
     public int lengthOfLIS(int[] nums) {
-        if (nums == null || nums.length == 0) {
-            return 0;
-        }
         int res = 0;
         int n = nums.length;
         int[] dp = new int[n];
