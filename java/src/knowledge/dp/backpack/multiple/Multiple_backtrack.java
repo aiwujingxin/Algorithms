@@ -4,26 +4,25 @@ package knowledge.dp.backpack.multiple;
  * @author wujingxinit@outlook.com
  * @date 2023/8/22 12:38
  */
-public class Multiple_backtrack {
+public class Multiple_backtrack implements MultiplePack {
 
-    public boolean backPack(int capacity, int[] weight, int[] amounts) {
-        return dfs(0, 0, weight, amounts, capacity);
+    int max = 0;
+
+    public int backPack(int[] weight, int[] value, int[] count, int capacity) {
+        max = 0;
+        backtrack(weight, value, count, capacity, 0, 0, 0);
+        return max;
     }
 
-    private boolean dfs(int depth, int sum, int[] weight, int[] amounts, int target) {
-        if (sum == target) {
-            return true;
+    private void backtrack(int[] weight, int[] value, int[] count, int capacity, int index, int currentWeight, int currentValue) {
+        if (index == weight.length) {
+            max = Math.max(max, currentValue);
+            return;
         }
-        if (sum > target || depth == weight.length) {
-            return false;
-        }
-        for (int i = 0; i <= amounts[depth]; i++) {
-            sum += weight[depth] * i;
-            if (dfs(depth + 1, sum, weight, amounts, target)) {
-                return true;
+        for (int i = 0; i <= count[index]; i++) {
+            if (currentWeight + weight[index] * i <= capacity) {
+                backtrack(weight, value, count, capacity, index + 1, currentWeight + weight[index] * i, currentValue + value[index] * i);
             }
-            sum -= weight[depth] * i;
         }
-        return false;
     }
 }

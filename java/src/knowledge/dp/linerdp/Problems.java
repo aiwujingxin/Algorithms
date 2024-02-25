@@ -6,7 +6,7 @@ import leetcode.problems.*;
  * @author wujingxinit@outlook.com
  * @date 2023/8/22 13:01
  * @description 线性DP
- * <三角形最小路径和>
+ * <路径>
  * @see LeetCode120
  * <LIS>
  * @see LeetCode300 最长递增子序列

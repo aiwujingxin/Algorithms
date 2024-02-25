@@ -1,13 +1,11 @@
 package knowledge.dp.backpack.zeroOne;
 
 
-import knowledge.dp.backpack.complete.CompletePack;
-
 /**
  * @author wujingxinit@outlook.com
  * @date 2022/9/13 12:37
  */
-public class ZeroOne_dp_1d implements CompletePack {
+public class ZeroOne_dp_1d implements ZeroOnePack {
 
     @Override
     public int backPack(int[] weights, int[] values, int capacity) {

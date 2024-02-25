@@ -3,7 +3,7 @@ package leetcode.problems;
 /**
  * @author wujingxinit@outlook.com
  * @date 2022/10/24 23:15
- * coins 在外面:组合数 在里面:排列数
+ * @description 物品循环 在外面:组合数 在里面:排列数
  * @link <a href="https://leetcode-cn.com/problems/coin-change-2/solution/ling-qian-dui-huan-iihe-pa-lou-ti-wen-ti-dao-di-yo/">...</a>
  */
 public class LeetCode518 {
@@ -12,8 +12,10 @@ public class LeetCode518 {
         int[] dp = new int[amount + 1];
         dp[0] = 1;// 注意此处的1，表示构建0元只有1中方法：那就是不选
         for (int coin : coins) {
-            for (int i = coin; i <= amount; i++) {
-                dp[i] += dp[i - coin];
+            for (int i = 1; i <= amount; i++) {
+                if (i >= coin) {
+                    dp[i] += dp[i - coin];
+                }
             }
         }
         return dp[amount];

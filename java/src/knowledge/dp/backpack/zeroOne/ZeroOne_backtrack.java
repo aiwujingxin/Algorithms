@@ -1,13 +1,10 @@
 package knowledge.dp.backpack.zeroOne;
 
-
-import knowledge.dp.backpack.complete.CompletePack;
-
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/6/27 00:17
  */
-public class ZeroOne_backtrack implements CompletePack {
+public class ZeroOne_backtrack implements ZeroOnePack {
 
     int ans;
 

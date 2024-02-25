@@ -4,16 +4,15 @@ package knowledge.dp.backpack.multiple;
  * @author wujingxinit@outlook.com
  * @date 2023/8/7 23:59
  */
-public class Multiple_dp_1d {
+public class Multiple_dp_1d implements MultiplePack{
 
-    public int backPack(int capacity, int[] weight, int[] values, int[] amounts) {
+    public int backPack(int[] weights, int[] values, int[] counts, int capacity) {
         int n = values.length;
         int[] dp = new int[capacity + 1];
-        dp[0] = 0;
         for (int i = 0; i < n; i++) {
-            for (int j = 0; j < amounts[i]; j++) {
-                for (int k = capacity; k >= weight[i]; k--) {
-                    dp[k] = Math.max(dp[k], dp[k - weight[i]] + values[i]);
+            for (int j = 0; j < counts[i]; j++) {
+                for (int k = capacity; k >= weights[i]; k--) {
+                    dp[k] = Math.max(dp[k], dp[k - weights[i]] + values[i]);
                 }
             }
         }

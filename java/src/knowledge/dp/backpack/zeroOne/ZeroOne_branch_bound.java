@@ -1,7 +1,6 @@
 package knowledge.dp.backpack.zeroOne;
 
 
-import knowledge.dp.backpack.complete.CompletePack;
 
 import java.util.Arrays;
 import java.util.Comparator;
@@ -13,7 +12,7 @@ import java.util.Queue;
  * @date 2023/6/26 23:19
  * @link <a href="https://www.bilibili.com/video/BV1gb411G7FH/?spm_id_from=333.788.recommend_more_video.-1&vd_source=88e5a3e60377510439e11f13b5878c25"></a>
  */
-public class ZeroOne_branch_bound implements CompletePack {
+public class ZeroOne_branch_bound implements ZeroOnePack {
 
     @Override
     public int backPack(int[] weights, int[] values, int capacity) {

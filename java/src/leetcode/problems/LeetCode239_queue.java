@@ -1,7 +1,7 @@
 package leetcode.problems;
 
+import java.util.ArrayDeque;
 import java.util.Deque;
-import java.util.LinkedList;
 
 /**
  * @author wujingxinit@outlook.com
@@ -11,25 +11,20 @@ public class LeetCode239_queue {
 
     public int[] maxSlidingWindow(int[] nums, int k) {
         int n = nums.length;
-        Deque<Integer> deque = new LinkedList<>();
-        for (int i = 0; i < k; ++i) {
-            while (!deque.isEmpty() && nums[i] >= nums[deque.peekFirst()]) {
-                deque.pollFirst();
-            }
-            deque.addFirst(i);
-        }
-
         int[] ans = new int[n - k + 1];
-        ans[0] = nums[deque.peekLast()];
-        for (int i = k; i < n; ++i) {
-            while (!deque.isEmpty() && nums[i] >= nums[deque.peekFirst()]) {
-                deque.pollFirst();
+        // 单调递减
+        Deque<Integer> queue = new ArrayDeque<>();
+        for (int i = 0; i < n; i++) {
+            while (!queue.isEmpty() && nums[queue.getLast()] <= nums[i]) {
+                queue.pollLast();
             }
-            deque.addFirst(i);
-            while (i - deque.peekLast() + 1 > k) {
-                deque.pollLast();
+            queue.addLast(i);
+            if (i - queue.getFirst() >= k) {
+                queue.pollFirst();
             }
-            ans[i - k + 1] = nums[deque.peekLast()];
+            if (i >= k - 1) {
+                ans[i - k + 1] = nums[queue.getFirst()];
+            }
         }
         return ans;
     }

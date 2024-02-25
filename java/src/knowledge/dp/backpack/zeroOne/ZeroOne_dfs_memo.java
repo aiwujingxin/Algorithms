@@ -1,15 +1,13 @@
 package knowledge.dp.backpack.zeroOne;
 
 
-import knowledge.dp.backpack.complete.CompletePack;
-
 import java.util.Arrays;
 
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/7/18 12:37
  */
-public class ZeroOne_dfs_memo implements CompletePack {
+public class ZeroOne_dfs_memo implements ZeroOnePack {
 
     int n;
     int[][] memo;

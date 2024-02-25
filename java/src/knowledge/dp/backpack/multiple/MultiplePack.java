@@ -11,4 +11,5 @@ import knowledge.dp.backpack.lintcode.BackpackVIII;
  * @see BackpackVIII
  */
 public interface MultiplePack {
+    int backPack(int[] weights, int[] values, int[] counts, int capacity);
 }
