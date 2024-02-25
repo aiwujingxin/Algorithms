@@ -7,6 +7,7 @@ import java.util.Comparator;
  * @author wujingxinit@outlook.com
  * @date 2023/11/29 17:23
  * @description 找到最大不重叠区间的个数
+ * @see knowledge.dp.linerdp.ActivityPack
  * @see LeetCode452
  * @see LeetCode646
  */

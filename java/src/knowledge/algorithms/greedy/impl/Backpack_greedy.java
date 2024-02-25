@@ -1,13 +1,13 @@
 package knowledge.algorithms.greedy.impl;
 
-import knowledge.dp.knapsack.Knapsack;
+import knowledge.dp.backpack.zeroOne.ZeroOnePack;
 
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
 
-public class Backpack_greedy implements Knapsack {
+public class Backpack_greedy implements ZeroOnePack {
 
     @Override
     public int backPack(int[] weight, int[] goodsValue, int packageWeight) {

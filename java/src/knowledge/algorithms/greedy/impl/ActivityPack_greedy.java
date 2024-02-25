@@ -1,12 +1,9 @@
 package knowledge.algorithms.greedy.impl;
 
 
-import knowledge.dp.liner.ActivityPack;
+import knowledge.dp.linerdp.ActivityPack;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Comparator;
-import java.util.List;
 
 /**
  * @author aiwujingxin@gmail.com
@@ -14,24 +11,21 @@ import java.util.List;
  */
 public class ActivityPack_greedy implements ActivityPack {
 
-    public int activityPack(int[][] periods) {
-
-        Arrays.sort(periods, (o1, o2) -> {
+    public int activityPack(int[][] intervals) {
+        Arrays.sort(intervals, (o1, o2) -> {
             if (o1[1] == o2[1]) {
                 return o1[0] - o2[0];
             }
             return o1[1] - o2[1];
         });
-
-
-        List<int[]> res = new ArrayList<>();
-        res.add(periods[0]);
-
-        for (int i = 1; i < periods.length; i++) {
-            if (periods[i][0] >= res.get(res.size() - 1)[1]) {
-                res.add(periods[i]);
+        int cnt = 1;
+        int[] end = intervals[0];
+        for (int[] interval : intervals) {
+            if (interval[0] >= end[1]) {
+                end = interval;
+                cnt++;
             }
         }
-        return res.size();
+        return cnt;
     }
 }

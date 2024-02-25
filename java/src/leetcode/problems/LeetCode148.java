@@ -17,8 +17,6 @@ public class LeetCode148 {
             return head;
         }
         ListNode mid = getMid(head, tail);
-        System.out.println(mid.val);
-
         ListNode newHead = mid.next;
         mid.next = null;
         ListNode l1 = sortList(head, mid);

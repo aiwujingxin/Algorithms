@@ -8,7 +8,7 @@ package knowledge.datastructure.array;
  * @see knowledge.algorithms.sort.Sort
  * @see knowledge.algorithms.prefixanddiff
  * @see knowledge.algorithms.greedy.Greedy
- * @see knowledge.dp.liner.Problems
+ * @see knowledge.dp.linerdp.Problems
  * @see leetcode.problems.LeetCode56 合并区间
  */
 public interface Problems {
