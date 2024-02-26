@@ -8,18 +8,14 @@ package knowledge.dp.backpack.complete;
 public class Complete_dp_1d implements CompletePack {
 
     @Override
-    public int backPack(int[] weights, int[] values, int capacity) {
-        int n = weights.length;
-        int[] dp = new int[capacity + 1];
-        // 计算每个容量下的最大价值
-        // 内外循环可以颠倒 可能会带来算法时间常数上的优化
-        for (int i = 0; i <= capacity; i++) {
-            for (int j = 0; j < n; j++) {
-                if (weights[j] <= i) {
-                    dp[i] = Math.max(dp[i], dp[i - weights[j]] + values[j]);
-                }
+    public int backPack(int[] C, int[] W, int V) {
+        int N = C.length;
+        int[] dp = new int[V + 1];
+        for (int i = 0; i < N; i++) {
+            for (int v = C[i]; v <= V; v++) {
+                dp[v] = Math.max(dp[v], dp[v - C[i]] + W[i]);
             }
         }
-        return dp[capacity];
+        return dp[V];
     }
 }

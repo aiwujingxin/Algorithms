@@ -12,14 +12,11 @@ public class BackpackVIII {
     public int backPack(int m, int[] value, int[] amount) {
         int n = value.length;
         boolean[][] dp = new boolean[n][m + 1];
-        // Initialize
         for (int i = 0; i <= amount[0]; i++) {
             if (i * value[0] <= m) {
                 dp[0][i * value[0]] = true;
             }
         }
-
-        // Function
         for (int i = 1; i < n; i++) {
             for (int j = 0; j <= m; j++) {
                 for (int k = 0; k <= amount[i]; k++) {
@@ -32,14 +29,12 @@ public class BackpackVIII {
                 }
             }
         }
-
-        // Answer
-        int rst = 0;
+        int res = 0;
         for (int i = 0; i <= m; i++) {
             if (dp[n - 1][i]) {
-                rst++;
+                res++;
             }
         }
-        return rst - 1;
+        return res - 1;
     }
 }

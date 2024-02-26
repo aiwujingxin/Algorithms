@@ -8,15 +8,14 @@ package knowledge.dp.backpack.zeroOne;
 public class ZeroOne_dp_1d implements ZeroOnePack {
 
     @Override
-    public int backPack(int[] weights, int[] values, int capacity) {
-        int n = weights.length;
-        int[] dp = new int[capacity + 1];
-        for (int i = 1; i <= n; i++) {
-            //滚动数组 逆序实现
-            for (int j = capacity; j >= weights[i - 1]; j--) {
-                dp[j] = Math.max(dp[j], dp[j - weights[i - 1]] + values[i - 1]);
+    public int backPack(int[] C, int[] W, int V) {
+        int N = C.length;
+        int[] dp = new int[V + 1];
+        for (int i = 0; i < N; i++) {
+            for (int v = V; v >= C[i]; v--) {
+                dp[v] = Math.max(dp[v], dp[v - C[i]] + W[i]);
             }
         }
-        return dp[capacity];
+        return dp[V];
     }
 }

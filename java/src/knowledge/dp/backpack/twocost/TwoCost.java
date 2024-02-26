@@ -1,7 +1,6 @@
 package knowledge.dp.backpack.twocost;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 /**
  * @author wujingxinit@outlook.com
@@ -10,9 +9,8 @@ import java.util.List;
  */
 public class TwoCost {
 
-    List<Integer> result = new ArrayList<>();
-
     public int backPack(int N, int V, int W, int[] volumes, int[] weights, int[] values) {
+        List<Integer> result = new ArrayList<>();
         int[][][] dp = new int[N + 1][W + 1][V + 1];
         for (int i = 1; i <= N; i++) {
             for (int j = 0; j <= W; j++) {
@@ -52,21 +50,21 @@ public class TwoCost {
     }
 
     // 空间优化
-    public int backPack_2d(int N, int V, int M, int[] volumes, int[] weights, int[] values) {
-        int[][] dp = new int[V + 1][M + 1];
-        TreePosition[][] dpTree = new TreePosition[V + 1][M + 1];
+    public int backPack_2d(int N, int V, int W, int[] volumes, int[] weights, int[] values) {
+        int[][] dp = new int[V + 1][W + 1];
+        TreePosition[][] dpTree = new TreePosition[V + 1][W + 1];
         for (int i = 1; i <= N; i++) {
-            for (int j = V; j >= volumes[i - 1]; j--) {
-                for (int k = M; k >= weights[i - 1]; k--) {
-                    if (dp[j - volumes[i - 1]][k - weights[i - 1]] + values[i - 1] > dp[j][k]) {
-                        dp[j][k] = dp[j - volumes[i - 1]][k - weights[i - 1]] + values[i - 1];
-                        dpTree[j][k] = new TreePosition(i, dpTree[j - volumes[i - 1]][k - weights[i - 1]]);
+            for (int v = V; v >= volumes[i - 1]; v--) {
+                for (int k = W; k >= weights[i - 1]; k--) {
+                    if (dp[v][k] < dp[v - volumes[i - 1]][k - weights[i - 1]] + values[i - 1]) {
+                        dp[v][k] = dp[v - volumes[i - 1]][k - weights[i - 1]] + values[i - 1];
+                        dpTree[v][k] = new TreePosition(i, dpTree[v - volumes[i - 1]][k - weights[i - 1]]);
                     }
                 }
             }
         }
         List<Integer> result = new ArrayList<>();
-        TreePosition treePosition = dpTree[V][M];
+        TreePosition treePosition = dpTree[V][W];
         while (treePosition != null) {
             result.add(treePosition.number - 1);
             treePosition = treePosition.parentNode;
@@ -74,7 +72,7 @@ public class TwoCost {
         for (Integer index : result) {
             System.out.println("选择物品 " + index + ",它的价值" + values[index] + ".");
         }
-        System.out.println("最大价值 " + dp[V][M]);
-        return dp[V][M];
+        System.out.println("最大价值 " + dp[V][W]);
+        return dp[V][W];
     }
 }

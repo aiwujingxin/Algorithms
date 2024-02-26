@@ -16,16 +16,16 @@ public class ZeroOne_dfs_memo implements ZeroOnePack {
     int[] values;
 
     @Override
-    public int backPack(int[] weights, int[] values, int capacity) {
-        n = weights.length;
-        memo = new int[n][capacity + 1];
-        this.capacity = capacity;
-        this.weights = weights;
-        this.values = values;
+    public int backPack(int[] C, int[] W, int V) {
+        n = C.length;
+        memo = new int[n][V + 1];
+        this.capacity = V;
+        this.weights = C;
+        this.values = W;
         for (int[] row : memo) {
             Arrays.fill(row, -1);
         }
-        return dfs(0, capacity);
+        return dfs(0, V);
     }
 
     private int dfs(int index, int capacity) {

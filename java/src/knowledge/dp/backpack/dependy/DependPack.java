@@ -1,11 +1,11 @@
-package knowledge.dp.backpack.group;
+package knowledge.dp.backpack.dependy;
 
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/8/4 00:29
  * <a href="https://www.bilibili.com/video/BV1tp4y1k7py/?spm_id_from=333.337.search-card.all.click&vd_source=88e5a3e60377510439e11f13b5878c25">
  */
-public class GroupPack_dp_tree {
+public class DependPack {
 
     int[] v;
     int[] w;

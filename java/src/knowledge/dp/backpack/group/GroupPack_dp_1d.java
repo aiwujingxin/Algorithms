@@ -3,20 +3,21 @@ package knowledge.dp.backpack.group;
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/8/4 10:34
+ * @description 空间优化
  */
 public class GroupPack_dp_1d implements GroupPack {
 
-    public int groupKnapsack(int n, int V, int[] groupSizes, int[][] values, int[][] weights) {
-        int[] dp = new int[V + 1];
-        for (int i = 1; i <= n; i++) {
-            for (int v = V; v >= 0; v--) {
-                for (int j = 0; j < groupSizes[i - 1]; j++) {
-                    if (v >= weights[i - 1][j]) {
-                        dp[v] = Math.max(dp[v], dp[v - weights[i - 1][j]] + values[i - 1][j]);
+    public int backPack(int N, int m, int[] C, int[][] V, int[][] W) {
+        int[] dp = new int[m + 1];
+        for (int i = 0; i < N; i++) {
+            for (int j = m; j >= 0; j--) {
+                for (int k = 0; k < C[i]; k++) {
+                    if (j >= V[i][k]) {
+                        dp[j] = Math.max(dp[j], dp[j - V[i][k]] + W[i][k]);
                     }
                 }
             }
         }
-        return dp[V];
+        return dp[m];
     }
 }

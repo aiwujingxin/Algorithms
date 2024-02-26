@@ -12,19 +12,17 @@ public class Complete_dfs_memo implements CompletePack {
     int[][] memo;
     int[] weights;
     int[] values;
-    int n;
 
     @Override
-    public int backPack(int[] weights, int[] values, int capacity) {
-        int n = weights.length;
-        memo = new int[n + 1][capacity + 1];
-        this.weights = weights;
-        this.values = values;
-        this.n = capacity;
+    public int backPack(int[] C, int[] W, int V) {
+        int n = C.length;
+        this.memo = new int[n + 1][V + 1];
+        this.weights = C;
+        this.values = W;
         for (int[] row : memo) {
             Arrays.fill(row, -1); // 初始化为-1，表示尚未计算过
         }
-        return dfs(n, capacity);
+        return dfs(n, V);
     }
 
     private int dfs(int index, int capacity) {

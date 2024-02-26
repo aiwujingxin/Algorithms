@@ -7,5 +7,12 @@ package knowledge.dp.backpack.group;
  */
 public interface GroupPack {
 
-    int groupKnapsack(int n, int V, int[] groupSizes, int[][] values, int[][] weights);
+    /**
+     * @param N N组背包
+     * @param m 容量是 V
+     * @param C 每组M个物品
+     * @param V 每组各个物品费用 V[k][i]
+     * @param W 每组物品个数价值 W[k][i]
+     */
+    int backPack(int N, int m, int[] C, int[][] V, int[][] W);
 }

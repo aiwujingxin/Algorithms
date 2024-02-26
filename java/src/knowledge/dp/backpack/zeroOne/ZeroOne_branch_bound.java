@@ -15,12 +15,12 @@ import java.util.Queue;
 public class ZeroOne_branch_bound implements ZeroOnePack {
 
     @Override
-    public int backPack(int[] weights, int[] values, int capacity) {
-        Item[] arr = new Item[weights.length];
-        for (int i = 0; i < weights.length; i++) {
-            arr[i] = new Item(weights[i], values[i]);
+    public int backPack(int[] C, int[] W, int V) {
+        Item[] arr = new Item[C.length];
+        for (int i = 0; i < C.length; i++) {
+            arr[i] = new Item(C[i], W[i]);
         }
-        return solve(capacity, arr, weights.length);
+        return solve(V, arr, C.length);
     }
 
     int bound(Node u, int n, int W, Item[] arr) {

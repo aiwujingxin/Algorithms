@@ -11,33 +11,33 @@ import java.util.LinkedList;
 public class Multiple_queue implements MultiplePack {
 
     @Override
-    public int backPack(int[] weights, int[] values, int[] counts, int capacity) {
-        int n = weights.length;
-        int[] dp = new int[capacity + 1];
-        int[] pre = new int[capacity + 1];
+    public int backPack(int[] C, int[] W, int[] S, int V) {
+        int n = C.length;
+        int[] dp = new int[V + 1];
+        int[] pre = new int[V + 1];
         // 构建单调队列
-        Deque<Integer> queue = new LinkedList<>();
+        Deque<Integer> q = new LinkedList<>();
         for (int i = 0; i < n; i++) {
-            int weight = weights[i];
-            int value = values[i];
-            int count = counts[i];
-            for (int j = 0; j < weight; j++) {
-                queue.clear();
-                for (int k = j; k <= capacity; k += weight) {
+            int c = C[i];
+            int w = W[i];
+            int m = S[i];
+            for (int j = 0; j < c; j++) {
+                q.clear();
+                for (int k = j; k <= V; k += c) {
                     pre[k] = dp[k];
-                    while (!queue.isEmpty() && pre[queue.peekLast()] - (queue.peekLast() - j) / weight * value <= pre[k] - (k - j) / weight * value) {
-                        queue.pollLast();
+                    while (!q.isEmpty() && pre[q.peekLast()] - (q.peekLast() - j) / c * w <= pre[k] - (k - j) / c * w) {
+                        q.pollLast();
                     }
-                    queue.addLast(k);
-                    if (!queue.isEmpty() && queue.getFirst() < k - count * weight) {
-                        queue.pollFirst();
+                    q.addLast(k);
+                    if (!q.isEmpty() && q.getFirst() < k - m * c) {
+                        q.pollFirst();
                     }
-                    if (!queue.isEmpty()) {
-                        dp[k] = Math.max(dp[k], pre[queue.getFirst()] + (k - queue.getFirst()) / weight * value);
+                    if (!q.isEmpty()) {
+                        dp[k] = Math.max(dp[k], pre[q.getFirst()] + (k - q.getFirst()) / c * w);
                     }
                 }
             }
         }
-        return dp[capacity];
+        return dp[V];
     }
 }

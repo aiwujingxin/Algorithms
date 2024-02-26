@@ -9,8 +9,8 @@ public class ZeroOne_backtrack implements ZeroOnePack {
     int ans;
 
     @Override
-    public int backPack(int[] weight, int[] values, int capacity) {
-        backtrack(0, weight, values, capacity, 0, 0);
+    public int backPack(int[] weight, int[] W, int V) {
+        backtrack(0, weight, W, V, 0, 0);
         return ans;
     }
 

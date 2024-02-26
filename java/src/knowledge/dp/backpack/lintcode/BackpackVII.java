@@ -15,14 +15,11 @@ public class BackpackVII {
     public int backPackVII(int m, int[] prices, int[] weight, int[] amounts) {
         int n = prices.length;
         int[] dp = new int[m + 1];
-        // Initialize
         for (int i = 0; i <= amounts[0]; i++) {
             if (i * prices[0] <= m) {
                 dp[i * prices[0]] = i * weight[0];
             }
         }
-        // Function
-        // 遍历每种物品
         for (int i = 1; i < n; i++) {
             if (prices[i] * amounts[i] > m) {
                 /*
