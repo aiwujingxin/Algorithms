@@ -1,7 +1,6 @@
 package knowledge.dp.backpack.multiple;
 
-import knowledge.dp.backpack.lintcode.BackpackVII;
-import knowledge.dp.backpack.lintcode.BackpackVIII;
+import knowledge.dp.backpack.lintcode.*;
 
 /**
  * @author wujingxinit@outlook.com
@@ -10,6 +9,7 @@ import knowledge.dp.backpack.lintcode.BackpackVIII;
  * @link <a href="https://github.com/cherryljr/LintCode/blob/master/Backpack%20VII.java"></a>
  * @see BackpackVII
  * @see BackpackVIII
+ * @see leetcode.problems.LeetCode2585
  */
 public interface MultiplePack {
 

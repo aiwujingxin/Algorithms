@@ -16,7 +16,6 @@ public class LeetCode72 {
         for (int i = 1; i <= n; i++) {
             dp[0][i] = i;
         }
-        dp[0][0] = 0;
         for (int i = 1; i <= m; i++) {
             for (int j = 1; j <= n; j++) {
                 if (word1.charAt(i - 1) == word2.charAt(j - 1)) {

@@ -7,6 +7,7 @@ package knowledge.dp.backpack.zeroOne;
  * @link <a href="https://www.lintcode.com/problem/125/">BackpackII</a>
  * @see leetcode.problems.LeetCode416 分割等和子集
  * @see leetcode.problems.LeetCode494 目标和
+ * @see leetcode.problems.LeetCode474 一和零
  */
 public interface ZeroOnePack {
     /**

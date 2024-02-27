@@ -7,7 +7,8 @@ package knowledge.dp.backpack.complete;
  * @description 完全背包 F[i,v] = max(F[i − 1, v], F[i, v − Ci] + Wi)
  * @link <a href="https://www.lintcode.com/problem/440/">backPackIII</a>
  * @see leetcode.problems.LeetCode322 零钱兑换
- * @see leetcode.problems.LeetCode518 凑成总金额的硬币组合数
+ * @see leetcode.problems.LeetCode518 零钱兑换II  物品循环在外面:组合数
+ * @see leetcode.problems.LeetCode377 组合总和IV  物品循环在里面:排列数
  */
 public interface CompletePack {
 

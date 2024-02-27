@@ -10,7 +10,7 @@ public class LeetCode322 {
 
     public int coinChange(int[] coins, int amount) {
         int[] dp = new int[amount + 1];
-        Arrays.fill(dp, Integer.MAX_VALUE / 2);
+        Arrays.fill(dp, amount + 1);
         dp[0] = 0;
         for (int coin : coins) {
             for (int i = 1; i <= amount; i++) {
@@ -19,6 +19,6 @@ public class LeetCode322 {
                 }
             }
         }
-        return dp[amount] == Integer.MAX_VALUE / 2 ? -1 : dp[amount];
+        return dp[amount] == amount + 1 ? -1 : dp[amount];
     }
 }

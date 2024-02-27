@@ -18,11 +18,10 @@ public class LeetCode279 {
         dp[1] = 1;
         dp[2] = 2;
         for (int i = 3; i <= n; i++) {
-            int min = Integer.MAX_VALUE;
+            dp[i] = Integer.MAX_VALUE;
             for (int j = 1; j * j <= i; j++) {
-                min = Math.min(dp[i - j * j] + 1, min);
+                dp[i] = Math.min(dp[i], dp[i - j * j] + 1);
             }
-            dp[i] = min;
         }
         return dp[n];
     }

@@ -22,14 +22,9 @@ public class LeetCode343 {
         dp[2] = 2;
         dp[3] = 3;
         for (int i = 4; i <= n; i++) {
-            int t = 0;
             for (int j = 1; j <= i / 2; j++) {
-                int product = dp[j] * dp[i - j];
-                if (t < product) {
-                    t = product;
-                }
+                dp[i] = Math.max(dp[i], dp[j] * dp[i - j]);
             }
-            dp[i] = t;
         }
         return dp[n];
     }

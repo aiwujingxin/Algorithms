@@ -4,7 +4,7 @@ package knowledge.dp.backpack.multiple;
  * @author wujingxinit@outlook.com
  * @date 2024/2/26 22:58
  */
-public class Multiple_bit_v2 implements MultiplePack {
+public class Multiple_bit implements MultiplePack {
 
     int[] dp;
     int V;

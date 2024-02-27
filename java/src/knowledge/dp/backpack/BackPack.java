@@ -3,6 +3,7 @@ package knowledge.dp.backpack;
 import knowledge.dp.backpack.complete.CompletePack;
 import knowledge.dp.backpack.group.GroupPack;
 import knowledge.dp.backpack.multiple.MultiplePack;
+import knowledge.dp.backpack.twocost.*;
 import knowledge.dp.backpack.zeroOne.ZeroOnePack;
 
 /**
@@ -14,7 +15,7 @@ import knowledge.dp.backpack.zeroOne.ZeroOnePack;
  * @see CompletePack 完全背包
  * @see MultiplePack 多重背包
  * @see GroupPack    分组背包
- * @see knowledge.dp.backpack.twocost.TwoCost 二维费用
+ * @see TwoCost_dp_3d 二维费用
  * @see knowledge.dp.backpack.lintcode lintcode 背包问题
  */
 public interface BackPack {
