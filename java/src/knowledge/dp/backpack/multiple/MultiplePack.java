@@ -5,7 +5,7 @@ import knowledge.dp.backpack.lintcode.*;
 /**
  * @author wujingxinit@outlook.com
  * @date 2024/1/22 00:03
- * @description 多重背包 实际上是01背包问题的扩展
+ * @description 多重背包 实际上是01背包问题的扩展。同时是分组背包的特殊形式
  * @link <a href="https://github.com/cherryljr/LintCode/blob/master/Backpack%20VII.java"></a>
  * @see BackpackVII
  * @see BackpackVIII

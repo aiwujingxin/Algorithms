@@ -43,5 +43,4 @@ public class TwoCost_dp_2d implements TwoCostPack {
             this.parentNode = parentNode;
         }
     }
-
 }

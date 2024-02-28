@@ -11,7 +11,7 @@ public interface GroupPack {
     /**
      * @param N N组背包
      * @param m 背包容量m
-     * @param C 每组M个物品
+     * @param C 每组C个物品
      * @param V 每组各个物品费用 V[k][i]
      * @param W 每组物品个数价值 W[k][i]
      */

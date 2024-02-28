@@ -1,6 +1,7 @@
 package knowledge.dp.backpack.twocost;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author wujingxinit@outlook.com
@@ -25,6 +26,7 @@ public class TwoCost_dp_3d implements TwoCostPack {
         int volume = V;
         int weight = W;
         for (int i = N; i >= 1; i--) {
+            //dp[i][weight][volume] == dp[i - 1][weight][volume] + values[i - 1] 这样也行
             if (dp[i][weight][volume] != dp[i - 1][weight][volume]) {
                 result.add(i - 1);
                 volume -= volumes[i - 1];
