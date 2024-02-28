@@ -1,6 +1,6 @@
 package knowledge.dp.backpack.lintcode;
 
-import knowledge.dp.backpack.complete.CompletePack;
+import knowledge.dp.backpack.complete.*;
 
 /**
  * @author wujingxinit@outlook.com

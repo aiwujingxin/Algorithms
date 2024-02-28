@@ -3,7 +3,7 @@ package leetcode.problems;
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/11/21 23:04
- * @description 完全背包 方案数 按题意其实求的排列数
+ * @description 完全背包 方案排列数
  */
 public class LeetCode377 {
 

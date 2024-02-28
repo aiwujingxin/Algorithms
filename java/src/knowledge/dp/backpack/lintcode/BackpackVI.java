@@ -1,12 +1,12 @@
 package knowledge.dp.backpack.lintcode;
 
-import leetcode.problems.LeetCode377;
+import leetcode.problems.*;
 
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/8/7 22:18
- * @description 完全背包 不同排列 方案数
- * 假设你身上有 n 元，超市里有多种大米可以选择，每种大米都是袋装的，必须整袋购买，给出每种大米的重量，价格以及数量，求最多能买多少公斤的大米
+ * @description 完全背包 排列数
+ * 给定一个包含所有正数且没有重复数的整数nums，找出加起来等于正整数target的可能组合的数目。
  * @see LeetCode377
  */
 public class BackpackVI {

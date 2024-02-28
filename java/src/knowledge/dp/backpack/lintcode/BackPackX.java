@@ -10,13 +10,13 @@ package knowledge.dp.backpack.lintcode;
  */
 public class BackPackX {
 
-    public int backPackX(int n) {
-        final int[] coins = new int[]{150, 250, 350};
+    public int backPack(int n) {
+        int[] coins = new int[]{150, 250, 350};
         int[] dp = new int[n + 1];
         for (int i = 0; i * coins[0] <= n; i++) {
             dp[i * coins[0]] = i * coins[0];
         }
-        for (int i = 1; i < 3; i++) {
+        for (int i = 0; i < 3; i++) {
             for (int j = coins[i]; j <= n; j++) {
                 dp[j] = Math.max(dp[j], dp[j - coins[i]] + coins[i]);
             }
