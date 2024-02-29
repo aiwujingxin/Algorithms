@@ -1,4 +1,4 @@
-package knowledge.dp.backpack.dependence;
+package knowledge.dp.backpack.depend;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,6 +6,8 @@ import java.util.List;
 /**
  * @author wujingxinit@outlook.com
  * @date 2024/2/29 10:45
+ * @description 依赖关系只有一层
+ * <a href="https://www.acwing.com/problem/content/489/">金明的预算方案</a>
  */
 public class DependPack_dp implements DependPack {
 

@@ -12,12 +12,12 @@ public class Multiple_queue implements MultiplePack {
 
     @Override
     public int backPack(int[] C, int[] W, int[] S, int V) {
-        int n = C.length;
+        int N = C.length;
         int[] dp = new int[V + 1];
         int[] pre = new int[V + 1];
         // 构建单调队列
         Deque<Integer> q = new LinkedList<>();
-        for (int i = 0; i < n; i++) {
+        for (int i = 0; i < N; i++) {
             int c = C[i];
             int w = W[i];
             int m = S[i];

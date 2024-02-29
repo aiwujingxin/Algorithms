@@ -17,8 +17,8 @@ public interface MultiplePack {
     /**
      * @param C 第i种物品的费用是 Ci
      * @param W 第i种物品的价值是 Wi
-     * @param S 第i种物品的数量是 Si
+     * @param N 第i种物品的数量是 Ni
      * @param V 背包容量为 V
      */
-    int backPack(int[] C, int[] W, int[] S, int V);
+    int backPack(int[] C, int[] W, int[] N, int V);
 }

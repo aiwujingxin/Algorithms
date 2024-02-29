@@ -1,8 +1,9 @@
-package knowledge.dp.backpack.dependence;
+package knowledge.dp.backpack.depend;
 
 /**
  * @author wujingxinit@outlook.com
  * @date 2024/2/29 10:38
+ * @description 有依赖的背包问题: 树形DP+ 分组背包问题
  */
 public interface DependPack {
 
