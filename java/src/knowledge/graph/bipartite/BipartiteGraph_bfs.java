@@ -1,7 +1,7 @@
 package knowledge.graph.bipartite;
 
 
-import knowledge.graph.*;
+import knowledge.graph.BipartiteGraph;
 
 import java.util.*;
 

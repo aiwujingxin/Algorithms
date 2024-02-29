@@ -1,6 +1,6 @@
 package knowledge.dp.backpack.complete;
 
-import java.util.*;
+import java.util.Arrays;
 
 /**
  * @author wujingxinit@outlook.com

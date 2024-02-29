@@ -1,8 +1,11 @@
 package knowledge.graph.bipartite;
 
-import knowledge.graph.*;
+import knowledge.graph.BipartiteGraph;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
 
 /**
  * @author wujingxinit@outlook.com

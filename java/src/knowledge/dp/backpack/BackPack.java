@@ -1,12 +1,12 @@
 package knowledge.dp.backpack;
 
-import knowledge.dp.backpack.complete.*;
-import knowledge.dp.backpack.dependence.*;
-import knowledge.dp.backpack.group.*;
-import knowledge.dp.backpack.lintcode.*;
-import knowledge.dp.backpack.multiple.*;
-import knowledge.dp.backpack.twocost.*;
-import knowledge.dp.backpack.zeroOne.*;
+import knowledge.dp.backpack.complete.CompletePack;
+import knowledge.dp.backpack.dependence.DependPack;
+import knowledge.dp.backpack.group.GroupPack;
+import knowledge.dp.backpack.lintcode.Problems;
+import knowledge.dp.backpack.multiple.MultiplePack;
+import knowledge.dp.backpack.twocost.TwoCostPack;
+import knowledge.dp.backpack.zeroOne.ZeroOnePack;
 
 /**
  * @author wujingxinit@outlook.com

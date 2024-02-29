@@ -1,6 +1,9 @@
 package knowledge.dp.backpack.complete;
 
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/7/18 12:33
@@ -19,6 +22,17 @@ public class Complete_dp_2d implements CompletePack {
                 }
             }
         }
+        List<Integer> result = new ArrayList<>();
+        int i = N;
+        int v = V;
+        while (i > 0) {
+            if (v - C[i - 1] >= 0 && dp[i][v] == dp[i][v - C[i - 1]] + W[i - 1]) {
+                result.add(i - 1);
+                v -= C[i - 1];
+            }
+            i--;
+        }
+        System.out.println("选择的物品编号为：" + result);
         return dp[N][V];
     }
 }

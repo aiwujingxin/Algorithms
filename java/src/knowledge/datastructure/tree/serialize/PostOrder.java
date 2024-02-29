@@ -1,9 +1,10 @@
 package knowledge.datastructure.tree.serialize;
 
-import common.*;
+import common.TreeNode;
 import knowledge.datastructure.tree.Serialize;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  * @author wujingxinit@outlook.com

@@ -1,6 +1,6 @@
 package knowledge.graph.shortestpath;
 
-import knowledge.graph.*;
+import knowledge.graph.ShortestPath;
 import leetcode.problems.LeetCode1514_Dijkstra;
 import leetcode.problems.LeetCode1631;
 import leetcode.problems.LeetCode1786;

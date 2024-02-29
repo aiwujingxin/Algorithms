@@ -1,6 +1,6 @@
 package knowledge.datastructure.tree.serialize;
 
-import common.*;
+import common.TreeNode;
 import knowledge.datastructure.tree.Serialize;
 
 /**

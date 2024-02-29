@@ -1,7 +1,6 @@
 package leetcode.problems;
 
 
-import java.util.Comparator;
 import java.util.PriorityQueue;
 
 /**

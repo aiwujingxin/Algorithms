@@ -1,6 +1,7 @@
 package knowledge.dp.backpack.multiple;
 
-import knowledge.dp.backpack.lintcode.*;
+import knowledge.dp.backpack.lintcode.BackpackVII;
+import knowledge.dp.backpack.lintcode.BackpackVIII;
 
 /**
  * @author wujingxinit@outlook.com

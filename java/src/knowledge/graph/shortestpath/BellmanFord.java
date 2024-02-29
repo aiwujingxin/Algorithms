@@ -1,10 +1,10 @@
 package knowledge.graph.shortestpath;
 
-import knowledge.graph.*;
+import knowledge.graph.ShortestPath;
 import leetcode.problems.LeetCode2093_Bellman;
 import leetcode.problems.LeetCode787_BellmanFord;
 
-import java.util.*;
+import java.util.Arrays;
 
 /**
  * @author wujingxinit@outlook.com

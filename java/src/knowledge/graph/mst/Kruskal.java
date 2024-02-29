@@ -1,8 +1,11 @@
 package knowledge.graph.mst;
 
-import knowledge.graph.*;
+import knowledge.graph.MinimumTree;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
 
 /**
  * @author aiwujingxin@gmail.com

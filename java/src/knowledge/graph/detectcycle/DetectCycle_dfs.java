@@ -2,7 +2,9 @@ package knowledge.graph.detectcycle;
 
 import knowledge.graph.DetectCycle;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 /**
  * @author wujingxinit@outlook.com

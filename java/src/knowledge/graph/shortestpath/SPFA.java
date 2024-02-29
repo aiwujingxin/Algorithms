@@ -1,6 +1,6 @@
 package knowledge.graph.shortestpath;
 
-import knowledge.graph.*;
+import knowledge.graph.ShortestPath;
 import leetcode.problems.LeetCode1514_SPFA;
 
 import java.util.*;

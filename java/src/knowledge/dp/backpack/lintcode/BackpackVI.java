@@ -1,6 +1,6 @@
 package knowledge.dp.backpack.lintcode;
 
-import leetcode.problems.*;
+import leetcode.problems.LeetCode377;
 
 /**
  * @author wujingxinit@outlook.com

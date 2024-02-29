@@ -1,6 +1,5 @@
 package leetcode.lists.lcr;
 
-import java.util.Comparator;
 import java.util.PriorityQueue;
 
 /**

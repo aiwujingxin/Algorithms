@@ -1,8 +1,8 @@
 package knowledge.datastructure.tree;
 
-import common.*;
+import common.TreeNode;
 
-import java.util.*;
+import java.util.List;
 
 /**
  * @author wujingxinit@outlook.com

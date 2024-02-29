@@ -1,6 +1,7 @@
 package knowledge.dp.backpack.twocost;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author wujingxinit@outlook.com

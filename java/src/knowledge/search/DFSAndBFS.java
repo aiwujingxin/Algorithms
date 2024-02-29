@@ -1,7 +1,8 @@
 package knowledge.search;
 
 
-import knowledge.datastructure.tree.*;
+import knowledge.datastructure.tree.DFS;
+import knowledge.datastructure.tree.Iteration;
 
 /**
  * @author wujingxinit@outlook.com
