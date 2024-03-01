@@ -1,7 +1,6 @@
 package knowledge.dp.backpack.zeroOne;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 /**
  * @author wujingxinit@outlook.com
@@ -16,9 +15,7 @@ public class ZeroOne_dp_2d implements ZeroOnePack {
     public int backPack(int[] C, int[] W, int V) {
         int N = C.length;
         int[][] dp = new int[N + 1][V + 1];
-        int[][] g = new int[N + 1][V + 1];
         int[][] f = new int[N + 1][V + 1];
-        g[0][0] = 1;
         f[0][0] = 1;
         for (int i = 1; i <= N; i++) {
             for (int v = 0; v <= V; v++) {
@@ -27,11 +24,6 @@ public class ZeroOne_dp_2d implements ZeroOnePack {
                 if (v >= C[i - 1]) {
                     dp[i][v] = Math.max(dp[i - 1][v], dp[i - 1][v - C[i - 1]] + W[i - 1]);
                     f[i][v] += f[i - 1][v - C[i - 1]];
-                }
-                if (dp[i][v] == dp[i - 1][v]) {
-                    g[i][v] += g[i - 1][v];
-                } else if (v - C[i - 1] >= 0 && dp[i][v] == dp[i - 1][v - C[i - 1]] + W[i - 1]) {
-                    g[i][v] += g[i - 1][v - C[i - 1]];
                 }
             }
         }
@@ -47,7 +39,6 @@ public class ZeroOne_dp_2d implements ZeroOnePack {
         }
         System.out.println("选择的物品编号为:" + result);
         System.out.println("方案的总数:" + f[N][V]);
-        System.out.println("最优方案的总数:" + g[N][V]);
         return dp[N][V];
     }
 }

@@ -1,7 +1,6 @@
 package leetcode.lists.lcci;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 /**
  * @author wujingxinit@outlook.com
@@ -12,11 +11,8 @@ public class LCCI0814 {
 
     Map<String, int[]> memo;
 
-    int result;
-
     public int countEval(String s, int result) {
-        memo = new HashMap<>();
-        this.result = result;
+        this.memo = new HashMap<>();
         return dfs(s)[result];
     }
 
@@ -39,14 +35,8 @@ public class LCCI0814 {
         int[] curRes = new int[2];
         for (int i = 0; i < s.length(); i++) {
             char ch = s.charAt(i);
-
-            if (ch >= '0' && ch <= '9') {
-                continue;
-            }
-
             int[] left = dfs(s.substring(0, i));
             int[] right = dfs(s.substring(i + 1));
-
             for (int l = 0; l <= 1; l++) {
                 for (int r = 0; r <= 1; r++) {
                     int ret = 0;

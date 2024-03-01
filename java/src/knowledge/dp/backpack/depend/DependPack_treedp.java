@@ -1,7 +1,6 @@
 package knowledge.dp.backpack.depend;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 /**
  * @author wujingxinit@outlook.com
@@ -16,24 +15,24 @@ public class DependPack_treedp implements DependPack {
     int V;
     int root;
     int[][] dp;
-    Bag[] graph;
+    Item[] bag;
 
     @Override
     public int backPack(int[][] items, int V, int N) {
         this.V = V;
-        this.graph = new Bag[N + 1];
+        this.bag = new Item[N + 1];
         this.dp = new int[N + 1][V + 1];
         for (int i = 0; i <= N; i++) {
-            graph[i] = new Bag();
+            bag[i] = new Item();
         }
         for (int i = 1; i <= N; i++) {
-            graph[i].v = items[i - 1][0];
-            graph[i].w = items[i - 1][1];
+            bag[i].v = items[i - 1][0];
+            bag[i].w = items[i - 1][1];
             int p = items[i - 1][2];
             if (p == -1) {
                 root = i;
             } else {
-                graph[p].list.add(i);
+                bag[p].children.add(i);
             }
         }
         dfs(root);
@@ -41,27 +40,28 @@ public class DependPack_treedp implements DependPack {
     }
 
     public void dfs(int x) {
-        for (int i = graph[x].v; i <= V; i++) {
-            dp[x][i] = graph[x].w;
+        for (int i = bag[x].v; i <= V; i++) {
+            dp[x][i] = bag[x].w;
         }
-        for (int i = 1; i < graph[x].list.size(); i++) {
-            int u = graph[x].list.get(i);
+        for (int i = 1; i < bag[x].children.size(); i++) {
+            int u = bag[x].children.get(i);
             dfs(u);
-            for (int j = V; j >= graph[x].v; j--) {
-                for (int k = 0; k <= j - graph[x].v; k++) {
+            for (int j = V; j >= bag[x].v; j--) {
+                for (int k = 0; k <= j - bag[x].v; k++) {
                     dp[x][j] = Math.max(dp[x][j], dp[x][j - k] + dp[u][k]);
                 }
             }
         }
     }
 
-    static class Bag {
-        int v, w;
-        List<Integer> list;
+    static class Item {
+        int v;
+        int w;
+        List<Integer> children;
 
-        public Bag() {
-            this.list = new ArrayList<>();
-            list.add(0);
+        public Item() {
+            this.children = new ArrayList<>();
+            children.add(0);
         }
     }
 }

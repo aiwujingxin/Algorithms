@@ -36,7 +36,6 @@ public class TwoCost_dp_3d implements TwoCostPack {
         for (Integer index : result) {
             System.out.println("选择物品 " + index + ",它的价值" + values[index] + ".");
         }
-        System.out.println("最大价值 " + dp[N][W][V]);
         return dp[N][W][V];
     }
 }

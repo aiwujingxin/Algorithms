@@ -13,7 +13,7 @@ public class BackpackI {
     public int backPack(int V, int[] A) {
         int N = A.length;
         int[] dp = new int[V + 1];
-        for (int i = 0; i < N; i++) {
+        for (int i = 1; i < N; i++) {
             for (int v = V; v >= A[i]; v--) {
                 dp[v] = Math.max(dp[v], dp[v - A[i]] + A[i]);
             }
