@@ -14,8 +14,11 @@ package knowledge.algorithms.greedy;
  * sort by starting point the minimum nunber of intervals to cover the whole range
  * sort by ending point: the maximum number of non-overlapping intervals
  * 2.DP
+ * @see leetcode.problems.LeetCode435 无重叠区间
  * @see leetcode.problems.LeetCode452 用最少数量的箭引爆气球
  * @see leetcode.problems.LeetCode453 最小操作次数使数组元素相等
+ * @see leetcode.problems.LeetCode646
+ * 会议室
  */
 public interface Greedy {
 }

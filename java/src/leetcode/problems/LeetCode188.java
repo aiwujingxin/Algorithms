@@ -1,32 +1,25 @@
 package leetcode.problems;
 
-import java.util.Arrays;
-
 /**
  * @author aiwujingxin@gmail.com
  * @date 2023/11/28 23:24
  */
 public class LeetCode188 {
 
-    public int maxProfit(int K, int[] prices) {
-        int[] hold = new int[K + 1];
-        int[] sold = new int[K + 1];
-        Arrays.fill(hold, Integer.MIN_VALUE / 2);
-        Arrays.fill(sold, Integer.MIN_VALUE / 2);
-        hold[0] = 0;
-        sold[0] = 0;
-        for (int price : prices) {
-            int[] holdOld = hold.clone();
-            int[] soldOld = sold.clone();
-            for (int k = 1; k <= K; k++) {
-                hold[k] = Math.max(soldOld[k - 1] - price, holdOld[k]);
-                sold[k] = Math.max(holdOld[k] + price, soldOld[k]);
+    public int maxProfit(int k, int[] prices) {
+        int n = prices.length;
+        int[][][] f = new int[n + 1][k + 1][2];
+        for (int i = 0; i <= n; i++) {
+            for (int j = 0; j <= k; j++) {
+                f[i][j][1] = Integer.MIN_VALUE;
             }
         }
-        int result = Integer.MIN_VALUE;
-        for (int j = 0; j <= K; j++) {
-            result = Math.max(result, sold[j]);
+        for (int i = 1; i <= n; i++) {
+            for (int j = 1; j <= k; j++) {
+                f[i][j][0] = Math.max(f[i - 1][j][0], f[i - 1][j][1] + prices[i - 1]);
+                f[i][j][1] = Math.max(f[i - 1][j][1], f[i - 1][j - 1][0] - prices[i - 1]);
+            }
         }
-        return result;
+        return f[n][k][0];
     }
 }

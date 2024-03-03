@@ -9,9 +9,6 @@ import common.TreeNode;
 public class LeetCode337 {
 
     public int rob(TreeNode root) {
-        if (root == null) {
-            return 0;
-        }
         int[] res = dfs(root);
         return Math.max(res[0], res[1]);
     }

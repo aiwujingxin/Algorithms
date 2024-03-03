@@ -2,69 +2,25 @@ package knowledge.algorithms.greedy.impl;
 
 import knowledge.dp.backpack.zeroOne.ZeroOnePack;
 
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
-
+import java.util.Arrays;
 
 public class Backpack_greedy implements ZeroOnePack {
 
     @Override
-    public int backPack(int[] weight, int[] goodsValue, int packageWeight) {
+    public int backPack(int[] C, int[] W, int V) {
         int sum = 0;
-        List<Goods> goods = getGoods(goodsValue, weight);
-        goods.sort(Comparator.comparing(Goods::getPw));
-        for (int i = goodsValue.length - 1; i >= 0; i--) {
-            if (packageWeight >= weight[i]) {
-                sum += goodsValue[i];
-                packageWeight -= weight[i];
+        int N = W.length;
+        double[][] goods = new double[N][];
+        for (int i = 0; i < N; i++) {
+            goods[i] = new double[]{(double) C[i], (double) W[i], (double) W[i] / (double) C[i]};
+        }
+        Arrays.sort(goods, ((o1, o2) -> Double.compare(o2[2], o1[2])));
+        for (int i = 0; i < N; i++) {
+            if (V >= goods[i][0]) {
+                sum += (int) goods[i][1];
+                V -= (int) goods[i][0];
             }
         }
         return sum;
-    }
-
-    List<Goods> getGoods(int[] goodsValue, int[] weight) {
-        int length = goodsValue.length;
-        List<Goods> goods = new ArrayList<>();
-        for (int i = 0; i < length; i++) {
-            goods.add(new Goods(goodsValue[i], weight[i], (double) goodsValue[i] / (double) weight[i]));
-        }
-        return goods;
-    }
-
-    public static class Goods {
-        int prices;
-        int weight;
-        double pw;
-
-        public Goods(int prices, int weight, double pw) {
-            this.prices = prices;
-            this.weight = weight;
-            this.pw = pw;
-        }
-
-        public int getPrices() {
-            return prices;
-        }
-
-        public void setPrices(int prices) {
-            this.prices = prices;
-        }
-
-        public int getWeight() {
-            return weight;
-        }
-
-        public void setWeight(int weight) {
-            this.weight = weight;
-        }
-
-        public double getPw() {
-            return pw;
-        }
-
-        public void setPw(double pw) {
-            this.pw = pw;
-        }
     }
 }

@@ -7,23 +7,20 @@ package leetcode.problems;
 public class LeetCode123 {
 
     public int maxProfit(int[] prices) {
-        if (prices == null || prices.length == 0) {
-            return 0;
+        int n = prices.length;
+        int k = 2;
+        int[][][] dp = new int[n + 1][k + 1][2];
+        for (int i = 0; i <= n; i++) {
+            for (int j = 0; j <= k; j++) {
+                dp[i][j][1] = Integer.MIN_VALUE;
+            }
         }
-        // init值有讲究
-        int hold1 = Integer.MIN_VALUE;
-        int sold1 = 0;
-        int hold2 = Integer.MIN_VALUE;
-        int sold2 = 0;
-        for (int price : prices) {
-            int hold1temp = hold1;
-            int sold1temp = sold1;
-            int hold2temp = hold2;
-            hold1 = Math.max(-price, hold1temp);
-            sold1 = Math.max(hold1temp + price, sold1temp);
-            hold2 = Math.max(sold1temp - price, hold2temp);
-            sold2 = Math.max(hold2temp + price, sold2);
+        for (int i = 1; i <= n; i++) {
+            for (int j = 1; j <= k; j++) {
+                dp[i][j][0] = Math.max(dp[i - 1][j][0], dp[i - 1][j][1] + prices[i - 1]);
+                dp[i][j][1] = Math.max(dp[i - 1][j][1], dp[i - 1][j - 1][0] - prices[i - 1]);
+            }
         }
-        return Math.max(sold1, sold2);
+        return dp[n][k][0];
     }
 }

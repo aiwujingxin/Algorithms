@@ -25,6 +25,8 @@ public interface BIT {
      * 末尾是否为 1
      * (n & 1) == 1
      *
+     * 枚举子集
+     * j = (j - 1) & i1
      * >> arithmetic shift
      * >>> logic shift
      * */
