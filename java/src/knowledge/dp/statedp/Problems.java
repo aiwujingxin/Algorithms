@@ -20,9 +20,8 @@ import leetcode.problems.LeetCode526_dp;
  * @see LeetCode526_dp
  * @see LeetCode1494
  * <基于连通性的状态压缩>
- * <p>
+ * acwing291.cpp 蒙德里安的梦想
  * <集合式状态压缩>
- * @see AcWing92
  * @see LeetCode1349
  */
 public interface Problems {
