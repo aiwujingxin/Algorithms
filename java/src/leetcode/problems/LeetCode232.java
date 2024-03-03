@@ -48,7 +48,7 @@ public class LeetCode232 {
         }
 
         public boolean empty() {
-            return stack2.isEmpty();
+            return stack1.isEmpty() && stack2.isEmpty();
         }
     }
 }

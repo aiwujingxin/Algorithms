@@ -26,8 +26,12 @@ public interface BIT {
      * (n & 1) == 1
      *
      * 枚举子集
-     * j = (j - 1) & i1
-     * >> arithmetic shift
-     * >>> logic shift
+     * for(subset = (A - 1) & A; subset != A; subset = (subset - 1) & A) {...}
+     *
+     *
+     * arithmetic shift
+     * >>
+     * logic shift
+     * >>>
      * */
 }
