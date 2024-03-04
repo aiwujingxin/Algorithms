@@ -1,7 +1,6 @@
 package knowledge.dp.backpack.multiple;
 
-import java.util.Deque;
-import java.util.LinkedList;
+import java.util.*;
 
 /**
  * @author wujingxinit@outlook.com

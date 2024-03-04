@@ -11,19 +11,19 @@ public class LeetCode300_greedy {
         int[] dp = new int[nums.length];
         int len = 0;
         for (int num : nums) {
-            int left = 0, right = len;
-            while (left < right) {
-                int mid = (left + right) / 2;
+            int l = 0, r = len;
+            while (l < r) {
+                int mid = (l + r) / 2;
                 if (dp[mid] < num) {
-                    left = mid + 1;
+                    l = mid + 1;
                 } else {
-                    right = mid;
+                    r = mid;
                 }
             }
-            if (len == right) {
+            if (len == r) {
                 len++;
             }
-            dp[left] = num;
+            dp[l] = num;
         }
         return len;
     }

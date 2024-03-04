@@ -1,8 +1,8 @@
 package leetcode.problems;
 
 /**
- * @author jingxinwu
- * @date 2021-12-12 1:15 上午
+ * @author wujingxinit@outlook.com
+ * @date 2024/3/4 19:59
  */
 public class LeetCode918 {
 
@@ -10,22 +10,28 @@ public class LeetCode918 {
         if (nums == null || nums.length == 0) {
             return 0;
         }
-        int[] dpMax = new int[nums.length];
-        int[] dpMin = new int[nums.length];
-        int max = nums[0];
-        int min = nums[0];
-        int sum = nums[0];
-        dpMax[0] = nums[0];
-        for (int i = 1; i < nums.length; i++) {
-            dpMax[i] = Math.max(dpMax[i - 1] + nums[i], nums[i]);
-            dpMin[i] = Math.min(dpMin[i - 1] + nums[i], nums[i]);
-            max = Math.max(max, dpMax[i]);
-            min = Math.min(min, dpMin[i]);
-            sum += nums[i];
+        int n = nums.length;
+        int[] dp = new int[n];
+        int res = nums[0];
+        dp[0] = nums[0];
+        for (int i = 1; i < n; i++) {
+            dp[i] = Math.max(dp[i - 1], 0) + nums[i];
+            res = Math.max(res, dp[i]);
         }
-        if (max < 0) {
-            return max;
+        int[] presum = new int[n + 1];
+        for (int i = 1; i <= n; i++) {
+            presum[i] = presum[i - 1] + nums[i - 1];
         }
-        return Math.max(sum - min, max);
+        int max = Integer.MIN_VALUE;
+        int[] g = new int[n];
+        for (int i = 1; i <= n; i++) {
+            max = Math.max(presum[i] - presum[0], max);
+            g[i] = max;
+        }
+        for (int i = 1; i <= n; i++) {
+            res = Math.max(res, presum[n] - presum[i] + g[i - 1]);
+        }
+        return res;
     }
 }
+
