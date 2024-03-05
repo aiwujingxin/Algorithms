@@ -2,13 +2,9 @@ package leetcode.problems;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2024/3/4 15:41
+ * @date 2024/3/5 11:34
  */
 public class LeetCode2447 {
-
-    public static void main(String[] args) {
-        System.out.println(new LeetCode2447().subarrayGCD(new int[]{9, 3, 1, 2, 6, 3}, 3));
-    }
 
     public int subarrayGCD(int[] nums, int k) {
         int n = nums.length;
