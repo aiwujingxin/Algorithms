@@ -1,34 +1,34 @@
 package leetcode.problems;
 
-import knowledge.advstructure.BinaryIndexedTree;
+import knowledge.advstructure.BITree;
 
 /**
  * @author wujingxinit@outlook.com
  * @date 2024.01.04 22:26
  */
-public class LeetCode307_BitTree {
+public class LeetCode307 {
 
     class NumArray {
 
-        BinaryIndexedTree bitTree;
+        BITree bitTree;
         int[] nums;
 
         public NumArray(int[] nums) {
             this.nums = nums;
             int n = nums.length;
-            bitTree = new BinaryIndexedTree(n);
+            bitTree = new BITree(n);
             for (int i = 0; i < nums.length; i++) {
-                bitTree.update(i + 1, nums[i]);
+                bitTree.add(i + 1, nums[i]);
             }
         }
 
         public void update(int index, int val) {
-            bitTree.update(index + 1, val - nums[index]);
+            bitTree.add(index + 1, val - nums[index]);
             nums[index] = val;
         }
 
         public int sumRange(int left, int right) {
-            return bitTree.query(right + 1) - bitTree.query(left);
+            return bitTree.sum(right + 1) - bitTree.sum(left);
         }
     }
 }

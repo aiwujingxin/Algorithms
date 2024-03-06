@@ -1,6 +1,6 @@
 package leetcode.problems;
 
-import java.util.Stack;
+import java.util.*;
 
 /**
  * @author wujingxinit@outlook.com
@@ -45,16 +45,17 @@ public class LeetCode962 {
     public int maxWidthRamp_stack(int[] nums) {
         Stack<Integer> stack = new Stack<>();
         for (int i = 0; i < nums.length; i++) {
-            if (stack.isEmpty() || nums[stack.peek()] >= nums[i]) {
+            if (stack.empty() || nums[stack.peek()] > nums[i]) {
                 stack.push(i);
             }
         }
-        int max = 0;
+        int res = 0;
         for (int i = nums.length - 1; i >= 0; i--) {
-            while (!stack.isEmpty() && nums[i] >= nums[stack.peek()]) {
-                max = Math.max(max, i - stack.pop());
+            while (!stack.empty() && nums[stack.peek()] <= nums[i]) {
+                int index = stack.pop();
+                res = Math.max(res, i - index);
             }
         }
-        return max;
+        return res;
     }
 }

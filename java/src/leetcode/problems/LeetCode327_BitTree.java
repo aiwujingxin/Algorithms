@@ -1,6 +1,6 @@
 package leetcode.problems;
 
-import knowledge.advstructure.BinaryIndexedTree;
+import knowledge.advstructure.BITree;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -36,11 +36,11 @@ public class LeetCode327_BitTree {
         }
 
         int ret = 0;
-        BinaryIndexedTree bit = new BinaryIndexedTree(values.size());
+        BITree bit = new BITree(values.size());
         for (long l : preSum) {
             int left = values.get(l - upper), right = values.get(l - lower);
-            ret += bit.query(right + 1) - bit.query(left);
-            bit.update(values.get(l) + 1, 1);
+            ret += bit.sum(right + 1) - bit.sum(left);
+            bit.add(values.get(l) + 1, 1);
         }
         return ret;
     }

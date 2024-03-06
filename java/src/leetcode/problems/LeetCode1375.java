@@ -1,6 +1,6 @@
 package leetcode.problems;
 
-import knowledge.advstructure.BinaryIndexedTree;
+import knowledge.advstructure.BITree;
 
 /**
  * @author jingxinwu
@@ -15,17 +15,17 @@ public class LeetCode1375 {
         }
         n = n + 1;
         int[] nums = new int[n];
-        BinaryIndexedTree bitTree = new BinaryIndexedTree(n + 1);
+        BITree bitTree = new BITree(n + 1);
         for (int i = 0; i < n; i++) {
-            bitTree.update(i + 1, 0);
+            bitTree.add(i + 1, 0);
         }
         int cnt = 0;
         for (int i = 0; i < flips.length; i++) {
             int index = flips[i];
             int diff = (nums[index] == 0 ? 1 : -1);
             nums[index] = (nums[index] == 0 ? 1 : 0);
-            bitTree.update(index + 1, diff);
-            if (bitTree.query(i + 2) - bitTree.query(0) == i + 1) {
+            bitTree.add(index + 1, diff);
+            if (bitTree.sum(i + 2) - bitTree.sum(0) == i + 1) {
                 cnt++;
             }
         }

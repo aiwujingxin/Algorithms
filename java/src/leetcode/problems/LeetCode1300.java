@@ -1,45 +1,71 @@
 package leetcode.problems;
 
-import java.util.Arrays;
-
 /**
  * @author wujingxinit@outlook.com
- * @date 2023/5/20 08:34
+ * @date 2024/3/6 08:34
  */
 public class LeetCode1300 {
 
     public int findBestValue(int[] arr, int target) {
-        Arrays.sort(arr);
-        int n = arr.length;
-        int[] prefix = new int[n + 1];
-        for (int i = 1; i <= n; ++i) {
-            prefix[i] = prefix[i - 1] + arr[i - 1];
+        int sum = 0;
+        int max = 0;
+        for (int j : arr) {
+            sum += j;
+            max = Math.max(max, j);
         }
-        int r = arr[n - 1];
-        int ans = 0, diff = target;
-        for (int i = 1; i <= r; ++i) {
-            int index = binarySearch(arr, i + 1);
-            int cur = prefix[index] + (n - index) * i;
-            if (Math.abs(cur - target) < diff) {
-                ans = i;
-                diff = Math.abs(cur - target);
-            }
+        if (sum < target) {
+            return max;
         }
-        return ans;
+        int low = leftBound(arr, target);
+        int up = rightBound(arr, target);
+        int ls = check(arr, low);
+        int us = check(arr, up);
+        if (Math.abs(ls - target) < Math.abs(us - target)) {
+            return low;
+        }
+        if (Math.abs(ls - target) > Math.abs(us - target)) {
+            return up;
+        }
+        return Math.min(low, up);
     }
 
-    // 第一个大于等于target的数
-    private int binarySearch(int[] nums, int target) {
-        int l = 0;
-        int r = nums.length - 1;
-        while (l < r) {
-            int mid = l + r >> 1;
-            if (nums[mid] >= target) {
-                r = mid;
+    // 使 sum >= target 的最小值
+    public int leftBound(int[] arr, int target) {
+        int left = 0;
+        int right = target;
+        while (left < right) {
+            int mid = (left + right) / 2;
+            int t = check(arr, mid);
+            if (t < target) {
+                left = mid + 1;
             } else {
-                l = mid + 1;
+                right = mid;
             }
         }
-        return l;
+        return left;
+    }
+
+    // 使 sum <= target 的最大值
+    public int rightBound(int[] arr, int target) {
+        int left = 0;
+        int right = target;
+        while (left < right) {
+            int mid = (left + right + 1) / 2;
+            int t = check(arr, mid);
+            if (t > target) {
+                right = mid - 1;
+            } else {
+                left = mid;
+            }
+        }
+        return left;
+    }
+
+    private int check(int[] arr, int mid) {
+        int sum = 0;
+        for (int j : arr) {
+            sum += Math.min(j, mid);
+        }
+        return sum;
     }
 }

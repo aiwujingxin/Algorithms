@@ -1,6 +1,8 @@
 package knowledge.advstructure;
 
 
+import leetcode.problems.*;
+
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/5/23 18:32
@@ -9,33 +11,29 @@ package knowledge.advstructure;
  * lowbit : 运算找出整数在二进制表示下所有等子1的位: 找parent的方式是把最右边的1砍掉==孩子的二进制从右边起比 parent 多 1
  * @link <a href="https://leetcode.cn/problems/range-sum-query-mutable/solution/guan-yu-ge-lei-qu-jian-he-wen-ti-ru-he-x-41hv/">模版</a>
  * @link <a href="https://www.youtube.com/watch?v=v2Q4ZjPeFuc">讲解</a>
- * @see leetcode.problems.LeetCode307_BitTree
- * @see leetcode.problems.LeetCode308
- * @see leetcode.problems.LeetCode315_BitTree
- * @see leetcode.problems.LeetCode327_BitTree
- * @see leetcode.problems.LeetCode493_bittree
- * @see leetcode.problems.LeetCode673_BitTree
- * @see leetcode.problems.LeetCode683_bittree
- * @see leetcode.problems.LeetCode1649
+ * @see LeetCode307 一维
+ * @see LeetCode308 二维
+ * @see LeetCode315_BitTree
+ * @see LeetCode327_BitTree
+ * @see LeetCode493_bittree
+ * @see LeetCode673_BitTree
+ * @see LeetCode683_bittree
+ * @see LeetCode1649
  */
-public class BinaryIndexedTree {
+public class BITree {
     int[] tree;
 
-    public BinaryIndexedTree(int n) {
+    public BITree(int n) {
         this.tree = new int[n + 1];
     }
 
-    public void update(int x, int u) {
-        for (int i = x; i < tree.length; i += lowbit(i)) tree[i] += u;
+    public void add(int x, int u) {
+        for (int i = x; i < tree.length; i += (i & (-i))) tree[i] += u;
     }
 
-    public int query(int x) {
+    public int sum(int x) {
         int sum = 0;
-        for (int i = x; i > 0; i -= lowbit(i)) sum += tree[i];
+        for (int i = x; i > 0; i -= (i & (-i))) sum += tree[i];
         return sum;
-    }
-
-    public int lowbit(int x) {
-        return x & (-x);
     }
 }

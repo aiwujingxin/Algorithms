@@ -1,6 +1,6 @@
 package leetcode.problems;
 
-import knowledge.advstructure.BinaryIndexedTree;
+import knowledge.advstructure.BITree;
 
 /**
  * @author wujingxinit@outlook.com
@@ -11,16 +11,16 @@ public class LeetCode2424 {
 
     class LUPrefix {
 
-        BinaryIndexedTree bitTree;
+        BITree bitTree;
         int n;
 
         public LUPrefix(int n) {
             this.n = n;
-            this.bitTree = new BinaryIndexedTree(n + 1);
+            this.bitTree = new BITree(n + 1);
         }
 
         public void upload(int video) {
-            bitTree.update(video, 1);
+            bitTree.add(video, 1);
         }
 
         public int longest() {
@@ -28,7 +28,7 @@ public class LeetCode2424 {
             int right = n;
             while (left < right) {
                 int mid = (left + right + 1) / 2;
-                int sum = bitTree.query(mid + 1) - bitTree.query(0);
+                int sum = bitTree.sum(mid + 1) - bitTree.sum(0);
                 if (sum < mid) {
                     right = mid - 1;
                 } else {

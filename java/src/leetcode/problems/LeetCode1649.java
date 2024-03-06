@@ -1,6 +1,6 @@
 package leetcode.problems;
 
-import knowledge.advstructure.BinaryIndexedTree;
+import knowledge.advstructure.BITree;
 
 /**
  * @author wujingxinit@outlook.com
@@ -11,13 +11,13 @@ public class LeetCode1649 {
     public int createSortedArray(int[] instructions) {
         int mod = 1000000007;
         int cost = 0;
-        BinaryIndexedTree bit = new BinaryIndexedTree(1000000);
+        BITree bit = new BITree(1000000);
         for (int i = 0; i < instructions.length; ++i) {
             int x = instructions[i];
-            int smaller = bit.query(x - 1);
-            int larger = i - bit.query(x);
+            int smaller = bit.sum(x - 1);
+            int larger = i - bit.sum(x);
             cost = (cost + Math.min(smaller, larger)) % mod;
-            bit.update(x, 1);
+            bit.add(x, 1);
         }
         return cost % mod;
     }

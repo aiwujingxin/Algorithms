@@ -1,6 +1,6 @@
 package leetcode.problems;
 
-import knowledge.advstructure.BinaryIndexedTree;
+import knowledge.advstructure.BITree;
 
 import java.util.*;
 
@@ -28,15 +28,15 @@ public class LeetCode315_BitTree {
             map.put(num, rank);
             rank++;
         }
-        BinaryIndexedTree tree = new BinaryIndexedTree(set.size() + 1);
+        BITree tree = new BITree(set.size() + 1);
         // 从后向前填表
         for (int i = n - 1; i >= 0; i--) {
             // 1、查询排名
             rank = map.get(nums[i]);
             // 2、在树状数组排名的那个位置 + 1
-            tree.update(rank, 1);
+            tree.add(rank, 1);
             // 3、查询一下小于等于“当前排名 - 1”的元素有多少
-            res.add(tree.query(rank - 1));
+            res.add(tree.sum(rank - 1));
         }
         Collections.reverse(res);
         return res;
