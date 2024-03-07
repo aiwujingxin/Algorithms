@@ -9,26 +9,22 @@ import java.util.PriorityQueue;
 public class LeetCode378 {
 
     public int kthSmallest(int[][] matrix, int k) {
-        PriorityQueue<int[]> pq = new PriorityQueue<>((a, b) -> (a[0] - b[0]));
-
-        for (int i = 0; i < matrix.length; i++) {
-            pq.add(new int[]{matrix[i][0], i, 0});
+        int m = matrix.length;
+        int n = matrix[0].length;
+        PriorityQueue<int[]> queue = new PriorityQueue<>((o1, o2) -> {
+            return o1[2] - o2[2];
+        });
+        for (int i = 0; i < m; i++) {
+            queue.add(new int[]{i, 0, matrix[i][0]});
         }
-
-        while (!pq.isEmpty() && k-- > 0) {
-            int[] curr = pq.poll();
-            if (k == 0) {
-                return curr[0];
+        for (int j = 1; j < k; j++) {
+            int[] node = queue.poll();
+            int col = node[1];
+            if (col < n - 1) {
+                queue.add(new int[]{node[0], col + 1, matrix[node[0]][col + 1]});
             }
-
-            if (curr[2] == matrix[0].length - 1) {
-                continue;
-            }
-
-            pq.offer(new int[]{matrix[curr[1]][curr[2] + 1], curr[1], curr[2] + 1});
         }
-
-        return -1;
+        return queue.peek()[2];
     }
 
     public int kthSmallest_bs(int[][] matrix, int k) {

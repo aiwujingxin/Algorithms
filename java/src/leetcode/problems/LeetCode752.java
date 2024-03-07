@@ -23,18 +23,13 @@ public class LeetCode752 {
         }
         queue.add("0000");
         visited.add("0000");
-
         int step = 0;
         while (!queue.isEmpty()) {
             step++;
             int size = queue.size();
-            while (size > 0) {
-
-                String s = queue.poll();
-
-                List<String> list = getList(s);
-
-                for (String next : list) {
+            for (int i = 0; i < size; i++) {
+                String node = queue.poll();
+                for (String next : getNexts(node)) {
                     if (dead.contains(next)) {
                         continue;
                     }
@@ -48,14 +43,12 @@ public class LeetCode752 {
                     queue.add(next);
 
                 }
-                size--;
             }
-
         }
         return -1;
     }
 
-    private List<String> getList(String s) {
+    private List<String> getNexts(String s) {
         char[] chars = s.toCharArray();
         List<String> list = new ArrayList<>();
         for (int i = 0; i < chars.length; i++) {
