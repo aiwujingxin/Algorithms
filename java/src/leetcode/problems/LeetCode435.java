@@ -1,7 +1,6 @@
 package leetcode.problems;
 
-import java.util.Arrays;
-import java.util.Comparator;
+import java.util.*;
 
 /**
  * @author wujingxinit@outlook.com
@@ -11,19 +10,19 @@ import java.util.Comparator;
 public class LeetCode435 {
 
     public int eraseOverlapIntervals(int[][] intervals) {
-        if (intervals.length == 0) {
-            return 0;
-        }
-        Arrays.sort(intervals, Comparator.comparingInt(interval -> interval[1]));
-        int n = intervals.length;
+        return intervals.length - solve(intervals);
+    }
+
+    public int solve(int[][] intervals) {
+        Arrays.sort(intervals, Comparator.comparingInt(o -> o[1]));
         int end = intervals[0][1];
         int cnt = 1;
-        for (int[] interval : intervals) {
-            if (interval[0] >= end) {
-                end = interval[1];
+        for (int i = 1; i < intervals.length; i++) {
+            if (intervals[i][0] >= end) {
                 cnt++;
+                end = intervals[i][1];
             }
         }
-        return n - cnt;
+        return cnt;
     }
 }

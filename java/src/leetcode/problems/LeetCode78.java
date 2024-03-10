@@ -1,7 +1,6 @@
 package leetcode.problems;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 /**
  * @author wujingxinit@outlook.com
@@ -26,5 +25,19 @@ public class LeetCode78 {
             backtrack(nums, i + 1, res, list);
             list.remove(list.size() - 1);
         }
+    }
+
+    public List<List<Integer>> subsets_bit(int[] nums) {
+        List<List<Integer>> res = new ArrayList<>();
+        for (int i = 0; i < (1 << nums.length); i++) {
+            List<Integer> list = new ArrayList<>();
+            for (int j = 0; j < nums.length; j++) {
+                if ((i >> j & 1) == 1) {
+                    list.add(nums[j]);
+                }
+            }
+            res.add(list);
+        }
+        return res;
     }
 }

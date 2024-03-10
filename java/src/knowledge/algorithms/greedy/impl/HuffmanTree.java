@@ -1,15 +1,16 @@
-package knowledge.advstructure;
+package knowledge.algorithms.greedy.impl;
 
 import java.util.PriorityQueue;
 
 /**
  * @author wujingxinit@outlook.com
  * @date 2022/9/7 13:08
+ * @description 哈夫曼树
  *       from gpt
  */
 public class HuffmanTree {
 
-    private HuffmanNode root;
+    private Node root;
 
     public HuffmanTree() {
         this.root = null;
@@ -25,18 +26,18 @@ public class HuffmanTree {
     }
 
     public void buildTree(char[] characters, int[] frequencies) {
-        PriorityQueue<HuffmanNode> pq = new PriorityQueue<>();
+        PriorityQueue<Node> pq = new PriorityQueue<>();
 
         for (int i = 0; i < characters.length; i++) {
-            HuffmanNode node = new HuffmanNode(characters[i], frequencies[i]);
+            Node node = new Node(characters[i], frequencies[i]);
             pq.offer(node);
         }
 
         while (pq.size() > 1) {
-            HuffmanNode leftNode = pq.poll();
-            HuffmanNode rightNode = pq.poll();
+            Node leftNode = pq.poll();
+            Node rightNode = pq.poll();
 
-            HuffmanNode parentNode = new HuffmanNode('\0', leftNode.frequency + rightNode.frequency);
+            Node parentNode = new Node('\0', leftNode.frequency + rightNode.frequency);
             parentNode.left = leftNode;
             parentNode.right = rightNode;
 
@@ -50,7 +51,7 @@ public class HuffmanTree {
         printCodes(root, "");
     }
 
-    private void printCodes(HuffmanNode node, String code) {
+    private void printCodes(Node node, String code) {
         if (node == null) {
             return;
         }
@@ -63,13 +64,13 @@ public class HuffmanTree {
         printCodes(node.right, code + "1");
     }
 
-    static class HuffmanNode implements Comparable<HuffmanNode> {
+    static class Node implements Comparable<Node> {
         char character;
         int frequency;
-        HuffmanNode left;
-        HuffmanNode right;
+        Node left;
+        Node right;
 
-        public HuffmanNode(char character, int frequency) {
+        public Node(char character, int frequency) {
             this.character = character;
             this.frequency = frequency;
             this.left = null;
@@ -77,7 +78,7 @@ public class HuffmanTree {
         }
 
         @Override
-        public int compareTo(HuffmanNode other) {
+        public int compareTo(Node other) {
             return this.frequency - other.frequency;
         }
     }

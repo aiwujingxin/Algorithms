@@ -20,10 +20,10 @@ public class LeetCode300_greedy {
                     r = mid;
                 }
             }
-            if (len == r) {
+            dp[l] = num;
+            if (l == len) {
                 len++;
             }
-            dp[l] = num;
         }
         return len;
     }

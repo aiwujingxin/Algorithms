@@ -1,4 +1,4 @@
-package knowledge.advstructure;
+package knowledge.advstructure.bst;
 
 /**
  * @author aiwujingxin@gmail.com

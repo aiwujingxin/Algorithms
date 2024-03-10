@@ -1,6 +1,6 @@
 package leetcode.problems;
 
-import knowledge.advstructure.TreapTree;
+import knowledge.advstructure.bst.*;
 
 /**
  * @author wujingxinit@outlook.com

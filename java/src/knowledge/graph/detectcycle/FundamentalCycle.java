@@ -1,9 +1,9 @@
-package knowledge.advstructure;
+package knowledge.graph.detectcycle;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class FundamentalCycleTree {
+public class FundamentalCycle {
 
     public static void main(String[] args) {
         int V = 7; // 图的节点数
@@ -19,7 +19,7 @@ public class FundamentalCycleTree {
         graph.addEdge(5, 6);
         graph.addEdge(6, 3);
 
-        FundamentalCycleTree fct = new FundamentalCycleTree(graph);
+        FundamentalCycle fct = new FundamentalCycle(graph);
         fct.findFundamentalCycleTree();
     }
 
@@ -29,7 +29,7 @@ public class FundamentalCycleTree {
     private final int[] parent;
     private final int[] depth;
 
-    public FundamentalCycleTree(Graph graph) {
+    public FundamentalCycle(Graph graph) {
         this.graph = graph;
         this.V = graph.getAdjacencyList().size();
         this.visited = new boolean[V];

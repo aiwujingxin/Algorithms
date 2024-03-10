@@ -1,6 +1,6 @@
 package knowledge.algorithms.sort;
 
-import java.util.Random;
+import java.util.*;
 
 /**
  * @author wujingxinit@outlook.com
@@ -13,19 +13,18 @@ public class QuickSort implements Sort {
         return nums;
     }
 
-    private void quickSort(int[] nums, int left, int right) {
-        if (left >= right) {
+    public void quickSort(int[] nums, int lo, int hi) {
+        if (lo >= hi) {
             return;
         }
-        int index = partition(nums, left, right);
-        quickSort(nums, left, index - 1);
-        quickSort(nums, index + 1, right);
+        int index = partition(nums, lo, hi);
+        quickSort(nums, lo, index);
+        quickSort(nums, index + 1, hi);
     }
 
-    private int partition(int[] nums, int i, int j) {
-        int ri = new Random().nextInt(j - i + 1) + i; // 随机选一个作为我们的主元
-        swap(nums, ri, i);
-
+    public int partition(int[] nums, int i, int j) {
+        int ri = new Random().nextInt(j - i + 1) + i;
+        swap(nums, i, ri);
         int pi = nums[i];
         while (i < j) {
             while (i < j && nums[j] >= pi) {
@@ -41,9 +40,9 @@ public class QuickSort implements Sort {
         return i;
     }
 
-    private void swap(int[] nums, int ri, int i) {
-        int temp = nums[i];
-        nums[i] = nums[ri];
-        nums[ri] = temp;
+    public void swap(int[] nums, int i, int j) {
+        int t = nums[i];
+        nums[i] = nums[j];
+        nums[j] = t;
     }
 }

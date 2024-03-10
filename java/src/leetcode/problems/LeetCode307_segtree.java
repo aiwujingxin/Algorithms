@@ -1,6 +1,6 @@
 package leetcode.problems;
 
-import knowledge.advstructure.SegmentTree;
+import knowledge.advstructure.SegTree;
 
 /**
  * @author wujingxinit@outlook.com
@@ -11,11 +11,11 @@ public class LeetCode307_segtree {
     class NumArray {
 
         private final int n;
-        private final SegmentTree tree;
+        private final SegTree tree;
 
         public NumArray(int[] nums) {
             n = nums.length;
-            this.tree = new SegmentTree(nums);
+            this.tree = new SegTree(nums);
         }
 
         public void update(int index, int val) {

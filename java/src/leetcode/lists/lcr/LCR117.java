@@ -15,7 +15,7 @@ public class LCR117 {
         UnionFind uf = new UnionFind(strs.length);
         for (int i = 0; i < strs.length; i++) {
             for (int j = 0; j < strs.length; j++) {
-                if (apply(strs[i], strs[j])) {
+                if (check(strs[i], strs[j])) {
                     uf.union(i, j);
                 }
             }
@@ -23,7 +23,7 @@ public class LCR117 {
         return uf.getCount();
     }
 
-    public boolean apply(String s1, String s2) {
+    public boolean check(String s1, String s2) {
         int diff = 0;
         for (int i = 0; i < s1.length(); i++) {
             if (s1.charAt(i) != s2.charAt(i)) {

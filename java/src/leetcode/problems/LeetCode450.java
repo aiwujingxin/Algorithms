@@ -1,12 +1,13 @@
 package leetcode.problems;
 
 import common.TreeNode;
+import knowledge.advstructure.bst.*;
 
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/12/3 13:01
  * @link <a href="https://leetcode.cn/problems/delete-node-in-a-bst/solutions/1531428/by-ac_oier-s60a/"></a>
- * @see knowledge.advstructure.BinarySearchTree
+ * @see BinarySearchTree
  */
 public class LeetCode450 {
 

@@ -1,8 +1,6 @@
 package leetcode.problems;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 /**
  * @author wujingxinit@outlook.com
@@ -16,13 +14,14 @@ public class LeetCode673_BitTree {
     public int findNumberOfLIS(int[] nums) {
         this.n = nums.length;
         // 离散化
-        int[] tmp = nums.clone();
-        Arrays.sort(tmp);
+        Set<Integer> set = new TreeSet<>();
+        for (int num : nums) {
+            set.add(num);
+        }
         Map<Integer, Integer> map = new HashMap<>();
-        for (int i = 0, idx = 1; i < n; i++) {
-            if (!map.containsKey(tmp[i])) {
-                map.put(tmp[i], idx++);
-            }
+        int rank = 1;
+        for (Integer num : set) {
+            map.put(num, rank++);
         }
         // 树状数组维护 (len, cnt) 信息
         for (int i = 0; i < n; i++) {

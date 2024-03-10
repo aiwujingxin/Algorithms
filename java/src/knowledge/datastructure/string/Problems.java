@@ -1,7 +1,7 @@
 package knowledge.datastructure.string;
 
-import knowledge.datastructure.string.impl.InfixToSuffix;
-import leetcode.lists.lcci.LCCI0814;
+import knowledge.datastructure.string.impl.*;
+import leetcode.lists.lcci.*;
 import leetcode.problems.*;
 
 /**
@@ -37,6 +37,9 @@ import leetcode.problems.*;
  * @see LeetCode647  回文子串
  * @see LeetCode267 回文排列 II
  * @see LeetCode214 最短回文串
+ * @see LeetCode1312  让字符串成为回文串的最少插入次数
+ * LeetCoe2193
+ * poj3280
  * <括号>
  * @see LeetCode32
  * @see LeetCode921

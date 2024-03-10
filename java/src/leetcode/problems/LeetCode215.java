@@ -1,6 +1,6 @@
 package leetcode.problems;
 
-import java.util.Random;
+import java.util.*;
 
 /**
  * @author wujingxinit@outlook.com
@@ -12,18 +12,18 @@ public class LeetCode215 {
         return findKthLargest(nums, 0, nums.length - 1, k);
     }
 
-    public int findKthLargest(int[] nums, int start, int end, int k) {
-        if (start > end) {
+    public int findKthLargest(int[] nums, int lo, int hi, int k) {
+        if (lo > hi) {
             return -1;
         }
-        int index = partition(nums, start, end);
+        int index = partition(nums, lo, hi);
         if (index + 1 == k) {
             return nums[index];
         }
-        if (index + 1 < k) {
-            return findKthLargest(nums, index + 1, end, k);
+        if (index + 1 > k) {
+            return findKthLargest(nums, lo, index - 1, k);
         }
-        return findKthLargest(nums, start, index - 1, k);
+        return findKthLargest(nums, index + 1, hi, k);
     }
 
     public int partition(int[] nums, int i, int j) {
@@ -44,9 +44,9 @@ public class LeetCode215 {
         return i;
     }
 
-    private void swap(int[] nums, int ri, int i) {
-        int temp = nums[i];
-        nums[i] = nums[ri];
-        nums[ri] = temp;
+    public void swap(int[] nums, int i, int j) {
+        int t = nums[i];
+        nums[i] = nums[j];
+        nums[j] = t;
     }
 }

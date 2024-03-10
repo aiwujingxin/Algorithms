@@ -1,8 +1,8 @@
-package knowledge.advstructure;
+package knowledge.advstructure.bst;
 
-import leetcode.problems.LeetCode480_treap;
+import leetcode.problems.*;
 
-import java.util.Random;
+import java.util.*;
 
 /**
  * @author wujingxinit@outlook.com
@@ -143,30 +143,26 @@ public class TreapTree {
     }
 
     public int getRangByKey(Node node, int key) {
-        if (node == null)
+        if (node == null) {
             return 0;
+        }
         Node left = node.left;
         int lsize = left == null ? 0 : left.size;
 
         if (key > node.key) {
             return lsize + node.cnt + getRangByKey(node.right, key);
         }
-
         if (key == node.key) {
-
             return lsize + 1;
         }
-
         return getRangByKey(node.left, key);
     }
 
     public int getPre(Node node, int key) {
         if (node == null) {
-
             return -INF;
         }
         if (key <= node.key) {
-
             return getPre(node.left, key);
         }
         return Math.max(node.key, getPre(node.right, key));
@@ -176,11 +172,9 @@ public class TreapTree {
         if (node == null) {
             return INF;
         }
-
         if (key >= node.key) {
             return getNext(node.right, key);
         }
-
         return Math.min(node.key, getNext(node.left, key));
     }
 

@@ -3,8 +3,24 @@ package knowledge.advstructure;
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/5/22 22:16
+ * @description 并查集
  * @link <a href="https://algs4.cs.princeton.edu/15uf/">UF</a>
  * @link <a href="https://github.com/AhmadElsagheer/Competitive-programming-library/blob/master/data_structures/UnionFind.java"></a>
+ * @see leetcode.lists.lcr.LCR116
+ * @see leetcode.lists.lcr.LCR117
+ * @see leetcode.lists.lcr.LCR118
+ * @see leetcode.problems.LeetCode305
+ * @see leetcode.problems.LeetCode323
+ * @see leetcode.problems.LeetCode547_uf
+ * @see leetcode.problems.LeetCode684_uf
+ * @see leetcode.problems.LeetCode765
+ * @see leetcode.problems.LeetCode827
+ * @see leetcode.problems.LeetCode947_uf
+ * @see leetcode.problems.LeetCode990
+ * @see leetcode.problems.LeetCode1319_uf
+ * @see leetcode.problems.LeetCode2492_uf
+ * @see leetcode.problems.LeetCode2685
+ *
  */
 public class UnionFind {
 

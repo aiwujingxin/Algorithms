@@ -1,11 +1,8 @@
 package leetcode.problems;
 
-import knowledge.advstructure.BITree;
+import knowledge.advstructure.*;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
-import java.util.TreeSet;
+import java.util.*;
 
 /**
  * @author wujingxinit@outlook.com
@@ -14,34 +11,30 @@ import java.util.TreeSet;
 public class LeetCode327_BitTree {
 
     public int countRangeSum(int[] nums, int lower, int upper) {
-        long sum = 0;
         long[] preSum = new long[nums.length + 1];
-        for (int i = 0; i < nums.length; ++i) {
-            sum += nums[i];
-            preSum[i + 1] = sum;
+        for (int i = 1; i <= nums.length; ++i) {
+            preSum[i] = preSum[i - 1] + nums[i - 1];
         }
 
-        Set<Long> allNumbers = new TreeSet<>();
+        Set<Long> set = new TreeSet<>();
         for (long x : preSum) {
-            allNumbers.add(x);
-            allNumbers.add(x - lower);
-            allNumbers.add(x - upper);
+            set.add(x);
+            set.add(x - lower);
+            set.add(x - upper);
         }
         // 利用哈希表进行离散化
-        Map<Long, Integer> values = new HashMap<>();
-        int idx = 0;
-        for (long x : allNumbers) {
-            values.put(x, idx);
-            idx++;
+        Map<Long, Integer> map = new HashMap<>();
+        int rank = 1;
+        for (long x : set) {
+            map.put(x, rank++);
         }
 
-        int ret = 0;
-        BITree bit = new BITree(values.size());
-        for (long l : preSum) {
-            int left = values.get(l - upper), right = values.get(l - lower);
-            ret += bit.sum(right + 1) - bit.sum(left);
-            bit.add(values.get(l) + 1, 1);
+        int cnt = 0;
+        BITree tree = new BITree(map.size());
+        for (long sum : preSum) {
+            cnt += tree.sum(map.get(sum - lower)) - tree.sum(map.get(sum - upper) - 1);
+            tree.add(map.get(sum), 1);
         }
-        return ret;
+        return cnt;
     }
 }
