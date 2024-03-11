@@ -8,11 +8,11 @@ package knowledge.advstructure.bst;
  * @see leetcode.problems.LeetCode701 插入
  * @see leetcode.problems.LeetCode450 删除
  */
-public class BinarySearchTree {
+public class BSTree {
 
     private TreeNode root;
 
-    public BinarySearchTree() {
+    public BSTree() {
         this.root = null;
     }
 
@@ -34,7 +34,7 @@ public class BinarySearchTree {
         return root;
     }
 
-    public TreeNode deleteNode(TreeNode root, int key) {
+    public TreeNode delete(TreeNode root, int key) {
         if (root == null) return null;
         if (root.val == key) {
             if (root.left == null) {
@@ -51,9 +51,9 @@ public class BinarySearchTree {
             t.right = root.right;
             return root.left;
         } else if (root.val < key) {
-            root.right = deleteNode(root.right, key);
+            root.right = delete(root.right, key);
         } else {
-            root.left = deleteNode(root.left, key);
+            root.left = delete(root.left, key);
         }
         return root;
     }

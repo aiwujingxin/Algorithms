@@ -8,6 +8,83 @@ public class SplayTree {
 
     private Node root;
 
+    // 插入节点
+    public void insert(int key) {
+        Node newNode = new Node(key);
+
+        if (root == null) {
+            root = newNode;
+            return;
+        }
+
+        Node current = root;
+        Node parent = null;
+
+        while (current != null) {
+            parent = current;
+
+            if (key < current.key) {
+
+                current = current.left;
+            } else if (key > current.key) {
+                current = current.right;
+
+            } else {
+                return;
+            }
+        }
+
+        if (key < parent.key) {
+            parent.left = newNode;
+        } else {
+            parent.right = newNode;
+        }
+
+        newNode.parent = parent;
+        splay(newNode);
+    }
+
+    // 搜索节点
+    public Node search(int key) {
+        Node cur = root;
+        while (cur != null) {
+            if (key < cur.key) {
+                cur = cur.left;
+            } else if (key > cur.key)
+                cur = cur.right;
+            else {
+                splay(cur);
+                return cur;
+            }
+        }
+        return null;
+    }
+
+    // 删除节点
+    public void delete(int key) {
+        Node node = search(key);
+
+        if (node == null) {
+
+            return;
+        }
+
+        splay(node);
+
+        if (node.left == null) {
+            root = node.right;
+        } else {
+            Node rightSubtree = node.right;
+            root = node.left;
+            root.parent = null;
+            splay(root);
+            root.right = rightSubtree;
+            if (rightSubtree != null) {
+                rightSubtree.parent = root;
+            }
+        }
+    }
+
     // 右旋转
     private void rotateRight(Node node) {
         Node parent = node.parent;
@@ -94,116 +171,6 @@ public class SplayTree {
                     }
                 }
             }
-        }
-    }
-
-    // 插入节点
-    public void insert(int key) {
-        Node newNode = new Node(key);
-
-        if (root == null) {
-            root = newNode;
-            return;
-        }
-
-        Node current = root;
-        Node parent = null;
-
-        while (current != null) {
-            parent = current;
-
-            if (key < current.key) {
-
-                current = current.left;
-            } else if (key > current.key) {
-                current = current.right;
-
-            } else {
-                return;
-            }
-        }
-
-        if (key < parent.key) {
-            parent.left = newNode;
-        } else {
-            parent.right = newNode;
-        }
-
-        newNode.parent = parent;
-        splay(newNode);
-    }
-
-    // 搜索节点
-    public Node search(int key) {
-        Node current = root;
-
-        while (current != null) {
-            if (key < current.key) {
-                current = current.left;
-            } else if (key > current.key)
-                current = current.right;
-            else {
-                splay(current);
-                return current;
-            }
-        }
-
-        return null;
-    }
-
-    // 删除节点
-    public void delete(int key) {
-        Node node = search(key);
-
-        if (node == null) {
-
-            return;
-        }
-
-        splay(node);
-
-        if (node.left == null) {
-
-            root = node.right;
-        } else {
-            Node rightSubtree = node.right;
-            root = node.left;
-            root.parent = null;
-            splay(root);
-            root.right = rightSubtree;
-
-            if (rightSubtree != null) {
-
-                rightSubtree.parent = root;
-            }
-        }
-    }
-
-    // 前序遍历
-    public void preOrderTraversal() {
-        preOrder(root);
-    }
-
-    // 中序遍历
-    public void inOrderTraversal() {
-        inOrder(root);
-    }
-
-    // 前序遍历
-    private void preOrder(Node node) {
-        if (node != null) {
-            System.out.print(node.key + " ");
-            preOrder(node.left);
-            preOrder(node.right);
-        }
-    }
-
-    // 中序遍历
-    private void inOrder(Node node) {
-        if (node != null) {
-            inOrder(node.left);
-            System.out.print(node.key + " ");
-            inOrder(node.right);
         }
     }
 

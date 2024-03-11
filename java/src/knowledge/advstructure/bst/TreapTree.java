@@ -79,19 +79,16 @@ public class TreapTree {
         if (node == null) {
             return null;
         }
-
         if (key < node.key) {
             node.left = remove(node.left, key);
             pushup(node);
             return node;
         }
-
         if (key > node.key) {
             node.right = remove(node.right, key);
             pushup(node);
             return node;
         }
-
         // 相等的时候
         if (node.cnt > 1) {
             node.cnt--;
@@ -100,28 +97,26 @@ public class TreapTree {
         }
         if (node.left == null && node.right == null) {
             return null;
-        } else {
-            if (node.left == null) {// 左旋
-                node = zag(node);
-                node.left = remove(node.left, key);
-                pushup(node);
-                return node;
-            }
-            if (node.right == null) {// 右旋
-                node = zig(node);
-                node.right = remove(node.right, key);
-                pushup(node);
-                return node;
-            }
-            if (node.left.key > node.right.key) {// 左孩子上来， 右旋
-                node = zig(node);
-                node.right = remove(node.right, key);
-            } else {// 右孩子上来， 左旋
-                node = zag(node);
-                node.left = remove(node.left, key);
-            }
         }
-
+        if (node.left == null) {// 左旋
+            node = zag(node);
+            node.left = remove(node.left, key);
+            pushup(node);
+            return node;
+        }
+        if (node.right == null) {// 右旋
+            node = zig(node);
+            node.right = remove(node.right, key);
+            pushup(node);
+            return node;
+        }
+        if (node.left.key > node.right.key) {// 左孩子上来， 右旋
+            node = zig(node);
+            node.right = remove(node.right, key);
+        } else {// 右孩子上来， 左旋
+            node = zag(node);
+            node.left = remove(node.left, key);
+        }
         pushup(node);
         return node;
     }
@@ -197,44 +192,16 @@ public class TreapTree {
     }
 
     void pushup(Node node) {
-
-        int lsize, rsize;
-        lsize = rsize = 0;
+        int lsize = 0;
+        int rsize = 0;
         if (node.left != null) {
             lsize = node.left.size;
         }
-
         if (node.right != null) {
             rsize = node.right.size;
         }
         node.size = node.cnt + lsize + rsize;
 
-    }
-
-    // 打印Treap树中的节点（中序遍历）
-    public void printTree() {
-        inorderTraversal(root);
-    }
-
-    public void postprintTree() {
-        postorder(root);
-    }
-
-    // 中序遍历Treap树
-    private void inorderTraversal(Node root) {
-        if (root != null) {
-            inorderTraversal(root.left);
-            System.out.print(root.key + " ");
-            inorderTraversal(root.right);
-        }
-    }
-
-    private void postorder(Node root) {
-        if (root != null) {
-            postorder(root.left);
-            postorder(root.right);
-            System.out.print(root.key + " ");
-        }
     }
 
     static class Node {

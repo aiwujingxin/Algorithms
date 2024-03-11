@@ -1,9 +1,8 @@
 package leetcode.problems;
 
-import knowledge.advstructure.UnionFind;
+import knowledge.advstructure.*;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 /**
  * @author wujingxinit@outlook.com
@@ -17,7 +16,7 @@ public class LeetCode2492_uf {
         Map<Integer, Integer> map = new HashMap<>();
         UnionFind uf = new UnionFind(n + 1);
         for (int[] r : roads) {
-            uf.unionByRank(r[0], r[1]);
+            uf.union(r[0], r[1]);
         }
         for (int[] road : roads) {
             int pa = uf.find(road[0]);

@@ -145,16 +145,16 @@ public class RedBlackTree {
     }
 
     // 打印红黑树中的节点（中序遍历）
-    private void inorderHelper(Node node) {
+    private void inorderDfs(Node node) {
         if (node != TNULL) {
-            inorderHelper(node.left);
+            inorderDfs(node.left);
             System.out.print(node.data + " ");
-            inorderHelper(node.right);
+            inorderDfs(node.right);
         }
     }
 
     public void inorder() {
-        inorderHelper(this.root);
+        inorderDfs(this.root);
     }
 
     static class Node {

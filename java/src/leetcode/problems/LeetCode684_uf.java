@@ -1,6 +1,6 @@
 package leetcode.problems;
 
-import knowledge.advstructure.UnionFind;
+import knowledge.advstructure.*;
 
 /**
  * @author aiwujingxin@gmail.com
@@ -12,8 +12,7 @@ public class LeetCode684_uf {
         int n = edges.length;
         UnionFind uf = new UnionFind(n + 1);
         for (int[] edge : edges) {
-            int node1 = edge[0], node2 = edge[1];
-            if (!uf.union(node1, node2)) {
+            if (!uf.union(edge[0], edge[1])) {
                 return edge;
             }
         }

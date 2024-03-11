@@ -9,10 +9,10 @@ import knowledge.advstructure.UnionFind;
 public class LeetCode323 {
 
     public int countComponents(int n, int[][] edges) {
-        UnionFind unionFind = new UnionFind(n);
+        UnionFind uf = new UnionFind(n);
         for (int[] edge : edges) {
-            unionFind.union(edge[0], edge[1]);
+            uf.union(edge[0], edge[1]);
         }
-        return unionFind.getCount();
+        return uf.getCount();
     }
 }

@@ -1,10 +1,8 @@
 package leetcode.problems;
 
-import knowledge.advstructure.UnionFind;
+import knowledge.advstructure.*;
 
-import java.util.HashSet;
-
-//https://leetcode.com/problems/making-a-large-island/solutions/3787791/clean-java-solution-union-find-concise-solution-easy-to-understand/
+import java.util.*;
 
 /**
  * @author aiwujingxin@gmail.com
@@ -12,18 +10,21 @@ import java.util.HashSet;
  */
 public class LeetCode827 {
 
+    //https://leetcode.com/problems/making-a-large-island/solutions/3787791/clean-java-solution-union-find-concise-solution-easy-to-understand/
+
     public int largestIsland(int[][] grid) {
         int n = grid.length;
         UnionFind unionFind = new UnionFind(n * n);
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
-                if (grid[i][j] == 0)
+                if (grid[i][j] == 0) {
                     continue;
+                }
                 int[][] drc = {{1, 0}, {-1, 0}, {0, 1}, {0, -1}};
                 for (int[] d : drc) {
                     int r = d[0] + i, c = d[1] + j;
                     if (0 <= r && r < n && 0 <= c && c < n && grid[r][c] == 1) {
-                        unionFind.unionBySize(i * n + j, r * n + c);
+                        unionFind.union(i * n + j, r * n + c);
                     }
                 }
             }
@@ -40,8 +41,7 @@ public class LeetCode827 {
                 int currSize = 0;
                 for (int[] d : drc) {
                     int r = d[0] + i, c = d[1] + j;
-                    if (0 <= r && r < n && 0 <= c && c < n && grid[r][c] == 1 &&
-                            !visited.contains(unionFind.find(r * n + c))) {
+                    if (0 <= r && r < n && 0 <= c && c < n && grid[r][c] == 1 && !visited.contains(unionFind.find(r * n + c))) {
                         visited.add(unionFind.find(r * n + c));
                         currSize += unionFind.sizeOfSet(r * n + c);
                     }

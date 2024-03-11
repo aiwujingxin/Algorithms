@@ -4,50 +4,32 @@ package knowledge.advstructure;
  * @author wujingxinit@outlook.com
  * @date 2023/5/22 22:16
  * @description 并查集
- * @link <a href="https://algs4.cs.princeton.edu/15uf/">UF</a>
- * @link <a href="https://github.com/AhmadElsagheer/Competitive-programming-library/blob/master/data_structures/UnionFind.java"></a>
- * @see leetcode.lists.lcr.LCR116
- * @see leetcode.lists.lcr.LCR117
- * @see leetcode.lists.lcr.LCR118
- * @see leetcode.problems.LeetCode305
- * @see leetcode.problems.LeetCode323
- * @see leetcode.problems.LeetCode547_uf
- * @see leetcode.problems.LeetCode684_uf
- * @see leetcode.problems.LeetCode765
- * @see leetcode.problems.LeetCode827
- * @see leetcode.problems.LeetCode947_uf
- * @see leetcode.problems.LeetCode990
- * @see leetcode.problems.LeetCode1319_uf
- * @see leetcode.problems.LeetCode2492_uf
- * @see leetcode.problems.LeetCode2685
+ * @link <a href="https://algs4.cs.princeton.edu/15uf/"></a>
+ * @see leetcode.problems.LeetCode323 无向图中连通分量的数目
+ * @see leetcode.problems.LeetCode547_uf 省份数量
+ * @see leetcode.problems.LeetCode684_uf 冗余连接
+ * @see leetcode.problems.LeetCode1319_uf 连通网络的操作次数
+ * @see leetcode.problems.LeetCode2492_uf 两个城市间路径的最小分数
+ * @see leetcode.problems.LeetCode2685 统计完全连通分量的数量
+ * @see leetcode.problems.LeetCode765 情侣牵手
+ * @see leetcode.problems.LeetCode827 最大人工岛
+ * @see leetcode.problems.LeetCode947_uf 移除最多的同行或同列石头
+ * @see leetcode.problems.LeetCode990 等式方程的可满足性
+ * @see leetcode.problems.LeetCode839 相似字符串组
  *
  */
 public class UnionFind {
 
-    private final int[] parent, size, rank; // parent[i] = parent of i
+    private final int[] parent, size; // parent[i] = parent of i
     private int count; // number of components
 
     public UnionFind(int n) {
         this.parent = new int[n];
         this.size = new int[n];
-        this.rank = new int[n];
         this.count = n;
         for (int i = 0; i < n; i++) {
             parent[i] = i;
             size[i] = 1;
-            rank[i] = 1;
-        }
-    }
-
-    public UnionFind(int n, int count) {
-        this.parent = new int[n];
-        this.size = new int[n];
-        this.rank = new int[n];
-        this.count = count;
-        for (int i = 0; i < n; i++) {
-            parent[i] = i;
-            size[i] = 1;
-            rank[i] = 1;
         }
     }
 
@@ -74,49 +56,11 @@ public class UnionFind {
         return true;
     }
 
-    public void unionByRank(int x, int y) {
-        int rootX = find(x);
-        int rootY = find(y);
-        if (rootX == rootY) {
-            return;
-        }
-        if (rank[rootX] > rank[rootY]) {
-            parent[rootY] = rootX;
-            size[rootX] += size[rootY];
-        } else if (rank[rootX] < rank[rootY]) {
-            parent[rootX] = rootY;
-            size[rootY] += size[rootX];
-        } else {
-            parent[rootY] = rootX;
-            size[rootX] += size[rootY];
-            rank[rootX] += 1;
-        }
-        count--;
-    }
-
-    public void unionBySize(int x, int y) {
-        int xr = find(x), yr = find(y);
-        if (xr == yr) {
-            return;
-        } else if (size[xr] < size[yr]) {
-            parent[xr] = yr;
-            size[yr] += size[xr];
-        } else {
-            parent[yr] = xr;
-            size[xr] += size[yr];
-        }
-        count--;
-    }
-
     public int getCount() {
         return count;
     }
 
-    public void addCount() {
-        count++;
-    }
-
-    public int sizeOfSet(int i) {
-        return this.size[find(i)];
+    public int sizeOfSet(int x) {
+        return this.size[find(x)];
     }
 }
