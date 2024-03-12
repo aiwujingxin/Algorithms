@@ -11,5 +11,5 @@ package knowledge.datastructure.array;
  * @see knowledge.dp.linerdp.Problems
  * @see leetcode.problems.LeetCode56 合并区间
  */
-public interface Problems {
+public interface Arrays {
 }

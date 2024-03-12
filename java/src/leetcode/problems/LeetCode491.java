@@ -19,12 +19,12 @@ public class LeetCode491 {
         return res;
     }
 
-    private void backtrack(int[] nums, int index, List<List<Integer>> res, List<Integer> list) {
+    private void backtrack(int[] nums, int start, List<List<Integer>> res, List<Integer> list) {
         if (list.size() >= 2) {
             res.add(new ArrayList<>(list));
         }
         HashSet<Integer> set = new HashSet<>();
-        for (int i = index; i < nums.length; i++) {
+        for (int i = start; i < nums.length; i++) {
             if (set.contains(nums[i])) {
                 continue;
             }

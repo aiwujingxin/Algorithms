@@ -3,6 +3,7 @@ package leetcode.problems;
 /**
  * @author wujingxinit@outlook.com
  * @date 2024/3/4 19:59
+ * @see LeetCode53
  */
 public class LeetCode918 {
 
@@ -26,7 +27,7 @@ public class LeetCode918 {
         int[] g = new int[n];
         for (int i = 1; i <= n; i++) {
             max = Math.max(presum[i] - presum[0], max);
-            g[i] = max;
+            g[i - 1] = max;
         }
         for (int i = 1; i <= n; i++) {
             res = Math.max(res, presum[n] - presum[i] + g[i - 1]);

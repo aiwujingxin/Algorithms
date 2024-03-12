@@ -25,7 +25,7 @@ package knowledge.datastructure.heap;
  * @see knowledge.graph.ShortestPath
  * @see knowledge.graph.MinimumTree
  */
-public interface Problems {
+public interface Heap {
 
     default int findKthLargest(int[] nums, int k) {
         MaxHeap<Integer> pq = new MaxHeap<>(nums.length + 1);

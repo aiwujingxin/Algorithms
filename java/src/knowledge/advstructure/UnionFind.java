@@ -20,7 +20,7 @@ package knowledge.advstructure;
  */
 public class UnionFind {
 
-    private final int[] parent, size; // parent[i] = parent of i
+    private final int[] parent, size;
     private int count; // number of components
 
     public UnionFind(int n) {
@@ -28,6 +28,7 @@ public class UnionFind {
         this.size = new int[n];
         this.count = n;
         for (int i = 0; i < n; i++) {
+            // parent[i] = parent of i
             parent[i] = i;
             size[i] = 1;
         }

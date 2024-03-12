@@ -1,52 +1,48 @@
 package leetcode.problems;
 
-import java.util.Arrays;
+import java.util.*;
 
 /**
  * @author aiwujingxin@gmail.com
  * @date 2023/2/11 21:59
- * <a href="https://leetcode.cn/problems/minimum-cost-to-merge-stones/solution/yi-dong-you-yi-dao-nan-yi-bu-bu-shuo-ming-si-lu-he/">...</a>
  */
 public class LeetCode1000 {
 
-    int[][] memo;
-    int[] preSum;
+    private int[][][] memo;
+    private int[] presum;
+    private int k;
 
     public int mergeStones(int[] stones, int k) {
         int n = stones.length;
-        if ((n - 1) % (k - 1) != 0) return -1;
-        preSum = new int[n + 1];
+        if ((n - 1) % (k - 1) > 0) {
+            // 无法合并成一堆
+            return -1;
+        }
+        this.presum = new int[n + 1];
         for (int i = 1; i <= n; i++) {
-            preSum[i] = preSum[i + 1] + stones[i + 1];
+            presum[i] = presum[i - 1] + stones[i - 1];
         }
-        memo = new int[n][n];
+        this.k = k;
+        memo = new int[n][n][k + 1];
         for (int i = 0; i < n; i++) {
-            Arrays.fill(memo[i], -1);
+            for (int j = 0; j < n; j++) {
+                Arrays.fill(memo[i][j], -1);
+            }
         }
-        return dfs(0, n - 1, k);
+        return dfs(0, n - 1, 1);
     }
 
-    private int dfs(int l, int r, int k) {
-        if (r - l + 1 < k) {
-            return 0;
+    private int dfs(int i, int j, int p) {
+        if (memo[i][j][p] != -1) {
+            return memo[i][j][p];
         }
-
-        if (r - l + 1 == k) {
-            return preSum[r + 1] - preSum[l];
+        if (p == 1) { // 合并成一堆
+            return memo[i][j][p] = i == j ? 0 : dfs(i, j, k) + presum[j + 1] - presum[i];
         }
-
-        if (memo[l][r] != -1) {
-            return memo[l][r];
+        int res = Integer.MAX_VALUE;
+        for (int m = i; m < j; m += k - 1) {
+            res = Math.min(res, dfs(i, m, 1) + dfs(m + 1, j, p - 1));
         }
-
-        int min = Integer.MAX_VALUE;
-        int mergeCost = (r - l) % (k - 1) == 0 ? preSum[r + 1] - preSum[l] : 0;
-        for (int i = l; i < r; i += k - 1) {
-            int left = dfs(l, i, k);
-            int right = dfs(i + 1, r, k);
-            min = Math.min(min, left + mergeCost + right);
-        }
-        memo[l][r] = min;
-        return min;
+        return memo[i][j][p] = res;
     }
 }

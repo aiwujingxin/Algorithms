@@ -1,6 +1,6 @@
 package leetcode.problems;
 
-import java.util.Arrays;
+import java.util.*;
 
 /**
  * @author wujingxinit@outlook.com
@@ -11,17 +11,13 @@ public class LeetCode546 {
     int[][] memo;
     int[] boxes;
 
-    int n;
-
     public int removeBoxes(int[] boxes) {
-        if (boxes == null || boxes.length == 0) {
-            return 0;
-        }
-        memo = new int[n + 1][n + 1];
+        int n = boxes.length;
+        this.memo = new int[n + 1][n + 1];
+        this.boxes = boxes;
         for (int i = 0; i <= n; i++) {
             Arrays.fill(memo[i], -1);
         }
-        this.n = boxes.length;
         return dfs(0, n + 1);
     }
 

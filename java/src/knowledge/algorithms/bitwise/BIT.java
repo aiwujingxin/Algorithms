@@ -25,10 +25,6 @@ public interface BIT {
      * 末尾是否为 1
      * (n & 1) == 1
      *
-     * 枚举子集
-     * for(subset = (A - 1) & A; subset != A; subset = (subset - 1) & A) {...}
-     *
-     *
      * arithmetic shift
      * >>
      * logic shift

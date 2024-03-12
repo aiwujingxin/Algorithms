@@ -10,9 +10,6 @@ public class LeetCode126 {
 
     public List<List<String>> findLadders(String beginWord, String endWord, List<String> wordList) {
         List<List<String>> res = new ArrayList<>();
-        if (beginWord == null || endWord == null || wordList == null) {
-            return res;
-        }
         Set<String> wordSet = new HashSet<>(wordList);
         if (!wordSet.contains(endWord)) {
             return res;

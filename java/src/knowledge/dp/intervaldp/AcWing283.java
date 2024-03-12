@@ -1,10 +1,11 @@
 package knowledge.dp.intervaldp;
 
-import java.util.Scanner;
+import java.util.*;
 
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/8/10 21:50
+ * @description 多边形游戏
  */
 public class AcWing283 {
 

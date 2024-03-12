@@ -1,8 +1,6 @@
 package knowledge.dp.intervaldp;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.*;
 
 /**
  * @author wujingxinit@outlook.com
@@ -27,15 +25,13 @@ public class AcWing282 {
         // 区间长度来枚举
         for (int len = 2; len <= n; len++) {
             // 枚举起点
-            for (int i = 1; i + len - 1 <= n; i++) {
-                int l = i;
-                int r = i + len - 1;
+            for (int l = 1; l <= n - len + 1; l++) {
+                int r = l + len - 1;
                 f[l][r] = Integer.MAX_VALUE;
                 // 枚举分界点
                 for (int k = l; k < r; k++) {
                     f[l][r] = Math.min(f[l][r], f[l][k] + f[k + 1][r] + s[r] - s[l - 1]);
                 }
-
             }
         }
         System.out.println(f[1][n]);

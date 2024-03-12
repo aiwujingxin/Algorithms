@@ -4,7 +4,7 @@ package leetcode.problems;
  * @author wujingxinit@outlook.com
  * @date 2023/3/13 22:46
  */
-public class LeetCode678_dp {
+public class LeetCode678 {
     private Boolean[][] memo;
 
     public boolean checkValidString(String s) {
