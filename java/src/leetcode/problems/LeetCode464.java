@@ -13,31 +13,37 @@ public class LeetCode464 {
     private int desiredTotal;
 
     public boolean canIWin(int maxChoosableInteger, int desiredTotal) {
-        memo = new Boolean[1 << maxChoosableInteger];
+        memo = new Boolean[1 << maxChoosableInteger + 1];
         this.maxChoosableInteger = maxChoosableInteger;
         this.desiredTotal = desiredTotal;
-        return this.maxChoosableInteger * (this.maxChoosableInteger + 1) / 2 >= this.desiredTotal && dfs(0);
+        if (this.maxChoosableInteger >= this.desiredTotal) {
+            return true;
+        }
+        if (this.maxChoosableInteger * (this.maxChoosableInteger + 1) / 2 < this.desiredTotal) {
+            return false;
+        }
+        return dfs(0, 0);
     }
 
-    private Boolean dfs(int cur) {
-        if (memo[cur] != null) {
-            return memo[cur];
+    private Boolean dfs(int status, int sum) {
+        if (sum >= desiredTotal) {
+            memo[status] = false;
+            return false;
         }
-        int sum = 0;
-        for (int i = 0; i < maxChoosableInteger; i++) {
-            if (((cur >> i) & 1) == 1) { // 已被取过的数字和
-                sum += i + 1;
+        if (memo[status] != null) {
+            return memo[status];
+        }
+        for (int i = 1; i <= maxChoosableInteger; i++) {
+            if (((status >> i) & 1) == 1) {
+                continue;
+            }
+            int next = status | (1 << i);
+            if ((sum + i >= desiredTotal || !dfs(next, sum + i))) {
+                memo[status] = true;
+                return true;
             }
         }
-        for (int i = 0; i < maxChoosableInteger; i++) {
-            if (((cur >> i) & 1) == 0) {//该数字未被取过
-                if (sum + (i + 1) >= desiredTotal || !dfs(cur | (1 << i))) {// 标记被取过
-                    memo[cur] = true;
-                    return true;
-                }
-            }
-        }
-        memo[cur] = false;
+        memo[status] = false;
         return false;
     }
 }
