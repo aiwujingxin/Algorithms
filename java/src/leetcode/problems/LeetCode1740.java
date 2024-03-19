@@ -1,6 +1,6 @@
 package leetcode.problems;
 
-import common.TreeNode;
+import common.*;
 
 /**
  * @author wujingxinit@outlook.com
@@ -9,21 +9,21 @@ import common.TreeNode;
 public class LeetCode1740 {
 
     public int findDistance(TreeNode root, int p, int q) {
-        TreeNode parent = findP(root, p, q);
+        TreeNode parent = LCA(root, p, q);
         int l = dfs(parent, p);
         int r = dfs(parent, q);
         return l + r;
     }
 
-    TreeNode findP(TreeNode root, int p, int q) {
+    TreeNode LCA(TreeNode root, int p, int q) {
         if (root == null) {
             return null;
         }
         if (root.val == p || root.val == q) {
             return root;
         }
-        TreeNode l = findP(root.left, p, q);
-        TreeNode r = findP(root.right, p, q);
+        TreeNode l = LCA(root.left, p, q);
+        TreeNode r = LCA(root.right, p, q);
         if (r != null && l != null) {
             return root;
         }

@@ -22,9 +22,9 @@ public class LeetCode654 {
                 best = i;
             }
         }
-        TreeNode node = new TreeNode(nums[best]);
-        node.left = buildTree(nums, left, best - 1);
-        node.right = buildTree(nums, best + 1, right);
-        return node;
+        TreeNode root = new TreeNode(nums[best]);
+        root.left = buildTree(nums, left, best - 1);
+        root.right = buildTree(nums, best + 1, right);
+        return root;
     }
 }

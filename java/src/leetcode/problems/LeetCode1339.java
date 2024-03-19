@@ -1,6 +1,6 @@
 package leetcode.problems;
 
-import common.TreeNode;
+import common.*;
 
 /**
  * @author wujingxinit@outlook.com
@@ -19,12 +19,16 @@ public class LeetCode1339 {
     }
 
     public double sum(TreeNode node) {
-        if (node == null) return 0;
+        if (node == null) {
+            return 0;
+        }
         return node.val + sum(node.left) + sum(node.right);
     }
 
     public double dfs(TreeNode node) {
-        if (node == null) return 0;
+        if (node == null) {
+            return 0;
+        }
         nodeSum = node.val + dfs(node.left) + dfs(node.right);
         ans = Math.max(ans, (allSum - nodeSum) * nodeSum);
         return nodeSum;

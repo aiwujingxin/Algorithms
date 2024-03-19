@@ -5,9 +5,6 @@ import common.TreeNode;
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/7/20 22:34
- * @see LeetCode366
- * @see LeetCode814
- * @see LeetCode1080
  */
 public class LeetCode1325 {
 
@@ -24,9 +21,9 @@ public class LeetCode1325 {
         }
         root.left = dfs(root.left, target);
         root.right = dfs(root.right, target);
-        if (root.val == target && root.left == null && root.right == null) {
-            return null;
+        if (root.left != null || root.right != null) {
+            return root;
         }
-        return root;
+        return root.val == target ? null : root;
     }
 }

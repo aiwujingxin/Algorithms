@@ -8,14 +8,14 @@ import common.TreeNode;
  */
 public class LeetCode298 {
 
-    int maxLength = 0;
+    int ans = 0;
 
     public int longestConsecutive(TreeNode root) {
         if (root == null) {
             return 0;
         }
         dfs(root, root, 0);
-        return maxLength;
+        return ans;
     }
 
     private void dfs(TreeNode p, TreeNode parent, int length) {
@@ -23,7 +23,7 @@ public class LeetCode298 {
             return;
         }
         length = (p.val == parent.val + 1) ? length + 1 : 1;
-        maxLength = Math.max(maxLength, length);
+        ans = Math.max(ans, length);
         dfs(p.left, p, length);
         dfs(p.right, p, length);
     }
