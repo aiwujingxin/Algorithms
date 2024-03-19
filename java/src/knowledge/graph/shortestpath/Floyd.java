@@ -1,16 +1,16 @@
 package knowledge.graph.shortestpath;
 
-import knowledge.graph.ShortestPath;
+import knowledge.graph.*;
 
-import java.util.Arrays;
+import java.util.*;
 
 /**
  * @author aiwujingxin@gmail.com
  * @date 2022/6/26 18:14
- * 基于动态规划
+ * @description 基于动态规划
  */
 public class Floyd implements ShortestPath {
-    final static int INF = Integer.MAX_VALUE / 2;
+    final static int INF = 0x3f3f3f3f;
 
     public int[] getShortestPath(int n, int[][] edges, int source) {
         return floyd(n, edges)[source];

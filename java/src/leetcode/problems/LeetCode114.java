@@ -12,12 +12,12 @@ public class LeetCode114 {
         if (root == null) {
             return;
         }
+        flatten(root.left);
+        flatten(root.right);
         TreeNode left = root.left;
         TreeNode right = root.right;
         root.left = null;
         root.right = left;
-        flatten(left);
-        flatten(right);
         TreeNode cur = root;
         while (cur.right != null) {
             cur = cur.right;

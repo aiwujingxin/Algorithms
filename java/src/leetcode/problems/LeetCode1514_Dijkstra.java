@@ -1,8 +1,6 @@
 package leetcode.problems;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.PriorityQueue;
+import java.util.*;
 
 /**
  * @author wujingxinit@outlook.com
@@ -59,9 +57,8 @@ public class LeetCode1514_Dijkstra {
         public int compareTo(Pair pair2) {
             if (this.probability == pair2.probability) {
                 return this.node - pair2.node;
-            } else {
-                return this.probability - pair2.probability > 0 ? -1 : 1;
             }
+            return this.probability - pair2.probability > 0 ? -1 : 1;
         }
     }
 }

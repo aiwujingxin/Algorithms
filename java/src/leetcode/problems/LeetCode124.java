@@ -1,6 +1,6 @@
 package leetcode.problems;
 
-import common.TreeNode;
+import common.*;
 
 /**
  * @author wujingxinit@outlook.com
@@ -11,9 +11,6 @@ public class LeetCode124 {
     int max = Integer.MIN_VALUE;
 
     public int maxPathSum(TreeNode root) {
-        if (root == null) {
-            return 0;
-        }
         dfs(root);
         return max;
     }
@@ -24,7 +21,10 @@ public class LeetCode124 {
         }
         int left = dfs(root.left);
         int right = dfs(root.right);
-        max = Math.max(max, left + right + root.val);
-        return Math.max(0, Math.max(left, right) + root.val);
+        max = Math.max(max, root.val);
+        max = Math.max(max, root.val + left);
+        max = Math.max(max, root.val + right);
+        max = Math.max(max, root.val + right + left);
+        return Math.max(root.val, Math.max(root.val + left, root.val + right));
     }
 }

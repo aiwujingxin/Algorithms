@@ -34,16 +34,16 @@ public class BipartiteGraph_bfs implements BipartiteGraph {
         return true;
     }
 
-    private boolean bfs(int source, int[] colors) {
-        Queue<Integer> queue = new LinkedList<>();
-        queue.add(source);
-        colors[source] = 0;
-        while (!queue.isEmpty()) {
-            int cur = queue.poll();
+    private boolean bfs(int s, int[] colors) {
+        Queue<Integer> q = new LinkedList<>();
+        q.add(s);
+        colors[s] = 0;
+        while (!q.isEmpty()) {
+            int cur = q.poll();
             for (int next : graph.get(cur)) {
                 if (colors[next] == -1) {
                     colors[next] = 1 - colors[cur];
-                    queue.add(next);
+                    q.add(next);
                 } else if (colors[next] == colors[cur]) {
                     return false;
                 }

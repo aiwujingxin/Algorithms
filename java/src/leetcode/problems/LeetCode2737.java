@@ -1,10 +1,9 @@
 package leetcode.problems;
 
 
-import knowledge.graph.shortestpath.Dijkstra;
+import knowledge.graph.shortestpath.*;
 
-import java.util.HashSet;
-import java.util.List;
+import java.util.*;
 
 /**
  * @author wujingxinit@outlook.com
@@ -18,7 +17,7 @@ public class LeetCode2737 {
             es[i] = new int[]{edges.get(i).get(0), edges.get(i).get(1), edges.get(i).get(2)};
         }
         int[] dist = new Dijkstra().getShortestPath(n, es, s);
-        int ans = Integer.MAX_VALUE;
+        int ans = 0x3f3f3f3f;
         HashSet<Integer> set = new HashSet<>();
         for (int j : marked) {
             set.add(j);
@@ -29,6 +28,6 @@ public class LeetCode2737 {
             }
             ans = Math.min(ans, dist[i]);
         }
-        return ans == Integer.MAX_VALUE ? -1 : ans;
+        return ans == 0x3f3f3f3f ? -1 : ans;
     }
 }

@@ -1,7 +1,7 @@
 package leetcode.problems;
 
 
-import knowledge.graph.shortestpath.Dijkstra;
+import knowledge.graph.shortestpath.*;
 
 /**
  * @author aiwujingxin@gmail.com
@@ -13,7 +13,7 @@ public class LeetCode743 {
         int[] distance = new Dijkstra().getShortestPath(n + 1, times, K);
         int result = 0;
         for (int i = 1; i < distance.length; i++) {
-            if (distance[i] == Integer.MAX_VALUE / 2) {
+            if (distance[i] == 0x3f3f3f3f) {
                 return -1;
             }
             result = Math.max(result, distance[i]);

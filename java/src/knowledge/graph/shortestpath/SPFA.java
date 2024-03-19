@@ -23,7 +23,7 @@ import java.util.*;
 
 public class SPFA implements ShortestPath {
 
-    final static int INF = Integer.MAX_VALUE / 2;
+    final static int INF = 0x3f3f3f3f;
 
     public int[] getShortestPath(int n, int[][] edges, int source) {
         List<int[]>[] graph = new ArrayList[n];

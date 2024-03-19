@@ -1,9 +1,9 @@
 package leetcode.problems;
 
 
-import knowledge.graph.shortestpath.Dijkstra;
+import knowledge.graph.shortestpath.*;
 
-import java.util.List;
+import java.util.*;
 
 /**
  * @author wujingxinit@outlook.com
@@ -11,24 +11,18 @@ import java.util.List;
  */
 public class LeetCode1786 {
 
-    List<int[]>[] graph;
-    int N;
-    final int MOD = 1000000007;
-
     public int countRestrictedPaths(int n, int[][] edges) {
         Dijkstra dijkstra = new Dijkstra();
-        int[] dist = dijkstra.getShortestPath(n, edges, n);
-        this.N = n + 1;
-        graph = dijkstra.getGraph();
-        return (int) dfs(graph, 1, n, dist, new Long[n + 1]);
+        int[] dist = dijkstra.getShortestPath(n + 1, edges, n);
+        return (int) dfs(dijkstra.graph, 1, n, dist, new Long[n + 1]);
     }
 
     private long dfs(List<int[]>[] graph, int i, int n, int[] dist, Long[] cache) {
-        if (cache[i] != null) {
-            return cache[i];
-        }
         if (i == n) {
             return 1;
+        }
+        if (cache[i] != null) {
+            return cache[i];
         }
         long cnt = 0;
         for (int[] arr : graph[i]) {
@@ -36,7 +30,7 @@ public class LeetCode1786 {
             //如果相邻节点距离比当前距离小，说明是受限路径
             if (dist[next] < dist[i]) {
                 cnt += dfs(graph, next, n, dist, cache);
-                cnt %= MOD;
+                cnt %= 1000000007;
             }
         }
         cache[i] = cnt;

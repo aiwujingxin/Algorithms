@@ -1,15 +1,15 @@
 package leetcode.problems;
 
-import java.util.Arrays;
+import java.util.*;
 
 /**
  * @author aiwujingxin@gmail.com
  * @date 2022/6/27 19:39
  */
-public class LeetCode787_dp {
+public class LeetCode787 {
 
     public int findCheapestPrice(int n, int[][] flights, int src, int dst, int k) {
-        final int INF = 10000 * 101 + 1;
+        int INF = 0x3f3f3f3f;
         int[][] f = new int[k + 2][n];
         for (int i = 0; i < k + 2; ++i) {
             Arrays.fill(f[i], INF);

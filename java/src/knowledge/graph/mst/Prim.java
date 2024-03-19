@@ -1,17 +1,13 @@
 package knowledge.graph.mst;
 
-import knowledge.graph.MinimumTree;
-import leetcode.problems.LeetCode1584_prim;
+import knowledge.graph.*;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 /**
  * @author aiwujingxin@gmail.com
  * @date 2022/7/3 16:24
- * 和Dijkstra很像
- * @see LeetCode1584_prim
+ * @description 最小生成树 Prim 算法
  */
 public class Prim implements MinimumTree {
 
@@ -24,41 +20,30 @@ public class Prim implements MinimumTree {
             graph[edge[0]].add(new int[]{edge[1], edge[2]});
             graph[edge[1]].add(new int[]{edge[0], edge[2]});
         }
-
-        int[] parent = new int[n]; // 用于存储最小生成树中每个顶点的父节点
-        // 用于存储每个顶点与最小生成树的最小权值
+        int sum = 0;
         int[] dist = new int[n];
-        boolean[] visited = new boolean[n]; // 记录顶点是否被访问过
-        int res = 0;
-        Arrays.fill(dist, Integer.MAX_VALUE); // 初始化所有顶点的权值为最大值
-
-        // 将第一个顶点作为起始顶点
+        boolean[] visited = new boolean[n];
+        Arrays.fill(dist, 0x3f3f3f3f);
+        PriorityQueue<int[]> pq = new PriorityQueue<>(Comparator.comparingInt(arr -> arr[1]));
+        pq.offer(new int[]{0, 0});
+        visited[0] = true;
         dist[0] = 0;
-        parent[0] = -1;
-
-        for (int i = 0; i < n; i++) {
-            int minKeyIndex = getMinKeyIndex(dist, visited);
-            visited[minKeyIndex] = true;
-            res += dist[minKeyIndex];
-            for (int[] next : graph[minKeyIndex]) {
-                if (!visited[next[0]] && next[1] < dist[next[0]]) {
-                    parent[next[0]] = minKeyIndex;
-                    dist[next[0]] = next[1];
+        while (!pq.isEmpty()) {
+            int u = pq.poll()[0];
+            for (int[] adj : graph[u]) {
+                int v = adj[0];
+                int w = adj[1];
+                if (!visited[v] && w < dist[v]) {
+                    dist[v] = w;
+                    sum += w;
+                    pq.add(new int[]{v, dist[v]});
+                    if (visited[v]) {
+                        continue;
+                    }
+                    visited[v] = true;
                 }
             }
         }
-        return res;
-    }
-
-    private int getMinKeyIndex(int[] dist, boolean[] visited) {
-        int min = Integer.MAX_VALUE;
-        int minIndex = -1;
-        for (int i = 0; i < dist.length; i++) {
-            if (!visited[i] && dist[i] < min) {
-                min = dist[i];
-                minIndex = i;
-            }
-        }
-        return minIndex;
+        return sum;
     }
 }

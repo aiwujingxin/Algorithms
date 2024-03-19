@@ -8,7 +8,6 @@ import java.util.*;
  */
 public class LeetCode1631 {
 
-
     int[][] dirs = new int[][]{{0, 1}, {1, 0}, {0, -1}, {-1, 0}};
 
     public int minimumEffortPath(int[][] heights) {

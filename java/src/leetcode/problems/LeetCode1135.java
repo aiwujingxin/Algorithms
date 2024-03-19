@@ -1,7 +1,7 @@
 package leetcode.problems;
 
 
-import knowledge.graph.mst.Kruskal;
+import knowledge.graph.mst.*;
 
 /**
  * @author wujingxinit@outlook.com

@@ -1,6 +1,6 @@
 package leetcode.problems;
 
-import knowledge.graph.shortestpath.Dijkstra;
+import knowledge.graph.shortestpath.*;
 
 /**
  * @author wujingxinit@outlook.com
@@ -28,6 +28,6 @@ public class LeetCode2093_Bellman {
                 }
             }
         }
-        return dist[n - 1] == Integer.MAX_VALUE / 2 ? -1 : dist[n - 1];
+        return dist[n - 1] == 0x3f3f3f3f ? -1 : dist[n - 1];
     }
 }

@@ -1,11 +1,8 @@
 package knowledge.graph.mst;
 
-import knowledge.graph.MinimumTree;
+import knowledge.graph.*;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 
 /**
  * @author aiwujingxin@gmail.com
@@ -16,7 +13,8 @@ public class Kruskal implements MinimumTree {
     int count = 0;
 
     public int MST(int n, int[][] edges) {
-        final List<int[]> graph = new ArrayList<>();
+        this.count = n;
+        List<int[]> graph = new ArrayList<>();
         Collections.addAll(graph, edges);
         // 将边按权重从小到大排序
         graph.sort(Comparator.comparingInt(o -> o[2]));
@@ -25,7 +23,6 @@ public class Kruskal implements MinimumTree {
         for (int i = 0; i < n; i++) {
             parent[i] = i;
         }
-        count = n;
         List<int[]> mst = new ArrayList<>();
         for (int[] edge : graph) {
             int sourceParent = find(parent, edge[0]);
