@@ -19,27 +19,27 @@ public class LeetCode2641 {
             return null;
         }
         root.val = 0;
-        Queue<TreeNode> q = new LinkedList<>();
-        q.add(root);
-        while (!q.isEmpty()) {
+        Queue<TreeNode> queue = new LinkedList<>();
+        queue.add(root);
+        while (!queue.isEmpty()) {
             int sum = 0;
-            List<TreeNode> pa = new ArrayList<>();
-            int size = q.size();
+            List<TreeNode> level = new ArrayList<>();
+            int size = queue.size();
             for (int i = 0; i < size; i++) {
-                TreeNode node = q.poll();
-                pa.add(node);
+                TreeNode node = queue.poll();
+                level.add(node);
                 if (node.left != null) {
-                    q.add(node.left);
+                    queue.add(node.left);
                     sum += node.left.val;
                 }
                 if (node.right != null) {
-                    q.add(node.right);
+                    queue.add(node.right);
                     sum += node.right.val;
                 }
 
             }
             //处理下一层
-            for (TreeNode node : pa) {
+            for (TreeNode node : level) {
                 int left = 0;
                 int right = 0;
                 if (node.left != null) {

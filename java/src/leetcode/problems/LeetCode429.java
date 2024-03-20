@@ -14,9 +14,6 @@ import java.util.Queue;
 public class LeetCode429 {
 
     public List<List<Integer>> levelOrder(Node root) {
-        if (root == null) {
-            return new ArrayList<>();
-        }
         List<List<Integer>> res = new ArrayList<>();
         Queue<Node> queue = new LinkedList<>();
         queue.add(root);
@@ -26,9 +23,7 @@ public class LeetCode429 {
             for (int i = 0; i < size; i++) {
                 Node node = queue.poll();
                 list.add(node.val);
-                for (Node ch : node.children) {
-                    queue.add(ch);
-                }
+                queue.addAll(node.children);
             }
             res.add(list);
         }

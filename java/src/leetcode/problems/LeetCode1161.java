@@ -12,21 +12,15 @@ import java.util.Queue;
 public class LeetCode1161 {
 
     public int maxLevelSum(TreeNode root) {
-
-        if (root == null) {
-            return 0;
-        }
-
         Queue<TreeNode> queue = new LinkedList<>();
         queue.add(root);
         int max = Integer.MIN_VALUE;
-        int depth = 0;
-        int curLevel = 0;
+        int ans = 0;
+        int level = 1;
         while (!queue.isEmpty()) {
             int size = queue.size();
             int sum = 0;
-            curLevel++;
-            while (size > 0) {
+            for (int i = 0; i < size; i++) {
                 TreeNode node = queue.poll();
                 sum += node.val;
                 if (node.left != null) {
@@ -35,13 +29,14 @@ public class LeetCode1161 {
                 if (node.right != null) {
                     queue.add(node.right);
                 }
-                size--;
             }
             if (max < sum) {
-                depth = curLevel;
+                ans = level;
+                max = sum;
             }
+            level++;
         }
-        return depth;
+        return ans;
     }
 }
 

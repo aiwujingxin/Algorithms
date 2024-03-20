@@ -2,9 +2,7 @@ package leetcode.problems;
 
 import common.TreeNode;
 
-import java.util.ArrayList;
 import java.util.LinkedList;
-import java.util.List;
 import java.util.Queue;
 
 public class LeetCode1609 {
@@ -13,64 +11,32 @@ public class LeetCode1609 {
         if (root == null) {
             return true;
         }
-        List<List<Integer>> level = new ArrayList<>();
-        Queue<TreeNode> q = new LinkedList<>();
-        q.add(root);
-        List<Integer> first = new ArrayList<>();
-        first.add(root.val);
-        level.add(first);
-        while (!q.isEmpty()) {
-            List<Integer> temp = new ArrayList<>();
-            int size = q.size();
-            while (size > 0) {
-                TreeNode cur = q.poll();
-                if (cur.left != null) {
-                    temp.add(cur.left.val);
-                    q.add(cur.left);
+        Queue<TreeNode> queue = new LinkedList<>();
+        queue.add(root);
+        int step = 0;
+        while (!queue.isEmpty()) {
+            int size = queue.size();
+            int pre = queue.peek().val;
+            for (int i = 0; i < size; i++) {
+                TreeNode node = queue.poll();
+                if (step % 2 == node.val % 2) {
+                    return false;
                 }
-                if (cur.right != null) {
-                    temp.add(cur.right.val);
-                    q.add(cur.right);
+                if (i > 0 && step % 2 == 0 && pre >= node.val) {
+                    return false;
                 }
-                size--;
+                if (i > 0 && step % 2 == 1 && pre <= node.val) {
+                    return false;
+                }
+                pre = node.val;
+                if (node.left != null) {
+                    queue.add(node.left);
+                }
+                if (node.right != null) {
+                    queue.add(node.right);
+                }
             }
-            level.add(temp);
-        }
-        for (int i = 0; i < level.size(); i++) {
-            List<Integer> list = level.get(i);
-            boolean res;
-            if (i % 2 == 0) {
-                res = checkOdd(list);
-            } else {
-                res = checkEven(list);
-            }
-            if (!res) {
-                return false;
-            }
-        }
-        return true;
-    }
-
-    private boolean checkOdd(List<Integer> list) {
-        for (int i = 0; i < list.size(); i++) {
-            if (list.get(i) % 2 != 1) {
-                return false;
-            }
-            if (i < list.size() - 1 && list.get(i) >= list.get(i + 1)) {
-                return false;
-            }
-        }
-        return true;
-    }
-
-    private boolean checkEven(List<Integer> list) {
-        for (int i = 0; i < list.size(); i++) {
-            if (list.get(i) % 2 != 0) {
-                return false;
-            }
-            if (i < list.size() - 1 && list.get(i) <= list.get(i + 1)) {
-                return false;
-            }
+            step++;
         }
         return true;
     }

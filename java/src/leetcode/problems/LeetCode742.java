@@ -11,7 +11,7 @@ import java.util.*;
  */
 public class LeetCode742 {
 
-    HashMap<Integer, List<TreeNode>> map = new HashMap<>();
+    HashMap<Integer, List<TreeNode>> graph = new HashMap<>();
     HashMap<Integer, TreeNode> index = new HashMap<>();
 
     public int findClosestLeaf(TreeNode root, int k) {
@@ -22,14 +22,13 @@ public class LeetCode742 {
         int ans = 0;
         //防止重复遍历的visit集合
         Set<TreeNode> visit = new HashSet<>();
-        queue.offer(index.get(k));
-
+        queue.add(index.get(k));
+        visit.add(index.get(k));
         int level = 0;
         while (!queue.isEmpty()) {
             int size = queue.size();
-            for (int j = 0; j < size; j++) {
+            for (int i = 0; i < size; i++) {
                 TreeNode node = queue.poll();
-                visit.add(node);
                 if (node.left == null && node.right == null) {
                     if (node.val != k) {
                         if (level < min) {
@@ -39,15 +38,13 @@ public class LeetCode742 {
                     } else {
                         return node.val;
                     }
-
                 }
-                List<TreeNode> list = map.get(node.val);
-                if (list == null) {
-                    continue;
-                }
-                for (TreeNode n : list) {
-                    if (!visit.contains(n)) {
-                        queue.add(n);
+                if (graph.containsKey(node.val)) {
+                    for (TreeNode n : graph.get(node.val)) {
+                        if (!visit.contains(n)) {
+                            queue.add(n);
+                            visit.add(node);
+                        }
                     }
                 }
             }
@@ -62,16 +59,16 @@ public class LeetCode742 {
             return;
         }
         if (root.left != null) {
-            map.putIfAbsent(root.val, new ArrayList<>());
-            map.putIfAbsent(root.left.val, new ArrayList<>());
-            map.get(root.val).add(root.left);
-            map.get(root.left.val).add(root);
+            graph.putIfAbsent(root.val, new ArrayList<>());
+            graph.putIfAbsent(root.left.val, new ArrayList<>());
+            graph.get(root.val).add(root.left);
+            graph.get(root.left.val).add(root);
         }
         if (root.right != null) {
-            map.putIfAbsent(root.val, new ArrayList<>());
-            map.putIfAbsent(root.right.val, new ArrayList<>());
-            map.get(root.val).add(root.right);
-            map.get(root.right.val).add(root);
+            graph.putIfAbsent(root.val, new ArrayList<>());
+            graph.putIfAbsent(root.right.val, new ArrayList<>());
+            graph.get(root.val).add(root.right);
+            graph.get(root.right.val).add(root);
         }
         index.putIfAbsent(root.val, root);
         preorder(root.left);

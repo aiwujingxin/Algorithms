@@ -29,11 +29,9 @@ public class LeetCode2538 {
                     q.add(node.right);
                 }
             }
-            if (pq.size() < k) {
-                pq.add(sum);
-            } else if (pq.peek() < sum) {
+            pq.add(sum);
+            if (pq.size() > k) {
                 pq.poll();
-                pq.add(sum);
             }
         }
         return pq.size() < k ? -1 : pq.peek();

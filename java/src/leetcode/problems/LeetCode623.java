@@ -2,9 +2,7 @@ package leetcode.problems;
 
 import common.TreeNode;
 
-import java.util.ArrayList;
 import java.util.LinkedList;
-import java.util.List;
 import java.util.Queue;
 
 /**
@@ -21,24 +19,10 @@ public class LeetCode623 {
         }
         Queue<TreeNode> queue = new LinkedList<>();
         queue.add(root);
-        int levelNum = 1;
+        int step = 0;
         while (!queue.isEmpty()) {
-            int size = queue.size();
-            List<TreeNode> level = new ArrayList<>();
-            while (size > 0) {
-                TreeNode node = queue.poll();
-                level.add(node);
-                if (node.left != null) {
-                    queue.add(node.left);
-                }
-                if (node.right != null) {
-                    queue.add(node.right);
-                }
-                size--;
-            }
-            levelNum++;
-            if (levelNum == depth) {
-                for (TreeNode treeNode : level) {
+            if (step + 2 == depth) {
+                for (TreeNode treeNode : queue) {
                     TreeNode left = treeNode.left;
                     TreeNode right = treeNode.right;
                     treeNode.left = new TreeNode(val);
@@ -48,6 +32,17 @@ public class LeetCode623 {
                 }
                 return root;
             }
+            int size = queue.size();
+            for (int i = 0; i < size; i++) {
+                TreeNode node = queue.poll();
+                if (node.left != null) {
+                    queue.add(node.left);
+                }
+                if (node.right != null) {
+                    queue.add(node.right);
+                }
+            }
+            step++;
         }
         return root;
     }

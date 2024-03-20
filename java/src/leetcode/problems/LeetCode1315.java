@@ -21,13 +21,12 @@ public class LeetCode1315 {
             int size = queue.size();
             for (int i = 0; i < size; i++) {
                 TreeNode node = queue.poll();
-                if (map.get(node) != null && map.get(map.get(node)) != null && (map.get(map.get(node)).val != 0 && map.get(map.get(node)).val % 2 == 0)) {
+                if (map.get(node) != null && map.get(map.get(node)) != null && map.get(map.get(node)).val % 2 == 0) {
                     sum += node.val;
                 }
                 if (node.left != null) {
                     map.put(node.left, node);
                     queue.add(node.left);
-
                 }
                 if (node.right != null) {
                     map.put(node.right, node);

@@ -8,12 +8,11 @@ import common.TreeNode;
  */
 public class LeetCode2265 {
 
-
-    int cnt;
+    int ans;
 
     public int averageOfSubtree(TreeNode root) {
         dfs(root);
-        return cnt;
+        return ans;
     }
 
     private int[] dfs(TreeNode root) {
@@ -25,7 +24,7 @@ public class LeetCode2265 {
         int sum = left[0] + right[0] + root.val;
         int nodeNum = left[1] + right[1] + 1;
         if (sum / nodeNum == root.val) {
-            cnt++;
+            ans++;
         }
         return new int[]{sum, nodeNum};
     }

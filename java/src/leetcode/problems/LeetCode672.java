@@ -31,8 +31,7 @@ public class LeetCode672 {
             }
             int size = queue.size();
             visited = new HashSet<>();
-            while (size > 0) {
-
+            for (int i = 0; i < size; i++) {
                 int[] cur = queue.poll();
                 List<int[]> nextList = get(cur);
                 for (int[] next : nextList) {
@@ -43,7 +42,6 @@ public class LeetCode672 {
                     queue.add(next);
                     visited.add(s);
                 }
-                size--;
             }
             count++;
         }
