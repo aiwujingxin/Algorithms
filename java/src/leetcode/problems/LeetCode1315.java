@@ -31,7 +31,6 @@ public class LeetCode1315 {
                 if (node.right != null) {
                     map.put(node.right, node);
                     queue.add(node.right);
-
                 }
             }
         }

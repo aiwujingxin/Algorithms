@@ -1,8 +1,10 @@
 package leetcode.problems;
 
-import common.*;
+import common.TreeNode;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
 
 /**
  * @author wujingxinit@outlook.com
@@ -33,13 +35,11 @@ public class LeetCode1110 {
         root.left = dfs(root.left);
         root.right = dfs(root.right);
         if (set.contains(root.val)) {
-            TreeNode l = dfs(root.left);
-            if (l != null) {
-                res.add(l);
+            if (root.left != null) {
+                res.add(root.left);
             }
-            TreeNode r = dfs(root.right);
-            if (r != null) {
-                res.add(r);
+            if (root.right != null) {
+                res.add(root.right);
             }
             return null;
         }

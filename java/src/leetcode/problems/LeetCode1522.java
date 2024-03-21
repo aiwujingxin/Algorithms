@@ -8,22 +8,20 @@ import common.Node;
  */
 public class LeetCode1522 {
 
-
     int ans = 0;
 
     public int diameter(Node root) {
-        maxDepth(root);
+        dfs(root);
         return ans;
     }
 
-    private int maxDepth(Node root) {
+    private int dfs(Node root) {
         if (root == null) {
             return 0;
         }
         int maxLen = 0;
-
-        for (Node next : root.children) {
-            int mx = maxDepth(next);
+        for (Node ch : root.children) {
+            int mx = dfs(ch);
             ans = Math.max(ans, mx + maxLen);
             maxLen = Math.max(mx, maxLen);
         }

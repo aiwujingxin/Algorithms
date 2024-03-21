@@ -1,6 +1,6 @@
 package leetcode.problems;
 
-import common.*;
+import common.TreeNode;
 
 import java.util.*;
 
@@ -22,18 +22,13 @@ public class LeetCode652 {
         if (node == null) {
             return "";
         }
-        String serial = node.val +
-                "(" +
-                dfs(node.left) +
-                ")" +
-                "(" +
-                dfs(node.right) +
-                ")";
-        if (seen.containsKey(serial)) {
-            repeat.add(seen.get(serial));
+        String str = node.val + "(" + dfs(node.left) + ")" + "(" + dfs(node.right) + ")";
+        System.out.println(str);
+        if (seen.containsKey(str)) {
+            repeat.add(seen.get(str));
         } else {
-            seen.put(serial, node);
+            seen.put(str, node);
         }
-        return serial;
+        return str;
     }
 }

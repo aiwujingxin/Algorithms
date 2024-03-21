@@ -27,18 +27,17 @@ public class LeetCode2368 {
         HashSet<Integer> visited = new HashSet<>();
         Queue<Integer> queue = new LinkedList<>();
         queue.add(0);
-
+        visited.add(0);
         while (!queue.isEmpty()) {
             int node = queue.poll();
-
             if (set.contains(node)) {
                 continue;
             }
-            if (visited.contains(node)) {
-                continue;
-            }
-            visited.add(node);
             for (int next : graph[node]) {
+                if (visited.contains(next)) {
+                    continue;
+                }
+                visited.add(next);
                 queue.add(next);
             }
         }

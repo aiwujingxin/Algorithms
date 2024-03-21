@@ -24,15 +24,11 @@ public class LeetCode297 {
             queue.add(root);
             while (!queue.isEmpty()) {
                 TreeNode node = queue.poll();
+                sb.append(node != null ? node.val : "null");
+                sb.append(",");
                 if (node != null) {
-                    sb.append(node.val);
                     queue.add(node.left);
                     queue.add(node.right);
-                } else {
-                    sb.append("null");
-                }
-                if (!queue.isEmpty()) {
-                    sb.append(",");
                 }
             }
             return sb.toString();

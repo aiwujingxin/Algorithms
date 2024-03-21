@@ -16,8 +16,10 @@ public class LeetCode617 {
             return root1;
         }
         TreeNode root = new TreeNode(root1.val + root2.val);
-        root.left = mergeTrees(root1.left, root2.left);
-        root.right = mergeTrees(root1.right, root2.right);
+        TreeNode left = mergeTrees(root1.left, root2.left);
+        TreeNode right = mergeTrees(root1.right, root2.right);
+        root.left = left;
+        root.right = right;
         return root;
     }
 }

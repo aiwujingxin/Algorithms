@@ -11,20 +11,28 @@ public class LeetCode298 {
     int ans = 0;
 
     public int longestConsecutive(TreeNode root) {
-        if (root == null) {
-            return 0;
-        }
-        dfs(root, root, 0);
+        dfs(root);
         return ans;
     }
 
-    private void dfs(TreeNode p, TreeNode parent, int length) {
-        if (p == null) {
-            return;
+    private int dfs(TreeNode root) {
+        if (root == null) {
+            return 0;
         }
-        length = (p.val == parent.val + 1) ? length + 1 : 1;
-        ans = Math.max(ans, length);
-        dfs(p.left, p, length);
-        dfs(p.right, p, length);
+        int res = 1;
+        int left = dfs(root.left);
+        int right = dfs(root.right);
+        if (root.left != null) {
+            if (root.left.val == root.val + 1) {
+                res = Math.max(res, left + 1);
+            }
+        }
+        if (root.right != null) {
+            if (root.right.val == root.val + 1) {
+                res = Math.max(res, right + 1);
+            }
+        }
+        ans = Math.max(ans, res);
+        return res;
     }
 }
