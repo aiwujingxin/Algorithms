@@ -1,4 +1,4 @@
-package knowledge.datastructure.advanced.bst;
+package knowledge.datastructure.tree.bst;
 
 import leetcode.problems.*;
 
