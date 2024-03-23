@@ -1,7 +1,7 @@
 package leetcode.problems;
 
 
-import knowledge.graph.shortestpath.*;
+import knowledge.datastructure.graph.shortestpath.*;
 
 /**
  * @author aiwujingxin@gmail.com

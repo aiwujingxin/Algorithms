@@ -8,22 +8,12 @@ public class LeetCode641 {
 
     class MyCircularDeque {
 
+        int head, tail, size, capacity;
         int[] nums;
-        int head, tail, size, total;
 
-        public MyCircularDeque(int _k) {
-            total = _k;
-            nums = new int[total];
-        }
-
-        public boolean insertFront(int value) {
-            if (isFull()) {
-                return false;
-            }
-            head = (head + total - 1) % total;
-            nums[head] = value;
-            size++;
-            return true;
+        public MyCircularDeque(int k) {
+            this.capacity = k;
+            this.nums = new int[capacity];
         }
 
         public boolean insertLast(int value) {
@@ -31,8 +21,8 @@ public class LeetCode641 {
                 return false;
             }
             nums[tail++] = value;
+            tail %= capacity;
             size++;
-            tail %= total;
             return true;
         }
 
@@ -40,16 +30,27 @@ public class LeetCode641 {
             if (isEmpty()) {
                 return false;
             }
-            head = (head + 1) % total;
+            head = (head + 1) % capacity;
             size--;
             return true;
         }
+
+        public boolean insertFront(int value) {
+            if (isFull()) {
+                return false;
+            }
+            head = (head + capacity - 1) % capacity;
+            nums[head] = value;
+            size++;
+            return true;
+        }
+
 
         public boolean deleteLast() {
             if (isEmpty()) {
                 return false;
             }
-            tail = (tail + total - 1) % total;
+            tail = (tail - 1 + capacity) % capacity;
             size--;
             return true;
         }
@@ -59,7 +60,7 @@ public class LeetCode641 {
         }
 
         public int getRear() {
-            return isEmpty() ? -1 : nums[(tail + total - 1) % total];
+            return isEmpty() ? -1 : nums[(tail - 1 + capacity) % capacity];
         }
 
         public boolean isEmpty() {
@@ -67,7 +68,7 @@ public class LeetCode641 {
         }
 
         public boolean isFull() {
-            return size == total;
+            return size == capacity;
         }
     }
 }

@@ -1,6 +1,6 @@
 package knowledge.algorithms.greedy.impl;
 
-import knowledge.dp.backpack.zeroOne.ZeroOnePack;
+import knowledge.algorithms.dp.backpack.zeroOne.ZeroOnePack;
 
 import java.util.Arrays;
 

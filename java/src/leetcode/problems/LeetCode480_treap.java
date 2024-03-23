@@ -1,6 +1,6 @@
 package leetcode.problems;
 
-import knowledge.advstructure.bst.*;
+import knowledge.datastructure.advanced.bst.*;
 
 /**
  * @author wujingxinit@outlook.com

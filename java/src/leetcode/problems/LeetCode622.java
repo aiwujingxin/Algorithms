@@ -8,41 +8,47 @@ public class LeetCode622 {
 
     class MyCircularQueue {
 
-        int k, head, tail;
+        int capacity, head, size, tail;
         int[] nums;
 
-        public MyCircularQueue(int _k) {
-            k = _k;
-            nums = new int[k];
+        public MyCircularQueue(int k) {
+            this.capacity = k;
+            this.nums = new int[capacity];
         }
 
         public boolean enQueue(int value) {
             if (isFull()) {
                 return false;
             }
-            nums[tail % k] = value;
-            return ++tail >= 0;
+            nums[tail++] = value;
+            tail %= capacity;
+            size++;
+            return true;
         }
 
         public boolean deQueue() {
-            if (isEmpty()) return false;
-            return ++head >= 0;
+            if (isEmpty()) {
+                return false;
+            }
+            head = (head + 1) % capacity;
+            size--;
+            return true;
         }
 
         public int Front() {
-            return isEmpty() ? -1 : nums[head % k];
+            return isEmpty() ? -1 : nums[head];
         }
 
         public int Rear() {
-            return isEmpty() ? -1 : nums[(tail - 1) % k];
+            return isEmpty() ? -1 : nums[(tail - 1 + capacity) % capacity];
         }
 
         public boolean isEmpty() {
-            return head == tail;
+            return size == 0;
         }
 
         public boolean isFull() {
-            return tail - head == k;
+            return size == capacity;
         }
     }
 }

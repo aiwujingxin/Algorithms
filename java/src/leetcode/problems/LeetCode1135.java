@@ -1,7 +1,7 @@
 package leetcode.problems;
 
 
-import knowledge.graph.mst.*;
+import knowledge.datastructure.graph.mst.*;
 
 /**
  * @author wujingxinit@outlook.com

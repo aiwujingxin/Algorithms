@@ -1,6 +1,6 @@
 package leetcode.problems;
 
-import knowledge.advstructure.BITree;
+import knowledge.datastructure.advanced.BITree;
 
 /**
  * @author wujingxinit@outlook.com

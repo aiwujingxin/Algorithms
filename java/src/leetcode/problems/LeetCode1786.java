@@ -1,7 +1,8 @@
 package leetcode.problems;
 
 
-import knowledge.graph.shortestpath.*;
+
+import knowledge.datastructure.graph.shortestpath.*;
 
 import java.util.*;
 

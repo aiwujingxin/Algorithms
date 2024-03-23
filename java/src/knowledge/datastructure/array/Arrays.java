@@ -6,7 +6,7 @@ package knowledge.datastructure.array;
  * @description 数组
  * @see knowledge.algorithms.binarysearch.BinarySearch
  * @see knowledge.algorithms.sort.Sort
- * @see knowledge.algorithms.prefixanddiff
+ * @see knowledge.algorithms.presumAnddiff
  * @see knowledge.algorithms.greedy.Greedy
  * @see knowledge.dp.linerdp.Problems
  * @see leetcode.problems.LeetCode56 合并区间

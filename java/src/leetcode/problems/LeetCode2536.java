@@ -1,7 +1,7 @@
 package leetcode.problems;
 
 
-import knowledge.algorithms.prefixanddiff.impl.PreDiff_2d;
+import knowledge.algorithms.presumAnddiff.impl.PreDiff_2d;
 
 /**
  * @author wujingxinit@outlook.com

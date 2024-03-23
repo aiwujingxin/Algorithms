@@ -1,7 +1,7 @@
 package leetcode.problems;
 
 import common.TreeNode;
-import knowledge.advstructure.bst.*;
+import knowledge.datastructure.advanced.bst.*;
 
 /**
  * @author wujingxinit@outlook.com
