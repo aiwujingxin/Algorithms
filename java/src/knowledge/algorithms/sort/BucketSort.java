@@ -7,7 +7,7 @@ import java.util.List;
 /**
  * @author wujingxinit@outlook.com
  * @date 2022/9/14 14:15
- * @description 将元素均匀分布至桶中, 对桶内的元素排序,最后按顺序输出
+ * @description 桶排序 将元素均匀分布至桶中, 对桶内的元素排序,最后按顺序输出
  */
 public class BucketSort implements Sort {
 

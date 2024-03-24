@@ -30,11 +30,11 @@ public interface Heap {
     default int findKthLargest(int[] nums, int k) {
         MaxHeap<Integer> pq = new MaxHeap<>(nums.length + 1);
         for (int j : nums) {
-            pq.insert(j);
+            pq.push(j);
             if (pq.size() > k) {
-                pq.delMax();
+                pq.pop();
             }
         }
-        return pq.Max();
+        return pq.peek();
     }
 }

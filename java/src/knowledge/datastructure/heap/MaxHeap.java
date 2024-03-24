@@ -22,18 +22,18 @@ public class MaxHeap<Key extends Comparable<Key>> {
     }
 
     // 插入一个元素
-    public void insert(Key v) {
+    public void push(Key v) {
         pq[++N] = v;
         up(N);
     }
 
     // 集合中的最大值
-    public Key Max() {
+    public Key peek() {
         return pq[1];
     }
 
     // 删除并返回最大元素
-    public Key delMax() {
+    public Key pop() {
         Key max = pq[1];    // 从根结点得到最大元素
         swap(1, N--);    // 将其和最后一个结点交换
         pq[N + 1] = null;    // 防止对象游离

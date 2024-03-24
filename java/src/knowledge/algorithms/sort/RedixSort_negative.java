@@ -6,6 +6,7 @@ import java.util.List;
 /**
  * @author wujingxinit@outlook.com
  * @date 2022/9/14 23:03
+ * @description 基数排序 支持负数
  */
 public class RedixSort_negative implements Sort {
 

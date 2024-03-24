@@ -12,7 +12,7 @@ public class LeetCode377 {
         dp[0] = 1;
         for (int i = 1; i <= target; i++) {
             for (int num : nums) {
-                if (num <= i) {
+                if (i >= num) {
                     dp[i] += dp[i - num];
                 }
             }

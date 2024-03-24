@@ -1,6 +1,6 @@
 package knowledge.algorithms.sort;
 
-import java.util.*;
+import java.util.Random;
 
 /**
  * @author wujingxinit@outlook.com
@@ -18,7 +18,7 @@ public class QuickSort implements Sort {
             return;
         }
         int index = partition(nums, lo, hi);
-        quickSort(nums, lo, index);
+        quickSort(nums, lo, index - 1);
         quickSort(nums, index + 1, hi);
     }
 

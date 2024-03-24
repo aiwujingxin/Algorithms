@@ -3,6 +3,7 @@ package knowledge.algorithms.sort;
 /**
  * @author wujingxinit@outlook.com
  * @date 2022/9/14 23:05
+ * @description 计数排序 支持负数
  */
 public class CountingSort_negative implements Sort {
 

@@ -7,6 +7,7 @@ import leetcode.problems.LeetCode493;
 /**
  * @author jingxinwu
  * @date 2021-06-06 1:46 下午
+ * @description 归并排序
  * @see leetcode.lists.lcr.LCR170
  * @see LeetCode315
  * @see LeetCode493

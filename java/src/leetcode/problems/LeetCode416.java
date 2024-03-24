@@ -18,10 +18,8 @@ public class LeetCode416 {
         boolean[] dp = new boolean[target + 1];
         dp[0] = true;
         for (int num : nums) {
-            for (int i = target; i >= 0; i--) {
-                if (i >= num) {
-                    dp[i] |= dp[i - num];
-                }
+            for (int i = target; i >= num; i--) {
+                dp[i] |= dp[i - num];
             }
         }
         return dp[target];

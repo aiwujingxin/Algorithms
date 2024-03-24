@@ -1,4 +1,4 @@
-package knowledge.datastructure.trie;
+package knowledge.datastructure.tree.trie;
 
 /**
  * @author wujingxinit@outlook.com

@@ -1,4 +1,4 @@
-package knowledge.datastructure.linkedlist;
+package knowledge.datastructure.list;
 
 /**
  * @author wujingxinit@outlook.com

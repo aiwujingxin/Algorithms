@@ -3,7 +3,7 @@ package knowledge.algorithms.sort;
 /**
  * @author jingxinwu
  * @date 2021-06-06 4:59 下午
- * @description 每一趟遍历，将一个最大的数移到序列末尾。
+ * @description 冒泡排序 每一趟遍历，将一个最大的数移到序列末尾。
  */
 public class BubbleSort implements Sort {
 

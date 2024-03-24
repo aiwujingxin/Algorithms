@@ -23,13 +23,13 @@ public class LeetCode359 {
          * Returns true if the message should be printed in the given timestamp, otherwise returns false.
          */
         public boolean shouldPrintMessage(int timestamp, String message) {
-            if (!this.msgDict.containsKey(message)) {
-                this.msgDict.put(message, timestamp);
+            if (!msgDict.containsKey(message)) {
+                msgDict.put(message, timestamp);
                 return true;
             }
-            Integer oldTimestamp = this.msgDict.get(message);
+            Integer oldTimestamp = msgDict.get(message);
             if (timestamp - oldTimestamp >= 10) {
-                this.msgDict.put(message, timestamp);
+                msgDict.put(message, timestamp);
                 return true;
             }
             return false;

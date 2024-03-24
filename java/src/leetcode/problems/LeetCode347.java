@@ -14,9 +14,7 @@ public class LeetCode347 {
         for (int num : nums) {
             map.put(num, map.getOrDefault(num, 0) + 1);
         }
-
         PriorityQueue<int[]> pq = new PriorityQueue<>(Comparator.comparingInt(o -> o[1]));
-
         for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
             pq.add(new int[]{entry.getKey(), entry.getValue()});
             if (pq.size() > k) {
@@ -25,7 +23,6 @@ public class LeetCode347 {
         }
         int n = Math.min(k, pq.size());
         int[] res = new int[n];
-
         while (!pq.isEmpty()) {
             res[n - 1] = pq.poll()[0];
             n--;
@@ -48,7 +45,6 @@ public class LeetCode347 {
             arr[entry.getValue()].add(entry.getKey());
         }
         int[] res = new int[k];
-
         int index = 0;
         for (int j = arr.length - 1; j >= 0; j--) {
             if (arr[j] == null) {
@@ -74,30 +70,30 @@ public class LeetCode347 {
         for (int num : nums) {
             map.put(num, map.getOrDefault(num, 0) + 1);
         }
-        List<int[]> values = new ArrayList<>();
+        List<int[]> list = new ArrayList<>();
         for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
-            values.add(new int[]{entry.getKey(), entry.getValue()});
+            list.add(new int[]{entry.getKey(), entry.getValue()});
         }
-        findKthLargest(values, k);
+        findKthLargest(list, k, 0, list.size() - 1);
         int[] ret = new int[k];
         for (int i = 0; i < k; i++) {
-            ret[i] = values.get(i)[0];
+            ret[i] = list.get(i)[0];
         }
         return ret;
     }
 
-    public void findKthLargest(List<int[]> nums, int k) {
-        int left = 0;
-        int right = nums.size() - 1;
-        while (left <= right) {
-            int index = partition(nums, left, right);
-            if (index + 1 == k) {
-                return;
-            } else if (index + 1 > k) {
-                right = index - 1;
-            } else {
-                left = index + 1;
-            }
+    public void findKthLargest(List<int[]> list, int k, int lo, int hi) {
+        if (lo >= hi) {
+            return;
+        }
+        int index = partition(list, lo, hi);
+        if (index == k - 1) {
+            return;
+        }
+        if (index > k - 1) {
+            findKthLargest(list, k, lo, index - 1);
+        } else {
+            findKthLargest(list, k, index + 1, hi);
         }
     }
 

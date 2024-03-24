@@ -4,6 +4,7 @@ package knowledge.algorithms.sort;
 /**
  * @author jingxinwu
  * @date 2021-06-06 4:45 下午
+ * @description 插入排序
  */
 public class InsertSort implements Sort {
 

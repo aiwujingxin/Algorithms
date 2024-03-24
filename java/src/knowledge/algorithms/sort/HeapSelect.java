@@ -11,17 +11,12 @@ public class HeapSelect implements TopK {
     @Override
     public int findKthLargest(int[] nums, int k) {
         MaxHeap<Integer> pq = new MaxHeap<>(nums.length + 1);
-        for (int j : nums) {
-            pq.insert(j);
+        for (int num : nums) {
+            pq.push(num);
             if (pq.size() > k) {
-                pq.delMax();
+                pq.pop();
             }
         }
-        return pq.Max();
-    }
-
-    @Override
-    public int findKthSmallest(int[] nums, int k) {
-        return 0;
+        return pq.peek();
     }
 }
