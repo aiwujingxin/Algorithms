@@ -6,7 +6,7 @@ import leetcode.problems.*;
  * @author wujingxinit@outlook.com
  * @date 2023/8/21 22:08
  * @description 回溯算法
- * @link <a href="https://labuladong.github.io/algo/di-san-zha-24031/bao-li-sou-96f79/hui-su-sua-56e11/">labuladong</a>
+ * @link <a href="https://labuladong.online/algo/essential-technique/permutation-combination-subset-all-in-one/">labuladong</a>
  * <排列>
  * @see LeetCode46 元素无重不可复选
  * @see LeetCode47 元素重复不可复选
