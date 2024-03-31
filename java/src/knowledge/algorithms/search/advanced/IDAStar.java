@@ -1,4 +1,4 @@
-package knowledge.algorithms.search.adv;
+package knowledge.algorithms.search.advanced;
 
 import java.util.ArrayList;
 import java.util.HashMap;

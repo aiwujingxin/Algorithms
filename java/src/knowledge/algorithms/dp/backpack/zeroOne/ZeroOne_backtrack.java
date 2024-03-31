@@ -3,30 +3,32 @@ package knowledge.algorithms.dp.backpack.zeroOne;
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/6/27 00:17
+ * @description 标准的二叉子集树
  */
 public class ZeroOne_backtrack implements ZeroOnePack {
 
     int ans;
 
     @Override
-    public int backPack(int[] weight, int[] W, int V) {
-        backtrack(0, weight, W, V, 0, 0);
+    public int backPack(int[] C, int[] W, int V) {
+        backtrack(0, C, W, V, 0, 0);
         return ans;
     }
 
-    public void backtrack(int index, int[] weights, int[] values, int capacity, int currentWeight, int currentValue) {
-        if (currentWeight > capacity) {
+    public void backtrack(int i, int[] C, int[] W, int V, int cw, int cv) {
+        if (cw > V) {
             return;
         }
-        if (index >= weights.length) {
-            if (currentValue > ans) {
-                ans = currentValue;
+        if (i == C.length) {
+            if (cv > ans) {
+                ans = cv;
             }
             return;
         }
-        if (currentWeight + weights[index] <= capacity) {
-            backtrack(index + 1, weights, values, capacity, currentWeight + weights[index], currentValue + values[index]);
+        if (cw + C[i] <= V) { // 可行性约束函数
+            backtrack(i + 1, C, W, V, cw + C[i], cv + W[i]);
         }
-        backtrack(index + 1, weights, values, capacity, currentWeight, currentValue);
+        //todo 限定函数
+        backtrack(i + 1, C, W, V, cw, cv);
     }
 }

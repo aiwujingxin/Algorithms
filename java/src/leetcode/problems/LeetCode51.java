@@ -1,8 +1,6 @@
 package leetcode.problems;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 /**
  * @author wujingxinit@outlook.com
@@ -32,18 +30,17 @@ public class LeetCode51 {
             return;
         }
         for (int j = 0; j < n; j++) {
-            if (!valid(board, row, j)) {
-                continue;
+            if (place(board, row, j)) {
+                board[row][j] = 'Q';
+                list.add(new String(board[row]));
+                backtrack(n, row + 1, list);
+                board[row][j] = '.';
+                list.remove(list.size() - 1);
             }
-            board[row][j] = 'Q';
-            list.add(new String(board[row]));
-            backtrack(n, row + 1, list);
-            board[row][j] = '.';
-            list.remove(list.size() - 1);
         }
     }
 
-    private boolean valid(char[][] board, int row, int col) {
+    private boolean place(char[][] board, int row, int col) {
         for (int j = 0; j < board[0].length; j++) {
             if (board[row][j] == 'Q') {
                 return false;

@@ -1,9 +1,6 @@
 package knowledge.algorithms.dp.backpack.zeroOne;
 
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.LinkedList;
-import java.util.Queue;
+import java.util.*;
 
 /**
  * @author wujingxinit@outlook.com
@@ -21,34 +18,12 @@ public class ZeroOne_branch_bound implements ZeroOnePack {
         return solve(V, arr, C.length);
     }
 
-    int bound(Node u, int n, int W, Item[] arr) {
-        if (u.weight >= W)
-            return 0;
-
-        int profitBound = u.profit;
-        int j = u.level + 1;
-        double totWeight = u.weight;
-
-        while (j < n && totWeight + arr[j].weight <= W) {
-            totWeight += arr[j].weight;
-            profitBound += arr[j].value;
-            j++;
-        }
-
-        if (j < n)
-            profitBound += (int) ((W - totWeight) * arr[j].value / arr[j].weight);
-
-        return profitBound;
-    }
-
     int solve(int W, Item[] arr, int n) {
         Arrays.sort(arr, new ItemComparator());
-
         Queue<Node> q = new LinkedList<>();
         Node u, v;
-
         u = new Node(-1, 0, 0, 0);
-        q.offer(u);
+        q.add(u);
 
         int maxProfit = 0;
         while (!q.isEmpty()) {
@@ -77,6 +52,27 @@ public class ZeroOne_branch_bound implements ZeroOnePack {
         }
 
         return maxProfit;
+    }
+
+    // 上界函数
+    int bound(Node u, int n, int W, Item[] arr) {
+        if (u.weight >= W)
+            return 0;
+
+        int profitBound = u.profit;
+        int j = u.level + 1;
+        double totWeight = u.weight;
+
+        while (j < n && totWeight + arr[j].weight <= W) {
+            totWeight += arr[j].weight;
+            profitBound += arr[j].value;
+            j++;
+        }
+
+        if (j < n)
+            profitBound += (int) ((W - totWeight) * arr[j].value / arr[j].weight);
+
+        return profitBound;
     }
 
     static class Item {

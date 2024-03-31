@@ -1,7 +1,8 @@
-package knowledge.algorithms.search;
+package knowledge.algorithms.search.dfsAndBfs;
 
+import knowledge.algorithms.search.backtrack.*;
 import knowledge.datastructure.tree.*;
-import knowledge.algorithms.search.adv.*;
+import knowledge.algorithms.search.advanced.*;
 
 /**
  * @author wujingxinit@outlook.com

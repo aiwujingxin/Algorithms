@@ -1,56 +1,56 @@
 package leetcode.problems;
 
-import java.util.HashMap;
+import java.util.*;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2023/11/9 21:49
+ * @date 2024/3/26 12:56
+ * @see LeetCode1723
  */
 public class LeetCode698 {
-
-    HashMap<Integer, Boolean> memo = new HashMap<>();
 
     public boolean canPartitionKSubsets(int[] nums, int k) {
         if (k > nums.length) {
             return false;
         }
         int sum = 0;
-        for (int v : nums) {
-            sum += v;
-        }
+        for (int v : nums) sum += v;
         if (sum % k != 0) {
             return false;
         }
-        int used = 0;
+        int[] bucket = new int[k];
         int target = sum / k;
-        return backtrack(k, 0, nums, 0, used, target);
+        // 尽可能提前剪枝
+        Arrays.sort(nums);
+        for (int i = 0, j = nums.length - 1; i < j; i++, j--) {
+            int temp = nums[i];
+            nums[i] = nums[j];
+            nums[j] = temp;
+        }
+        return backtrack(nums, 0, bucket, target);
     }
 
-    boolean backtrack(int k, int bucket, int[] nums, int start, int used, int target) {
-        if (k == 0) {
+    private boolean backtrack(int[] nums, int index, int[] bucket, int target) {
+        if (index == nums.length) {
+            for (int s : bucket) {
+                if (s != target) {
+                    return false;
+                }
+            }
             return true;
         }
-        if (bucket == target) {
-            boolean res = backtrack(k - 1, 0, nums, 0, used, target);
-            memo.put(used, res);
-        }
-        if (memo.containsKey(used)) {
-            return memo.get(used);
-        }
-        for (int i = start; i < nums.length; i++) {
-            if (((used >> i) & 1) == 1) { // 判断第 i 位是否是 1
+        for (int i = 0; i < bucket.length; i++) {
+            if (bucket[i] + nums[index] > target) {
                 continue;
             }
-            if (nums[i] + bucket > target) {
+            if (i > 0 && bucket[i - 1] == 0) {
                 continue;
             }
-            used |= 1 << i; // 将第 i 位置为 1
-            bucket += nums[i];
-            if (backtrack(k, bucket, nums, i + 1, used, target)) {
+            bucket[i] += nums[index];
+            if (backtrack(nums, index + 1, bucket, target)) {
                 return true;
             }
-            used ^= 1 << i;
-            bucket -= nums[i];
+            bucket[i] -= nums[index];
         }
         return false;
     }

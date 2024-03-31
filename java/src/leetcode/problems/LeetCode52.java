@@ -1,56 +1,46 @@
 package leetcode.problems;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/11/8 18:43
+ * @description 子集树 or 排列树 ？
  */
 public class LeetCode52 {
 
-    char[][] board;
-
-    int res;
+    boolean[][] board;
+    int ans;
 
     public int totalNQueens(int n) {
         if (n <= 0) {
             return 0;
         }
-        this.board = new char[n][n];
-        for (int i = 0; i < n; i++) {
-            Arrays.fill(board[i], '.');
-        }
-        backtrack(n, 0, new ArrayList<>());
-        return res;
+        this.board = new boolean[n][n];
+        backtrack(n, 0);
+        return ans;
     }
 
-    private void backtrack(int n, int row, List<String> list) {
-        if (row == n) {
-            res++;
+    private void backtrack(int n, int i) {
+        if (i == n) {
+            ans++;
             return;
         }
         for (int j = 0; j < n; j++) {
-            if (!valid(board, row, j)) {
-                continue;
+            if (place(i, j)) {
+                board[i][j] = true;
+                backtrack(n, i + 1);
+                board[i][j] = false;
             }
-            board[row][j] = 'Q';
-            list.add(new String(board[row]));
-            backtrack(n, row + 1, list);
-            board[row][j] = '.';
-            list.remove(list.size() - 1);
         }
     }
 
-    private boolean valid(char[][] board, int row, int col) {
+    private boolean place(int row, int col) {
         for (int j = 0; j < board[0].length; j++) {
-            if (board[row][j] == 'Q') {
+            if (board[row][j]) {
                 return false;
             }
         }
         for (int i = 0; i < board.length; i++) {
-            if (board[i][col] == 'Q') {
+            if (board[i][col]) {
                 return false;
             }
         }
@@ -58,7 +48,7 @@ public class LeetCode52 {
         for (int i = 0; i < board.length; i++) {
             for (int j = 0; j < board[0].length; j++) {
                 if (row + col == i + j || row - col == i - j) {
-                    if (board[i][j] == 'Q') {
+                    if (board[i][j]) {
                         return false;
                     }
                 }
