@@ -8,8 +8,6 @@ import java.util.*;
  */
 public class LeetCode473 {
 
-    int[] matchsticks;
-
     public boolean makesquare(int[] matchsticks) {
         int sum = 0;
         for (int matchstick : matchsticks) {
@@ -18,35 +16,38 @@ public class LeetCode473 {
         if (sum % 4 != 0) {
             return false;
         }
-        int n = matchsticks.length;
         Arrays.sort(matchsticks);
-        reverse(matchsticks, 0, n - 1);
-        this.matchsticks = matchsticks;
-        return backtrack(0, sum / 4, new int[4]);
+        reverse(matchsticks);
+        return backtrack(matchsticks, 0, new int[4], sum / 4);
     }
 
-    private boolean backtrack(int index, int side, int[] edges) {
-        if (index == matchsticks.length) {
+    private boolean backtrack(int[] nums, int index, int[] edges, int target) {
+        if (index == nums.length) {
             return true;
         }
         for (int i = 0; i < edges.length; i++) {
-            if (edges[i] + matchsticks[index] > side || (i > 0 && edges[i] == edges[i - 1])) {
+            if (edges[i] + nums[index] > target) {
                 continue;
             }
-            edges[i] += matchsticks[index];
-            if (backtrack(index + 1, side, edges)) {
+            if ((i > 0 && edges[i] == edges[i - 1])) {
+                continue;
+            }
+            edges[i] += nums[index];
+            if (backtrack(nums, index + 1, edges, target)) {
                 return true;
             }
-            edges[i] -= matchsticks[index];
+            edges[i] -= nums[index];
         }
         return false;
     }
 
-    public void reverse(int[] chars, int i, int j) {
+    public void reverse(int[] nums) {
+        int i = 0;
+        int j = nums.length - 1;
         while (i < j) {
-            int t = chars[i];
-            chars[i] = chars[j];
-            chars[j] = t;
+            int t = nums[i];
+            nums[i] = nums[j];
+            nums[j] = t;
             i++;
             j--;
         }

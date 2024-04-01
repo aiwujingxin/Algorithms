@@ -5,7 +5,6 @@ import java.util.*;
 /**
  * @author wujingxinit@outlook.com
  * @date 2024/3/26 12:56
- * @see LeetCode1723
  */
 public class LeetCode698 {
 
@@ -19,24 +18,14 @@ public class LeetCode698 {
             return false;
         }
         int[] bucket = new int[k];
-        int target = sum / k;
         // 尽可能提前剪枝
         Arrays.sort(nums);
-        for (int i = 0, j = nums.length - 1; i < j; i++, j--) {
-            int temp = nums[i];
-            nums[i] = nums[j];
-            nums[j] = temp;
-        }
-        return backtrack(nums, 0, bucket, target);
+        reverse(nums);
+        return backtrack(nums, 0, bucket, sum / k);
     }
 
     private boolean backtrack(int[] nums, int index, int[] bucket, int target) {
         if (index == nums.length) {
-            for (int s : bucket) {
-                if (s != target) {
-                    return false;
-                }
-            }
             return true;
         }
         for (int i = 0; i < bucket.length; i++) {
@@ -53,5 +42,17 @@ public class LeetCode698 {
             bucket[i] -= nums[index];
         }
         return false;
+    }
+
+    public void reverse(int[] nums) {
+        int i = 0;
+        int j = nums.length - 1;
+        while (i < j) {
+            int t = nums[i];
+            nums[i] = nums[j];
+            nums[j] = t;
+            i++;
+            j--;
+        }
     }
 }

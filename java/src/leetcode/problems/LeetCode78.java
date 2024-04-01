@@ -18,7 +18,7 @@ public class LeetCode78 {
      * @param start 通过保证元素之间的相对顺序不变来防止出现重复的子集，start 控制树枝的生长避免产生重复的子集
      * @param list  记录根节点到每个节点的路径的值
      */
-    private void backtrack(int[] nums, int start, List<List<Integer>> res, ArrayList<Integer> list) {
+    private void backtrack(int[] nums, int start, List<List<Integer>> res, List<Integer> list) {
         res.add(new ArrayList<>(list));
         for (int i = start; i < nums.length; i++) {
             list.add(nums[i]);

@@ -26,6 +26,7 @@ import leetcode.problems.*;
  * <剪枝>
  * @see LeetCode254
  * @see LeetCode491
+ * @see LeetCode473
  * @see LeetCode698
  * @see LeetCode1723
  * <回溯构建结果>
