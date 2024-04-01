@@ -17,8 +17,8 @@ public class LeetCode301 {
             list.add(s);
             return list;
         }
-        HashSet<String> set = new HashSet<>();
-        set.add(s);
+        HashSet<String> visited = new HashSet<>();
+        visited.add(s);
         while (!queue.isEmpty()) {
             int size = queue.size();
             for (int i = 0; i < size; i++) {
@@ -31,10 +31,10 @@ public class LeetCode301 {
                     if (check(ss)) {
                         res.add(ss);
                     } else {
-                        if (set.contains(ss)) {
+                        if (visited.contains(ss)) {
                             continue;
                         }
-                        set.add(ss);
+                        visited.add(ss);
                         queue.add(ss);
                     }
                 }

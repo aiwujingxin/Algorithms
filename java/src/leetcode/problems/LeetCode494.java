@@ -17,9 +17,9 @@ public class LeetCode494 {
         int amount = (target + sum) / 2;
         int[] dp = new int[amount + 1];
         dp[0] = 1;
-        for (int n : nums) {
-            for (int i = amount; i >= n; i--) {
-                dp[i] += dp[i - n];
+        for (int num : nums) {
+            for (int i = amount; i >= num; i--) {
+                dp[i] += dp[i - num];
             }
         }
         return dp[amount];

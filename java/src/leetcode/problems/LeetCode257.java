@@ -32,7 +32,6 @@ public class LeetCode257 {
                 if (i != list.size() - 1) {
                     sb.append("->");
                 }
-
             }
             res.add(sb.toString());
             return;

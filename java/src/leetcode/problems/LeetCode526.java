@@ -1,7 +1,6 @@
 package leetcode.problems;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 /**
  * @author wujingxinit@outlook.com
@@ -21,7 +20,6 @@ public class LeetCode526 {
         for (int i = 1; i <= n; i++) {
             graph[i] = new ArrayList<>();
         }
-
         for (int i = 1; i <= n; i++) {
             for (int j = 1; j <= n; j++) {
                 if (i % j == 0 || j % i == 0) {
@@ -33,21 +31,18 @@ public class LeetCode526 {
         return res;
     }
 
-    private void backtrack(int index, int n) {
-        if (index == n + 1) {
+    private void backtrack(int u, int n) {
+        if (u == n + 1) {
             res++;
             return;
         }
-        if (graph[index].isEmpty()) {
-            return;
-        }
-        for (int i = 0; i < graph[index].size(); i++) {
-            if (visited[graph[index].get(i)]) {
+        for (int v : graph[u]) {
+            if (visited[v]) {
                 continue;
             }
-            visited[graph[index].get(i)] = true;
-            backtrack(index + 1, n);
-            visited[graph[index].get(i)] = false;
+            visited[v] = true;
+            backtrack(u + 1, n);
+            visited[v] = false;
         }
     }
 }
