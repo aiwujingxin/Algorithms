@@ -1,6 +1,7 @@
 package leetcode.problems;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author wujingxinit@outlook.com
@@ -39,5 +40,31 @@ public class LeetCode78 {
             res.add(list);
         }
         return res;
+    }
+
+    List<List<Integer>> res; // 用于存储所有子集的结果
+    List<Integer> track; // 用于存储当前递归路径的子集
+
+    public List<List<Integer>> subsets_bk_v2(int[] nums) {
+        res = new ArrayList<>();
+        track = new ArrayList<>();
+        backtrack(nums, 0);
+        return res;
+    }
+
+    // 01背包 左分支1代表选择，右分支0 代表不选
+    void backtrack(int[] nums, int i) {
+        if (i == nums.length) {
+            res.add(new ArrayList<>(track));
+            return;
+        }
+        // 选
+        track.add(nums[i]);
+        backtrack(nums, i + 1);
+        // 撤销选择
+        track.remove(track.size() - 1);
+
+        // 不选
+        backtrack(nums, i + 1);
     }
 }

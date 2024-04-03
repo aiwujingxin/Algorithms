@@ -15,8 +15,8 @@ public class LeetCode280 {
     }
 
     private void swap(int[] nums, int i, int j) {
-        int temp = nums[i];
+        int t = nums[i];
         nums[i] = nums[j];
-        nums[j] = temp;
+        nums[j] = t;
     }
 }

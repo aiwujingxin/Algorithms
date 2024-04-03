@@ -1,51 +1,47 @@
 package leetcode.problems;
 
-import java.util.*;
+import java.util.Arrays;
 
 /**
  * @author wujingxinit@outlook.com
  * @date 2024/4/2 01:44
  * @description 子集
  */
-public class LeetCode473_v1 {
+public class LeetCode473_bucket {
 
     int[] matchsticks;
     int n;
+    int sum;
+    int target;
+    boolean[] visited;
 
     public boolean makesquare(int[] matchsticks) {
-        int sum = 0;
         for (int matchstick : matchsticks) {
             sum += matchstick;
         }
         if (sum % 4 != 0) {
             return false;
         }
+        this.n = matchsticks.length;
+        this.target = sum / 4;
+        this.visited = new boolean[n];
         Arrays.sort(matchsticks);
         reverse(matchsticks);
         this.matchsticks = matchsticks;
-        this.n = matchsticks.length;
-        return backtrack(0, sum / 4, 0, 0, sum, new boolean[n]);
+        return backtrack(0, 0, 0);
     }
 
-    private boolean backtrack(int cur, int target, int k, int len, int remain, boolean[] visited) {
-        if (k == 4 && remain == 0) {
+    private boolean backtrack(int start, int k, int len) {
+        if (k == 4) {
             return true;
         }
-        if ((remain + len) % (4 - k) != 0) {
+        if (len > sum / 4) {
             return false;
         }
-        if (remain + len < target) {
-            return false;
+        if (len == sum / 4) {
+            return backtrack(0, k + 1, 0);
         }
-
-        if (len == target) {
-            return backtrack(0, target, k + 1, 0, remain, visited);
-        }
-
-        for (int i = cur; i < n; i++) {
-            if (len + matchsticks[i] > target) {
-                continue;
-            }
+        for (int i = start; i < n; i++) {
             if (i > 0 && matchsticks[i] == matchsticks[i - 1] && !visited[i - 1]) {
                 continue;
             }
@@ -53,7 +49,7 @@ public class LeetCode473_v1 {
                 continue;
             }
             visited[i] = true;
-            if (backtrack(i + 1, target, k, len + matchsticks[i], remain - matchsticks[i], visited)) {
+            if (backtrack(i + 1, k, len + matchsticks[i])) {
                 return true;
             }
             visited[i] = false;

@@ -10,8 +10,8 @@ import leetcode.problems.*;
  * @see MergeSort
  * @see QuickSort
  * @see LeetCode23
- * @see LeetCode25 25. K 个一组翻转链表
- * @see LeetCode224 224. 基本计算器
+ * @see LeetCode324
+ * @see LeetCode932
  */
 public interface DivideConquer {
 }

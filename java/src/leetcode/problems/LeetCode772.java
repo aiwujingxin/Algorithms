@@ -20,7 +20,7 @@ public class LeetCode772 {
 
     private int dfs(Queue<Character> queue) {
         Stack<Integer> stack = new Stack<>();
-        char sign = '+';
+        char preSign = '+';
         int num = 0;
         while (!queue.isEmpty()) {
             char c = queue.poll();
@@ -32,7 +32,7 @@ public class LeetCode772 {
                 num = dfs(queue);
             }
             if ((!Character.isDigit(c) && c != ' ') || queue.isEmpty()) {
-                switch (sign) {
+                switch (preSign) {
                     case '+':
                         stack.push(num);
                         break;
@@ -47,7 +47,7 @@ public class LeetCode772 {
                         break;
                 }
                 num = 0;
-                sign = c;
+                preSign = c;
             }
             // 遇到右括号返回递归结果
             if (c == ')') {

@@ -11,7 +11,7 @@ public class LeetCode407 {
 
     public int trapRainWater(int[][] heights) {
         int m = heights.length, n = heights[0].length;
-        PriorityQueue<int[]> queue = new PriorityQueue<>((a, b) -> a[2] - b[2]);
+        PriorityQueue<int[]> queue = new PriorityQueue<>((o1, o2) -> o1[2] - o2[2]);
         boolean[][] visited = new boolean[m][n];
         for (int i = 0; i < m; i++) {
             for (int j = 0; j < n; j++) {
@@ -25,8 +25,8 @@ public class LeetCode407 {
         int[][] dirs = new int[][]{{1, 0}, {-1, 0}, {0, 1}, {0, -1}};
         int ans = 0;
         while (!queue.isEmpty()) {
-            int[] poll = queue.poll();
-            int x = poll[0], y = poll[1], h = poll[2];
+            int[] node = queue.poll();
+            int x = node[0], y = node[1], h = node[2];
             for (int[] d : dirs) {
                 int nx = x + d[0], ny = y + d[1];
                 if (nx < 0 || nx >= m || ny < 0 || ny >= n) {

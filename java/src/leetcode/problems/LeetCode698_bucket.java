@@ -22,9 +22,8 @@ public class LeetCode698_bucket {
         if (sum % k != 0) {
             return false;
         }
-        int used = 0;
         int target = sum / k;
-        return backtrack(k, 0, nums, 0, used, target);
+        return backtrack(k, 0, nums, 0, 0, target);
     }
 
     boolean backtrack(int k, int sum, int[] nums, int start, int used, int target) {
