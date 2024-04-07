@@ -1,7 +1,6 @@
 package leetcode.problems;
 
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 /**
  * @author wujingxinit@outlook.com
@@ -20,7 +19,6 @@ public class LeetCode60 {
         for (int i = 1; i <= n; i++) {
             nums.add(i);
         }
-
         StringBuilder sb = new StringBuilder();
         for (int i = n - 1; i >= 0; i--) {
             //落在第几组 确定第几个数字

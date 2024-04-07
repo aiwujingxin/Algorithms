@@ -1,7 +1,6 @@
 package leetcode.problems;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 /**
  * @author wujingxinit@outlook.com
@@ -13,36 +12,32 @@ public class LeetCode54 {
         if (matrix == null || matrix.length == 0) {
             return new ArrayList<>();
         }
-
-        int row_start = 0;
-        int row_end = matrix.length - 1;
-        int col_start = 0;
-        int col_end = matrix[0].length - 1;
+        int top = 0;
+        int down = matrix.length - 1;
+        int left = 0;
+        int right = matrix[0].length - 1;
         List<Integer> res = new ArrayList<>();
-        while (row_start <= row_end && col_start <= col_end) {
-
-            for (int i = col_start; i <= col_end; i++) {
-                res.add(matrix[row_start][i]);
+        while (top <= down && left <= right) {
+            for (int i = left; i <= right; i++) {
+                res.add(matrix[top][i]);
             }
-
-            row_start++;
-            for (int i = row_start; i <= row_end; i++) {
-                res.add(matrix[i][col_end]);
+            top++;
+            for (int i = top; i <= down; i++) {
+                res.add(matrix[i][right]);
             }
-            col_end--;
-
-            if (row_start <= row_end && col_start <= col_end) {
-                for (int i = col_end; i >= col_start; i--) {
-                    res.add(matrix[row_end][i]);
+            right--;
+            if (top <= down && left <= right) {
+                for (int i = right; i >= left; i--) {
+                    res.add(matrix[down][i]);
                 }
             }
-            row_end--;
-            if (row_start <= row_end && col_start <= col_end) {
-                for (int i = row_end; i >= row_start; i--) {
-                    res.add(matrix[i][col_start]);
+            down--;
+            if (top <= down && left <= right) {
+                for (int i = down; i >= top; i--) {
+                    res.add(matrix[i][left]);
                 }
             }
-            col_start++;
+            left++;
         }
         return res;
     }

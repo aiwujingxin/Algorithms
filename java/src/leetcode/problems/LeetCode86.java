@@ -1,6 +1,6 @@
 package leetcode.problems;
 
-import common.ListNode;
+import common.*;
 
 /**
  * @author wujingxinit@outlook.com
@@ -14,12 +14,11 @@ public class LeetCode86 {
         }
         ListNode dummy = new ListNode();
         dummy.next = head;
-        ListNode left = dummy;
-        while (left.next != null) {
-            if (left.next.val < x) {
-                left = left.next;
-            } else {
-                ListNode right = left.next;
+        ListNode cur = dummy;
+        while (cur.next != null) {
+            if (cur.next.val >= x) {
+                // find
+                ListNode right = cur.next;
                 while (right.next != null && right.next.val >= x) {
                     right = right.next;
                 }
@@ -27,13 +26,13 @@ public class LeetCode86 {
                     return dummy.next;
                 }
                 ListNode next = right.next;
-
+                // 断开
                 right.next = next.next;
-                next.next = left.next;
-                left.next = next;
-
-                left = left.next;
+                // 插入
+                next.next = cur.next;
+                cur.next = next;
             }
+            cur = cur.next;
         }
         return dummy.next;
     }

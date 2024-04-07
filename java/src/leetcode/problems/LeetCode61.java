@@ -1,6 +1,6 @@
 package leetcode.problems;
 
-import common.ListNode;
+import common.*;
 
 /**
  * @author wujingxinit@outlook.com
@@ -17,11 +17,10 @@ public class LeetCode61 {
         if (k == 0) {
             return head;
         }
-        int step = len - k;
         ListNode dummy = new ListNode();
         dummy.next = head;
         ListNode cur = dummy;
-        for (int i = 0; i < step; i++) {
+        for (int i = 0; i < len - k; i++) {
             cur = cur.next;
         }
         ListNode newHead = cur.next;

@@ -16,18 +16,18 @@ func letterCombinations(digits string) []string {
 		return []string{}
 	}
 	res := make([]string, 0)
-	letterCombinationsHelper(digits, 0, &res, "")
+	var dfs func(string, int, *[]string, string)
+	dfs = func(digits string, index int, res *[]string, s string) {
+		if index == len(digits) {
+			*res = append(*res, s)
+			return
+		}
+		str := mp[digits[index]]
+
+		for i := 0; i < len(str); i++ {
+			dfs(digits, index+1, res, s+string(str[i]))
+		}
+	}
+	dfs(digits, 0, &res, "")
 	return res
-}
-
-func letterCombinationsHelper(digits string, index int, res *[]string, s string) {
-	if index == len(digits) {
-		*res = append(*res, s)
-		return
-	}
-	str := mp[digits[index]]
-
-	for i := 0; i < len(str); i++ {
-		letterCombinationsHelper(digits, index+1, res, s+string(str[i]))
-	}
 }

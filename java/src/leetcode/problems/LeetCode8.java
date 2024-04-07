@@ -15,25 +15,25 @@ public class LeetCode8 {
             return 0;
         }
         int index = 0;
-        boolean flag = false;
+        boolean sign = false;
         if (s.charAt(0) == '-') {
             index++;
-            flag = true;
+            sign = true;
         } else if (s.charAt(0) == '+') {
             index++;
         }
         int res = 0;
-        int max = Integer.MAX_VALUE / 10;
+        int limit = Integer.MAX_VALUE / 10;
         while (index < s.length()) {
             char c = s.charAt(index);
             if (c < '0' || c > '9') {
-                return flag ? -1 * res : res;
+                return sign ? -1 * res : res;
             }
-            if (res > max) {
-                return flag ? Integer.MIN_VALUE : Integer.MAX_VALUE;
+            if (res > limit) {
+                return sign ? Integer.MIN_VALUE : Integer.MAX_VALUE;
             }
-            if (res == max) {
-                if (flag) {
+            if (res == limit) {
+                if (sign) {
                     if (c >= '8') {
                         return Integer.MIN_VALUE;
                     }
@@ -46,6 +46,6 @@ public class LeetCode8 {
             res = res * 10 + (c - '0');
             index++;
         }
-        return flag ? -1 * res : res;
+        return sign ? -1 * res : res;
     }
 }

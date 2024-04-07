@@ -40,7 +40,6 @@ public class LeetCode36 {
 
         for (int i = 0; i < n; i += 3) {
             for (int j = 0; j < m; j += 3) {
-
                 boolean[] visited = new boolean[10];
                 for (int k = i; k < i + 3; k++) {
                     for (int l = j; l < j + 3; l++) {

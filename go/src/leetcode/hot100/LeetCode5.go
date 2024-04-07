@@ -6,8 +6,8 @@ func longestPalindrome(s string) string {
 	}
 	var res string
 	for i := range s {
-		a := findPa(s, i, i)
-		b := findPa(s, i, i+1)
+		a := cal(s, i, i)
+		b := cal(s, i, i+1)
 		if len(a) > len(res) {
 			res = a
 		}
@@ -18,7 +18,7 @@ func longestPalindrome(s string) string {
 	return res
 }
 
-func findPa(s string, i, j int) string {
+func cal(s string, i, j int) string {
 	if j > len(s)-1 || s[i] != s[j] {
 		return ""
 	}

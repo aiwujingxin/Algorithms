@@ -7,7 +7,6 @@ package leetcode.problems;
 public class LeetCode14 {
 
     public String longestCommonPrefix(String[] strs) {
-
         int index = 0;
         int max = Integer.MAX_VALUE;
         for (String s : strs) {
@@ -15,7 +14,7 @@ public class LeetCode14 {
         }
         while (index < max) {
             char c = strs[0].charAt(index);
-            if (!can(index, c, strs)) {
+            if (!check(index, c, strs)) {
                 break;
             }
             index++;
@@ -23,7 +22,7 @@ public class LeetCode14 {
         return strs[0].substring(0, index);
     }
 
-    private boolean can(int index, char c, String[] strs) {
+    private boolean check(int index, char c, String[] strs) {
         for (int i = 1; i < strs.length; i++) {
             if (strs[i].charAt(index) != c) {
                 return false;

@@ -1,7 +1,6 @@
 package leetcode.problems;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 /**
  * @author wujingxinit@outlook.com
@@ -19,12 +18,10 @@ public class LeetCode6 {
         }
         for (int i = 0; i < s.length(); i++) {
             int index = i % (2 * numRows - 2);
-            if (index < numRows) {
-                list.get(index).append(s.charAt(i));
-            } else {
-                index = numRows - (index - (numRows - 1)) - 1;
-                list.get(index).append(s.charAt(i));
+            if (index >= numRows) {
+                index = 2 * numRows - 2 - index;
             }
+            list.get(index).append(s.charAt(i));
         }
         StringBuilder res = new StringBuilder();
         for (StringBuilder sb : list) {

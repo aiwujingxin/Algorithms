@@ -2,11 +2,11 @@ package hot100
 
 func addTwoNumbers(l1 *ListNode, l2 *ListNode) *ListNode {
 	root := &ListNode{}
-	helperAdd(l1, l2, root, 0)
+	dfs(l1, l2, root, 0)
 	return root.Next
 }
 
-func helperAdd(l1 *ListNode, l2 *ListNode, root *ListNode, flag int) {
+func dfs(l1 *ListNode, l2 *ListNode, root *ListNode, flag int) {
 	if l1 == nil && l2 == nil {
 		if flag == 1 {
 			root.Next = &ListNode{Val: 1}
@@ -33,5 +33,5 @@ func helperAdd(l1 *ListNode, l2 *ListNode, root *ListNode, flag int) {
 		Val: (v1 + v2 + flag) % 10,
 	}
 	flag = (v1 + v2 + flag) / 10
-	helperAdd(n1, n2, root.Next, flag)
+	dfs(n1, n2, root.Next, flag)
 }

@@ -24,7 +24,6 @@ public class LeetCode22 {
             sb.append("(");
             backtrack(res, left + 1, right, n, sb);
             sb.deleteCharAt(sb.length() - 1);
-
         }
         if (right < left) {
             sb.append(")");

@@ -12,9 +12,9 @@ public class LeetCode24 {
         if (head == null || head.next == null) {
             return head;
         }
-        ListNode nextNode = head.next;
-        head.next = swapPairs(nextNode.next);
-        nextNode.next = head;
-        return nextNode;
+        ListNode nextHead = head.next;
+        head.next = swapPairs(nextHead.next);
+        nextHead.next = head;
+        return nextHead;
     }
 }

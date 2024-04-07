@@ -5,19 +5,19 @@ func generateParenthesis(n int) []string {
 		return []string{}
 	}
 	var res []string
-	generateParenthesisHelper(&res, 0, 0, n, "")
+	var dfs func(left, right, n int, s string)
+	dfs = func(left, right, n int, s string) {
+		if len(s) == n*2 {
+			res = append(res, s)
+			return
+		}
+		if left < n {
+			dfs(left+1, right, n, s+"(")
+		}
+		if right < left {
+			dfs(left, right+1, n, s+")")
+		}
+	}
+	dfs(0, 0, n, "")
 	return res
-}
-
-func generateParenthesisHelper(res *[]string, left, right, n int, s string) {
-	if len(s) == n*2 {
-		*res = append(*res, s)
-		return
-	}
-	if left < n {
-		generateParenthesisHelper(res, left+1, right, n, s+"(")
-	}
-	if right < left {
-		generateParenthesisHelper(res, left, right+1, n, s+")")
-	}
 }

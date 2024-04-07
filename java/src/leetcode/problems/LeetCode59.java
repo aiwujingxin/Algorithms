@@ -10,36 +10,33 @@ public class LeetCode59 {
             return new int[][]{};
         }
         int[][] res = new int[n][n];
-        int row_start = 0;
-        int row_end = n - 1;
-        int col_start = 0;
-        int col_end = n - 1;
+        int top = 0;
+        int down = n - 1;
+        int left = 0;
+        int right = n - 1;
         int index = 1;
-        while (row_start <= row_end && col_start <= col_end) {
-            for (int i = col_start; i <= col_end; i++) {
-                res[row_start][i] = index;
+        while (top <= down && left <= right) {
+            for (int i = left; i <= right; i++) {
+                res[top][i] = index;
                 index++;
             }
-            row_start++;
-            for (int i = row_start; i <= row_end; i++) {
-                res[i][col_end] = index;
+            top++;
+            for (int i = top; i <= down; i++) {
+                res[i][right] = index;
                 index++;
             }
-            col_end--;
-
-            for (int i = col_end; i >= col_start; i--) {
-                res[row_end][i] = index;
+            right--;
+            for (int i = right; i >= left; i--) {
+                res[down][i] = index;
                 index++;
             }
-            row_end--;
-
-            for (int i = row_end; i >= row_start; i--) {
-                res[i][col_start] = index;
+            down--;
+            for (int i = down; i >= top; i--) {
+                res[i][left] = index;
                 index++;
             }
-            col_start++;
+            left++;
         }
-
         return res;
     }
 }
