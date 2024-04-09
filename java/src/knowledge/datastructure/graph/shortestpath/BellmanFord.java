@@ -1,8 +1,8 @@
 package knowledge.datastructure.graph.shortestpath;
 
-import knowledge.datastructure.graph.*;
+import knowledge.datastructure.graph.ShortestPath;
 
-import java.util.*;
+import java.util.Arrays;
 
 /**
  * @author wujingxinit@outlook.com
@@ -16,37 +16,30 @@ public class BellmanFord implements ShortestPath {
 
     final static int INF = 0x3f3f3f3f;
 
-    public int[] getShortestPath(int n, int[][] edges, int source) {
-        int[] dist = new int[n];
-        // 初始化所有节点的距离为无穷大
-        Arrays.fill(dist, INF);
-        // 设置源节点的距离为0
-        dist[source] = 0;
-        // 进行V-1次迭代更新
-        for (int i = 1; i < n - 1; ++i) {
-            //每次松弛所有的边
+    public int[] getShortestPath(int n, int[][] edges, int s) {
+        int[] d = new int[n];
+        Arrays.fill(d, INF);
+        d[s] = 0;
+        for (int i = 1; i < n - 1; ++i) { // 进行V-1次迭代更新
             for (int[] edge : edges) {
                 int u = edge[0];
                 int v = edge[1];
                 int w = edge[2];
-                // 松弛操作
-                // 三角不等式
-                if (dist[u] + w < dist[v]) {
-                    dist[v] = dist[u] + w;
+                if (d[v] > d[u] + w) {
+                    d[v] = d[u] + w;
                 }
             }
         }
-
         // 检测负权回路
         for (int[] edge : edges) {
             int u = edge[0];
             int v = edge[1];
             int weight = edge[2];
-            if (dist[u] + weight < dist[v]) {
+            if (d[u] + weight < d[v]) {
                 System.out.println("图中存在负权回路");
                 return null;
             }
         }
-        return dist;
+        return d;
     }
 }

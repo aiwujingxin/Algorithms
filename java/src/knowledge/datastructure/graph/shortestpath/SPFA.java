@@ -25,7 +25,7 @@ public class SPFA implements ShortestPath {
 
     final static int INF = 0x3f3f3f3f;
 
-    public int[] getShortestPath(int n, int[][] edges, int source) {
+    public int[] getShortestPath(int n, int[][] edges, int s) {
         List<int[]>[] graph = new ArrayList[n];
         for (int i = 0; i < n; i++) {
             graph[i] = new ArrayList<>();
@@ -39,12 +39,12 @@ public class SPFA implements ShortestPath {
         boolean[] visited = new boolean[n];
         // 初始化所有节点的距离为无穷大
         Arrays.fill(dist, INF);
-        dist[source] = 0;
+        dist[s] = 0;
 
         //用BFS做优化
         Queue<Integer> queue = new LinkedList<>();
-        queue.offer(source);
-        visited[source] = true;
+        queue.add(s);
+        visited[s] = true;
 
         int[] count = new int[n]; // 记录顶点进队次数
 
@@ -55,22 +55,22 @@ public class SPFA implements ShortestPath {
             // 更新所有边
             for (int[] edge : graph[u]) {
                 int v = edge[0];
-                int weight = edge[1];
+                int w = edge[1];
 
                 // 如果更新成功, 加入队列, 更新谁, 就那谁更新别人
                 // 一个点没有更新过,再拿它更新别人一定是没有效果的
                 // 只有我变小了,我后面的人才会变小
-                if (dist[u] + weight < dist[v]) {
-                    dist[v] = dist[u] + weight;
-                    if (!visited[v]) {
-                        queue.offer(v);
-                        visited[v] = true;
-
-                        // 记录进队次数，若超过V次，则存在负环
-                        count[v]++;
-                        if (count[v] >= n) {
-                            return null;
-                        }
+                if (dist[v] > dist[u] + w) {
+                    dist[v] = dist[u] + w;
+                    if (visited[v]) {
+                        continue;
+                    }
+                    queue.add(v);
+                    visited[v] = true;
+                    // 记录进队次数，若超过V次，则存在负环
+                    count[v]++;
+                    if (count[v] >= n) {
+                        return null;
                     }
                 }
             }

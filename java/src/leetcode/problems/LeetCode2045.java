@@ -13,7 +13,6 @@ public class LeetCode2045 {
         for (int i = 0; i <= n; i++) {
             graph.add(new ArrayList<>());
         }
-
         for (int[] edge : edges) {
             int x = edge[0];
             int y = edge[1];

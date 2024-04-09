@@ -22,45 +22,45 @@ public class LeetCode2093_SPFA {
         }
 
         int[][] dp = new int[n][discounts + 1];
-        boolean[][] state = new boolean[n][discounts + 1];
+        boolean[][] vis = new boolean[n][discounts + 1];
 
         for (int[] d : dp) {
             Arrays.fill(d, Integer.MAX_VALUE);
         }
 
         dp[0][discounts] = 0;
-        state[0][discounts] = true;
+        vis[0][discounts] = true;
 
         Queue<int[]> queue = new LinkedList<>();
         queue.offer(new int[]{0, discounts});
 
         while (!queue.isEmpty()) {
             int[] curPair = queue.poll();
-            int cur = curPair[0];
+            int u = curPair[0];
             int cnt = curPair[1];
-            state[cur][cnt] = false;
+            vis[u][cnt] = false;
 
-            for (int[] nextPair : graph[cur]) {
-                int next = nextPair[0];
-                int cost = nextPair[1];
+            for (int[] edge : graph[u]) {
+                int next = edge[0];
+                int cost = edge[1];
 
                 // Without using discount
-                if (dp[next][cnt] > dp[cur][cnt] + cost) {
-                    dp[next][cnt] = dp[cur][cnt] + cost;
+                if (dp[next][cnt] > dp[u][cnt] + cost) {
+                    dp[next][cnt] = dp[u][cnt] + cost;
 
-                    if (!state[next][cnt]) {
-                        state[next][cnt] = true;
+                    if (!vis[next][cnt]) {
+                        vis[next][cnt] = true;
                         queue.offer(new int[]{next, cnt});
                     }
                 }
 
                 // Using discount
                 if (cnt > 0) {
-                    if (dp[next][cnt - 1] > dp[cur][cnt] + cost / 2) {
-                        dp[next][cnt - 1] = dp[cur][cnt] + cost / 2;
+                    if (dp[next][cnt - 1] > dp[u][cnt] + cost / 2) {
+                        dp[next][cnt - 1] = dp[u][cnt] + cost / 2;
 
-                        if (!state[next][cnt - 1]) {
-                            state[next][cnt - 1] = true;
+                        if (!vis[next][cnt - 1]) {
+                            vis[next][cnt - 1] = true;
                             queue.offer(new int[]{next, cnt - 1});
                         }
                     }

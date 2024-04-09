@@ -21,7 +21,7 @@ public class LeetCode1976 {
         ways[0] = 1;
 
         Queue<int[]> q = new PriorityQueue<>(Comparator.comparingInt(a -> a[1]));
-        q.offer(new int[]{0, 0});
+        q.add(new int[]{0, 0});
 
         while (!q.isEmpty()) {
             int[] e = q.poll();
@@ -31,8 +31,7 @@ public class LeetCode1976 {
                     if (adj[v][i] != 0) {
                         if (time[v] + adj[v][i] < time[i]) {
                             time[i] = time[v] + adj[v][i];
-
-                            q.offer(new int[]{i, time[i]});
+                            q.add(new int[]{i, time[i]});
                             ways[i] = ways[v];
                         } else if (time[v] + adj[v][i] == time[i]) {
                             ways[i] = (ways[i] + ways[v]) % mod;

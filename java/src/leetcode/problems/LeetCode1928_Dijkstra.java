@@ -27,7 +27,7 @@ public class LeetCode1928_Dijkstra {
         }
 
         PriorityQueue<int[]> pq = new PriorityQueue<>((a, b) -> a[1] - b[1]); //a[0] = city, a[1] = cost, a[2] = time
-        pq.offer(new int[]{source, passingFees[source], 0});
+        pq.add(new int[]{source, passingFees[source], 0});
         timeHold[0] = 0;
         while (!pq.isEmpty()) {
             int[] cur = pq.poll();
@@ -48,7 +48,7 @@ public class LeetCode1928_Dijkstra {
                     continue;
                 }
 
-                if (time + neiTime < timeHold[neiNode]) {
+                if (timeHold[neiNode] > time + neiTime) {
                     timeHold[neiNode] = time + neiTime; //we found lesser time update time Array and add this node to pq..
                     pq.add(new int[]{neiNode, fee + passingFees[neiNode], timeHold[neiNode]});
                 }

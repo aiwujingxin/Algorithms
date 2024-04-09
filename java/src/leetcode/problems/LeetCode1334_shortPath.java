@@ -6,7 +6,7 @@ import java.util.*;
  * @author aiwujingxin@gmail.com
  * @date 2022/6/25 10:30
  */
-public class LeetCode1334_shortpath {
+public class LeetCode1334_shortPath {
 
     public int findTheCity(int n, int[][] edges, int distanceThreshold) {
         int INF = (int) 1e9 + 7;
@@ -99,23 +99,22 @@ public class LeetCode1334_shortpath {
         }
     }
 
-    void dijkstra(int n, List<int[]>[] adj, int[] dist, int src) {
+    void dijkstra(int n, List<int[]>[] adj, int[] d, int src) {
         PriorityQueue<int[]> pq = new PriorityQueue<>((a, b) -> (a[1] - b[1]));
         pq.add(new int[]{src, 0});
         while (!pq.isEmpty()) {
-            int[] cur = pq.remove();
+            int[] cur = pq.poll();
             int u = cur[0];
             int du = cur[1];
-            if (du > dist[u]) {
+            if (du > d[u]) {
                 continue;
             }
-
-            for (int[] nb : adj[u]) {
-                int v = nb[0];
-                int duv = nb[1];
-                if (dist[v] > du + duv) {
-                    dist[v] = du + duv;
-                    pq.add(new int[]{v, dist[v]});
+            for (int[] edge : adj[u]) {
+                int v = edge[0];
+                int w = edge[1];
+                if (d[v] > du + w) {
+                    d[v] = du + w;
+                    pq.add(new int[]{v, d[v]});
                 }
             }
         }

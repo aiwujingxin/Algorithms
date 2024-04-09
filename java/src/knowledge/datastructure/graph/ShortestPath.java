@@ -8,7 +8,7 @@ import leetcode.problems.*;
  * @description 最短路径
  * @see LeetCode743 网络延迟时间
  * @see LeetCode787
- * @see LeetCode1334_shortpath
+ * @see LeetCode1334_shortPath
  * @see LeetCode1514_Dijkstra
  * @see LeetCode1631
  * @see LeetCode1786
@@ -17,6 +17,7 @@ import leetcode.problems.*;
  * @see LeetCode2093_Bellman
  * @see LeetCode1928_Dijkstra
  * @see LeetCode2662
+ * @see LeetCode2093_SPFA
  */
 public interface ShortestPath {
     int[] getShortestPath(int n, int[][] edges, int source);

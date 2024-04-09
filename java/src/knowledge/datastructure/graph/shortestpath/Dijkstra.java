@@ -1,6 +1,6 @@
 package knowledge.datastructure.graph.shortestpath;
 
-import knowledge.datastructure.graph.*;
+import knowledge.datastructure.graph.ShortestPath;
 
 import java.util.*;
 
@@ -26,9 +26,9 @@ public class Dijkstra implements ShortestPath {
             graph[e[0]].add(new int[]{e[1], e[2]});
             graph[e[1]].add(new int[]{e[0], e[2]});
         }
-        int[] ds = new int[n];
-        Arrays.fill(ds, INF);
-        ds[s] = 0;
+        int[] d = new int[n];
+        Arrays.fill(d, INF);
+        d[s] = 0;
         Queue<int[]> pq = new PriorityQueue<>(Comparator.comparingInt(o -> o[1]));
         pq.add(new int[]{s, 0});
         while (!pq.isEmpty()) {
@@ -36,12 +36,12 @@ public class Dijkstra implements ShortestPath {
             for (int[] edge : graph[u]) {
                 int v = edge[0];
                 int w = edge[1];
-                if (ds[u] + w < ds[v]) {
-                    ds[v] = ds[u] + w;
-                    pq.add(new int[]{v, ds[v]});
+                if (d[v] > d[u] + w) {
+                    d[v] = d[u] + w;
+                    pq.add(new int[]{v, d[v]});
                 }
             }
         }
-        return ds;
+        return d;
     }
 }

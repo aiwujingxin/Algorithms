@@ -1,6 +1,8 @@
 package leetcode.problems;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.PriorityQueue;
 
 /**
  * @author wujingxinit@outlook.com
@@ -21,28 +23,27 @@ public class LeetCode1514_Dijkstra {
             graph[e[1]].add(new Pair(succProb[i], e[0]));
         }
 
-        PriorityQueue<Pair> que = new PriorityQueue<>();
-        double[] prob = new double[n];
-
-        que.offer(new Pair(1, start));
-        prob[start] = 1;
-        while (!que.isEmpty()) {
-            Pair pair = que.poll();
+        PriorityQueue<Pair> pq = new PriorityQueue<>();
+        double[] d = new double[n];
+        pq.add(new Pair(1, start));
+        d[start] = 1;
+        while (!pq.isEmpty()) {
+            Pair pair = pq.poll();
             double pr = pair.probability;
-            int node = pair.node;
-            if (pr < prob[node]) {
+            int u = pair.node;
+            if (pr < d[u]) {
                 continue;
             }
-            for (Pair pairNext : graph[node]) {
-                double prNext = pairNext.probability;
-                int nodeNext = pairNext.node;
-                if (prob[nodeNext] < prob[node] * prNext) {
-                    prob[nodeNext] = prob[node] * prNext;
-                    que.offer(new Pair(prob[nodeNext], nodeNext));
+            for (Pair edge : graph[u]) {
+                double w = edge.probability;
+                int v = edge.node;
+                if (d[v] < d[u] * w) {
+                    d[v] = d[u] * w;
+                    pq.offer(new Pair(d[v], v));
                 }
             }
         }
-        return prob[end];
+        return d[end];
     }
 
     static class Pair implements Comparable<Pair> {
