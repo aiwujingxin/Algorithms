@@ -10,9 +10,8 @@ import java.util.List;
 public class LeetCode46 {
 
     public List<List<Integer>> permute(int[] nums) {
-        boolean[] used = new boolean[nums.length];
         List<List<Integer>> res = new ArrayList<>();
-        backtrack(nums, new ArrayList<>(), res, used);
+        backtrack(nums, new ArrayList<>(), res, new boolean[nums.length]);
         return res;
     }
 

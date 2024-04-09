@@ -29,14 +29,14 @@ public class LeetCode775 {
         return res;
     }
 
-    public void mergeSort(int[] nums, int start, int end) {
-        if (start >= end) {
+    public void mergeSort(int[] nums, int i, int j) {
+        if (i >= j) {
             return;
         }
-        int mid = (start + end) / 2;
-        mergeSort(nums, start, mid);
-        mergeSort(nums, mid + 1, end);
-        merge(nums, start, mid, end);
+        int mid = (i + j) / 2;
+        mergeSort(nums, i, mid);
+        mergeSort(nums, mid + 1, j);
+        merge(nums, i, mid, j);
     }
 
     private void merge(int[] nums, int left, int mid, int right) {

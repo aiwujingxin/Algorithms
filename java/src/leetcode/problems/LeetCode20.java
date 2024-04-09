@@ -1,10 +1,10 @@
 package leetcode.problems;
 
-import java.util.Stack;
+import java.util.*;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2023/10/18 15:30
+ * @date 2024/4/9 15:22
  */
 public class LeetCode20 {
 
@@ -21,11 +21,12 @@ public class LeetCode20 {
                 if (stack.isEmpty()) {
                     return false;
                 }
-                if ((c == ')' && stack.peek() == '(') || (c == ']' && stack.peek() == '[') || (c == '}' && stack.peek() == '{')) {
-                    stack.pop();
-                } else {
+                if (c == ')' && stack.peek() != '(' ||
+                        c == ']' && stack.peek() != '[' ||
+                        c == '}' && stack.peek() != '{') {
                     return false;
                 }
+                stack.pop();
             }
         }
         return stack.isEmpty();

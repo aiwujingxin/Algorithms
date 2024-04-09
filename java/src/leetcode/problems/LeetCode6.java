@@ -4,12 +4,12 @@ import java.util.*;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2023/12/19 14:20
+ * @date 2024/4/9 10:41
  */
 public class LeetCode6 {
 
     public String convert(String s, int numRows) {
-        if (s.length() <= numRows || numRows == 1) {
+        if (s == null || s.isEmpty() || numRows <= 1) {
             return s;
         }
         List<StringBuilder> list = new ArrayList<>();
@@ -23,10 +23,10 @@ public class LeetCode6 {
             }
             list.get(index).append(s.charAt(i));
         }
-        StringBuilder res = new StringBuilder();
-        for (StringBuilder sb : list) {
-            res.append(sb);
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < numRows; i++) {
+            sb.append(list.get(i).toString());
         }
-        return res.toString();
+        return sb.toString();
     }
 }

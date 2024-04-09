@@ -25,7 +25,7 @@ public class LeetCode8 {
         int res = 0;
         int limit = Integer.MAX_VALUE / 10;
         while (index < s.length()) {
-            char c = s.charAt(index);
+            int c = s.charAt(index);
             if (c < '0' || c > '9') {
                 return sign ? -1 * res : res;
             }
@@ -33,17 +33,14 @@ public class LeetCode8 {
                 return sign ? Integer.MIN_VALUE : Integer.MAX_VALUE;
             }
             if (res == limit) {
-                if (sign) {
-                    if (c >= '8') {
-                        return Integer.MIN_VALUE;
-                    }
-                } else {
-                    if (c > '7') {
-                        return Integer.MAX_VALUE;
-                    }
+                if (sign && c >= '8') {
+                    return Integer.MIN_VALUE;
+                }
+                if (!sign && c > '7') {
+                    return Integer.MAX_VALUE;
                 }
             }
-            res = res * 10 + (c - '0');
+            res = res * 10 + c - '0';
             index++;
         }
         return sign ? -1 * res : res;

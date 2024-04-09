@@ -11,6 +11,30 @@ public class LeetCode42 {
             return 0;
         }
         int n = height.length;
+        int res = 0;
+        int left = 0;
+        int right = n - 1;
+        int leftMax = 0;
+        int rightMax = 0;
+        while (left < right) {
+            leftMax = Math.max(leftMax, height[left]);
+            rightMax = Math.max(rightMax, height[right]);
+            if (leftMax < rightMax) {
+                res += leftMax - height[left];
+                left++;
+            } else {
+                res += rightMax - height[right];
+                right--;
+            }
+        }
+        return res;
+    }
+
+    public int trap_dp(int[] height) {
+        if (height == null || height.length == 0) {
+            return 0;
+        }
+        int n = height.length;
         int[] left = new int[n];
         int leftMax = height[0];
         for (int i = 0; i < n; i++) {
@@ -30,30 +54,6 @@ public class LeetCode42 {
         int res = 0;
         for (int i = 0; i < n; i++) {
             res += Math.min(left[i], right[i]) - height[i];
-        }
-        return res;
-    }
-
-    // 最优解
-    public int trap_twopoint(int[] height) {
-        if (height == null || height.length == 0) {
-            return 0;
-        }
-        int left = 0;
-        int right = height.length - 1;
-        int leftMax = height[left];
-        int rightMax = height[right];
-        int res = 0;
-        while (left < right) {
-            leftMax = Math.max(leftMax, height[left]);
-            rightMax = Math.max(rightMax, height[right]);
-            if (leftMax < rightMax) {
-                res += leftMax - height[left];
-                left++;
-            } else {
-                res += rightMax - height[right];
-                right--;
-            }
         }
         return res;
     }

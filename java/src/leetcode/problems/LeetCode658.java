@@ -11,17 +11,17 @@ import java.util.List;
 public class LeetCode658 {
 
     public List<Integer> findClosestElements(int[] arr, int k, int x) {
-        int left = 0, right = arr.length - k;
-        while (left < right) {
-            int mid = left + (right - left) / 2;
+        int l = 0, r = arr.length - k;
+        while (l < r) {
+            int mid = l + (r - l) / 2;
             if (arr[mid + k] - x < x - arr[mid]) {
-                left = mid + 1;
+                l = mid + 1;
             } else {
-                right = mid;
+                r = mid;
             }
         }
         List<Integer> result = new ArrayList<>(k);
-        for (int i = left; i < left + k; i++) {
+        for (int i = l; i < l + k; i++) {
             result.add(arr[i]);
         }
         return result;

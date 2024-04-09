@@ -13,16 +13,16 @@ public class LeetCode1552 {
             return 0;
         }
         Arrays.sort(position);
-        int left = 1, right = position[position.length - 1] - position[0];
-        while (left < right) {
-            int mid = (left + right + 1) / 2;
+        int l = 1, r = position[position.length - 1] - position[0];
+        while (l < r) {
+            int mid = (l + r + 1) / 2;
             if (check(mid, position, m)) {
-                left = mid;
+                l = mid;
             } else {
-                right = mid - 1;
+                r = mid - 1;
             }
         }
-        return left;
+        return l;
     }
 
     public boolean check(int x, int[] position, int m) {

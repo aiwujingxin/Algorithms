@@ -21,11 +21,8 @@ public class LeetCode1337_Q {
             int l = 0, r = n - 1;
             while (l < r) {
                 int mid = l + r + 1 >> 1;
-                if (mat[i][mid] >= 1) {
-                    l = mid;
-                } else {
-                    r = mid - 1;
-                }
+                if (mat[i][mid] < 1) r = mid - 1;
+                else l = mid;
             }
             int cur = mat[i][r] >= 1 ? r + 1 : r;
             //如果当前战力值比堆顶的元素要大：直接丢弃当前战力值（不可能属于在第 k 小的集合中）；

@@ -1,33 +1,32 @@
 package leetcode.problems;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2023/10/18 17:42
+ * @date 2024/4/9 15:54
  */
 public class LeetCode22 {
 
     public List<String> generateParenthesis(int n) {
         List<String> res = new ArrayList<>();
-        backtrack(res, 0, 0, n, new StringBuilder());
+        backtrack(0, 0, n, res, new StringBuilder());
         return res;
     }
 
-    private void backtrack(List<String> res, int left, int right, int n, StringBuilder sb) {
+    private void backtrack(int left, int right, int n, List<String> res, StringBuilder sb) {
         if (sb.length() == n * 2) {
             res.add(sb.toString());
             return;
         }
         if (left < n) {
             sb.append("(");
-            backtrack(res, left + 1, right, n, sb);
+            backtrack(left + 1, right, n, res, sb);
             sb.deleteCharAt(sb.length() - 1);
         }
         if (right < left) {
             sb.append(")");
-            backtrack(res, left, right + 1, n, sb);
+            backtrack(left, right + 1, n, res, sb);
             sb.deleteCharAt(sb.length() - 1);
         }
     }

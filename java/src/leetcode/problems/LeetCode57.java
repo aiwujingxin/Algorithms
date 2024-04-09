@@ -37,36 +37,30 @@ public class LeetCode57 {
     }
 
     private int leftBound(int[][] intervals, int target) {
-        int left = 0;
-        int right = intervals.length - 1;
-        while (left < right) {
-            int mid = (left + right) / 2;
-            if (intervals[mid][1] < target) {
-                left = mid + 1;
-            } else {
-                right = mid;
-            }
+        int l = 0;
+        int r = intervals.length - 1;
+        while (l < r) {
+            int mid = l + r >> 1;
+            if (intervals[mid][1] < target) l = mid + 1;
+            else r = mid;
         }
-        if (intervals[left][1] < target) {
-            return left + 1;
+        if (intervals[l][1] < target) {
+            return l + 1;
         }
-        return left;
+        return l;
     }
 
     private int rightBound(int[][] intervals, int target) {
-        int left = 0;
-        int right = intervals.length - 1;
-        while (left < right) {
-            int mid = (left + right + 1) / 2;
-            if (intervals[mid][0] > target) {
-                right = mid - 1;
-            } else {
-                left = mid;
-            }
+        int l = 0;
+        int r = intervals.length - 1;
+        while (l < r) {
+            int mid = l + r + 1 >> 1;
+            if (intervals[mid][0] > target) r = mid - 1;
+            else l = mid;
         }
-        if (intervals[left][0] > target) {
-            return left - 1;
+        if (intervals[l][0] > target) {
+            return l - 1;
         }
-        return left;
+        return l;
     }
 }

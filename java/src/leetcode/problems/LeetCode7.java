@@ -2,30 +2,31 @@ package leetcode.problems;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2023/12/18 20:00
+ * @date 2024/4/9 10:49
  */
 public class LeetCode7 {
 
     public int reverse(int x) {
-        int sign = 1;
-        String s = String.valueOf(x);
-        int start = 0;
-        if (s.charAt(0) == '-') {
-            sign = -1;
-            start++;
-        }
-        //2147483647
-        int max = Integer.MAX_VALUE / 10;
-        int res = 0;
-        int index = s.length() - 1;
-        while (index >= start) {
-            int num = (s.charAt(index) - '0');
-            if (res > max || (res == max && num > 7)) {
+        int rx = 0;
+        int limit = Integer.MAX_VALUE / 10;
+        boolean flag = x > 0;
+        x = Math.abs(x);
+        while (x > 0) {
+            if (rx > limit) {
                 return 0;
             }
-            res = res * 10 + num;
-            index--;
+            int t = x % 10;
+            if (rx == limit) {
+                if (flag && t > 7) {
+                    return Integer.MAX_VALUE;
+                }
+                if (!flag && t > 8) {
+                    return Integer.MIN_VALUE;
+                }
+            }
+            rx = rx * 10 + t;
+            x = x / 10;
         }
-        return sign * res;
+        return flag ? rx : -1 * rx;
     }
 }

@@ -1,10 +1,10 @@
 package leetcode.problems;
 
-import java.util.HashMap;
+import java.util.*;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2023/10/18 11:22
+ * @date 2024/4/9 10:28
  */
 public class LeetCode3 {
 

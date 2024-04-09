@@ -1,6 +1,6 @@
 package leetcode.problems;
 
-import java.util.*;
+import java.util.Arrays;
 
 /**
  * @author wujingxinit@outlook.com
@@ -31,15 +31,12 @@ public class LeetCode268 {
 
     public int missingNumber_bs(int[] nums) {
         Arrays.sort(nums);
-        int left = 0, right = nums.length;
-        while (left < right) {
-            int mid = (left + right) / 2;
-            if (nums[mid] > mid) {
-                right = mid;
-            } else {
-                left = mid + 1;
-            }
+        int l = 0, r = nums.length;
+        while (l < r) {
+            int mid = (l + r) / 2;
+            if (nums[mid] <= mid) l = mid + 1;
+            else r = mid;
         }
-        return left;
+        return l;
     }
 }

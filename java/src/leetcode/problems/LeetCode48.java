@@ -2,7 +2,7 @@ package leetcode.problems;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2023/10/19 15:08
+ * @date 2024/4/9 21:40
  */
 public class LeetCode48 {
 
@@ -17,7 +17,7 @@ public class LeetCode48 {
             matrix[n - i - 1] = t;
         }
         for (int i = 0; i < n; i++) {
-            for (int j = i; j < n; j++) {
+            for (int j = 0; j < i; j++) {
                 int t = matrix[i][j];
                 matrix[i][j] = matrix[j][i];
                 matrix[j][i] = t;

@@ -7,17 +7,14 @@ package leetcode.problems;
 public class LeetCode540 {
 
     public int singleNonDuplicate(int[] nums) {
-        int left = 0;
-        int right = nums.length - 1;
-        while (left < right) {
-            int mid = (right - left) / 2 + left;
-            if (nums[mid] == nums[mid ^ 1]) {
-                left = mid + 1;
-            } else {
-                right = mid;
-            }
+        int l = 0;
+        int r = nums.length - 1;
+        while (l < r) {
+            int mid = l + r >> 1;
+            if (nums[mid] == nums[mid ^ 1]) l = mid + 1;
+            else r = mid;
         }
-        return nums[left];
+        return nums[l];
     }
 }
 

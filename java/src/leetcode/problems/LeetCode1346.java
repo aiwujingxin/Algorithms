@@ -26,12 +26,10 @@ public class LeetCode1346 {
         int l = start;
         int r = end;
         while (l <= r) {
-            int mid = l + (r - l) / 2;
-
+            int mid = l + r >> 1;
             if (arr[mid] == target) {
                 return mid;
             }
-
             if (arr[mid] < target) {
                 l = mid + 1;
             } else {

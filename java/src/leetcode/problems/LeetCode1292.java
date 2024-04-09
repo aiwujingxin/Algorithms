@@ -17,9 +17,9 @@ public class LeetCode1292 {
             }
         }
 
-        int left = 0, right = Math.min(m, n);
-        while (left < right) {
-            int mid = left + right + 1 >> 1;
+        int l = 0, r = Math.min(m, n);
+        while (l < r) {
+            int mid = l + r + 1 >> 1;
             boolean flag = false;
             for (int i = 1; i + mid <= m + 1; ++i) {
                 for (int j = 1; j + mid <= n + 1; ++j) {
@@ -33,11 +33,11 @@ public class LeetCode1292 {
                 }
             }
             if (flag) {
-                left = mid;
+                l = mid;
             } else {
-                right = mid - 1;
+                r = mid - 1;
             }
         }
-        return left;
+        return l;
     }
 }

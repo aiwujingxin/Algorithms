@@ -18,8 +18,8 @@ public class LeetCode1300 {
         }
         int low = leftBound(arr, target);
         int up = rightBound(arr, target);
-        int ls = check(arr, low);
-        int us = check(arr, up);
+        int ls = cal(arr, low);
+        int us = cal(arr, up);
         if (Math.abs(ls - target) < Math.abs(us - target)) {
             return low;
         }
@@ -31,37 +31,29 @@ public class LeetCode1300 {
 
     // 使 sum >= target 的最小值
     public int leftBound(int[] arr, int target) {
-        int left = 0;
-        int right = target;
-        while (left < right) {
-            int mid = (left + right) / 2;
-            int t = check(arr, mid);
-            if (t < target) {
-                left = mid + 1;
-            } else {
-                right = mid;
-            }
+        int l = 0;
+        int r = target;
+        while (l < r) {
+            int mid = l + r >> 1;
+            if (cal(arr, mid) < target) l = mid + 1;
+            else r = mid;
         }
-        return left;
+        return l;
     }
 
     // 使 sum <= target 的最大值
     public int rightBound(int[] arr, int target) {
-        int left = 0;
-        int right = target;
-        while (left < right) {
-            int mid = (left + right + 1) / 2;
-            int t = check(arr, mid);
-            if (t > target) {
-                right = mid - 1;
-            } else {
-                left = mid;
-            }
+        int l = 0;
+        int r = target;
+        while (l < r) {
+            int mid = l + r + 1 >> 1;
+            if (cal(arr, mid) > target) r = mid - 1;
+            else l = mid;
         }
-        return left;
+        return l;
     }
 
-    private int check(int[] arr, int mid) {
+    private int cal(int[] arr, int mid) {
         int sum = 0;
         for (int j : arr) {
             sum += Math.min(j, mid);

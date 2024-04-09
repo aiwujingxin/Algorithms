@@ -9,7 +9,7 @@ public class LeetCode2591 {
     public int distMoney(int money, int children) {
         int l = 0, r = children;
         while (l < r) {
-            int mid = (l + r + 1) >> 1;
+            int mid = l + r + 1 >> 1;
             if (check(mid, money, children)) {
                 l = mid;
             } else {

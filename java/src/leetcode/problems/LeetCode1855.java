@@ -9,18 +9,15 @@ public class LeetCode1855 {
     public int maxDistance(int[] nums1, int[] nums2) {
         int res = 0;
         for (int i = 0; i < nums1.length; i++) {
-            int left = 0;
-            int right = nums2.length - 1;
-            while (left < right) {
-                int mid = (left + right + 1) / 2;
-                if (nums2[mid] < nums1[i]) {
-                    right = mid - 1;
-                } else {
-                    left = mid;
-                }
+            int l = 0;
+            int r = nums2.length - 1;
+            while (l < r) {
+                int mid = l + r + 1 >> 1;
+                if (nums2[mid] < nums1[i]) r = mid - 1;
+                else l = mid;
             }
-            if (nums1[i] <= nums2[left] && i <= left) {
-                res = Math.max(res, left - i);
+            if (nums1[i] <= nums2[l] && i <= l) {
+                res = Math.max(res, l - i);
             }
         }
         return res;

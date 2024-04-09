@@ -7,15 +7,13 @@ import java.util.Arrays;
  * @date 2023/3/21 22:21
  */
 public class LeetCode787_SPFA {
-    int INF = 0x3f3f3f3f;
 
-    // 最短路径
     public int findCheapestPrice(int n, int[][] flights, int src, int dst, int k) {
+        int INF = 0x3f3f3f3f;
         int[][] g = new int[n][n];
         for (int i = 0; i < n; i++) {
             Arrays.fill(g[i], INF);
         }
-
         for (int[] flight : flights) {
             g[flight[0]][flight[1]] = flight[2];
         }
@@ -33,7 +31,6 @@ public class LeetCode787_SPFA {
             int size = offerIndex - pollIndex;
             while (size-- > 0) {
                 int node = queue[pollIndex++];
-
                 for (int i = 0; i < n; i++) {
                     int tmp = clone[node] + g[node][i];
                     if (tmp < dist[i]) {
@@ -43,7 +40,6 @@ public class LeetCode787_SPFA {
                 }
             }
         }
-
         return dist[dst] >= INF ? -1 : dist[dst];
     }
 }

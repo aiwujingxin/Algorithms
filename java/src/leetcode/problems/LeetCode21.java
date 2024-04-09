@@ -1,25 +1,19 @@
 package leetcode.problems;
 
-import common.ListNode;
+import common.*;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2023/12/18 17:13
+ * @date 2024/4/9 15:48
  */
 public class LeetCode21 {
 
     public ListNode mergeTwoLists(ListNode list1, ListNode list2) {
-        if (list1 == null) {
-            return list2;
-        }
-        if (list2 == null) {
-            return list1;
-        }
         ListNode dummy = new ListNode();
         ListNode cur = dummy;
         while (list1 != null || list2 != null) {
-            int v1 = list1 == null ? Integer.MAX_VALUE : list1.val;
-            int v2 = list2 == null ? Integer.MAX_VALUE : list2.val;
+            int v1 = list1 != null ? list1.val : Integer.MAX_VALUE;
+            int v2 = list2 != null ? list2.val : Integer.MAX_VALUE;
             if (v1 < v2) {
                 cur.next = list1;
                 list1 = list1.next;

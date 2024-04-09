@@ -10,16 +10,13 @@ public class LeetCode153 {
         if (nums == null || nums.length == 0) {
             return 0;
         }
-        int left = 0;
-        int right = nums.length - 1;
-        while (left < right) {
-            int mid = (left + right) / 2;
-            if (nums[mid] > nums[right]) {
-                left = mid + 1;
-            } else {
-                right = mid;
-            }
+        int l = 0;
+        int r = nums.length - 1;
+        while (l < r) {
+            int mid = l + r >> 1;
+            if (nums[mid] > nums[r]) l = mid + 1;
+            else r = mid;
         }
-        return nums[left];
+        return nums[l];
     }
 }

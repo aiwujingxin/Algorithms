@@ -2,57 +2,51 @@ package leetcode.problems;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2023/11/10 12:29
- * @description 回溯
- * 当前有矛盾就重新填，如果当前层都不符合，则需要返回上一层重新填
+ * @date 2024/4/9 18:18
  */
 public class LeetCode37 {
 
     public void solveSudoku(char[][] board) {
-        if (board == null || board.length == 0) {
-            return;
-        }
         backtrack(board);
     }
 
     private boolean backtrack(char[][] board) {
-        int n = board.length;
-        for (int row = 0; row < n; row++) {
-            for (int col = 0; col < n; col++) {
-                if (board[row][col] == '.') {
-                    for (char c = '1'; c <= '9'; c++) {
-                        if (valid(board, row, col, c)) {
-                            // 填完传递给下一层
-                            board[row][col] = c;
-                            if (backtrack(board)) {//只要找到一个答案，后续的递归穷举都会被阻断。
-                                return true;
-                            }
-                            // 下一层无论填什么都不符合，那么得重新填
-                            board[row][col] = '.';
-                        }
-                    }
-                    return false;
+        for (int i = 0; i < board.length; i++) {
+            for (int j = 0; j < board[0].length; j++) {
+                if (board[i][j] != '.') {
+                    continue;
                 }
+                for (char c = '1'; c <= '9'; c++) {
+                    if (!valid(board, i, j, c)) {
+                        continue;
+                    }
+                    board[i][j] = c;
+                    if (backtrack(board)) {
+                        return true;
+                    }
+                    board[i][j] = '.';
+                }
+                return false;
             }
         }
         return true;
     }
 
-    private boolean valid(char[][] board, int row, int col, char c) {
-        int n = board.length;
+    public boolean valid(char[][] board, int row, int col, char c) {
+        int m = board.length;
+        int n = board[0].length;
         for (int i = 0; i < n; i++) {
             if (board[row][i] == c) {
                 return false;
             }
         }
-        for (int i = 0; i < n; i++) {
+        for (int i = 0; i < m; i++) {
             if (board[i][col] == c) {
                 return false;
             }
         }
-
-        for (int i = (row / 3) * 3; i < (row / 3) * 3 + 3; i++) {
-            for (int j = (col / 3) * 3; j < (col / 3) * 3 + 3; j++) {
+        for (int i = row / 3 * 3; i < row / 3 * 3 + 3; i++) {
+            for (int j = col / 3 * 3; j < col / 3 * 3 + 3; j++) {
                 if (board[i][j] == c) {
                     return false;
                 }

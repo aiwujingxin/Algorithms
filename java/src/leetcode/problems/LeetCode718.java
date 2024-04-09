@@ -31,16 +31,16 @@ public class LeetCode718 {
     int base = 113;
 
     public int findLength_RabinKarp(int[] A, int[] B) {
-        int left = 1, right = Math.min(A.length, B.length) + 1;
-        while (left < right) {
-            int mid = (left + right) >> 1;
+        int l = 1, r = Math.min(A.length, B.length) + 1;
+        while (l < r) {
+            int mid = l + r >> 1;
             if (check(A, B, mid)) {
-                left = mid + 1;
+                l = mid + 1;
             } else {
-                right = mid;
+                r = mid;
             }
         }
-        return left - 1;
+        return l - 1;
     }
 
     public boolean check(int[] A, int[] B, int len) {

@@ -14,11 +14,8 @@ public class LeetCode300_greedy {
             int l = 0, r = len;
             while (l < r) {
                 int mid = (l + r) / 2;
-                if (dp[mid] < num) {
-                    l = mid + 1;
-                } else {
-                    r = mid;
-                }
+                if (dp[mid] < num) l = mid + 1;
+                else r = mid;
             }
             dp[l] = num;
             if (l == len) {

@@ -33,19 +33,16 @@ public class LeetCode435_dp {
 
     // 在已排序的活动数组中找到最后一个与第i个活动兼容的活动
     private int rightBound(int[][] activities, int i) {
-        int left = 0;
-        int right = i;
-        while (left < right) {
-            int mid = (left + right + 1) / 2;
-            if (activities[mid][1] > activities[i][0]) {
-                right = mid - 1;
-            } else {
-                left = mid;
-            }
+        int l = 0;
+        int r = i;
+        while (l < r) {
+            int mid = l + r + 1 >> 1;
+            if (activities[mid][1] > activities[i][0]) r = mid - 1;
+            else l = mid;
         }
-        if (activities[left][1] > activities[i][0]) {
+        if (activities[l][1] > activities[i][0]) {
             return -1;
         }
-        return left;
+        return l;
     }
 }

@@ -2,7 +2,7 @@ package leetcode.problems;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2023/10/18 14:21
+ * @date 2024/4/9 10:56
  */
 public class LeetCode9 {
 
@@ -12,10 +12,10 @@ public class LeetCode9 {
         }
         int xx = x;
         int rx = 0;
-        while (x > 0) {
-            rx = rx * 10 + x % 10;
-            x /= 10;
+        while (xx > 0) {
+            rx = rx * 10 + xx % 10;
+            xx = xx / 10;
         }
-        return rx == xx;
+        return rx == x;
     }
 }

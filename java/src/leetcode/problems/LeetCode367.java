@@ -7,15 +7,12 @@ package leetcode.problems;
 public class LeetCode367 {
 
     public boolean isPerfectSquare(int num) {
-        long left = 0, right = num;
-        while (left < right) {
-            long mid = (left + right + 1) >> 1;
-            if (mid * mid > num) {
-                right = mid - 1;
-            } else {
-                left = mid;
-            }
+        long l = 0, r = num;
+        while (l < r) {
+            long mid = l + r + 1 >> 1;
+            if (mid * mid > num) r = mid - 1;
+            else l = mid;
         }
-        return left * left == num;
+        return l * l == num;
     }
 }

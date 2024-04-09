@@ -7,18 +7,18 @@ package leetcode.problems;
 public class LeetCode704 {
 
     public int search(int[] nums, int target) {
-        int left = 0;
-        int right = nums.length - 1;
-        while (left <= right) {
-            int mid = (right - left) / 2 + left;
+        int l = 0;
+        int r = nums.length - 1;
+        while (l <= r) {
+            int mid = (r - l) / 2 + l;
             int num = nums[mid];
             if (num == target) {
                 return mid;
             }
             if (num > target) {
-                right = mid - 1;
+                r = mid - 1;
             } else {
-                left = mid + 1;
+                l = mid + 1;
             }
         }
         return -1;

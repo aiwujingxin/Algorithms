@@ -20,20 +20,17 @@ public class LeetCode354 {
         int len = 0;
         for (int[] envelope : envelopes) {
             int num = envelope[1];
-            int left = 0;
-            int right = len;
-            while (left < right) {
-                int mid = (left + right) / 2;
-                if (dp[mid] < num) {
-                    left = mid + 1;
-                } else {
-                    right = mid;
-                }
+            int l = 0;
+            int r = len;
+            while (l < r) {
+                int mid = (l + r) / 2;
+                if (dp[mid] < num) l = mid + 1;
+                else r = mid;
             }
-            if (len == right) {
+            if (len == r) {
                 len++;
             }
-            dp[left] = num;
+            dp[l] = num;
         }
         return len;
     }

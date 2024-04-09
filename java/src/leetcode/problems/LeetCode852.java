@@ -9,16 +9,13 @@ public class LeetCode852 {
     //https://leetcode.cn/problems/peak-index-in-a-mountain-array/solution/gong-shui-san-xie-er-fen-san-fen-cha-zhi-5gfv/
 
     public int peakIndexInMountainArray(int[] arr) {
-        int left = 0;
-        int right = arr.length - 1;
-        while (left < right) {
-            int mid = (left + right + 1) >> 1;
-            if (arr[mid - 1] < arr[mid]) {
-                left = mid;
-            } else {
-                right = mid - 1;
-            }
+        int l = 0;
+        int r = arr.length - 1;
+        while (l < r) {
+            int mid = l + r + 1 >> 1;
+            if (arr[mid - 1] >= arr[mid]) r = mid - 1;
+            else l = mid;
         }
-        return left;
+        return l;
     }
 }

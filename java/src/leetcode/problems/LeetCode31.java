@@ -2,7 +2,7 @@ package leetcode.problems;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2023/10/20 13:01
+ * @date 2024/4/9 17:49
  */
 public class LeetCode31 {
 
@@ -10,34 +10,32 @@ public class LeetCode31 {
         if (nums == null || nums.length == 0) {
             return;
         }
-        int n = nums.length;
-        int i = n - 2;
+        int i = nums.length - 2;
         while (i >= 0 && nums[i] >= nums[i + 1]) {
             i--;
         }
         if (i == -1) {
-            reverse(nums, 0, n - 1);
-            return;
+            reverse(nums, 0, nums.length - 1);
         }
-        int j = n - 1;
+        int j = nums.length - 1;
         while (j > i && nums[j] <= nums[i]) {
             j--;
         }
         swap(nums, i, j);
-        reverse(nums, i + 1, n - 1);
+        reverse(nums, i + 1, nums.length - 1);
     }
 
-    public void reverse(int[] nums, int left, int right) {
-        while (left < right) {
-            swap(nums, left, right);
-            left++;
-            right--;
+    private void reverse(int[] nums, int i, int j) {
+        while (i < j) {
+            swap(nums, i, j);
+            i++;
+            j--;
         }
     }
 
-    public void swap(int[] nums, int left, int right) {
-        int t = nums[left];
-        nums[left] = nums[right];
-        nums[right] = t;
+    public void swap(int[] nums, int a, int b) {
+        int temp = nums[a];
+        nums[a] = nums[b];
+        nums[b] = temp;
     }
 }

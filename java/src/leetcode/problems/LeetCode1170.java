@@ -24,20 +24,17 @@ public class LeetCode1170 {
     }
 
     public int leftBound(int[] arr, int target) {
-        int left = 0;
-        int right = arr.length - 1;
-        while (left < right) {
-            int mid = (left + right) / 2;
-            if (arr[mid] <= target) {
-                left = mid + 1;
-            } else {
-                right = mid;
-            }
+        int l = 0;
+        int r = arr.length - 1;
+        while (l < r) {
+            int mid = l + r >> 1;
+            if (arr[mid] <= target) l = mid + 1;
+            else r = mid;
         }
-        if (arr[left] <= target) {
+        if (arr[l] <= target) {
             return arr.length;
         }
-        return left;
+        return l;
     }
 
     public int getCnt(String s) {

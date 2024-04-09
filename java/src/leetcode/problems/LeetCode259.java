@@ -26,19 +26,16 @@ public class LeetCode259 {
     }
 
     private int rightBound(int[] nums, int start, int end, int target) {
-        int left = start;
-        int right = end;
-        while (left < right) {
-            int mid = (left + right + 1) / 2;
-            if (nums[mid] > target) {
-                right = mid - 1;
-            } else {
-                left = mid;
-            }
+        int l = start;
+        int r = end;
+        while (l < r) {
+            int mid = l + r + 1 >> 1;
+            if (nums[mid] > target) r = mid - 1;
+            else l = mid;
         }
-        if (nums[left] >= target) {
+        if (nums[l] >= target) {
             return -1;
         }
-        return left;
+        return l;
     }
 }

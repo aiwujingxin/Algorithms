@@ -14,20 +14,20 @@ public class LeetCode875 {
         for (int p : piles) {
             max = Math.max(p, max);
         }
-        int left = 1;
-        int right = max;
-        while (left < right) {
+        int l = 1;
+        int r = max;
+        while (l < r) {
             int time = 0;
-            int mid = (left + right) / 2;
+            int mid = (l + r) / 2;
             for (int p : piles) {
                 time += (p + mid - 1) / mid;
             }
             if (time > h) {
-                left = mid + 1;
+                l = mid + 1;
             } else {
-                right = mid;
+                r = mid;
             }
         }
-        return left;
+        return l;
     }
 }

@@ -4,7 +4,7 @@ import java.util.*;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2023/10/19 14:54
+ * @date 2024/4/9 22:05
  */
 public class LeetCode49 {
 
@@ -13,19 +13,18 @@ public class LeetCode49 {
             return new ArrayList<>();
         }
         HashMap<String, List<String>> map = new HashMap<>();
-        for (String s : strs) {
-            char[] chars = s.toCharArray();
+        for (String str : strs) {
+            char[] chars = str.toCharArray();
             Arrays.sort(chars);
-            String s1 = new String(chars);
-            if (!map.containsKey(s1)) {
-                map.put(s1, new ArrayList<>());
-            }
-            map.get(s1).add(s);
+            String t = new String(chars);
+            List<String> list = map.getOrDefault(t, new ArrayList<>());
+            list.add(str);
+            map.put(t, list);
         }
-        List<List<String>> list = new ArrayList<>();
-        for (Map.Entry<String, List<String>> entrys : map.entrySet()) {
-            list.add(entrys.getValue());
+        List<List<String>> res = new ArrayList<>();
+        for (Map.Entry<String, List<String>> entry : map.entrySet()) {
+            res.add(entry.getValue());
         }
-        return list;
+        return res;
     }
 }

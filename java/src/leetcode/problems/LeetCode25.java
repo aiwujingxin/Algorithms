@@ -1,16 +1,16 @@
 package leetcode.problems;
 
-import common.ListNode;
+import common.*;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2024/2/1 18:07
+ * @date 2024/4/9 16:07
  */
 public class LeetCode25 {
 
     public ListNode reverseKGroup(ListNode head, int k) {
-        if (head == null || head.next == null) {
-            return head;
+        if (head == null) {
+            return null;
         }
         ListNode tail = head;
         for (int i = 0; i < k; i++) {
@@ -19,14 +19,14 @@ public class LeetCode25 {
             }
             tail = tail.next;
         }
-        ListNode nextHead = reverse(head, tail);
+        ListNode newHead = reverse(head, tail);
         head.next = reverseKGroup(tail, k);
-        return nextHead;
+        return newHead;
     }
 
-    public ListNode reverse(ListNode head, ListNode tail) {
-        if (head == tail) {
-            return head;
+    private ListNode reverse(ListNode head, ListNode tail) {
+        if (head == null) {
+            return null;
         }
         ListNode cur = head;
         ListNode pre = null;

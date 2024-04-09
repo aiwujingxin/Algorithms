@@ -18,7 +18,6 @@ public class LeetCode1713 {
         for (int i = 0; i < n; i++) {
             map.put(target[i], i);
         }
-
         List<Integer> list = new ArrayList<>();
         for (int j : arr) {
             if (map.containsKey(j)) {
@@ -32,19 +31,16 @@ public class LeetCode1713 {
         int[] dp = new int[nums.size()];
         int len = 0;
         for (int num : nums) {
-            int left = 0, right = len;
-            while (left < right) {
-                int mid = (left + right) / 2;
-                if (dp[mid] < num) {
-                    left = mid + 1;
-                } else {
-                    right = mid;
-                }
+            int l = 0, r = len;
+            while (l < r) {
+                int mid = l + r >> 1;
+                if (dp[mid] < num) l = mid + 1;
+                else r = mid;
             }
-            if (len == right) {
+            if (len == r) {
                 len++;
             }
-            dp[left] = num;
+            dp[l] = num;
         }
         return len;
     }

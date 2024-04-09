@@ -2,31 +2,35 @@ package leetcode.problems;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2023/12/23 19:26
+ * @date 2024/4/9 17:41
  */
 public class LeetCode29 {
 
     public int divide(int dividend, int divisor) {
-        if (dividend == Integer.MIN_VALUE && divisor == -1) {
-            return Integer.MAX_VALUE;
-        }
         if (divisor == 1) {
             return dividend;
         }
-        int sign = (dividend > 0) ^ (divisor > 0) ? -1 : 1;
-        int ldividend = -Math.abs(dividend);
-        int ldivisor = -Math.abs(divisor);
-        int res = 0;
-        while (ldividend < ldivisor) {
-            int temp = ldivisor;
-            int t = 1;
-            while (ldividend - temp < temp) {
-                temp = temp * 2;
-                t = t * 2;
-            }
-            ldividend -= ldivisor * t;
-            res += t;
+        if (dividend == Integer.MIN_VALUE && divisor == -1) {
+            return Integer.MAX_VALUE;
         }
-        return sign * res;
+        boolean sign = (dividend > 0) ^ (divisor > 0);
+        int res = 0;
+        if (dividend > 0) {
+            dividend = -dividend;
+        }
+        if (divisor > 0) {
+            divisor = -divisor;
+        }
+        while (dividend <= divisor) {
+            int t = divisor;
+            int cnt = 1;
+            while (dividend - t <= t) {
+                t = t * 2;
+                cnt = cnt * 2;
+            }
+            dividend -= t;
+            res += cnt;
+        }
+        return sign ? -res : res;
     }
 }

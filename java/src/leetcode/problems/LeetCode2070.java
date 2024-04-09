@@ -25,7 +25,7 @@ public class LeetCode2070 {
         }
         // 3. 对每个query进行二分查找, 找出其最大美丽值
         for (int i = 0; i < queries.length; i++) {
-            int index = bsearch_2(items, queries[i]);
+            int index = rightBound(items, queries[i]);
             if (items[index][0] < queries[i]) {
                 ans[i] = items[index][1];
             }
@@ -33,16 +33,13 @@ public class LeetCode2070 {
         return ans;
     }
 
-    public int bsearch_2(int[][] nums, int target) {
+    public int rightBound(int[][] nums, int target) {
         int l = 0;
         int r = nums.length - 1;
         while (l < r) {
             int mid = l + r + 1 >> 1;
-            if (nums[mid][1] <= target) {
-                l = mid;
-            } else {
-                r = mid - 1;
-            }
+            if (nums[mid][1] > target) r = mid - 1;
+            else l = mid;
         }
         return l;
     }

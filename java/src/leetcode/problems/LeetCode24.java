@@ -4,17 +4,17 @@ import common.ListNode;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2023/10/18 17:48
+ * @date 2024/4/9 15:59
  */
 public class LeetCode24 {
 
     public ListNode swapPairs(ListNode head) {
-        if (head == null || head.next == null) {
-            return head;
+        if (head == null) {
+            return null;
         }
-        ListNode nextHead = head.next;
-        head.next = swapPairs(nextHead.next);
-        nextHead.next = head;
-        return nextHead;
+        ListNode newHead = head.next;
+        head.next = swapPairs(head.next);
+        newHead.next = head;
+        return newHead;
     }
 }

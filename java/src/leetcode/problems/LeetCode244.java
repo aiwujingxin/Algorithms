@@ -15,7 +15,7 @@ public class LeetCode244 {
         int r = b.length - 1;
 
         while (l <= r) {
-            int mid = (l + r) / 2;
+            int mid = l + r >> 1;
             if (b[mid] > target) {
                 r = mid - 1;
             } else {

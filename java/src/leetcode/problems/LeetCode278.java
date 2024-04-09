@@ -7,17 +7,17 @@ package leetcode.problems;
 public class LeetCode278 {
 
     public int firstBadVersion(int n) {
-        int left = 1;
-        int right = n;
-        while (left < right) {
-            int mid = (right - left) / 2 + left;
+        int l = 1;
+        int r = n;
+        while (l < r) {
+            int mid = l + r >> 1;
             if (isBadVersion(mid)) {
-                right = mid;
+                r = mid;
             } else {
-                left = mid + 1;
+                l = mid + 1;
             }
         }
-        return left;
+        return l;
     }
 
     private boolean isBadVersion(int mid) {

@@ -39,24 +39,20 @@ public class LeetCode1396 {
         public void checkOut(int id, String stationName, int t) {
             Node[] last = find(map.get(id));
             last[1] = new Node(stationName, t);
-
             List<Integer> list = listMap.getOrDefault(last[0].name + "_" + stationName, new ArrayList<>());
             list.add(t - last[0].t);
             listMap.put(last[0].name + "_" + stationName, list);
         }
 
         private Node[] find(List<Node[]> list) {
-            int left = 0;
-            int right = list.size() - 1;
-            while (left < right) {
-                int mid = (left + right) / 2;
-                if (list.get(mid)[1] != null) {
-                    left = mid + 1;
-                } else {
-                    right = mid;
-                }
+            int l = 0;
+            int r = list.size() - 1;
+            while (l < r) {
+                int mid = (l + r) / 2;
+                if (list.get(mid)[1] != null) l = mid + 1;
+                else r = mid;
             }
-            return list.get(left);
+            return list.get(l);
         }
 
         public double getAverageTime(String startStation, String endStation) {

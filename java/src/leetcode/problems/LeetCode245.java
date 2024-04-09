@@ -47,7 +47,7 @@ public class LeetCode245 {
         int r = b.length - 1;
 
         while (l <= r) {
-            int mid = (l + r) / 2;
+            int mid = l + r >> 1;
             if (b[mid] > target) {
                 r = mid - 1;
             } else {
@@ -71,7 +71,7 @@ public class LeetCode245 {
         int r = b.length - 1;
 
         while (l <= r) {
-            int mid = (l + r) / 2;
+            int mid = l + r >> 1;
 
             if (b[mid] == target) {
                 if (mid - 1 == -1) {

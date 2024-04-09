@@ -19,21 +19,16 @@ public class LeetCode2300 {
     }
 
     private int leftBound(int spell, int[] potions, long success) {
-
-        int left = 0;
-        int right = potions.length - 1;
-        while (left < right) {
-            int mid = (left + right) / 2;
-            long t = (long) potions[mid] * spell;
-            if (t < success) {
-                left = mid + 1;
-            } else {
-                right = mid;
-            }
+        int l = 0;
+        int r = potions.length - 1;
+        while (l < r) {
+            int mid = l + r >> 1;
+            if ((long) potions[mid] * spell < success) l = mid + 1;
+            else r = mid;
         }
-        if ((long) potions[left] * spell < success) {
-            return left + 1;
+        if ((long) potions[l] * spell < success) {
+            return l + 1;
         }
-        return left;
+        return l;
     }
 }

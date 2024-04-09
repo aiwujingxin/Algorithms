@@ -40,21 +40,21 @@ public class LeetCode497 {
             return new int[]{a + da, b + db};
         }
 
-        private int binarySearch(List<Integer> arr, int target) {
-            int left = 0, right = arr.size() - 1;
-            while (left <= right) {
-                int mid = (right - left) / 2 + left;
+        private int binarySearch(List<Integer> arr, int x) {
+            int l = 0, r = arr.size() - 1;
+            while (l <= r) {
+                int mid = l + r >> 1;
                 int num = arr.get(mid);
-                if (num == target) {
+                if (num == x) {
                     return mid;
                 }
-                if (num > target) {
-                    right = mid - 1;
+                if (num > x) {
+                    r = mid - 1;
                 } else {
-                    left = mid + 1;
+                    l = mid + 1;
                 }
             }
-            return left;
+            return l;
         }
     }
 }

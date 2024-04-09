@@ -1,6 +1,6 @@
 package leetcode.problems;
 
-import java.util.PriorityQueue;
+import java.util.*;
 
 /**
  * @author wujingxinit@outlook.com
@@ -8,12 +8,10 @@ import java.util.PriorityQueue;
  */
 public class LeetCode4 {
 
-    PriorityQueue<Integer> minQ;
-    PriorityQueue<Integer> maxQ;
+    PriorityQueue<Integer> minQ = new PriorityQueue<>();
+    PriorityQueue<Integer> maxQ = new PriorityQueue<>((o1, o2) -> o2 - o1);
 
     public double findMedianSortedArrays(int[] nums1, int[] nums2) {
-        minQ = new PriorityQueue<>();
-        maxQ = new PriorityQueue<>((o1, o2) -> o2 - o1);
         add(nums1);
         add(nums2);
         if (maxQ.size() > minQ.size()) {

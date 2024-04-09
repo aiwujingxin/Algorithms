@@ -59,19 +59,16 @@ public class LeetCode315_segtree {
         if (start > end) {
             return;
         }
-
         if (start == end) {
             tree[currNode]++;
             return;
         }
-
         int mid = start + (end - start) / 2;
         if (num <= mid) {
             update(tree, currNode * 2, start, mid, num);
         } else {
             update(tree, currNode * 2 + 1, mid + 1, end, num);
         }
-
         tree[currNode] = tree[currNode * 2] + tree[currNode * 2 + 1];
     }
 }

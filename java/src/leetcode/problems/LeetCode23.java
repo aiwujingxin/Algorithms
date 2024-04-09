@@ -1,42 +1,36 @@
 package leetcode.problems;
 
-import common.ListNode;
+import common.*;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2023/11/6 17:30
+ * @date 2024/4/9 15:57
  */
 public class LeetCode23 {
 
     public ListNode mergeKLists(ListNode[] lists) {
-        if (lists == null || lists.length == 0) {
-            return null;
-        }
         return mergeKLists(lists, 0, lists.length - 1);
     }
 
-    public ListNode mergeKLists(ListNode[] lists, int left, int right) {
-        if (left >= right) {
-            return lists[left];
+    private ListNode mergeKLists(ListNode[] lists, int lo, int hi) {
+        if (lo > hi) {
+            return null;
         }
-        int mid = (left + right) / 2;
-        ListNode list1 = mergeKLists(lists, left, mid);
-        ListNode list2 = mergeKLists(lists, mid + 1, right);
+        if (lo == hi) {
+            return lists[lo];
+        }
+        int mid = (lo + hi) >> 1;
+        ListNode list1 = mergeKLists(lists, lo, mid);
+        ListNode list2 = mergeKLists(lists, mid + 1, hi);
         return mergeTwoLists(list1, list2);
     }
 
     public ListNode mergeTwoLists(ListNode list1, ListNode list2) {
-        if (list1 == null) {
-            return list2;
-        }
-        if (list2 == null) {
-            return list1;
-        }
         ListNode dummy = new ListNode();
         ListNode cur = dummy;
         while (list1 != null || list2 != null) {
-            int v1 = list1 == null ? Integer.MAX_VALUE : list1.val;
-            int v2 = list2 == null ? Integer.MAX_VALUE : list2.val;
+            int v1 = list1 != null ? list1.val : Integer.MAX_VALUE;
+            int v2 = list2 != null ? list2.val : Integer.MAX_VALUE;
             if (v1 < v2) {
                 cur.next = list1;
                 list1 = list1.next;

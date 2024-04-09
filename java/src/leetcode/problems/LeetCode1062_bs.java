@@ -9,16 +9,16 @@ import java.util.HashSet;
 public class LeetCode1062_bs {
 
     public int longestRepeatingSubstring(String s) {
-        int left = 0, right = s.length() - 1;
-        while (left < right) {
-            int mid = (right + left + 1) / 2;
+        int l = 0, r = s.length() - 1;
+        while (l < r) {
+            int mid = r + l + 1 >> 1;
             if (check(mid, s)) {
-                left = mid;
+                l = mid;
             } else {
-                right = mid - 1;
+                r = mid - 1;
             }
         }
-        return left;
+        return l;
     }
 
     public boolean check(int L, String s) {

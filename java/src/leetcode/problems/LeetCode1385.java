@@ -10,18 +10,18 @@ public class LeetCode1385 {
 
     // Checks if the array doesn't contain any value in range (from <= value <= to) using binary search
     private static boolean notInRange(int[] arr, int from, int to) {
-        int start = 0;
-        int end = arr.length - 1;
+        int l = 0;
+        int r = arr.length - 1;
 
-        while (start <= end) {
-            int mid = start + (end - start) / 2;
+        while (l <= r) {
+            int mid = l + r >> 1;
             if (arr[mid] >= from && arr[mid] <= to) {
                 return false;
             }
             if (arr[mid] < from) {
-                start = mid + 1;
+                l = mid + 1;
             } else {
-                end = mid - 1;
+                r = mid - 1;
             }
         }
         return true;

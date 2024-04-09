@@ -14,11 +14,8 @@ public class LeetCode1060 {
         int l = 0, r = n - 1;
         while (l < r) {
             int mid = l + r >> 1;
-            if (missing(mid, nums) >= k) {
-                r = mid;
-            } else {
-                l = mid + 1;
-            }
+            if (missing(mid, nums) < k) l = mid + 1;
+            else r = mid;
         }
         return nums[l - 1] + k - missing(l - 1, nums);
     }

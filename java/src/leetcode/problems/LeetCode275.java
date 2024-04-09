@@ -26,18 +26,15 @@ public class LeetCode275 {
 
     public int hIndex_v2(int[] cs) {
         int n = cs.length;
-        int left = 0, right = n - 1;
-        while (left < right) {
-            int mid = left + right >> 1;
-            if (cs[mid] < n - mid) {
-                left = mid + 1;
-            } else {
-                right = mid;
-            }
+        int l = 0, r = n - 1;
+        while (l < r) {
+            int mid = l + r >> 1;
+            if (cs[mid] < n - mid) l = mid + 1;
+            else r = mid;
         }
-        if (cs[left] < n - left) {
+        if (cs[l] < n - l) {
             return 0;
         }
-        return n - left;
+        return n - l;
     }
 }

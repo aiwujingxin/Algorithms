@@ -37,18 +37,15 @@ public class LeetCode334 {
         int[] dp = new int[n];
         int len = 0;
         for (int num : nums) {
-            int left = 0;
-            int right = len;
-            while (left < right) {
-                int mid = (left + right) / 2;
-                if (dp[mid] < num) {
-                    left = mid + 1;
-                } else {
-                    right = mid;
-                }
+            int l = 0;
+            int r = len;
+            while (l < r) {
+                int mid = (l + r) / 2;
+                if (dp[mid] < num) l = mid + 1;
+                else r = mid;
             }
-            dp[left] = num;
-            if (left == len) {
+            dp[l] = num;
+            if (l == len) {
                 len++;
             }
         }

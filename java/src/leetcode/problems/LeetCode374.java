@@ -11,7 +11,7 @@ public class LeetCode374 {
             int l = 1;
             int r = n;
             while (l <= r) {
-                int mid = l + (r - l) / 2;
+                int mid = l + r >> 1;
                 if (guess(mid) == 0) {
                     return mid;
                 }

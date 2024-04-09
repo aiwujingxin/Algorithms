@@ -11,28 +11,28 @@ public class LeetCode81 {
         if (nums == null || nums.length == 0) {
             return false;
         }
-        int left = 0;
-        int right = nums.length - 1;
-        while (left <= right) {
-            int mid = (left + right) / 2;
+        int l = 0;
+        int r = nums.length - 1;
+        while (l <= r) {
+            int mid = (l + r) / 2;
             if (nums[mid] == target) {
                 return true;
             }
-            if (nums[left] == nums[mid] && nums[mid] == nums[right]) {
-                left++;
-                right--;
+            if (nums[l] == nums[mid] && nums[mid] == nums[r]) {
+                l++;
+                r--;
             } else {
-                if (nums[0] <= target) {
-                    if (nums[left] <= nums[mid] && nums[mid] <= target) {
-                        left = mid + 1;
+                if (nums[mid] >= nums[l]) {
+                    if (target >= nums[l] && target <= nums[mid]) {
+                        r = mid - 1;
                     } else {
-                        right = mid - 1;
+                        l = mid + 1;
                     }
                 } else {
-                    if (nums[right] >= nums[mid] && nums[mid] >= target) {
-                        right = mid - 1;
+                    if (target >= nums[mid] && target <= nums[r]) {
+                        l = mid + 1;
                     } else {
-                        left = mid + 1;
+                        r = mid - 1;
                     }
                 }
             }

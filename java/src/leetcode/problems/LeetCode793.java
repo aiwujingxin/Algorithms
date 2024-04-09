@@ -16,31 +16,25 @@ public class LeetCode793 {
     }
 
     private long leftBound(int target) {
-        long left = 0;
-        long right = Long.MAX_VALUE;
-        while (left < right) {
-            long mid = (right - left) / 2 + left;
-            if (trailingZeroes(mid) < target) {
-                left = mid + 1;
-            } else {
-                right = mid;
-            }
+        long l = 0;
+        long r = Long.MAX_VALUE;
+        while (l < r) {
+            long mid = l + r >> 1;
+            if (trailingZeroes(mid) < target) l = mid + 1;
+            else r = mid;
         }
-        return left;
+        return l;
     }
 
     private long rightBound(int target) {
-        long left = 0;
-        long right = Long.MAX_VALUE;
-        while (left < right) {
-            long mid = (right - left) / 2 + left + 1;
-            if (trailingZeroes(mid) > target) {
-                right = mid - 1;
-            } else {
-                left = mid;
-            }
+        long l = 0;
+        long r = Long.MAX_VALUE;
+        while (l < r) {
+            long mid = l + r + 1 >> 1;
+            if (trailingZeroes(mid) > target) r = mid - 1;
+            else l = mid;
         }
-        return left;
+        return l;
     }
 
     public long trailingZeroes(long n) {

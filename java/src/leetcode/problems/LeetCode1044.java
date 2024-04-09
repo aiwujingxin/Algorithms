@@ -12,20 +12,20 @@ public class LeetCode1044 {
 
     public String longestDupSubstring(String s) {
         int n = s.length();
-        int left = 0;
-        int right = n;
+        int l = 0;
+        int r = n;
         int start = -1;
-        while (left < right) {
-            int mid = (right + left + 1) / 2;
+        while (l < r) {
+            int mid = (r + l + 1) / 2;
             int index = search(s, mid);
             if (index > -1) {
                 start = index;
-                left = mid;
+                l = mid;
             } else {
-                right = mid - 1;
+                r = mid - 1;
             }
         }
-        return start == -1 ? "" : s.substring(start, start + left);
+        return start == -1 ? "" : s.substring(start, start + l);
     }
 
     private int search(String txt, int len) {

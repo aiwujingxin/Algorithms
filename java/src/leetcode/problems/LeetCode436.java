@@ -31,19 +31,16 @@ public class LeetCode436 {
     }
 
     private int find(int[][] intervals, int target) {
-        int left = 0;
-        int right = intervals.length - 1;
-        while (left < right) {
-            int mid = (left + right) / 2;
-            if (intervals[mid][0] < target) {
-                left = mid + 1;
-            } else {
-                right = mid;
-            }
+        int l = 0;
+        int r = intervals.length - 1;
+        while (l < r) {
+            int mid = (l + r) / 2;
+            if (intervals[mid][0] < target) l = mid + 1;
+            else r = mid;
         }
-        if (intervals[left][0] < target) {
+        if (intervals[l][0] < target) {
             return -1;
         }
-        return intervals[left][2];
+        return intervals[l][2];
     }
 }

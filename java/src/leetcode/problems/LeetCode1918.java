@@ -13,18 +13,14 @@ public class LeetCode1918 {
             min = Math.min(x, min);
             sum += x;
         }
-        int low = min, high = sum;
+        int l = min, r = sum;
 
-        while (low < high) {
-            int mid = ((high - low) >> 1) + low;
-            int count = countSubarrays(nums, mid);
-            if (count < k) {
-                low = mid + 1;
-            } else {
-                high = mid;
-            }
+        while (l < r) {
+            int mid = l + r >> 1;
+            if (countSubarrays(nums, mid) < k) l = mid + 1;
+            else r = mid;
         }
-        return low;
+        return l;
     }
 
     public int countSubarrays(int[] nums, int target) {

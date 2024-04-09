@@ -12,18 +12,16 @@ import java.util.List;
 public class LeetCode2476 {
     public List<List<Integer>> closestNodes(TreeNode root, List<Integer> queries) {
         List<Integer> a = new ArrayList<>();
-
         dfs(root, a);
-
         List<List<Integer>> ans = new ArrayList<>();
         for (int q : queries) {
             int min = -1;
             int max = -1;
-            int l = bsearch_2(a, q);
+            int l = rightBound(a, q);
             if (l >= 0 && a.get(l) <= q) {
                 min = a.get(l);
             }
-            int r = bsearch_1(a, q);
+            int r = leftBound(a, q);
             if (r < a.size() && a.get(r) >= q) {
                 max = a.get(r);
             }
@@ -44,32 +42,24 @@ public class LeetCode2476 {
         dfs(o.right, a);
     }
 
-    // 第一个大于等于target的数
-    public int bsearch_1(List<Integer> nums, int target) {
+    public int leftBound(List<Integer> nums, int target) {
         int l = 0;
         int r = nums.size() - 1;
         while (l < r) {
             int mid = l + r >> 1;
-            if (nums.get(mid) >= target) {
-                r = mid;
-            } else {
-                l = mid + 1;
-            }
+            if (nums.get(mid) < target) l = mid + 1;
+            else r = mid;
         }
         return l;
     }
 
-    // 最后一个小于等于target的数
-    public int bsearch_2(List<Integer> nums, int target) {
+    public int rightBound(List<Integer> nums, int target) {
         int l = 0;
         int r = nums.size() - 1;
         while (l < r) {
             int mid = l + r + 1 >> 1;
-            if (nums.get(mid) <= target) {
-                l = mid;
-            } else {
-                r = mid - 1;
-            }
+            if (nums.get(mid) > target) r = mid - 1;
+            else l = mid;
         }
         return l;
     }
