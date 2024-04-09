@@ -1,4 +1,4 @@
-package knowledge.algorithms.bitwise;
+package knowledge.algorithms.bit;
 
 /**
  * @author wujingxinit@outlook.com
