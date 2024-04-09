@@ -1,6 +1,6 @@
 package knowledge.algorithms.search.backtrack.problems;
 
-import java.util.*;
+import java.util.Arrays;
 
 /**
  * @author wujingxinit@outlook.com
