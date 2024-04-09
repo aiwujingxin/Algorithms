@@ -5,7 +5,7 @@ package knowledge.algorithms;
  * @date 2024/3/12 16:44
  * @description 算法
  * <基础算法>
- * @see knowledge.algorithms.bit       位运算
+ * @see knowledge.algorithms.bit           位运算
  * @see knowledge.algorithms.binarysearch  二分
  * @see knowledge.algorithms.presumAnddiff 前缀和与差分
  * @see knowledge.algorithms.binarylifting 倍增
