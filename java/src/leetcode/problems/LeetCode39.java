@@ -15,7 +15,7 @@ public class LeetCode39 {
         return res;
     }
 
-    private void backtrack(int[] candidates, int index, List<List<Integer>> res, List<Integer> list, int target) {
+    private void backtrack(int[] candidates, int start, List<List<Integer>> res, List<Integer> list, int target) {
         if (target < 0) {
             return;
         }
@@ -23,7 +23,7 @@ public class LeetCode39 {
             res.add(new ArrayList<>(list));
             return;
         }
-        for (int i = index; i < candidates.length; i++) {
+        for (int i = start; i < candidates.length; i++) {
             list.add(candidates[i]);
             backtrack(candidates, i, res, list, target - candidates[i]);
             list.remove(list.size() - 1);

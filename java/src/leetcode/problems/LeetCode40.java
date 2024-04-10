@@ -26,7 +26,7 @@ public class LeetCode40 {
             return;
         }
         for (int i = start; i < nums.length; i++) {
-            if (i > 0 && nums[i - 1] == nums[i]) {
+            if (i > start && nums[i - 1] == nums[i]) {
                 continue;
             }
             list.add(nums[i]);
