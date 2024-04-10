@@ -20,16 +20,13 @@ public class LeetCode56 {
         List<int[]> list = new ArrayList<>();
         list.add(intervals[0]);
         for (int i = 1; i < intervals.length; i++) {
-            int[] last = list.get(list.size() - 1);
             int[] cur = intervals[i];
+            int[] last = list.get(list.size() - 1);
             if (cur[0] > last[1]) {
                 list.add(cur);
             } else {
                 list.remove(list.size() - 1);
-                int[] ints = new int[2];
-                ints[0] = Math.min(cur[0], last[0]);
-                ints[1] = Math.max(cur[1], last[1]);
-                list.add(ints);
+                list.add(new int[]{Math.min(cur[0], last[0]), Math.max(cur[1], last[1])});
             }
         }
         int[][] res = new int[list.size()][];

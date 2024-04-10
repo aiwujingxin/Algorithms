@@ -2,10 +2,9 @@ package leetcode.problems;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2023/10/25 20:25
+ * @date 2024/4/10 22:43
  */
 public class LeetCode72 {
-
     public int minDistance(String word1, String word2) {
         int m = word1.length();
         int n = word2.length();
@@ -21,7 +20,7 @@ public class LeetCode72 {
                 if (word1.charAt(i - 1) == word2.charAt(j - 1)) {
                     dp[i][j] = dp[i - 1][j - 1];
                 } else {
-                    dp[i][j] = Math.min(Math.min(dp[i - 1][j], dp[i][j - 1]), dp[i - 1][j - 1]) + 1;
+                    dp[i][j] = Math.min(Math.min(dp[i - 1][j - 1], dp[i - 1][j]), dp[i][j - 1]) + 1;
                 }
             }
         }

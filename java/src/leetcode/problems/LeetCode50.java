@@ -7,15 +7,18 @@ package leetcode.problems;
 public class LeetCode50 {
 
     public double myPow(double x, int n) {
+        if (x == 1) {
+            return x;
+        }
         if (n < 0) {
             return 1 / dfs(x, -n);
         }
         return dfs(x, n);
     }
 
-    private double dfs(double x, long n) {
+    public double dfs(double x, long n) {
         if (n == 0) {
-            return 1.0;
+            return 1;
         }
         if (n % 2 == 0) {
             return dfs(x * x, n / 2);

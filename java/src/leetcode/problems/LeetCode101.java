@@ -4,7 +4,7 @@ import common.TreeNode;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2023/10/27 14:54
+ * @date 2024/4/10 23:10
  */
 public class LeetCode101 {
 
@@ -16,7 +16,7 @@ public class LeetCode101 {
         if (left == null && right == null) {
             return true;
         }
-        if (left == null || right == null || left.val != right.val) {
+        if (right == null || left == null || left.val != right.val) {
             return false;
         }
         return isSymmetric(left.left, right.right) && isSymmetric(left.right, right.left);

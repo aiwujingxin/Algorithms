@@ -2,35 +2,31 @@ package leetcode.problems;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2023/12/12 21:26
+ * @date 2024/4/10 22:48
  */
 public class LeetCode75 {
 
     public void sortColors(int[] nums) {
-        if (nums == null || nums.length == 0) {
-            return;
-        }
         int p0 = 0;
         int p2 = nums.length - 1;
-        int index = 0;
-        while (index <= p2) {
-            if (nums[index] == 0) {
-                swap(nums, p0, index);
+        int i = 0;
+        while (i <= p2) {
+            if (nums[i] == 0) {
+                swap(nums, i, p0);
                 p0++;
-                index++;
-            } else if (nums[index] == 1) {
-                index++;
-
-            } else if (nums[index] == 2) {
-                swap(nums, p2, index);
+                i++;
+            } else if (nums[i] == 1) {
+                i++;
+            } else if (nums[i] == 2) {
+                swap(nums, i, p2);
                 p2--;
             }
         }
     }
 
-    public void swap(int[] nums, int i, int j) {
-        int t = nums[i];
-        nums[i] = nums[j];
-        nums[j] = t;
+    public void swap(int[] nums, int a, int b) {
+        int temp = nums[a];
+        nums[a] = nums[b];
+        nums[b] = temp;
     }
 }

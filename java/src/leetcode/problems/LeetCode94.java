@@ -8,19 +8,18 @@ import java.util.Stack;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2023/10/21 14:11
+ * @date 2024/4/10 22:57
  */
 public class LeetCode94 {
-
     public List<Integer> inorderTraversal(TreeNode root) {
         if (root == null) {
             return new ArrayList<>();
         }
         List<Integer> list = new ArrayList<>();
         Stack<TreeNode> stack = new Stack<>();
-        while (!stack.isEmpty() || root != null) {
+        while (root != null || !stack.isEmpty()) {
             while (root != null) {
-                stack.push(root);
+                stack.add(root);
                 root = root.left;
             }
             root = stack.pop();

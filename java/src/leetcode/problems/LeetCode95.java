@@ -7,14 +7,11 @@ import java.util.List;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2023/12/13 12:49
+ * @date 2024/4/10 23:16
  */
 public class LeetCode95 {
 
     public List<TreeNode> generateTrees(int n) {
-        if (n == 0) {
-            return new ArrayList<>();
-        }
         return dfs(1, n);
     }
 
@@ -29,19 +26,19 @@ public class LeetCode95 {
             list.add(new TreeNode(start));
             return list;
         }
-        List<TreeNode> list = new ArrayList<>();
+        List<TreeNode> res = new ArrayList<>();
         for (int i = start; i <= end; i++) {
             List<TreeNode> left = dfs(start, i - 1);
             List<TreeNode> right = dfs(i + 1, end);
             for (TreeNode l : left) {
                 for (TreeNode r : right) {
                     TreeNode root = new TreeNode(i);
-                    root.left = l;
-                    root.right = r;
-                    list.add(root);
+                    r.left = l;
+                    r.right = r;
+                    res.add(root);
                 }
             }
         }
-        return list;
+        return res;
     }
 }

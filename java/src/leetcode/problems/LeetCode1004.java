@@ -23,7 +23,7 @@ public class LeetCode1004 {
                 left++;
             }
             if (cnt <= k) {
-                max = Math.max(right - left + 1, max);
+                max = Math.max(max, right - left + 1);
             }
             right++;
         }

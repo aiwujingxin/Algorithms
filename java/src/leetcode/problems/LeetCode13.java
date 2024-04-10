@@ -1,7 +1,6 @@
 package leetcode.problems;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 /**
  * @author wujingxinit@outlook.com
@@ -9,7 +8,7 @@ import java.util.Map;
  */
 public class LeetCode13 {
 
-    Map<Character, Integer> symbolValues = new HashMap<>() {{
+    Map<Character, Integer> map = new HashMap<>() {{
         put('I', 1);
         put('V', 5);
         put('X', 10);
@@ -23,8 +22,8 @@ public class LeetCode13 {
         int ans = 0;
         int n = s.length();
         for (int i = 0; i < n; ++i) {
-            int value = symbolValues.get(s.charAt(i));
-            if (i < n - 1 && value < symbolValues.get(s.charAt(i + 1))) {
+            int value = map.get(s.charAt(i));
+            if (i + 1 < n && value < map.get(s.charAt(i + 1))) {
                 ans -= value;
             } else {
                 ans += value;

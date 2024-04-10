@@ -2,7 +2,7 @@ package leetcode.problems;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2023/10/20 16:06
+ * @date 2024/4/10 22:30
  */
 public class LeetCode53 {
 
@@ -10,12 +10,13 @@ public class LeetCode53 {
         if (nums == null || nums.length == 0) {
             return 0;
         }
-        int[] dp = new int[nums.length];
+        int n = nums.length;
+        int[] dp = new int[n];
         int max = nums[0];
-        dp[0] = max;
-        for (int i = 1; i < nums.length; i++) {
-            dp[i] = Math.max(nums[i], dp[i - 1] + nums[i]);
-            max = Math.max(dp[i], max);
+        dp[0] = nums[0];
+        for (int i = 1; i < n; i++) {
+            dp[i] = Math.max(nums[i], nums[i] + dp[i - 1]);
+            max = Math.max(max, dp[i]);
         }
         return max;
     }

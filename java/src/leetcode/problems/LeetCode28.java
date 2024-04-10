@@ -1,8 +1,7 @@
 package leetcode.problems;
 
 
-import knowledge.datastructure.string.impl.KMP;
-import knowledge.datastructure.string.impl.RabinKarp;
+import knowledge.datastructure.string.impl.*;
 
 /**
  * @author wujingxinit@outlook.com
@@ -12,20 +11,19 @@ public class LeetCode28 {
     //https://leetcode.com/problems/find-the-index-of-the-first-occurrence-in-a-string/discuss/2268683/Java-or-Using-KMP
 
     public int strStr(String haystack, String needle) {
-        if (haystack == null || haystack.isEmpty() || haystack.length() < needle.length()) {
+        if (haystack.length() < needle.length()) {
             return -1;
         }
-        for (int i = 0; i < haystack.length() - needle.length(); i++) {
-            if (haystack.charAt(i) == needle.charAt(0)) {
-                int index = 0;
-                int hi = i;
-                while (index < needle.length() && haystack.charAt(hi) == needle.charAt(index)) {
-                    hi++;
-                    index++;
+        for (int s = 0; s <= haystack.length() - needle.length(); s++) {
+            int e = s;
+            for (int j = 0; j < needle.length(); j++) {
+                if (needle.charAt(j) != haystack.charAt(e)) {
+                    break;
                 }
-                if (index == needle.length()) {
-                    return i;
-                }
+                e++;
+            }
+            if (e - s == needle.length()) {
+                return s;
             }
         }
         return -1;
