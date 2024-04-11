@@ -7,9 +7,6 @@ package leetcode.problems;
 public class LeetCode153 {
 
     public int findMin(int[] nums) {
-        if (nums == null || nums.length == 0) {
-            return 0;
-        }
         int l = 0;
         int r = nums.length - 1;
         while (l < r) {

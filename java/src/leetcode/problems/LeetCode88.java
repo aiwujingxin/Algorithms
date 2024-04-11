@@ -2,33 +2,30 @@ package leetcode.problems;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2023/10/27 04:16
+ * @date 2024/4/11 11:24
  */
 public class LeetCode88 {
 
     public void merge(int[] nums1, int m, int[] nums2, int n) {
-        int index = m + n - 1;
-        int i = m - 1;
-        int j = n - 1;
-        while (i >= 0 && j >= 0) {
-            if (nums1[i] >= nums2[j]) {
-                nums1[index] = nums1[i];
-                i--;
+        while (m >= 1 && n >= 1) {
+            int i = m + n - 1;
+            if (nums1[m - 1] > nums2[n - 1]) {
+                nums1[i] = nums1[m - 1];
+                m--;
             } else {
-                nums1[index] = nums2[j];
-                j--;
+                nums1[i] = nums2[n - 1];
+                n--;
             }
-            index--;
         }
-        while (i >= 0) {
-            nums1[index] = nums1[i];
-            i--;
-            index--;
+        while (m >= 1) {
+            int i = m + n - 1;
+            nums1[i] = nums1[m - 1];
+            m--;
         }
-        while (j >= 0) {
-            nums1[index] = nums2[j];
-            j--;
-            index--;
+        while (n >= 1) {
+            int i = m + n - 1;
+            nums1[i] = nums2[n - 1];
+            n--;
         }
     }
 }

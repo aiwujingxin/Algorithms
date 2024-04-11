@@ -1,63 +1,66 @@
 package leetcode.problems;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2023/11/8 18:22
+ * @date 2024/4/12 00:54
  */
 public class LeetCode51 {
-
-    char[][] board;
-
-    List<List<String>> res = new ArrayList<>();
+    List<List<String>> res;
+    int n;
 
     public List<List<String>> solveNQueens(int n) {
-        if (n <= 0) {
-            return new ArrayList<>();
-        }
-        this.board = new char[n][n];
+        char[][] board = new char[n][n];
         for (int i = 0; i < n; i++) {
             Arrays.fill(board[i], '.');
         }
-        backtrack(n, 0, new ArrayList<>());
+        this.res = new ArrayList<>();
+        this.n = n;
+        bk(board, 0);
         return res;
     }
 
-    private void backtrack(int n, int row, List<String> list) {
+    private void bk(char[][] board, int row) {
         if (row == n) {
-            res.add(new ArrayList<>(list));
+            List<String> list = new ArrayList<>();
+            for (int i = 0; i < n; i++) {
+                StringBuilder sb = new StringBuilder();
+                for (int j = 0; j < n; j++) {
+                    sb.append(board[i][j]);
+                }
+                list.add(sb.toString());
+            }
+            res.add(list);
             return;
         }
-        for (int j = 0; j < n; j++) {
-            if (place(board, row, j)) {
-                board[row][j] = 'Q';
-                list.add(new String(board[row]));
-                backtrack(n, row + 1, list);
-                board[row][j] = '.';
-                list.remove(list.size() - 1);
+        for (int col = 0; col < n; col++) {
+            if (place(board, row, col)) {
+                board[row][col] = 'Q';
+                bk(board, row + 1);
+                board[row][col] = '.';
             }
         }
     }
 
     private boolean place(char[][] board, int row, int col) {
-        for (int j = 0; j < board[0].length; j++) {
-            if (board[row][j] == 'Q') {
-                return false;
-            }
-        }
-        for (int i = 0; i < board.length; i++) {
+        for (int i = 0; i < n; i++) {
             if (board[i][col] == 'Q') {
                 return false;
             }
         }
-
-        for (int i = 0; i < board.length; i++) {
-            for (int j = 0; j < board[0].length; j++) {
-                if (row + col == i + j || row - col == i - j) {
-                    if (board[i][j] == 'Q') {
+        for (int i = 0; i < n; i++) {
+            if (board[row][i] == 'Q') {
+                return false;
+            }
+        }
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                if (i + j == row + col || j - i == col - row) {
+                    if (board[i][j] == 'Q')
                         return false;
-                    }
                 }
             }
         }

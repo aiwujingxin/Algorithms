@@ -17,6 +17,6 @@ public class LeetCode1539 {
             if (arr[mid] - mid - 1 < k) l = mid + 1;
             else r = mid;
         }
-        return k - (arr[l - 1] - (l - 1) - 1) + arr[l - 1];
+        return k + l;
     }
 }

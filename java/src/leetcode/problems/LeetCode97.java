@@ -2,7 +2,7 @@ package leetcode.problems;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2023/12/23 23:53
+ * @date 2024/4/11 11:18
  */
 public class LeetCode97 {
 
@@ -31,8 +31,7 @@ public class LeetCode97 {
         for (int i = 1; i <= m; i++) {
             for (int j = 1; j <= n; j++) {
                 int index = i + j - 1;
-                if (s1.charAt(i - 1) == s3.charAt(index) && dp[i - 1][j] ||
-                        s2.charAt(j - 1) == s3.charAt(index) && dp[i][j - 1]) {
+                if (s1.charAt(i - 1) == s3.charAt(index) && dp[i - 1][j] || s2.charAt(j - 1) == s3.charAt(index) && dp[i][j - 1]) {
                     dp[i][j] = true;
                 }
             }

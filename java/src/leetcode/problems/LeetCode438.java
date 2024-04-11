@@ -29,16 +29,16 @@ public class LeetCode438 {
             if (sFreq[c - 'a'] == pFreq[c - 'a']) {
                 cnt++;
             }
-            while (right - left + 1 > p.length()) {
+            while (cnt == target) {
+                if (right - left + 1 == p.length()) {
+                    list.add(left);
+                }
                 char d = s.charAt(left);
                 if (sFreq[d - 'a'] == pFreq[d - 'a']) {
                     cnt--;
                 }
                 sFreq[d - 'a']--;
                 left++;
-            }
-            if (cnt == target && right - left + 1 == p.length()) {
-                list.add(left);
             }
             right++;
         }

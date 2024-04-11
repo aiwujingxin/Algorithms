@@ -1,10 +1,10 @@
 package leetcode.problems;
 
-import common.ListNode;
+import common.*;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2023/12/13 13:39
+ * @date 2024/4/11 18:12
  */
 public class LeetCode83 {
 
@@ -14,7 +14,7 @@ public class LeetCode83 {
         }
         ListNode cur = head;
         while (cur != null) {
-            if (cur.next != null && cur.val == cur.next.val) {
+            if (cur.next != null && cur.next.val == cur.val) {
                 cur.next = cur.next.next;
             } else {
                 cur = cur.next;

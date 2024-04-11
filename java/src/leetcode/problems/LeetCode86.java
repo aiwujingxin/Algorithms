@@ -4,33 +4,28 @@ import common.*;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2023/12/25 22:00
+ * @date 2024/4/11 11:27
  */
 public class LeetCode86 {
 
     public ListNode partition(ListNode head, int x) {
-        if (head == null || head.next == null) {
-            return head;
-        }
         ListNode dummy = new ListNode();
         dummy.next = head;
         ListNode cur = dummy;
         while (cur.next != null) {
             if (cur.next.val >= x) {
-                // find
-                ListNode right = cur.next;
-                while (right.next != null && right.next.val >= x) {
-                    right = right.next;
+                ListNode curNext = cur.next;
+                ListNode f = curNext;
+                while (f.next != null && f.next.val >= x) {
+                    f = f.next;
                 }
-                if (right.next == null) {
+                if (f.next == null) {
                     return dummy.next;
                 }
-                ListNode next = right.next;
-                // 断开
-                right.next = next.next;
-                // 插入
-                next.next = cur.next;
-                cur.next = next;
+                ListNode d = f.next;
+                f.next = d.next;
+                d.next = curNext;
+                cur.next = d;
             }
             cur = cur.next;
         }

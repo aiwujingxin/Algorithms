@@ -1,6 +1,6 @@
 package leetcode.problems;
 
-import java.util.Arrays;
+import java.util.*;
 
 /**
  * @author wujingxinit@outlook.com
@@ -11,7 +11,7 @@ public class LeetCode268 {
     public int missingNumber(int[] nums) {
         int n = nums.length;
         for (int i = 0; i < n; i++) {
-            while (nums[i] >= 0 && nums[i] < n && nums[i] != i) {
+            while (nums[i] >= 0 && nums[i] < n && nums[i] != nums[nums[i]]) {
                 swap(nums, nums[i], i);
             }
         }
@@ -24,9 +24,9 @@ public class LeetCode268 {
     }
 
     void swap(int[] nums, int i, int j) {
-        int c = nums[i];
+        int t = nums[i];
         nums[i] = nums[j];
-        nums[j] = c;
+        nums[j] = t;
     }
 
     public int missingNumber_bs(int[] nums) {

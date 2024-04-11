@@ -24,15 +24,12 @@ public class LeetCode61 {
             cur = cur.next;
         }
         ListNode newHead = cur.next;
-        if (newHead == null) {
-            return cur;
-        }
         cur.next = null;
-        ListNode cur1 = newHead;
-        while (cur1.next != null) {
-            cur1 = cur1.next;
+        cur = newHead;
+        while (cur.next != null) {
+            cur = cur.next;
         }
-        cur1.next = head;
+        cur.next = head;
         return newHead;
     }
 

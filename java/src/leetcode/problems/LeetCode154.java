@@ -11,12 +11,11 @@ public class LeetCode154 {
         int r = nums.length - 1;
         while (l < r) {
             int mid = (l + r) / 2;
-            if (nums[mid] > nums[r]) {
-                l = mid + 1;
-            } else if (nums[mid] < nums[r]) {
-                r = mid;
-            } else {
+            if (nums[mid] == nums[r]) {
                 r--;
+            } else {
+                if (nums[mid] > nums[r]) l = mid + 1;
+                else r = mid;
             }
         }
         return nums[l];

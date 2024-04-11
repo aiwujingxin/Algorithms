@@ -6,8 +6,6 @@ package leetcode.problems;
  */
 public class LeetCode852 {
 
-    //https://leetcode.cn/problems/peak-index-in-a-mountain-array/solution/gong-shui-san-xie-er-fen-san-fen-cha-zhi-5gfv/
-
     public int peakIndexInMountainArray(int[] arr) {
         int l = 0;
         int r = arr.length - 1;

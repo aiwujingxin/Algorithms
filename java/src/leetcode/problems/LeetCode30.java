@@ -3,46 +3,48 @@ package leetcode.problems;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2023/12/19 17:38
- * @see LeetCode438
+ * @date 2024/4/11 20:35
  */
 public class LeetCode30 {
 
     public List<Integer> findSubstring(String s, String[] words) {
-        if (s == null || s.isEmpty()) {
-            return new ArrayList<>();
-        }
-        HashMap<String, Integer> target = new HashMap<>();
+        int wordLen = words[0].length();
+        int n = words.length;
+        List<Integer> list = new ArrayList<>();
+        HashMap<String, Integer> tMap = new HashMap<>();
         for (String word : words) {
-            target.put(word, target.getOrDefault(word, 0) + 1);
+            tMap.put(word, tMap.getOrDefault(word, 0) + 1);
         }
-        int len = words[0].length();
-        int cnt = words.length;
-        List<Integer> ans = new ArrayList<>();
-        for (int left = 0; left < len; left++) {
-            HashMap<String, Integer> window = new HashMap<>();
-            int right = left;
-            while (right + len <= s.length()) {
-                String cur = s.substring(right, right + len);
-                window.put(cur, window.getOrDefault(cur, 0) + 1);
-                if (right - left + 1 > cnt * len) {
-                    int index = right - cnt * len;
-                    String d = s.substring(index, index + len);
-                    if (window.get(d) == 1) {
-                        window.remove(d);
-                    } else {
-                        window.put(d, window.get(d) - 1);
+        int target = tMap.size();
+        for (int i = 0; i < wordLen; i++) {
+            int left = i;
+            int right = i;
+            int cnt = 0;
+            HashMap<String, Integer> sMap = new HashMap<>();
+            while (right + wordLen <= s.length()) {
+                String c = s.substring(right, right + wordLen);
+                sMap.put(c, sMap.getOrDefault(c, 0) + 1);
+                if (Objects.equals(tMap.get(c), sMap.get(c))) {
+                    cnt++;
+                }
+                while (right - left >= wordLen * (n - 1)) {
+                    if (right - left == wordLen * (n - 1) && cnt == target) {
+                        list.add(left);
                     }
+                    String d = s.substring(left, left + wordLen);
+                    if (Objects.equals(tMap.get(d), sMap.get(d))) {
+                        cnt--;
+                    }
+                    sMap.put(d, sMap.get(d) - 1);
+                    left += wordLen;
                 }
-                if (window.equals(target)) {
-                    ans.add(right - len * (cnt - 1));
-                }
-                right += len;
+                right += wordLen;
             }
         }
-        return ans;
+        return list;
     }
 }

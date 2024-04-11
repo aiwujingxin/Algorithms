@@ -1,36 +1,41 @@
 package leetcode.problems;
 
-import common.ListNode;
+import common.*;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2024/2/9 14:46
+ * @date 2024/4/11 11:11
  */
 public class LeetCode92 {
 
     public ListNode reverseBetween(ListNode head, int left, int right) {
+        if (head == null || head.next == null) {
+            return head;
+        }
         ListNode dummy = new ListNode();
         dummy.next = head;
-        ListNode cur = dummy;
+        ListNode l = dummy;
         for (int i = 0; i < left - 1; i++) {
-            cur = cur.next;
+            l = l.next;
         }
-        ListNode end = dummy;
+        ListNode r = dummy;
         for (int i = 0; i < right; i++) {
-            end = end.next;
+            r = r.next;
         }
-        ListNode next = end.next;
-        ListNode start = cur.next;
-        cur.next = null;
-        cur.next = reverse(start, end.next);
-        start.next = next;
-        return head;
+        ListNode s = l.next;
+        l.next = null;
+        ListNode next = r.next;
+        r.next = null;
+
+        l.next = reverse(s);
+        s.next = next;
+        return dummy.next;
     }
 
-    private ListNode reverse(ListNode head, ListNode tail) {
-        ListNode pre = null;
+    private ListNode reverse(ListNode head) {
         ListNode cur = head;
-        while (cur != tail) {
+        ListNode pre = null;
+        while (cur != null) {
             ListNode next = cur.next;
             cur.next = pre;
             pre = cur;
