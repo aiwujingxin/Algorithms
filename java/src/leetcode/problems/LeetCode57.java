@@ -1,7 +1,6 @@
 package leetcode.problems;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 /**
  * @author wujingxinit@outlook.com
@@ -10,19 +9,17 @@ import java.util.List;
 public class LeetCode57 {
 
     public int[][] insert(int[][] intervals, int[] newInterval) {
-        if (intervals == null || intervals.length == 0) {
+        if (intervals.length == 0) {
             return new int[][]{newInterval};
         }
+        int m = lb(intervals, newInterval);
+        int n = rb(intervals, newInterval);
         List<int[]> list = new ArrayList<>();
-        int m = leftBound(intervals, newInterval[0]);
-        int n = rightBound(intervals, newInterval[1]);
-        for (int i = 0; i < m - 1; i++) {
+        for (int i = 0; i < m; i++) {
             list.add(intervals[i]);
         }
         if (m <= n) {
-            int a = Math.min(intervals[m][0], newInterval[0]);
-            int b = Math.max(intervals[n][1], newInterval[1]);
-            list.add(new int[]{a, b});
+            list.add(new int[]{Math.min(intervals[m][0], newInterval[0]), Math.max(intervals[n][1], newInterval[1])});
         } else {
             list.add(newInterval);
         }
@@ -36,29 +33,29 @@ public class LeetCode57 {
         return res;
     }
 
-    private int leftBound(int[][] intervals, int target) {
+    private int lb(int[][] intervals, int[] newInterval) {
         int l = 0;
         int r = intervals.length - 1;
         while (l < r) {
             int mid = l + r >> 1;
-            if (intervals[mid][1] < target) l = mid + 1;
+            if (intervals[mid][1] < newInterval[0]) l = mid + 1;
             else r = mid;
         }
-        if (intervals[l][1] < target) {
+        if (intervals[l][1] < newInterval[0]) {
             return l + 1;
         }
         return l;
     }
 
-    private int rightBound(int[][] intervals, int target) {
+    private int rb(int[][] intervals, int[] newInterval) {
         int l = 0;
         int r = intervals.length - 1;
         while (l < r) {
             int mid = l + r + 1 >> 1;
-            if (intervals[mid][0] > target) r = mid - 1;
+            if (intervals[mid][0] > newInterval[1]) r = mid - 1;
             else l = mid;
         }
-        if (intervals[l][0] > target) {
+        if (intervals[l][0] > newInterval[1]) {
             return l - 1;
         }
         return l;

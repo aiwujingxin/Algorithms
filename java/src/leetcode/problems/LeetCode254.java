@@ -12,22 +12,22 @@ public class LeetCode254 {
 
     public List<List<Integer>> getFactors(int n) {
         List<List<Integer>> res = new ArrayList<>();
-        backtrack(n, new ArrayList<>(), res, 2, n);
+        backtrack(n, 2, n, new ArrayList<>(), res);
         return res;
     }
 
-    private void backtrack(int num, List<Integer> list, List<List<Integer>> res, int start, int n) {
+    private void backtrack(int num, int start, int n, List<Integer> list, List<List<Integer>> res) {
         if (num < n) {
             list.add(num);
             res.add(new ArrayList<>(list));
             list.remove(list.size() - 1);
         }
-        // opt minnum
+        // opt start
         // opt i * i <= num
         for (int i = start; i * i <= num; i++) {
             if (num % i == 0) {
                 list.add(i);
-                backtrack(num / i, list, res, i, n);
+                backtrack(num / i, i, n, list, res);
                 list.remove(list.size() - 1);
             }
         }

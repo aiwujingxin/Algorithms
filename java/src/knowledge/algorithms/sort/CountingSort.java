@@ -15,7 +15,6 @@ public class CountingSort implements Sort {
         }
         int len = max + 1;
         int[] count = new int[len];
-        // 统计
         for (int num : nums) {
             count[num]++;
         }

@@ -28,18 +28,6 @@ import leetcode.problems.*;
  * @see LCCI0814 布尔运算
  * @see LeetCode7 整数反转
  * 1106. 解析布尔表达式
- * <回文>
- * @see LeetCode5 最长回文子串
- * @see LeetCode131 分割回文串
- * @see LeetCode132 分割回文串 II
- * @see LeetCode336 回文对
- * @see LeetCode516 最长回文子序列
- * @see LeetCode1312  让字符串成为回文串的最少插入次数
- * @see LeetCode647  回文子串
- * @see LeetCode267 回文排列 II
- * @see LeetCode214 最短回文串
- * LeetCoe2193
- * poj3280
  * <括号>
  * @see LeetCode32
  * @see LeetCode921

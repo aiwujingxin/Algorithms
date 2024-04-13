@@ -4,13 +4,11 @@ import leetcode.problems.*;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2023/8/22 13:01
- * @description 线性DP
- * <路径>
- * @see LeetCode120
+ * @date 2024/4/13 23:37
+ * @description 序列
  * <LIS>
  * @see LeetCode300 最长递增子序列
- * @see LeetCode646 最长数对链
+ * @see LeetCode646 最长数对链 (电路布线)
  * @see LeetCode673 最长递增子序列的个数
  * @see LeetCode354 俄罗斯套娃信封问题
  * @see LeetCode334  递增的三元子序列
@@ -31,26 +29,10 @@ import leetcode.problems.*;
  * @see LeetCode115 不同的子序列
  * @see LeetCode44 通配符匹配
  * @see LeetCode10 正则表达式匹配
- * <状态机模型>
- * 1.定义初始状态
- * 2.遍历所有转移的情况 按照题意进行转移方程
- * <股票>
- * @see LeetCode121 买卖股票的最佳时机     一次交易次数
- * @see LeetCode122 买卖股票的最佳时机 II  不限交易次数
- * @see LeetCode123 买卖股票的最佳时机 III 最多交易2次
- * @see LeetCode188 买卖股票的最佳时机 IV  最多交易k次
- * @see LeetCode309 最佳买卖股票时机含冷冻期
- * @see LeetCode714 买卖股票的最佳时机含手续费
- * <打劫>
- * @see LeetCode198 打家劫舍
- * @see LeetCode213 打家劫舍II
- * @see LeetCode337 打家劫舍III
  * <丑数>
  * @see LeetCode204
  * @see LeetCode264
  * @see LeetCode313
- * <回文系列>
- * @see knowledge.datastructure.string.Problems;
  */
-public interface Problems {
+public interface Sequence {
 }

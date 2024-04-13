@@ -7,6 +7,9 @@ import leetcode.problems.*;
  * @author wujingxinit@outlook.com
  * @date 2023/8/30 22:45
  * @description 分治
+ * @see BubbleSort
+ * @see InsertSort
+ * @see SelectSort
  * @see MergeSort
  * @see QuickSort
  * @see LeetCode23

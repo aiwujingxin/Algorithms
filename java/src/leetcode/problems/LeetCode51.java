@@ -1,8 +1,6 @@
 package leetcode.problems;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 /**
  * @author wujingxinit@outlook.com
@@ -25,6 +23,7 @@ public class LeetCode51 {
 
     private void bk(char[][] board, int row) {
         if (row == n) {
+            // 组装结果
             List<String> list = new ArrayList<>();
             for (int i = 0; i < n; i++) {
                 StringBuilder sb = new StringBuilder();

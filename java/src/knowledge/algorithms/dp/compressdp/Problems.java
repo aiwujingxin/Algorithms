@@ -1,4 +1,4 @@
-package knowledge.algorithms.dp.statedp;
+package knowledge.algorithms.dp.compressdp;
 
 import leetcode.problems.LeetCode1349;
 import leetcode.problems.LeetCode1494;

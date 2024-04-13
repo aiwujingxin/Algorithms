@@ -1,44 +1,50 @@
 package leetcode.problems;
 
+import common.*;
 
-import common.TreeNode;
+import java.util.*;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2023/10/21 12:21
+ * @date 2024/4/12 13:04
  */
 public class LeetCode99 {
 
-    TreeNode large = null;
-    TreeNode secondLarge = null;
-    TreeNode pre = null;
-
     public void recoverTree(TreeNode root) {
-        dfs(root);
-        int v = large.val;
-        large.val = secondLarge.val;
-        secondLarge.val = v;
-    }
-
-    private void dfs(TreeNode root) {
-        if (root == null) {
-            return;
+        List<TreeNode> list = new ArrayList<>();
+        Stack<TreeNode> stack = new Stack<>();
+        while (root != null || !stack.isEmpty()) {
+            while (root != null) {
+                stack.add(root);
+                root = root.left;
+            }
+            root = stack.pop();
+            list.add(root);
+            root = root.right;
         }
-        dfs(root.left);
-        if (pre != null) {
-            // 逆序
-            if (root.val < pre.val) {
-                if (large == null) {
-                    large = pre;
-                    secondLarge = root;
+        TreeNode a = null;
+        TreeNode b = null;
+        for (int i = 0; i < list.size(); i++) {
+            if (i > 0 && list.get(i).val <= list.get(i - 1).val) {
+                if (a == null) {
+                    a = list.get(i);
                 } else {
-                    if (root.val < secondLarge.val) {
-                        secondLarge = root;
-                    }
+                    b = list.get(i);
+                }
+            }
+            if (i + 1 < list.size() && list.get(i).val >= list.get(i + 1).val) {
+                if (a == null) {
+                    a = list.get(i);
+                } else {
+                    b = list.get(i);
                 }
             }
         }
-        pre = root;
-        dfs(root.right);
+        if (a == null || b == null) {
+            return;
+        }
+        int t = a.val;
+        a.val = b.val;
+        b.val = t;
     }
 }

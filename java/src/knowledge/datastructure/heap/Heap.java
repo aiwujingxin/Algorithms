@@ -22,8 +22,8 @@ package knowledge.datastructure.heap;
  * @see leetcode.problems.LeetCode786
  * @see leetcode.problems.LeetCode355
  * <图问题>
- * @see knowledge.graph.ShortestPath
- * @see knowledge.graph.MinimumTree
+ * @see knowledge.datastructure.graph.ShortestPath
+ * @see knowledge.datastructure.graph.MinimumTree
  */
 public interface Heap {
 

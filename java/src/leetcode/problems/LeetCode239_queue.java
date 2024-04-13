@@ -20,7 +20,7 @@ public class LeetCode239_queue {
             if (i - dq.getFirst() >= k) {
                 dq.pollFirst();
             }
-            if (i >= k - 1) {
+            if (i - k + 1 >= 0) {
                 res[i - k + 1] = nums[dq.getFirst()];
             }
         }
