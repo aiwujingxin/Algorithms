@@ -22,21 +22,21 @@ import leetcode.problems.*;
 public interface SlidingWindow {
 
     /*
-    public int windowTemplate() {
-        int left = 0;
-        int right = 0;
+    public int sd() {
+        int l = 0;
+        int r = 0;
         int res = 0;
         Window window = new Window();
-        while (right < s.length()) {
-            // 添加新的元素进 window 或者需要维护其他的题目中需要的变量
-            while (left < right && check(window)) { // 窗口不满足题意，则需要缩小 left:
-                char d = s.charAt(left);
-                // 删除 window 中 left 所在的元素
-                left++;
+        while (r < n) {
+            window.add(a[r]);
+            while (check(window)) { // 窗口不满足题意，则需要缩小 left:
+                res = min(res, right - left + 1); // 最小窗口
+                window.delete(a[l]);
+                l++;
             }
-            // 退出 while时，意味着window是满足题意的
-            res = Math.max(res, right - left + 1);
-            right++;
+            // 退出 while时，意味着window是满足题意的  // 最大窗口
+            res = max(res, right - left + 1);
+            r++;
         }
         return res;
      */

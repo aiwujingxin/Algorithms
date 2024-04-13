@@ -5,6 +5,7 @@ import java.util.*;
 /**
  * @author wujingxinit@outlook.com
  * @date 2024/2/25 22:17
+ * @description 多重背包 单调队列优化
  * @see leetcode.problems.LeetCode239_queue
  */
 public class Multiple_queue implements MultiplePack {
