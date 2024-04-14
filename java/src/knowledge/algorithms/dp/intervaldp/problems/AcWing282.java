@@ -1,4 +1,4 @@
-package knowledge.algorithms.dp.intervaldp;
+package knowledge.algorithms.dp.intervaldp.problems;
 
 import java.io.*;
 

@@ -6,12 +6,13 @@ import java.util.*;
  * @author wujingxinit@outlook.com
  * @date 2024/3/31 23:25
  * @description 批处理作业调度 排列树
+ * @link <a href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1425"></a>
  */
 public class Scheduling {
 
     public static void main(String[] args) {
         new Scheduling().Schedule(new int[][]{{2, 1}, {3, 1}, {2, 3}});
-        System.out.print(Arrays.toString(bestx));
+        System.out.println(Arrays.toString(bestx));
         System.out.println(bestf);
     }
 

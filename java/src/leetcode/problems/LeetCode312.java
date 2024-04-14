@@ -15,14 +15,14 @@ public class LeetCode312 {
         }
         int n = arr.length;
         int[][] dp = new int[n][n];
-        for (int r = 3; r <= n; r++) {
-            for (int i = 0; i < n - r + 1; i++) {
+        for (int r = 2; r < n; r++) {
+            for (int i = 1; i < n - r + 1; i++) {
                 int j = i + r - 1;
-                for (int k = i + 1; k < j; k++) {
-                    dp[i][j] = Math.max(dp[i][j], dp[i][k] + dp[k][j] + arr[i] * arr[k] * arr[j]);
+                for (int k = i; k < j; k++) {
+                    dp[i][j] = Math.max(dp[i][j], dp[i][k] + dp[k + 1][j] + arr[i - 1] * arr[k] * arr[j]);
                 }
             }
         }
-        return dp[0][n - 1];
+        return dp[1][n - 1];
     }
 }

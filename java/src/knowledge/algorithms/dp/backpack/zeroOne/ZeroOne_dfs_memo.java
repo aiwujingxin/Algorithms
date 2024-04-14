@@ -1,7 +1,6 @@
 package knowledge.algorithms.dp.backpack.zeroOne;
 
-
-import java.util.Arrays;
+import java.util.*;
 
 /**
  * @author wujingxinit@outlook.com
@@ -11,39 +10,37 @@ public class ZeroOne_dfs_memo implements ZeroOnePack {
 
     int n;
     int[][] memo;
-    int capacity;
-    int[] weights;
-    int[] values;
+    int V;
+    int[] C;
+    int[] W;
 
     @Override
     public int backPack(int[] C, int[] W, int V) {
         n = C.length;
         memo = new int[n][V + 1];
-        this.capacity = V;
-        this.weights = C;
-        this.values = W;
+        this.V = V;
+        this.C = C;
+        this.W = W;
         for (int[] row : memo) {
             Arrays.fill(row, -1);
         }
         return dfs(0, V);
     }
 
-    private int dfs(int index, int capacity) {
-        if (index >= weights.length || capacity <= 0) {
+    private int dfs(int i, int j) {
+        if (i >= n || j <= 0) {
             return 0;
         }
-        if (memo[index][capacity] != -1) {
-            return memo[index][capacity];
+        if (memo[i][j] != -1) {
+            return memo[i][j];
         }
         int maxValue;
-        if (weights[index] > capacity) {
-            maxValue = dfs(index + 1, capacity);
+        if (C[i] > j) {
+            maxValue = dfs(i + 1, j);
         } else {
-            int take = values[index] + dfs(index + 1, capacity - weights[index]);
-            int noTake = dfs(index + 1, capacity);
-            maxValue = Math.max(take, noTake);
+            maxValue = Math.max(dfs(i + 1, j - C[i]) + W[i], dfs(i + 1, j));
         }
-        memo[index][capacity] = maxValue;
+        memo[i][j] = maxValue;
         return maxValue;
     }
 }

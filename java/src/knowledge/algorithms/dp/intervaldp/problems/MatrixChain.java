@@ -1,4 +1,4 @@
-package knowledge.algorithms.dp.intervaldp;
+package knowledge.algorithms.dp.intervaldp.problems;
 
 import java.util.*;
 
@@ -26,9 +26,6 @@ public class MatrixChain {
         int n = p.length;
         int[][] dp = new int[n][n];
         int[][] s = new int[n][n]; //划分方法
-        for (int i = 0; i < n; i++) {
-            dp[i][i] = 0;
-        }
         for (int r = 2; r < n; r++) {
             System.out.println("规模 " + r + " 时");
             for (int i = 1; i < n - r + 1; i++) { //子问题遍历
