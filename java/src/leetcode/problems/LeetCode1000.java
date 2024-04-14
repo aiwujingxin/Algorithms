@@ -23,7 +23,7 @@ public class LeetCode1000 {
             presum[i] = presum[i - 1] + stones[i - 1];
         }
         this.k = k;
-        memo = new int[n][n][k + 1];
+        this.memo = new int[n][n][k + 1];
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
                 Arrays.fill(memo[i][j], -1);

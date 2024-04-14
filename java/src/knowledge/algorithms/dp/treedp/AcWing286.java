@@ -6,6 +6,7 @@ import java.util.Scanner;
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/8/8 16:46
+ * @description 选课
  * <a href="https://www.acwing.com/problem/content/description/288/"></a>
  */
 public class AcWing286 {

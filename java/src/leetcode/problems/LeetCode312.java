@@ -8,18 +8,18 @@ package leetcode.problems;
 public class LeetCode312 {
 
     public int maxCoins(int[] nums) {
-        int[] arr = new int[nums.length + 2];
-        arr[0] = arr[nums.length + 1] = 1;
+        int[] p = new int[nums.length + 2];
+        p[0] = p[nums.length + 1] = 1;
         for (int i = 1; i <= nums.length; i++) {
-            arr[i] = nums[i - 1];
+            p[i] = nums[i - 1];
         }
-        int n = arr.length;
+        int n = p.length;
         int[][] dp = new int[n][n];
         for (int r = 2; r < n; r++) {
             for (int i = 1; i < n - r + 1; i++) {
                 int j = i + r - 1;
                 for (int k = i; k < j; k++) {
-                    dp[i][j] = Math.max(dp[i][j], dp[i][k] + dp[k + 1][j] + arr[i - 1] * arr[k] * arr[j]);
+                    dp[i][j] = Math.max(dp[i][j], dp[i][k] + dp[k + 1][j] + p[i - 1] * p[k] * p[j]);
                 }
             }
         }

@@ -1,28 +1,28 @@
 package knowledge.algorithms.dp.treedp;
 
-import java.util.ArrayList;
-import java.util.Scanner;
+import java.util.*;
 
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/8/8 16:41
+ * @description 没有上司的舞会
  * <a href="https://www.acwing.com/problem/content/287/"></a>
  */
 public class AcWing285 {
 
     static ArrayList<Integer>[] son;
-    static int[][] f;
+    static int[][] dp;
     static int[] v, h;
 
-    public static void dp(int x) {
-        f[x][0] = 0;
-        f[x][1] = h[x];
+    public static void dfs(int x) {
+        dp[x][0] = 0;
+        dp[x][1] = h[x];
 
         for (int i = 0; i < son[x].size(); i++) {
             int y = son[x].get(i);
-            dp(y);
-            f[x][0] += Math.max(f[y][0], f[y][1]);
-            f[x][1] += f[y][0];
+            dfs(y);
+            dp[x][0] += Math.max(dp[y][0], dp[y][1]);
+            dp[x][1] += dp[y][0];
         }
     }
 
@@ -30,7 +30,7 @@ public class AcWing285 {
         Scanner scanner = new Scanner(System.in);
         int n = scanner.nextInt();
         son = new ArrayList[n + 1];
-        f = new int[n + 1][2];
+        dp = new int[n + 1][2];
         v = new int[n + 1];
         h = new int[n + 1];
 
@@ -54,7 +54,7 @@ public class AcWing285 {
             }
         }
 
-        dp(root);
-        System.out.println(Math.max(f[root][0], f[root][1]));
+        dfs(root);
+        System.out.println(Math.max(dp[root][0], dp[root][1]));
     }
 }

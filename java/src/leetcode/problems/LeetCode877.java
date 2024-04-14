@@ -6,20 +6,24 @@ package leetcode.problems;
  */
 public class LeetCode877 {
 
+    Integer[][] memo;
+    int[] piles;
+
     public boolean stoneGame(int[] piles) {
         int n = piles.length;
-        Integer[][] memo = new Integer[n][n];
-        return dfs(piles, 0, n - 1, memo) > 0;
+        this.memo = new Integer[n][n];
+        this.piles = piles;
+        return dfs(0, n - 1) > 0;
     }
 
-    private int dfs(int[] piles, int i, int j, Integer[][] memo) {
+    private int dfs(int i, int j) {
         if (i == j) {
             return piles[i];
         }
         if (memo[i][j] != null) {
             return memo[i][j];
         }
-        memo[i][j] = Math.max(piles[i] - dfs(piles, i + 1, j, memo), piles[j] - dfs(piles, i, j - 1, memo));
+        memo[i][j] = Math.max(piles[i] - dfs(i + 1, j), piles[j] - dfs(i, j - 1));
         return memo[i][j];
     }
 }

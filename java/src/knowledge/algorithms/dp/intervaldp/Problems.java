@@ -8,11 +8,11 @@ import leetcode.problems.*;
  * @date 2023/11/28 23:00
  * @description 区间DP
  * <基础>
+ * @see AcWing282 石子合并
  * @see MatrixChain 矩阵链乘法
  * @see LeetCode1039 多边形三角剖分的最低得分
  * @see LeetCode312 戳气球
  * <石子合并>
- * @see AcWing282 石子合并 相邻2堆
  * @see LeetCode1000 石子合并 相邻k堆
  * @see LeetCode877 石子游戏
  * @see LeetCode1049 最后一块石头的重量 II

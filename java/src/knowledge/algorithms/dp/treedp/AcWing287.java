@@ -5,6 +5,7 @@ import java.io.*;
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/8/10 06:17
+ * @description 287. 积蓄程度
  * <a href="https://www.acwing.com/solution/content/106038/"></a>
  */
 public class AcWing287 {
