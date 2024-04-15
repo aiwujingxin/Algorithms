@@ -2,7 +2,7 @@ package leetcode.problems;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2024/4/9 22:06
+ * @date 2024/4/15 22:06
  */
 public class LeetCode41 {
 
@@ -21,7 +21,7 @@ public class LeetCode41 {
         return n + 1;
     }
 
-    private void swap(int[] nums, int i, int j) {
+    public void swap(int[] nums, int i, int j) {
         int t = nums[i];
         nums[i] = nums[j];
         nums[j] = t;

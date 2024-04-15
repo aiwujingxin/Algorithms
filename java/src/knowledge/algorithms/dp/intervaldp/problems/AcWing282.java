@@ -39,6 +39,10 @@ public class AcWing282 {
                 }
             }
         }
+        System.out.println(Arrays.toString(s));
+        for (int[] d : dp) {
+            System.out.println(Arrays.toString(d));
+        }
         System.out.println(dp[1][n - 1]);
     }
 }

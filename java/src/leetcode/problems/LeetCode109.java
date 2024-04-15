@@ -1,7 +1,6 @@
 package leetcode.problems;
 
-import common.ListNode;
-import common.TreeNode;
+import common.*;
 
 /**
  * @author wujingxinit@outlook.com
@@ -20,18 +19,24 @@ public class LeetCode109 {
         if (head == tail) {
             return null;
         }
+        ListNode mid = getMid(head);
+        ListNode next = mid.next;
+        mid.next = null;
+        TreeNode root = new TreeNode(mid.val);
+        root.left = sortedListToBST(head, mid);
+        root.right = sortedListToBST(next, tail);
+        return root;
+    }
+
+    public ListNode getMid(ListNode head) {
         ListNode dummy = new ListNode();
         dummy.next = head;
-        ListNode slow = dummy;
         ListNode fast = dummy;
-
-        while (fast != tail && fast.next != tail) {
-            slow = slow.next;
+        ListNode slow = dummy;
+        while (fast != null && fast.next != null) {
             fast = fast.next.next;
+            slow = slow.next;
         }
-        TreeNode root = new TreeNode(slow.val);
-        root.left = sortedListToBST(head, slow);
-        root.right = sortedListToBST(slow.next, tail);
-        return root;
+        return slow;
     }
 }

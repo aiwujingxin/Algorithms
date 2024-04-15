@@ -7,9 +7,6 @@ package leetcode.problems;
 public class LeetCode45 {
 
     public int jump(int[] nums) {
-        if (nums == null || nums.length == 1) {
-            return 0;
-        }
         int n = nums.length;
         int step = 0;
         int max = 0;

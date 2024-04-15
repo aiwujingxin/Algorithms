@@ -1,7 +1,6 @@
 package leetcode.problems;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 /**
  * @author wujingxinit@outlook.com
@@ -10,9 +9,6 @@ import java.util.List;
 public class LeetCode372 {
 
     public int superPow(int a, int[] b) {
-        if (b == null || b.length == 0 || a == 1) {
-            return a;
-        }
         List<Integer> list = new ArrayList<>();
         for (int j : b) {
             list.add(j);
@@ -29,15 +25,6 @@ public class LeetCode372 {
     }
 
     public double myPow(double x, int n) {
-        if (n == 0) {
-            return 1;
-        }
-        if (n == 1) {
-            return x;
-        }
-        if (x == 1 || x == 0) {
-            return x;
-        }
         if (n < 0) {
             return 1 / dfs(x, -n);
         }
@@ -49,7 +36,6 @@ public class LeetCode372 {
             return 1.0;
         }
         x %= 1337;
-
         if (n % 2 == 0) {
             return dfs(x * x, n / 2);
         }

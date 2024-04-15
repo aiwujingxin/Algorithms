@@ -1,6 +1,6 @@
 package leetcode.problems;
 
-import common.Node;
+import common.*;
 
 /**
  * @author wujingxinit@outlook.com
@@ -9,9 +9,6 @@ import common.Node;
 public class LeetCode117 {
 
     public Node connect(Node root) {
-        if (root == null) {
-            return null;
-        }
         Node head = root;
         while (head != null) {
             Node dummy = new Node();

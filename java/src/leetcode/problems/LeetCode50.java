@@ -16,7 +16,7 @@ public class LeetCode50 {
         return dfs(x, n);
     }
 
-    public double dfs(double x, long n) {
+    private double dfs(double x, long n) {
         if (n == 0) {
             return 1;
         }
@@ -24,5 +24,22 @@ public class LeetCode50 {
             return dfs(x * x, n / 2);
         }
         return x * dfs(x * x, n / 2);
+    }
+
+    public double myPow_(double x, int n) {
+        return (long) n >= 0 ? quickMul(x, n) : 1.0 / quickMul(x, -n);
+    }
+
+    public double quickMul(double x, long n) {
+        double ans = 1.0;
+        double t = x;
+        while (n > 0) {
+            if (n % 2 == 1) {
+                ans *= t;
+            }
+            t *= t;
+            n /= 2;
+        }
+        return ans;
     }
 }
