@@ -1,39 +1,38 @@
 package leetcode.problems;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2023/12/14 17:13
+ * @date 2024/4/17 11:10
  */
 public class LeetCode131 {
 
     public List<List<String>> partition(String s) {
-        if (s == null || s.isEmpty()) {
+        if (s.isEmpty()) {
             return new ArrayList<>();
         }
         int n = s.length();
         boolean[][] dp = new boolean[n][n];
         for (int i = n - 1; i >= 0; i--) {
             for (int j = i; j < n; j++) {
-                dp[i][j] = s.charAt(i) == s.charAt(j) && (j + 2 <= i || dp[i + 1][j - 1]);
+                dp[i][j] = s.charAt(i) == s.charAt(j) && (j - i <= 2 || dp[i + 1][j - 1]);
             }
         }
         List<List<String>> res = new ArrayList<>();
-        backtrack(dp, 0, s, res, new ArrayList<>());
+        bk(s, dp, 0, res, new ArrayList<>());
         return res;
     }
 
-    private void backtrack(boolean[][] dp, int index, String s, List<List<String>> res, List<String> list) {
-        if (index == s.length()) {
+    private void bk(String s, boolean[][] dp, int index, List<List<String>> res, List<String> list) {
+        if (index == dp.length) {
             res.add(new ArrayList<>(list));
             return;
         }
-        for (int j = index; j < s.length(); j++) {
-            if (dp[index][j]) {
-                list.add(s.substring(index, j + 1));
-                backtrack(dp, j + 1, s, res, list);
+        for (int i = index; i < dp.length; i++) {
+            if (dp[index][i]) {
+                list.add(s.substring(index, i + 1));
+                bk(s, dp, i + 1, res, list);
                 list.remove(list.size() - 1);
             }
         }

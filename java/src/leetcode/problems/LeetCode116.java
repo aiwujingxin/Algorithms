@@ -1,10 +1,10 @@
 package leetcode.problems;
 
-import common.Node;
+import common.*;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2023/12/25 18:11
+ * @date 2024/4/16 14:55
  */
 public class LeetCode116 {
 
@@ -12,19 +12,22 @@ public class LeetCode116 {
         if (root == null) {
             return null;
         }
-        Node cur = root;
-        while (cur != null) {
-            Node nextHead = cur.left;
-            while (cur != null) {
-                if (cur.left != null) {
-                    cur.left.next = cur.right;
+        Node head = root;
+        while (head != null) {
+            Node dummy = new Node();
+            Node cur = dummy;
+            while (head != null) {
+                if (head.left != null) {
+                    cur.next = head.left;
+                    cur = cur.next;
                 }
-                if (cur.right != null) {
-                    cur.right.next = cur.next == null ? null : cur.next.left;
+                if (head.right != null) {
+                    cur.next = head.right;
+                    cur = cur.next;
                 }
-                cur = cur.next;
+                head = head.next;
             }
-            cur = nextHead;
+            head = dummy.next;
         }
         return root;
     }

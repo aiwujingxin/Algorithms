@@ -1,16 +1,16 @@
 package leetcode.problems;
 
-import common.Node;
+import common.*;
 
-import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.*;
 
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/10/29 17:35
  */
 public class LeetCode133 {
-    private final HashMap<Node, Node> cache = new HashMap<>();
+
+    HashMap<Node, Node> cache = new HashMap<>();
 
     public Node cloneGraph(Node node) {
         if (node == null) {
@@ -19,11 +19,11 @@ public class LeetCode133 {
         if (cache.containsKey(node)) {
             return cache.get(node);
         }
-        Node cloneNode = new Node(node.val, new ArrayList<>());
-        cache.put(node, cloneNode);
-        for (Node neighbor : node.neighbors) {
-            cloneNode.neighbors.add(cloneGraph(neighbor));
+        Node newNode = new Node(node.val, new ArrayList<>());
+        cache.put(node, newNode);
+        for (Node next : node.neighbors) {
+            newNode.neighbors.add(cloneGraph(next));
         }
-        return cloneNode;
+        return newNode;
     }
 }

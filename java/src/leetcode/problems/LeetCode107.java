@@ -1,12 +1,12 @@
 package leetcode.problems;
 
-import common.TreeNode;
+import common.*;
 
 import java.util.*;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2023/10/27 16:48
+ * @date 2024/4/16 14:41
  */
 public class LeetCode107 {
 
@@ -14,15 +14,15 @@ public class LeetCode107 {
         if (root == null) {
             return new ArrayList<>();
         }
+        List<List<Integer>> res = new ArrayList<>();
         Queue<TreeNode> queue = new LinkedList<>();
         queue.add(root);
-        List<List<Integer>> res = new ArrayList<>();
         while (!queue.isEmpty()) {
             int size = queue.size();
-            List<Integer> level = new ArrayList<>();
+            List<Integer> list = new ArrayList<>();
             for (int i = 0; i < size; i++) {
                 TreeNode node = queue.poll();
-                level.add(node.val);
+                list.add(node.val);
                 if (node.left != null) {
                     queue.add(node.left);
                 }
@@ -30,9 +30,11 @@ public class LeetCode107 {
                     queue.add(node.right);
                 }
             }
-            res.add(level);
+            res.add(list);
         }
         Collections.reverse(res);
         return res;
     }
 }
+
+

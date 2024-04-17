@@ -2,27 +2,23 @@ package leetcode.problems;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2023/8/1 13:14
+ * @date 2024/4/17 15:10
  */
 public class LeetCode167 {
 
     public int[] twoSum(int[] numbers, int target) {
-        if (numbers == null || numbers.length == 0) {
-            return new int[]{-1, -1};
-        }
-        int left = 0;
-        int right = numbers.length - 1;
-        while (left < right) {
-            int sum = numbers[left] + numbers[right];
-            if (sum == target) {
-                return new int[]{left + 1, right + 1};
+        int l = 0;
+        int r = numbers.length - 1;
+        while (l < r) {
+            if (numbers[l] + numbers[r] == target) {
+                return new int[]{l + 1, r + 1};
             }
-            if (sum < target) {
-                left++;
+            if (numbers[l] + numbers[r] < target) {
+                l++;
             } else {
-                right--;
+                r--;
             }
         }
-        return new int[]{-1, -1};
+        return new int[]{};
     }
 }

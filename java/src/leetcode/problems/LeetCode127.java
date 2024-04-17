@@ -31,8 +31,7 @@ public class LeetCode127 {
                     continue;
                 }
                 set.add(cur);
-                List<String> nexts = getNext(cur, wordSet, set);
-                queue.addAll(nexts);
+                queue.addAll(getNext(cur, wordSet, set));
             }
             step++;
         }

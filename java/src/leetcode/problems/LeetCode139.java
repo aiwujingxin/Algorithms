@@ -1,11 +1,10 @@
 package leetcode.problems;
 
-import java.util.HashSet;
-import java.util.List;
+import java.util.*;
 
 /**
- * @author jingxinwu
- * @date 2023/11/1 23:31
+ * @author wujingxinit@outlook.com
+ * @date 2024/4/17 20:52
  */
 public class LeetCode139 {
 
@@ -16,7 +15,7 @@ public class LeetCode139 {
         dp[0] = true;
         for (int i = 0; i <= n; i++) {
             for (int j = 0; j <= i; j++) {
-                if (dp[j] && set.contains(s.substring(j, i))) {
+                if (set.contains(s.substring(j, i)) && dp[j]) {
                     dp[i] = true;
                     break;
                 }

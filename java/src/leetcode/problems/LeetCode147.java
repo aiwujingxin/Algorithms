@@ -1,10 +1,10 @@
 package leetcode.problems;
 
-import common.ListNode;
+import common.*;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2023/11/2 13:50
+ * @date 2024/4/17 14:47
  */
 public class LeetCode147 {
 
@@ -12,25 +12,22 @@ public class LeetCode147 {
         if (head == null || head.next == null) {
             return head;
         }
-        ListNode dummy = new ListNode();
+        ListNode dummy = new ListNode(-50000);
         dummy.next = head;
-        ListNode sorted = head;
-        ListNode cur = head.next;
-        while (cur != null) {
-            //如果都是排好顺序的，则一直往前
-            if (sorted.val <= cur.val) {
-                sorted = sorted.next;
+        ListNode cur = dummy;
+        while (cur.next != null) {
+            if (cur.next.val >= cur.val) {
+                cur = cur.next;
             } else {
-                ListNode pre = dummy;
-                // 寻找正确插入的位置
-                while (pre.next.val < cur.val) {
-                    pre = pre.next;
+                ListNode f = dummy;
+                while (f.next != null && f.next.val < cur.next.val) {
+                    f = f.next;
                 }
-                sorted.next = cur.next;
-                cur.next = pre.next;
-                pre.next = cur;
+                ListNode next = cur.next;
+                cur.next = cur.next.next;
+                next.next = f.next;
+                f.next = next;
             }
-            cur = sorted.next;
         }
         return dummy.next;
     }

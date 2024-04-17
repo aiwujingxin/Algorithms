@@ -1,32 +1,27 @@
 package leetcode.problems;
 
-import common.TreeNode;
-import knowledge.datastructure.queue.*;
+import common.*;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Queue;
+import java.util.*;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2023/10/27 14:59
+ * @date 2024/4/16 14:33
  */
 public class LeetCode102 {
-
     public List<List<Integer>> levelOrder(TreeNode root) {
         if (root == null) {
             return new ArrayList<>();
         }
+        List<List<Integer>> res = new ArrayList<>();
         Queue<TreeNode> queue = new LinkedList<>();
         queue.add(root);
-        List<List<Integer>> res = new ArrayList<>();
         while (!queue.isEmpty()) {
             int size = queue.size();
-            List<Integer> level = new ArrayList<>();
+            List<Integer> list = new ArrayList<>();
             for (int i = 0; i < size; i++) {
                 TreeNode node = queue.poll();
-                level.add(node.val);
+                list.add(node.val);
                 if (node.left != null) {
                     queue.add(node.left);
                 }
@@ -34,7 +29,7 @@ public class LeetCode102 {
                     queue.add(node.right);
                 }
             }
-            res.add(level);
+            res.add(list);
         }
         return res;
     }

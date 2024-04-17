@@ -1,10 +1,10 @@
 package leetcode.problems;
 
-import common.TreeNode;
+import common.*;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2023/10/29 16:46
+ * @date 2024/4/17 11:08
  */
 public class LeetCode129 {
 
@@ -18,15 +18,15 @@ public class LeetCode129 {
         return sum;
     }
 
-    private void dfs(TreeNode root, int val) {
+    private void dfs(TreeNode root, int sum) {
         if (root == null) {
             return;
         }
         if (root.left == null && root.right == null) {
-            sum += val * 10 + root.val;
+            this.sum += sum * 10 + root.val;
             return;
         }
-        dfs(root.left, val * 10 + root.val);
-        dfs(root.right, val * 10 + root.val);
+        dfs(root.left, sum * 10 + root.val);
+        dfs(root.right, sum * 10 + root.val);
     }
 }

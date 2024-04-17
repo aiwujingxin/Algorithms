@@ -4,11 +4,14 @@ import common.*;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2023/12/25 18:20
+ * @date 2024/4/16 14:57
  */
 public class LeetCode117 {
 
     public Node connect(Node root) {
+        if (root == null) {
+            return null;
+        }
         Node head = root;
         while (head != null) {
             Node dummy = new Node();

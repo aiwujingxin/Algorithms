@@ -2,7 +2,7 @@ package leetcode.problems;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2023/11/1 22:27
+ * @date 2024/4/17 14:56
  */
 public class LeetCode152 {
 
@@ -13,16 +13,18 @@ public class LeetCode152 {
         int n = nums.length;
         int[] max = new int[n];
         int[] min = new int[n];
+        int res = nums[0];
         max[0] = nums[0];
         min[0] = nums[0];
-        int res = nums[0];
         for (int i = 1; i < n; i++) {
             int mx = max[i - 1];
             int mn = min[i - 1];
-            max[i] = Math.max(Math.max(mx * nums[i], mn * nums[i]), nums[i]);
-            min[i] = Math.min(Math.min(mx * nums[i], mn * nums[i]), nums[i]);
-            res = Math.max(Math.max(max[i], min[i]), res);
+            max[i] = Math.max(Math.max(nums[i], nums[i] * mx), nums[i] * mn);
+            min[i] = Math.min(Math.min(nums[i], nums[i] * mx), nums[i] * mn);
+            res = Math.max(res, Math.max(max[i], min[i]));
         }
         return res;
     }
 }
+
+

@@ -2,7 +2,7 @@ package leetcode.problems;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2023/10/29 17:18
+ * @date 2024/4/17 09:56
  */
 public class LeetCode121 {
 
@@ -15,6 +15,6 @@ public class LeetCode121 {
             dp[i][0] = Math.max(dp[i - 1][0], dp[i - 1][1] + prices[i]);
             dp[i][1] = Math.max(dp[i - 1][1], -prices[i]);
         }
-        return dp[n - 1][0];
+        return Math.max(dp[n - 1][0], dp[n - 1][1]);
     }
 }

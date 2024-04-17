@@ -1,10 +1,10 @@
 package leetcode.problems;
 
-import common.TreeNode;
+import common.*;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2023/10/27 18:19
+ * @date 2024/4/16 14:44
  */
 public class LeetCode110 {
 
@@ -12,16 +12,18 @@ public class LeetCode110 {
         if (root == null) {
             return true;
         }
-        if (Math.abs(getH(root.left) - getH(root.right)) > 1) {
+        int l = get(root.left);
+        int r = get(root.right);
+        if (Math.abs(l - r) > 1) {
             return false;
         }
-        return isBalanced(root.left) && isBalanced(root.right);
+        return isBalanced(root.right) && isBalanced(root.left);
     }
 
-    private int getH(TreeNode root) {
+    private int get(TreeNode root) {
         if (root == null) {
             return 0;
         }
-        return Math.max(getH(root.left), getH(root.right)) + 1;
+        return Math.max(get(root.left), get(root.right)) + 1;
     }
 }

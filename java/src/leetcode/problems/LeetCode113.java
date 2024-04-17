@@ -1,23 +1,18 @@
 package leetcode.problems;
 
-import common.TreeNode;
+import common.*;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2023/10/27 18:35
+ * @date 2024/4/16 15:00
  */
 public class LeetCode113 {
 
-    List<List<Integer>> res;
+    List<List<Integer>> res = new ArrayList<>();
 
     public List<List<Integer>> pathSum(TreeNode root, int targetSum) {
-        if (root == null) {
-            return new ArrayList<>();
-        }
-        res = new ArrayList<>();
         dfs(root, targetSum, new ArrayList<>());
         return res;
     }
@@ -26,7 +21,7 @@ public class LeetCode113 {
         if (root == null) {
             return;
         }
-        if (root.right == null && root.left == null) {
+        if (root.left == null && root.right == null) {
             if (targetSum == root.val) {
                 list.add(root.val);
                 res.add(new ArrayList<>(list));

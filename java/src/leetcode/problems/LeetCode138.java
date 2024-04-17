@@ -1,12 +1,12 @@
 package leetcode.problems;
 
-import common.Node;
+import common.*;
 
-import java.util.HashMap;
+import java.util.*;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2023/11/1 14:17
+ * @date 2024/4/17 20:49
  */
 public class LeetCode138 {
 
@@ -16,14 +16,13 @@ public class LeetCode138 {
         if (head == null) {
             return null;
         }
-
-        if (cache.get(head) != null) {
+        if (cache.containsKey(head)) {
             return cache.get(head);
         }
-        Node copyNode = new Node(head.val);
-        cache.put(head, copyNode);
-        copyNode.next = copyRandomList(head.next);
-        copyNode.random = copyRandomList(head.random);
-        return cache.get(head);
+        Node newHead = new Node(head.val);
+        cache.put(head, newHead);
+        newHead.next = copyRandomList(head.next);
+        newHead.random = copyRandomList(head.random);
+        return newHead;
     }
 }

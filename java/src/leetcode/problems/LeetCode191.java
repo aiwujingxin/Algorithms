@@ -6,26 +6,12 @@ package leetcode.problems;
  */
 public class LeetCode191 {
 
-    public int hammingWeight(int n) {
-        if (n == 0) {
-            return 0;
+    public int hammingWeight(int i) {
+        int c = 0;
+        while (i > 0) {
+            i -= (i & -i);
+            c++;
         }
-        int res = 0;
-        for (int i = 0; i < 32; i++) {
-            if ((n & 1) == 1) {
-                res++;
-            }
-            n = n >> 1;
-        }
-        return res;
-    }
-
-    public int hammingWeight_opt(int n) {
-        int ret = 0;
-        while (n != 0) {
-            n &= n - 1;
-            ret++;
-        }
-        return ret;
+        return c;
     }
 }

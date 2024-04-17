@@ -4,7 +4,7 @@ import common.*;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2024/2/18 17:26
+ * @date 2024/4/17 10:55
  */
 public class LeetCode124 {
 
@@ -24,7 +24,7 @@ public class LeetCode124 {
         max = Math.max(max, root.val);
         max = Math.max(max, root.val + left);
         max = Math.max(max, root.val + right);
-        max = Math.max(max, root.val + right + left);
-        return Math.max(root.val, Math.max(root.val + left, root.val + right));
+        max = Math.max(max, root.val + left + right);
+        return Math.max(Math.max(left + root.val, right + root.val), root.val);
     }
 }

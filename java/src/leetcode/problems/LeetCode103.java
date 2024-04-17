@@ -1,30 +1,29 @@
 package leetcode.problems;
 
-import common.TreeNode;
+import common.*;
 
 import java.util.*;
 
 /**
- * @author jingxinwu
- * @date 2023/10/27 15:02
+ * @author wujingxinit@outlook.com
+ * @date 2024/4/16 14:36
  */
 public class LeetCode103 {
 
     public List<List<Integer>> zigzagLevelOrder(TreeNode root) {
-
-        List<List<Integer>> res = new ArrayList<>();
         if (root == null) {
-            return res;
+            return new ArrayList<>();
         }
-        boolean flag = false;
+        List<List<Integer>> res = new ArrayList<>();
         Queue<TreeNode> queue = new LinkedList<>();
         queue.add(root);
+        boolean flag = false;
         while (!queue.isEmpty()) {
-            List<Integer> level = new ArrayList<>();
             int size = queue.size();
+            List<Integer> list = new ArrayList<>();
             for (int i = 0; i < size; i++) {
                 TreeNode node = queue.poll();
-                level.add(node.val);
+                list.add(node.val);
                 if (node.left != null) {
                     queue.add(node.left);
                 }
@@ -33,10 +32,10 @@ public class LeetCode103 {
                 }
             }
             if (flag) {
-                Collections.reverse(level);
+                Collections.reverse(list);
             }
-            res.add(level);
             flag = !flag;
+            res.add(list);
         }
         return res;
     }

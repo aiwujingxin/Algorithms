@@ -6,8 +6,6 @@ package leetcode.problems;
  */
 public class LeetCode125 {
 
-
-    //A man, a plan, a canal: Panama"
     public boolean isPalindrome(String s) {
         if (s == null || s.isEmpty()) {
             return false;

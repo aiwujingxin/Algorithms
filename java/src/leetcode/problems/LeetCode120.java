@@ -1,6 +1,6 @@
 package leetcode.problems;
 
-import java.util.List;
+import java.util.*;
 
 /**
  * @author wujingxinit@outlook.com
@@ -9,32 +9,6 @@ import java.util.List;
 public class LeetCode120 {
 
     public int minimumTotal(List<List<Integer>> triangle) {
-        if (triangle == null || triangle.isEmpty()) {
-            return 0;
-        }
-        int n = triangle.size();
-        int[] dp = new int[n];
-        dp[0] = triangle.get(0).get(0);
-        for (int i = 1; i < n; i++) {
-            List<Integer> cur = triangle.get(i);
-            for (int j = cur.size() - 1; j >= 0; j--) {
-                if (j == 0) {
-                    dp[j] = dp[j] + cur.get(j);
-                } else if (j == cur.size() - 1) {
-                    dp[j] = dp[j - 1] + cur.get(j);
-                } else {
-                    dp[j] = Math.min(dp[j - 1], dp[j]) + cur.get(j);
-                }
-            }
-        }
-        int res = Integer.MAX_VALUE;
-        for (int d : dp) {
-            res = Math.min(res, d);
-        }
-        return res;
-    }
-
-    public int minimumTotal_opt(List<List<Integer>> triangle) {
         int n = triangle.size();
         int[] dp = new int[n + 1];
         for (int i = n - 1; i >= 0; i--) {

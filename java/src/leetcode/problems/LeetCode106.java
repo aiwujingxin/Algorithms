@@ -1,10 +1,10 @@
 package leetcode.problems;
 
-import common.TreeNode;
+import common.*;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2023/10/27 15:19
+ * @date 2024/4/16 14:41
  */
 public class LeetCode106 {
 
@@ -13,18 +13,18 @@ public class LeetCode106 {
     }
 
     public TreeNode buildTree(int[] inorder, int is, int ie, int[] postorder, int ps, int pe) {
-        if (ps < 0 || ps > pe || is < 0 || is > ie) {
+        if (is > ie || ps > pe) {
             return null;
         }
         TreeNode root = new TreeNode(postorder[pe]);
-        int index = is;
-        int leftLen = 0;
-        while (index < inorder.length && inorder[index] != postorder[pe]) {
-            index++;
-            leftLen++;
+        int i = is;
+        int ll = 0;
+        while (i < ie && inorder[i] != postorder[pe]) {
+            i++;
+            ll++;
         }
-        root.left = buildTree(inorder, is, index - 1, postorder, ps, ps + leftLen - 1);
-        root.right = buildTree(inorder, index + 1, ie, postorder, ps + leftLen, pe - 1);
+        root.left = buildTree(inorder, is, i - 1, postorder, ps, ps + ll - 1);
+        root.right = buildTree(inorder, i + 1, ie, postorder, ps + ll, pe - 1);
         return root;
     }
 }

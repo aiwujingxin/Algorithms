@@ -1,33 +1,25 @@
 package leetcode.problems;
 
-import common.TreeNode;
+import common.*;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2023/10/27 17:15
+ * @date 2024/4/16 14:42
  */
 public class LeetCode108 {
 
     public TreeNode sortedArrayToBST(int[] nums) {
-        if (nums == null || nums.length == 0) {
-            return null;
-        }
         return sortedArrayToBST(nums, 0, nums.length - 1);
     }
 
-    public TreeNode sortedArrayToBST(int[] nums, int start, int end) {
-        if (start > end) {
+    public TreeNode sortedArrayToBST(int[] nums, int i, int j) {
+        if (i > j) {
             return null;
         }
-        if (start == end) {
-            return new TreeNode(nums[start]);
-        }
-        int index = (start + end) / 2;
-        TreeNode root = new TreeNode(nums[index]);
-        root.left = sortedArrayToBST(nums, start, index - 1);
-        root.right = sortedArrayToBST(nums, index + 1, end);
+        int mid = i + j >> 1;
+        TreeNode root = new TreeNode(nums[mid]);
+        root.left = sortedArrayToBST(nums, i, mid - 1);
+        root.right = sortedArrayToBST(nums, mid + 1, j);
         return root;
     }
 }
-
-

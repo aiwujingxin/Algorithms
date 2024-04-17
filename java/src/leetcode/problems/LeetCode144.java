@@ -1,29 +1,29 @@
 package leetcode.problems;
 
-import common.TreeNode;
+import common.*;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Stack;
+import java.util.*;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2023/11/1 19:06
+ * @date 2024/4/17 12:11
  */
 public class LeetCode144 {
+
     public List<Integer> preorderTraversal(TreeNode root) {
         if (root == null) {
             return new ArrayList<>();
         }
-        List<Integer> list = new ArrayList<>();
         Stack<TreeNode> stack = new Stack<>();
-        while (!stack.isEmpty() || root != null) {
+        List<Integer> list = new ArrayList<>();
+        while (root != null || !stack.isEmpty()) {
             while (root != null) {
-                stack.push(root);
+                stack.add(root);
                 list.add(root.val);
                 root = root.left;
             }
-            root = stack.pop().right;
+            root = stack.pop();
+            root = root.right;
         }
         return list;
     }

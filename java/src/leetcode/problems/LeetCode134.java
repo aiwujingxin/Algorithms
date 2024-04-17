@@ -5,6 +5,7 @@ package leetcode.problems;
  * @date 2023/12/30 10:26
  */
 public class LeetCode134 {
+
     public int canCompleteCircuit(int[] gas, int[] cost) {
         int total = 0;
         int remain = 0;

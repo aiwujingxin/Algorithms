@@ -1,10 +1,10 @@
 package leetcode.problems;
 
-import common.TreeNode;
+import common.*;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2024/4/10 23:10
+ * @date 2024/4/16 14:31
  */
 public class LeetCode101 {
 
@@ -16,7 +16,7 @@ public class LeetCode101 {
         if (left == null && right == null) {
             return true;
         }
-        if (right == null || left == null || left.val != right.val) {
+        if (left == null || right == null || left.val != right.val) {
             return false;
         }
         return isSymmetric(left.left, right.right) && isSymmetric(left.right, right.left);
