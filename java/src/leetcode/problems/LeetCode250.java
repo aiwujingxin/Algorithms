@@ -1,6 +1,6 @@
 package leetcode.problems;
 
-import common.TreeNode;
+import common.*;
 
 /**
  * @author wujingxinit@outlook.com
@@ -8,27 +8,21 @@ import common.TreeNode;
  */
 public class LeetCode250 {
 
-    int res = 0;
-
     public int countUnivalSubtrees(TreeNode root) {
         if (root == null) {
             return 0;
         }
-        if (dfs(root, root.val)) {
-            res++;
-        }
-        countUnivalSubtrees(root.left);
         countUnivalSubtrees(root.right);
-        return res;
+        return dfs(root, root.val) + countUnivalSubtrees(root.left) + countUnivalSubtrees(root.right);
     }
 
-    public boolean dfs(TreeNode node, int val) {
+    public int dfs(TreeNode node, int val) {
         if (node == null) {
-            return true;
+            return 1;
         }
         if (node.val != val) {
-            return false;
+            return 0;
         }
-        return dfs(node.left, val) && dfs(node.right, val);
+        return dfs(node.left, val) + dfs(node.right, val);
     }
 }

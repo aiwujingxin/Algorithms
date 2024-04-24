@@ -27,9 +27,9 @@ public class LeetCode246 {
 
     public void reverse(char[] chars, int i, int j) {
         while (i < j) {
-            char t = chars[i];
+            char c = chars[i];
             chars[i] = chars[j];
-            chars[j] = t;
+            chars[j] = c;
             i++;
             j--;
         }

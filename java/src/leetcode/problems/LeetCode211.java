@@ -27,13 +27,10 @@ public class LeetCode211 {
             if (index == word.length()) {
                 return node.isEnd;
             }
-            char ch = word.charAt(index);
-            if (Character.isLetter(ch)) {
-                int childIndex = ch - 'a';
-                Trie.Node child = node.children[childIndex];
-                if (child != null && dfs(word, index + 1, child)) {
-                    return true;
-                }
+            char c = word.charAt(index);
+            if (Character.isLetter(c)) {
+                Trie.Node child = node.children[c - 'a'];
+                return child != null && dfs(word, index + 1, child);
             } else {
                 for (int i = 0; i < 26; i++) {
                     Trie.Node child = node.children[i];

@@ -12,15 +12,7 @@ public class LeetCode143 {
         if (head == null) {
             return;
         }
-        ListNode dummy = new ListNode();
-        dummy.next = head;
-        ListNode slow = dummy;
-        ListNode fast = dummy;
-        while (fast != null && fast.next != null) {
-            slow = slow.next;
-            fast = fast.next.next;
-        }
-        ListNode mid = slow;
+        ListNode mid = getMid(head);
         ListNode rhead = mid.next;
         mid.next = null;
         rhead = reverse(rhead);
@@ -49,5 +41,17 @@ public class LeetCode143 {
             cur = next;
         }
         return pre;
+    }
+
+    private ListNode getMid(ListNode head) {
+        ListNode dummy = new ListNode();
+        dummy.next = head;
+        ListNode slow = dummy;
+        ListNode fast = dummy;
+        while (fast != null && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+        return slow;
     }
 }

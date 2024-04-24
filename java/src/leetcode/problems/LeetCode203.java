@@ -9,9 +9,6 @@ import common.ListNode;
 public class LeetCode203 {
 
     public ListNode removeElements(ListNode head, int val) {
-        if (head == null) {
-            return null;
-        }
         ListNode dummy = new ListNode();
         dummy.next = head;
         ListNode cur = dummy;

@@ -9,9 +9,6 @@ import common.ListNode;
 public class LeetCode206 {
 
     public ListNode reverseList(ListNode head) {
-        if (head == null) {
-            return null;
-        }
         ListNode cur = head;
         ListNode pre = null;
         while (cur != null) {

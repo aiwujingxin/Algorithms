@@ -11,15 +11,15 @@ public class LCP04 {
     //https://leetcode.cn/problems/broken-board-dominoes/solution/er-fen-tu-zui-da-pi-pei-xiong-ya-li-suan-fa-by-cha/
 
     public int domino(int n, int m, int[][] broken) {
-        int tot = n * m;
+        int N = n * m;
         boolean[][] graph = new boolean[n][m];
         for (int[] p : broken) {
             graph[p[0]][p[1]] = true;
         }
 
-        int[] match = new int[tot];
+        int[] match = new int[N];
         Arrays.fill(match, -1);
-        boolean[] visited = new boolean[tot];
+        boolean[] visited = new boolean[N];
 
         int res = 0;
         // loop all even points.
@@ -29,7 +29,7 @@ public class LCP04 {
                     continue;
                 }
                 Arrays.fill(visited, false);
-                if (find(graph, match, visited, i, j)) {
+                if (dfs(graph, match, visited, i, j)) {
                     res++;
                 }
             }
@@ -39,7 +39,7 @@ public class LCP04 {
     }
 
     // match the current even points with other odd points
-    private boolean find(boolean[][] graph, int[] match, boolean[] visited, int x, int y) {
+    private boolean dfs(boolean[][] graph, int[] match, boolean[] visited, int x, int y) {
         int m = graph.length, n = graph[0].length;
         int[] dx = {-1, 0, 1, 0}, dy = {0, 1, 0, -1};
         // check the connected odd points to (x,y);
@@ -53,7 +53,7 @@ public class LCP04 {
                     continue;
                 }
                 visited[index] = true;
-                if (match[index] == -1 || find(graph, match, visited, match[index] / n, match[index] % n)) {
+                if (match[index] == -1 || dfs(graph, match, visited, match[index] / n, match[index] % n)) {
                     match[index] = x * n + y;
                     return true;
                 }

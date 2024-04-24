@@ -7,13 +7,9 @@ package leetcode.problems;
 public class LeetCode42 {
 
     public int trap(int[] height) {
-        if (height == null || height.length == 0) {
-            return 0;
-        }
-        int n = height.length;
         int res = 0;
         int left = 0;
-        int right = n - 1;
+        int right = height.length - 1;
         int leftMax = 0;
         int rightMax = 0;
         while (left < right) {

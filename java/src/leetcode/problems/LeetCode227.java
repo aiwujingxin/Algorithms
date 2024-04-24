@@ -40,7 +40,6 @@ public class LeetCode227 {
                         stack.push(stack.pop() / num);
                         break;
                 }
-
                 perSign = c;
                 num = 0;
             }

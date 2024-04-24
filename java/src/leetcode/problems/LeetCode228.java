@@ -1,7 +1,6 @@
 package leetcode.problems;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 /**
  * @author wujingxinit@outlook.com
@@ -36,7 +35,7 @@ public class LeetCode228 {
 
     private void add(List<String> list, int[] nums, int left, int right) {
         if (left == right) {
-            list.add(String.valueOf(nums[0]));
+            list.add(String.valueOf(nums[left]));
             return;
         }
         list.add(nums[left] + "->" + nums[right]);

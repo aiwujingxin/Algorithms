@@ -32,6 +32,7 @@ import leetcode.problems.*;
  * @see LeetCode204
  * @see LeetCode264
  * @see LeetCode313
+ * LeetCode1201
  */
 public interface Sequence {
 }

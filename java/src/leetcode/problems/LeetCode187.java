@@ -1,9 +1,6 @@
 package leetcode.problems;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 /**
  * @author wujingxinit@outlook.com
@@ -49,7 +46,6 @@ public class LeetCode187 {
         while (right < n) {
             hash = hash * mul + nums[right];
             while (right - left + 1 == 10) {
-
                 if (set.contains(hash)) {
                     res.add(s.substring(left, right + 1));
                 }
@@ -60,5 +56,18 @@ public class LeetCode187 {
             right++;
         }
         return new ArrayList<>(res);
+    }
+
+    public List<String> findRepeatedDnaSequences_map(String s) {
+        HashMap<String, Integer> map = new HashMap<>();
+        HashSet<String> set = new HashSet<>();
+        for (int i = 0; i <= s.length() - 10; i++) {
+            String t = s.substring(i, i + 10);
+            map.put(t, map.getOrDefault(t, 0) + 1);
+            if (map.get(t) >= 2) {
+                set.add(t);
+            }
+        }
+        return new ArrayList<>(set);
     }
 }

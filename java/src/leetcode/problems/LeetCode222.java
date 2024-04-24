@@ -1,6 +1,6 @@
 package leetcode.problems;
 
-import common.TreeNode;
+import common.*;
 
 /**
  * @author wujingxinit@outlook.com
@@ -9,24 +9,6 @@ import common.TreeNode;
 public class LeetCode222 {
 
     public int countNodes(TreeNode root) {
-        TreeNode l = root, r = root;
-        // 记录左、右子树的高度
-        int hl = 0, hr = 0;
-        while (l != null) {
-            l = l.left;
-            hl++;
-        }
-        while (r != null) {
-            r = r.right;
-            hr++;
-        }
-        if (hl == hr) {
-            return (int) Math.pow(2, hl) - 1;
-        }
-        return 1 + countNodes(root.left) + countNodes(root.right);
-    }
-
-    public int countNodes_dfs(TreeNode root) {
         if (root == null) {
             return 0;
         }

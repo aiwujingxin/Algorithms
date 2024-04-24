@@ -26,10 +26,10 @@ public class LeetCode71 {
         if (stack.isEmpty()) {
             return "/";
         }
-        StringBuilder ans = new StringBuilder();
+        StringBuilder sb = new StringBuilder();
         for (String s : stack) {
-            ans.append("/").append(s);
+            sb.append("/").append(s);
         }
-        return ans.toString();
+        return sb.toString();
     }
 }

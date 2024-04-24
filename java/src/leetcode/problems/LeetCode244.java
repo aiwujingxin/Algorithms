@@ -10,27 +10,6 @@ import java.util.List;
  */
 public class LeetCode244 {
 
-    public int[] search(int[] b, int target) {
-        int l = 0;
-        int r = b.length - 1;
-
-        while (l <= r) {
-            int mid = l + r >> 1;
-            if (b[mid] > target) {
-                r = mid - 1;
-            } else {
-                l = mid + 1;
-            }
-        }
-        if (r == -1) {
-            return new int[]{Integer.MAX_VALUE, b[l]};
-        }
-        if (l == b.length) {
-            return new int[]{Integer.MAX_VALUE, b[r]};
-        }
-        return new int[]{b[l], b[r]};
-    }
-
     class WordDistance {
         HashMap<String, List<Integer>> map;
 
@@ -64,5 +43,26 @@ public class LeetCode244 {
             }
             return min;
         }
+
+        public int[] search(int[] b, int target) {
+            int l = 0;
+            int r = b.length - 1;
+            while (l <= r) {
+                int mid = l + r >> 1;
+                if (b[mid] > target) {
+                    r = mid - 1;
+                } else {
+                    l = mid + 1;
+                }
+            }
+            if (r == -1) {
+                return new int[]{Integer.MAX_VALUE, b[l]};
+            }
+            if (l == b.length) {
+                return new int[]{Integer.MAX_VALUE, b[r]};
+            }
+            return new int[]{b[l], b[r]};
+        }
+
     }
 }

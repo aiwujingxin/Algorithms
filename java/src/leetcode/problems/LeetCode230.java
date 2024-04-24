@@ -11,10 +11,6 @@ import java.util.Stack;
 public class LeetCode230 {
 
     public int kthSmallest(TreeNode root, int k) {
-
-        if (root == null) {
-            return 0;
-        }
         Stack<TreeNode> stack = new Stack<>();
         stack.push(root);
         while (!stack.isEmpty() || root != null) {
