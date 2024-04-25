@@ -21,25 +21,4 @@ public class LeetCode287 {
         nums[index1] = nums[index2];
         nums[index2] = temp;
     }
-
-    //快慢指针
-    public int findDuplicate_point(int[] nums) {
-        if (nums == null || nums.length < 2) {
-            return -1;
-        }
-        int slow = nums[0];
-        int fast = nums[nums[0]];
-        // 相遇
-        while (slow != fast) {
-            slow = nums[slow];
-            fast = nums[nums[fast]];
-        }
-        fast = 0;
-        // 第二次相遇
-        while (slow != fast) {
-            slow = nums[slow];
-            fast = nums[fast];
-        }
-        return fast;
-    }
 }

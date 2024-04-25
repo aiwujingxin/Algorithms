@@ -10,7 +10,7 @@ public class LeetCode704 {
         int l = 0;
         int r = nums.length - 1;
         while (l <= r) {
-            int mid = (r - l) / 2 + l;
+            int mid = l + r >> 1;
             int num = nums[mid];
             if (num == target) {
                 return mid;

@@ -2,23 +2,25 @@ package leetcode.problems;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2023/11/5 14:45
+ * @date 2024/4/25 14:57
  */
 public class LeetCode238 {
 
     public int[] productExceptSelf(int[] nums) {
-        int n = nums.length;
-        int[] prefix = new int[n];
-        prefix[0] = 1;
-        for (int i = 1; i < n; i++) {
-            prefix[i] = prefix[i - 1] * nums[i - 1];
+        if (nums == null || nums.length == 0) {
+            return nums;
         }
-        int[] res = new int[n];
+        int n = nums.length;
+        int[] ans = new int[n];
+        ans[0] = 1;
+        for (int i = 1; i < n; i++) {
+            ans[i] = nums[i - 1] * ans[i - 1];
+        }
         int t = 1;
         for (int i = n - 1; i >= 0; i--) {
-            res[i] = prefix[i] * t;
-            t = t * nums[i];
+            ans[i] = ans[i] * t;
+            t *= nums[i];
         }
-        return res;
+        return ans;
     }
 }

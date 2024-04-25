@@ -13,7 +13,7 @@ public class MultiplePackTest {
         int v = 50;
         System.out.println(new Multiple_dp_1d().backPack(w, value, cnts, v));
         System.out.println(new Multiple_dp_2d().backPack(w, value, cnts, v));
-        System.out.println(new Multiple_queue().backPack(w, value, cnts, v));
+        System.out.println(new Multiple_dq().backPack(w, value, cnts, v));
         System.out.println(new Multiple_backtrack().backPack(w, value, cnts, v));
         System.out.println(new Multiple_bit().backPack(w, value, cnts, v));
     }

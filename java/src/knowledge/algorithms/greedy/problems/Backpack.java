@@ -1,10 +1,10 @@
-package knowledge.algorithms.greedy.impl;
+package knowledge.algorithms.greedy.problems;
 
 import knowledge.algorithms.dp.backpack.zeroOne.ZeroOnePack;
 
 import java.util.Arrays;
 
-public class Backpack_greedy implements ZeroOnePack {
+public class Backpack implements ZeroOnePack {
 
     @Override
     public int backPack(int[] C, int[] W, int V) {

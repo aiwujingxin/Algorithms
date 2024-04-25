@@ -6,7 +6,7 @@ import java.util.PriorityQueue;
  * @author wujingxinit@outlook.com
  * @date 2022/10/15 17:48
  */
-public class LeetCode1337_Q {
+public class LeetCode1337_pq {
 
     public int[] kWeakestRows(int[][] mat, int k) {
         int m = mat.length, n = mat[0].length;

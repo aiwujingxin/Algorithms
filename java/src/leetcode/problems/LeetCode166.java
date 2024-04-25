@@ -18,8 +18,7 @@ public class LeetCode166 {
         long ldenominator = Math.abs((long) denominator);
 
         sb.append(sign);
-        long num = lnumerator % ldenominator;
-        if (num == 0) {
+        if (lnumerator % ldenominator == 0) {
             sb.append(lnumerator / ldenominator);
             return sb.toString();
         }

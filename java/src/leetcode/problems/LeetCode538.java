@@ -1,13 +1,12 @@
 package leetcode.problems;
 
-import common.TreeNode;
+import common.*;
 
 /**
- * @author jingxinwu
- * @date 2021-12-19 6:49 PM
+ * @author wujingxinit@outlook.com
+ * @date 2024/4/25 17:23
  */
 public class LeetCode538 {
-
     int sum = 0;
 
     public TreeNode convertBST(TreeNode root) {
@@ -15,7 +14,7 @@ public class LeetCode538 {
         return root;
     }
 
-    public void dfs(TreeNode root) {
+    private void dfs(TreeNode root) {
         if (root == null) {
             return;
         }

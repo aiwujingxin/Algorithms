@@ -1,16 +1,16 @@
 package leetcode.problems;
 
-import common.ListNode;
+import common.*;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2023/11/3 12:59
+ * @date 2024/4/25 14:34
  */
 public class LeetCode206 {
 
     public ListNode reverseList(ListNode head) {
-        ListNode cur = head;
         ListNode pre = null;
+        ListNode cur = head;
         while (cur != null) {
             ListNode next = cur.next;
             cur.next = pre;
@@ -20,4 +20,3 @@ public class LeetCode206 {
         return pre;
     }
 }
-

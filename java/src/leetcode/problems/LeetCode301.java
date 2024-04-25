@@ -9,15 +9,15 @@ import java.util.*;
 public class LeetCode301 {
 
     public List<String> removeInvalidParentheses(String s) {
-        Queue<String> queue = new LinkedList<>();
-        queue.add(s);
         HashSet<String> res = new HashSet<>();
         if (check(s)) {
             List<String> list = new ArrayList<>();
             list.add(s);
             return list;
         }
+        Queue<String> queue = new LinkedList<>();
         HashSet<String> visited = new HashSet<>();
+        queue.add(s);
         visited.add(s);
         while (!queue.isEmpty()) {
             int size = queue.size();

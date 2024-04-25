@@ -6,7 +6,7 @@ import java.util.*;
  * @author wujingxinit@outlook.com
  * @date 2024/1/22 21:34
  */
-public class LeetCode239_queue {
+public class LeetCode239_dq {
 
     public int[] maxSlidingWindow(int[] nums, int k) {
         int n = nums.length;

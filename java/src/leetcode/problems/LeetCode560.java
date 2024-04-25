@@ -1,10 +1,10 @@
 package leetcode.problems;
 
-import java.util.HashMap;
+import java.util.*;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2023/9/17 14:53
+ * @date 2024/4/25 17:25
  */
 public class LeetCode560 {
 
@@ -15,14 +15,11 @@ public class LeetCode560 {
             presum[i] = presum[i - 1] + nums[i - 1];
         }
         HashMap<Integer, Integer> map = new HashMap<>();
-        map.put(0, 1);
-        int res = 0;
-        for (int i = 1; i < presum.length; i++) {
-            if (map.containsKey(presum[i] - k)) {
-                res += map.get(presum[i] - k);
-            }
+        int cnt = 0;
+        for (int i = 0; i <= n; i++) {
+            cnt += map.getOrDefault(presum[i] - k, 0);
             map.put(presum[i], map.getOrDefault(presum[i], 0) + 1);
         }
-        return res;
+        return cnt;
     }
 }

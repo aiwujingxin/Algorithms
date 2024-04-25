@@ -19,15 +19,12 @@ public class LeetCode164 {
     }
 
     private void redixSort(int[] nums) {
-        if (nums == null || nums.length == 0) {
-            return;
-        }
         int max = nums[0];
         for (int num : nums) {
             max = Math.max(max, num);
         }
         int[] temp = new int[nums.length];
-        for (int exp = 1; max / exp > 0; exp = exp * 10) {
+        for (int exp = 1; max / exp > 0; exp *= 10) {
             int[] count = new int[10];
             for (int num : nums) {
                 count[(num / exp) % 10]++;
@@ -40,7 +37,6 @@ public class LeetCode164 {
                 temp[count[index] - 1] = nums[i];
                 count[index]--;
             }
-
             for (int i = 0; i < nums.length; i++) {
                 nums[i] = temp[i];
             }

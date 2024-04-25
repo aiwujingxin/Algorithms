@@ -1,32 +1,31 @@
 package leetcode.problems;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Queue;
+import java.util.*;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2023/11/3 13:00
- * @description 拓扑排序
+ * @date 2024/4/25 14:35
  */
 public class LeetCode207 {
+
     public boolean canFinish(int numCourses, int[][] prerequisites) {
-        int[] indegree = new int[numCourses];
+        int[] inDegree = new int[numCourses];
         List<Integer>[] graph = new List[numCourses];
         for (int i = 0; i < numCourses; i++) {
             graph[i] = new ArrayList<>();
         }
         for (int[] p : prerequisites) {
+            inDegree[p[0]]++;
             graph[p[1]].add(p[0]);
-            indegree[p[0]]++;
         }
-        int cnt = 0;
         Queue<Integer> queue = new LinkedList<>();
-        for (int i = 0; i < indegree.length; i++) {
-            if (indegree[i] == 0) {
-                cnt++;
+        boolean[] visited = new boolean[numCourses];
+        int cnt = 0;
+        for (int i = 0; i < inDegree.length; i++) {
+            if (inDegree[i] == 0) {
                 queue.add(i);
+                visited[i] = true;
+                cnt++;
             }
         }
         if (cnt == 0) {
@@ -35,10 +34,11 @@ public class LeetCode207 {
         while (!queue.isEmpty()) {
             int cur = queue.poll();
             for (int next : graph[cur]) {
-                indegree[next]--;
-                if (indegree[next] == 0) {
+                inDegree[next]--;
+                if (inDegree[next] == 0 && !visited[next]) {
                     queue.add(next);
                     cnt++;
+                    visited[next] = true;
                 }
             }
         }

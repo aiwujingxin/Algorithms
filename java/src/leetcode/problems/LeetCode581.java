@@ -1,10 +1,10 @@
 package leetcode.problems;
 
-import java.util.Stack;
+import java.util.*;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2023/9/20 21:32
+ * @date 2024/4/25 17:38
  */
 public class LeetCode581 {
 
@@ -13,16 +13,16 @@ public class LeetCode581 {
             return 0;
         }
         int n = nums.length;
-        Stack<Integer> stack = new Stack<>();
         int left = n;
-        int right = -1;
+        Stack<Integer> stack = new Stack<>();
         for (int i = 0; i < n; i++) {
             while (!stack.isEmpty() && nums[i] < nums[stack.peek()]) {
                 left = Math.min(left, stack.pop());
             }
             stack.push(i);
         }
-        stack = new Stack<>();
+        int right = 0;
+        stack.clear();
         for (int i = n - 1; i >= 0; i--) {
             while (!stack.isEmpty() && nums[i] > nums[stack.peek()]) {
                 right = Math.max(right, stack.pop());

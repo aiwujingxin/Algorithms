@@ -32,7 +32,7 @@ public class LeetCode378 {
         int l = matrix[0][0];
         int r = matrix[n - 1][n - 1];
         while (l < r) {
-            int mid = r + l >> 1;
+            int mid = l + r >> 1;
             if (check(matrix, mid, k, n)) {
                 r = mid;
             } else {

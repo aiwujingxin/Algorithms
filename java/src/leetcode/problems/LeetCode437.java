@@ -1,60 +1,33 @@
 package leetcode.problems;
 
-import common.TreeNode;
-
-import java.util.HashMap;
+import common.*;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2023/11/29 18:44
- * @see LeetCode560
+ * @date 2024/4/25 17:36
  */
 public class LeetCode437 {
+
     int res = 0;
 
     public int pathSum(TreeNode root, int targetSum) {
         if (root == null) {
             return 0;
         }
-        dfs(root, 0, targetSum);
+        dfs(root, targetSum);
         pathSum(root.left, targetSum);
         pathSum(root.right, targetSum);
         return res;
     }
 
-    public void dfs(TreeNode root, long sum, int targetSum) {
+    private void dfs(TreeNode root, long targetSum) {
         if (root == null) {
             return;
         }
-        if (sum + root.val == targetSum) {
+        if (root.val == targetSum) {
             res++;
         }
-        dfs(root.left, sum + root.val, targetSum);
-        dfs(root.right, sum + root.val, targetSum);
-    }
-
-    public int pathSum_opt(TreeNode root, int targetSum) {
-        if (root == null) {
-            return 0;
-        }
-        HashMap<Long, Integer> map = new HashMap<>();
-        map.put(0L, 1);
-        return dfs(map, root, 0, targetSum);
-    }
-
-    public int dfs(HashMap<Long, Integer> map, TreeNode root, long sum, int targetSum) {
-        if (root == null) {
-            return 0;
-        }
-        sum += root.val;
-        int ret;
-        ret = map.getOrDefault(sum - targetSum, 0);
-        map.put(sum, map.getOrDefault(sum, 0) + 1);
-        ret += dfs(map, root.left, sum, targetSum);
-        ret += dfs(map, root.right, sum, targetSum);
-        map.put(sum, map.getOrDefault(sum, 0) - 1);
-        return ret;
+        dfs(root.left, targetSum - root.val);
+        dfs(root.right, targetSum - root.val);
     }
 }
-
-

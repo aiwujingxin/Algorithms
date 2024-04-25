@@ -9,6 +9,7 @@ import java.util.Queue;
  * @date 2023/3/23 19:04
  */
 public class LeetCode358 {
+
     public String rearrangeString(String s, int k) {
         if (k == 0) {
             return s;
@@ -18,28 +19,27 @@ public class LeetCode358 {
         for (char c : s.toCharArray()) {
             cnt[c - 'a']++;
         }
-        // 2.开始进行贪心操作,就是我们每次操作都要选择次数最多的
-        PriorityQueue<Integer> heap = new PriorityQueue<>((o1, o2) -> cnt[o2] - cnt[o1]);
-        StringBuilder ans = new StringBuilder();
-        Queue<Integer> temp = new LinkedList<>();
+        Queue<Integer> pq = new PriorityQueue<>((o1, o2) -> cnt[o2] - cnt[o1]);
         for (int i = 0; i < cnt.length; i++) {
             if (cnt[i] > 0) {
-                heap.add(i);
+                pq.add(i);
             }
-
         }
-        while (!heap.isEmpty()) {
-            int curr = heap.poll();
-            temp.add(curr);
-            cnt[curr]--;
-            ans.append((char) ('a' + curr));
+        // 2.开始进行贪心操作,就是我们每次操作都要选择次数最多的
+        StringBuilder sb = new StringBuilder();
+        Queue<Integer> temp = new LinkedList<>();
+        while (!pq.isEmpty()) {
+            int cur = pq.poll();
+            temp.add(cur);
+            cnt[cur]--;
+            sb.append((char) ('a' + cur));
             if (temp.size() >= k) {
                 int mem = temp.poll();
                 if (cnt[mem] > 0) {
-                    heap.offer(mem);
+                    pq.add(mem);
                 }
             }
         }
-        return ans.length() == s.length() ? ans.toString() : "";
+        return sb.length() == s.length() ? sb.toString() : "";
     }
 }
