@@ -1,7 +1,6 @@
 package leetcode.problems;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 /**
  * @author wujingxinit@outlook.com
@@ -11,19 +10,28 @@ import java.util.List;
 public class LeetCode658 {
 
     public List<Integer> findClosestElements(int[] arr, int k, int x) {
-        int l = 0, r = arr.length - k;
+        int n = arr.length;
+        int l = 0;
+        int r = n - 1;
         while (l < r) {
-            int mid = l + (r - l) / 2;
-            if (arr[mid + k] - x < x - arr[mid]) {
-                l = mid + 1;
-            } else {
-                r = mid;
-            }
+            int mid = l + r >> 1;
+            if (check(arr, mid, k, x)) l = mid + 1;
+            else r = mid;
         }
-        List<Integer> result = new ArrayList<>(k);
+        List<Integer> list = new ArrayList<>();
         for (int i = l; i < l + k; i++) {
-            result.add(arr[i]);
+            list.add(arr[i]);
         }
-        return result;
+        return list;
+    }
+
+    public boolean check(int[] arr, int mid, int k, int x) {
+        if (mid + k >= arr.length) {
+            return false;
+        }
+        if (x - arr[mid] <= arr[mid + k] - x) {
+            return false;
+        }
+        return true;
     }
 }

@@ -2,47 +2,45 @@ package leetcode.problems;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2023/12/6 13:50
+ * @date 2024/4/26 10:12
  */
 public class LeetCode493 {
 
+    int res = 0;
     int[] temp;
-    int res;
 
     public int reversePairs(int[] nums) {
         if (nums == null || nums.length == 0) {
             return 0;
         }
-        int n = nums.length;
-        this.temp = new int[n];
+        this.temp = new int[nums.length];
         mergeSort(nums, 0, nums.length - 1);
         return res;
     }
 
-    public void mergeSort(int[] nums, int lo, int hi) {
+    private void mergeSort(int[] nums, int lo, int hi) {
         if (lo >= hi) {
             return;
         }
-        int mid = (lo + hi) / 2;
+        int mid = lo + hi >> 1;
         mergeSort(nums, lo, mid);
         mergeSort(nums, mid + 1, hi);
         merge(nums, lo, mid, hi);
     }
 
-    public void merge(int[] nums, int lo, int mid, int hi) {
-        int i = lo;
-        int k = lo;
-        int j = mid + 1;
-
-        int ii = i;
-        int jj = j;
-        while (ii <= mid) {
-            while (jj <= hi && (long) nums[ii] > 2 * (long) nums[jj]) {
-                jj++;
+    private void merge(int[] nums, int lo, int mid, int hi) {
+        int left = lo;
+        int right = mid + 1;
+        while (left <= mid) {
+            while (right <= hi && nums[left] > 2 * (long) nums[right]) {
+                right++;
             }
-            res += jj - mid - 1;
-            ii++;
+            res += right - mid - 1;
+            left++;
         }
+        int k = lo;
+        int i = lo;
+        int j = mid + 1;
         while (i <= mid && j <= hi) {
             if (nums[i] <= nums[j]) {
                 temp[k++] = nums[i++];

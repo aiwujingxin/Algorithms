@@ -1,53 +1,56 @@
 package leetcode.problems;
 
-import java.util.Stack;
+import java.util.*;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2024/1/6 13:26
+ * @date 2024/4/26 10:50
  */
 public class LeetCode227 {
+
     public int calculate(String s) {
         if (s == null || s.isEmpty()) {
             return 0;
         }
         s = s.trim();
-        char perSign = '+';
+        if (s.isEmpty()) {
+            return 0;
+        }
+        int n = s.length();
+        char preSign = ' ';
         int num = 0;
-        char[] chars = s.toCharArray();
-        int n = chars.length;
         Stack<Integer> stack = new Stack<>();
-        for (int i = 0; i < n; i++) {
-            char c = chars[i];
+        for (int i = 0; i < s.length(); i++) {
+            char c = s.charAt(i);
             if (c == ' ') {
                 continue;
             }
             if (Character.isDigit(c)) {
-                num = num * 10 + (c - '0');
+                num = num * 10 + c - '0';
             }
             if (!Character.isDigit(c) || i == n - 1) {
-                switch (perSign) {
+                switch (preSign) {
                     case '+':
                         stack.push(num);
                         break;
                     case '-':
                         stack.push(-num);
                         break;
-                    case '*':
-                        stack.push(stack.pop() * num);
-                        break;
                     case '/':
                         stack.push(stack.pop() / num);
                         break;
+                    case '*':
+                        stack.push(stack.pop() * num);
+                        break;
                 }
-                perSign = c;
+                preSign = c;
                 num = 0;
             }
         }
-        int res = 0;
+        int sum = 0;
         while (!stack.isEmpty()) {
-            res += stack.pop();
+            sum += stack.pop();
         }
-        return res;
+        return sum;
     }
 }

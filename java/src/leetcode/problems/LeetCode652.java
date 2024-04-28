@@ -10,25 +10,41 @@ import java.util.*;
  */
 public class LeetCode652 {
 
-    Map<String, TreeNode> seen = new HashMap<>();
-    Set<TreeNode> repeat = new HashSet<>();
+    List<TreeNode> res = new ArrayList<>();
+
+    HashSet<String> set = new HashSet<>();
+
+    HashSet<String> visited = new HashSet<>();
 
     public List<TreeNode> findDuplicateSubtrees(TreeNode root) {
         dfs(root);
-        return new ArrayList<>(repeat);
+        return res;
     }
 
-    public String dfs(TreeNode node) {
-        if (node == null) {
-            return "";
+    public String dfs(TreeNode root) {
+        if (root == null) {
+            return "null";
         }
-        String str = node.val + "(" + dfs(node.left) + ")" + "(" + dfs(node.right) + ")";
-        System.out.println(str);
-        if (seen.containsKey(str)) {
-            repeat.add(seen.get(str));
-        } else {
-            seen.put(str, node);
+        String left = dfs(root.left);
+        String right = dfs(root.right);
+        StringBuilder sb = new StringBuilder();
+        sb.append(root.val);
+        if (!Objects.equals(left, "")) {
+            sb.append("(");
+            sb.append(left);
+            sb.append(")");
         }
-        return str;
+        if (!Objects.equals(right, "")) {
+            sb.append("(");
+            sb.append(right);
+            sb.append(")");
+        }
+        if (set.contains(sb.toString()) && !visited.contains(sb.toString())) {
+            res.add(root);
+            visited.add(sb.toString());
+        }
+        set.add(sb.toString());
+
+        return sb.toString();
     }
 }

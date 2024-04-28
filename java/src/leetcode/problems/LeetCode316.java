@@ -1,10 +1,10 @@
 package leetcode.problems;
 
-import java.util.Stack;
+import java.util.*;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2024/1/3 14:58
+ * @date 2024/4/26 09:51
  */
 public class LeetCode316 {
 
@@ -12,23 +12,24 @@ public class LeetCode316 {
         if (s == null || s.isEmpty()) {
             return "";
         }
-        Stack<Character> stack = new Stack<>();
         int[] freq = new int[26];
         for (int i = 0; i < s.length(); i++) {
             freq[s.charAt(i) - 'a']++;
         }
-        boolean[] used = new boolean[26];
-        for (int i = 0; i < s.length(); i++) {
+        int n = s.length();
+        Stack<Character> stack = new Stack<>();
+        boolean[] visited = new boolean[26];
+        for (int i = 0; i < n; i++) {
             freq[s.charAt(i) - 'a']--;
-            if (used[s.charAt(i) - 'a']) {
+            if (visited[s.charAt(i) - 'a']) {
                 continue;
             }
-            while (!stack.isEmpty() && freq[stack.peek() - 'a'] > 0 && s.charAt(i) < stack.peek()) {
-                used[stack.peek() - 'a'] = false;
-                stack.pop();
+            while (!stack.isEmpty() && s.charAt(i) <= stack.peek() && freq[stack.peek() - 'a'] > 0) {
+                char d = stack.pop();
+                visited[d - 'a'] = false;
             }
-            used[s.charAt(i) - 'a'] = true;
             stack.push(s.charAt(i));
+            visited[s.charAt(i) - 'a'] = true;
         }
         StringBuilder sb = new StringBuilder();
         while (!stack.isEmpty()) {

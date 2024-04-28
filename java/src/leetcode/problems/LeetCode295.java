@@ -1,41 +1,40 @@
 package leetcode.problems;
 
-import java.util.PriorityQueue;
+import java.util.*;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2023/11/6 00:42
+ * @date 2024/4/26 10:07
  */
 public class LeetCode295 {
 
     class MedianFinder {
 
-        PriorityQueue<Integer> minQ;
-        PriorityQueue<Integer> maxQ;
+        PriorityQueue<Integer> minQ = new PriorityQueue<>();
+        PriorityQueue<Integer> maxQ = new PriorityQueue<>((o1, o2) -> o2 - o1);
 
         public MedianFinder() {
-            maxQ = new PriorityQueue<>((o1, o2) -> o2 - o1);
-            minQ = new PriorityQueue<>();
+
         }
 
         public void addNum(int num) {
-            if (maxQ.isEmpty() || maxQ.peek() >= num) {
+            if (minQ.isEmpty() || num < minQ.peek()) {
                 maxQ.add(num);
             } else {
                 minQ.add(num);
             }
-            if (maxQ.size() > minQ.size() + 1) {
-                minQ.add(maxQ.poll());
-            } else if (minQ.size() > maxQ.size()) {
+            if (minQ.size() > maxQ.size() + 1) {
                 maxQ.add(minQ.poll());
+            } else if (maxQ.size() > minQ.size()) {
+                minQ.add(maxQ.poll());
             }
         }
 
         public double findMedian() {
-            if (minQ.isEmpty() || maxQ.size() > minQ.size()) {
-                return maxQ.peek();
+            if (minQ.size() == maxQ.size()) {
+                return ((double) minQ.peek() + maxQ.peek()) / 2;
             }
-            return (double) (maxQ.peek() + minQ.peek()) / 2;
+            return (double) minQ.peek();
         }
     }
 }

@@ -1,8 +1,6 @@
 package knowledge.algorithms.sort;
 
-import leetcode.problems.LeetCode315;
-import leetcode.problems.LeetCode327;
-import leetcode.problems.LeetCode493;
+import leetcode.problems.*;
 
 /**
  * @author jingxinwu
@@ -29,7 +27,7 @@ public class MergeSort implements Sort {
         if (lo >= hi) {
             return;
         }
-        int mid = (hi - lo) / 2 + lo;
+        int mid = lo + hi >> 1;
         mergeSort(nums, lo, mid);
         mergeSort(nums, mid + 1, hi);
         merge(nums, lo, mid, hi);
