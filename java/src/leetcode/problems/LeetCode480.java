@@ -23,19 +23,18 @@ public class LeetCode480 {
             }
             return result;
         }
-        maxSet = new TreeSet<>((a, b) -> {
-            if (nums[a] == nums[b]) {
-                return Integer.compare(b, a);
+        maxSet = new TreeSet<>((o1, o2) -> {
+            if (nums[o1] == nums[o2]) {
+                return Integer.compare(o2, o1);
             }
-            return Integer.compare(nums[b], nums[a]);
+            return Integer.compare(nums[o2], nums[o1]);
 
         });
-
-        minSet = new TreeSet<>((a, b) -> {
-            if (nums[a] == nums[b]) {
-                return Integer.compare(a, b);
+        minSet = new TreeSet<>((o1, o2) -> {
+            if (nums[o1] == nums[o2]) {
+                return Integer.compare(o1, o2);
             }
-            return Integer.compare(nums[a], nums[b]);
+            return Integer.compare(nums[o1], nums[o2]);
         });
 
         for (int i = 0; i < len; i++) {

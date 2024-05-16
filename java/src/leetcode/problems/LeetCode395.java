@@ -13,28 +13,28 @@ public class LeetCode395 {
         int n = s.length();
         int max = 0;
         char[] ch = s.toCharArray();
-        int[] cnt = new int[26];
+        int[] freq = new int[26];
         for (int p = 1; p <= 26; p++) {//枚举字符出现种类数
-            Arrays.fill(cnt, 0);
+            Arrays.fill(freq, 0);
             int left = 0, right = 0;
             int charCount = 0;
             int validCount = 0;
             while (right < n) {
-                cnt[ch[right] - 'a']++;
-                if (cnt[ch[right] - 'a'] == 1) {
+                freq[ch[right] - 'a']++;
+                if (freq[ch[right] - 'a'] == 1) {
                     charCount++;
                 }
-                if (cnt[ch[right] - 'a'] == k) {
+                if (freq[ch[right] - 'a'] == k) {
                     validCount++;
                 }
                 while (charCount > p) {
-                    if (cnt[ch[left] - 'a'] == 1) {
+                    if (freq[ch[left] - 'a'] == 1) {
                         charCount--;
                     }
-                    if (cnt[ch[left] - 'a'] == k) {
+                    if (freq[ch[left] - 'a'] == k) {
                         validCount--;
                     }
-                    cnt[ch[left] - 'a']--;
+                    freq[ch[left] - 'a']--;
                     left++;
                 }
                 if (charCount == validCount) {
