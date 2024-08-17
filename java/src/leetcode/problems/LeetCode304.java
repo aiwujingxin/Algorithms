@@ -12,11 +12,11 @@ public class LeetCode304 {
         private final int[][] sums;
 
         public NumMatrix(int[][] matrix) {
-            int m = matrix.length;
-            int n = matrix[0].length;
-            sums = new int[m + 1][n + 1];
-            for (int i = 1; i <= m; i++) {
-                for (int j = 1; j <= n; j++) {
+            int n = matrix.length;
+            int m = matrix[0].length;
+            sums = new int[n + 1][m + 1];
+            for (int i = 1; i <= n; i++) {
+                for (int j = 1; j <= m; j++) {
                     sums[i][j] = sums[i][j - 1] + sums[i - 1][j] - sums[i - 1][j - 1] + matrix[i - 1][j - 1];
                 }
             }

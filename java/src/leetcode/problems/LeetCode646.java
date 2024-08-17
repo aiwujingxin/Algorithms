@@ -13,7 +13,7 @@ public class LeetCode646 {
         Arrays.sort(pairs, Comparator.comparingInt(o -> o[0]));
         int n = pairs.length;
         int[] dp = new int[n];
-        int res = 0;
+        int max = 0;
         for (int i = 0; i < n; i++) {
             dp[i] = 1;
             for (int j = 0; j < i; j++) {
@@ -21,9 +21,9 @@ public class LeetCode646 {
                     dp[i] = Math.max(dp[j] + 1, dp[i]);
                 }
             }
-            res = Math.max(res, dp[i]);
+            max = Math.max(max, dp[i]);
         }
-        return res;
+        return max;
     }
 }
 

@@ -5,15 +5,18 @@ import leetcode.problems.*;
 /**
  * @author wujingxinit@outlook.com
  * @date 2024/4/13 23:37
- * @description 序列DP
+ * @description LIS & LCS
  * <LIS>
  * @see LeetCode300 最长递增子序列
- * @see LeetCode646 最长数对链 (电路布线)
+ * @see LeetCode646 最长数对链 Acwing1012友好城市
  * @see LeetCode673 最长递增子序列的个数
  * @see LeetCode354 俄罗斯套娃信封问题
- * @see LeetCode334  递增的三元子序列
- * @see LeetCode1626
- * @see LeetCode960
+ * @see LeetCode334 递增的三元子序列
+ * @see LeetCode1626 无矛盾的最佳球队 Acwing1016最大上升子序列和
+ * @see LeetCode960 删列造序 III
+ * @see LeetCode139 单词拆分
+ * @see LeetCode204 计数质数
+ * @see LeetCode279 完全平方数
  * <LCS>
  * @see LeetCode1143 最长公共子序列
  * @see LeetCode72 编辑距离
@@ -29,5 +32,5 @@ import leetcode.problems.*;
  * <LMS>
  * @see LeetCode152 最大乘积连续子数组
  */
-public interface SequenceI {
+public interface LISLCS {
 }
