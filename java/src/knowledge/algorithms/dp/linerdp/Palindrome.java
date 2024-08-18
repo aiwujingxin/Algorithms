@@ -18,11 +18,6 @@ import leetcode.problems.*;
  * @see LeetCode214 最短回文串
  * LeetCoe2193
  * poj3280
- * <丑数>
- * @see LeetCode263 丑数
- * @see LeetCode264 丑数II
- * @see LeetCode313 超级丑数
- * LeetCode1201     丑数III
  */
-public interface Problems {
+public interface Palindrome {
 }

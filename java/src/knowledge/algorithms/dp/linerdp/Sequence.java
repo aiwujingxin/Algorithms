@@ -31,6 +31,11 @@ import leetcode.problems.*;
  * @see LeetCode53 最大和的连续子数组
  * <LMS>
  * @see LeetCode152 最大乘积连续子数组
+ * <丑数>
+ * @see LeetCode263 丑数
+ * @see LeetCode264 丑数II
+ * @see LeetCode313 超级丑数
+ * LeetCode1201     丑数III
  */
-public interface LISLCS {
+public interface Sequence {
 }

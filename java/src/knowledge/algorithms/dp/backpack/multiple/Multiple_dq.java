@@ -2,13 +2,15 @@ package knowledge.algorithms.dp.backpack.multiple;
 
 import leetcode.problems.LeetCode239_dq;
 
-import java.util.*;
+import java.util.Deque;
+import java.util.LinkedList;
 
 /**
  * @author wujingxinit@outlook.com
  * @date 2024/2/25 22:17
  * @description 多重背包 单调队列优化
  * @see LeetCode239_dq
+ * @see 6.cpp
  */
 public class Multiple_dq implements MultiplePack {
 

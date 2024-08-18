@@ -6,7 +6,7 @@ package knowledge.algorithms.dp.backpack.zeroOne;
  * @description 01背包  F[i,v] = max{F[i − 1,v], F[i − 1, v − Ci] + Wi}
  * @link <a href="https://www.lintcode.com/problem/125/">BackpackII</a>
  * @see leetcode.problems.LeetCode416 分割等和子集
- * @see leetcode.problems.LeetCode494 目标和
+ * @see leetcode.problems.LeetCode494 目标和  01背包方案数
  * @see leetcode.problems.LeetCode474 一和零
  */
 public interface ZeroOnePack {

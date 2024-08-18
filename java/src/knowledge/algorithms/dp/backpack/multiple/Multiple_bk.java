@@ -4,7 +4,7 @@ package knowledge.algorithms.dp.backpack.multiple;
  * @author wujingxinit@outlook.com
  * @date 2023/8/22 12:38
  */
-public class Multiple_backtrack implements MultiplePack {
+public class Multiple_bk implements MultiplePack {
 
     int max = 0;
 

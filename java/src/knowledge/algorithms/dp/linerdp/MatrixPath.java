@@ -14,5 +14,5 @@ import leetcode.problems.LeetCode64;
  * @see LeetCode63 不同路径II
  * @see LeetCode64 最小路径和
  */
-public interface Path {
+public interface MatrixPath {
 }

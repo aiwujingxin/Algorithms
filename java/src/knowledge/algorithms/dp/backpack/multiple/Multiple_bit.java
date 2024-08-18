@@ -3,6 +3,7 @@ package knowledge.algorithms.dp.backpack.multiple;
 /**
  * @author wujingxinit@outlook.com
  * @date 2024/2/26 22:58
+ * @description 多重背包 二进制优化
  */
 public class Multiple_bit implements MultiplePack {
 
