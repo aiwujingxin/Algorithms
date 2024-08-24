@@ -1,6 +1,7 @@
 package knowledge.algorithms.dp.backpack.zeroOne;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author wujingxinit@outlook.com
@@ -27,17 +28,15 @@ public class ZeroOne_dp_2d implements ZeroOnePack {
                 }
             }
         }
-        List<Integer> result = new ArrayList<>();
-        int i = N;
+        List<Integer> selected = new ArrayList<>();
         int v = V;
-        while (i > 0) {
+        for (int i = N; i > 0; i--) {
             if (v - C[i - 1] >= 0 && dp[i][v] == dp[i - 1][v - C[i - 1]] + W[i - 1]) {
-                result.add(i - 1);
+                selected.add(i - 1);
                 v -= C[i - 1];
             }
-            i--;
         }
-        System.out.println("选择的物品编号为:" + result);
+        System.out.println("选择的物品编号为:" + selected);
         System.out.println("方案的总数:" + g[N][V]);
         return dp[N][V];
     }

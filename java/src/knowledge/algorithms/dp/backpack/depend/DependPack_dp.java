@@ -6,7 +6,7 @@ import java.util.*;
  * @author wujingxinit@outlook.com
  * @date 2024/2/29 10:45
  * @description 依赖关系只有一层
- * <a href="https://www.acwing.com/problem/content/489/">金明的预算方案</a>
+ * <a href="https://www.acwing.com/problem/content/489/">487.金明的预算方案</a>
  */
 public class DependPack_dp implements DependPack {
 
@@ -51,15 +51,5 @@ public class DependPack_dp implements DependPack {
             }
         }
         return dp[m];
-    }
-
-    static class Item {
-        int v;
-        int w;
-
-        public Item(int v, int w) {
-            this.v = v;
-            this.w = w;
-        }
     }
 }

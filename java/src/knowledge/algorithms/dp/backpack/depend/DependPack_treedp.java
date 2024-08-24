@@ -1,13 +1,11 @@
 package knowledge.algorithms.dp.backpack.depend;
 
-import java.util.*;
-
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/8/4 00:29
  * @description 依赖关系是一个森林
  * @link <a href="https://www.acwing.com/problem/content/10/">有依赖的背包问题</a>
- * <a href="https://www.acwing.com/solution/content/114805/"></a>
+ * <a href="https://www.acwing.com/solution/content/114805/">有依赖的背包问题|Java|树形dp</a>
  * <a href="https://www.bilibili.com/video/BV1tp4y1k7py/?spm_id_from=333.337.search-card.all.click&vd_source=88e5a3e60377510439e11f13b5878c25">
  */
 public class DependPack_treedp implements DependPack {
@@ -46,22 +44,12 @@ public class DependPack_treedp implements DependPack {
         for (int i = 1; i < bag[x].children.size(); i++) {
             int u = bag[x].children.get(i);
             dfs(u);
-            for (int j = V; j >= bag[x].v; j--) {
-                for (int k = 0; k <= j - bag[x].v; k++) {
+            // 分组背包
+            for (int j = V; j >= bag[x].v; j--) { // 循环体积
+                for (int k = 0; k <= j - bag[x].v; k++) {  // 循环决策
                     dp[x][j] = Math.max(dp[x][j], dp[x][j - k] + dp[u][k]);
                 }
             }
-        }
-    }
-
-    static class Item {
-        int v;
-        int w;
-        List<Integer> children;
-
-        public Item() {
-            this.children = new ArrayList<>();
-            children.add(0);
         }
     }
 }

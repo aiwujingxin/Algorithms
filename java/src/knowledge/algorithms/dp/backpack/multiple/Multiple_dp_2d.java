@@ -7,12 +7,12 @@ package knowledge.algorithms.dp.backpack.multiple;
  */
 public class Multiple_dp_2d implements MultiplePack {
 
-    public int backPack(int[] C, int[] W, int[] S, int V) {
+    public int backPack(int[] C, int[] W, int[] K, int V) {
         int N = W.length;
         int[][] dp = new int[N + 1][V + 1];
         for (int i = 1; i <= N; i++) {
             for (int v = 1; v <= V; v++) {
-                for (int k = 0; k <= S[i - 1] && v >= k * C[i - 1]; k++) {
+                for (int k = 0; k <= K[i - 1] && v >= k * C[i - 1]; k++) {
                     dp[i][v] = Math.max(dp[i][v], dp[i - 1][v - k * C[i - 1]] + k * W[i - 1]);
                 }
             }

@@ -15,7 +15,7 @@ import java.util.LinkedList;
 public class Multiple_dq implements MultiplePack {
 
     @Override
-    public int backPack(int[] C, int[] W, int[] S, int V) {
+    public int backPack(int[] C, int[] W, int[] K, int V) {
         int N = C.length;
         int[] dp = new int[V + 1];
         int[] pre = new int[V + 1];
@@ -24,7 +24,7 @@ public class Multiple_dq implements MultiplePack {
         for (int i = 0; i < N; i++) {
             int c = C[i];
             int w = W[i];
-            int m = S[i];
+            int m = K[i];
             for (int j = 0; j < c; j++) {
                 q.clear();
                 for (int k = j; k <= V; k += c) {

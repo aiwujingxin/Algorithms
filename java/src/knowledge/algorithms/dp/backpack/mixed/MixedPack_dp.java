@@ -28,17 +28,20 @@ public class MixedPack_dp implements MixedPack {
                     zeroOneBackpack(k * C[i], k * W[i]);
                     S[i] -= k;
                 }
-                zeroOneBackpack(S[i] * C[i], S[i] * W[i]);
+                if (S[i] > 0) {
+                    zeroOneBackpack(S[i] * C[i], S[i] * W[i]);
+                }
             }
         }
         return f[V];
+    }
+
+    private void zeroOneBackpack(int v, int w) {
+        for (int j = m; j >= v; j--) f[j] = Math.max(f[j], f[j - v] + w);
     }
 
     private void completedPack(int v, int w) {
         for (int j = v; j <= m; j++) f[j] = Math.max(f[j], f[j - v] + w);
     }
 
-    private void zeroOneBackpack(int v, int w) {
-        for (int j = m; j >= v; j--) f[j] = Math.max(f[j], f[j - v] + w);
-    }
 }

@@ -8,9 +8,9 @@ public class Multiple_bk implements MultiplePack {
 
     int max = 0;
 
-    public int backPack(int[] weight, int[] value, int[] N, int capacity) {
+    public int backPack(int[] weight, int[] value, int[] K, int capacity) {
         max = 0;
-        backtrack(weight, value, N, capacity, 0, 0, 0);
+        backtrack(weight, value, K, capacity, 0, 0, 0);
         return max;
     }
 
