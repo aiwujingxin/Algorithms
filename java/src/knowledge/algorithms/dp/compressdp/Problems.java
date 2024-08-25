@@ -20,7 +20,9 @@ import leetcode.problems.LeetCode526_dp;
  * @see LeetCode526_dp
  * @see LeetCode1494
  * <基于连通性的状态压缩>
- * 291.cpp 蒙德里安的梦想
+ * 291.cpp 蒙德里安的梦想 https://www.bilibili.com/video/BV1cv411b7EG/?spm_id_from=333.337.search-card.all.click&vd_source=8493a3e08130914836f4b3e1a5219439
+ * 1064. 小国王
+ * 327 玉米田
  * <集合式状态压缩>
  * @see LeetCode1349
  */

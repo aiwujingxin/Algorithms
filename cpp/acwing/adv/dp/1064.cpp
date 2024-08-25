@@ -48,14 +48,14 @@ int main()
            cnt[i]=count(i);
        }
 
+    // 建立状态转移的关系
     for(int i = 0;i< state.size();i ++ )
       for(int j=0;j<state.size();j++)
       {
           int a=state[i],b=state[j];
           if((a&b)==0&&check(a|b))
-             head[i].push_back(j);
+             head[i].push_back(j); //下标
       }
-
 
       f[0][0][0]=1;
 
