@@ -27,6 +27,7 @@ public class AcWing282 {
         for (int i = 1; i < n; i++) {
             s[i] += s[i - 1];
         }
+        System.out.println(Arrays.toString(s));
         for (int r = 2; r < n; r++) {  // 枚举规模长度
             System.out.println("规模 " + r + " 时");
             for (int i = 1; i < n - r + 1; i++) {// 枚举起点

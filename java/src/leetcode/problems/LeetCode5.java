@@ -7,9 +7,6 @@ package leetcode.problems;
 public class LeetCode5 {
 
     public String longestPalindrome(String s) {
-        if (s == null || s.isEmpty()) {
-            return "";
-        }
         int n = s.length();
         int left = 0;
         int right = 0;

@@ -39,12 +39,12 @@ public interface Problems {
     // 迭代式
     private void intervalDP(int n) {
         int[][] dp = new int[n][n];
-        for (int r = 2; r < n; r++) {
-            for (int i = 1; i < n - r + 1; i++) {
-                int j = i + r - 1;
-                for (int k = i; k < j; k++) {
+        for (int len = 2; len < n; len++) {
+            for (int l = 1; l < n - len + 1; l++) {
+                int r = l + len - 1;
+                for (int k = l; k < r; k++) {
                     int cost = 0;
-                    dp[i][j] = Math.max(dp[i][j], dp[i][k] + dp[k + 1][j] + cost);
+                    dp[l][r] = Math.max(dp[l][r], dp[l][k] + dp[k + 1][r] + cost);
                 }
             }
         }

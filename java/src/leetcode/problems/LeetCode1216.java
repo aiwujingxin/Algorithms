@@ -5,7 +5,6 @@ package leetcode.problems;
  * @date 2023/2/8 23:01
  * <a href="https://leetcode.cn/problems/valid-palindrome-iii/solution/javazi-di-xiang-shang-dong-tai-gui-hua-b-u3a4/">...</a>
  * <a href="https://www.youtube.com/watch?v=Xfk2lEByP9M">区间DP</a>
- * <p>
  */
 public class LeetCode1216 {
     public boolean isValidPalindrome(String s, int k) {
@@ -14,20 +13,20 @@ public class LeetCode1216 {
         int[][] dp = new int[n][n];
 
         //第一重循环控制长度
-        for (int i = 2; i <= n; i++) {
+        for (int len = 2; len <= n; len++) {
             //第二重循环控制左端点
-            for (int j = 0; j < n; j++) {
+            for (int l = 0; l < n; l++) {
                 //计算右端点
-                int right = j + i - 1;
+                int r = l + len - 1;
                 //处理越界情况
-                if (right >= n) {
+                if (r >= n) {
                     continue;
                 }
                 //考虑最坏情况：减小一位的字串是k回文，当前字串是k + 1回文
-                dp[j][right] = Math.min(dp[j + 1][right], dp[j][right - 1]) + 1;
+                dp[l][r] = Math.min(dp[l + 1][r], dp[l][r - 1]) + 1;
                 //如果两端相等，两端各减少一
-                if (c[j] == c[right]) {
-                    dp[j][right] = Math.min(dp[j][right], dp[j + 1][right - 1]);
+                if (c[l] == c[r]) {
+                    dp[l][r] = Math.min(dp[l][r], dp[l + 1][r - 1]);
                 }
             }
         }

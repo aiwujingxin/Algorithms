@@ -26,18 +26,18 @@ public class MatrixChain {
         int n = p.length;
         int[][] dp = new int[n][n];
         int[][] s = new int[n][n]; //划分方法
-        for (int r = 2; r < n; r++) {
-            System.out.println("规模 " + r + " 时");
-            for (int i = 1; i < n - r + 1; i++) { //子问题遍历
-                int j = i + r - 1;
-                System.out.println("子问题 dp[" + i + "]" + "[" + j + "]");
-                dp[i][j] = Integer.MAX_VALUE; // 单个子问题的求解(动态性遍历)
-                for (int k = i; k < j; k++) {
-                    System.out.println("划分点" + "k=" + k + " dp[" + i + "]" + "[" + k + "]" + " + " + "dp[" + (k + 1) + "]" + "[" + j + "]" + " +" + " p" + "[" + (i - 1) + "]" + "*" + "p[" + k + "]" + "*" + "p[" + j + "]");
-                    int cost = dp[i][k] + dp[k + 1][j] + p[i - 1] * p[k] * p[j];
-                    if (cost < dp[i][j]) {
-                        s[i][j] = k;
-                        dp[i][j] = cost;
+        for (int len = 2; len < n; len++) {
+            System.out.println("规模 " + len + " 时");
+            for (int l = 1; l < n - len + 1; l++) { //子问题遍历
+                int r = l + len - 1;
+                System.out.println("子问题 dp[" + l + "]" + "[" + r + "]");
+                dp[l][r] = Integer.MAX_VALUE; // 单个子问题的求解(动态性遍历)
+                for (int k = l; k < r; k++) {
+                    System.out.println("划分点" + "k=" + k + " dp[" + l + "]" + "[" + k + "]" + " + " + "dp[" + (k + 1) + "]" + "[" + r + "]" + " +" + " p" + "[" + (l - 1) + "]" + "*" + "p[" + k + "]" + "*" + "p[" + r + "]");
+                    int cost = dp[l][k] + dp[k + 1][r] + p[l - 1] * p[k] * p[r];
+                    if (cost < dp[l][r]) {
+                        s[l][r] = k;
+                        dp[l][r] = cost;
                     }
                 }
             }

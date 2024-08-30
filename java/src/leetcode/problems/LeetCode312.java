@@ -40,17 +40,17 @@ public class LeetCode312 {
         }
         int n = p.length;
         int[][] dp = new int[n][n];
-        for (int r = 2; r < n; r++) {
-            System.out.println("规模 " + r + " 时");
-            for (int i = 1; i < n - r + 1; i++) {
-                int j = i + r - 1;
-                System.out.println("子问题 dp[" + i + "]" + "[" + j + "]");
+        for (int len = 2; len < n; len++) {
+            System.out.println("规模 " + len + " 时");
+            for (int l = 1; l < n - len + 1; l++) {
+                int r = l + len - 1;
+                System.out.println("子问题 dp[" + l + "]" + "[" + r + "]");
                 // k 是要戳的气球
-                for (int k = i; k < j; k++) {
-                    System.out.println("划分点" + "k=" + k + " dp[" + i + "]" + "[" + k + "]" + " + " + "dp[" + (k + 1) + "]" + "[" + j + "]" + " +" + " p" + "[" + (i - 1) + "]" + "*" + "p[" + k + "]" + "*" + "p[" + j + "]");
-                    dp[i][j] = Math.max(dp[i][j], dp[i][k] + dp[k + 1][j] + p[i - 1] * p[k] * p[j]);
+                for (int k = l; k < r; k++) {
+                    System.out.println("划分点" + "k=" + k + " dp[" + l + "]" + "[" + k + "]" + " + " + "dp[" + (k + 1) + "]" + "[" + r + "]" + " +" + " p" + "[" + (l - 1) + "]" + "*" + "p[" + k + "]" + "*" + "p[" + r + "]");
+                    dp[l][r] = Math.max(dp[l][r], dp[l][k] + dp[k + 1][r] + p[l - 1] * p[k] * p[r]);
                 }
-                System.out.println("dp[" + i + "]" + "[" + j + "] " + dp[i][j]);
+                System.out.println("dp[" + l + "]" + "[" + r + "] " + dp[l][r]);
             }
         }
         for (int[] d : dp) {

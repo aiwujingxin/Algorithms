@@ -9,12 +9,12 @@ public class LeetCode1039 {
     public int minScoreTriangulation(int[] values) {
         int n = values.length;
         int[][] dp = new int[n][n];
-        for (int r = 3; r <= n; r++) {
-            for (int i = 0; i < n - r + 1; i++) {
-                int j = i + r - 1;
-                dp[i][j] = Integer.MAX_VALUE;
-                for (int k = i + 1; k < j; k++) {
-                    dp[i][j] = Math.min(dp[i][j], dp[i][k] + dp[k][j] + values[i] * values[j] * values[k]);
+        for (int len = 3; len <= n; len++) {
+            for (int l = 0; l + len - 1 < n; l++) {
+                int r = l + len - 1;
+                dp[l][r] = Integer.MAX_VALUE;
+                for (int k = l + 1; k < r; k++) {
+                    dp[l][r] = Math.min(dp[l][r], dp[l][k] + dp[k][r] + values[l] * values[r] * values[k]);
                 }
             }
         }
