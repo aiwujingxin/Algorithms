@@ -9,13 +9,15 @@ int n,m,root;
 int dfs(int x)
 {
     for(int i=v[x];i<=m;i++) f[x][i]=w[x];//点x必须选，所以初始化f[x][v[x] ~ m]= w[x]
-    for(int i=0;i<g[x].size();i++)
+    for(int i=0;i<g[x].size();i++) //循环物品组
     {
         int y=g[x][i];
         dfs(y);
-        for(int j=m;j>=v[x];j--)//j的范围为v[x]~m, 小于v[x]无法选择以x为子树的物品
+
+        // 分组背包
+        for(int j=m;j>=v[x];j--) //循环体积 j的范围为v[x]~m, 小于v[x]无法选择以x为子树的物品
         {
-            for(int k=0;k<=j-v[x];k++)//分给子树y的空间不能大于j-v[x],不然都无法选根物品x
+            for(int k=0;k<=j-v[x];k++) // 循环决策 分给子树y的空间不能大于j-v[x],不然都无法选根物品x
             {
                 f[x][j]=max(f[x][j],f[x][j-k]+f[y][k]);
             }

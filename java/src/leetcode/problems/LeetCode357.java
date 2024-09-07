@@ -34,10 +34,10 @@ public class LeetCode357 {
             res = dfs(i + 1, mask, false, false);
         }
         int low = isNum ? 0 : 1;
-        int upper = isLimit ? chars[i] - '0' : 9;
-        for (int d = low; d <= upper; d++) {
+        int up = isLimit ? chars[i] - '0' : 9;
+        for (int d = low; d <= up; d++) {
             if ((mask >> d & 1) == 0) {
-                res += dfs(i + 1, mask | (1 << d), isLimit && (upper == d), true);
+                res += dfs(i + 1, mask | (1 << d), isLimit && (up == d), true);
             }
         }
         if (!isLimit && isNum) {
