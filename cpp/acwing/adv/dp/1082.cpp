@@ -13,10 +13,10 @@ void init()//dp过程
 {
     for(int i=0;i<=9;i++) f[1][i]=1;
     //初始化,因为只有一位的方案数只有一个
-    for(int i=2;i<N;i++)
-     for(int j=0;j<=9;j++)
+    for(int i=2;i<N;i++) // 阶段
+     for(int j=0;j<=9;j++) // 状态
       for(int k=j;k<=9;k++)//状态划分
-       f[i][j]+=f[i-1][k];
+       f[i][j]+=f[i-1][k];//累加方案数
 }
 
 int dp(int n)
