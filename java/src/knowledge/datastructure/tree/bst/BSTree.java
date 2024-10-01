@@ -1,5 +1,7 @@
 package knowledge.datastructure.tree.bst;
 
+import common.TreeNode;
+
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/1/4 15:49
@@ -35,7 +37,9 @@ public class BSTree {
     }
 
     public TreeNode delete(TreeNode root, int key) {
-        if (root == null) return null;
+        if (root == null) {
+            return null;
+        }
         if (root.val == key) {
             if (root.left == null) {
                 return root.right;
@@ -73,16 +77,6 @@ public class BSTree {
             return searchNode(root.left, val);
         } else {
             return searchNode(root.right, val);
-        }
-    }
-
-    static class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-
-        public TreeNode(int val) {
-            this.val = val;
         }
     }
 }

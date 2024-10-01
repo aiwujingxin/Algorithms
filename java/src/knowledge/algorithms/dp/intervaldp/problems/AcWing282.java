@@ -23,7 +23,6 @@ public class AcWing282 {
         for (int i = 1; i < n; i++) {
             s[i] = Integer.parseInt(str[i - 1]);
         }
-        System.out.println(Arrays.toString(s));
         for (int i = 1; i < n; i++) {
             s[i] += s[i - 1];
         }
@@ -40,7 +39,6 @@ public class AcWing282 {
                 }
             }
         }
-        System.out.println(Arrays.toString(s));
         for (int[] d : dp) {
             System.out.println(Arrays.toString(d));
         }

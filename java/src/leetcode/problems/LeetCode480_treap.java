@@ -5,6 +5,7 @@ import knowledge.datastructure.tree.bst.*;
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/5/28 23:13
+ * @see TreapTree
  */
 public class LeetCode480_treap {
 

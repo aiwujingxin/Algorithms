@@ -3,10 +3,11 @@ package knowledge.datastructure.tree.bst;
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/5/25 00:14
- *       from gpt
+ * from gpt
  */
 
 public class RedBlackTree {
+
     private final Node TNULL;
     private Node root;
 
@@ -23,7 +24,7 @@ public class RedBlackTree {
     private void insert(int key) {
         Node node = new Node(key);
         node.parent = null;
-        node.data = key;
+        node.value = key;
         node.left = TNULL;
         node.right = TNULL;
         node.color = 1; // 新插入的节点为红色
@@ -33,7 +34,7 @@ public class RedBlackTree {
 
         while (x != TNULL) {
             y = x;
-            if (node.data < x.data) {
+            if (node.value < x.value) {
                 x = x.left;
             } else {
                 x = x.right;
@@ -43,7 +44,7 @@ public class RedBlackTree {
         node.parent = y;
         if (y == null) {
             root = node;
-        } else if (node.data < y.data) {
+        } else if (node.value < y.value) {
             y.left = node;
         } else {
             y.right = node;
@@ -148,7 +149,7 @@ public class RedBlackTree {
     private void inorderDfs(Node node) {
         if (node != TNULL) {
             inorderDfs(node.left);
-            System.out.print(node.data + " ");
+            System.out.print(node.value + " ");
             inorderDfs(node.right);
         }
     }
@@ -158,14 +159,14 @@ public class RedBlackTree {
     }
 
     static class Node {
-        int data; // 节点的值
+        int value; // 节点的值
         Node parent; // 父节点的引用
         Node left; // 左子节点的引用
         Node right; // 右子节点的引用
         int color; // 节点的颜色（0表示黑色，1表示红色）
 
-        public Node(int data) {
-            this.data = data;
+        public Node(int value) {
+            this.value = value;
             this.color = 1; // 默认新插入的节点为红色
         }
     }

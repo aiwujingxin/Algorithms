@@ -3,6 +3,7 @@ package knowledge.datastructure.queue;
 /**
  * @author wujingxinit@outlook.com
  * @date 2024/3/23 14:39
+ * @description 队列
  */
 public class MyQueue<E> {
 

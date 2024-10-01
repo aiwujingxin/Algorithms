@@ -3,7 +3,7 @@ package knowledge.datastructure.tree.bst;
 /**
  * @author aiwujingxin@gmail.com
  * @date 2022/7/19 01:10
- *       from ChatGPT
+ * from ChatGPT
  */
 public class AVLTree {
 

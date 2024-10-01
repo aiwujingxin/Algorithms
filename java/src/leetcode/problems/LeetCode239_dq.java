@@ -5,6 +5,7 @@ import java.util.*;
 /**
  * @author wujingxinit@outlook.com
  * @date 2024/1/22 21:34
+ * @description 单调递减队列
  */
 public class LeetCode239_dq {
 

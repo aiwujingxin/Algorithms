@@ -36,7 +36,7 @@ int dp(int n)
 
     int res = 0;
     int last = 0;
-    for (int i = nums.size() - 1; i >= 0; i -- )
+    for (int i = nums.size() - 1; i >= 0; i -- ) // 从高到低处理
     {
         int x = nums[i];
         for (int j = 0; j < x; j ++ )

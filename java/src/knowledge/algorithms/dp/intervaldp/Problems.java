@@ -36,13 +36,12 @@ import leetcode.problems.*;
  */
 public interface Problems {
 
-    // 迭代式
-    private void intervalDP(int n) {
+    private void solve(int n) {
         int[][] dp = new int[n][n];
-        for (int len = 2; len < n; len++) {
-            for (int l = 1; l < n - len + 1; l++) {
-                int r = l + len - 1;
-                for (int k = l; k < r; k++) {
+        for (int len = 2; len < n; len++) {         // 区间长度
+            for (int l = 1; l < n - len + 1; l++) { // 枚举起点
+                int r = l + len - 1;                // 区间终点
+                for (int k = l; k < r; k++) {       // 枚举分割点，构造状态转移方程
                     int cost = 0;
                     dp[l][r] = Math.max(dp[l][r], dp[l][k] + dp[k + 1][r] + cost);
                 }

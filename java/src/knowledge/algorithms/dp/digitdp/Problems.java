@@ -24,6 +24,11 @@ import leetcode.problems.*;
  * @see LeetCode600
  * @see LeetCode1397
  * @see LeetCode2999 V2.0
+ * AcWing 338. 计数问题
+ * AcWing 1081. 度的数量
+ * AcWing 1082. 数字游戏
+ * AcWing 1083. Windy数
+ * AcWing 1085. 不要62
  */
 public interface Problems {
 }

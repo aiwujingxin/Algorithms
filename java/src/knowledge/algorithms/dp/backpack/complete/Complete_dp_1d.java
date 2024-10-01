@@ -10,8 +10,8 @@ public class Complete_dp_1d implements CompletePack {
     public int backPack(int[] C, int[] W, int V) {
         int N = C.length;
         int[] dp = new int[V + 1];
-        for (int i = 0; i < N; i++) {
-            for (int v = C[i]; v <= V; v++) {
+        for (int i = 0; i < N; i++) { // 物品
+            for (int v = C[i]; v <= V; v++) { // 体积
                 dp[v] = Math.max(dp[v], dp[v - C[i]] + W[i]);
             }
         }

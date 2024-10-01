@@ -6,10 +6,10 @@ package knowledge.algorithms;
  * @description 算法
  * <基础算法>
  * @see knowledge.algorithms.bit           位运算
- * @see knowledge.algorithms.binarysearch  二分
  * @see knowledge.algorithms.presumAnddiff 前缀和与差分
- * @see knowledge.algorithms.binarylifting 倍增
+ * @see knowledge.algorithms.binarysearch  二分
  * @see knowledge.algorithms.sort          排序
+ * @see knowledge.algorithms.binarylifting 倍增
  * @see knowledge.algorithms.twopoint      双指针
  * <算法思想>
  * @see knowledge.algorithms.search        搜索

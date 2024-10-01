@@ -15,8 +15,8 @@ public class ZeroOne_dp_1d implements ZeroOnePack {
         int[] dp = new int[V + 1];
         int[] cnt = new int[V + 1];
         Arrays.fill(cnt, 1);
-        for (int i = 0; i < N; i++) {
-            for (int v = V; v >= C[i]; v--) {
+        for (int i = 0; i < N; i++) {  // 物品
+            for (int v = V; v >= C[i]; v--) { // 体积
                 if (dp[v] == dp[v - C[i]] + W[i]) {
                     cnt[v] += cnt[v - C[i]];
                 } else if (dp[v] < dp[v - C[i]] + W[i]) {

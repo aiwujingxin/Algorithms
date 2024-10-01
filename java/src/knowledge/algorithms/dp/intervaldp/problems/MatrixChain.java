@@ -24,31 +24,31 @@ public class MatrixChain {
 
     public int matrixMultiplication(int[] p) {
         int n = p.length;
-        int[][] dp = new int[n][n];
-        int[][] s = new int[n][n]; //划分方法
+        int[][] f = new int[n][n];
+        int[][] g = new int[n][n]; //划分方法
         for (int len = 2; len < n; len++) {
             System.out.println("规模 " + len + " 时");
             for (int l = 1; l < n - len + 1; l++) { //子问题遍历
                 int r = l + len - 1;
                 System.out.println("子问题 dp[" + l + "]" + "[" + r + "]");
-                dp[l][r] = Integer.MAX_VALUE; // 单个子问题的求解(动态性遍历)
+                f[l][r] = Integer.MAX_VALUE; // 单个子问题的求解(动态性遍历)
                 for (int k = l; k < r; k++) {
                     System.out.println("划分点" + "k=" + k + " dp[" + l + "]" + "[" + k + "]" + " + " + "dp[" + (k + 1) + "]" + "[" + r + "]" + " +" + " p" + "[" + (l - 1) + "]" + "*" + "p[" + k + "]" + "*" + "p[" + r + "]");
-                    int cost = dp[l][k] + dp[k + 1][r] + p[l - 1] * p[k] * p[r];
-                    if (cost < dp[l][r]) {
-                        s[l][r] = k;
-                        dp[l][r] = cost;
+                    int cost = f[l][k] + f[k + 1][r] + p[l - 1] * p[k] * p[r];
+                    if (cost < f[l][r]) {
+                        g[l][r] = k;
+                        f[l][r] = cost;
                     }
                 }
             }
         }
-        for (int[] d : dp) {
-            System.out.println(Arrays.toString(d));
+        for (int[] a : f) {
+            System.out.println(Arrays.toString(a));
         }
         System.out.println("分割方案");
-        for (int[] d : s) {
-            System.out.println(Arrays.toString(d));
+        for (int[] a : g) {
+            System.out.println(Arrays.toString(a));
         }
-        return dp[1][n - 1];
+        return f[1][n - 1];
     }
 }
