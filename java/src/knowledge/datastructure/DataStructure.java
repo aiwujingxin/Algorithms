@@ -18,6 +18,7 @@ package knowledge.datastructure;
  * @see knowledge.datastructure.advanced.UnionFind 并查集
  * @see knowledge.datastructure.advanced.BITree    树状数组
  * @see knowledge.datastructure.advanced.SegTree   线段树
+ * @see knowledge.datastructure.tree.bst           平衡树
  */
 public interface DataStructure {
 }

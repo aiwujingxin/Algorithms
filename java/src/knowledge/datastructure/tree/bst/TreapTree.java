@@ -204,7 +204,7 @@ public class TreapTree {
 
     }
 
-    static class Node {
+    private static class Node {
         int key, val, cnt, size;
         Node left, right;
 

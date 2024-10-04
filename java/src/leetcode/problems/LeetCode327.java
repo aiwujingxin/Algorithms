@@ -40,8 +40,7 @@ public class LeetCode327 {
         int k = lo;
 
         int l = mid + 1, r = mid + 1;
-        int t = lo;
-        while (t <= mid) {
+        for (int t = lo; t <= mid; t++) {
             while (l <= hi && nums[l] - nums[t] < lower) {
                 l++;
             }
@@ -49,9 +48,7 @@ public class LeetCode327 {
                 r++;
             }
             count += r - l;
-            t++;
         }
-
         while (i <= mid && j <= hi) {
             if (nums[i] <= nums[j]) {
                 temp[k++] = nums[i++];
