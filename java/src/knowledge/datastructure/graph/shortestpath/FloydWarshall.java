@@ -7,13 +7,14 @@ import java.util.*;
 /**
  * @author aiwujingxin@gmail.com
  * @date 2022/6/26 18:14
- * @description 基于动态规划
+ * @description Floyd 基于动态规划
+ * 时间复杂度: O(n3)
  */
-public class Floyd implements ShortestPath {
+public class FloydWarshall implements ShortestPath {
     final static int INF = 0x3f3f3f3f;
 
-    public int[] getShortestPath(int n, int[][] edges, int source) {
-        return floyd(n, edges)[source];
+    public int[] shortestPath(int n, int[][] edges, int s) {
+        return floyd(n, edges)[s];
     }
 
     private int[][] floyd(int n, int[][] edges) {
@@ -22,7 +23,7 @@ public class Floyd implements ShortestPath {
             Arrays.fill(d, INF);
         }
         // self
-        for (int i = 0; i < dist.length; i++) {
+        for (int i = 0; i < n; i++) {
             dist[i][i] = 0;
         }
         for (int[] edge : edges) {

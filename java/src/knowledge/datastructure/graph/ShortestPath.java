@@ -18,7 +18,15 @@ import leetcode.problems.*;
  * @see LeetCode1928_Dijkstra
  * @see LeetCode2662
  * @see LeetCode2093_SPFA
+ * @see LeetCode1514_SPFA 概率最大的路径
  */
 public interface ShortestPath {
-    int[] getShortestPath(int n, int[][] edges, int source);
+    /**
+     * 返回从s到其他点的最短距离
+     *
+     * @param n     图中节点个数n
+     * @param edges 权边, {form, to , wight}
+     * @param s     源点
+     */
+    int[] shortestPath(int n, int[][] edges, int s);
 }

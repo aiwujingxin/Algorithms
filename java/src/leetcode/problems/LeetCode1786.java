@@ -1,8 +1,6 @@
 package leetcode.problems;
 
-
-
-import knowledge.datastructure.graph.shortestpath.*;
+import knowledge.datastructure.graph.shortestpath.Dijkstra;
 
 import java.util.*;
 
@@ -14,7 +12,7 @@ public class LeetCode1786 {
 
     public int countRestrictedPaths(int n, int[][] edges) {
         Dijkstra dijkstra = new Dijkstra();
-        int[] dist = dijkstra.getShortestPath(n + 1, edges, n);
+        int[] dist = dijkstra.shortestPath(n + 1, edges, n);
         return (int) dfs(dijkstra.graph, 1, n, dist, new Long[n + 1]);
     }
 

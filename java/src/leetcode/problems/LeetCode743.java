@@ -1,7 +1,6 @@
 package leetcode.problems;
 
-
-import knowledge.datastructure.graph.shortestpath.*;
+import knowledge.datastructure.graph.shortestpath.Dijkstra;
 
 /**
  * @author aiwujingxin@gmail.com
@@ -10,7 +9,7 @@ import knowledge.datastructure.graph.shortestpath.*;
 public class LeetCode743 {
 
     public int networkDelayTime(int[][] times, int n, int K) {
-        int[] distance = new Dijkstra().getShortestPath(n + 1, times, K);
+        int[] distance = new Dijkstra().shortestPath(n + 1, times, K);
         int result = 0;
         for (int i = 1; i < distance.length; i++) {
             if (distance[i] == 0x3f3f3f3f) {

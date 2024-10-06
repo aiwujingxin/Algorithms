@@ -14,7 +14,7 @@ public class LeetCode1514_SPFA {
     public double maxProbability(int n, int[][] edges, double[] succProb, int start, int end) {
         List<double[]>[] graph = new List[n];
         boolean[] vis = new boolean[n];
-        double[] dist = new double[n];
+        double[] d = new double[n];
         for (int i = 0; i < n; i++) {
             graph[i] = new ArrayList<>();
         }
@@ -24,26 +24,26 @@ public class LeetCode1514_SPFA {
             graph[x].add(new double[]{y, succProb[i]});
             graph[y].add(new double[]{x, succProb[i]});
         }
-        dist[start] = 1;
+        d[start] = 1;
         Queue<Integer> q = new ArrayDeque<>();
         q.add(start);
         vis[start] = true;
         while (!q.isEmpty()) {
-            int root = q.poll();
-            vis[root] = false;
+            int u = q.poll();
+            vis[u] = false;
             //用队列中的点更新于这个点关联的其他点
-            for (double[] d : graph[root]) {
-                double w = d[1];
-                int x = (int) (d[0] * 1);
-                if (dist[x] < dist[root] * w) {
-                    dist[x] = dist[root] * w;
-                    if (!vis[x]) {
-                        q.add(x);
-                        vis[x] = true;
+            for (double[] ne : graph[u]) {
+                double w = ne[1];
+                int v = (int) (ne[0] * 1);
+                if (d[v] < d[u] * w) {
+                    d[v] = d[u] * w;
+                    if (!vis[v]) {
+                        q.add(v);
+                        vis[v] = true;
                     }
                 }
             }
         }
-        return dist[end];
+        return d[end];
     }
 }

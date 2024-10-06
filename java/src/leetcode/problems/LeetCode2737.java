@@ -1,7 +1,7 @@
 package leetcode.problems;
 
 
-import knowledge.datastructure.graph.shortestpath.*;
+import knowledge.datastructure.graph.shortestpath.Dijkstra;
 
 import java.util.*;
 
@@ -16,9 +16,9 @@ public class LeetCode2737 {
         for (int i = 0; i < edges.size(); i++) {
             es[i] = new int[]{edges.get(i).get(0), edges.get(i).get(1), edges.get(i).get(2)};
         }
-        int[] dist = new Dijkstra().getShortestPath(n, es, s);
+        int[] dist = new Dijkstra().shortestPath(n, es, s);
         int ans = 0x3f3f3f3f;
-        HashSet<Integer> set = new HashSet<>();
+        Set<Integer> set = new HashSet<>();
         for (int j : marked) {
             set.add(j);
         }
