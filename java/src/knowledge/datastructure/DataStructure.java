@@ -15,10 +15,10 @@ package knowledge.datastructure;
  * @see knowledge.datastructure.string 串
  * @see knowledge.datastructure.hash   哈希
  * <高级数据结构>
- * @see knowledge.datastructure.advanced.UnionFind 并查集
- * @see knowledge.datastructure.advanced.BITree    树状数组
- * @see knowledge.datastructure.advanced.SegTree   线段树
- * @see knowledge.datastructure.tree.bst           平衡树
+ * @see knowledge.datastructure.adv.UnionFind 并查集
+ * @see knowledge.datastructure.adv.BITree    树状数组
+ * @see knowledge.datastructure.adv.SegTree   线段树
+ * @see knowledge.datastructure.tree.bst      平衡树
  */
 public interface DataStructure {
 }

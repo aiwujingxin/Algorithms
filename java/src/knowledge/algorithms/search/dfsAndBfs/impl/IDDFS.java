@@ -1,9 +1,9 @@
-package knowledge.algorithms.search.advanced;
+package knowledge.algorithms.search.dfsAndBfs.impl;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class IDSSearch {
+public class IDDFS {
 
     public static boolean iterativeDeepeningSearch(Node root, int target) {
         for (int depth = 0; depth < Integer.MAX_VALUE; depth++) {

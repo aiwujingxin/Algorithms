@@ -1,6 +1,6 @@
 package leetcode.problems;
 
-import knowledge.datastructure.advanced.*;
+import knowledge.datastructure.adv.*;
 
 /**
  * @author aiwujingxin@gmail.com

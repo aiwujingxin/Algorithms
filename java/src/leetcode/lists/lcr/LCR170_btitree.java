@@ -1,6 +1,6 @@
 package leetcode.lists.lcr;
 
-import knowledge.datastructure.advanced.*;
+import knowledge.datastructure.adv.*;
 
 import java.util.*;
 

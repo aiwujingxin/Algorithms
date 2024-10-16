@@ -30,7 +30,7 @@ public class FloydWarshall implements ShortestPath {
             dist[edge[0]][edge[1]] = edge[2];
         }
         // 从i 只经过1-k 这些中间点, 到达 j 的最短距离
-        for (int k = 0; k < n; k++) {
+        for (int k = 0; k < n; k++) { // 枚举每个跳板
             for (int i = 0; i < n; i++) {
                 for (int j = 0; j < n; j++) {
                     if (dist[i][k] + dist[k][j] < dist[i][j]) {

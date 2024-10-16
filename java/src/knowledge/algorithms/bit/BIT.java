@@ -4,8 +4,8 @@ package knowledge.algorithms.bit;
  * @author wujingxinit@outlook.com
  * @date 2023/8/31 01:29
  * @description 位运算
- * @see knowledge.datastructure.advanced.BITree    树状数组
- * @see knowledge.algorithms.dp.compressdp         状压DP
+ * @see knowledge.datastructure.adv.BITree    树状数组
+ * @see knowledge.algorithms.dp.compressdp    状压DP
  * @see leetcode.problems.LeetCode67  二进制求和
  * @see leetcode.problems.LeetCode136 只出现一次的数字
  * @see leetcode.problems.LeetCode137 只出现一次的数字II
@@ -15,7 +15,6 @@ package knowledge.algorithms.bit;
  * @see leetcode.problems.LeetCode371 两整数之和
  * @see leetcode.problems.LeetCode405
  * @see leetcode.problems.LeetCode762
-
  */
 public interface BIT {
 

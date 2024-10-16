@@ -1,6 +1,6 @@
 package leetcode.problems;
 
-import knowledge.datastructure.advanced.UnionFind;
+import knowledge.datastructure.adv.UnionFind;
 
 import java.util.Comparator;
 import java.util.PriorityQueue;

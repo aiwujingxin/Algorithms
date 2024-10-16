@@ -1,4 +1,4 @@
-package knowledge.algorithms.search.advanced;
+package knowledge.algorithms.search.dfsAndBfs.problems;
 
 /**
  * @author wujingxinit@outlook.com

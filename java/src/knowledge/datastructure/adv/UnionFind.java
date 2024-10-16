@@ -1,4 +1,4 @@
-package knowledge.datastructure.advanced;
+package knowledge.datastructure.adv;
 
 /**
  * @author wujingxinit@outlook.com
