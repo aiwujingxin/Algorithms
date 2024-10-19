@@ -8,7 +8,7 @@ import java.util.*;
  * @author aiwujingxin@gmail.com
  * @date 2022/7/3 16:24
  */
-public class Kruskal implements MinimumTree {
+public class Kruskal implements MinSpanningTree {
 
     int count = 0;
 

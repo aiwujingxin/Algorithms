@@ -9,7 +9,7 @@ import java.util.Arrays;
  * @date 2023/5/29 21:37
  * @description Bellman-Ford 算法是一种用于解决加权有向图中单源最短路径问题的算法。
  * 它可以处理负权边，而Dijkstra算法则不能。可以解决带限制的最短路径, 差分约束系统与约束图
- * 时间复杂度: O(VE)
+ * 时间复杂度: O(V*E)
  */
 public class BellmanFord implements ShortestPath {
 

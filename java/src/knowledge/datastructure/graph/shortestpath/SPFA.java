@@ -8,7 +8,7 @@ import java.util.*;
  * @author wujingxinit@outlook.com
  * @date 2023/5/29 21:40
  * @description SPFA 对BellmanFord队列优化
- * 时间复杂度 O(E), 最坏情况下 O(VE)
+ * 时间复杂度 O(E), 最坏情况下 O(V*E)
  * 空间复杂度为O(V)。
  */
 public class SPFA implements ShortestPath {

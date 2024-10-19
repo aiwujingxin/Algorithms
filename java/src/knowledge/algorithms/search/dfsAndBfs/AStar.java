@@ -1,4 +1,4 @@
-package knowledge.algorithms.search.dfsAndBfs.impl;
+package knowledge.algorithms.search.dfsAndBfs;
 
 import java.util.*;
 
@@ -7,6 +7,7 @@ import java.util.*;
  * @date 2023/6/6 11:48
  * @description A*=BFS+贪心, f(x)= g(x) + h(x). g(x)初始状态到x的实际代价, h(x)表示x到终点的最优路径评估
  * Dij是特殊的A*(代价函数=0)
+ * 时间复杂度 O(E)
  */
 public class AStar {
     // 0:上，1:右，2:下，3:左

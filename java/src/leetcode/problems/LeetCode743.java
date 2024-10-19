@@ -5,6 +5,7 @@ import knowledge.datastructure.graph.shortestpath.Dijkstra;
 /**
  * @author aiwujingxin@gmail.com
  * @date 2022/6/24 17:18
+ * @link <a href="https://leetcode.cn/problems/network-delay-time/"></a>
  */
 public class LeetCode743 {
 

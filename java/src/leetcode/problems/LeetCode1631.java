@@ -12,69 +12,48 @@ public class LeetCode1631 {
 
     public int minimumEffortPath(int[][] heights) {
         int m = heights.length, n = heights[0].length;
-        // 定义：从 (0, 0) 到 (i, j) 的最小体力消耗是 effortTo[i][j]
-        int[][] effortTo = new int[m][n];
-        // dp table 初始化为正无穷
+        int[][] cost = new int[m][n];
         for (int i = 0; i < m; i++) {
-            Arrays.fill(effortTo[i], Integer.MAX_VALUE);
+            Arrays.fill(cost[i], Integer.MAX_VALUE);
         }
-        // base case，起点到起点的最小消耗就是 0
-        effortTo[0][0] = 0;
-
-        // 优先级队列，effortFromStart 较小的排在前面
+        cost[0][0] = 0;
         PriorityQueue<int[]> pq = new PriorityQueue<>(Comparator.comparingInt(a -> a[2]));
-
-        // 从起点 (0, 0) 开始进行 BFS
-        pq.offer(new int[]{0, 0, 0});
-
+        pq.add(new int[]{0, 0, 0});
         while (!pq.isEmpty()) {
-            int[] curState = pq.poll();
-            int curX = curState[0];
-            int curY = curState[1];
-            int curEffortFromStart = curState[2];
-
-            // 到达终点提前结束
+            int[] node = pq.poll();
+            int curX = node[0];
+            int curY = node[1];
+            int curCost = node[2];
             if (curX == m - 1 && curY == n - 1) {
-                return curEffortFromStart;
+                return curCost;
             }
-
-            if (curEffortFromStart > effortTo[curX][curY]) {
+            if (curCost > cost[curX][curY]) {
                 continue;
             }
-            // 将 (curX, curY) 的相邻坐标装入队列
-            for (int[] neighbor : getNext(heights, curX, curY)) {
-                int nextX = neighbor[0];
-                int nextY = neighbor[1];
-                // 计算从 (curX, curY) 达到 (nextX, nextY) 的消耗
-                int effortToNextNode = Math.max(
-                        effortTo[curX][curY],
-                        Math.abs(heights[curX][curY] - heights[nextX][nextY])
-                );
-                // 更新 dp table
-                if (effortTo[nextX][nextY] > effortToNextNode) {
-                    effortTo[nextX][nextY] = effortToNextNode;
-                    pq.offer(new int[]{nextX, nextY, effortToNextNode});
+            for (int[] ne : getNext(heights, curX, curY)) {
+                int nx = ne[0];
+                int ny = ne[1];
+                int w = Math.max(cost[curX][curY], Math.abs(heights[curX][curY] - heights[nx][ny]));
+                if (cost[nx][ny] > w) {
+                    cost[nx][ny] = w;
+                    pq.add(new int[]{nx, ny, w});
                 }
             }
         }
-        // 正常情况不会达到这个 return
         return -1;
     }
 
-    // 返回坐标 (x, y) 的上下左右相邻坐标
     List<int[]> getNext(int[][] matrix, int x, int y) {
         int m = matrix.length, n = matrix[0].length;
-        // 存储相邻节点
-        List<int[]> neighbors = new ArrayList<>();
+        List<int[]> nexts = new ArrayList<>();
         for (int[] dir : dirs) {
             int nx = x + dir[0];
             int ny = y + dir[1];
             if (nx >= m || nx < 0 || ny >= n || ny < 0) {
-                // 索引越界
                 continue;
             }
-            neighbors.add(new int[]{nx, ny});
+            nexts.add(new int[]{nx, ny});
         }
-        return neighbors;
+        return nexts;
     }
 }

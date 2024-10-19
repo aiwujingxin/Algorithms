@@ -21,7 +21,6 @@ public class LeetCode1928_BellmanFord {
         for (int currTime = 0; currTime <= maxTime; currTime++) {
             for (int[] edge : edges) {                    // loop through all the edges
                 int reachTime = currTime + edge[2];      // if time to reach the next node is > maxTime, then just skip this edge
-
                 // the edges are bidirectional, so we have to handle both directions
                 for (int i = 0; reachTime <= maxTime && i <= 1; i++) {
                     int fromNode = edge[i ^ 0], toNode = edge[i ^ 1];    // intelligent way to swap the fromNode and toNode
@@ -31,8 +30,9 @@ public class LeetCode1928_BellmanFord {
                 }
             }
         }
-        for (int t = 0; t <= maxTime; t++)
+        for (int t = 0; t <= maxTime; t++) {
             minCost = Math.min(minCost, dp[t][n - 1]); // find the minCost to reach lastNode
+        }
         return minCost == Integer.MAX_VALUE ? -1 : minCost;
     }
 }

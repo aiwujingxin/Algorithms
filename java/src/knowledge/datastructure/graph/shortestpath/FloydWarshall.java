@@ -8,7 +8,7 @@ import java.util.*;
  * @author aiwujingxin@gmail.com
  * @date 2022/6/26 18:14
  * @description Floyd 基于动态规划
- * 时间复杂度: O(n3)
+ * 时间复杂度: O(V^3)
  */
 public class FloydWarshall implements ShortestPath {
     final static int INF = 0x3f3f3f3f;

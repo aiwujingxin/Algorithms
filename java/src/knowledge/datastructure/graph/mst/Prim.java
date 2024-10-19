@@ -9,7 +9,7 @@ import java.util.*;
  * @date 2022/7/3 16:24
  * @description 最小生成树 Prim 算法
  */
-public class Prim implements MinimumTree {
+public class Prim implements MinSpanningTree {
 
     public int MST(int n, int[][] edges) {
         List<int[]>[] graph = new ArrayList[n];

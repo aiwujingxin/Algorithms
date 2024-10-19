@@ -8,11 +8,12 @@ import java.util.PriorityQueue;
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/9/3 11:42
+ * @link <a href="https://doocs.github.io/leetcode/lc/2093/"></a>
  */
 public class LeetCode2093_dijkstra {
 
     public int minimumCost(int n, int[][] highways, int discounts) {
-        List<int[]>[] graph = new ArrayList[n];
+        List<int[]>[] graph = new List[n];
         for (int i = 0; i < n; i++) {
             graph[i] = new ArrayList<>();
         }
@@ -25,7 +26,7 @@ public class LeetCode2093_dijkstra {
             Arrays.fill(d, Integer.MAX_VALUE);
         }
         dp[0][0] = 0;
-        // [idx][discount 次数][费用]
+        // [idx, discount 次数 , 费用]
         PriorityQueue<int[]> queue = new PriorityQueue<>((o1, o2) -> o1[1] == o2[1] ? o1[2] - o2[2] : o1[1] - o2[1]);
         queue.add(new int[]{0, 0, 0});
         while (!queue.isEmpty()) {
@@ -42,11 +43,12 @@ public class LeetCode2093_dijkstra {
                 int to = next[0];
                 int nextToll = next[1];
                 int d = dp[from][disCnt] + nextToll;
+                // 不使用打折
                 if (d < dp[to][disCnt]) {
                     dp[to][disCnt] = d;
                     queue.add(new int[]{to, disCnt, d});
                 }
-
+                // 使用打折
                 int dd = dp[from][disCnt] + nextToll / 2;
                 if (disCnt + 1 <= discounts && dd < dp[to][disCnt + 1]) {
                     dp[to][disCnt + 1] = dd;

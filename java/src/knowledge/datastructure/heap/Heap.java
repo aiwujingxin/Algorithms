@@ -1,5 +1,7 @@
 package knowledge.datastructure.heap;
 
+import knowledge.datastructure.graph.MinSpanningTree;
+
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/12/26 23:16
@@ -10,7 +12,8 @@ package knowledge.datastructure.heap;
  * 图算法：在一些图算法中，如最短路径算法（Dijkstra算法）、最小生成树算法（Prim算法、Kruskal算法）等，优先队列可以用来选择下一个要处理的顶点或边。
  * 哈夫曼编码：哈夫曼编码是一种用于数据压缩的技术。在哈夫曼编码中，通过使用优先队列来构建最优的编码树，以便实现高效的数据压缩。
  * 搜索算法：在一些搜索算法中，如A*算法，优先队列可以用来选择下一个要扩展的节点，以便找到最优解。
- * <最值问题 TopK>
+ * <排序问题>
+ * @see knowledge.algorithms.sort.HeapSort
  * @see knowledge.algorithms.sort.TopK
  * @see leetcode.problems.LeetCode239
  * @see leetcode.problems.LeetCode4
@@ -23,7 +26,7 @@ package knowledge.datastructure.heap;
  * @see leetcode.problems.LeetCode355
  * <图问题>
  * @see knowledge.datastructure.graph.ShortestPath
- * @see knowledge.datastructure.graph.MinimumTree
+ * @see MinSpanningTree
  */
 public interface Heap {
 

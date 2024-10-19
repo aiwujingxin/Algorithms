@@ -10,6 +10,8 @@ import knowledge.datastructure.graph.shortestpath.Dijkstra;
  */
 public class LeetCode2093_Bellman {
 
+    final static int INF = 0x3f3f3f3f;
+
     public int minimumCost(int n, int[][] highways, int discounts) {
         Dijkstra dijkstra = new Dijkstra();
         int[] dist = dijkstra.shortestPath(n, highways, 0);
@@ -28,6 +30,6 @@ public class LeetCode2093_Bellman {
                 }
             }
         }
-        return dist[n - 1] == 0x3f3f3f3f ? -1 : dist[n - 1];
+        return dist[n - 1] == INF ? -1 : dist[n - 1];
     }
 }

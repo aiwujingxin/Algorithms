@@ -8,7 +8,6 @@ import java.util.HashSet;
  */
 public class LeetCode1584_prim {
 
-
     public int minCostConnectPoints(int[][] points) {
         int n = points.length, ans = 0;
         HashSet<Integer> mst = new HashSet<>();
@@ -19,7 +18,7 @@ public class LeetCode1584_prim {
             dist[i] = calculateDist(points, 0, i);
         }
         while (mst.size() != n) {
-            // Find the node that has shortest distance
+            // Find the node that has the shortest distance
             int next = -1;
             for (int i = 0; i < n; i++) {
                 if (mst.contains(i)) {

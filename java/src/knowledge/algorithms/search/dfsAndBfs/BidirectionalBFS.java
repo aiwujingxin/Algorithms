@@ -1,4 +1,4 @@
-package knowledge.algorithms.search.dfsAndBfs.impl;
+package knowledge.algorithms.search.dfsAndBfs;
 
 import java.util.ArrayList;
 import java.util.LinkedList;

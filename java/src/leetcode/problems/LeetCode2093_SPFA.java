@@ -5,14 +5,14 @@ import java.util.*;
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/9/3 12:27
- * spfa求带限制的最短路
+ * @description spfa求带限制的最短路
  */
 public class LeetCode2093_SPFA {
 
     //https://leetcode.cn/problems/minimum-cost-to-reach-city-with-discounts/solutions/1143195/py3-spfaqiu-dai-xian-zhi-de-zui-duan-lu-df7qj/
 
     public int minimumCost(int n, int[][] highways, int discounts) {
-        List<int[]>[] graph = new ArrayList[n];
+        List<int[]>[] graph = new List[n];
         for (int i = 0; i < n; i++) {
             graph[i] = new ArrayList<>();
         }
