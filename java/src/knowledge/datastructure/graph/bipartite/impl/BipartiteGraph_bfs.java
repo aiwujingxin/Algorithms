@@ -1,7 +1,6 @@
-package knowledge.datastructure.graph.bipartite;
+package knowledge.datastructure.graph.bipartite.impl;
 
-
-import knowledge.datastructure.graph.BipartiteGraph;
+import knowledge.datastructure.graph.bipartite.BipartiteGraph;
 
 import java.util.*;
 

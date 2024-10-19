@@ -1,7 +1,7 @@
 package leetcode.problems;
 
 
-import knowledge.datastructure.graph.bipartite.*;
+import knowledge.datastructure.graph.bipartite.impl.BipartiteGraph_bfs;
 
 /**
  * @author wujingxinit@outlook.com

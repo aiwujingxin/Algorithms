@@ -1,4 +1,4 @@
-package knowledge.datastructure.graph;
+package knowledge.datastructure.graph.detectcycle;
 
 import leetcode.problems.LeetCode207;
 
@@ -9,5 +9,6 @@ import leetcode.problems.LeetCode207;
  * @see LeetCode207
  */
 public interface DetectCycle {
+
     boolean hasCycle(int n, int[][] edges);
 }

@@ -1,4 +1,4 @@
-package knowledge.datastructure.graph.connectivity;
+package knowledge.datastructure.graph.connectivity.impl;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,7 +1,7 @@
-package knowledge.datastructure.graph;
+package knowledge.datastructure.graph.shortestpath;
 
+import knowledge.datastructure.graph.shortestpath.impl.*;
 import leetcode.problems.*;
-import knowledge.datastructure.graph.shortestpath.*;
 import knowledge.algorithms.search.dfsAndBfs.*;
 
 /**

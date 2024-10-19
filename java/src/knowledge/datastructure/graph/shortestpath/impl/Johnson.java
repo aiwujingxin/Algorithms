@@ -1,4 +1,4 @@
-package knowledge.datastructure.graph.shortestpath;
+package knowledge.datastructure.graph.shortestpath.impl;
 
 import java.util.*;
 

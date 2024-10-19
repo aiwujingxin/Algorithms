@@ -1,4 +1,4 @@
-package knowledge.datastructure.graph.detectcycle;
+package knowledge.datastructure.graph.detectcycle.impl;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,6 +1,6 @@
-package knowledge.datastructure.graph.detectcycle;
+package knowledge.datastructure.graph.detectcycle.impl;
 
-import knowledge.datastructure.graph.DetectCycle;
+import knowledge.datastructure.graph.detectcycle.DetectCycle;
 
 import java.util.*;
 

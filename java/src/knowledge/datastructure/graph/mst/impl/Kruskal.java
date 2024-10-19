@@ -1,6 +1,6 @@
-package knowledge.datastructure.graph.mst;
+package knowledge.datastructure.graph.mst.impl;
 
-import knowledge.datastructure.graph.*;
+import knowledge.datastructure.graph.mst.MinSpanningTree;
 
 import java.util.*;
 

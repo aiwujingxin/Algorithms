@@ -1,6 +1,7 @@
 package knowledge.datastructure.heap;
 
-import knowledge.datastructure.graph.MinSpanningTree;
+import knowledge.datastructure.graph.mst.MinSpanningTree;
+import knowledge.datastructure.graph.shortestpath.ShortestPath;
 
 /**
  * @author wujingxinit@outlook.com
@@ -25,7 +26,7 @@ import knowledge.datastructure.graph.MinSpanningTree;
  * @see leetcode.problems.LeetCode786
  * @see leetcode.problems.LeetCode355
  * <图问题>
- * @see knowledge.datastructure.graph.ShortestPath
+ * @see ShortestPath
  * @see MinSpanningTree
  */
 public interface Heap {

@@ -1,4 +1,4 @@
-package knowledge.datastructure.graph;
+package knowledge.datastructure.graph.bipartite;
 
 import leetcode.problems.LeetCode785;
 import leetcode.problems.LeetCode886;

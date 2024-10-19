@@ -1,4 +1,4 @@
-package knowledge.datastructure.graph;
+package knowledge.datastructure.graph.mst;
 
 import leetcode.problems.*;
 

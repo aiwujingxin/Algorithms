@@ -1,6 +1,6 @@
 package leetcode.problems;
 
-import knowledge.datastructure.graph.shortestpath.Dijkstra;
+import knowledge.datastructure.graph.shortestpath.impl.Dijkstra;
 
 import java.util.*;
 

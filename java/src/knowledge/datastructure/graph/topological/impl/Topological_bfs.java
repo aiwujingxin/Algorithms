@@ -1,6 +1,6 @@
-package knowledge.datastructure.graph.topological;
+package knowledge.datastructure.graph.topological.impl;
 
-import knowledge.datastructure.graph.Topological;
+import knowledge.datastructure.graph.topological.Topological;
 
 import java.util.LinkedList;
 import java.util.List;
