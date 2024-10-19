@@ -7,7 +7,7 @@ import java.util.*;
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/5/29 21:40
- * @description SPFA 对BellmanFord队列优化
+ * @description SPFA 对Bellman-Ford 队列优化
  * 时间复杂度 O(E), 最坏情况下 O(V*E)
  * 空间复杂度为O(V)。
  */
@@ -40,7 +40,7 @@ public class SPFA implements ShortestPath {
                 if (d[v] > d[u] + w) {
                     d[v] = d[u] + w;
                     if (!vis[v]) {
-                        q.add(v);
+                        q.add(v); // 只考察有必要的点
                         vis[v] = true;
                         cnt[v]++;
                         if (cnt[v] >= n) {

@@ -6,7 +6,7 @@ import java.util.*;
  * @author aiwujingxin@gmail.com
  * @date 2022/6/27 19:56
  */
-public class LeetCode1928_Dijkstra {
+public class LeetCode1928 {
 
     public int minCost(int maxTime, int[][] edges, int[] passingFees) {
         int n = passingFees.length;
@@ -15,15 +15,16 @@ public class LeetCode1928_Dijkstra {
         Integer[] timeHold = new Integer[n];
         Arrays.fill(timeHold, Integer.MAX_VALUE);
 
-        Map<Integer, List<int[]>> graph = new HashMap<>();
+        List<int[]>[] graph = new List[n];
+        for (int i = 0; i < n; i++) {
+            graph[i] = new ArrayList<>();
+        }
         for (int[] edge : edges) {
             int src = edge[0];
             int dst = edge[1];
             int time = edge[2];
-            graph.putIfAbsent(src, new ArrayList<>());
-            graph.putIfAbsent(dst, new ArrayList<>());
-            graph.get(src).add(new int[]{dst, time});
-            graph.get(dst).add(new int[]{src, time});
+            graph[src].add(new int[]{dst, time});
+            graph[dst].add(new int[]{src, time});
         }
 
         PriorityQueue<int[]> pq = new PriorityQueue<>((a, b) -> a[1] - b[1]); //a[0] = city, a[1] = cost, a[2] = time
@@ -39,7 +40,7 @@ public class LeetCode1928_Dijkstra {
                 return fee;
             }
 
-            for (int[] nei : graph.get(src)) {
+            for (int[] nei : graph[src]) {
 
                 int neiNode = nei[0];
                 int neiTime = nei[1];

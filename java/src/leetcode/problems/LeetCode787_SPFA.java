@@ -1,6 +1,8 @@
 package leetcode.problems;
 
 import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.Queue;
 
 /**
  * @author wujingxinit@outlook.com
@@ -17,25 +19,21 @@ public class LeetCode787_SPFA {
         for (int[] flight : flights) {
             g[flight[0]][flight[1]] = flight[2];
         }
-
         int[] dist = new int[n];
         Arrays.fill(dist, INF);
         dist[src] = 0;
-
-        int[] queue = new int[1001];
-        int offerIndex = 0, pollIndex = 0;
-        queue[offerIndex++] = src;
-
+        Queue<Integer> q = new LinkedList<>();
+        q.add(src);
         while (k-- >= 0) {
             int[] clone = dist.clone();
-            int size = offerIndex - pollIndex;
+            int size = q.size();
             while (size-- > 0) {
-                int node = queue[pollIndex++];
+                int node = q.poll();
                 for (int i = 0; i < n; i++) {
                     int tmp = clone[node] + g[node][i];
                     if (tmp < dist[i]) {
                         dist[i] = tmp;
-                        queue[offerIndex++] = i;
+                        q.add(i);
                     }
                 }
             }

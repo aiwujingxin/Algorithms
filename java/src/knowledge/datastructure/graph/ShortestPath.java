@@ -31,9 +31,9 @@ import knowledge.algorithms.search.dfsAndBfs.*;
  * <多源最短路径>
  * @see LeetCode847
  * @see LeetCode1462_Floyd
- * <分层图最短路 带限制最短路> 扩点 位置+状态的组合
+ * <分层图最短路> 扩点 位置+状态的组合
  * @see LeetCode787 K 站中转内最便宜的航班
- * @see LeetCode1928_Dijkstra
+ * @see LeetCode1928
  * @see LeetCode864
  * @see leetcode.lists.lcp.LCP35
  * @see LeetCode2093_dijkstra 前往目标城市的最小费用
