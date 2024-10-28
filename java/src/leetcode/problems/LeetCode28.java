@@ -30,10 +30,10 @@ public class LeetCode28 {
     }
 
     public int strStr_kmp(String haystack, String needle) {
-        return new KMP().search(haystack, needle);
+        return new KMP().strStr(haystack, needle);
     }
 
     public int strStr_RabinKarp(String haystack, String needle) {
-        return new RabinKarp().search(haystack, needle);
+        return new RabinKarp().strStr(haystack, needle);
     }
 }

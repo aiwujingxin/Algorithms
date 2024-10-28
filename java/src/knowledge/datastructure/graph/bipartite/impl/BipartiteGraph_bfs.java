@@ -11,15 +11,16 @@ import java.util.*;
 
 public class BipartiteGraph_bfs implements BipartiteGraph {
 
-    HashMap<Integer, List<Integer>> graph = new HashMap<>();
+    List<Integer>[] graph;
 
     public boolean isBipartite(int n, int[][] edges) {
+        graph = new List[n];
         for (int i = 0; i < n; i++) {
-            graph.put(i, new ArrayList<>());
+            graph[i] = new ArrayList<>();
         }
         for (int[] edge : edges) {
-            graph.get(edge[1]).add(edge[0]);
-            graph.get(edge[0]).add(edge[1]);
+            graph[edge[1]].add(edge[0]);
+            graph[edge[0]].add(edge[1]);
         }
         int[] colors = new int[n];
         Arrays.fill(colors, -1);
@@ -39,7 +40,7 @@ public class BipartiteGraph_bfs implements BipartiteGraph {
         colors[s] = 0;
         while (!q.isEmpty()) {
             int cur = q.poll();
-            for (int next : graph.get(cur)) {
+            for (int next : graph[cur]) {
                 if (colors[next] == -1) {
                     colors[next] = 1 - colors[cur];
                     q.add(next);

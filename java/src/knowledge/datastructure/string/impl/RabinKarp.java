@@ -12,7 +12,7 @@ import knowledge.datastructure.string.Search;
  */
 public class RabinKarp implements Search {
 
-    public int search(String txt, String pat) {
+    public int strStr(String txt, String pat) {
         int n = pat.length();
         // 进制（只考虑 ASCII 编码）
         int mul = 256;

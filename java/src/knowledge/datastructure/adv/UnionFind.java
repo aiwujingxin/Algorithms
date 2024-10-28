@@ -16,29 +16,24 @@ package knowledge.datastructure.adv;
  * @see leetcode.problems.LeetCode947_uf 移除最多的同行或同列石头
  * @see leetcode.problems.LeetCode990 等式方程的可满足性
  * @see leetcode.problems.LeetCode839 相似字符串组
- *
  */
 public class UnionFind {
 
-    private final int[] parent, size;
-    private int count; // number of components
+    private final int[] pa, size;
+    private int cnt;
 
     public UnionFind(int n) {
-        this.parent = new int[n];
+        this.pa = new int[n];
         this.size = new int[n];
-        this.count = n;
+        this.cnt = n;
         for (int i = 0; i < n; i++) {
-            // parent[i] = parent of i
-            parent[i] = i;
+            pa[i] = i;
             size[i] = 1;
         }
     }
 
     public int find(int x) {
-        if (parent[x] != x) {
-            parent[x] = find(parent[x]);
-        }
-        return parent[x];
+        return pa[x] == x ? x : (pa[x] = find(pa[x])); // 路径压缩
     }
 
     public boolean isConnected(int p, int q) {
@@ -46,22 +41,22 @@ public class UnionFind {
     }
 
     public boolean union(int x, int y) {
-        int rootX = find(x);
-        int rootY = find(y);
-        if (rootX == rootY) {
+        x = find(x);
+        y = find(y);
+        if (x == y) {
             return false;
         }
-        parent[rootX] = rootY;
-        size[rootY] += size[rootX];
-        count--;
+        pa[x] = y;
+        size[y] += size[x];
+        cnt--;
         return true;
     }
 
     public int getCount() {
-        return count;
+        return cnt;
     }
 
     public int sizeOfSet(int x) {
-        return this.size[find(x)];
+        return size[find(x)];
     }
 }

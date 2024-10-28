@@ -2,6 +2,7 @@ package knowledge.datastructure.graph.topological.impl;
 
 import knowledge.datastructure.graph.topological.Topological;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
@@ -13,35 +14,35 @@ import java.util.Queue;
 public class Topological_bfs implements Topological {
 
     public int[] findOrder(int n, int[][] edges) {
-        List<Integer>[] graph = new List[n];
-        int[] indgree = new int[n];
+        List<Integer>[] g = new List[n];
+        int[] d = new int[n];
         for (int i = 0; i < n; i++) {
-            graph[i] = new LinkedList<>();
+            g[i] = new ArrayList<>();
         }
-        for (int[] edge : edges) {
-            graph[edge[1]].add(edge[0]);
-            indgree[edge[0]]++;
+        for (int[] e : edges) {
+            g[e[1]].add(e[0]);
+            d[e[0]]++;
         }
-        Queue<Integer> queue = new LinkedList<>();
+        Queue<Integer> q = new LinkedList<>();
         for (int i = 0; i < n; i++) {
-            if (indgree[i] == 0) {
-                queue.add(i);
+            if (d[i] == 0) {
+                q.add(i);
             }
         }
         int[] res = new int[n];
-        int count = 0;
-        while (!queue.isEmpty()) {
-            int cur = queue.poll();
-            res[count] = cur;
-            count++;
-            for (int next : graph[cur]) {
-                indgree[next]--;
-                if (indgree[next] == 0) {
-                    queue.add(next);
+        int cnt = 0;
+        while (!q.isEmpty()) {
+            int u = q.poll();
+            res[cnt] = u;
+            cnt++;
+            for (int v : g[u]) {
+                d[v]--;
+                if (d[v] == 0) {
+                    q.add(v);
                 }
             }
         }
-        if (count != n) {
+        if (cnt != n) {
             return new int[]{};
         }
         return res;

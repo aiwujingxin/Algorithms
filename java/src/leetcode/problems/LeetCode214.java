@@ -16,7 +16,7 @@ public class LeetCode214 {
 
     public String shortestPalindrome_kmp(String s) {
         String str = s + "#" + new StringBuilder(s).reverse();
-        int[] next = new KMP().makePrefix(str);
-        return new StringBuilder(s.substring(next[str.length() - 1])).reverse() + s;
+        int[] next = new KMP().next(str);
+        return new StringBuilder(s.substring(next[str.length()])).reverse() + s;
     }
 }

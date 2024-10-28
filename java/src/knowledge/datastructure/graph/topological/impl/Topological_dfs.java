@@ -12,56 +12,45 @@ import java.util.List;
  */
 public class Topological_dfs implements Topological {
 
-    List<Integer> postorder = new ArrayList<>();
-    boolean[] onPath;
-    boolean[] visited;
-    boolean hasCycle = false;
+    List<Integer>[] graph;
+    List<Integer> order;
+    int[] c;
 
     public int[] findOrder(int n, int[][] edges) {
-        List<Integer>[] graph = new List[n];
+        order = new ArrayList<>();
+        graph = new List[n];
         for (int i = 0; i < n; i++) {
             graph[i] = new ArrayList<>();
         }
         for (int[] edge : edges) {
             graph[edge[1]].add(edge[0]);
         }
-
-        visited = new boolean[n];
-        onPath = new boolean[n];
-
+        c = new int[n];
         for (int i = 0; i < n; i++) {
-            traverse(graph, i);
+            if (c[i] == 0 && dfs(i)) {
+                return new int[]{};
+            }
         }
-
-        // 有环图无法进行拓扑排序
-        if (hasCycle) {
-            return new int[]{};
-        }
-        // 逆后序遍历结果即为拓扑排序结果
-        Collections.reverse(postorder);
+        Collections.reverse(order);
         int[] res = new int[n];
         for (int i = 0; i < n; i++) {
-            res[i] = postorder.get(i);
+            res[i] = order.get(i);
         }
         return res;
     }
 
-    void traverse(List<Integer>[] graph, int s) {
-        if (onPath[s]) {
-            hasCycle = true;
+    private boolean dfs(int x) {
+        c[x] = -1; // visiting
+        for (int y : graph[x]) {
+            if (c[y] == -1) {
+                return true;
+            }
+            if (c[y] == 0  /*to_visit*/ && dfs(y)) {
+                return true;
+            }
         }
-
-        if (visited[s] || hasCycle) {
-            return;
-        }
-
-        visited[s] = true;
-        onPath[s] = true;
-        for (int t : graph[s]) {
-            traverse(graph, t);
-        }
-        // 后序代码位置
-        postorder.add(s);
-        onPath[s] = false;
+        c[x] = 1; // visited
+        order.add(x);
+        return false;
     }
 }

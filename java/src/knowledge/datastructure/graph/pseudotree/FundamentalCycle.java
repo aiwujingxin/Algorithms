@@ -1,7 +1,13 @@
-package knowledge.datastructure.graph.detectcycle.impl;
+package knowledge.datastructure.graph.pseudotree;
 
 import java.util.ArrayList;
 import java.util.List;
+
+/**
+ * @author wujingxinit@outlook.com
+ * @date 2024/10/26 12:38
+ * @description 基环树 如果一张无向连通图包含恰好一个环，则称它是一棵基环树
+ */
 
 public class FundamentalCycle {
 
@@ -74,11 +80,10 @@ public class FundamentalCycle {
 
 
     static class Graph {
-        private int V; // 图的节点数
-        private List<List<Integer>> adj; // 邻接表
+        private final List<List<Integer>> adj; // 邻接表
 
         public Graph(int V) {
-            this.V = V;
+            // 图的节点数
             adj = new ArrayList<>(V);
             for (int i = 0; i < V; i++) {
                 adj.add(new ArrayList<>());

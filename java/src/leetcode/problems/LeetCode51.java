@@ -7,62 +7,44 @@ import java.util.*;
  * @date 2024/4/12 00:54
  */
 public class LeetCode51 {
+
     List<List<String>> res;
     int n;
+    boolean[] c, p, q;
+    int[] pos;
 
     public List<List<String>> solveNQueens(int n) {
-        char[][] board = new char[n][n];
-        for (int i = 0; i < n; i++) {
-            Arrays.fill(board[i], '.');
-        }
         this.res = new ArrayList<>();
         this.n = n;
-        bk(board, 0);
+        this.pos = new int[n];
+        this.c = new boolean[n];
+        this.p = new boolean[2 * n];
+        this.q = new boolean[2 * n];
+        backtrack(0);
         return res;
     }
 
-    private void bk(char[][] board, int row) {
-        if (row == n) {
-            // 组装结果
+    private void backtrack(int i) {
+        if (i == n) {
             List<String> list = new ArrayList<>();
-            for (int i = 0; i < n; i++) {
+            for (int row = 0; row < n; row++) {
                 StringBuilder sb = new StringBuilder();
                 for (int j = 0; j < n; j++) {
-                    sb.append(board[i][j]);
+                    sb.append(pos[row] == j ? "Q" : ".");
                 }
                 list.add(sb.toString());
             }
             res.add(list);
             return;
         }
-        for (int col = 0; col < n; col++) {
-            if (place(board, row, col)) {
-                board[row][col] = 'Q';
-                bk(board, row + 1);
-                board[row][col] = '.';
+        for (int j = 0; j < n; j++) {
+            if (c[j] || p[i + j] || q[i - j + n]) {
+                continue;
             }
+            pos[i] = j;
+            c[j] = p[i + j] = q[i - j + n] = true;
+            backtrack(i + 1);
+            c[j] = p[i + j] = q[i - j + n] = false;
         }
-    }
-
-    private boolean place(char[][] board, int row, int col) {
-        for (int i = 0; i < n; i++) {
-            if (board[i][col] == 'Q') {
-                return false;
-            }
-        }
-        for (int i = 0; i < n; i++) {
-            if (board[row][i] == 'Q') {
-                return false;
-            }
-        }
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < n; j++) {
-                if (i + j == row + col || j - i == col - row) {
-                    if (board[i][j] == 'Q')
-                        return false;
-                }
-            }
-        }
-        return true;
     }
 }

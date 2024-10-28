@@ -9,5 +9,5 @@ package knowledge.datastructure.string;
  */
 public interface Search {
 
-    int search(String txt, String pat);
+    int strStr(String txt, String pat);
 }

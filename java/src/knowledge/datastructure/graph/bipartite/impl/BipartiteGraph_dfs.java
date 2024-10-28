@@ -4,7 +4,6 @@ import knowledge.datastructure.graph.bipartite.BipartiteGraph;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -13,15 +12,16 @@ import java.util.List;
  */
 public class BipartiteGraph_dfs implements BipartiteGraph {
 
-    HashMap<Integer, List<Integer>> graph = new HashMap<>();
+    List<Integer>[] graph;
 
     public boolean isBipartite(int n, int[][] edges) {
+        graph = new List[n];
         for (int i = 0; i < n; i++) {
-            graph.put(i, new ArrayList<>());
+            graph[i] = new ArrayList<>();
         }
         for (int[] edge : edges) {
-            graph.get(edge[1]).add(edge[0]);
-            graph.get(edge[0]).add(edge[1]);
+            graph[edge[1]].add(edge[0]);
+            graph[edge[0]].add(edge[1]);
         }
         int[] colors = new int[n];
         Arrays.fill(colors, -1);
@@ -37,7 +37,7 @@ public class BipartiteGraph_dfs implements BipartiteGraph {
 
     private boolean dfs(int v, int[] colors, int color) {
         colors[v] = color;
-        for (int neighbor : graph.get(v)) {
+        for (int neighbor : graph[v]) {
             if (colors[neighbor] == color) {
                 return false;
             }

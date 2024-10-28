@@ -1,6 +1,5 @@
 package knowledge.datastructure.graph.connectivity.impl;
 
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -10,7 +9,7 @@ import java.util.Stack;
  * @author wujingxinit@outlook.com
  * @date 2023/9/3 13:54
  */
-public class KosarajuSCC {
+public class Kosaraju {
 
     public static void main(String[] args) {
         int V = 8; // 8个节点
@@ -28,7 +27,7 @@ public class KosarajuSCC {
         graph.addEdge(6, 7);
         graph.addEdge(7, 6);
 
-        KosarajuSCC kosaraju = new KosarajuSCC(graph);
+        Kosaraju kosaraju = new Kosaraju(graph);
         List<List<Integer>> scc = kosaraju.findSCC();
 
         System.out.println("强连通分量:");
@@ -43,7 +42,7 @@ public class KosarajuSCC {
     private final boolean[] visited;
     private final Stack<Integer> stack;
 
-    public KosarajuSCC(Graph graph) {
+    public Kosaraju(Graph graph) {
         this.graph = graph;
         this.V = graph.getAdjacencyList().length;
         this.scc = new ArrayList<>();
@@ -115,7 +114,7 @@ public class KosarajuSCC {
         private final List<Integer>[] adj;
 
         public Graph(int V) {
-            adj = new ArrayList[V];
+            adj = new List[V];
             for (int i = 0; i < V; i++) {
                 adj[i] = new ArrayList<>();
             }

@@ -7,38 +7,37 @@ import java.util.*;
  * @date 2023/11/3 13:27
  */
 public class LeetCode210 {
-    
-    public int[] findOrder(int numCourses, int[][] prerequisites) {
-        int[] res = new int[numCourses];
-        int[] indegree = new int[numCourses];
-        List<Integer>[] graph = new List[numCourses];
-        for (int i = 0; i < numCourses; i++) {
+
+    public int[] findOrder(int n, int[][] prerequisites) {
+        int[] order = new int[n];
+        int[] degree = new int[n];
+        List<Integer>[] graph = new List[n];
+        for (int i = 0; i < n; i++) {
             graph[i] = new ArrayList<>();
         }
         for (int[] p : prerequisites) {
-            indegree[p[0]]++;
+            degree[p[0]]++;
             graph[p[1]].add(p[0]);
         }
         Queue<Integer> queue = new LinkedList<>();
         int cnt = 0;
-        for (int i = 0; i < numCourses; i++) {
-            if (indegree[i] == 0) {
+        for (int i = 0; i < n; i++) {
+            if (degree[i] == 0) {
                 queue.add(i);
-                res[cnt] = i;
-                cnt++;
+                order[cnt] = i;
             }
         }
         while (!queue.isEmpty()) {
             int cur = queue.poll();
+            cnt++;
             for (int next : graph[cur]) {
-                indegree[next]--;
-                if (indegree[next] == 0) {
+                degree[next]--;
+                if (degree[next] == 0) {
                     queue.add(next);
-                    res[cnt] = next;
-                    cnt++;
+                    order[cnt] = next;
                 }
             }
         }
-        return cnt == numCourses ? res : new int[]{};
+        return cnt == n ? order : new int[]{};
     }
 }

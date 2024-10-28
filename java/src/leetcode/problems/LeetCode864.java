@@ -24,7 +24,9 @@ public class LeetCode864 {
                 if (c == '@') {
                     d.addLast(new int[]{i, j, 0});
                     dist[i][j][0] = 0;
-                } else if (c >= 'a' && c <= 'z') cnt++;
+                } else if (c >= 'a' && c <= 'z') {
+                    cnt++;
+                }
             }
         }
         while (!d.isEmpty()) {
@@ -32,14 +34,26 @@ public class LeetCode864 {
             int x = info[0], y = info[1], cur = info[2], step = dist[x][y][cur];
             for (int[] di : dirs) {
                 int nx = x + di[0], ny = y + di[1];
-                if (nx < 0 || nx >= n || ny < 0 || ny >= m) continue;
+                if (nx < 0 || nx >= n || ny < 0 || ny >= m) {
+                    continue;
+                }
                 char c = g[nx].charAt(ny);
-                if (c == '#') continue;
-                if ((c >= 'A' && c <= 'Z') && (cur >> (c - 'A') & 1) == 0) continue;
+                if (c == '#') {
+                    continue;
+                }
+                if ((c >= 'A' && c <= 'Z') && (cur >> (c - 'A') & 1) == 0) {
+                    continue;
+                }
                 int ncur = cur;
-                if (c >= 'a' && c <= 'z') ncur |= 1 << (c - 'a');
-                if (ncur == (1 << cnt) - 1) return step + 1;
-                if (step + 1 >= dist[nx][ny][ncur]) continue;
+                if (c >= 'a' && c <= 'z') {
+                    ncur |= 1 << (c - 'a');
+                }
+                if (ncur == (1 << cnt) - 1) {
+                    return step + 1;
+                }
+                if (step + 1 >= dist[nx][ny][ncur]) {
+                    continue;
+                }
                 dist[nx][ny][ncur] = step + 1;
                 d.addLast(new int[]{nx, ny, ncur});
             }
