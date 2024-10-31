@@ -1,18 +1,17 @@
-package knowledge.datastructure.graph.maxflow;
-
+package knowledge.datastructure.graph.networkflow;
 
 import java.util.*;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2023/9/3 13:24
+ * @date 2023/9/3 13:21
  */
+public class FordFulkerson {
 
-public class EdmondsKarp {
     private final int V; // Number of nodes in the graph
     private final List<List<Edge>> graph;
 
-    public EdmondsKarp(int V) {
+    public FordFulkerson(int V) {
         this.V = V;
         graph = new ArrayList<>(V);
         for (int i = 0; i < V; i++) {
@@ -82,26 +81,25 @@ public class EdmondsKarp {
         return maxFlow;
     }
 
-
     public static void main(String[] args) {
         int V = 6;
-        EdmondsKarp edmondsKarp = new EdmondsKarp(V);
+        FordFulkerson fordFulkerson = new FordFulkerson(V);
 
         // Add edges to the graph
-        edmondsKarp.addEdge(0, 1, 16);
-        edmondsKarp.addEdge(0, 2, 13);
-        edmondsKarp.addEdge(1, 2, 10);
-        edmondsKarp.addEdge(1, 3, 12);
-        edmondsKarp.addEdge(2, 1, 4);
-        edmondsKarp.addEdge(2, 4, 14);
-        edmondsKarp.addEdge(3, 2, 9);
-        edmondsKarp.addEdge(3, 5, 20);
-        edmondsKarp.addEdge(4, 3, 7);
-        edmondsKarp.addEdge(4, 5, 4);
+        fordFulkerson.addEdge(0, 1, 16);
+        fordFulkerson.addEdge(0, 2, 13);
+        fordFulkerson.addEdge(1, 2, 10);
+        fordFulkerson.addEdge(1, 3, 12);
+        fordFulkerson.addEdge(2, 1, 4);
+        fordFulkerson.addEdge(2, 4, 14);
+        fordFulkerson.addEdge(3, 2, 9);
+        fordFulkerson.addEdge(3, 5, 20);
+        fordFulkerson.addEdge(4, 3, 7);
+        fordFulkerson.addEdge(4, 5, 4);
 
         int source = 0;
         int sink = 5;
-        int maxFlow = edmondsKarp.maxFlow(source, sink);
+        int maxFlow = fordFulkerson.maxFlow(source, sink);
         System.out.println("Max Flow: " + maxFlow);
     }
 }

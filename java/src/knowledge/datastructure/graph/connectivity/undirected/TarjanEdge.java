@@ -1,4 +1,4 @@
-package knowledge.datastructure.graph.connectivity.impl;
+package knowledge.datastructure.graph.connectivity.undirected;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,7 +8,7 @@ import java.util.List;
  * @date 10/31/24 22:54
  * @description 割边
  */
-public class TarjanBridge {
+public class TarjanEdge {
 
     private List<Integer>[] graph;
     private List<int[]> bridges;
@@ -62,7 +62,7 @@ public class TarjanBridge {
             graph[e[0]].add(e[1]);
             graph[e[1]].add(e[0]);
         }
-        List<int[]> bridges = new TarjanBridge().findBridges(V, graph);
+        List<int[]> bridges = new TarjanEdge().findBridges(V, graph);
         System.out.println("割边:");
         for (int[] bridge : bridges) {
             System.out.println(bridge[0] + " - " + bridge[1]);

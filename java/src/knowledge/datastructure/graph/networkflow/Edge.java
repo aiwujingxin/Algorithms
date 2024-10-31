@@ -1,4 +1,4 @@
-package knowledge.datastructure.graph.maxflow;
+package knowledge.datastructure.graph.networkflow;
 
 /**
  * @author wujingxinit@outlook.com

@@ -1,6 +1,6 @@
-package knowledge.datastructure.graph.connectivity.impl;
+package knowledge.datastructure.graph.connectivity.directed;
 
-import knowledge.datastructure.graph.connectivity.Connectivity;
+import knowledge.datastructure.graph.connectivity.DirectedGraph;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -12,7 +12,7 @@ import java.util.Stack;
  * @date 2023/9/3 13:54
  * @description Kosaraju 强连通分量
  */
-public class Kosaraju implements Connectivity {
+public class Kosaraju implements DirectedGraph {
 
     private List<Integer>[] graph;
     private int V;

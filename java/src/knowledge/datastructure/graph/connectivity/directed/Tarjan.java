@@ -1,6 +1,6 @@
-package knowledge.datastructure.graph.connectivity.impl;
+package knowledge.datastructure.graph.connectivity.directed;
 
-import knowledge.datastructure.graph.connectivity.Connectivity;
+import knowledge.datastructure.graph.connectivity.DirectedGraph;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,7 +12,7 @@ import java.util.Stack;
  * @description Tarjan 有向图的强连通分量
  * @link <a href="https://www.bilibili.com/video/BV1SY411M7Tv/?spm_id_from=333.880.my_history.page.click&vd_source=88e5a3e60377510439e11f13b5878c25"></a>
  */
-public class Tarjan implements Connectivity {
+public class Tarjan implements DirectedGraph {
 
     private List<Integer>[] graph;
     private int[] dfn, low;

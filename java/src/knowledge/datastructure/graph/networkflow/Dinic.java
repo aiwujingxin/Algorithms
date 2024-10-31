@@ -1,4 +1,4 @@
-package knowledge.datastructure.graph.maxflow;
+package knowledge.datastructure.graph.networkflow;
 
 
 import java.util.*;

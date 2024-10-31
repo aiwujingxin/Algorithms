@@ -1,21 +1,19 @@
 package knowledge.datastructure.graph.connectivity;
 
-import knowledge.datastructure.graph.connectivity.impl.Kosaraju;
-import knowledge.datastructure.graph.connectivity.impl.Tarjan;
+import knowledge.datastructure.graph.connectivity.directed.Kosaraju;
+import knowledge.datastructure.graph.connectivity.directed.Tarjan;
 
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
 import java.util.List;
 
 /**
  * @author wujingxinit@outlook.com
  * @date 10/19/24 21:52
- * @description 连通分量
- * @see Kosaraju
- * @see Tarjan
+ * @description Tarjan与有向图连通性
+ * @see Kosaraju 强连通分量
+ * @see Tarjan   强连通分量
  */
-public interface Connectivity {
+public interface DirectedGraph {
 
     List<List<Integer>> findSCC(int n, List<Integer>[] graph);
 
