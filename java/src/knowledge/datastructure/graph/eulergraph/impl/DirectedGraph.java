@@ -13,16 +13,15 @@ public class DirectedGraph implements EulerGraph {
     private List<Integer>[] graph; // 图的邻接表表示
     private int n;                 // 顶点数
     private boolean[] visited;     // 访问标记数组
-    private int[] inDegree;        // 顶点的入度
     private int[] outDegree;       // 顶点的出度
-
 
     // 判断图是否是欧拉回路
     public boolean isEulerCircuit(int n, int[][] edges) {
         this.graph = new List[n];
         this.n = n;
         this.visited = new boolean[n];
-        this.inDegree = new int[n];
+        // 顶点的入度
+        int[] inDegree = new int[n];
         this.outDegree = new int[n];
         for (int[] e : edges) {
             graph[e[0]].add(e[1]);

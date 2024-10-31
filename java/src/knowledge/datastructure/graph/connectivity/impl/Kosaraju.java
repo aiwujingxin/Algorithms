@@ -1,5 +1,7 @@
 package knowledge.datastructure.graph.connectivity.impl;
 
+import knowledge.datastructure.graph.connectivity.Connectivity;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -8,58 +10,31 @@ import java.util.Stack;
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/9/3 13:54
+ * @description Kosaraju 强连通分量
  */
-public class Kosaraju {
+public class Kosaraju implements Connectivity {
 
-    public static void main(String[] args) {
-        int V = 8; // 8个节点
-        Graph graph = new Graph(V);
+    private List<Integer>[] graph;
+    private int V;
+    private List<List<Integer>> scc;
+    private boolean[] visited;
+    private Stack<Integer> stack;
 
-        // 添加有向边
-        graph.addEdge(0, 1);
-        graph.addEdge(1, 2);
-        graph.addEdge(2, 0);
-        graph.addEdge(2, 3);
-        graph.addEdge(3, 4);
-        graph.addEdge(4, 5);
-        graph.addEdge(5, 3);
-        graph.addEdge(6, 5);
-        graph.addEdge(6, 7);
-        graph.addEdge(7, 6);
-
-        Kosaraju kosaraju = new Kosaraju(graph);
-        List<List<Integer>> scc = kosaraju.findSCC();
-
-        System.out.println("强连通分量:");
-        for (List<Integer> component : scc) {
-            System.out.println(component);
-        }
-    }
-
-    private final Graph graph;
-    private final int V;
-    private final List<List<Integer>> scc;
-    private final boolean[] visited;
-    private final Stack<Integer> stack;
-
-    public Kosaraju(Graph graph) {
+    public List<List<Integer>> findSCC(int n, List<Integer>[] graph) {
+        this.V = n;
         this.graph = graph;
-        this.V = graph.getAdjacencyList().length;
         this.scc = new ArrayList<>();
-        this.visited = new boolean[V];
+        this.visited = new boolean[n];
         this.stack = new Stack<>();
-    }
-
-    public List<List<Integer>> findSCC() {
         // 第一次深度优先搜索（正向图）
-        for (int i = 0; i < V; i++) {
+        for (int i = 0; i < n; i++) {
             if (!visited[i]) {
                 dfs(i);
             }
         }
 
         // 反转图的边
-        Graph reversedGraph = reverseGraph(graph);
+        List<Integer>[] rGraph = reverseGraph();
 
         // 重置 visited 数组
         Arrays.fill(visited, false);
@@ -69,7 +44,7 @@ public class Kosaraju {
             int v = stack.pop();
             if (!visited[v]) {
                 List<Integer> component = new ArrayList<>();
-                dfs(reversedGraph, v, component);
+                dfs(rGraph, v, component);
                 scc.add(component);
             }
         }
@@ -79,7 +54,7 @@ public class Kosaraju {
 
     private void dfs(int v) {
         visited[v] = true;
-        for (int neighbor : graph.getAdjacencyList()[v]) {
+        for (int neighbor : graph[v]) {
             if (!visited[neighbor]) {
                 dfs(neighbor);
             }
@@ -87,45 +62,26 @@ public class Kosaraju {
         stack.push(v);
     }
 
-    private void dfs(Graph g, int v, List<Integer> component) {
+    private void dfs(List<Integer>[] g, int v, List<Integer> component) {
         visited[v] = true;
         component.add(v);
-        for (int neighbor : g.getAdjacencyList()[v]) {
+        for (int neighbor : g[v]) {
             if (!visited[neighbor]) {
                 dfs(g, neighbor, component);
             }
         }
     }
 
-    private Graph reverseGraph(Graph g) {
-        int V = g.getAdjacencyList().length;
-        Graph reversedGraph = new Graph(V);
-
+    private List<Integer>[] reverseGraph() {
+        List<Integer>[] reversedGraph = new List[V];
+        for (int i = 0; i < V; i++) {
+            reversedGraph[i] = new ArrayList<>();
+        }
         for (int v = 0; v < V; v++) {
-            for (int neighbor : g.getAdjacencyList()[v]) {
-                reversedGraph.addEdge(neighbor, v);
+            for (int neighbor : graph[v]) {
+                reversedGraph[neighbor].add(v);
             }
         }
-
         return reversedGraph;
-    }
-
-    private static class Graph {
-        private final List<Integer>[] adj;
-
-        public Graph(int V) {
-            adj = new List[V];
-            for (int i = 0; i < V; i++) {
-                adj[i] = new ArrayList<>();
-            }
-        }
-
-        public void addEdge(int u, int v) {
-            adj[u].add(v);
-        }
-
-        public List<Integer>[] getAdjacencyList() {
-            return adj;
-        }
     }
 }
