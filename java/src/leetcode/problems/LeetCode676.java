@@ -1,7 +1,7 @@
 package leetcode.problems;
 
 
-import knowledge.datastructure.tree.trie.Trie;
+import knowledge.datastructure.string.match.Trie;
 
 /**
  * @author wujingxinit@outlook.com

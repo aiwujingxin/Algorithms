@@ -1,4 +1,4 @@
-package knowledge.datastructure.tree.trie;
+package knowledge.datastructure.string.match;
 
 /**
  * @author wujingxinit@outlook.com

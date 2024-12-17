@@ -16,25 +16,17 @@ public class LeetCode1032 {
         public StreamChecker(String[] words) {
             root = new TrieNode();
             root.insert(root, words);
-            root.setFail(root);
             Queue<TrieNode> queue = new LinkedList<>();
-            for (int i = 0; i < 26; i++) {
-                if (root.getChild(i) != null) {
-                    root.getChild(i).setFail(root);
-                    queue.add(root.getChild(i));
-                } else {
-                    root.setChild(i, root);
-                }
-            }
+            queue.add(root);
             while (!queue.isEmpty()) {
-                TrieNode node = queue.poll();
-                node.setIsEnd(node.getIsEnd() || node.getFail().getIsEnd());
+                TrieNode u = queue.poll();
+                u.isEnd = (u.isEnd || u.fail.isEnd);
                 for (int i = 0; i < 26; i++) {
-                    if (node.getChild(i) != null) {
-                        node.getChild(i).setFail(node.getFail().getChild(i));
-                        queue.offer(node.getChild(i));
+                    if (u.children[i] != null) {
+                        u.children[i].fail = u.fail == null ? root : u.fail.children[i];
+                        queue.offer(u.children[i]);
                     } else {
-                        node.setChild(i, node.getFail().getChild(i));
+                        u.children[i] = u.fail == null ? root : u.fail.children[i];
                     }
                 }
             }
@@ -42,10 +34,9 @@ public class LeetCode1032 {
         }
 
         public boolean query(char letter) {
-            temp = temp.getChild(letter - 'a');
-            return temp.getIsEnd();
+            temp = temp.children[letter - 'a'];
+            return temp.isEnd;
         }
-
 
         class TrieNode {
             TrieNode[] children;
@@ -61,37 +52,13 @@ public class LeetCode1032 {
                     TrieNode cur = root;
                     for (int i = 0; i < word.length(); i++) {
                         int index = word.charAt(i) - 'a';
-                        if (cur.getChild(index) == null) {
-                            cur.setChild(index, new TrieNode());
+                        if (cur.children[index] == null) {
+                            cur.children[index] = new TrieNode();
                         }
-                        cur = cur.getChild(index);
+                        cur = cur.children[index];
                     }
-                    cur.setIsEnd(true);
+                    cur.isEnd = true;
                 }
-            }
-
-            public TrieNode getChild(int index) {
-                return children[index];
-            }
-
-            public void setChild(int index, TrieNode node) {
-                children[index] = node;
-            }
-
-            public boolean getIsEnd() {
-                return isEnd;
-            }
-
-            public void setIsEnd(boolean b) {
-                isEnd = b;
-            }
-
-            public TrieNode getFail() {
-                return fail;
-            }
-
-            public void setFail(TrieNode node) {
-                fail = node;
             }
         }
     }

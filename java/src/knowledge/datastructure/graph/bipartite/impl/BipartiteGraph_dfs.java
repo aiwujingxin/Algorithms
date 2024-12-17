@@ -3,7 +3,6 @@ package knowledge.datastructure.graph.bipartite.impl;
 import knowledge.datastructure.graph.bipartite.BipartiteGraph;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -13,6 +12,7 @@ import java.util.List;
 public class BipartiteGraph_dfs implements BipartiteGraph {
 
     List<Integer>[] graph;
+    int[] colors;
 
     public boolean isBipartite(int n, int[][] edges) {
         graph = new List[n];
@@ -23,11 +23,10 @@ public class BipartiteGraph_dfs implements BipartiteGraph {
             graph[edge[1]].add(edge[0]);
             graph[edge[0]].add(edge[1]);
         }
-        int[] colors = new int[n];
-        Arrays.fill(colors, -1);
+        colors = new int[n];
         for (int i = 0; i < n; i++) {
-            if (colors[i] == -1) {
-                if (!dfs(i, colors, 0)) {
+            if (colors[i] == 0) {
+                if (!dfs(i, 1)) {
                     return false;
                 }
             }
@@ -35,13 +34,13 @@ public class BipartiteGraph_dfs implements BipartiteGraph {
         return true;
     }
 
-    private boolean dfs(int v, int[] colors, int color) {
-        colors[v] = color;
-        for (int neighbor : graph[v]) {
-            if (colors[neighbor] == color) {
+    private boolean dfs(int u, int c) {
+        colors[u] = c;
+        for (int v : graph[u]) {
+            if (colors[v] == c) {
                 return false;
             }
-            if (colors[neighbor] == -1 && !dfs(neighbor, colors, 1 - color)) {
+            if (colors[v] == 0 && !dfs(v, 3 - c)) {
                 return false;
             }
         }

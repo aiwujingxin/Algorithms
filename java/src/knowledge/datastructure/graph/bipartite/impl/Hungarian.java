@@ -9,8 +9,11 @@ import java.util.List;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2023/6/20 00:10
- * @description 二分图最大匹配 匈牙利算法(增光路算法)
+ * @date 2024/11/5 11:10
+ * @description 匈牙利算法 二分图最大匹配
+ * 交替路 从一个未匹配点出发，依次经过非匹配边，匹配边，非匹配边... 形成的路径叫交替路
+ * 增广路 从一个未匹配点出发，走交替路，若能到达另一个未匹配点，则这个交替路成为增广路. 非匹配边比匹配边多一条
+ * 匈牙利算法: 通过不停地找增广路来增加匹配边。找不到增广路时，达到最大匹配。可以 DFS/BFS 实现
  * 时间复杂度 O(VE)
  * @see LCP04
  * @see LeetCode1349
@@ -19,7 +22,7 @@ import java.util.List;
 public class Hungarian {
 
     List<Integer>[] graph;
-    boolean[] visited;
+    boolean[] vis;
     int[] match;
 
     public int Hungarian(int n, int[][] edges) {
@@ -33,11 +36,11 @@ public class Hungarian {
         }
         this.match = new int[n];    // 记录每个右部节点的匹配
         Arrays.fill(match, -1); // 初始化为-1，表示未匹配
-        this.visited = new boolean[n];
+        this.vis = new boolean[n];
         int ans = 0;
-        for (int u = 0; u < graph.length; u++) {
-            Arrays.fill(visited, false); // 每次寻找新的增广路径都重置访问状态
-            if (dfs(u)) {
+        for (int i = 0; i < n; i++) {
+            Arrays.fill(vis, false); // 每次寻找新的增广路径都重置访问状态
+            if (dfs(i)) {
                 ans++;
             }
         }
@@ -47,11 +50,11 @@ public class Hungarian {
     // DFS寻找增广路径
     private boolean dfs(int u) {
         for (int v : graph[u]) {
-            if (!visited[v]) {
-                visited[v] = true;
-                // 如果v没有匹配，或者匹配的节点可以找到增广路径，则更新匹配关系
+            if (!vis[v]) {
+                vis[v] = true;
+                // 如果v没有匹配，或者匹配的节点可以找到增广路径
                 if (match[v] == -1 || dfs(match[v])) {
-                    match[v] = u; // 配成对
+                    match[v] = u; // 更新匹配关系
                     return true;
                 }
             }

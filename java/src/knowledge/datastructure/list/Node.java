@@ -26,6 +26,12 @@ public class Node {
         this.val = value;
     }
 
+    public Node(int key, int value, int freq) {
+        this.key = key;
+        this.val = value;
+        this.freq = freq;
+    }
+
     public Node(int freq) {
         this.val = freq;
         this.freq = freq;

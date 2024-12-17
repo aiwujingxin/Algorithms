@@ -13,6 +13,8 @@ public class BipartiteGraph_bfs implements BipartiteGraph {
 
     List<Integer>[] graph;
 
+    int[] colors;
+
     public boolean isBipartite(int n, int[][] edges) {
         graph = new List[n];
         for (int i = 0; i < n; i++) {
@@ -22,11 +24,10 @@ public class BipartiteGraph_bfs implements BipartiteGraph {
             graph[edge[1]].add(edge[0]);
             graph[edge[0]].add(edge[1]);
         }
-        int[] colors = new int[n];
-        Arrays.fill(colors, -1);
+        this.colors = new int[n];
         for (int i = 0; i < n; i++) {
-            if (colors[i] == -1) {
-                if (!bfs(i, colors)) {
+            if (colors[i] == 0) {
+                if (!bfs(i)) {
                     return false;
                 }
             }
@@ -34,17 +35,17 @@ public class BipartiteGraph_bfs implements BipartiteGraph {
         return true;
     }
 
-    private boolean bfs(int s, int[] colors) {
+    private boolean bfs(int s) {
         Queue<Integer> q = new LinkedList<>();
         q.add(s);
         colors[s] = 0;
         while (!q.isEmpty()) {
-            int cur = q.poll();
-            for (int next : graph[cur]) {
-                if (colors[next] == -1) {
-                    colors[next] = 1 - colors[cur];
-                    q.add(next);
-                } else if (colors[next] == colors[cur]) {
+            int u = q.poll();
+            for (int v : graph[u]) {
+                if (colors[v] == 0) {
+                    colors[v] = 3 - colors[u];
+                    q.add(v);
+                } else if (colors[v] == colors[u]) {
                     return false;
                 }
             }

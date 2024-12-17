@@ -8,6 +8,7 @@ import java.util.LinkedList;
  * @date 2023/9/23 21:08
  */
 public class LCR31 {
+
     class LRUCache {
         HashMap<Integer, Node> map;
         LinkedList<Node> list;
@@ -57,5 +58,4 @@ public class LCR31 {
             }
         }
     }
-
 }

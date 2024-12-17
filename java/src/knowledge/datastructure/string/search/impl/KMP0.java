@@ -1,6 +1,6 @@
-package knowledge.datastructure.string.impl;
+package knowledge.datastructure.string.search.impl;
 
-import knowledge.datastructure.string.Search;
+import knowledge.datastructure.string.search.Search;
 
 /**
  * @author wujingxinit@outlook.com

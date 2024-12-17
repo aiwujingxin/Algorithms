@@ -1,4 +1,4 @@
-package knowledge.datastructure.string.impl;
+package knowledge.datastructure.string.bignumber.impl;
 
 /**
  * @author wujingxinit@outlook.com

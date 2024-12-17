@@ -1,4 +1,4 @@
-package knowledge.datastructure.string;
+package knowledge.datastructure.string.bignumber;
 
 import leetcode.problems.LeetCode29;
 import leetcode.problems.LeetCode415;

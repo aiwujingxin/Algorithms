@@ -80,7 +80,7 @@ public class DoubleLinkedList {
         size--;
     }
 
-    public void addFront(Node cur, Node node) {
+    public void addFirst(Node cur, Node node) {
         node.next = cur;
         node.prev = cur.prev;
 
@@ -89,7 +89,7 @@ public class DoubleLinkedList {
         size++;
     }
 
-    public void addBack(Node cur, Node node) {
+    public void addLast(Node cur, Node node) {
         node.next = cur.next;
         node.prev = cur;
 

@@ -1,4 +1,4 @@
-package knowledge.datastructure.string;
+package knowledge.datastructure.string.search;
 
 /**
  * @author wujingxinit@outlook.com

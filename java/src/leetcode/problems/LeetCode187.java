@@ -1,12 +1,14 @@
 package leetcode.problems;
 
+import knowledge.datastructure.string.search.impl.RabinKarp;
+
 import java.util.*;
 
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/10/28 11:35
  * @description RabinKarp解法
- * @see knowledge.datastructure.string.impl.RabinKarp
+ * @see RabinKarp
  */
 public class LeetCode187 {
 

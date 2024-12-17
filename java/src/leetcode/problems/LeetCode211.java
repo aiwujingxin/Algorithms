@@ -1,7 +1,7 @@
 package leetcode.problems;
 
 
-import knowledge.datastructure.tree.trie.Trie;
+import knowledge.datastructure.string.match.Trie;
 
 /**
  * @author wujingxinit@outlook.com
@@ -9,18 +9,18 @@ import knowledge.datastructure.tree.trie.Trie;
  */
 public class LeetCode211 {
     class WordDictionary {
-        private final Trie trieTree;
+        private final Trie tr;
 
         public WordDictionary() {
-            trieTree = new Trie();
+            tr = new Trie();
         }
 
         public void addWord(String word) {
-            trieTree.insert(word);
+            tr.insert(word);
         }
 
         public boolean search(String word) {
-            return dfs(word, 0, trieTree.root);
+            return dfs(word, 0, tr.root);
         }
 
         private boolean dfs(String word, int index, Trie.Node node) {

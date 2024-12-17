@@ -35,7 +35,7 @@ public class LeetCode432 {
             Node next = node.next;
             if (node.next.freq != node.freq + 1) {
                 next = new Node(node.freq + 1);
-                list.addBack(node, next);
+                list.addLast(node, next);
             }
             node.remove(key);
             next.add(key);
@@ -63,7 +63,7 @@ public class LeetCode432 {
             Node prev = node.prev;
             if (prev.freq + 1 != node.freq) {
                 prev = new Node(node.freq - 1);
-                list.addFront(node, prev);
+                list.addFirst(node, prev);
             }
 
             node.remove(key);

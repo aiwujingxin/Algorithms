@@ -1,5 +1,8 @@
 package leetcode.problems;
 
+import knowledge.datastructure.list.DoubleLinkedList;
+import knowledge.datastructure.list.Node;
+
 import java.util.*;
 
 /**
@@ -10,12 +13,13 @@ public class LeetCode146 {
 
     class LRUCache {
 
+        HashMap<Integer, Node> map;
+        DoubleLinkedList list;
         int capacity;
 
-        HashMap<Integer, Node> map = new HashMap<>();
-        Deque<Node> list = new LinkedList<>();
-
         public LRUCache(int capacity) {
+            this.map = new HashMap<>();
+            this.list = new DoubleLinkedList();
             this.capacity = capacity;
         }
 
@@ -45,16 +49,5 @@ public class LeetCode146 {
             map.put(key, node);
             list.addFirst(node);
         }
-
-        static class Node {
-            int key;
-            int val;
-
-            public Node(int key, int val) {
-                this.key = key;
-                this.val = val;
-            }
-        }
     }
-
 }

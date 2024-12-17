@@ -1,6 +1,6 @@
 package leetcode.problems;
 
-import knowledge.datastructure.string.impl.BigDecimal;
+import knowledge.datastructure.string.bignumber.impl.BigDecimal;
 
 /**
  * @author aiwujingxin@gmail.com

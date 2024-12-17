@@ -1,10 +1,10 @@
-package knowledge.datastructure.string.impl;
+package knowledge.datastructure.string.bignumber.impl;
 
 /**
  * @author jingxinwu
  * @date 2022-01-03 6:12 PM
  */
-public class BigDecimal implements knowledge.datastructure.string.BigDecimal {
+public class BigDecimal implements knowledge.datastructure.string.bignumber.BigDecimal {
 
     @Override
     public String addStrings(String num1, String num2) {
