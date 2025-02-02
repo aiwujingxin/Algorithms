@@ -1,5 +1,7 @@
 package leetcode.problems;
 
+import knowledge.mathematics.impl.Prime;
+
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/12/4 17:04
@@ -48,7 +50,7 @@ public class LeetCode459 {
             if (s.length() % i != 0) {
                 continue;
             }
-            if (!isPrime(i)) {
+            if (!Prime.isPrime(i)) {
                 continue;
             }
             // 分成i段，每段长len
@@ -65,17 +67,5 @@ public class LeetCode459 {
             }
         }
         return false;
-    }
-
-    public boolean isPrime(int x) {
-        if (x < 2) {
-            return false;
-        }
-        for (int i = 2; i * i <= x; ++i) {
-            if (x % i == 0) {
-                return false;
-            }
-        }
-        return true;
     }
 }

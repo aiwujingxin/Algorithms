@@ -1,5 +1,7 @@
 package leetcode.problems;
 
+import knowledge.mathematics.impl.Prime;
+
 import java.util.HashSet;
 import java.util.Set;
 
@@ -14,24 +16,12 @@ public class LeetCode2521 {
         for (int num : nums) {
             for (int j = 2; j <= num; j++) {
                 if (num % j == 0) {
-                    if (isPrime(j)) {
+                    if (Prime.isPrime(j)) {
                         set.add(j);
                     }
                 }
             }
         }
         return set.size();
-    }
-
-    public boolean isPrime(int x) {
-        if (x < 2) {
-            return false;
-        }
-        for (int i = 2; i * i <= x; ++i) {
-            if (x % i == 0) {
-                return false;
-            }
-        }
-        return true;
     }
 }

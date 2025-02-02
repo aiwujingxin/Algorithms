@@ -10,10 +10,10 @@ public class LeetCode34 {
         if (nums == null || nums.length == 0) {
             return new int[]{-1, -1};
         }
-        return new int[]{leftBound(nums, target), rightBound(nums, target)};
+        return new int[]{findL(nums, target), findR(nums, target)};
     }
 
-    private int leftBound(int[] nums, int target) {
+    private int findL(int[] nums, int target) {
         int l = 0;
         int r = nums.length - 1;
         while (l < r) {
@@ -27,7 +27,7 @@ public class LeetCode34 {
         return l;
     }
 
-    private int rightBound(int[] nums, int target) {
+    private int findR(int[] nums, int target) {
         int l = 0;
         int r = nums.length - 1;
         while (l < r) {

@@ -10,12 +10,12 @@ public class LeetCode793 {
         if (k == 0) {
             return 5;
         }
-        long a = leftBound(k + 1);
-        long b = rightBound(k - 1);
+        long a = findL(k + 1);
+        long b = findR(k - 1);
         return (int) (a - b - 1);
     }
 
-    private long leftBound(int target) {
+    private long findL(int target) {
         long l = 0;
         long r = Long.MAX_VALUE;
         while (l < r) {
@@ -26,7 +26,7 @@ public class LeetCode793 {
         return l;
     }
 
-    private long rightBound(int target) {
+    private long findR(int target) {
         long l = 0;
         long r = Long.MAX_VALUE;
         while (l < r) {

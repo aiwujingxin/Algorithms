@@ -5,10 +5,10 @@ import java.util.Arrays;
 /**
  * @author aiwujingxin@gmail.com
  * @date 2022/7/23 13:47
+ * @link <a href="https://leetcode.com/problems/find-k-th-smallest-pair-distance/discuss/1676700/Java-or-Two-Solution-or-Binary-Search-OR-Sliding-Window">...</a>
  */
 public class LeetCode719 {
 
-    //https://leetcode.com/problems/find-k-th-smallest-pair-distance/discuss/1676700/Java-or-Two-Solution-or-Binary-Search-OR-Sliding-Window
     public int smallestDistancePair(int[] nums, int k) {
         Arrays.sort(nums);
         int l = 0;

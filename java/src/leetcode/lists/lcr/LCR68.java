@@ -6,7 +6,6 @@ package leetcode.lists.lcr;
  */
 public class LCR68 {
 
-    //leftBound
     public int searchInsert(int[] nums, int target) {
         if (nums == null || nums.length == 0) {
             return -1;

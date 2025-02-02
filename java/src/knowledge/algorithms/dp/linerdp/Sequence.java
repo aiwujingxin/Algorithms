@@ -17,6 +17,7 @@ import leetcode.problems.*;
  * @see LeetCode139 单词拆分
  * @see LeetCode204 计数质数
  * @see LeetCode279 完全平方数
+ * @see LeetCode2770 达到末尾下标所需的最大跳跃次数
  * <LCS>
  * @see LeetCode1143 最长公共子序列
  * @see LeetCode72 编辑距离

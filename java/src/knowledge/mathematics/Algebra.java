@@ -22,7 +22,7 @@ import leetcode.problems.*;
  * @see LeetCode166 除
  * @see LeetCode29 除
  * <质数>
- * @see LeetCode204
+ * @see LeetCode204 计数质数
  * @see LeetCode762
  * @see LeetCode2521
  * @see LeetCode459

@@ -18,12 +18,12 @@ public class LeetCode1170 {
         int[] res = new int[queries.length];
         for (int i = 0; i < queries.length; i++) {
             int cnt = getCnt(queries[i]);
-            res[i] = arr.length - 1 - leftBound(arr, cnt);
+            res[i] = arr.length - 1 - findL(arr, cnt);
         }
         return res;
     }
 
-    public int leftBound(int[] arr, int target) {
+    public int findL(int[] arr, int target) {
         int l = 0;
         int r = arr.length - 1;
         while (l < r) {

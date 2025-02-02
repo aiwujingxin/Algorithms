@@ -17,11 +17,11 @@ public class LeetCode2476 {
         for (int q : queries) {
             int min = -1;
             int max = -1;
-            int l = rightBound(a, q);
+            int l = findR(a, q);
             if (l >= 0 && a.get(l) <= q) {
                 min = a.get(l);
             }
-            int r = leftBound(a, q);
+            int r = findL(a, q);
             if (r < a.size() && a.get(r) >= q) {
                 max = a.get(r);
             }
@@ -42,7 +42,7 @@ public class LeetCode2476 {
         dfs(o.right, a);
     }
 
-    public int leftBound(List<Integer> nums, int target) {
+    public int findL(List<Integer> nums, int target) {
         int l = 0;
         int r = nums.size() - 1;
         while (l < r) {
@@ -53,7 +53,7 @@ public class LeetCode2476 {
         return l;
     }
 
-    public int rightBound(List<Integer> nums, int target) {
+    public int findR(List<Integer> nums, int target) {
         int l = 0;
         int r = nums.size() - 1;
         while (l < r) {

@@ -26,8 +26,8 @@ public class LeetCode1755 {
         long res = Integer.MAX_VALUE;
         for (long a : leftSum) {
             long target = goal - a;
-            int b1 = bl(rightSum, target);
-            int b2 = br(rightSum, target);
+            int b1 = findL(rightSum, target);
+            int b2 = findR(rightSum, target);
             res = Math.min(Math.abs(a + rightSum.get(b1) - goal), res);
             if (b1 - 1 != -1) {
                 res = Math.min(Math.abs(a + rightSum.get(b1 - 1) - goal), res);
@@ -40,7 +40,7 @@ public class LeetCode1755 {
         return (int) Math.min(res, Math.abs(goal));
     }
 
-    private int bl(List<Long> nums, long x) {
+    private int findL(List<Long> nums, long x) {
         int l = 0;
         int r = nums.size() - 1;
         while (l < r) {
@@ -52,7 +52,7 @@ public class LeetCode1755 {
         return l;
     }
 
-    private int br(List<Long> nums, long x) {
+    private int findR(List<Long> nums, long x) {
         int l = 0;
         int r = nums.size() - 1;
         while (l < r) {

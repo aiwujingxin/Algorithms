@@ -15,8 +15,8 @@ public class LeetCode960 {
         for (int i = 1; i < m; i++) {
             for (int j = 0; j < i; j++) {
                 boolean sorted = true;
-                for (String str : strs) {
-                    if (str.charAt(j) > str.charAt(i)) {
+                for (String s : strs) {
+                    if (s.charAt(j) > s.charAt(i)) {
                         sorted = false;
                         break;
                     }

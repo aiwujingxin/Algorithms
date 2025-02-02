@@ -20,17 +20,16 @@ public class LeetCode354 {
         int len = 0;
         for (int[] envelope : envelopes) {
             int num = envelope[1];
-            int l = 0;
-            int r = len;
+            int l = 0, r = len;
             while (l < r) {
-                int mid = (l + r) / 2;
+                int mid = l + r >> 1;
                 if (dp[mid] < num) l = mid + 1;
                 else r = mid;
             }
-            if (len == r) {
+            dp[l] = num;
+            if (l == len) {
                 len++;
             }
-            dp[l] = num;
         }
         return len;
     }

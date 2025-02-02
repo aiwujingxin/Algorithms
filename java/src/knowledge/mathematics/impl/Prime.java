@@ -7,7 +7,7 @@ package knowledge.mathematics.impl;
  */
 public class Prime {
 
-    public boolean isPrime(int x) {
+    public static boolean isPrime(int x) {
         if (x < 2) {
             return false;
         }

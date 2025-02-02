@@ -7,9 +7,6 @@ package leetcode.problems;
 public class LeetCode238 {
 
     public int[] productExceptSelf(int[] nums) {
-        if (nums == null || nums.length == 0) {
-            return nums;
-        }
         int n = nums.length;
         int[] ans = new int[n];
         ans[0] = 1;

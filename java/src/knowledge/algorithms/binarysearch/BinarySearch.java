@@ -40,7 +40,7 @@ public interface BinarySearch {
     }
 
     // 第一个>=x的数
-    default int bl(int[] a, int x) {
+    default int findL(int[] a, int x) {
         int l = 0;
         int r = a.length - 1;
         while (l < r) {
@@ -52,7 +52,7 @@ public interface BinarySearch {
     }
 
     // 最后一个<=x的数
-    default int br(int[] a, int x) {
+    default int findR(int[] a, int x) {
         int l = 0;
         int r = a.length - 1;
         while (l < r) {
