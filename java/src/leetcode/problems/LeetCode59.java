@@ -5,38 +5,24 @@ package leetcode.problems;
  * @date 2023/12/18 16:37
  */
 public class LeetCode59 {
+
+    private static final int[][] dirs = {{0, 1}, {1, 0}, {0, -1}, {-1, 0}}; // 右下左上
+
     public int[][] generateMatrix(int n) {
-        if (n == 0) {
-            return new int[][]{};
+        int[][] ans = new int[n][n];
+        int dir = 0;
+        int x = 0;
+        int y = 0;
+        for (int i = 1; i <= n * n; i++) {
+            ans[x][y] = i;
+            int nx = x + dirs[dir][0];
+            int ny = y + dirs[dir][1];
+            if (nx < 0 || nx >= n || ny < 0 || ny >= n || ans[nx][ny] != 0) {
+                dir = (dir + 1) % 4;
+            }
+            x += dirs[dir][0];
+            y += dirs[dir][1];
         }
-        int[][] res = new int[n][n];
-        int top = 0;
-        int down = n - 1;
-        int left = 0;
-        int right = n - 1;
-        int index = 1;
-        while (top <= down && left <= right) {
-            for (int i = left; i <= right; i++) {
-                res[top][i] = index;
-                index++;
-            }
-            top++;
-            for (int i = top; i <= down; i++) {
-                res[i][right] = index;
-                index++;
-            }
-            right--;
-            for (int i = right; i >= left; i--) {
-                res[down][i] = index;
-                index++;
-            }
-            down--;
-            for (int i = down; i >= top; i--) {
-                res[i][left] = index;
-                index++;
-            }
-            left++;
-        }
-        return res;
+        return ans;
     }
 }

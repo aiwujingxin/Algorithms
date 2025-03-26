@@ -1,14 +1,12 @@
 package leetcode.problems;
 
-import java.util.*;
-
 /**
  * @author aiwujingxin@gmail.com
  * @date 2023/2/11 21:59
  */
 public class LeetCode1000 {
 
-    private int[][][] memo;
+    private Integer[][][] memo;
     private int[] presum;
     private int k;
 
@@ -23,17 +21,12 @@ public class LeetCode1000 {
             presum[i] = presum[i - 1] + stones[i - 1];
         }
         this.k = k;
-        this.memo = new int[n][n][k + 1];
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < n; j++) {
-                Arrays.fill(memo[i][j], -1);
-            }
-        }
+        this.memo = new Integer[n][n][k + 1];
         return dfs(0, n - 1, 1);
     }
 
     private int dfs(int i, int j, int p) {
-        if (memo[i][j][p] != -1) {
+        if (memo[i][j][p] != null) {
             return memo[i][j][p];
         }
         if (p == 1) { // 合并成一堆

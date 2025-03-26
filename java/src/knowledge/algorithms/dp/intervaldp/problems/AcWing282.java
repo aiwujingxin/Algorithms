@@ -28,16 +28,17 @@ public class AcWing282 {
         }
         System.out.println(Arrays.toString(s));
         for (int r = 2; r < n; r++) {  // 枚举规模长度
-            System.out.println("规模 " + r + " 时");
+            System.out.println("规模 " + r + " 时:");
             for (int i = 1; i < n - r + 1; i++) {// 枚举起点
                 int j = i + r - 1;
                 System.out.println("子问题 dp[" + i + "]" + "[" + j + "]");
                 dp[i][j] = Integer.MAX_VALUE;
                 for (int k = i; k < j; k++) { // 枚举分界点
-                    System.out.println("划分点" + "k=" + k + " dp[" + i + "]" + "[" + k + "]" + " + " + "dp[" + (k + 1) + "]" + "[" + j + "]" + " +" + " s" + "[" + j + "]" + "-" + "s[" + (i - 1) + "]");
+                    System.out.println("划分点" + "k=" + k + " dp[" + i + "]" + "[" + k + "]" + " + " + "dp[" + (k + 1) + "]" + "[" + j + "]" + " +" + " (s" + "[" + j + "]" + "-" + "s[" + (i - 1) + "])");
                     dp[i][j] = Math.min(dp[i][j], dp[i][k] + dp[k + 1][j] + s[j] - s[i - 1]);
                 }
             }
+            System.out.println();
         }
         for (int[] d : dp) {
             System.out.println(Arrays.toString(d));

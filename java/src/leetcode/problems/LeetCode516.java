@@ -1,41 +1,36 @@
 package leetcode.problems;
 
-import java.util.*;
-
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/12/20 20:24
- * @description 从两侧向内缩小问题规模
+ * @description 区间DP
  */
 public class LeetCode516 {
 
     private char[] chars;
-    private int[][] memo;
+    private Integer[][] memo;
 
     public int longestPalindromeSubseq(String S) {
         int n = chars.length;
         this.chars = S.toCharArray();
-        this.memo = new int[n][n];
-        for (int i = 0; i < n; ++i) {
-            Arrays.fill(memo[i], -1); // -1 表示还没有计算过
-        }
+        this.memo = new Integer[n][n];
         return dfs(0, n - 1);
     }
 
-    private int dfs(int i, int j) {
-        if (i > j) {
-            return 0; // 空串
+    private int dfs(int l, int r) {
+        if (l > r) {
+            return 0;
         }
-        if (i == j) {
-            return 1; // 只有一个字母
+        if (l == r) {
+            return 1;
         }
-        if (memo[i][j] != -1) {
-            return memo[i][j];
+        if (memo[l][r] != null) {
+            return memo[l][r];
         }
-        if (chars[i] == chars[j]) {
-            return memo[i][j] = dfs(i + 1, j - 1) + 2; // 都选
+        if (chars[l] == chars[r]) {
+            return memo[l][r] = dfs(l + 1, r - 1) + 2; // 都选
         }
-        return memo[i][j] = Math.max(dfs(i + 1, j), dfs(i, j - 1)); // 枚举哪个不选
+        return memo[l][r] = Math.max(dfs(l + 1, r), dfs(l, r - 1)); // 枚举哪个不选
     }
 
     public int longestPalindromeSubseq_dp(String s) {

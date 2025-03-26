@@ -9,9 +9,6 @@ import java.util.*;
 public class LeetCode131 {
 
     public List<List<String>> partition(String s) {
-        if (s.isEmpty()) {
-            return new ArrayList<>();
-        }
         int n = s.length();
         boolean[][] dp = new boolean[n][n];
         for (int i = n - 1; i >= 0; i--) {

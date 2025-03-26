@@ -9,9 +9,6 @@ import java.util.*;
 public class LeetCode132 {
 
     public int minCut(String s) {
-        if (s == null || s.isEmpty()) {
-            return 0;
-        }
         int n = s.length();
         boolean[][] dp = new boolean[n][n];
         for (int i = n - 1; i >= 0; i--) {

@@ -16,15 +16,16 @@ import knowledge.datastructure.graph.shortestpath.ShortestPath;
  * <排序问题>
  * @see knowledge.algorithms.sort.HeapSort
  * @see knowledge.algorithms.sort.TopK
- * @see leetcode.problems.LeetCode239
  * @see leetcode.problems.LeetCode4
- * <任务调度>
- * @see leetcode.problems.LeetCode253
- * <排序问题>
+ * @see leetcode.problems.LeetCode239
  * @see leetcode.problems.LeetCode373
  * @see leetcode.problems.LeetCode378
  * @see leetcode.problems.LeetCode786
  * @see leetcode.problems.LeetCode355
+ * @see leetcode.problems.LeetCode347
+ * @see leetcode.problems.LeetCode692
+ * <任务调度>
+ * @see leetcode.problems.LeetCode253
  * <图问题>
  * @see ShortestPath
  * @see MinSpanningTree

@@ -7,9 +7,6 @@ package leetcode.problems;
 public class LeetCode647 {
 
     public int countSubstrings(String s) {
-        if (s == null || s.isEmpty()) {
-            return 0;
-        }
         int n = s.length();
         boolean[][] dp = new boolean[n][n];
         int cnt = 0;

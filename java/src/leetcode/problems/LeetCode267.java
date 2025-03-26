@@ -9,12 +9,8 @@ import java.util.*;
 public class LeetCode267 {
 
     public List<String> generatePalindromes(String s) {
-
-        if (s == null || s.isEmpty()) {
-            return new ArrayList<>();
-        }
         Map<Character, Integer> map = new HashMap<>();
-        for (int i = 0; i < s.toCharArray().length; i++) {
+        for (int i = 0; i < s.length(); i++) {
             map.put(s.charAt(i), map.getOrDefault(s.charAt(i), 0) + 1);
         }
 
@@ -41,7 +37,6 @@ public class LeetCode267 {
     }
 
     private void dfs(char[] chars, Set<String> res, int index, String single) {
-
         if (index == chars.length) {
             res.add(new String(chars) + single + new StringBuilder(new String(chars)).reverse());
             res.add(new StringBuilder(new String(chars)).reverse() + single + new String(chars));

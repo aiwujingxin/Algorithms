@@ -9,36 +9,25 @@ import java.util.List;
  */
 public class LeetCode54 {
 
+    public static final int[][] dirs = new int[][]{{0, 1}, {1, 0}, {0, -1}, {-1, 0}}; // 右下左上
+
     public List<Integer> spiralOrder(int[][] matrix) {
-        if (matrix == null || matrix.length == 0) {
-            return new ArrayList<>();
-        }
-        int top = 0;
-        int down = matrix.length - 1;
-        int left = 0;
-        int right = matrix[0].length - 1;
+        int m = matrix.length;
+        int n = matrix[0].length;
+        int dir = 0;
+        int x = 0;
+        int y = 0;
         List<Integer> list = new ArrayList<>();
-        while (top <= down && left <= right) {
-            for (int i = left; i <= right; i++) {
-                list.add(matrix[top][i]);
+        for (int i = 0; i < m * n; i++) {
+            list.add(matrix[x][y]);
+            matrix[x][y] = Integer.MAX_VALUE;
+            int nx = x + dirs[dir][0];
+            int ny = y + dirs[dir][1];
+            if (nx < 0 || nx >= m || ny < 0 || ny >= n || matrix[nx][ny] == Integer.MAX_VALUE) {
+                dir = (dir + 1) % 4;
             }
-            top++;
-            for (int i = top; i <= down; i++) {
-                list.add(matrix[i][right]);
-            }
-            right--;
-            if (top <= down && left <= right) {
-                for (int i = right; i >= left; i--) {
-                    list.add(matrix[down][i]);
-                }
-            }
-            down--;
-            if (top <= down && left <= right) {
-                for (int i = down; i >= top; i--) {
-                    list.add(matrix[i][left]);
-                }
-            }
-            left++;
+            x += dirs[dir][0];
+            y += dirs[dir][1];
         }
         return list;
     }

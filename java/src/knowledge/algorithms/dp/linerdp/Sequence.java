@@ -1,11 +1,14 @@
 package knowledge.algorithms.dp.linerdp;
 
 import leetcode.problems.*;
+import knowledge.algorithms.dp.linerdp.problems.*;
 
 /**
  * @author wujingxinit@outlook.com
  * @date 2024/4/13 23:37
  * @description LIS & LCS
+ * <Base>
+ * @see RodCutting 钢条切割
  * <LIS>
  * @see LeetCode300 最长递增子序列
  * @see LeetCode646 最长数对链 Acwing1012友好城市
@@ -29,9 +32,9 @@ import leetcode.problems.*;
  * Acwing272 最长公共上升子序列
  * @see LeetCode1713 得到子序列的最少操作次数 LCS->LIS
  * <LSS>
- * @see LeetCode53 最大和的连续子数组
+ * @see LeetCode53  最大子数组和
  * <LMS>
- * @see LeetCode152 最大乘积连续子数组
+ * @see LeetCode152 最大子数组乘积
  * <丑数>
  * @see LeetCode263 丑数
  * @see LeetCode264 丑数II

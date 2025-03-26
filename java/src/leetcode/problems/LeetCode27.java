@@ -7,16 +7,12 @@ package leetcode.problems;
 public class LeetCode27 {
 
     public int removeElement(int[] nums, int val) {
-        int n = nums.length;
-        int left = 0;
-        int right = 0;
-        while (right < n) {
-            if (val != nums[right]) {
-                nums[left] = nums[right];
-                left++;
+        int stackSize = 0;
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i] != val) {
+                nums[stackSize++] = nums[i];
             }
-            right++;
         }
-        return left;
+        return stackSize;
     }
 }
