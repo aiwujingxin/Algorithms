@@ -3,6 +3,7 @@ package knowledge.algorithms.dp.backpack.group;
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/8/4 11:47
+ * @description dp[i][v] 表示前i组容量v时的最大值
  */
 public class GroupPack_dp_2d implements GroupPack {
 

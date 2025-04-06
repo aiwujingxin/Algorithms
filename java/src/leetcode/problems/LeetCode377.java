@@ -10,10 +10,10 @@ public class LeetCode377 {
     public int combinationSum4(int[] nums, int target) {
         int[] dp = new int[target + 1];
         dp[0] = 1;
-        for (int i = 1; i <= target; i++) {
+        for (int j = 1; j <= target; j++) {
             for (int num : nums) {
-                if (i >= num) {
-                    dp[i] += dp[i - num];
+                if (j >= num) {
+                    dp[j] += dp[j - num];
                 }
             }
         }

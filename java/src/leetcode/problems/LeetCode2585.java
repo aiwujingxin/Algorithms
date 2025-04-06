@@ -14,7 +14,7 @@ public class LeetCode2585 {
         for (int[] type : types) {
             int count = type[0], marks = type[1];
             for (int j = target; j > 0; j--) {
-                for (int k = 1; k <= count && k <= j / marks; ++k) {
+                for (int k = 1; k <= Math.min(count, j / marks); k++) {
                     dp[j] = (dp[j] + dp[j - k * marks]) % MOD;
                 }
             }

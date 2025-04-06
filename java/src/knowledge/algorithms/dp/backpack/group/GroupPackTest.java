@@ -13,5 +13,6 @@ public class GroupPackTest {
         int capacity = 9;
         System.out.println(new GroupPack_dp_1d().backPack(4, capacity, k, weights, values));
         System.out.println(new GroupPack_dp_2d().backPack(4, capacity, k, weights, values));
+        System.out.println(new GroupPack_dp_3d().backPack(4, capacity, k, weights, values));
     }
 }

@@ -16,12 +16,25 @@ public class Multiple_bit implements MultiplePack {
         this.V = V;
         for (int i = 0; i < N; i++) {
             if (C[i] * K[i] > V) {
+                 /*
+                如果全装进去已经超了总金额，相当于这个物品就是无限的
+                因为是取不光的，那么就用完全背包去套
+                 */
                 completedBackpack(C[i], W[i]);
             } else {
+                /*
+                    取得光的话，去遍历每种取法
+                    这里用到是二进制思想，降低了复杂度
+                    为什么呢，因为他取的1,2,4,8...与余数个该物品，打包成一个大型的该物品
+                    这样足够凑出了从0-k个该物品取法
+                    把复杂度从k变成了logk
+                    如k=11，则有1,2,4,4，足够凑出0-11个该物品的取法
+                 */
                 for (int k = 1; k < K[i]; k <<= 1) {
                     zeroOneBackpack(k * C[i], k * W[i]);
                     K[i] -= k;
                 }
+                // 最后对余数部分进行一次 01背包 处理
                 zeroOneBackpack(K[i] * C[i], K[i] * W[i]);
             }
         }

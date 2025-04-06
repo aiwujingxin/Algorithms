@@ -8,6 +8,12 @@ import java.util.*;
  * @date 2023/8/10 21:44
  * @description 石子合并
  * @link <a href="https://www.acwing.com/problem/content/284/"></a>
+ * @example
+ * input
+ * 4
+ * 1 3 5 2
+ * output
+ * 22
  */
 public class AcWing282 {
 

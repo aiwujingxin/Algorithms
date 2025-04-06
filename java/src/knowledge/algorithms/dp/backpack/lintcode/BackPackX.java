@@ -16,9 +16,9 @@ public class BackPackX {
         for (int i = 0; i * coins[0] <= n; i++) {
             dp[i * coins[0]] = i * coins[0];
         }
-        for (int i = 0; i < 3; i++) {
-            for (int j = coins[i]; j <= n; j++) {
-                dp[j] = Math.max(dp[j], dp[j - coins[i]] + coins[i]);
+        for (int coin : coins) {
+            for (int j = coin; j <= n; j++) {
+                dp[j] = Math.max(dp[j], dp[j - coin] + coin);
             }
         }
         return n - dp[n];

@@ -3,6 +3,7 @@ package leetcode.problems;
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/12/6 13:50
+ * @see knowledge.algorithms.dp.backpack.lintcode.BackpackV
  */
 public class LeetCode494 {
 
@@ -18,8 +19,8 @@ public class LeetCode494 {
         int[] dp = new int[amount + 1];
         dp[0] = 1;
         for (int num : nums) {
-            for (int i = amount; i >= num; i--) {
-                dp[i] += dp[i - num];
+            for (int j = amount; j >= num; j--) {
+                dp[j] += dp[j - num];
             }
         }
         return dp[amount];

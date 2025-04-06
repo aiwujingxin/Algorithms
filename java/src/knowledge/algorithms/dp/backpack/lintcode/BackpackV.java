@@ -8,6 +8,7 @@ package knowledge.algorithms.dp.backpack.lintcode;
  * 给出 n 个物品, 以及一个数组, nums[i] 代表第i个物品的大小, 保证大小均为正数,
  * 正整数 target 表示背包的大小, 找到能填满背包的方案数。
  * 每一个物品只能使用一次
+ * @see leetcode.problems.LeetCode494
  */
 
 public class BackpackV {
