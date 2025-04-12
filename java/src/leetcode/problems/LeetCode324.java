@@ -5,9 +5,7 @@ import java.util.*;
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/11/17 00:48
- * @see knowledge.algorithms.sort.QuickSelect
  * @see LeetCode75
-
  */
 public class LeetCode324 {
 
@@ -27,7 +25,7 @@ public class LeetCode324 {
         int n = nums.length;
         int mid = (n + 1) / 2;
         // 中位数
-        int target = findKthLargest(nums, mid, 0, nums.length - 1);
+        int target = quickSelect(nums, mid, 0, nums.length - 1);
         // 分成「小于 x / 等于 x / 大于 x」三段 荷兰国旗
         split(nums, target);
         int[] arr = nums.clone();
@@ -39,18 +37,15 @@ public class LeetCode324 {
         }
     }
 
-    public int findKthLargest(int[] nums, int k, int left, int right) {
+    public int quickSelect(int[] nums, int k, int left, int right) {
         if (left > right) {
             return -1;
         }
         int index = partition(nums, left, right);
-        if (index == k - 1) {
-            return nums[index];
-        }
-        if (index > k - 1) {
-            return findKthLargest(nums, k, left, index - 1);
-        }
-        return findKthLargest(nums, k, index + 1, right);
+        int rank = index + 1;
+        if (rank == k) return nums[index];
+        if (rank > k) return quickSelect(nums, k, left, index - 1);
+        return quickSelect(nums, k, index + 1, right);
     }
 
     private int partition(int[] nums, int i, int j) {

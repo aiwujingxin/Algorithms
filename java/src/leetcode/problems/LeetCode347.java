@@ -74,7 +74,7 @@ public class LeetCode347 {
         for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
             list.add(new int[]{entry.getKey(), entry.getValue()});
         }
-        findKthLargest(list, k, 0, list.size() - 1);
+        quickSelect(list, k, 0, list.size() - 1);
         int[] ret = new int[k];
         for (int i = 0; i < k; i++) {
             ret[i] = list.get(i)[0];
@@ -82,19 +82,15 @@ public class LeetCode347 {
         return ret;
     }
 
-    public void findKthLargest(List<int[]> list, int k, int lo, int hi) {
+    public void quickSelect(List<int[]> list, int k, int lo, int hi) {
         if (lo >= hi) {
             return;
         }
         int index = partition(list, lo, hi);
-        if (index == k - 1) {
-            return;
-        }
-        if (index > k - 1) {
-            findKthLargest(list, k, lo, index - 1);
-        } else {
-            findKthLargest(list, k, index + 1, hi);
-        }
+        int rank = index + 1;
+        if (rank == k) return;
+        if (rank > k) quickSelect(list, k, lo, index - 1);
+        quickSelect(list, k, index + 1, hi);
     }
 
     private int partition(List<int[]> nums, int i, int j) {

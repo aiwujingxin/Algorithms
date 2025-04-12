@@ -5,15 +5,18 @@ import java.util.Random;
 /**
  * @author wujingxinit@outlook.com
  * @date 2024/1/9 21:08
+ * @description 快速选择
+ * @see leetcode.problems.LeetCode215
+ * @see leetcode.problems.LeetCode324
+ * @see leetcode.problems.LeetCode347
+ * @see leetcode.problems.LeetCode414
+ * @see leetcode.problems.LeetCode462
  */
 
 public class QuickSelect implements TopK {
 
     @Override
     public int findKthLargest(int[] nums, int k) {
-        if (nums == null || nums.length == 0) {
-            return 0;
-        }
         return findKthLargest(nums, 0, nums.length - 1, k);
     }
 

@@ -10,10 +10,10 @@ public class LCR76 {
         if (nums == null || nums.length == 0) {
             return 0;
         }
-        return findKthLargest(nums, 0, nums.length - 1, k);
+        return quickSelect(nums, 0, nums.length - 1, k);
     }
 
-    public int findKthLargest(int[] nums, int start, int end, int k) {
+    public int quickSelect(int[] nums, int start, int end, int k) {
         if (start > end) {
             return -1;
         }
@@ -21,9 +21,9 @@ public class LCR76 {
         if (index + 1 == k) {
             return nums[index];
         } else if (index + 1 < k) {
-            return findKthLargest(nums, index + 1, end, k);
+            return quickSelect(nums, index + 1, end, k);
         } else {
-            return findKthLargest(nums, start, index - 1, k);
+            return quickSelect(nums, start, index - 1, k);
         }
     }
 

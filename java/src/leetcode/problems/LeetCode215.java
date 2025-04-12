@@ -9,21 +9,18 @@ import java.util.*;
 public class LeetCode215 {
 
     public int findKthLargest(int[] nums, int k) {
-        return findKthLargest(nums, 0, nums.length - 1, k);
+        return quickSelect(nums, 0, nums.length - 1, k);
     }
 
-    public int findKthLargest(int[] nums, int lo, int hi, int k) {
+    public int quickSelect(int[] nums, int lo, int hi, int k) {
         if (lo > hi) {
             return -1;
         }
         int index = partition(nums, lo, hi);
-        if (index + 1 == k) {
-            return nums[index];
-        }
-        if (index + 1 > k) {
-            return findKthLargest(nums, lo, index - 1, k);
-        }
-        return findKthLargest(nums, index + 1, hi, k);
+        int rank = index + 1;
+        if (rank == k) return nums[index];
+        if (rank > k) return quickSelect(nums, lo, index - 1, k);
+        return quickSelect(nums, index + 1, hi, k);
     }
 
     public int partition(int[] nums, int i, int j) {
@@ -31,13 +28,9 @@ public class LeetCode215 {
         swap(nums, i, ri);
         int pi = nums[i];
         while (i < j) {
-            while (i < j && nums[j] <= pi) {
-                j--;
-            }
+            while (i < j && nums[j] <= pi) j--;
             nums[i] = nums[j];
-            while (i < j && nums[i] >= pi) {
-                i++;
-            }
+            while (i < j && nums[i] >= pi) i++;
             nums[j] = nums[i];
         }
         nums[i] = pi;

@@ -28,21 +28,18 @@ public class LeetCode414 {
     }
 
     public int findKthLargest(int[] nums, int k) {
-        return topK(nums, 0, nums.length - 1, k);
+        return quickSelect(nums, 0, nums.length - 1, k);
     }
 
-    private int topK(int[] nums, int i, int j, int k) {
+    private int quickSelect(int[] nums, int i, int j, int k) {
         if (i > j) {
             return -1;
         }
         int index = partition(nums, i, j);
-        if (index + 1 == k) {
-            return nums[index];
-        }
-        if (index + 1 < k) {
-            return topK(nums, index + 1, j, k);
-        }
-        return topK(nums, i, index - 1, k);
+        int rank = index + 1;
+        if (rank == k) return nums[index];
+        if (rank > k) return quickSelect(nums, i, index - 1, k);
+        return quickSelect(nums, index + 1, j, k);
     }
 
 
