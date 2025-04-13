@@ -83,9 +83,7 @@ public class LeetCode347 {
     }
 
     public void quickSelect(List<int[]> list, int k, int lo, int hi) {
-        if (lo >= hi) {
-            return;
-        }
+        if (lo >= hi) return;
         int index = partition(list, lo, hi);
         int rank = index + 1;
         if (rank == k) return;
@@ -96,13 +94,9 @@ public class LeetCode347 {
     private int partition(List<int[]> nums, int i, int j) {
         int[] pi = nums.get(i);
         while (i < j) {
-            while (i < j && nums.get(j)[1] <= pi[1]) {
-                j--;
-            }
+            while (i < j && nums.get(j)[1] <= pi[1]) j--;
             nums.set(i, nums.get(j));
-            while (i < j && nums.get(i)[1] >= pi[1]) {
-                i++;
-            }
+            while (i < j && nums.get(i)[1] >= pi[1]) i++;
             nums.set(j, nums.get(i));
         }
         nums.set(i, pi);

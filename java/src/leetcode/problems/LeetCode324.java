@@ -1,5 +1,7 @@
 package leetcode.problems;
 
+import knowledge.algorithms.sort.QuickSelect;
+
 import java.util.*;
 
 /**
@@ -25,7 +27,7 @@ public class LeetCode324 {
         int n = nums.length;
         int mid = (n + 1) / 2;
         // 中位数
-        int target = quickSelect(nums, mid, 0, nums.length - 1);
+        int target = new QuickSelect().findKthLargest(nums, mid);
         // 分成「小于 x / 等于 x / 大于 x」三段 荷兰国旗
         split(nums, target);
         int[] arr = nums.clone();
@@ -35,33 +37,6 @@ public class LeetCode324 {
                 nums[i + 1] = arr[k];
             }
         }
-    }
-
-    public int quickSelect(int[] nums, int k, int left, int right) {
-        if (left > right) {
-            return -1;
-        }
-        int index = partition(nums, left, right);
-        int rank = index + 1;
-        if (rank == k) return nums[index];
-        if (rank > k) return quickSelect(nums, k, left, index - 1);
-        return quickSelect(nums, k, index + 1, right);
-    }
-
-    private int partition(int[] nums, int i, int j) {
-        int pi = nums[i];
-        while (i < j) {
-            while (i < j && nums[j] <= pi) {
-                j--;
-            }
-            nums[i] = nums[j];
-            while (i < j && nums[i] >= pi) {
-                i++;
-            }
-            nums[j] = nums[i];
-        }
-        nums[i] = pi;
-        return i;
     }
 
     private void split(int[] nums, int target) {

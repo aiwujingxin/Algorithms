@@ -1,5 +1,8 @@
 package leetcode.problems;
 
+import knowledge.algorithms.sort.QuickSelect;
+import knowledge.algorithms.sort.QuickSort;
+
 import java.util.HashSet;
 import java.util.Set;
 
@@ -20,42 +23,10 @@ public class LeetCode414 {
             nums[index] = n;
             index++;
         }
-        int res = findKthLargest(nums, 3);
+        int res = new QuickSelect().findKthLargest(nums, 3);
         if (nums.length < 3) {
             return nums[0];
         }
         return res;
-    }
-
-    public int findKthLargest(int[] nums, int k) {
-        return quickSelect(nums, 0, nums.length - 1, k);
-    }
-
-    private int quickSelect(int[] nums, int i, int j, int k) {
-        if (i > j) {
-            return -1;
-        }
-        int index = partition(nums, i, j);
-        int rank = index + 1;
-        if (rank == k) return nums[index];
-        if (rank > k) return quickSelect(nums, i, index - 1, k);
-        return quickSelect(nums, index + 1, j, k);
-    }
-
-
-    private int partition(int[] nums, int i, int j) {
-        int pi = nums[i];
-        while (i < j) {
-            while (i < j && nums[j] <= pi) {
-                j--;
-            }
-            nums[i] = nums[j];
-            while (i < j && nums[i] >= pi) {
-                i++;
-            }
-            nums[j] = nums[i];
-        }
-        nums[i] = pi;
-        return i;
     }
 }
