@@ -8,7 +8,7 @@ import java.util.*;
  * @author wujingxinit@outlook.com
  * @date 2024/3/10 21:08
  */
-public class LCR170_btitree {
+public class LCR170_bitTree {
 
     public int reversePairs(int[] record) {
         int n = record.length;
@@ -27,8 +27,8 @@ public class LCR170_btitree {
         BITree tree = new BITree(n);
         for (int i = n - 1; i >= 0; i--) {
             rank = map.get(record[i]);
-            tree.add(rank, 1);
             ans += tree.sum(rank - 1);
+            tree.add(rank, 1);
         }
         return ans;
     }

@@ -14,11 +14,11 @@ import leetcode.problems.*;
  * @link <a href="https://www.youtube.com/watch?v=v2Q4ZjPeFuc">讲解</a>
  * @see LeetCode307 一维
  * @see LeetCode308 二维
- * @see LCR170_btitree
- * @see LeetCode315_BitTree
- * @see LeetCode327_BitTree
- * @see LeetCode493_bittree
- * @see LeetCode673_BitTree
+ * @see LCR170_bitTree
+ * @see LeetCode315_bitTree
+ * @see LeetCode327_bitTree
+ * @see LeetCode493_bitTree
+ * @see LeetCode673_bitTree
  * @see LeetCode683_bittree
  * @see LeetCode1375
  * @see LeetCode1649
@@ -28,16 +28,16 @@ public class BITree {
     int[] tree;
 
     public BITree(int n) {
-        this.tree = new int[n + 1];
+        tree = new int[n + 1];
     }
 
     public void add(int x, int u) {
-        for (int i = x; i < tree.length; i += (i & (-i))) tree[i] += u;
+        for (int i = x; i < tree.length; i += (i & -i)) tree[i] += u;
     }
 
     public int sum(int x) {
         int sum = 0;
-        for (int i = x; i > 0; i -= (i & (-i))) sum += tree[i];
+        for (int i = x; i > 0; i -= (i & -i)) sum += tree[i];
         return sum;
     }
 }

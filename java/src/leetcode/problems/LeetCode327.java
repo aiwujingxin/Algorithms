@@ -13,9 +13,9 @@ public class LeetCode327 {
     int upper;
 
     public int countRangeSum(int[] nums, int lower, int upper) {
-        long[] presum = new long[nums.length + 1];
         int n = nums.length;
-        temp = new long[n + 1];
+        long[] presum = new long[n + 1];
+        this.temp = new long[n + 1];
         this.lower = lower;
         this.upper = upper;
         for (int i = 1; i <= n; i++) {
@@ -36,19 +36,17 @@ public class LeetCode327 {
     }
 
     private void merge(long[] nums, int lo, int mid, int hi) {
-        int i = lo, j = mid + 1;
-        int k = lo;
-
         int l = mid + 1, r = mid + 1;
-        for (int t = lo; t <= mid; t++) {
-            while (l <= hi && nums[l] - nums[t] < lower) {
+        for (int left = lo; left <= mid; left++) {
+            while (l <= hi && nums[l] - nums[left] < lower) {
                 l++;
             }
-            while (r <= hi && nums[r] - nums[t] <= upper) {
+            while (r <= hi && nums[r] - nums[left] <= upper) {
                 r++;
             }
             count += r - l;
         }
+        int i = lo, k = lo, j = mid + 1;
         while (i <= mid && j <= hi) {
             if (nums[i] <= nums[j]) {
                 temp[k++] = nums[i++];

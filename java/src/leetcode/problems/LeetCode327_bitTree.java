@@ -8,11 +8,12 @@ import java.util.*;
  * @author wujingxinit@outlook.com
  * @date 2023/5/24 21:53
  */
-public class LeetCode327_BitTree {
+public class LeetCode327_bitTree {
 
     public int countRangeSum(int[] nums, int lower, int upper) {
-        long[] preSum = new long[nums.length + 1];
-        for (int i = 1; i <= nums.length; ++i) {
+        int n = nums.length;
+        long[] preSum = new long[n + 1];
+        for (int i = 1; i <= n; ++i) {
             preSum[i] = preSum[i - 1] + nums[i - 1];
         }
 

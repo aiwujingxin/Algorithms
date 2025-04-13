@@ -2,216 +2,183 @@ package knowledge.datastructure.tree.bst;
 
 import leetcode.problems.*;
 
-import java.util.*;
+import java.util.Random;
 
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/5/23 11:47
+ * @description 平衡二叉搜索树 Treap树
  * @see LeetCode480_treap
+ * @see LeetCode327_treap
  */
 
 public class TreapTree {
 
-    final int range = 10000010;
-    final int INF = 0x3f3f3f3f;
+    private static final long INF = 0x3f3f3f3f3f3f3f3fL;
+    private static final Random random = new Random();
     private Node root = null;
 
-    int rand() {
-        return new Random().nextInt(2 * range);
+    private static class Node {
+        long key, priority, cnt, size;
+        Node left, right;
+
+        Node(long key) {
+            this.key = key;
+            this.priority = random.nextLong();
+            this.cnt = this.size = 1;
+        }
     }
 
-    public void build() {
-        root = new Node(-INF, rand());
-        root.right = new Node(INF, rand());
-        pushup(root);
-        if (root.val < root.right.val)
-            root = zag(root);
-    }
-
-    public void insert(int key) {
+    public void insert(long key) {
         root = insert(root, key);
     }
 
-    public void remove(int key) {
+    public void remove(long key) {
         root = remove(root, key);
     }
 
-    public int getKeyByRang(int range) {
-        return getKeyByRang(root, range);
-    }
-
-    public int getRangByKey(int key) {
-        return getRangByKey(root, key);
-    }
-
-    public int getPre(int key) {
-        return getPre(root, key);
-    }
-
-    public int getNext(int key) {
-        return getNext(root, key);
-    }
-
-    public Node insert(Node node, int key) {
-        if (node == null) {
-            return new Node(key, rand());
-        }
-        if (node.key == key) {
-            node.cnt++;
-        }
-
-        if (key < node.key) {
-            node.left = insert(node.left, key);
-            if (node.left.val > node.val) {
-                node = zig(node);
-            }
-        } else if (key > node.key) {
-            node.right = insert(node.right, key);
-            if (node.right.val > node.val) {
-                node = zag(node);
+    public long lowerBound(long key) {
+        Node node = root;
+        long res = Long.MAX_VALUE;
+        while (node != null) {
+            if (node.key >= key) {
+                res = node.key;
+                node = node.left;
+            } else {
+                node = node.right;
             }
         }
-        pushup(node);
-        return node;
+        return res;
     }
 
-    public Node remove(Node node, int key) {
-        if (node == null) {
-            return null;
+    public long upperBound(long key) {
+        Node node = root;
+        long res = Long.MAX_VALUE;
+        while (node != null) {
+            if (node.key > key) {
+                res = node.key;
+                node = node.left;
+            } else {
+                node = node.right;
+            }
         }
-        if (key < node.key) {
-            node.left = remove(node.left, key);
-            pushup(node);
-            return node;
-        }
-        if (key > node.key) {
-            node.right = remove(node.right, key);
-            pushup(node);
-            return node;
-        }
-        // 相等的时候
-        if (node.cnt > 1) {
-            node.cnt--;
-            pushup(node);
-            return node;
-        }
-        if (node.left == null && node.right == null) {
-            return null;
-        }
-        if (node.left == null) {// 左旋
-            node = zag(node);
-            node.left = remove(node.left, key);
-            pushup(node);
-            return node;
-        }
-        if (node.right == null) {// 右旋
-            node = zig(node);
-            node.right = remove(node.right, key);
-            pushup(node);
-            return node;
-        }
-        if (node.left.key > node.right.key) {// 左孩子上来， 右旋
-            node = zig(node);
-            node.right = remove(node.right, key);
-        } else {// 右孩子上来， 左旋
-            node = zag(node);
-            node.left = remove(node.left, key);
-        }
-        pushup(node);
-        return node;
+        return res;
     }
 
-    public int getKeyByRang(Node node, int range) {
-        if (node == null) {
-            return INF;
+    public long getPre(long key) {
+        Node node = root;
+        long res = -INF;
+        while (node != null) {
+            if (node.key < key) {
+                res = node.key;
+                node = node.right;
+            } else {
+                node = node.left;
+            }
         }
-        Node left = node.left;
-        int lsize = left == null ? 0 : left.size;
-        if (lsize >= range) {
-            return getKeyByRang(node.left, range);
-        }
-        if (lsize + node.cnt >= range) {
-            return node.key;
-        }
-        return getKeyByRang(node.right, range - lsize - node.cnt);
-
+        return res;
     }
 
-    public int getRangByKey(Node node, int key) {
-        if (node == null) {
-            return 0;
+    public long getNext(long key) {
+        Node node = root;
+        long res = INF;
+        while (node != null) {
+            if (node.key > key) {
+                res = node.key;
+                node = node.left;
+            } else {
+                node = node.right;
+            }
         }
-        Node left = node.left;
-        int lsize = left == null ? 0 : left.size;
+        return res;
+    }
 
-        if (key > node.key) {
-            return lsize + node.cnt + getRangByKey(node.right, key);
-        }
+    public long getSize() {
+        return getSize(root);
+    }
+
+    public long getKeyByRank(long rank) {
+        return getKeyByRank(root, rank);
+    }
+
+    public long getRankByKey(long key) {
+        return getRankByKey(root, key);
+    }
+
+    // ================= 内部方法 =================
+
+    private Node insert(Node node, long key) {
+        if (node == null) return new Node(key);
         if (key == node.key) {
-            return lsize + 1;
+            node.cnt++;
+        } else if (key < node.key) {
+            node.left = insert(node.left, key);
+            if (node.left.priority > node.priority) node = rotate(node, false);
+        } else {
+            node.right = insert(node.right, key);
+            if (node.right.priority > node.priority) node = rotate(node, true);
         }
-        return getRangByKey(node.left, key);
+        pushUp(node);
+        return node;
     }
 
-    public int getPre(Node node, int key) {
-        if (node == null) {
-            return -INF;
+    private Node remove(Node node, long key) {
+        if (node == null) return null;
+        if (key < node.key) {
+            node.left = remove(node.left, key);
+        } else if (key > node.key) {
+            node.right = remove(node.right, key);
+        } else {
+            if (node.cnt > 1) {
+                node.cnt--;
+            } else if (node.left == null || node.right == null) {
+                node = (node.left != null) ? node.left : node.right;
+            } else if (node.left.priority > node.right.priority) {
+                node = rotate(node, false);
+                node.right = remove(node.right, key);
+            } else {
+                node = rotate(node, true);
+                node.left = remove(node.left, key);
+            }
         }
-        if (key <= node.key) {
-            return getPre(node.left, key);
-        }
-        return Math.max(node.key, getPre(node.right, key));
+        if (node != null) pushUp(node);
+        return node;
     }
 
-    public int getNext(Node node, int key) {
-        if (node == null) {
-            return INF;
-        }
-        if (key >= node.key) {
-            return getNext(node.right, key);
-        }
-        return Math.min(node.key, getNext(node.left, key));
-    }
-
-    Node zig(Node node) {// 右旋, 返回此时的该位置节点
-        Node p = node.left;
-        node.left = p.right;
-        p.right = node;
-        pushup(p.right);
-        pushup(p);
+    private Node rotate(Node node, boolean left) {
+        Node p = left ? node.right : node.left;
+        if (left) node.right = p.left;
+        else node.left = p.right;
+        if (left) p.left = node;
+        else p.right = node;
+        pushUp(node);
+        pushUp(p);
         return p;
     }
 
-    Node zag(Node node) {// 左旋
-        Node p = node.right;
-        node.right = p.left;
-        p.left = node;
-        pushup(p.left);
-        pushup(p);
-        return p;
+    private void pushUp(Node node) {
+        node.size = node.cnt +
+                (node.left != null ? node.left.size : 0) +
+                (node.right != null ? node.right.size : 0);
     }
 
-    void pushup(Node node) {
-        int lsize = 0;
-        int rsize = 0;
-        if (node.left != null) {
-            lsize = node.left.size;
-        }
-        if (node.right != null) {
-            rsize = node.right.size;
-        }
-        node.size = node.cnt + lsize + rsize;
-
+    private long getSize(Node node) {
+        return node == null ? 0 : node.size;
     }
 
-    private static class Node {
-        int key, val, cnt, size;
-        Node left, right;
+    private long getKeyByRank(Node node, long rank) {
+        if (node == null) return INF;
+        long lsize = getSize(node.left);
+        if (rank <= lsize) return getKeyByRank(node.left, rank);
+        if (rank <= lsize + node.cnt) return node.key;
+        return getKeyByRank(node.right, rank - lsize - node.cnt);
+    }
 
-        public Node(int key, int val) {
-            this.key = key;
-            this.val = val;
-            this.cnt = this.size = 1;
-        }
+    private long getRankByKey(Node node, long key) {
+        if (node == null) return 0;
+        if (key < node.key) return getRankByKey(node.left, key);
+        long lsize = getSize(node.left);
+        if (key == node.key) return lsize + 1;
+        return lsize + node.cnt + getRankByKey(node.right, key);
     }
 }

@@ -10,9 +10,6 @@ public class LeetCode493 {
     int[] temp;
 
     public int reversePairs(int[] nums) {
-        if (nums == null || nums.length == 0) {
-            return 0;
-        }
         this.temp = new int[nums.length];
         mergeSort(nums, 0, nums.length - 1);
         return res;
@@ -29,14 +26,12 @@ public class LeetCode493 {
     }
 
     private void merge(int[] nums, int lo, int mid, int hi) {
-        int left = lo;
-        int right = mid + 1;
-        while (left <= mid) {
-            while (right <= hi && nums[left] > 2 * (long) nums[right]) {
-                right++;
+        int r = mid + 1;
+        for (int l = lo; l <= mid; l++) {
+            while (r <= hi && nums[l] > 2 * (long) nums[r]) {
+                r++;
             }
-            res += right - mid - 1;
-            left++;
+            res += r - (mid + 1);
         }
         int k = lo;
         int i = lo;

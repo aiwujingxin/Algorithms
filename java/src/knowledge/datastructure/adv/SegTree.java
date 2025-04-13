@@ -32,12 +32,12 @@ public class SegTree {
             return;
         }
         int mid = (start + end) / 2;
-        int left_node = 2 * node + 1;
-        int right_node = 2 * node + 2;
-        buildTree(nums, left_node, start, mid);
-        buildTree(nums, right_node, mid + 1, end);
-        segmentTree[node] = segmentTree[left_node] + segmentTree[right_node];
-        numsTree[node] = Math.max(numsTree[left_node], numsTree[right_node]);
+        int leftNode = 2 * node + 1;
+        int rightNode = 2 * node + 2;
+        buildTree(nums, leftNode, start, mid);
+        buildTree(nums, rightNode, mid + 1, end);
+        segmentTree[node] = segmentTree[leftNode] + segmentTree[rightNode];
+        numsTree[node] = Math.max(numsTree[leftNode], numsTree[rightNode]);
     }
 
     public void update(int idx, int val, int node, int start, int end) {
@@ -71,6 +71,11 @@ public class SegTree {
         } else {
             return queryTree(left, m, node * 2 + 1, s, m) + queryTree(m + 1, right, node * 2 + 2, m + 1, e);
         }
+    }
+
+    public double queryAverage(int left, int right) {
+        int sum = queryTree(left, right, 0, 0, nums.length - 1);
+        return sum / (double)(right - left + 1);
     }
 
     public int queryMax(int left, int right) {

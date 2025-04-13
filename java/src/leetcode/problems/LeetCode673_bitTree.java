@@ -6,7 +6,7 @@ import java.util.*;
  * @author wujingxinit@outlook.com
  * @date 2024/1/3 13:34
  */
-public class LeetCode673_BitTree {
+public class LeetCode673_bitTree {
 
     int n;
     int[][] tree = new int[2010][2];

@@ -9,7 +9,7 @@ import java.util.*;
  * @date 2022/7/23 19:29
  * @link <a href="https://leetcode.cn/problems/count-of-smaller-numbers-after-self/solutions/15614/shu-zhuang-shu-zu-by-liweiwei1419/">...</a>
  */
-public class LeetCode315_BitTree {
+public class LeetCode315_bitTree {
 
     public List<Integer> countSmaller(int[] nums) {
         List<Integer> res = new ArrayList<>();
@@ -29,10 +29,10 @@ public class LeetCode315_BitTree {
         for (int i = n - 1; i >= 0; i--) {
             // 1、查询排名
             rank = map.get(nums[i]);
-            // 2、在树状数组排名的那个位置 + 1, 即个数+1
-            tree.add(rank, 1);
-            // 3、查询一下小于等于“当前排名 - 1”的元素有多少
+            // 2、查询一下小于等于“当前排名 - 1”的元素有多少
             res.add(tree.sum(rank - 1));
+            // 3、在树状数组排名的那个位置 + 1, 即个数+1
+            tree.add(rank, 1);
         }
         Collections.reverse(res);
         return res;

@@ -7,9 +7,9 @@ import java.util.*;
 /**
  * @author jingxinwu
  * @date 2022-01-31 2:29 PM
- * @description 离散化
+ * @description 树状数组+离散化
  */
-public class LeetCode493_bittree {
+public class LeetCode493_bitTree {
 
     public int reversePairs(int[] nums) {
         Set<Long> set = new TreeSet<>();
