@@ -9,13 +9,13 @@ import java.util.List;
  */
 public class LeetCode315 {
 
-    int[][] temp;
+    int[][] t;
     int[] counts;
 
     public List<Integer> countSmaller(int[] nums) {
         int n = nums.length;
         int[][] arr = new int[n][];
-        temp = new int[n][];
+        t = new int[n][];
         counts = new int[n];
         for (int i = 0; i < n; i++) {
             arr[i] = new int[]{nums[i], i};
@@ -46,23 +46,23 @@ public class LeetCode315 {
         while (i <= mid && j <= hi) {
             if (arr[i][0] <= arr[j][0]) {
                 counts[arr[i][1]] += j - mid - 1;
-                temp[k++] = arr[i++];
+                t[k++] = arr[i++];
             } else {
-                temp[k++] = arr[j++];
+                t[k++] = arr[j++];
             }
         }
 
         while (i <= mid) {
             counts[arr[i][1]] += j - mid - 1;
-            temp[k++] = arr[i++];
+            t[k++] = arr[i++];
         }
 
         while (j <= hi) {
-            temp[k++] = arr[j++];
+            t[k++] = arr[j++];
         }
 
         for (int x = lo; x <= hi; x++) {
-            arr[x] = temp[x];
+            arr[x] = t[x];
         }
     }
 }

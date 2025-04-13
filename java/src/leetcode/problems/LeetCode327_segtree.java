@@ -10,10 +10,7 @@ import java.util.Set;
  */
 public class LeetCode327_segtree {
 
-
     public int countRangeSum(int[] nums, int lower, int upper) {
-
-        if (nums == null || nums.length == 0) return 0;
         int ans = 0;
         Set<Long> valSet = new HashSet<>();
         long sum = 0;

@@ -6,14 +6,14 @@ package leetcode.lists.lcr;
  */
 public class LCR170 {
 
-    int[] temp;
-    int cnt = 0;
+    int[] t;
+    int count;
 
     public int reversePairs(int[] record) {
         int n = record.length;
-        this.temp = new int[n];
+        this.t = new int[n];
         mergeSort(record, 0, n - 1);
-        return cnt;
+        return count;
     }
 
     public void mergeSort(int[] nums, int lo, int hi) {
@@ -32,21 +32,21 @@ public class LCR170 {
         int k = lo;
         while (i <= mid && j <= hi) {
             if (nums[i] <= nums[j]) {
-                cnt += j - mid - 1;
-                temp[k++] = nums[i++];
+                count += j - mid - 1;
+                t[k++] = nums[i++];
             } else {
-                temp[k++] = nums[j++];
+                t[k++] = nums[j++];
             }
         }
         while (i <= mid) {
-            cnt += j - mid - 1;
-            temp[k++] = nums[i++];
+            count += j - mid - 1;
+            t[k++] = nums[i++];
         }
         while (j <= hi) {
-            temp[k++] = nums[j++];
+            t[k++] = nums[j++];
         }
         for (int x = lo; x <= hi; x++) {
-            nums[x] = temp[x];
+            nums[x] = t[x];
         }
     }
 }

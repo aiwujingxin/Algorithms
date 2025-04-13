@@ -6,8 +6,7 @@ package leetcode.problems;
  */
 public class LeetCode327 {
 
-    long[] temp;
-
+    long[] t;
     int count;
     int lower;
     int upper;
@@ -15,7 +14,7 @@ public class LeetCode327 {
     public int countRangeSum(int[] nums, int lower, int upper) {
         int n = nums.length;
         long[] presum = new long[n + 1];
-        this.temp = new long[n + 1];
+        this.t = new long[n + 1];
         this.lower = lower;
         this.upper = upper;
         for (int i = 1; i <= n; i++) {
@@ -35,33 +34,21 @@ public class LeetCode327 {
         merge(nums, lo, mid, hi);
     }
 
-    private void merge(long[] nums, int lo, int mid, int hi) {
-        int l = mid + 1, r = mid + 1;
-        for (int left = lo; left <= mid; left++) {
-            while (l <= hi && nums[l] - nums[left] < lower) {
-                l++;
+    private void merge(long[] a, int l, int m, int r) {
+        int r1 = m + 1, r2 = m + 1;
+        for (int left = l; left <= m; left++) {
+            while (r1 <= r && a[r1] - a[left] < lower) {
+                r1++;
             }
-            while (r <= hi && nums[r] - nums[left] <= upper) {
-                r++;
+            while (r2 <= r && a[r2] - a[left] <= upper) {
+                r2++;
             }
-            count += r - l;
+            count += r2 - r1;
         }
-        int i = lo, k = lo, j = mid + 1;
-        while (i <= mid && j <= hi) {
-            if (nums[i] <= nums[j]) {
-                temp[k++] = nums[i++];
-            } else {
-                temp[k++] = nums[j++];
-            }
-        }
-        while (i <= mid) {
-            temp[k++] = nums[i++];
-        }
-        while (j <= hi) {
-            temp[k++] = nums[j++];
-        }
-        for (int x = lo; x <= hi; x++) {
-            nums[x] = temp[x];
-        }
+        int i = l, j = m + 1, k = l;
+        while (i <= m && j <= r) t[k++] = a[i] <= a[j] ? a[i++] : a[j++];
+        while (i <= m) t[k++] = a[i++];
+        while (j <= r) t[k++] = a[j++];
+        for (i = l; i <= r; i++) a[i] = t[i];
     }
 }

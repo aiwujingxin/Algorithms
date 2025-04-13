@@ -6,51 +6,36 @@ package leetcode.problems;
  */
 public class LeetCode493 {
 
-    int res = 0;
-    int[] temp;
+    int[] t;
+    int count;
 
     public int reversePairs(int[] nums) {
-        this.temp = new int[nums.length];
-        mergeSort(nums, 0, nums.length - 1);
-        return res;
+        int n = nums.length;
+        this.t = new int[n];
+        mergeSort(nums, 0, n - 1);
+        return count;
     }
 
     private void mergeSort(int[] nums, int lo, int hi) {
-        if (lo >= hi) {
-            return;
-        }
+        if (lo >= hi) return;
         int mid = lo + hi >> 1;
         mergeSort(nums, lo, mid);
         mergeSort(nums, mid + 1, hi);
         merge(nums, lo, mid, hi);
     }
 
-    private void merge(int[] nums, int lo, int mid, int hi) {
-        int r = mid + 1;
-        for (int l = lo; l <= mid; l++) {
-            while (r <= hi && nums[l] > 2 * (long) nums[r]) {
-                r++;
+    private void merge(int[] a, int l, int m, int r) {
+        int right = m + 1;
+        for (int left = l; left <= m; left++) {
+            while (right <= r && a[left] > 2 * (long) a[right]) {
+                right++;
             }
-            res += r - (mid + 1);
+            count += right - (m + 1);
         }
-        int k = lo;
-        int i = lo;
-        int j = mid + 1;
-        while (i <= mid && j <= hi) {
-            if (nums[i] <= nums[j]) {
-                temp[k++] = nums[i++];
-            } else {
-                temp[k++] = nums[j++];
-            }
-        }
-        while (i <= mid) {
-            temp[k++] = nums[i++];
-        }
-        while (j <= hi) {
-            temp[k++] = nums[j++];
-        }
-        for (int x = lo; x <= hi; x++) {
-            nums[x] = temp[x];
-        }
+        int i = l, j = m + 1, k = l;
+        while (i <= m && j <= r) t[k++] = a[i] <= a[j] ? a[i++] : a[j++];
+        while (i <= m) t[k++] = a[i++];
+        while (j <= r) t[k++] = a[j++];
+        for (i = l; i <= r; i++) a[i] = t[i];
     }
 }

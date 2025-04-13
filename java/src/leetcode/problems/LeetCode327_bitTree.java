@@ -13,7 +13,7 @@ public class LeetCode327_bitTree {
     public int countRangeSum(int[] nums, int lower, int upper) {
         int n = nums.length;
         long[] preSum = new long[n + 1];
-        for (int i = 1; i <= n; ++i) {
+        for (int i = 1; i <= n; i++) {
             preSum[i] = preSum[i - 1] + nums[i - 1];
         }
 

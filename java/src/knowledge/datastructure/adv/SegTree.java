@@ -8,6 +8,8 @@ import leetcode.problems.*;
  * @description 线段树
  * @link <a href="https://www.youtube.com/watch?v=e_bK-dgPvfM">讲解</a>
  * @see LeetCode307_segtree
+ * @see LeetCode315_segtree
+ * @see LeetCode327_segtree
  * @see LeetCode218_segtree
  */
 public class SegTree {
@@ -75,7 +77,7 @@ public class SegTree {
 
     public double queryAverage(int left, int right) {
         int sum = queryTree(left, right, 0, 0, nums.length - 1);
-        return sum / (double)(right - left + 1);
+        return sum / (double) (right - left + 1);
     }
 
     public int queryMax(int left, int right) {
