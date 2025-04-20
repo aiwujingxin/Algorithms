@@ -3,7 +3,10 @@ package knowledge.algorithms.dp.backpack.multiple;
 /**
  * @author wujingxinit@outlook.com
  * @date 2024/2/26 22:58
- * @description 多重背包 二进制优化
+ * @description 多重背包 二进制优化 O(N⋅V⋅logK)
+ * 核心思想：将每种物品的数量s_i拆分成1, 2, 4, ..., 2^(k-1), k_i - (2^k-1）的组合
+ * 优势：通过这种拆分，可以用log(s_i)个"新物品"来表示原来s_i个物品的所有可能选择
+ * 效果：将时间复杂度从O(N×V×K)降低到O(N×V×logK)
  */
 public class Multiple_bit implements MultiplePack {
 

@@ -9,9 +9,6 @@ import common.*;
 public class LeetCode25 {
 
     public ListNode reverseKGroup(ListNode head, int k) {
-        if (head == null) {
-            return null;
-        }
         ListNode tail = head;
         for (int i = 0; i < k; i++) {
             if (tail == null) {
@@ -25,9 +22,6 @@ public class LeetCode25 {
     }
 
     private ListNode reverse(ListNode head, ListNode tail) {
-        if (head == null) {
-            return null;
-        }
         ListNode cur = head;
         ListNode pre = null;
         while (cur != tail) {

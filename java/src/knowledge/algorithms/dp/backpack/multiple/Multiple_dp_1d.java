@@ -3,7 +3,8 @@ package knowledge.algorithms.dp.backpack.multiple;
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/8/7 23:59
- * @description 空间优化，转化为01背包。 则需要从大到小
+ * @description 多重背包 朴素解法 + 空间压缩
+ * 时间复杂度 O(N⋅V⋅K)
  */
 public class Multiple_dp_1d implements MultiplePack {
 

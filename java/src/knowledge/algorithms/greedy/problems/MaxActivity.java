@@ -9,6 +9,8 @@ import java.util.Comparator;
  * @description 活动选择
  * 给定 n 个活动，每个活动 i 有开始时间 start[i] 和结束时间 end[i]。
  * 目标：选择最多的活动，使得它们互不重叠（即任意两个活动的时间区间不重叠）。
+ * @see leetcode.problems.LeetCode435
+ * @see leetcode.problems.LeetCode452
  */
 public class MaxActivity {
 

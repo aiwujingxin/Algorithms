@@ -3,7 +3,8 @@ package knowledge.algorithms.dp.backpack.multiple;
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/7/18 12:54
- * @description 从 矩阵的递推 过程出发，新增的条件实际上只是将 dp[i][j] 的状态依赖限制在了某一段特定的区域之中
+ * @description 多重背包 朴素解法
+ * 从矩阵的递推过程出发，新增的条件实际上只是将 dp[i][j] 的状态依赖限制在了某一段特定的区域之中
  */
 public class Multiple_dp_2d implements MultiplePack {
 
