@@ -6,7 +6,7 @@ import knowledge.algorithms.dp.linerdp.problems.*;
 /**
  * @author wujingxinit@outlook.com
  * @date 2024/4/13 23:37
- * @description LIS & LCS
+ * @description 序列 DP: LIS & LCS
  * <Base>
  * @see RodCutting 钢条切割
  * <LIS>
@@ -25,9 +25,19 @@ import knowledge.algorithms.dp.linerdp.problems.*;
  * @see LeetCode1143 最长公共子序列
  * @see LeetCode72 编辑距离
  * @see LeetCode115 不同的子序列
- * @see LeetCode44 通配符匹配
  * @see LeetCode10 正则表达式匹配
+ * @see LeetCode44 通配符匹配
+ * @see LeetCode97 交错字符串
+ * @see LeetCode583 两个字符串的删除操作
+ * @see LeetCode712 两个字符串的最小ASCII删除和
  * @see LeetCode718 最长公共子串
+ * @see LeetCode727
+ * @see LeetCode1035 不相交的线
+ * @see LeetCode1092 最短公共超序列
+ * @see LeetCode1216
+ * @see LeetCode1312 让字符串成为回文串的最少插入次数
+ * @see LeetCode1458 两个子序列的最大点积
+ * @see LeetCode1771 由子序列构造的最长回文串的长度
  * <LCIS>
  * Acwing272 最长公共上升子序列
  * @see LeetCode1713 得到子序列的最少操作次数 LCS->LIS

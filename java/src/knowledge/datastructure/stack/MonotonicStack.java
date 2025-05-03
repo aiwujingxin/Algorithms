@@ -18,9 +18,11 @@ import java.util.Stack;
  * @see leetcode.problems.LeetCode84
  * @see leetcode.problems.LeetCode2104
  * @see leetcode.problems.LeetCode907
+ * @see leetcode.problems.LeetCode316
  * 单调栈+贪心
  * @see leetcode.problems.LeetCode581
  * @see leetcode.problems.LeetCode962
+ * @see leetcode.problems.LeetCode402
  */
 public class MonotonicStack {
 

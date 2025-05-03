@@ -16,37 +16,29 @@ public class LCR170 {
         return count;
     }
 
-    public void mergeSort(int[] nums, int lo, int hi) {
-        if (lo >= hi) {
-            return;
-        }
-        int mid = (lo + hi) / 2;
-        mergeSort(nums, lo, mid);
-        mergeSort(nums, mid + 1, hi);
-        merge(nums, lo, mid, hi);
+    public void mergeSort(int[] nums, int l, int r) {
+        if (l >= r) return;
+        int m = l + r >> 1;
+        mergeSort(nums, l, m);
+        mergeSort(nums, m + 1, r);
+        merge(nums, l, m, r);
     }
 
-    public void merge(int[] nums, int lo, int mid, int hi) {
-        int i = lo;
-        int j = mid + 1;
-        int k = lo;
-        while (i <= mid && j <= hi) {
+    public void merge(int[] nums, int l, int m, int r) {
+        int i = l, j = m + 1, k = l;
+        while (i <= m && j <= r) {
             if (nums[i] <= nums[j]) {
-                count += j - mid - 1;
+                count += j - m - 1;
                 t[k++] = nums[i++];
             } else {
                 t[k++] = nums[j++];
             }
         }
-        while (i <= mid) {
-            count += j - mid - 1;
+        while (i <= m) {
+            count += j - m - 1;
             t[k++] = nums[i++];
         }
-        while (j <= hi) {
-            t[k++] = nums[j++];
-        }
-        for (int x = lo; x <= hi; x++) {
-            nums[x] = t[x];
-        }
+        while (j <= r) t[k++] = nums[j++];
+        for (i = l; i <= r; i++) nums[i] = t[i];
     }
 }

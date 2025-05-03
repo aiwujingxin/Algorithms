@@ -16,12 +16,12 @@ public class LeetCode493 {
         return count;
     }
 
-    private void mergeSort(int[] nums, int lo, int hi) {
-        if (lo >= hi) return;
-        int mid = lo + hi >> 1;
-        mergeSort(nums, lo, mid);
-        mergeSort(nums, mid + 1, hi);
-        merge(nums, lo, mid, hi);
+    private void mergeSort(int[] nums, int l, int r) {
+        if (l >= r) return;
+        int m = l + r >> 1;
+        mergeSort(nums, l, m);
+        mergeSort(nums, m + 1, r);
+        merge(nums, l, m, r);
     }
 
     private void merge(int[] a, int l, int m, int r) {

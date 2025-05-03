@@ -13,7 +13,7 @@ import java.util.*;
 public class LeetCode452 {
 
     public int findMinArrowShots(int[][] points) {
-        Arrays.sort(points, Comparator.comparingInt(o -> o[1]));
+        Arrays.sort(points, (o1, o2) -> o1[1] - o2[2]);
         int lastEnd = points[0][1];
         int cnt = 1;
         for (int i = 1; i < points.length; i++) {

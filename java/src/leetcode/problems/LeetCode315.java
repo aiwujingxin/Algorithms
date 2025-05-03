@@ -28,41 +28,29 @@ public class LeetCode315 {
         return list;
     }
 
-    public void mergeSort(int[][] arr, int lo, int hi) {
-        if (lo >= hi) {
-            return;
-        }
-        int mid = (lo + hi) / 2;
-        mergeSort(arr, lo, mid);
-        mergeSort(arr, mid + 1, hi);
-        merge(arr, lo, mid, hi);
+    public void mergeSort(int[][] nums, int l, int r) {
+        if (l >= r) return;
+        int m = l + r >> 1;
+        mergeSort(nums, l, m);
+        mergeSort(nums, m + 1, r);
+        merge(nums, l, m, r);
     }
 
-    public void merge(int[][] arr, int lo, int mid, int hi) {
-        int i = lo;
-        int k = lo;
-        int j = mid + 1;
-
-        while (i <= mid && j <= hi) {
-            if (arr[i][0] <= arr[j][0]) {
-                counts[arr[i][1]] += j - mid - 1;
-                t[k++] = arr[i++];
+    public void merge(int[][] nums, int l, int m, int r) {
+        int i = l, j = m + 1, k = l;
+        while (i <= m && j <= r) {
+            if (nums[i][0] <= nums[j][0]) {
+                counts[nums[i][1]] += j - m - 1;
+                t[k++] = nums[i++];
             } else {
-                t[k++] = arr[j++];
+                t[k++] = nums[j++];
             }
         }
-
-        while (i <= mid) {
-            counts[arr[i][1]] += j - mid - 1;
-            t[k++] = arr[i++];
+        while (i <= m) {
+            counts[nums[i][1]] += j - m - 1;
+            t[k++] = nums[i++];
         }
-
-        while (j <= hi) {
-            t[k++] = arr[j++];
-        }
-
-        for (int x = lo; x <= hi; x++) {
-            arr[x] = t[x];
-        }
+        while (j <= r) t[k++] = nums[j++];
+        for (i = l; i <= r; i++) nums[i] = t[i];
     }
 }

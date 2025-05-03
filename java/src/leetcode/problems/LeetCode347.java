@@ -5,11 +5,49 @@ import java.util.*;
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/11/17 22:34
- * @description 堆排 桶排 快排
+ * @description 快排 堆排 桶排
  */
 public class LeetCode347 {
 
     public int[] topKFrequent(int[] nums, int k) {
+        Map<Integer, Integer> map = new HashMap<>();
+        for (int num : nums) {
+            map.put(num, map.getOrDefault(num, 0) + 1);
+        }
+        List<int[]> list = new ArrayList<>();
+        for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
+            list.add(new int[]{entry.getKey(), entry.getValue()});
+        }
+        quickSelect(list, k, 0, list.size() - 1);
+        int[] ret = new int[k];
+        for (int i = 0; i < k; i++) {
+            ret[i] = list.get(i)[0];
+        }
+        return ret;
+    }
+
+    public void quickSelect(List<int[]> list, int k, int lo, int hi) {
+        if (lo >= hi) return;
+        int index = partition(list, lo, hi);
+        int rank = index + 1;
+        if (rank == k) return;
+        if (rank > k) quickSelect(list, k, lo, index - 1);
+        quickSelect(list, k, index + 1, hi);
+    }
+
+    private int partition(List<int[]> nums, int i, int j) {
+        int[] pi = nums.get(i);
+        while (i < j) {
+            while (i < j && nums.get(j)[1] <= pi[1]) j--;
+            nums.set(i, nums.get(j));
+            while (i < j && nums.get(i)[1] >= pi[1]) i++;
+            nums.set(j, nums.get(i));
+        }
+        nums.set(i, pi);
+        return i;
+    }
+
+    public int[] topKFrequent_heap(int[] nums, int k) {
         HashMap<Integer, Integer> map = new HashMap<>();
         for (int num : nums) {
             map.put(num, map.getOrDefault(num, 0) + 1);
@@ -62,44 +100,5 @@ public class LeetCode347 {
             }
         }
         return res;
-    }
-
-    // O（n）
-    public int[] topKFrequent_quick(int[] nums, int k) {
-        Map<Integer, Integer> map = new HashMap<>();
-        for (int num : nums) {
-            map.put(num, map.getOrDefault(num, 0) + 1);
-        }
-        List<int[]> list = new ArrayList<>();
-        for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
-            list.add(new int[]{entry.getKey(), entry.getValue()});
-        }
-        quickSelect(list, k, 0, list.size() - 1);
-        int[] ret = new int[k];
-        for (int i = 0; i < k; i++) {
-            ret[i] = list.get(i)[0];
-        }
-        return ret;
-    }
-
-    public void quickSelect(List<int[]> list, int k, int lo, int hi) {
-        if (lo >= hi) return;
-        int index = partition(list, lo, hi);
-        int rank = index + 1;
-        if (rank == k) return;
-        if (rank > k) quickSelect(list, k, lo, index - 1);
-        quickSelect(list, k, index + 1, hi);
-    }
-
-    private int partition(List<int[]> nums, int i, int j) {
-        int[] pi = nums.get(i);
-        while (i < j) {
-            while (i < j && nums.get(j)[1] <= pi[1]) j--;
-            nums.set(i, nums.get(j));
-            while (i < j && nums.get(i)[1] >= pi[1]) i++;
-            nums.set(j, nums.get(i));
-        }
-        nums.set(i, pi);
-        return i;
     }
 }

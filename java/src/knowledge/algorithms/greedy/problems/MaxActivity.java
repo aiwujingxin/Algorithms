@@ -1,7 +1,6 @@
 package knowledge.algorithms.greedy.problems;
 
 import java.util.Arrays;
-import java.util.Comparator;
 
 /**
  * @author wujingxinit@outlook.com
@@ -15,15 +14,15 @@ import java.util.Comparator;
 public class MaxActivity {
 
     public int maxActivities(int[][] activities) {
-        Arrays.sort(activities, Comparator.comparingInt(a -> a[1]));
-        int count = 1;
+        Arrays.sort(activities, (o1, o2) -> o1[1] - o2[2]);
         int lastEnd = activities[0][1];
+        int cnt = 1;
         for (int i = 1; i < activities.length; i++) {
             if (activities[i][0] >= lastEnd) {
-                count++;
+                cnt++;
                 lastEnd = activities[i][1];
             }
         }
-        return count;
+        return cnt;
     }
 }

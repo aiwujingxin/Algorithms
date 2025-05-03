@@ -25,12 +25,12 @@ public class MergeSort implements Sort {
         return nums;
     }
 
-    void sort(int[] a, int l, int r) {
+    void sort(int[] nums, int l, int r) {
         if (l >= r) return;
-        int m = (l + r) / 2;
-        sort(a, l, m);
-        sort(a, m + 1, r);
-        merge(a, l, m, r);
+        int m = l + r >> 1;
+        sort(nums, l, m);
+        sort(nums, m + 1, r);
+        merge(nums, l, m, r);
     }
 
     void merge(int[] a, int l, int m, int r) {

@@ -24,25 +24,19 @@ public class LeetCode327 {
         return count;
     }
 
-    private void mergeSort(long[] nums, int lo, int hi) {
-        if (lo >= hi) {
-            return;
-        }
-        int mid = (hi - lo) / 2 + lo;
-        mergeSort(nums, lo, mid);
-        mergeSort(nums, mid + 1, hi);
-        merge(nums, lo, mid, hi);
+    private void mergeSort(long[] nums, int l, int r) {
+        if (l >= r) return;
+        int m = l + r >> 1;
+        mergeSort(nums, l, m);
+        mergeSort(nums, m + 1, r);
+        merge(nums, l, m, r);
     }
 
     private void merge(long[] a, int l, int m, int r) {
         int r1 = m + 1, r2 = m + 1;
         for (int left = l; left <= m; left++) {
-            while (r1 <= r && a[r1] - a[left] < lower) {
-                r1++;
-            }
-            while (r2 <= r && a[r2] - a[left] <= upper) {
-                r2++;
-            }
+            while (r1 <= r && a[r1] - a[left] < lower) r1++;
+            while (r2 <= r && a[r2] - a[left] <= upper) r2++;
             count += r2 - r1;
         }
         int i = l, j = m + 1, k = l;
