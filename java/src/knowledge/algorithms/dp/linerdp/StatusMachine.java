@@ -21,6 +21,7 @@ import leetcode.problems.*;
  * @see LeetCode337 打家劫舍III
  * <其他>
  * @see LeetCode91  解码方法
+ * @see LeetCode376 摆动序列
  */
 public interface StatusMachine {
 }

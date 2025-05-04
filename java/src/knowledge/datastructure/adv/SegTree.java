@@ -6,6 +6,7 @@ import leetcode.problems.*;
  * @author aiwujingxin@gmail.com
  * @date 2022/7/19 00:37
  * @description 线段树
+ * range max/min 求区间最大最小值用segTree
  * @link <a href="https://www.youtube.com/watch?v=e_bK-dgPvfM">讲解</a>
  * @see LeetCode307_segtree
  * @see LeetCode315_segtree

@@ -13,45 +13,43 @@ public class LeetCode324 {
 
     public void wiggleSort(int[] nums) {
         int n = nums.length;
-        int[] sorted = Arrays.stream(nums).sorted().toArray();
-        int index = n - 1;
-        for (int i = 1; i < n; i += 2, index--) {
-            nums[i] = sorted[index];
-        }
-        for (int i = 0; i < n; i += 2, index--) {
-            nums[i] = sorted[index];
+        int[] sorted = nums.clone();
+        Arrays.sort(sorted);
+        int mid = (n + 1) / 2 - 1;// 1. `n + 1` 是为了在奇数长度时让左半部分多一个元素；; 2. `-1` 获取前一半的最后一个索引。
+        int end = n - 1;
+        for (int i = 0; i < n; i++) {
+            nums[i] = (i % 2 == 0) ? sorted[mid--] : sorted[end--];
         }
     }
 
     public void wiggleSort_quickselect(int[] nums) {
         int n = nums.length;
-        int mid = (n + 1) / 2;
-        // 中位数
-        int target = new QuickSelect().findKthLargest(nums, mid);
-        // 分成「小于 x / 等于 x / 大于 x」三段 荷兰国旗
-        split(nums, target);
+        // 1. 找中位数 // 偏左中位数: (n + 1) / 2; 偏右中位数: n / 2 + 1
+        int median = new QuickSelect().findKthLargest(nums, (n + 1) / 2);
+        // 2. 三路划分 分成「小于 x / 等于 x / 大于 x」三段
+        split(nums, median);
+        // 3. 重新排序
         int[] arr = nums.clone();
-        for (int i = 0, j = mid - 1, k = n - 1; i < n; i += 2, j--, k--) {
-            nums[i] = arr[j];
-            if (i + 1 < n) {
-                nums[i + 1] = arr[k];
-            }
+        int mid = (n + 1) / 2 - 1;
+        int end = n - 1;
+        for (int i = 0; i < n; i++) {
+            nums[i] = (i % 2 == 0) ? arr[mid--] : arr[end--];
         }
     }
 
     private void split(int[] nums, int target) {
         int p0 = 0;
         int p2 = nums.length - 1;
-        int index = 0;
-        while (index <= p2) {
-            if (nums[index] < target) {
-                swap(nums, index, p0);
-                index++;
+        int i = 0;
+        while (i <= p2) {
+            if (nums[i] < target) {
+                swap(nums, i, p0);
                 p0++;
-            } else if (nums[index] == target) {
-                index++;
+                i++;
+            } else if (nums[i] == target) {
+                i++;
             } else {
-                swap(nums, index, p2);
+                swap(nums, i, p2);
                 p2--;
             }
         }
