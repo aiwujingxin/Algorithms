@@ -23,12 +23,10 @@ public class LeetCode402 {
         while (index < sb.length() && sb.charAt(index) == '0') {
             index++;
         }
-        if (index == sb.length()) {
-            return "0";
+        String result = sb.substring(index);
+        if (k > 0) {
+            result = result.substring(0, Math.max(0, result.length() - k));
         }
-        if (index < sb.length() - k) {
-            return sb.substring(index, sb.length() - k);
-        }
-        return sb.substring(0, sb.length() - k);
+        return result.isEmpty() ? "0" : result;
     }
 }

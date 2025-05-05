@@ -12,20 +12,22 @@ public class LeetCode6 {
         if (s == null || s.isEmpty() || numRows <= 1) {
             return s;
         }
-        List<StringBuilder> list = new ArrayList<>();
+        StringBuilder[] rows = new StringBuilder[numRows];
         for (int i = 0; i < numRows; i++) {
-            list.add(new StringBuilder());
+            rows[i] = new StringBuilder();
         }
+        int currentRow = 0;
+        boolean goingDown = false;
         for (int i = 0; i < s.length(); i++) {
-            int index = i % (2 * numRows - 2);
-            if (index >= numRows) {
-                index = 2 * numRows - 2 - index;
+            rows[currentRow].append(s.charAt(i));
+            if (currentRow == 0 || currentRow == numRows - 1) {
+                goingDown = !goingDown; // 到达顶行或底行时改变方向
             }
-            list.get(index).append(s.charAt(i));
+            currentRow += goingDown ? 1 : -1; // 根据方向调整行号
         }
         StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < numRows; i++) {
-            sb.append(list.get(i).toString());
+        for (StringBuilder row : rows) {
+            sb.append(row);
         }
         return sb.toString();
     }

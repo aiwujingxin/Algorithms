@@ -7,26 +7,19 @@ package leetcode.problems;
 public class LeetCode7 {
 
     public int reverse(int x) {
-        int rx = 0;
-        int limit = Integer.MAX_VALUE / 10;
-        boolean flag = x > 0;
-        x = Math.abs(x);
-        while (x > 0) {
-            if (rx > limit) {
+        int res = 0;
+        while (x != 0) {
+            int t = x % 10;
+            x /= 10;
+            // 溢出检查
+            if (res > Integer.MAX_VALUE / 10 || (res == Integer.MAX_VALUE / 10 && t > 7)) {
                 return 0;
             }
-            int t = x % 10;
-            if (rx == limit) {
-                if (flag && t > 7) {
-                    return Integer.MAX_VALUE;
-                }
-                if (!flag && t > 8) {
-                    return Integer.MIN_VALUE;
-                }
+            if (res < Integer.MIN_VALUE / 10 || (res == Integer.MIN_VALUE / 10 && t < -8)) {
+                return 0;
             }
-            rx = rx * 10 + t;
-            x = x / 10;
+            res = res * 10 + t;
         }
-        return flag ? rx : -1 * rx;
+        return res;
     }
 }

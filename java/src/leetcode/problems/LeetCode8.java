@@ -7,42 +7,24 @@ package leetcode.problems;
 public class LeetCode8 {
 
     public int myAtoi(String s) {
-        if (s == null || s.isEmpty()) {
-            return 0;
-        }
-        s = s.trim();
         if (s.isEmpty()) {
             return 0;
         }
-        int index = 0;
-        boolean sign = false;
-        if (s.charAt(0) == '-') {
-            index++;
-            sign = true;
-        } else if (s.charAt(0) == '+') {
+        s = s.trim();
+        int index = 0, res = 0, sign = 1;
+        if (index < s.length() && (s.charAt(index) == '-' || s.charAt(index) == '+')) {
+            sign = (s.charAt(index) == '-') ? -1 : 1;
             index++;
         }
-        int res = 0;
-        int limit = Integer.MAX_VALUE / 10;
         while (index < s.length()) {
-            int c = s.charAt(index);
-            if (c < '0' || c > '9') {
-                return sign ? -1 * res : res;
+            int c = s.charAt(index) - '0';
+            if (c < 0 || c > 9) break;
+            if (res > Integer.MAX_VALUE / 10 || (res == Integer.MAX_VALUE / 10 && c > 7)) {
+                return sign == 1 ? Integer.MAX_VALUE : Integer.MIN_VALUE;
             }
-            if (res > limit) {
-                return sign ? Integer.MIN_VALUE : Integer.MAX_VALUE;
-            }
-            if (res == limit) {
-                if (sign && c >= '8') {
-                    return Integer.MIN_VALUE;
-                }
-                if (!sign && c > '7') {
-                    return Integer.MAX_VALUE;
-                }
-            }
-            res = res * 10 + c - '0';
+            res = res * 10 + c;
             index++;
         }
-        return sign ? -1 * res : res;
+        return sign * res;
     }
 }

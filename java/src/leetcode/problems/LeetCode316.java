@@ -9,32 +9,28 @@ import java.util.*;
 public class LeetCode316 {
 
     public String removeDuplicateLetters(String s) {
-        if (s == null || s.isEmpty()) {
-            return "";
-        }
-        int[] freq = new int[26];
-        for (int i = 0; i < s.length(); i++) {
-            freq[s.charAt(i) - 'a']++;
-        }
-        int n = s.length();
+        if (s == null || s.isEmpty()) return "";
         Stack<Character> stack = new Stack<>();
+        int[] freq = new int[26];
         boolean[] visited = new boolean[26];
-        for (int i = 0; i < n; i++) {
-            freq[s.charAt(i) - 'a']--;
-            if (visited[s.charAt(i) - 'a']) {
+        for (char c : s.toCharArray()) {
+            freq[c - 'a']++;
+        }
+        for (char c : s.toCharArray()) {
+            freq[c - 'a']--;
+            if (visited[c - 'a']) {
                 continue;
             }
-            while (!stack.isEmpty() && s.charAt(i) <= stack.peek() && freq[stack.peek() - 'a'] > 0) {
-                char d = stack.pop();
-                visited[d - 'a'] = false;
+            while (!stack.isEmpty() && c < stack.peek() && freq[stack.peek() - 'a'] > 0) {
+                visited[stack.pop() - 'a'] = false;
             }
-            stack.push(s.charAt(i));
-            visited[s.charAt(i) - 'a'] = true;
+            stack.push(c);
+            visited[c - 'a'] = true;
         }
         StringBuilder sb = new StringBuilder();
-        while (!stack.isEmpty()) {
-            sb.append(stack.pop());
+        for (char c : stack) {
+            sb.append(c);
         }
-        return sb.reverse().toString();
+        return sb.toString();
     }
 }
