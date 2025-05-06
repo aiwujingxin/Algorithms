@@ -7,22 +7,16 @@ package leetcode.problems;
 public class LeetCode38 {
 
     public String countAndSay(int n) {
-        if (n == 1) {
-            return "1";
-        }
         String pre = "1";
         for (int i = 1; i < n; i++) {
             StringBuilder sb = new StringBuilder();
-            int index = 0;
-            while (index < pre.length()) {
-                int cnt = 0;
-                char c = pre.charAt(index);
-                while (index < pre.length() && pre.charAt(index) == c) {
+            for (int index = 0; index < pre.length(); index++) {
+                int cnt = 1;
+                while (index + 1 < pre.length() && pre.charAt(index) == pre.charAt(index + 1)) {
                     index++;
                     cnt++;
                 }
-                sb.append(cnt);
-                sb.append(c);
+                sb.append(cnt).append(pre.charAt(index));
             }
             pre = sb.toString();
         }

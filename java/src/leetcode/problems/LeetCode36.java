@@ -37,18 +37,18 @@ public class LeetCode36 {
             }
         }
 
-        for (int i = 0; i < n; i += 3) {
-            for (int j = 0; j < n; j += 3) {
-                boolean[] visited = new boolean[10];
-                for (int k = i; k < i + 3; k++) {
-                    for (int l = j; l < j + 3; l++) {
-                        if (board[k][l] != '.') {
+        for (int row = 0; row < n; row += 3) {
+            for (int col = 0; col < n; col += 3) {
+                boolean[] box = new boolean[10];
+                for (int i = row / 3 * 3; i < row / 3 * 3 + 3; i++) {
+                    for (int j = col / 3 * 3; j < col / 3 * 3 + 3; j++) {
+                        if (board[i][j] == '.') {
                             continue;
                         }
-                        if (visited[board[k][l] - '0']) {
+                        if (box[board[i][j] - '0']) {
                             return false;
                         }
-                        visited[board[k][l] - '0'] = true;
+                        box[board[i][j] - '0'] = true;
                     }
                 }
             }

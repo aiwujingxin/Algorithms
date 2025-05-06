@@ -7,11 +7,7 @@ package leetcode.problems;
 public class LeetCode33 {
 
     public int search(int[] nums, int target) {
-        if (nums == null || nums.length == 0) {
-            return 0;
-        }
-        int l = 0;
-        int r = nums.length - 1;
+        int l = 0, r = nums.length - 1;
         while (l <= r) {
             int mid = (l + r) >> 1;
             if (target == nums[mid]) {

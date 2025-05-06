@@ -9,9 +9,6 @@ import java.util.Stack;
 public class LeetCode32 {
 
     public int longestValidParentheses(String s) {
-        if (s == null || s.isEmpty()) {
-            return 0;
-        }
         int n = s.length();
         int[] dp = new int[n];
         int max = 0;

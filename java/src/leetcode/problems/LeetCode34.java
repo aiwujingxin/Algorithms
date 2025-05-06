@@ -21,10 +21,7 @@ public class LeetCode34 {
             if (nums[mid] < target) l = mid + 1;
             else r = mid;
         }
-        if (nums[l] != target) {
-            return -1;
-        }
-        return l;
+        return nums[l] == target ? l : -1;
     }
 
     private int findR(int[] nums, int target) {
@@ -35,9 +32,6 @@ public class LeetCode34 {
             if (nums[mid] > target) r = mid - 1;
             else l = mid;
         }
-        if (nums[l] != target) {
-            return -1;
-        }
-        return l;
+        return nums[l] == target ? l : -1;
     }
 }

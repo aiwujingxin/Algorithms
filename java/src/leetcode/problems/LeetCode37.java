@@ -13,7 +13,7 @@ public class LeetCode37 {
     private boolean bk(char[][] board) {
         for (int i = 0; i < 9; i++) {
             for (int j = 0; j < 9; j++) {
-                if (board[i][j] != '.') {
+                if (board[i][j] == '.') {
                     continue;
                 }
                 for (char c = '1'; c <= '9'; c++) {
@@ -33,23 +33,11 @@ public class LeetCode37 {
 
     private boolean place(char[][] board, int row, int col, char c) {
         for (int i = 0; i < 9; i++) {
-            for (int j = 0; j < 9; j++) {
-                if (board[i][j] == '.') {
-                    continue;
-                }
-                if (i == row && board[i][j] == c || j == col && board[i][j] == c) {
-                    return false;
-                }
-            }
+            if (board[row][i] == c || board[i][col] == c) return false;
         }
         for (int i = row / 3 * 3; i < row / 3 * 3 + 3; i++) {
             for (int j = col / 3 * 3; j < col / 3 * 3 + 3; j++) {
-                if (board[i][j] == '.') {
-                    continue;
-                }
-                if (board[i][j] == c) {
-                    return false;
-                }
+                if (board[i][j] == c) return false;
             }
         }
         return true;
