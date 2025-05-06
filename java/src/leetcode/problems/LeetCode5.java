@@ -7,10 +7,7 @@ package leetcode.problems;
 public class LeetCode5 {
 
     public String longestPalindrome(String s) {
-        int n = s.length();
-        int left = 0;
-        int right = 0;
-        int len = 0;
+        int n = s.length(), left = 0, right = 0, len = 0;
         boolean[][] dp = new boolean[n][n];
         for (int i = n - 1; i >= 0; i--) {
             for (int j = i; j < n; j++) {

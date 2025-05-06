@@ -11,43 +11,22 @@ import java.util.List;
 public class LeetCode18 {
 
     public List<List<Integer>> fourSum(int[] nums, int target) {
-        if (nums == null || nums.length == 0) {
-            return new ArrayList<>();
-        }
-        Arrays.sort(nums);
         List<List<Integer>> res = new ArrayList<>();
-        for (int i = 0; i < nums.length - 3; i++) {
-            if (i > 0 && nums[i - 1] == nums[i]) {
-                continue;
-            }
-            for (int j = i + 1; j < nums.length - 2; j++) {
-                if (j > i + 1 && nums[j] == nums[j - 1]) {
-                    continue;
-                }
-                int left = j + 1;
-                int right = nums.length - 1;
-                while (left < right) {
-                    long sum = (long) nums[i] + nums[j] + nums[left] + nums[right];
+        Arrays.sort(nums);
+        int n = nums.length;
+        for (int i = 0; i < n - 3; i++) {
+            if (i > 0 && nums[i] == nums[i - 1]) continue;
+            for (int j = i + 1; j < n - 2; j++) {
+                if (j > i + 1 && nums[j] == nums[j - 1]) continue;
+                int l = j + 1, r = n - 1;
+                while (l < r) {
+                    long sum = (long) nums[i] + nums[j] + nums[l] + nums[r];
                     if (sum == target) {
-                        List<Integer> list = new ArrayList<>();
-                        list.add(nums[i]);
-                        list.add(nums[j]);
-                        list.add(nums[left]);
-                        list.add(nums[right]);
-                        res.add(list);
-                        while (left < right && nums[left + 1] == nums[left]) {
-                            left++;
-                        }
-                        left++;
-                        while (left < right && nums[right - 1] == nums[right]) {
-                            right--;
-                        }
-                        right--;
-                    } else if (sum < target) {
-                        left++;
-                    } else {
-                        right--;
-                    }
+                        res.add(Arrays.asList(nums[i], nums[j], nums[l++], nums[r--]));
+                        while (l < r && nums[l] == nums[l - 1]) l++;
+                        while (l < r && nums[r] == nums[r + 1]) r--;
+                    } else if (sum < target) l++;
+                    else r--;
                 }
             }
         }

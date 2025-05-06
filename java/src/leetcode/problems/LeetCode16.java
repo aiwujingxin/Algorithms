@@ -9,30 +9,16 @@ import java.util.*;
 public class LeetCode16 {
 
     public int threeSumClosest(int[] nums, int target) {
-        if (nums == null || nums.length == 0) {
-            return 0;
-        }
-        int res = Integer.MAX_VALUE / 2;
         Arrays.sort(nums);
-        for (int i = 0; i < nums.length; i++) {
-            if (i > 0 && nums[i - 1] == nums[i]) {
-                continue;
-            }
-            int left = i + 1;
-            int right = nums.length - 1;
-            while (left < right) {
-                int sum = nums[i] + nums[left] + nums[right];
-                if (sum == target) {
-                    return sum;
-                }
-                if (Math.abs(sum - target) < Math.abs(res - target)) {
-                    res = sum;
-                }
-                if (sum < target) {
-                    left++;
-                } else {
-                    right--;
-                }
+        int res = nums[0] + nums[1] + nums[2];
+        for (int i = 0; i < nums.length - 2; i++) {
+            int l = i + 1, r = nums.length - 1;
+            while (l < r) {
+                int sum = nums[i] + nums[l] + nums[r];
+                if (sum == target) return sum;
+                if (Math.abs(sum - target) < Math.abs(res - target)) res = sum;
+                if (sum < target) l++;
+                else r--;
             }
         }
         return res;

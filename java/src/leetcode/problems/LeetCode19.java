@@ -9,23 +9,17 @@ import common.*;
 public class LeetCode19 {
 
     public ListNode removeNthFromEnd(ListNode head, int n) {
-        int len = getLen(head);
         ListNode dummy = new ListNode();
         dummy.next = head;
-        ListNode cur = dummy;
-        for (int i = 0; i < len - n; i++) {
-            cur = cur.next;
+        ListNode fast = dummy, slow = dummy;
+        for (int i = 0; i <= n; i++) {
+            fast = fast.next;
         }
-        cur.next = cur.next.next;
+        while (fast != null) {
+            fast = fast.next;
+            slow = slow.next;
+        }
+        slow.next = slow.next.next;
         return dummy.next;
-    }
-
-    public int getLen(ListNode head) {
-        int len = 0;
-        while (head != null) {
-            len++;
-            head = head.next;
-        }
-        return len;
     }
 }

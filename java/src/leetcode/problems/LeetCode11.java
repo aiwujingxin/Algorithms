@@ -6,20 +6,12 @@ package leetcode.problems;
  */
 public class LeetCode11 {
 
-    public int maxArea(int[] height) {
-        if (height == null || height.length == 0) {
-            return 0;
-        }
-        int max = 0;
-        int left = 0;
-        int right = height.length - 1;
-        while (left < right) {
-            max = Math.max(max, (right - left) * Math.min(height[right], height[left]));
-            if (height[left] < height[right]) {
-                left++;
-            } else {
-                right--;
-            }
+    public int maxArea(int[] h) {
+        int l = 0, r = h.length - 1, max = 0;
+        while (l < r) {
+            max = Math.max(max, (r - l) * Math.min(h[l], h[r]));
+            if (h[l] < h[r]) l++;
+            else r--;
         }
         return max;
     }
