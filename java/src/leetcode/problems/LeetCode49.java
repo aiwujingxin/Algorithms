@@ -9,22 +9,12 @@ import java.util.*;
 public class LeetCode49 {
 
     public List<List<String>> groupAnagrams(String[] strs) {
-        if (strs == null || strs.length == 0) {
-            return new ArrayList<>();
+        Map<String, List<String>> map = new HashMap<>();
+        for (String s : strs) {
+            char[] c = s.toCharArray();
+            Arrays.sort(c);
+            map.computeIfAbsent(new String(c), k -> new ArrayList<>()).add(s);
         }
-        HashMap<String, List<String>> map = new HashMap<>();
-        for (String str : strs) {
-            char[] chars = str.toCharArray();
-            Arrays.sort(chars);
-            String t = new String(chars);
-            List<String> list = map.getOrDefault(t, new ArrayList<>());
-            list.add(str);
-            map.put(t, list);
-        }
-        List<List<String>> res = new ArrayList<>();
-        for (Map.Entry<String, List<String>> entry : map.entrySet()) {
-            res.add(entry.getValue());
-        }
-        return res;
+        return new ArrayList<>(map.values());
     }
 }

@@ -27,24 +27,17 @@ public class LeetCode42 {
     }
 
     public int trap_dp(int[] height) {
-        if (height == null || height.length == 0) {
-            return 0;
-        }
         int n = height.length;
         int[] left = new int[n];
-        int leftMax = height[0];
+        int[] right = new int[n];
+        int leftMax = 0;
         for (int i = 0; i < n; i++) {
-            if (height[i] > leftMax) {
-                leftMax = height[i];
-            }
+            leftMax = Math.max(leftMax, height[i]);
             left[i] = leftMax;
         }
-        int[] right = new int[n];
-        int rightMax = height[n - 1];
+        int rightMax = 0;
         for (int i = n - 1; i >= 0; i--) {
-            if (height[i] > rightMax) {
-                rightMax = height[i];
-            }
+            rightMax = Math.max(rightMax, height[i]);
             right[i] = rightMax;
         }
         int res = 0;

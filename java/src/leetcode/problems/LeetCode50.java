@@ -7,39 +7,34 @@ package leetcode.problems;
 public class LeetCode50 {
 
     public double myPow(double x, int n) {
-        if (x == 1) {
-            return x;
+        long m = n;
+        if (m < 0) {
+            x = 1 / x;
+            m = -m;
         }
-        if (n < 0) {
-            return 1 / dfs(x, -n);
-        }
-        return dfs(x, n);
+        return pow(x, m);
     }
 
-    private double dfs(double x, long n) {
-        if (n == 0) {
-            return 1;
-        }
-        if (n % 2 == 0) {
-            return dfs(x * x, n / 2);
-        }
-        return x * dfs(x * x, n / 2);
+    private double pow(double x, long n) {
+        if (n == 0) return 1;
+        double half = pow(x, n / 2);
+        return n % 2 == 0 ? half * half : half * half * x;
     }
 
-    public double myPow_(double x, int n) {
-        return (long) n >= 0 ? quickMul(x, n) : 1.0 / quickMul(x, -n);
-    }
-
-    public double quickMul(double x, long n) {
-        double ans = 1.0;
-        double t = x;
-        while (n > 0) {
-            if (n % 2 == 1) {
-                ans *= t;
+    public double myPow_Iterative(double x, int n) {
+        long m = n;
+        if (m < 0) {
+            x = 1 / x;
+            m = -m;
+        }
+        double res = 1;
+        while (m > 0) {
+            if ((m & 1) == 1) {
+                res *= x;
             }
-            t *= t;
-            n /= 2;
+            x *= x;
+            m >>= 1;
         }
-        return ans;
+        return res;
     }
 }

@@ -34,6 +34,9 @@ import leetcode.problems.*;
  * <阶乘>
  * @see LeetCode172
  * @see LeetCode793
+ * <POW>
+ * @see LeetCode50
+ * @see LeetCode372
  */
 public interface Algebra {
 }
