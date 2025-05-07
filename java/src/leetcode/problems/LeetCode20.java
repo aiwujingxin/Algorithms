@@ -9,7 +9,7 @@ import java.util.*;
 public class LeetCode20 {
 
     public boolean isValid(String s) {
-        Deque<Character> stack = new ArrayDeque<>();
+        Stack<Character> stack = new Stack<>();
         Map<Character, Character> map = Map.of(')', '(', ']', '[', '}', '{');
         for (char c : s.toCharArray()) {
             if (map.containsKey(c)) {

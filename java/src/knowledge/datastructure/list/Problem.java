@@ -8,14 +8,16 @@ import leetcode.problems.*;
  * @description 链表
  * <LRU>
  * @see LeetCode146
- * <环形>
+ * <快慢指针>
+ * @see LeetCode19
  * @see LeetCode141
  * @see LeetCode142
- * <删除>
- * @see LeetCode237
- * @see LeetCode19
+ * @see LeetCode876
+ * @see LeetCode234
+ * @see LeetCode160
  * @see LeetCode83
  * @see LeetCode82
+ * @see LeetCode237
  * <反转>
  * @see LeetCode206
  * @see LeetCode24 24. 两两交换链表中的节点
@@ -31,5 +33,5 @@ import leetcode.problems.*;
  * @see LeetCode2
  * @see LeetCode445
  */
-public interface Problems {
+public interface Problem {
 }

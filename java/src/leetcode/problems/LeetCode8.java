@@ -7,9 +7,6 @@ package leetcode.problems;
 public class LeetCode8 {
 
     public int myAtoi(String s) {
-        if (s.isEmpty()) {
-            return 0;
-        }
         s = s.trim();
         int index = 0, res = 0, sign = 1;
         if (index < s.length() && (s.charAt(index) == '-' || s.charAt(index) == '+')) {

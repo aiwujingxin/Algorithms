@@ -9,21 +9,21 @@ import java.util.*;
 public class LeetCode6 {
 
     public String convert(String s, int numRows) {
-        if (s == null || s.isEmpty() || numRows <= 1) {
+        if (s.isEmpty() || numRows == 1) {
             return s;
         }
         StringBuilder[] rows = new StringBuilder[numRows];
         for (int i = 0; i < numRows; i++) {
             rows[i] = new StringBuilder();
         }
-        int currentRow = 0;
-        boolean goingDown = false;
+        int curRow = 0;
+        boolean flag = false;
         for (int i = 0; i < s.length(); i++) {
-            rows[currentRow].append(s.charAt(i));
-            if (currentRow == 0 || currentRow == numRows - 1) {
-                goingDown = !goingDown; // 到达顶行或底行时改变方向
+            rows[curRow].append(s.charAt(i));
+            if (curRow == 0 || curRow == numRows - 1) {
+                flag = !flag;
             }
-            currentRow += goingDown ? 1 : -1; // 根据方向调整行号
+            curRow += flag ? 1 : -1;
         }
         StringBuilder sb = new StringBuilder();
         for (StringBuilder row : rows) {

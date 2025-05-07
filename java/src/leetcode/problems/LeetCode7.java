@@ -11,7 +11,6 @@ public class LeetCode7 {
         while (x != 0) {
             int t = x % 10;
             x /= 10;
-            // 溢出检查
             if (res > Integer.MAX_VALUE / 10 || (res == Integer.MAX_VALUE / 10 && t > 7)) {
                 return 0;
             }

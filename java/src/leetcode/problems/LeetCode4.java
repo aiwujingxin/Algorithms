@@ -8,8 +8,8 @@ import java.util.*;
  */
 public class LeetCode4 {
 
-    PriorityQueue<Integer> minQ = new PriorityQueue<>();
-    PriorityQueue<Integer> maxQ = new PriorityQueue<>((o1, o2) -> o2 - o1);
+    Queue<Integer> minQ = new PriorityQueue<>();
+    Queue<Integer> maxQ = new PriorityQueue<>((o1, o2) -> o2 - o1);
 
     public double findMedianSortedArrays(int[] nums1, int[] nums2) {
         add(nums1);

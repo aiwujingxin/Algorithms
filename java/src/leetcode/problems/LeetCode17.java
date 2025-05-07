@@ -13,21 +13,21 @@ public class LeetCode17 {
     List<String> res = new ArrayList<>();
 
     public List<String> letterCombinations(String digits) {
-        if (digits == null || digits.isEmpty()) {
+        if (digits.isEmpty()) {
             return res;
         }
         backtrack(digits, 0, new StringBuilder());
         return res;
     }
 
-    private void backtrack(String digits, int index, StringBuilder sb) {
-        if (index == digits.length()) {
+    private void backtrack(String digits, int i, StringBuilder sb) {
+        if (i == digits.length()) {
             res.add(sb.toString());
             return;
         }
-        for (int i = 0; i < phone[digits.charAt(index) - '0'].length(); i++) {
-            sb.append(phone[digits.charAt(index) - '0'].charAt(i));
-            backtrack(digits, index + 1, sb);
+        for (char c : phone[digits.charAt(i) - '0'].toCharArray()) {
+            sb.append(c);
+            backtrack(digits, i + 1, sb);
             sb.deleteCharAt(sb.length() - 1);
         }
     }
