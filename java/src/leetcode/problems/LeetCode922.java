@@ -7,19 +7,18 @@ package leetcode.problems;
 public class LeetCode922 {
 
     public int[] sortArrayByParityII(int[] nums) {
-        int i = 0;
-        int j = 1;
-        while (i < nums.length) {
-            if (nums[i] % 2 == 0) { // 寻找偶数下标中最左边的奇数
-                i += 2;
-            } else if (nums[j] % 2 == 1) { // 寻找奇数下标中最左边的偶数
-                j += 2;
+        int even = 0, odd = 1;
+        while (even < nums.length && odd < nums.length) {
+            if (nums[even] % 2 == 0) {
+                even += 2; // even 找错误的偶数位
+            } else if (nums[odd] % 2 == 1) {
+                odd += 2;// odd 找错误的奇数位
             } else {
-                int t = nums[i];
-                nums[i] = nums[j];
-                nums[j] = t;
-                i += 2;
-                j += 2;
+                int temp = nums[even];
+                nums[even] = nums[odd];
+                nums[odd] = temp;
+                even += 2;
+                odd += 2;
             }
         }
         return nums;

@@ -12,8 +12,8 @@ public class LeetCode57 {
         if (intervals.length == 0) {
             return new int[][]{newInterval};
         }
-        int m = lb(intervals, newInterval);
-        int n = rb(intervals, newInterval);
+        int m = findL(intervals, newInterval);
+        int n = findR(intervals, newInterval);
         List<int[]> list = new ArrayList<>();
         for (int i = 0; i < m; i++) {
             list.add(intervals[i]);
@@ -33,7 +33,7 @@ public class LeetCode57 {
         return res;
     }
 
-    private int lb(int[][] intervals, int[] newInterval) {
+    private int findL(int[][] intervals, int[] newInterval) {
         int l = 0;
         int r = intervals.length - 1;
         while (l < r) {
@@ -47,7 +47,7 @@ public class LeetCode57 {
         return l;
     }
 
-    private int rb(int[][] intervals, int[] newInterval) {
+    private int findR(int[][] intervals, int[] newInterval) {
         int l = 0;
         int r = intervals.length - 1;
         while (l < r) {

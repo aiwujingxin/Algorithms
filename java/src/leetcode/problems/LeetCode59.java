@@ -6,7 +6,7 @@ package leetcode.problems;
  */
 public class LeetCode59 {
 
-    private static final int[][] dirs = {{0, 1}, {1, 0}, {0, -1}, {-1, 0}}; // 右下左上
+    public int[][] dirs = {{0, 1}, {1, 0}, {0, -1}, {-1, 0}}; // 右下左上
 
     public int[][] generateMatrix(int n) {
         int[][] ans = new int[n][n];

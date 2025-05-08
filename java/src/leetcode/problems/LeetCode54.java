@@ -9,7 +9,7 @@ import java.util.List;
  */
 public class LeetCode54 {
 
-    public static final int[][] dirs = new int[][]{{0, 1}, {1, 0}, {0, -1}, {-1, 0}}; // 右下左上
+    public int[][] dirs = new int[][]{{0, 1}, {1, 0}, {0, -1}, {-1, 0}}; // 右下左上
 
     public List<Integer> spiralOrder(int[][] matrix) {
         int m = matrix.length;

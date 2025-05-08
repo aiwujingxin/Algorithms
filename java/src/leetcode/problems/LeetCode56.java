@@ -2,6 +2,7 @@ package leetcode.problems;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 
 /**
@@ -10,30 +11,17 @@ import java.util.List;
  */
 public class LeetCode56 {
 
-    public int[][] merge(int[][] intervals) {
-        Arrays.sort(intervals, (o1, o2) -> {
-            if (o1[0] == o2[0]) {
-                return o1[1] - o2[1];
-            }
-            return o1[0] - o2[0];
-        });
-        List<int[]> list = new ArrayList<>();
-        list.add(intervals[0]);
-        for (int i = 1; i < intervals.length; i++) {
-            int[] cur = intervals[i];
-            int[] last = list.get(list.size() - 1);
-            if (cur[0] > last[1]) {
-                list.add(cur);
+    public int[][] merge(int[][] nums) {
+        Arrays.sort(nums, Comparator.comparingInt(o -> o[0]));
+        List<int[]> res = new ArrayList<>();
+        for (int[] cur : nums) {
+            if (res.isEmpty() || cur[0] > res.get(res.size() - 1)[1]) {
+                res.add(cur);
             } else {
-                list.remove(list.size() - 1);
-                list.add(new int[]{Math.min(cur[0], last[0]), Math.max(cur[1], last[1])});
+                res.get(res.size() - 1)[1] = Math.max(res.get(res.size() - 1)[1], cur[1]);
             }
         }
-        int[][] res = new int[list.size()][];
-        for (int i = 0; i < list.size(); i++) {
-            res[i] = list.get(i);
-        }
-        return res;
+        return res.toArray(new int[res.size()][]);
     }
 
     public int[][] merge_acwing(int[][] intervals) {

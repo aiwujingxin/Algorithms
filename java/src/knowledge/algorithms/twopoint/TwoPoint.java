@@ -21,12 +21,12 @@ import knowledge.algorithms.sort.*;
  * @see LeetCode80
  * @see LeetCode283
  * @see LeetCode922
- * @see LeetCode977
  * @see knowledge.datastructure.list.Problem  链表
  * <对撞指针> 本质: 利用排除法, 减少一次遍历的时间
  * @see LeetCode11
  * @see LeetCode15 三数之和
  * @see LeetCode42 接雨水
+ * @see LeetCode977
  */
 public interface TwoPoint {
 }

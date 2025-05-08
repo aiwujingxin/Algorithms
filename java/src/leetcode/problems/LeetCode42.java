@@ -26,23 +26,16 @@ public class LeetCode42 {
         return res;
     }
 
-    public int trap_dp(int[] height) {
-        int n = height.length;
-        int[] left = new int[n];
-        int[] right = new int[n];
-        int leftMax = 0;
+    public int trap_dp(int[] h) {
+        int n = h.length, res = 0;
+        int[] l = new int[n], r = new int[n];
+        int lm = 0, rm = 0;
         for (int i = 0; i < n; i++) {
-            leftMax = Math.max(leftMax, height[i]);
-            left[i] = leftMax;
+            l[i] = lm = Math.max(lm, h[i]);
         }
-        int rightMax = 0;
         for (int i = n - 1; i >= 0; i--) {
-            rightMax = Math.max(rightMax, height[i]);
-            right[i] = rightMax;
-        }
-        int res = 0;
-        for (int i = 0; i < n; i++) {
-            res += Math.min(left[i], right[i]) - height[i];
+            r[i] = rm = Math.max(rm, h[i]);
+            res += Math.min(l[i], r[i]) - h[i];
         }
         return res;
     }
