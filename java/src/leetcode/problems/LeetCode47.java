@@ -11,10 +11,9 @@ import java.util.List;
 public class LeetCode47 {
 
     public List<List<Integer>> permuteUnique(int[] nums) {
-        boolean[] used = new boolean[nums.length];
         List<List<Integer>> res = new ArrayList<>();
         Arrays.sort(nums);
-        backtrack(nums, new ArrayList<>(), res, used);
+        backtrack(nums, new ArrayList<>(), res, new boolean[nums.length]);
         return res;
     }
 

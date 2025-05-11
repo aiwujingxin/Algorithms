@@ -9,7 +9,7 @@ public class LeetCode52 {
 
     boolean[][] board;
     int n, ans;
-    boolean[] c, p, q; // 列，撇，捺
+    boolean[] c, p, q;
 
     public int totalNQueens(int n) {
         if (n <= 0) {

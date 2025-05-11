@@ -13,9 +13,6 @@ import java.util.List;
 public class LeetCode90 {
 
     public List<List<Integer>> subsetsWithDup(int[] nums) {
-        if (nums == null || nums.length == 0) {
-            return new ArrayList<>();
-        }
         List<List<Integer>> res = new ArrayList<>();
         Arrays.sort(nums);
         backtrack(nums, 0, res, new ArrayList<>());

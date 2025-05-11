@@ -10,7 +10,7 @@ public class LeetCode51 {
 
     List<List<String>> res;
     int n;
-    boolean[] c, p, q;
+    boolean[] c, p, q; // 列，撇，捺
     int[] pos;
 
     public List<List<String>> solveNQueens(int n) {

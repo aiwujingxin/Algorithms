@@ -9,9 +9,6 @@ import java.util.*;
 public class LeetCode77 {
 
     public List<List<Integer>> combine(int n, int k) {
-        if (n < 0) {
-            return new ArrayList<>();
-        }
         List<List<Integer>> res = new ArrayList<>();
         backtrack(1, n, res, k, new ArrayList<>());
         return res;
