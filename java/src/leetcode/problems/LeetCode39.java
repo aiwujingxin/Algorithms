@@ -16,14 +16,14 @@ public class LeetCode39 {
     }
 
     private void backtrack(int[] candidates, int start, List<List<Integer>> res, List<Integer> list, int target) {
-        if (target < 0) {
-            return;
-        }
         if (target == 0) {
             res.add(new ArrayList<>(list));
             return;
         }
         for (int i = start; i < candidates.length; i++) {
+            if (target - candidates[i] < 0) {
+                continue;
+            }
             list.add(candidates[i]);
             backtrack(candidates, i, res, list, target - candidates[i]);
             list.remove(list.size() - 1);

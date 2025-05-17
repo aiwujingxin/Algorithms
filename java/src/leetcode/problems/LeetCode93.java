@@ -10,37 +10,24 @@ import java.util.List;
 public class LeetCode93 {
 
     public List<String> restoreIpAddresses(String s) {
-        if (s == null || s.isEmpty() || s.length() > 15) {
-            return new ArrayList<>();
-        }
         List<String> res = new ArrayList<>();
-        backtrack(s, 0, res, new ArrayList<>());
+        backtrack(s, 0, new ArrayList<>(), res);
         return res;
     }
 
-    private void backtrack(String s, int index, List<String> res, List<String> list) {
-        if (index == s.length() && list.size() == 4) {
-            StringBuilder sb = new StringBuilder();
-            for (int i = 0; i < list.size(); i++) {
-                sb.append(list.get(i));
-                if (i != list.size() - 1) {
-                    sb.append(".");
-                }
+    private void backtrack(String s, int index, List<String> list, List<String> res) {
+        if (list.size() == 4) {
+            if (index == s.length()) {
+                res.add(String.join(".", list));
             }
-            res.add(sb.toString());
             return;
         }
-        for (int j = index; j <= Math.min(index + 3, s.length() - 1); j++) {
-            String ip = s.substring(index, j + 1);
-            if (ip.length() > 1 && ip.charAt(0) == '0') {
-                continue;
-            }
-            int iip = Integer.parseInt(ip);
-            if (iip >= 0 && iip <= 255) {
-                list.add(ip);
-                backtrack(s, j + 1, res, list);
-                list.remove(list.size() - 1);
-            }
+        for (int len = 1; len <= 3 && index + len <= s.length(); len++) {
+            String t = s.substring(index, index + len);
+            if (t.length() > 1 && t.startsWith("0") || Integer.parseInt(t) > 255) continue;
+            list.add(t);
+            backtrack(s, index + len, list, res);
+            list.remove(list.size() - 1);
         }
     }
 }

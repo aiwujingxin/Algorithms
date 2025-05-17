@@ -7,36 +7,27 @@ package leetcode.problems;
  */
 public class LeetCode52 {
 
-    boolean[][] board;
-    int n, ans;
+    int n, cnt;
     boolean[] c, p, q;
 
     public int totalNQueens(int n) {
-        if (n <= 0) {
-            return 0;
-        }
         this.n = n;
-        this.board = new boolean[n][n];
         this.c = new boolean[n];
         this.p = new boolean[2 * n];
         this.q = new boolean[2 * n];
         backtrack(0);
-        return ans;
+        return cnt;
     }
 
     private void backtrack(int i) {
         if (i == n) {
-            ans++;
+            cnt++;
             return;
         }
         for (int j = 0; j < n; j++) {
-            if (c[j] || p[i + j] || q[i - j + n]) {
-                continue;
-            }
+            if (c[j] || p[i + j] || q[i - j + n]) continue;
             c[j] = p[i + j] = q[i - j + n] = true;
-            board[i][j] = true;
             backtrack(i + 1);
-            board[i][j] = false;
             c[j] = p[i + j] = q[i - j + n] = false;
         }
     }

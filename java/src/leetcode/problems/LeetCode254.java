@@ -5,7 +5,6 @@ import java.util.*;
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/3/8 18:59
- * @link <a href="https://leetcode.cn/problems/factor-combinations/solutions/303977/you-xiang-xi-si-lu-by-yuangang-3/"></a>
  */
 public class LeetCode254 {
 

@@ -17,11 +17,11 @@ public class LeetCode131 {
             }
         }
         List<List<String>> res = new ArrayList<>();
-        bk(s, dp, 0, res, new ArrayList<>());
+        backtrack(s, dp, 0, res, new ArrayList<>());
         return res;
     }
 
-    private void bk(String s, boolean[][] dp, int index, List<List<String>> res, List<String> list) {
+    private void backtrack(String s, boolean[][] dp, int index, List<List<String>> res, List<String> list) {
         if (index == dp.length) {
             res.add(new ArrayList<>(list));
             return;
@@ -29,7 +29,7 @@ public class LeetCode131 {
         for (int i = index; i < dp.length; i++) {
             if (dp[index][i]) {
                 list.add(s.substring(index, i + 1));
-                bk(s, dp, i + 1, res, list);
+                backtrack(s, dp, i + 1, res, list);
                 list.remove(list.size() - 1);
             }
         }

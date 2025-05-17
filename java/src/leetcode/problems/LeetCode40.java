@@ -18,15 +18,12 @@ public class LeetCode40 {
     }
 
     private void backtrack(int[] nums, int start, List<List<Integer>> res, List<Integer> list, int target) {
-        if (target < 0) {
-            return;
-        }
         if (target == 0) {
             res.add(new ArrayList<>(list));
             return;
         }
         for (int i = start; i < nums.length; i++) {
-            if (i > start && nums[i - 1] == nums[i]) {
+            if (i > start && nums[i - 1] == nums[i] || target - nums[i] < 0) {
                 continue;
             }
             list.add(nums[i]);

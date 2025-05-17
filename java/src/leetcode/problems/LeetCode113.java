@@ -10,14 +10,13 @@ import java.util.*;
  */
 public class LeetCode113 {
 
-    List<List<Integer>> res = new ArrayList<>();
-
     public List<List<Integer>> pathSum(TreeNode root, int targetSum) {
-        dfs(root, targetSum, new ArrayList<>());
+        List<List<Integer>> res = new ArrayList<>();
+        backtrack(root, targetSum, res, new ArrayList<>());
         return res;
     }
 
-    private void dfs(TreeNode root, int targetSum, List<Integer> list) {
+    private void backtrack(TreeNode root, int targetSum, List<List<Integer>> res, List<Integer> list) {
         if (root == null) {
             return;
         }
@@ -30,8 +29,8 @@ public class LeetCode113 {
             return;
         }
         list.add(root.val);
-        dfs(root.left, targetSum - root.val, list);
-        dfs(root.right, targetSum - root.val, list);
+        backtrack(root.left, targetSum - root.val, res, list);
+        backtrack(root.right, targetSum - root.val, res, list);
         list.remove(list.size() - 1);
     }
 }

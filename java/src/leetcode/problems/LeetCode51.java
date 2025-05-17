@@ -8,10 +8,10 @@ import java.util.*;
  */
 public class LeetCode51 {
 
-    List<List<String>> res;
     int n;
-    boolean[] c, p, q; // 列，撇，捺
+    boolean[] c, p, q;
     int[] pos;
+    List<List<String>> res;
 
     public List<List<String>> solveNQueens(int n) {
         this.res = new ArrayList<>();
@@ -28,11 +28,10 @@ public class LeetCode51 {
         if (i == n) {
             List<String> list = new ArrayList<>();
             for (int row = 0; row < n; row++) {
-                StringBuilder sb = new StringBuilder();
-                for (int j = 0; j < n; j++) {
-                    sb.append(pos[row] == j ? "Q" : ".");
-                }
-                list.add(sb.toString());
+                char[] line = new char[n];
+                Arrays.fill(line, '.');
+                line[pos[row]] = 'Q';
+                list.add(new String(line));
             }
             res.add(list);
             return;

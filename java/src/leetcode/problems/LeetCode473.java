@@ -26,10 +26,10 @@ public class LeetCode473 {
             return true;
         }
         for (int i = 0; i < edges.length; i++) {
-            if (edges[i] + nums[index] > target) {
+            if (i > 0 && edges[i] == edges[i - 1]) {
                 continue;
             }
-            if ((i > 0 && edges[i] == edges[i - 1])) {
+            if (edges[i] + nums[index] > target) {
                 continue;
             }
             edges[i] += nums[index];

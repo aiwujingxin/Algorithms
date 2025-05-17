@@ -9,9 +9,6 @@ import java.util.*;
 public class LeetCode491 {
 
     public List<List<Integer>> findSubsequences(int[] nums) {
-        if (nums == null || nums.length == 0) {
-            return new ArrayList<>();
-        }
         List<List<Integer>> res = new ArrayList<>();
         backtrack(nums, 0, res, new ArrayList<>());
         return res;

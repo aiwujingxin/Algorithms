@@ -7,31 +7,26 @@ package leetcode.problems;
 public class LeetCode37 {
 
     public void solveSudoku(char[][] board) {
-        bk(board);
+        backtrack(board);
     }
 
-    private boolean bk(char[][] board) {
+    private boolean backtrack(char[][] board) {
         for (int i = 0; i < 9; i++) {
             for (int j = 0; j < 9; j++) {
-                if (board[i][j] == '.') {
-                    continue;
-                }
+                if (board[i][j] != '.') continue;
                 for (char c = '1'; c <= '9'; c++) {
-                    if (place(board, i, j, c)) {
-                        board[i][j] = c;
-                        if (bk(board)) {
-                            return true;
-                        }
-                        board[i][j] = '.';
-                    }
+                    if (!isValid(board, i, j, c)) continue;
+                    board[i][j] = c;
+                    if (backtrack(board)) return true;
+                    board[i][j] = '.';
                 }
-                return false;
+                return false; // 所有 c 都失败了
             }
         }
         return true;
     }
 
-    private boolean place(char[][] board, int row, int col, char c) {
+    private boolean isValid(char[][] board, int row, int col, char c) {
         for (int i = 0; i < 9; i++) {
             if (board[row][i] == c || board[i][col] == c) return false;
         }

@@ -12,9 +12,6 @@ import java.util.List;
 public class LeetCode257 {
 
     public List<String> binaryTreePaths(TreeNode root) {
-        if (root == null) {
-            return new ArrayList<>();
-        }
         List<String> res = new ArrayList<>();
         backtrack(root, res, new ArrayList<>());
         return res;

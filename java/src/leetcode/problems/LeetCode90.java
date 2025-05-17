@@ -22,7 +22,7 @@ public class LeetCode90 {
     private void backtrack(int[] nums, int start, List<List<Integer>> res, List<Integer> list) {
         res.add(new ArrayList<>(list));
         for (int i = start; i < nums.length; i++) {
-            if (i > start && nums[i] == nums[i - 1]) {
+            if (i > start && nums[i] == nums[i - 1]) { // 去重策略是基于层级的：只跳过同一层中重复的元素。
                 continue;
             }
             list.add(nums[i]);

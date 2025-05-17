@@ -11,10 +11,10 @@ import java.util.List;
 public class LeetCode638 {
 
     public int shoppingOffers(List<Integer> price, List<List<Integer>> special, List<Integer> needs) {
-        return dfs(price, special, needs, new HashMap<>());
+        return backtrack(price, special, needs, new HashMap<>());
     }
 
-    public int dfs(List<Integer> price, List<List<Integer>> special, List<Integer> needs, HashMap<List<Integer>, Integer> map) {
+    public int backtrack(List<Integer> price, List<List<Integer>> special, List<Integer> needs, HashMap<List<Integer>, Integer> map) {
         if (map.containsKey(needs)) {
             return map.get(needs);
         }
@@ -36,7 +36,7 @@ public class LeetCode638 {
                 i++;
             }
             if (i == needs.size()) {
-                minSum = Math.min(minSum, spe.get(i) + dfs(price, special, currNeeds, map));
+                minSum = Math.min(minSum, spe.get(i) + backtrack(price, special, currNeeds, map));
             }
         }
         map.put(needs, minSum);
