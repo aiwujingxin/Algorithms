@@ -5,95 +5,98 @@ import java.util.*;
 /**
  * @author wujingxinit@outlook.com
  * @date 2024/3/23 15:32
- * @description 八数码
- * 回溯算法+ 曼哈顿距离作为启发式函数 + 康托展开来检查状态是否已访问
+ * @description 八数码 A* 曼哈顿距离作为启发式函数 + 康托展开来检查状态是否已访问
+ * @example 样例
+ * 1 2 3 0 8 4 7 6 5
+ * 1 0 3 8 2 4 7 6 5
+ * 2
  */
 
 public class EightPuzzle {
 
-    private static final int[][] DIRS = {{1, 0}, {-1, 0}, {0, 1}, {0, -1}};
-    private static final int[] FACT = {1, 1, 2, 6, 24, 120, 720, 5040, 40320};
-    private final int[] targetPos = new int[9];
-    private final Map<String, Integer> steps = new HashMap<>();
-    boolean[] vis = new boolean[362880];
+    static final int[] FACT = {1, 1, 2, 6, 24, 120, 720, 5040, 40320}; // 康托展开
+    static final int LEN = 362880; // 9!
+    static final int[][] DIR = {{-1, 0}, {0, -1}, {1, 0}, {0, 1}}; // 上左下右
 
-    public int solve(int[][] start, int[][] goal) {
-        StringBuilder sb = new StringBuilder();
-        for (int[] row : start) for (int x : row) sb.append(x);
-        String begin = sb.toString();
-        sb.setLength(0);
-        for (int[] row : goal) for (int x : row) sb.append(x);
-        String target = sb.toString();
-        for (int i = 0; i < 9; i++) {
-            targetPos[target.charAt(i) - '0'] = i;
+    static int[] start = new int[9];
+    static int[] goal = new int[9];
+    static boolean[] visited = new boolean[LEN];
+
+    static class Node {
+        int[] state = new int[9];
+        int dis;
+
+        Node(int[] s, int d) {
+            System.arraycopy(s, 0, state, 0, 9);
+            dis = d;
         }
+    }
 
-        PriorityQueue<String> pq = new PriorityQueue<>(Comparator.comparingInt(s -> dist(s) + steps.get(s)));
-        steps.put(begin, 0);
-        pq.add(begin);
-        vis[cantor(begin)] = true;
+    static int cantor(int[] state) {
+        int result = 0;
+        for (int i = 0; i < 9; i++) {
+            int count = 0;
+            for (int j = i + 1; j < 9; j++) {
+                if (state[i] > state[j]) count++;
+            }
+            result += count * FACT[8 - i];
+        }
+        return result;
+    }
 
-        while (!pq.isEmpty()) {
-            String cur = pq.poll();
-            int g = steps.get(cur);
-            if (cur.equals(target)) return g;
+    static boolean isGoal(int[] state) {
+        return Arrays.equals(state, goal);
+    }
 
-            int idx = cur.indexOf('0'), x = idx / 3, y = idx % 3;
-            for (int[] d : DIRS) {
-                int nx = x + d[0], ny = y + d[1];
-                if (nx < 0 || ny < 0 || nx >= 3 || ny >= 3) continue;
-                int nIdx = nx * 3 + ny;
-                char[] arr = cur.toCharArray();
-                arr[idx] = arr[nIdx];
-                arr[nIdx] = '0';
-                String next = new String(arr);
-                int c = cantor(next);
-                if (!vis[c]) {
-                    vis[c] = true;
-                    steps.put(next, g + 1);
-                    pq.add(next);
+    public static int bfs() {
+        Queue<Node> queue = new LinkedList<>();
+        int code = cantor(start);
+        visited[code] = true;
+        queue.offer(new Node(start, 0));
+
+        while (!queue.isEmpty()) {
+            Node cur = queue.poll();
+
+            if (isGoal(cur.state)) return cur.dis;
+
+            int zero = 0;
+            for (; zero < 9; zero++) {
+                if (cur.state[zero] == 0) break;
+            }
+
+            int x = zero % 3;
+            int y = zero / 3;
+
+            for (int[] d : DIR) {
+                int nx = x + d[0];
+                int ny = y + d[1];
+                int nz = ny * 3 + nx;
+
+                if (nx >= 0 && nx < 3 && ny >= 0 && ny < 3) {
+                    int[] newState = cur.state.clone();
+                    // swap zero and target
+                    int tmp = newState[zero];
+                    newState[zero] = newState[nz];
+                    newState[nz] = tmp;
+
+                    int hash = cantor(newState);
+                    if (!visited[hash]) {
+                        visited[hash] = true;
+                        queue.offer(new Node(newState, cur.dis + 1));
+                    }
                 }
             }
         }
-        return -1;
-    }
-
-
-    private int dist(String s) {
-        int sum = 0;
-        for (int i = 0; i < 9; i++) {
-            char c = s.charAt(i);
-            if (c == '0') continue;
-            int pos = targetPos[c - '0'];
-            sum += Math.abs(i / 3 - pos / 3) + Math.abs(i % 3 - pos % 3);
-        }
-        return sum;
-    }
-
-    private int cantor(String s) {
-        char[] a = s.toCharArray();
-        int res = 0;
-        for (int i = 0; i < 9; i++) {
-            int less = 0;
-            for (int j = i + 1; j < 9; j++)
-                if (a[j] < a[i]) less++;
-            res += less * FACT[8 - i];
-        }
-        return res;
+        return -1; // Impossible
     }
 
     public static void main(String[] args) {
-        EightPuzzle ep = new EightPuzzle();
-        int[][] start = {
-                {1, 2, 3},
-                {0, 8, 4},
-                {7, 6, 5}
-        };
-        int[][] goal = {
-                {1, 0, 3},
-                {8, 2, 4},
-                {7, 6, 5}
-        };
-        System.out.println("最少步数：" + ep.solve(start, goal));
+        Scanner sc = new Scanner(System.in);
+
+        for (int i = 0; i < 9; i++) start[i] = sc.nextInt();
+        for (int i = 0; i < 9; i++) goal[i] = sc.nextInt();
+
+        int ans = bfs();
+        System.out.println(ans != -1 ? ans : "Impossible");
     }
 }

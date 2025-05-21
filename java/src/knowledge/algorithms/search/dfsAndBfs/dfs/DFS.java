@@ -1,4 +1,5 @@
-package knowledge.algorithms.search.dfsAndBfs;
+package knowledge.algorithms.search.dfsAndBfs.dfs;
+
 
 /**
  * @author wujingxinit@outlook.com

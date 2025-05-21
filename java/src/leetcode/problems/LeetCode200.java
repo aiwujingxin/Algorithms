@@ -7,9 +7,6 @@ package leetcode.problems;
 public class LeetCode200 {
 
     public int numIslands(char[][] grid) {
-        if (grid == null || grid.length == 0) {
-            return 0;
-        }
         int m = grid.length;
         int n = grid[0].length;
         int res = 0;

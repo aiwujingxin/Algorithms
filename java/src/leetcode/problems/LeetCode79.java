@@ -12,7 +12,7 @@ public class LeetCode79 {
         char[] chars = word.toCharArray();
         for (int i = 0; i < m; i++) {
             for (int j = 0; j < n; j++) {
-                if (backtrack(board, chars, i, j, 0, visited)) {
+                if (backtrack(board, i, j, chars, 0, visited)) {
                     return true;
                 }
             }
@@ -20,7 +20,7 @@ public class LeetCode79 {
         return false;
     }
 
-    private boolean backtrack(char[][] board, char[] word, int i, int j, int k, boolean[][] visited) {
+    private boolean backtrack(char[][] board, int i, int j, char[] word, int k, boolean[][] visited) {
         if (i < 0 || i >= board.length || j < 0 || j >= board[0].length || board[i][j] != word[k] || visited[i][j]) {
             return false;
         }
@@ -28,10 +28,11 @@ public class LeetCode79 {
             return true;
         }
         visited[i][j] = true;
-        boolean res = backtrack(board, word, i + 1, j, k + 1, visited) ||
-                backtrack(board, word, i - 1, j, k + 1, visited) ||
-                backtrack(board, word, i, j + 1, k + 1, visited) ||
-                backtrack(board, word, i, j - 1, k + 1, visited);
+        boolean res =
+                backtrack(board, i + 1, j, word, k + 1, visited) ||
+                backtrack(board, i - 1, j, word, k + 1, visited) ||
+                backtrack(board, i, j + 1, word, k + 1, visited) ||
+                backtrack(board, i, j - 1, word, k + 1, visited);
         visited[i][j] = false;
         return res;
     }

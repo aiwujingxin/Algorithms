@@ -1,4 +1,4 @@
-package knowledge.algorithms.search.dfsAndBfs;
+package knowledge.algorithms.search.dfsAndBfs.dfs;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -8,15 +8,14 @@ import java.util.Map;
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/6/6 22:48
+ * @description IDA* 是对迭代加深搜索 IDDFS 的优化. 适合状态空间爆炸、适合迭代加深策略的问题
+ * 求解组合类问题、路径规划、推箱子、魔方、埃及分数、Power Calculus
  */
-
 public class IDAStar {
     // 目标状态
-    // ...
 
     // 启发式函数，用于估计到达目标的代价
     public int heuristic(Node node) {
-        // ...
         return 0;
     }
 
@@ -27,15 +26,12 @@ public class IDAStar {
 
     // 判断节点是否为目标状态
     public boolean isGoal(Node node) {
-        // ...
         return false;
     }
 
     // 生成子节点
     public List<Node> generateSuccessors(Node node) {
-        List<Node> successors = new ArrayList<>();
-        // ...
-        return successors;
+        return new ArrayList<>();
     }
 
     // IDA*算法的实现
@@ -84,7 +80,6 @@ public class IDAStar {
 
     static class Node {
         // 节点的状态
-        // ...
 
         // 节点的启发式估计值（即估计到达目标的代价）
         int heuristic;
@@ -96,7 +91,6 @@ public class IDAStar {
         Node parent;
 
         // 构造函数
-        // ...
     }
 
 }
