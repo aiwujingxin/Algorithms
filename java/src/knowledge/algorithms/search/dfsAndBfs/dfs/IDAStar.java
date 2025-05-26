@@ -1,96 +1,82 @@
 package knowledge.algorithms.search.dfsAndBfs.dfs;
 
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
+import java.util.Set;
 
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/6/6 22:48
  * @description IDA* 是对迭代加深搜索 IDDFS 的优化. 适合状态空间爆炸、适合迭代加深策略的问题
+ * g(n) + h(n) ≤ 当前阈值（threshold）
  * 求解组合类问题、路径规划、推箱子、魔方、埃及分数、Power Calculus
  */
+
 public class IDAStar {
-    // 目标状态
 
-    // 启发式函数，用于估计到达目标的代价
-    public int heuristic(Node node) {
-        return 0;
-    }
+    static String start = "起始状态";
+    static String goal = "目标状态";
 
-    // 估计从节点n到达目标的代价
-    public int f(Node node) {
-        return node.cost + heuristic(node);
-    }
-
-    // 判断节点是否为目标状态
-    public boolean isGoal(Node node) {
-        return false;
-    }
-
-    // 生成子节点
-    public List<Node> generateSuccessors(Node node) {
-        return new ArrayList<>();
-    }
-
-    // IDA*算法的实现
-    public Node idaStar(Node root) {
-        int threshold = heuristic(root);
+    // 初始阈值 = 启发函数(start)
+    public static void main(String[] args) {
+        int threshold = heuristic(start);
         while (true) {
-            Map<Node, Integer> visited = new HashMap<>();
-            int minCost = search(root, 0, threshold, visited);
-            if (minCost == -1) {
-                return null;  // 没有找到解
+            int t = dfs(start, 0, threshold, new HashSet<>());
+            if (t == -1) {
+                System.out.println("已找到目标，最小代价: " + threshold);
+                break;
             }
-            if (minCost == Integer.MAX_VALUE) {
-                return root;  // 已经找到解
+            if (t == Integer.MAX_VALUE) {
+                System.out.println("无解");
+                break;
             }
-            threshold = minCost;
+            threshold = t;  // 提升阈值，继续深搜
         }
     }
 
-    // 搜索函数
-    private int search(Node node, int cost, int threshold, Map<Node, Integer> visited) {
-        int f = cost + heuristic(node);
+    /**
+     * IDA* 的 DFS 遍历
+     *
+     * @param state     当前状态
+     * @param g         当前代价
+     * @param threshold 当前阈值 f=g+h
+     * @param visited   用于防止环路
+     * @return -1 表示找到目标；否则返回下一个建议的 threshold
+     */
+    static int dfs(String state, int g, int threshold, Set<String> visited) {
+        int f = g + heuristic(state);
         if (f > threshold) {
             return f;
         }
-        if (isGoal(node)) {
-            return Integer.MAX_VALUE;
+        if (state.equals(goal)) {
+            return -1;
         }
-        int minCost = Integer.MAX_VALUE;
-        List<Node> successors = generateSuccessors(node);
-        for (Node successor : successors) {
-            int successorCost = node.cost + 1;  // 假设每个移动的成本都是1
-            if (!visited.containsKey(successor) || successorCost < visited.get(successor)) {
-                visited.put(successor, successorCost);
-                int result = search(successor, successorCost, threshold, visited);
-                if (result == Integer.MAX_VALUE) {
-                    return Integer.MAX_VALUE;
-                }
-                if (result < minCost) {
-                    minCost = result;
-                }
+        visited.add(state);
+        int minNextThreshold = Integer.MAX_VALUE;
+        for (String next : getNextStates(state)) {
+            if (visited.contains(next)) {
+                continue;
             }
+            int t = dfs(next, g + 1, threshold, visited);
+            if (t == -1) {
+                return -1;
+            }
+            minNextThreshold = Math.min(minNextThreshold, t);
         }
-        return minCost;
+
+        visited.remove(state); // 回溯
+        return minNextThreshold;
     }
 
-
-    static class Node {
-        // 节点的状态
-
-        // 节点的启发式估计值（即估计到达目标的代价）
-        int heuristic;
-
-        // 节点的路径成本
-        int cost;
-
-        // 父节点
-        Node parent;
-
-        // 构造函数
+    // 启发函数（需具体实现，如曼哈顿距离）
+    static int heuristic(String state) {
+        return 0; // 例如：八数码曼哈顿距离
     }
 
+    // 状态扩展函数（根据问题定义）
+    static List<String> getNextStates(String state) {
+        // 根据题目定义扩展状态
+        return new ArrayList<>();
+    }
 }

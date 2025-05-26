@@ -11,7 +11,7 @@ import java.util.Scanner;
  * <a href="https://www.acwing.com/solution/content/246067/"></a>
  */
 
-public class EgyptianFractionOptimized {
+public class EgyptianFraction_ida_opt {
     static final int INF = (int) 1e7;
     static int a, b;
     static List<Integer> ans = new ArrayList<>();

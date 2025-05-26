@@ -6,13 +6,9 @@ import java.util.*;
  * @author wujingxinit@outlook.com
  * @date 2024/3/23 15:32
  * @description 八数码 A* 曼哈顿距离作为启发式函数 + 康托展开来检查状态是否已访问
- * @example 样例
- * 1 2 3 0 8 4 7 6 5
- * 1 0 3 8 2 4 7 6 5
- * 2
  */
 
-public class EightPuzzle {
+public class EightPuzzle_astar {
 
     static final int[] FACT = {1, 1, 2, 6, 24, 120, 720, 5040, 40320}; // 康托展开
     static final int LEN = 362880; // 9!

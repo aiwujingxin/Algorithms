@@ -13,7 +13,8 @@ import leetcode.problems.*;
  * 终止条件:      每次递归都判断是否达到终点（路径构造完成、满足约束等），这是回溯的“叶子判断”。
  * 剪枝优化:      如果当前路径不满足条件、或者往后也不可能满足（如当前和已超目标），可以提前终止该路径探索，称为剪枝。
  * 回退机制:      每次尝试后，都要「撤销选择」返回上一层。这就是“回溯”两个字的由来——探索 → 失败 → 回退 → 尝试其他路径。
- * @link <a href="https://cloud.tencent.com/developer/article/1968964?policyId=1004">labuladong</a>
+ * @link <a href="https://cloud.tencent.com/developer/article/1968964?policyId=1004">排列组合</a>
+ * @link <a href="https://cloud.tencent.com/developer/article/2407142?policyId=1004">球盒模型</a>
  * <排列>
  * @see LeetCode46 元素无重不可复选
  * @see LeetCode47 元素重复不可复选

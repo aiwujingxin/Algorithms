@@ -24,6 +24,7 @@ public class LeetCode13 {
         for (int i = 0; i < n; i++) {
             int value = map.get(s.charAt(i));
             if (i + 1 < n && value < map.get(s.charAt(i + 1))) {
+                //如果当前值 小于 前一个值，说明这是一个 减法组合（如 IV = 4），需要 减去当前值。
                 ans -= value;
             } else {
                 ans += value;

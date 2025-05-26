@@ -7,22 +7,20 @@ import java.util.*;
 /**
  * @author wujingxinit@outlook.com
  * @date 5/22/25 00:40
- * @description 八数码
+ * @description 八数码 bfs解法
  * @link <a href="https://www.acwing.com/solution/content/29725/"></a>
  */
-public class EightPuzzle_acw {
+public class EightPuzzle_bfs {
 
     static int bfs(String start, String end) {
-
         Queue<String> q = new LinkedList<>();//存储所有状态
         Map<String, Integer> map = new HashMap<>();//存储每个状态得交换次数
-        q.offer(start);
+        q.add(start);
         map.put(start, 0);//存初始状态
         int[] dx = {0, 1, 0, -1};
         int[] dy = {1, 0, -1, 0};//四个方向
 
         while (!q.isEmpty()) {//枚举所有状态
-
             String t = q.poll();//取出头一个状态并向前寻找（t过程中不能修改，因为有四次变化 而位置都是map[t]+1）
             if (t.equals(end)) return map.get(t);//直到找到结束状态为止，此时因为临近扩散原理所以一定是最小值；
             int k = t.indexOf('x');//找到x的坐标
@@ -37,7 +35,7 @@ public class EightPuzzle_acw {
                     String s = new String(arr);//转成字符串，因为定义队列和map是用String的
 
                     if (map.get(s) == null) {//如果这个状态没出现过就存储这个状态
-                        q.offer(s);
+                        q.add(s);
                         map.put(s, map.get(t) + 1);//变化前的次数值加一，因为是+1所以保证四个方向变化的值都是一样的；
                     }
                 }

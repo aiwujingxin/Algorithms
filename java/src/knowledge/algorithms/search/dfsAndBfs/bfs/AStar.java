@@ -5,9 +5,8 @@ import java.util.*;
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/6/6 11:48
- * @description A*=BFS+贪心, f(x)= g(x) + h(x). g(x)初始状态到x的实际代价, h(x)表示x到终点的最优路径评估
- * Dij是特殊的A*(代价函数=0)
- * 时间复杂度 O(E)
+ * @description A*=BFS+贪心, f(x)= g(x) + h(x). g(x)初始状态到x的实际代价, h(x)表示x到终点的最优路径评估。Dij是特殊的A*(代价函数=0)
+ * 时间复杂度: O(E)
  */
 public class AStar {
     // 0:上，1:右，2:下，3:左

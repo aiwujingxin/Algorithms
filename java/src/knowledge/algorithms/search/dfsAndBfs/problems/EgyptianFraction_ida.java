@@ -9,7 +9,7 @@ import java.util.Scanner;
  * @link <a href="https://www.acwing.com/solution/content/21686/"></a>
  */
 
-public class EgyptianFraction {
+public class EgyptianFraction_ida {
     static int maxd;
     static int N = 1000;
     static int[] ans = new int[N];   // 最优解

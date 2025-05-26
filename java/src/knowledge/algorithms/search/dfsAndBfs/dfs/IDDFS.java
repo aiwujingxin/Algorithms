@@ -4,75 +4,51 @@ import java.util.*;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 05/21/25 10:44
- * @description 迭代加深搜索
+ * @date 5/27/25 02:46
+ * @description IDDFS
  */
+
 public class IDDFS {
+
+    static int maxDepth;             // 当前的迭代深度上限
+    static boolean found = false;    // 是否找到目标
+    static final int INF = 100000;   // 用于剪枝或标记最大深度
+    static String target = "目标状态"; // 根据题意定义
+
     public static void main(String[] args) {
-        int numerator = 4;
-        int denominator = 13;
-        List<Integer> result = findEgyptianFractions(numerator, denominator);
-        System.out.println("埃及分数表示:");
-        for (int i = 0; i < result.size(); i++) {
-            System.out.print("1/" + result.get(i));
-            if (i < result.size() - 1) {
-                System.out.print(" + ");
+        String start = "初始状态";  // 初始化
+        for (maxDepth = 0; maxDepth < INF; maxDepth++) {
+            found = false;
+            dfs(start, 0);
+            if (found) {
+                System.out.println("找到，最浅深度为: " + maxDepth);
+                break;
             }
+        }
+        if (!found) {
+            System.out.println("未找到");
         }
     }
 
-    public static List<Integer> findEgyptianFractions(int numerator, int denominator) {
-        List<Integer> result = new ArrayList<>();
-        // 迭代加深搜索，从1层开始逐步增加深度
-        for (int depth = 1; ; depth++) {
-            if (dfs(numerator, denominator, depth, 2, result)) {
-                return result;
-            }
-            result.clear(); // 清除之前尝试的结果
+    // IDDFS 的核心 DFS 模板
+    static void dfs(String state, int depth) {
+        if (depth > maxDepth || found) {
+            return;
+        }
+        if (state.equals(target)) {
+            found = true;
+            return;
+        }
+        // 生成下一层状态
+        for (String next : getNextStates(state)) {
+            dfs(next, depth + 1);
+            if (found) return; // 剪枝
         }
     }
 
-    private static boolean dfs(long remainingNumerator, long remainingDenominator, int remainingDepth, int start, List<Integer> result) {
-        // 基本情况：已经找到解
-        if (remainingNumerator == 0) {
-            return true;
-        }
-
-        // 到达最大深度但还没找到解
-        if (remainingDepth == 0) {
-            return false;
-        }
-
-        // 计算下一个单位分数的分母的最小可能值
-        // 它应该 ≥ max(start, ceil(1/f)) = max(start, ceil(d/n))
-        long minNextDenominator = Math.max(start,
-                (remainingDenominator + remainingNumerator - 1) / remainingNumerator);
-
-        // 尝试所有可能的分母
-        for (long nextDenominator = minNextDenominator; ; nextDenominator++) {
-            // 计算剩余部分
-            long newNumerator = remainingNumerator * nextDenominator - remainingDenominator;
-            if (newNumerator < 0) {
-                continue; // 跳过使剩余部分为负的情况
-            }
-
-            long newDenominator = remainingDenominator * nextDenominator;
-
-            // 约分
-            long gcd = gcd(newNumerator, newDenominator);
-            newNumerator /= gcd;
-            newDenominator /= gcd;
-
-            result.add((int) nextDenominator);
-            if (dfs(newNumerator, newDenominator, remainingDepth - 1, (int) nextDenominator + 1, result)) {
-                return true;
-            }
-            result.remove(result.size() - 1); // 回溯
-        }
-    }
-
-    // 计算最大公约数
-    private static long gcd(long a, long b) {
-        return b == 0 ? a : gcd(b, a % b);
+    // 示例：根据当前状态生成所有可能的下一步状态
+    static List<String> getNextStates(String state) {
+        // 根据具体问题实现状态转移逻辑
+        return new ArrayList<>();
     }
 }
