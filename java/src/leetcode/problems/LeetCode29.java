@@ -28,7 +28,7 @@ public class LeetCode29 {
                 t = t * 2;
                 cnt = cnt * 2;
             }
-            dividend -= t;
+            dividend -= cnt * divisor;
             res += cnt;
         }
         return sign ? -res : res;
