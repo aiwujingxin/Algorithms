@@ -5,17 +5,22 @@ package knowledge.datastructure.queue;
  * @date 2024/3/23 14:39
  * @description 队列
  */
+@SuppressWarnings("unchecked")
 public class MyQueue<E> {
 
-    int head, tail, size;
-    Node<E>[] nums;
+    private int head = 0, tail = 0, size = 0;
+    private final E[] data;
 
-    public MyQueue(int c) {
-        nums = new Node[c];
+    public MyQueue(int capacity) {
+        data = (E[]) new Object[capacity];
     }
 
     public void add(E value) {
-        nums[tail++] = new Node<>(value);
+        if (size == data.length) {
+            throw new RuntimeException("Queue is full");
+        }
+        data[tail] = value;
+        tail = (tail + 1) % data.length;
         size++;
     }
 
@@ -23,16 +28,18 @@ public class MyQueue<E> {
         if (isEmpty()) {
             return null;
         }
+        E value = data[head];
+        head = (head + 1) % data.length;
         size--;
-        return nums[head++].item;
+        return value;
     }
 
     public E peek() {
-        return isEmpty() ? null : nums[head].item;
+        return isEmpty() ? null : data[head];
     }
 
-    public E Last() {
-        return isEmpty() ? null : nums[tail--].item;
+    public E last() {
+        return isEmpty() ? null : data[(tail - 1 + data.length) % data.length];
     }
 
     public boolean isEmpty() {
@@ -41,13 +48,5 @@ public class MyQueue<E> {
 
     public int size() {
         return size;
-    }
-
-    static class Node<E> {
-        E item;
-
-        public Node(E item) {
-            this.item = item;
-        }
     }
 }

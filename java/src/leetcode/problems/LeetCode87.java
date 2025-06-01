@@ -27,28 +27,18 @@ public class LeetCode87 {
     }
 
     boolean dfs(int i, int j, int len) {
-        if (memo[i][j][len] != null) {
-            return memo[i][j][len];
-        }
+        if (memo[i][j][len] != null) return memo[i][j][len];
         String a = s1.substring(i, i + len), b = s2.substring(j, j + len);
         if (a.equals(b)) {
-            memo[i][j][len] = true;
-            return true;
+            return memo[i][j][len] = true;
         }
         if (!check(a, b)) {
-            memo[i][j][len] = false;
-            return false;
+            return memo[i][j][len] = true;
         }
         for (int k = 1; k < len; k++) {
-            // (s1前 vs s2前) && (s1后 vs s2后)
-            if (dfs(i, j, k) && dfs(i + k, j + k, len - k)) {
-                memo[i][j][len] = true;
-                return true;
-            }
-            // (s1前 vs s2后) && (s1后 vs s2前)
-            if (dfs(i, j + len - k, k) && dfs(i + k, j, len - k)) {
-                memo[i][j][len] = true;
-                return true;
+            // (s1前 vs s2前) && (s1后 vs s2后) ||  (s1前 vs s2后) && (s1后 vs s2前)
+            if (dfs(i, j, k) && dfs(i + k, j + k, len - k) || dfs(i, j + len - k, k) && dfs(i + k, j, len - k)) {
+                return memo[i][j][len] = true;
             }
         }
         memo[i][j][len] = false;
@@ -56,19 +46,14 @@ public class LeetCode87 {
     }
 
     // 检查 s1 和 s2 词频是否相同
-    boolean check(String s1, String s2) {
-        if (s1.length() != s2.length()) {
-            return false;
+    boolean check(String a, String b) {
+        int[] cnt = new int[26];
+        for (int i = 0; i < a.length(); i++) {
+            cnt[a.charAt(i) - 'a']++;
+            cnt[b.charAt(i) - 'a']--;
         }
-        int n = s1.length();
-        int[] cnt1 = new int[26], cnt2 = new int[26];
-        char[] cs1 = s1.toCharArray(), cs2 = s2.toCharArray();
-        for (int i = 0; i < n; i++) {
-            cnt1[cs1[i] - 'a']++;
-            cnt2[cs2[i] - 'a']++;
-        }
-        for (int i = 0; i < 26; i++) {
-            if (cnt1[i] != cnt2[i]) {
+        for (int c : cnt) {
+            if (c != 0) {
                 return false;
             }
         }

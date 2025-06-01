@@ -7,13 +7,13 @@ package leetcode.problems;
 public class LeetCode55 {
 
     public boolean canJump(int[] nums) {
-        int max = nums[0];
+        int max = 0; // 当前能够跳到的最远位置
         for (int i = 0; i < nums.length; i++) {
             if (i > max) {
-                return false;
+                return false; // 如果当前位置 i 已经超出最远可达位置，说明无法到达
             }
-            max = Math.max(max, i + nums[i]);
+            max = Math.max(max, i + nums[i]); // 更新最远可达位置
         }
-        return true;
+        return true; // 如果循环顺利结束，说明可以跳到最后一个位置
     }
 }

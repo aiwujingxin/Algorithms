@@ -9,26 +9,21 @@ import common.*;
 public class LeetCode86 {
 
     public ListNode partition(ListNode head, int x) {
-        ListNode dummy = new ListNode();
-        dummy.next = head;
-        ListNode cur = dummy;
-        while (cur.next != null) {
-            if (cur.next.val >= x) {
-                ListNode curNext = cur.next;
-                ListNode f = curNext;
-                while (f.next != null && f.next.val >= x) {
-                    f = f.next;
-                }
-                if (f.next == null) {
-                    return dummy.next;
-                }
-                ListNode d = f.next;
-                f.next = d.next;
-                d.next = curNext;
-                cur.next = d;
+        ListNode smallDummy = new ListNode();
+        ListNode bigDummy = new ListNode();
+        ListNode small = smallDummy, big = bigDummy;
+        while (head != null) {
+            if (head.val < x) {
+                small.next = head;
+                small = small.next;
+            } else {
+                big.next = head;
+                big = big.next;
             }
-            cur = cur.next;
+            head = head.next;
         }
-        return dummy.next;
+        big.next = null;        // 防止链表成环
+        small.next = bigDummy.next;
+        return smallDummy.next;
     }
 }

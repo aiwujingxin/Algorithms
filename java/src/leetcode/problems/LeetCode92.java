@@ -23,8 +23,8 @@ public class LeetCode92 {
             r = r.next;
         }
         ListNode s = l.next;
-        l.next = null;
         ListNode next = r.next;
+        l.next = null;
         r.next = null;
 
         l.next = reverse(s);

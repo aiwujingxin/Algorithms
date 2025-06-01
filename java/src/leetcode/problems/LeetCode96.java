@@ -5,6 +5,7 @@ import java.util.HashMap;
 /**
  * @author wujingxinit@outlook.com
  * @date 2022/9/4 16:32
+ * @description 卡特兰数
  */
 public class LeetCode96 {
 
@@ -28,14 +29,14 @@ public class LeetCode96 {
     }
 
     public int numTrees_dp(int n) {
-        int[] G = new int[n + 1];
-        G[0] = 1;
-        G[1] = 1;
+        int[] dp = new int[n + 1];
+        dp[0] = 1;
+        dp[1] = 1;
         for (int i = 2; i <= n; ++i) {
             for (int j = 1; j <= i; ++j) {
-                G[i] += G[j - 1] * G[i - j];
+                dp[i] += dp[j - 1] * dp[i - j];
             }
         }
-        return G[n];
+        return dp[n];
     }
 }

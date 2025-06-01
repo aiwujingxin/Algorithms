@@ -9,27 +9,24 @@ import common.*;
 public class LeetCode61 {
 
     public ListNode rotateRight(ListNode head, int k) {
-        int len = getLen(head);
-        if (k == 0 || len == 0) {
+        if (head == null || head.next == null || k == 0) {
             return head;
         }
-        k = k % len;
+        k = k % getLen(head);
         if (k == 0) {
             return head;
         }
-        ListNode dummy = new ListNode();
-        dummy.next = head;
-        ListNode cur = dummy;
-        for (int i = 0; i < len - k; i++) {
-            cur = cur.next;
+        ListNode fast = head, slow = head;
+        for (int i = 0; i < k; i++) {
+            fast = fast.next;
         }
-        ListNode newHead = cur.next;
-        cur.next = null;
-        cur = newHead;
-        while (cur.next != null) {
-            cur = cur.next;
+        while (fast.next != null) {
+            fast = fast.next;
+            slow = slow.next;
         }
-        cur.next = head;
+        ListNode newHead = slow.next;
+        slow.next = null;
+        fast.next = head;
         return newHead;
     }
 

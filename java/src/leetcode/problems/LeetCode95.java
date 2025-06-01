@@ -12,29 +12,24 @@ import java.util.List;
 public class LeetCode95 {
 
     public List<TreeNode> generateTrees(int n) {
+        if (n == 0) {
+            return new ArrayList<>();
+        }
         return dfs(1, n);
     }
 
     private List<TreeNode> dfs(int start, int end) {
-        if (start > end) {
-            List<TreeNode> list = new ArrayList<>();
-            list.add(null);
-            return list;
-        }
-        if (start == end) {
-            List<TreeNode> list = new ArrayList<>();
-            list.add(new TreeNode(start));
-            return list;
-        }
         List<TreeNode> res = new ArrayList<>();
+        if (start > end) {
+            res.add(null);
+            return res;
+        }
         for (int i = start; i <= end; i++) {
-            List<TreeNode> left = dfs(start, i - 1);
-            List<TreeNode> right = dfs(i + 1, end);
-            for (TreeNode l : left) {
-                for (TreeNode r : right) {
+            for (TreeNode left : dfs(start, i - 1)) {
+                for (TreeNode right : dfs(i + 1, end)) {
                     TreeNode root = new TreeNode(i);
-                    r.left = l;
-                    r.right = r;
+                    root.left = left;
+                    root.right = right;
                     res.add(root);
                 }
             }

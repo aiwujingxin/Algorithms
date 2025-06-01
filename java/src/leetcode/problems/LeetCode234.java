@@ -9,13 +9,10 @@ import common.*;
 public class LeetCode234 {
 
     public boolean isPalindrome(ListNode head) {
-        if (head == null) {
-            return true;
-        }
         ListNode mid = getMid(head);
         ListNode rHead = mid.next;
         mid.next = null;
-        rHead = reverseList(rHead);
+        rHead = reverse(rHead);
         while (head != null && rHead != null) {
             if (head.val != rHead.val) {
                 return false;
@@ -38,7 +35,7 @@ public class LeetCode234 {
         return slow;
     }
 
-    public ListNode reverseList(ListNode head) {
+    public ListNode reverse(ListNode head) {
         ListNode pre = null;
         ListNode cur = head;
         while (cur != null) {

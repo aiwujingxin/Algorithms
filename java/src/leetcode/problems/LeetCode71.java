@@ -9,27 +9,16 @@ import java.util.Stack;
 public class LeetCode71 {
 
     public String simplifyPath(String path) {
-        if (path == null || path.isEmpty()) {
-            return "/";
-        }
-        String[] str = path.split("/");
         Stack<String> stack = new Stack<>();
-        for (String s : str) {
-            if ("..".equals(s)) {
-                if (!stack.isEmpty()) {
-                    stack.pop();
-                }
-            } else if (!"".equals(s) && !".".equals(s)) {
-                stack.push(s);
+        for (String dir : path.split("/")) {
+            if (dir.equals("..")) {
+                if (!stack.isEmpty()) stack.pop();
+            } else if (!dir.isEmpty() && !dir.equals(".")) {
+                stack.push(dir);
             }
         }
-        if (stack.isEmpty()) {
-            return "/";
-        }
         StringBuilder sb = new StringBuilder();
-        for (String s : stack) {
-            sb.append("/").append(s);
-        }
-        return sb.toString();
+        while (!stack.isEmpty()) sb.insert(0, "/" + stack.pop());
+        return sb.isEmpty() ? "/" : sb.toString();
     }
 }

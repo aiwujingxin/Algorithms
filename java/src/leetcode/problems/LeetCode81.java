@@ -8,9 +8,6 @@ package leetcode.problems;
 public class LeetCode81 {
 
     public boolean search(int[] nums, int target) {
-        if (nums == null || nums.length == 0) {
-            return false;
-        }
         int l = 0;
         int r = nums.length - 1;
         while (l <= r) {

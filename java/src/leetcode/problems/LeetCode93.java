@@ -23,9 +23,11 @@ public class LeetCode93 {
             return;
         }
         for (int len = 1; len <= 3 && index + len <= s.length(); len++) {
-            String t = s.substring(index, index + len);
-            if (t.length() > 1 && t.startsWith("0") || Integer.parseInt(t) > 255) continue;
-            list.add(t);
+            String seg = s.substring(index, index + len);
+            if (seg.length() > 1 && seg.startsWith("0") || Integer.parseInt(seg) > 255) {
+                continue;
+            }
+            list.add(seg);
             backtrack(s, index + len, list, res);
             list.remove(list.size() - 1);
         }
