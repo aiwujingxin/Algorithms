@@ -13,16 +13,10 @@ public class LeetCode23 {
     }
 
     private ListNode mergeKLists(ListNode[] lists, int lo, int hi) {
-        if (lo > hi) {
-            return null;
-        }
-        if (lo == hi) {
-            return lists[lo];
-        }
+        if (lo > hi) return null;
+        if (lo == hi) return lists[lo];
         int mid = (lo + hi) >> 1;
-        ListNode list1 = mergeKLists(lists, lo, mid);
-        ListNode list2 = mergeKLists(lists, mid + 1, hi);
-        return mergeTwoLists(list1, list2);
+        return mergeTwoLists(mergeKLists(lists, lo, mid), mergeKLists(lists, mid + 1, hi));
     }
 
     public ListNode mergeTwoLists(ListNode list1, ListNode list2) {

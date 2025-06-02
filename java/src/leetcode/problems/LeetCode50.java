@@ -21,7 +21,7 @@ public class LeetCode50 {
         return n % 2 == 0 ? half * half : half * half * x;
     }
 
-    public double myPow_Iterative(double x, int n) {
+    public double myPow_iter(double x, int n) {
         long m = n;
         if (m < 0) {
             x = 1 / x;

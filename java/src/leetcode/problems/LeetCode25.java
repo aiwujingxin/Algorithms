@@ -32,4 +32,36 @@ public class LeetCode25 {
         }
         return pre;
     }
+
+    public ListNode reverseKGroup_iter(ListNode head, int k) {
+        ListNode dummy = new ListNode();
+        dummy.next = head;
+        ListNode prevGroupEnd = dummy;
+        ListNode curr = head;
+        while (hasKNodes(curr, k)) {
+            ListNode groupStart = curr;
+            ListNode prev = null;
+            // 反转k个节点
+            for (int i = 0; i < k; i++) {
+                ListNode next = curr.next;
+                curr.next = prev;
+                prev = curr;
+                curr = next;
+            }
+            // 接回链表
+            prevGroupEnd.next = prev;
+            groupStart.next = curr;
+            // 移动 prevGroupEnd
+            prevGroupEnd = groupStart;
+        }
+        return dummy.next;
+    }
+
+    private boolean hasKNodes(ListNode node, int k) {
+        for (int i = 0; i < k; i++) {
+            if (node == null) return false;
+            node = node.next;
+        }
+        return true;
+    }
 }

@@ -1,7 +1,5 @@
 package leetcode.problems;
 
-import java.util.*;
-
 /**
  * @author wujingxinit@outlook.com
  * @date 2024/4/9 10:41
