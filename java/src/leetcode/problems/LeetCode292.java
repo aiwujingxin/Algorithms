@@ -24,7 +24,7 @@ public class LeetCode292 {
         }
         boolean res = false;
         for (int i = 1; i <= 3; i++) {
-            res = res || !dfs(n - i, memo);
+            res |= !dfs(n - i, memo);
         }
         memo[n] = res;
         return res;
