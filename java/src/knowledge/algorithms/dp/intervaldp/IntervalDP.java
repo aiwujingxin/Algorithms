@@ -9,29 +9,32 @@ import java.util.Arrays;
  * @author wujingxinit@outlook.com
  * @date 2023/11/28 23:00
  * @description 区间DP 将一个区间划分为若干子区间，通过合并子区间的最优解，构造出整个区间的最优解。
- * <展开方式>
+ * <枚举方式>
  * 1) 基于两侧端点讨论的可能性展开
  * 2) 基于范围上划分点的可能性展开
- * <开闭区间>
- * 开区间: 分割点属于左子问题, 右子问题从 k+1 开始
- * 闭区间: 分割点独立处理, 左右子问题不包含 k
- * 选择依据：分析分割点 k 在问题中的物理意义，明确其归属。
+ * <划分方式>
+ * 分割点k: 在问题中的物理意义，明确其归属。
+ * 1) 开区间: 分割点属于左子问题, 右子问题从 k+1 开始
+ * 2) 闭区间: 分割点独立处理, 左右子问题不包含 k
  * <基础>
- * @see LeetCode5    最长回文子串
- * @see MatrixChain  矩阵链乘法
- * @see LeetCode312  戳气球
- * @see LeetCode486  预测赢家
- * @see LeetCode1039 多边形三角剖分的最低得分
+ * @see AcWing282          石子合并 相邻2堆
+ * @see MatrixChain        矩阵链乘法
+ * @see LeetCode312        戳气球
+ * @see MinCostPalindrome  增删字母得到回文的最小花费
+ * @see TriangleDivision   最小三角剖分代价
  * <石子合并>
- * @see AcWing282    石子合并 相邻2堆
  * @see LeetCode1000 石子合并 相邻k堆
  * @see LeetCode877  石子游戏 博弈
  * <题单>
- * @see LeetCode1312 让字符串成为回文串的最少插入次数
+ * @see LeetCode5    最长回文子串
  * @see LeetCode87   扰乱字符
  * @see LeetCode375  猜数字大小II
+ * @see LeetCode486  预测赢家
+ * @see LeetCode516  最长回文子串
+ * @see LeetCode1312 让字符串成为回文串的最少插入次数
  * @see LeetCode546  移除盒子
  * @see LeetCode678  有效的括号字符串
+ * @see LeetCode1039 多边形三角剖分的最低得分
  * @see LeetCode1216 验证回文串 III
  * @see LeetCode2811 判断是否能拆分数组
  * @see LeetCode1547 切棍子的最小成本
@@ -39,9 +42,9 @@ import java.util.Arrays;
  * LeetCode1690
  * LeetCode2312
  * LeetCode1130
- * LeetCode730 统计不同回文子序列
+ * LeetCode730       统计不同回文子序列
  * LeetCode664
- * LeetCode1147 段式回文
+ * LeetCode1147      段式回文
  * LeetCode471
  * POJ3280
  */
@@ -68,7 +71,7 @@ public interface IntervalDP {
     */
 
     //1. 按区间长度递增: 斜着遍历
-    private int intervalDP(int[] nums) {
+    private int intervalDP1(int[] nums) {
         int n = nums.length;
         int[][] dp = new int[n][n];
         for (int len = 2; len < n; len++) {         // 区间长度

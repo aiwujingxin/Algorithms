@@ -3,7 +3,6 @@ package leetcode.problems;
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/12/20 20:24
- * @description 区间DP
  */
 public class LeetCode516 {
 
