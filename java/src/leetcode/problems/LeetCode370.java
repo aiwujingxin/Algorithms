@@ -8,17 +8,13 @@ public class LeetCode370 {
 
     public int[] getModifiedArray(int length, int[][] updates) {
         int[] diff = new int[length];
-        for (int[] update : updates) {
-            diff[update[0]] += update[2];
-            if (update[1] + 1 < diff.length) {
-                diff[update[1] + 1] -= update[2];
-            }
+        for (int[] u : updates) {
+            diff[u[0]] += u[2];
+            if (u[1] + 1 < length) diff[u[1] + 1] -= u[2];
         }
-        int[] nums = new int[length];
-        nums[0] = diff[0];
         for (int i = 1; i < length; i++) {
-            nums[i] = nums[i - 1] + diff[i];
+            diff[i] += diff[i - 1];
         }
-        return nums;
+        return diff;
     }
 }

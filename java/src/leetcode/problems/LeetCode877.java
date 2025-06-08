@@ -3,6 +3,7 @@ package leetcode.problems;
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/8/10 17:37
+ * @description dp[i][j]: 从第 i 堆到第 j 堆，当前玩家（先手）相对于另一个玩家（后手）所能获得的最大 净得分差（先手得分 - 后手得分）。
  */
 public class LeetCode877 {
 
@@ -45,11 +46,9 @@ public class LeetCode877 {
     public boolean stoneGame_dp2(int[] piles) {
         int n = piles.length;
         int[][] dp = new int[n][n];
-        // base case: when i == j
         for (int i = 0; i < n; i++) {
             dp[i][i] = piles[i];
         }
-        // 遍历顺序：i 从 n-2 到 0，j 从 i+1 到 n-1
         for (int i = n - 2; i >= 0; i--) {
             for (int j = i + 1; j < n; j++) {
                 dp[i][j] = Math.max(piles[i] - dp[i + 1][j], piles[j] - dp[i][j - 1]);

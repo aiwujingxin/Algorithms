@@ -7,9 +7,11 @@ import leetcode.problems.*;
  * @date 2024/1/23 15:52
  * @description 差分数组 差分数组的前缀和就是原数组
  * <一维>
- * @see LeetCode370
- * @see LeetCode1094
- * @see LeetCode1109
+ * @see LeetCode370  区间加法
+ * @see LeetCode1094 拼车
+ * @see LeetCode1109 航班预订统计
+ * @see LeetCode798  得分最高的最小轮调
+ * @see LeetCode995  K 连续位的最小翻转次数
  * <二维>
  * @see LeetCode2536
  * @see LeetCode2132
@@ -18,30 +20,25 @@ public interface PreDiff {
 
     class PreDiff_1D {
 
-        final int[] diff;
+        int[] diff;
 
         public PreDiff_1D(int[] nums) {
-            diff = new int[nums.length];
-            diff[0] = nums[0];
-            for (int i = 1; i < nums.length; i++) {
-                diff[i] = nums[i] - nums[i - 1];
+            diff = nums.clone();
+            for (int i = nums.length - 1; i > 0; i--) {
+                diff[i] -= nums[i - 1];
             }
         }
 
         public void update(int i, int j, int val) {
             diff[i] += val;
-            if (j + 1 < diff.length) {
-                diff[j + 1] -= val;
-            }
+            if (j + 1 < diff.length) diff[j + 1] -= val;
         }
 
         public int[] result() {
-            int[] res = new int[diff.length];
-            res[0] = diff[0];
             for (int i = 1; i < diff.length; i++) {
-                res[i] = res[i - 1] + diff[i];
+                diff[i] += diff[i - 1];
             }
-            return res;
+            return diff;
         }
     }
 
