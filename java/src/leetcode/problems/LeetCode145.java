@@ -12,9 +12,6 @@ import java.util.*;
 public class LeetCode145 {
 
     public List<Integer> postorderTraversal(TreeNode root) {
-        if (root == null) {
-            return new ArrayList<>();
-        }
         Stack<TreeNode> stack = new Stack<>();
         List<Integer> list = new ArrayList<>();
         TreeNode pre = null;

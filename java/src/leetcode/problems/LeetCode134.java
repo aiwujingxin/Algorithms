@@ -12,12 +12,12 @@ public class LeetCode134 {
         int res = 0;
         int n = gas.length;
         for (int i = 0; i < n; i++) {
-            remain += gas[i] + cost[i];
+            remain += gas[i] - cost[i];
+            total += gas[i] - cost[i];
             if (remain < 0) {
-                res = i;
+                res = i + 1;
                 remain = 0;
             }
-            total += gas[i] + cost[i];
         }
         return total >= 0 ? res : -1;
     }

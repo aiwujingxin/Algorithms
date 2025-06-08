@@ -19,16 +19,12 @@ public class LeetCode148 {
         ListNode mid = getMid(head, tail);
         ListNode next = mid.next;
         mid.next = null;
-        ListNode list1 = sortList(head, mid);
-        ListNode list2 = sortList(next, tail);
-        return mergeTwoLists(list1, list2);
+        return mergeTwoLists(sortList(head, mid), sortList(next, tail));
     }
 
     public ListNode getMid(ListNode head, ListNode tail) {
-        ListNode dummy = new ListNode();
-        dummy.next = head;
-        ListNode slow = dummy;
-        ListNode fast = dummy;
+        ListNode slow = head;
+        ListNode fast = head;
         while (fast != tail && fast.next != tail) {
             fast = fast.next.next;
             slow = slow.next;
@@ -36,13 +32,11 @@ public class LeetCode148 {
         return slow;
     }
 
-    public ListNode mergeTwoLists(ListNode list1, ListNode list2) {
+    private ListNode mergeTwoLists(ListNode list1, ListNode list2) {
         ListNode dummy = new ListNode();
         ListNode cur = dummy;
-        while (list1 != null || list2 != null) {
-            int v1 = list1 != null ? list1.val : Integer.MAX_VALUE;
-            int v2 = list2 != null ? list2.val : Integer.MAX_VALUE;
-            if (v1 < v2) {
+        while (list1 != null && list2 != null) {
+            if (list1.val < list2.val) {
                 cur.next = list1;
                 list1 = list1.next;
             } else {
@@ -51,6 +45,7 @@ public class LeetCode148 {
             }
             cur = cur.next;
         }
+        cur.next = list1 != null ? list1 : list2;
         return dummy.next;
     }
 }

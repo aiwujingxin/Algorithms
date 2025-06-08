@@ -8,22 +8,14 @@ import common.*;
  */
 public class LeetCode110 {
 
-    public boolean isBalanced(TreeNode root) {
-        if (root == null) {
-            return true;
-        }
-        int l = get(root.left);
-        int r = get(root.right);
-        if (Math.abs(l - r) > 1) {
-            return false;
-        }
-        return isBalanced(root.right) && isBalanced(root.left);
+    public boolean isBalanced(TreeNode r) {
+        return h(r) >= 0;
     }
 
-    private int get(TreeNode root) {
-        if (root == null) {
-            return 0;
-        }
-        return Math.max(get(root.left), get(root.right)) + 1;
+    int h(TreeNode n) {
+        if (n == null) return 0;
+        int l = h(n.left), r = h(n.right);
+        if (l < 0 || r < 0 || Math.abs(l - r) > 1) return -1;
+        return 1 + Math.max(l, r);
     }
 }

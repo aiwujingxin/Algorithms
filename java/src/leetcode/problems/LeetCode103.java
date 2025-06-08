@@ -11,13 +11,10 @@ import java.util.*;
 public class LeetCode103 {
 
     public List<List<Integer>> zigzagLevelOrder(TreeNode root) {
-        if (root == null) {
-            return new ArrayList<>();
-        }
         List<List<Integer>> res = new ArrayList<>();
         Queue<TreeNode> queue = new LinkedList<>();
         queue.add(root);
-        boolean flag = false;
+        boolean rev = false;
         while (!queue.isEmpty()) {
             int size = queue.size();
             List<Integer> list = new ArrayList<>();
@@ -31,10 +28,10 @@ public class LeetCode103 {
                     queue.add(node.right);
                 }
             }
-            if (flag) {
+            if (rev) {
                 Collections.reverse(list);
             }
-            flag = !flag;
+            rev = !rev;
             res.add(list);
         }
         return res;

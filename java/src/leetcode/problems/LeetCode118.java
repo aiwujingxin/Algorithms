@@ -16,9 +16,6 @@ public class LeetCode118 {
         List<Integer> list = new ArrayList<>();
         list.add(1);
         res.add(list);
-        if (numRows == 1) {
-            return res;
-        }
         for (int i = 1; i < numRows; i++) {
             list = new ArrayList<>();
             list.add(1);

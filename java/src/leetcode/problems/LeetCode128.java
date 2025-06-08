@@ -16,11 +16,11 @@ public class LeetCode128 {
         int max = 1;
         for (Integer num : set) {
             if (!set.contains(num - 1)) {
-                int len = 0;
-                int t = num;
-                while (set.contains(t)) {
+                int len = 1;
+                int cur = num + 1;
+                while (set.contains(cur)) {
                     len++;
-                    t++;
+                    cur++;
                 }
                 max = Math.max(max, len);
             }

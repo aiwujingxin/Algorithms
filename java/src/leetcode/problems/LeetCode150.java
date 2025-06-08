@@ -9,9 +9,6 @@ import java.util.*;
 public class LeetCode150 {
 
     public int evalRPN(String[] tokens) {
-        if (tokens == null || tokens.length == 0) {
-            return 0;
-        }
         Stack<Integer> stack = new Stack<>();
         for (String token : tokens) {
             switch (token) {
@@ -35,10 +32,6 @@ public class LeetCode150 {
                     stack.push(Integer.valueOf(token));
             }
         }
-        int res = 0;
-        while (!stack.isEmpty()) {
-            res += stack.pop();
-        }
-        return res;
+        return stack.pop();
     }
 }

@@ -11,9 +11,6 @@ import java.util.*;
 public class LeetCode107 {
 
     public List<List<Integer>> levelOrderBottom(TreeNode root) {
-        if (root == null) {
-            return new ArrayList<>();
-        }
         List<List<Integer>> res = new ArrayList<>();
         Queue<TreeNode> queue = new LinkedList<>();
         queue.add(root);
@@ -30,9 +27,8 @@ public class LeetCode107 {
                     queue.add(node.right);
                 }
             }
-            res.add(list);
+            res.add(0, list);
         }
-        Collections.reverse(res);
         return res;
     }
 }

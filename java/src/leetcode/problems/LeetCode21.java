@@ -11,10 +11,8 @@ public class LeetCode21 {
     public ListNode mergeTwoLists(ListNode list1, ListNode list2) {
         ListNode dummy = new ListNode();
         ListNode cur = dummy;
-        while (list1 != null || list2 != null) {
-            int v1 = list1 != null ? list1.val : Integer.MAX_VALUE;
-            int v2 = list2 != null ? list2.val : Integer.MAX_VALUE;
-            if (v1 < v2) {
+        while (list1 != null && list2 != null) {
+            if (list1.val < list2.val) {
                 cur.next = list1;
                 list1 = list1.next;
             } else {
@@ -23,6 +21,7 @@ public class LeetCode21 {
             }
             cur = cur.next;
         }
+        cur.next = list1 != null ? list1 : list2;
         return dummy.next;
     }
 }

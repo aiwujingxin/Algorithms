@@ -7,28 +7,13 @@ package leetcode.problems;
 public class LeetCode125 {
 
     public boolean isPalindrome(String s) {
-        if (s == null || s.isEmpty()) {
-            return false;
-        }
-        int left = 0;
-        int right = s.length() - 1;
-        while (left < right) {
-            while (left < right && !isChar(s.charAt(left))) {
-                left++;
-            }
-            while (left < right && !isChar(s.charAt(right))) {
-                right--;
-            }
-            if (Character.toLowerCase(s.charAt(left)) != Character.toLowerCase(s.charAt(right))) {
-                return false;
-            }
-            left++;
-            right--;
+        if (s == null || s.isEmpty()) return false;
+        int l = 0, r = s.length() - 1;
+        while (l < r) {
+            while (l < r && !Character.isLetterOrDigit(s.charAt(l))) l++;
+            while (l < r && !Character.isLetterOrDigit(s.charAt(r))) r--;
+            if (Character.toLowerCase(s.charAt(l++)) != Character.toLowerCase(s.charAt(r--))) return false;
         }
         return true;
-    }
-
-    private boolean isChar(char c) {
-        return c >= 'a' && c <= 'z' || c >= 'A' && c <= 'Z' || c >= '0' && c <= '9';
     }
 }

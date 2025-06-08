@@ -8,35 +8,20 @@ import common.*;
  */
 public class LeetCode109 {
 
-    public TreeNode sortedListToBST(ListNode head) {
-        if (head == null) {
-            return null;
-        }
-        return sortedListToBST(head, null);
+    public TreeNode sortedListToBST(ListNode h) {
+        return dfs(h, null);
     }
 
-    public TreeNode sortedListToBST(ListNode head, ListNode tail) {
-        if (head == tail) {
-            return null;
+    TreeNode dfs(ListNode l, ListNode r) {
+        if (l == r) return null;
+        ListNode s = l, f = l;
+        while (f.next != r && f.next.next != r) {
+            s = s.next;
+            f = f.next.next;
         }
-        ListNode mid = getMid(head);
-        ListNode next = mid.next;
-        mid.next = null;
-        TreeNode root = new TreeNode(mid.val);
-        root.left = sortedListToBST(head, mid);
-        root.right = sortedListToBST(next, tail);
-        return root;
-    }
-
-    public ListNode getMid(ListNode head) {
-        ListNode dummy = new ListNode();
-        dummy.next = head;
-        ListNode fast = dummy;
-        ListNode slow = dummy;
-        while (fast != null && fast.next != null) {
-            fast = fast.next.next;
-            slow = slow.next;
-        }
-        return slow;
+        TreeNode t = new TreeNode(s.val);
+        t.left = dfs(l, s);
+        t.right = dfs(s.next, r);
+        return t;
     }
 }

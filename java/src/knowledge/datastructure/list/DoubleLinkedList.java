@@ -22,13 +22,10 @@ public class DoubleLinkedList {
     }
 
     public void addFirst(Node node) {
-        Node next = head.next;
-
-        head.next = node;
+        node.next = head.next;
         node.prev = head;
-
-        node.next = next;
-        next.prev = node;
+        head.next.prev = node;
+        head.next = node;
         size++;
     }
 
@@ -53,11 +50,10 @@ public class DoubleLinkedList {
     }
 
     public Node removeLast() {
-        Node node = tail.prev;
-        node.prev.next = tail;
-        tail.prev = node.prev;
+        Node last = tail.prev;
+        remove(last);
         size--;
-        return node;
+        return last;
     }
 
     public Node getFirst() {

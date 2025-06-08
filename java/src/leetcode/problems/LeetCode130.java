@@ -7,9 +7,6 @@ package leetcode.problems;
 public class LeetCode130 {
 
     public void solve(char[][] board) {
-        if (board == null || board.length == 0) {
-            return;
-        }
         for (int i = 0; i < board.length; i++) {
             for (int j = 0; j < board[i].length; j++) {
                 if ((i == 0 || i == board.length - 1 || j == 0 || j == board[i].length - 1) && board[i][j] == 'O') {
