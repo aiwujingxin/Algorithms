@@ -6,24 +6,20 @@ package leetcode.problems;
  */
 public class LeetCode189 {
 
-    public void rotate(int[] nums, int k) {
-        if (nums == null || nums.length == 0 || k == 0) {
-            return;
-        }
-        k = k % nums.length;
-        if (k == 0) {
-            return;
-        }
-        reverse(nums, 0, nums.length - 1 - k);
-        reverse(nums, nums.length - k, nums.length - 1);
-        reverse(nums, 0, nums.length - 1);
+    public void rotate(int[] a, int k) {
+        int n = a.length;
+        k %= n;
+        if (k == 0) return;
+        reverse(a, 0, n - k - 1);
+        reverse(a, n - k, n - 1);
+        reverse(a, 0, n - 1);
     }
 
-    public void reverse(int[] chars, int i, int j) {
+    void reverse(int[] a, int i, int j) {
         while (i < j) {
-            int t = chars[i];
-            chars[i] = chars[j];
-            chars[j] = t;
+            int t = a[i];
+            a[i] = a[j];
+            a[j] = t;
             i++;
             j--;
         }

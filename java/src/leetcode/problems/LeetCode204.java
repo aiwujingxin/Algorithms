@@ -8,16 +8,13 @@ package leetcode.problems;
 public class LeetCode204 {
 
     public int countPrimes(int n) {
-        if (n <= 1) {
-            return 0;
-        }
-        boolean[] dp = new boolean[n];
+        boolean[] notPrime = new boolean[n];
         int cnt = 0;
         for (int i = 2; i < n; i++) {
-            if (!dp[i]) {
+            if (!notPrime[i]) {
                 cnt++;
-                for (int j = 2; j * i < n; j++) {
-                    dp[j * i] = true;
+                for (int j = i * 2; j < n; j += i) {
+                    notPrime[j] = true;
                 }
             }
         }

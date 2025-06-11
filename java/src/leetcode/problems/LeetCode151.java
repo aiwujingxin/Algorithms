@@ -7,25 +7,11 @@ package leetcode.problems;
 public class LeetCode151 {
 
     public String reverseWords(String s) {
-        if (s == null || s.isEmpty()) {
-            return s;
-        }
-        s = s.trim();
-        if (s.isEmpty()) {
-            return "";
-        }
-        String[] strings = s.split(" ");
+        String[] parts = s.trim().split("\\s+");
         StringBuilder sb = new StringBuilder();
-        for (int i = strings.length - 1; i >= 0; i--) {
-            String t = strings[i].trim();
-            if (t.isEmpty()) {
-                continue;
-            }
-            sb.append(t);
-            if (i != 0) {
-                sb.append(" ");
-            }
+        for (int i = parts.length - 1; i >= 0; i--) {
+            sb.append(parts[i]).append(" ");
         }
-        return sb.toString();
+        return sb.toString().trim();
     }
 }

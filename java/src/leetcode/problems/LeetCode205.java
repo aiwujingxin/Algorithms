@@ -1,6 +1,6 @@
 package leetcode.problems;
 
-import java.util.HashMap;
+import java.util.Arrays;
 
 /**
  * @author wujingxinit@outlook.com
@@ -9,26 +9,18 @@ import java.util.HashMap;
 public class LeetCode205 {
 
     public boolean isIsomorphic(String s, String t) {
-        if (s.length() != t.length()) {
-            return false;
-        }
-        int n = s.length();
-        HashMap<Character, Character> map = new HashMap<>();
-        HashMap<Character, Character> map1 = new HashMap<>();
-
-        for (int i = 0; i < n; i++) {
-            char schar = s.charAt(i);
-            char tchar = t.charAt(i);
-            if (map.get(schar) == null) {
-                if (map1.get(tchar) != null) {
-                    return false;
-                }
-                map.put(schar, tchar);
-                map1.put(tchar, schar);
-            } else {
-                if (map.get(schar) != tchar) {
-                    return false;
-                }
+        if (s.length() != t.length()) return false;
+        int[] mapS = new int[256];
+        int[] mapT = new int[256];
+        Arrays.fill(mapS, -1);
+        Arrays.fill(mapT, -1);
+        for (int i = 0; i < s.length(); i++) {
+            char sc = s.charAt(i), tc = t.charAt(i);
+            if (mapS[sc] == -1 && mapT[tc] == -1) {
+                mapS[sc] = tc;
+                mapT[tc] = sc;
+            } else if (mapS[sc] != tc || mapT[tc] != sc) {
+                return false;
             }
         }
         return true;

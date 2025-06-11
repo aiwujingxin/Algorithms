@@ -7,9 +7,6 @@ package leetcode.problems;
 public class LeetCode209 {
 
     public int minSubArrayLen(int target, int[] nums) {
-        if (nums == null || nums.length == 0) {
-            return 0;
-        }
         int res = Integer.MAX_VALUE;
         int left = 0;
         int right = 0;

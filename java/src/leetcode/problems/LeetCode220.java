@@ -9,18 +9,18 @@ import java.util.TreeSet;
 public class LeetCode220 {
 
     public boolean containsNearbyAlmostDuplicate(int[] nums, int indexDiff, int valueDiff) {
-        int n = nums.length;
         TreeSet<Long> treeSet = new TreeSet<>();
-        for (int i = 0; i < n; i++) {
-            Long floor = treeSet.floor((long) nums[i]);
-            Long ceil = treeSet.ceiling((long) nums[i]);
-            if (floor != null && (long) nums[i] - floor <= (long) valueDiff) {
+        for (int i = 0; i < nums.length; i++) {
+            long val = nums[i];
+            Long floor = treeSet.floor(val);
+            if (floor != null && val - floor <= valueDiff) {
                 return true;
             }
-            if (ceil != null && ceil - (long) nums[i] <= (long) valueDiff) {
+            Long ceil = treeSet.ceiling(val);
+            if (ceil != null && ceil - val <= valueDiff) {
                 return true;
             }
-            treeSet.add((long) nums[i]);
+            treeSet.add(val);
             if (treeSet.size() > indexDiff) {
                 treeSet.remove((long) nums[i - indexDiff]);
             }

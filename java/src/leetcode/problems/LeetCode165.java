@@ -6,21 +6,12 @@ package leetcode.problems;
  */
 public class LeetCode165 {
 
-    public int compareVersion(String version1, String version2) {
-        String[] list1 = version1.split("\\.");
-        String[] list2 = version2.split("\\.");
-        int index1 = 0;
-        int index2 = 0;
-        while (index1 < list1.length || index2 < list2.length) {
-            int v1 = index1 >= list1.length ? 0 : Integer.parseInt(list1[index1]);
-            int v2 = index2 >= list2.length ? 0 : Integer.parseInt(list2[index2]);
-            if (v1 < v2) {
-                return -1;
-            } else if (v1 > v2) {
-                return 1;
-            }
-            index1++;
-            index2++;
+    public int compareVersion(String v1, String v2) {
+        String[] a = v1.split("\\."), b = v2.split("\\.");
+        for (int i = 0; i < Math.max(a.length, b.length); i++) {
+            int n1 = i < a.length ? Integer.parseInt(a[i]) : 0;
+            int n2 = i < b.length ? Integer.parseInt(b[i]) : 0;
+            if (n1 != n2) return n1 > n2 ? 1 : -1;
         }
         return 0;
     }

@@ -7,9 +7,6 @@ package leetcode.problems;
 public class LeetCode171 {
 
     public int titleToNumber(String columnTitle) {
-        if (columnTitle == null || columnTitle.isEmpty()) {
-            return 0;
-        }
         int res = 0;
         for (int i = 0; i < columnTitle.length(); i++) {
             char c = columnTitle.charAt(i);

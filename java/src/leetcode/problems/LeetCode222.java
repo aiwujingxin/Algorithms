@@ -9,18 +9,7 @@ import common.*;
 public class LeetCode222 {
 
     public int countNodes(TreeNode root) {
-        if (root == null) {
-            return 0;
-        }
-        return dfs(root);
-    }
-
-    private int dfs(TreeNode root) {
-        if (root == null) {
-            return 0;
-        }
-        int left = dfs(root.left);
-        int right = dfs(root.right);
-        return left + right + 1;
+        if (root == null) return 0;
+        return 1 + countNodes(root.left) + countNodes(root.right);
     }
 }

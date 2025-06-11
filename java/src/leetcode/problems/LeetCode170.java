@@ -8,27 +8,20 @@ import java.util.Map;
  * @date 2023/3/8 16:05
  */
 public class LeetCode170 {
+
     class TwoSum {
-        HashMap<Integer, Integer> map;
 
-        public TwoSum() {
-            map = new HashMap<>();
+        HashMap<Integer, Integer> m = new HashMap<>();
+
+        public void add(int n) {
+            m.put(n, m.getOrDefault(n, 0) + 1);
         }
 
-        public void add(int number) {
-            map.put(number, map.getOrDefault(number, 0) + 1);
-        }
-
-        public boolean find(int value) {
-            for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
-                if (map.containsKey(value - entry.getKey())) {
-                    if (value - entry.getKey() == entry.getKey()) {
-                        if (entry.getValue() > 1) {
-                            return true;
-                        }
-                    } else {
-                        return true;
-                    }
+        public boolean find(int v) {
+            for (int k : m.keySet()) {
+                int t = v - k;
+                if (m.containsKey(t)) {
+                    if (t != k || m.get(k) > 1) return true;
                 }
             }
             return false;

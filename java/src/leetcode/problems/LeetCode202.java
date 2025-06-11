@@ -8,7 +8,6 @@ import java.util.HashSet;
  */
 public class LeetCode202 {
 
-
     public boolean isHappy(int n) {
         HashSet<Integer> set = new HashSet<>();
         while (!set.contains(n)) {
@@ -26,7 +25,7 @@ public class LeetCode202 {
         int exp = 10;
         while (n > 0) {
             int t = n % exp;
-            n = n / exp;
+            n /= exp;
             res += t * t;
         }
         return res;

@@ -13,32 +13,17 @@ import java.util.*;
 public class LeetCode187 {
 
     public List<String> findRepeatedDnaSequences(String s) {
-        if (s == null || s.isEmpty()) {
-            return new ArrayList<>();
-        }
+        if (s.length() < 10) return new ArrayList<>();
         int n = s.length();
         int[] nums = new int[n];
         for (int i = 0; i < s.length(); i++) {
             char c = s.charAt(i);
-            switch (c) {
-                case 'A':
-                    nums[i] = 1;
-                    break;
-                case 'C':
-                    nums[i] = 2;
-                    break;
-                case 'G':
-                    nums[i] = 3;
-                    break;
-                case 'T':
-                    nums[i] = 4;
-                    break;
-            }
+            nums[i] = c == 'A' ? 1 : c == 'C' ? 2 : c == 'G' ? 3 : 4;
         }
         int mul = 4;
         int pow = 1;
         for (int i = 0; i < 9; i++) {
-            pow = pow * mul;
+            pow *= mul;
         }
         int right = 0;
         int left = 0;

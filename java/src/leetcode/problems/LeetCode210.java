@@ -20,16 +20,15 @@ public class LeetCode210 {
             graph[p[1]].add(p[0]);
         }
         Queue<Integer> queue = new LinkedList<>();
-        int cnt = 0;
         for (int i = 0; i < n; i++) {
             if (degree[i] == 0) {
                 queue.add(i);
-                order[cnt] = i;
             }
         }
+        int cnt = 0;
         while (!queue.isEmpty()) {
             int cur = queue.poll();
-            cnt++;
+            order[cnt++] = cur;
             for (int next : graph[cur]) {
                 degree[next]--;
                 if (degree[next] == 0) {

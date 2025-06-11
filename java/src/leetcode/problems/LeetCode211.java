@@ -28,7 +28,7 @@ public class LeetCode211 {
                 return node.isEnd;
             }
             char c = word.charAt(index);
-            if (Character.isLetter(c)) {
+            if (c != '.') {
                 Trie.Node child = node.children[c - 'a'];
                 return child != null && dfs(word, index + 1, child);
             } else {

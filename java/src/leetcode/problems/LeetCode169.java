@@ -7,20 +7,12 @@ package leetcode.problems;
 public class LeetCode169 {
 
     public int majorityElement(int[] nums) {
-        if (nums == null || nums.length == 0) {
-            return -1;
-        }
-        int res = nums[0];
-        int cnt = 1;
+        int res = nums[0], cnt = 1;
         for (int i = 1; i < nums.length; i++) {
-            if (nums[i] == res) {
-                cnt++;
-            } else {
-                cnt--;
-            }
-            if (cnt < 0) {
+            cnt += nums[i] == res ? 1 : -1;
+            if (cnt == 0) {
                 res = nums[i];
-                cnt = 0;
+                cnt = 1;
             }
         }
         return res;

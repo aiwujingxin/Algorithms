@@ -7,10 +7,6 @@ package leetcode.problems;
 public class LeetCode168 {
 
     public String convertToTitle(int columnNumber) {
-        if (columnNumber <= 26) {
-            char c = (char) ((columnNumber - 1) % 26 + 'A');
-            return String.valueOf(c);
-        }
         StringBuilder sb = new StringBuilder();
         while (columnNumber >= 1) {
             char c = (char) ((columnNumber - 1) % 26 + 'A');

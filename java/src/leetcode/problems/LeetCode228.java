@@ -9,35 +9,20 @@ import java.util.*;
 public class LeetCode228 {
 
     public List<String> summaryRanges(int[] nums) {
-        if (nums == null || nums.length == 0) {
-            return new ArrayList<>();
-        }
-        if (nums.length == 1) {
-            List<String> list = new ArrayList<>();
-            list.add(String.valueOf(nums[0]));
-            return list;
-        }
-
+        if (nums == null || nums.length == 0) return new ArrayList<>();
         List<String> list = new ArrayList<>();
         int left = 0;
-        int right = 0;
-
-        while (right < nums.length) {
-            while (right + 1 < nums.length && nums[right + 1] == nums[right] + 1) {
-                right++;
+        for (int right = 0; right < nums.length; right++) {
+            // 如果到达数组尾部，或者当前数字和下一个数字不连续，就生成区间字符串
+            if (right == nums.length - 1 || nums[right + 1] != nums[right] + 1) {
+                if (left == right) {
+                    list.add(String.valueOf(nums[left]));
+                } else {
+                    list.add(nums[left] + "->" + nums[right]);
+                }
+                left = right + 1;
             }
-            add(list, nums, left, right);
-            left = right + 1;
-            right = left;
         }
         return list;
-    }
-
-    private void add(List<String> list, int[] nums, int left, int right) {
-        if (left == right) {
-            list.add(String.valueOf(nums[left]));
-            return;
-        }
-        list.add(nums[left] + "->" + nums[right]);
     }
 }

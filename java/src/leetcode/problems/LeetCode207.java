@@ -19,29 +19,22 @@ public class LeetCode207 {
             graph[p[1]].add(p[0]);
         }
         Queue<Integer> queue = new LinkedList<>();
-        boolean[] visited = new boolean[numCourses];
-        int cnt = 0;
-        for (int i = 0; i < inDegree.length; i++) {
+        for (int i = 0; i < numCourses; i++) {
             if (inDegree[i] == 0) {
-                queue.add(i);
-                visited[i] = true;
-                cnt++;
+                queue.offer(i);
             }
         }
-        if (cnt == 0) {
-            return false;
-        }
+        int count = 0;
         while (!queue.isEmpty()) {
             int cur = queue.poll();
+            count++;
             for (int next : graph[cur]) {
                 inDegree[next]--;
-                if (inDegree[next] == 0 && !visited[next]) {
-                    queue.add(next);
-                    cnt++;
-                    visited[next] = true;
+                if (inDegree[next] == 0) {
+                    queue.offer(next);
                 }
             }
         }
-        return cnt == numCourses;
+        return count == numCourses;
     }
 }

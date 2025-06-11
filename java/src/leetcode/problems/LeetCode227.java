@@ -17,7 +17,7 @@ public class LeetCode227 {
             return 0;
         }
         int n = s.length();
-        char preSign = ' ';
+        char preSign = '+';
         int num = 0;
         Stack<Integer> stack = new Stack<>();
         for (int i = 0; i < s.length(); i++) {

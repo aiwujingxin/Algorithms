@@ -5,9 +5,6 @@ import common.TreeNode;
 public class LeetCode156 {
 
     public TreeNode upsideDownBinaryTree(TreeNode root) {
-        if (root == null) {
-            return null;
-        }
         TreeNode l = root.left;
         TreeNode r = root.right;
         root.left = null;
