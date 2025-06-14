@@ -9,7 +9,7 @@ public class LeetCode461 {
     public int hammingDistance(int x, int y) {
         int cnt = 0;
         for (int i = 0; i < 32; i++) {
-            cnt += ((x >> i & 1) ^ (y >> i & 1));
+            cnt += (x >> i & 1) ^ (y >> i & 1);
         }
         return cnt;
     }

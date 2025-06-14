@@ -13,16 +13,14 @@ public class LeetCode128 {
         for (int num : nums) {
             set.add(num);
         }
-        int max = 1;
-        for (Integer num : set) {
+        int max = 0;
+        for (int num : set) {
             if (!set.contains(num - 1)) {
-                int len = 1;
-                int cur = num + 1;
-                while (set.contains(cur)) {
-                    len++;
-                    cur++;
+                int t = num;
+                while (set.contains(t)) {
+                    t++;
                 }
-                max = Math.max(max, len);
+                max = Math.max(max, t - num);
             }
         }
         return max;

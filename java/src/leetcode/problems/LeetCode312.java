@@ -1,6 +1,6 @@
 package leetcode.problems;
 
-import java.util.*;
+import java.util.Arrays;
 
 /**
  * @author wujingxinit@outlook.com
@@ -9,14 +9,29 @@ import java.util.*;
  */
 public class LeetCode312 {
 
-    public static void main(String[] args) {
-        System.out.println(new LeetCode312().maxCoins_dp2(new int[]{3, 1, 5, 8}));
+    public int maxCoins(int[] nums) {
+        int n = nums.length;
+        int[] p = new int[n + 2];
+        p[0] = p[n + 1] = 1;
+        for (int i = 0; i < n; i++) {
+            p[i + 1] = nums[i];
+        }
+        // dp[i][j]：戳破开区间 (i, j) 之间的气球，所能获得的最大硬币数。
+        int[][] dp = new int[n + 2][n + 2];
+        for (int i = n; i >= 0; i--) {
+            for (int j = i + 1; j < n + 2; j++) {
+                for (int k = i + 1; k < j; k++) {
+                    dp[i][j] = Math.max(dp[i][j], dp[i][k] + dp[k][j] + p[i] * p[k] * p[j]);
+                }
+            }
+        }
+        return dp[0][n + 1];
     }
 
     private Integer[][] memo;
     private int[] p;
 
-    public int maxCoins(int[] nums) {
+    public int maxCoins_dfs(int[] nums) {
         int n = nums.length;
         p = new int[n + 2];
         memo = new Integer[n + 2][n + 2];
@@ -69,33 +84,5 @@ public class LeetCode312 {
             System.out.println(Arrays.toString(d));
         }
         return dp[1][n - 1];
-    }
-
-    //从下往上遍历
-    public int maxCoins_dp2(int[] nums) {
-        int n = nums.length;
-        int[] p = new int[n + 2];
-        p[0] = p[n + 1] = 1;
-        for (int i = 0; i < n; i++) {
-            p[i + 1] = nums[i];
-        }
-        // dp[i][j]：戳破开区间 (i, j)（不包含 i 和 j）之间的气球，所能获得的最大硬币数。
-        int[][] dp = new int[n + 2][n + 2];
-        for (int i = n; i >= 0; i--) {
-            for (int j = i + 1; j < n + 2; j++) {
-                System.out.println("计算区间 dp[" + i + "][" + j + "]，尝试所有 k ∈ (" + i + ", " + j + ")");
-                //遍历k: 尝试戳破每一个 k（i < k < j）位置的气球
-                //cost: [i+1, k-1] 的部分已经戳完了，[k+1, j-1] 的部分也戳完了，最后戳 k，获得的硬币数是 p[i] * p[k] * p[j]
-                for (int k = i + 1; k < j; k++) {
-                    System.out.println("  选择 k = " + k + "：dp[" + i + "][" + k + "](" + dp[i][k] + ") + " + "dp[" + k + "][" + j + "](" + dp[k][j] + ") + " + p[i] + "*" + p[k] + "*" + p[j]);
-                    dp[i][j] = Math.max(dp[i][j], dp[i][k] + dp[k][j] + p[i] * p[k] * p[j]);
-                }
-            }
-        }
-        System.out.println("最终 DP 表:");
-        for (int[] row : dp) {
-            System.out.println(Arrays.toString(row));
-        }
-        return dp[0][n + 1];
     }
 }

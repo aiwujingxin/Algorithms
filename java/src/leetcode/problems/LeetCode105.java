@@ -16,15 +16,15 @@ public class LeetCode105 {
         if (ps > pe || is > ie) {
             return null;
         }
+        int rootVal = preorder[ps];
+        TreeNode root = new TreeNode(rootVal);
         int index = is;
-        int ll = 0;
-        while (index < ie && inorder[index] != preorder[ps]) {
+        while (index <= ie && inorder[index] != rootVal) {
             index++;
-            ll++;
         }
-        TreeNode root = new TreeNode(preorder[ps]);
-        root.left = buildTree(preorder, ps + 1, pe + ll, inorder, is, index - 1);
-        root.right = buildTree(preorder, ps + ll + 1, pe, inorder, index + 1, ie);
+        int leftSize = index - is;
+        root.left = buildTree(preorder, ps + 1, ps + leftSize, inorder, is, index - 1);
+        root.right = buildTree(preorder, ps + leftSize + 1, pe, inorder, index + 1, ie);
         return root;
     }
 }
