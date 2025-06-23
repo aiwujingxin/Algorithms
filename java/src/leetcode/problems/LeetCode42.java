@@ -7,18 +7,17 @@ package leetcode.problems;
 public class LeetCode42 {
 
     public int trap(int[] height) {
-        int n = height.length;
+        int l = 0, r = height.length - 1;
+        int lx = 0, rx = 0;
         int ans = 0;
-        int lMax = 0, rMax = 0;
-        int l = 0, r = n - 1;
         while (l < r) {
-            rMax = Math.max(rMax, height[r]);
-            lMax = Math.max(lMax, height[l]);
-            if (lMax < rMax) {
-                ans += lMax - height[l];
+            lx = Math.max(lx, height[l]);
+            rx = Math.max(rx, height[r]);
+            if (lx < rx) {
+                ans += lx - height[l];
                 l++;
             } else {
-                ans += rMax - height[r];
+                ans += rx - height[r];
                 r--;
             }
         }

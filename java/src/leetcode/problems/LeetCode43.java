@@ -12,7 +12,7 @@ public class LeetCode43 {
         int[] arr = new int[m + n];
         for (int i = m - 1; i >= 0; i--) {
             for (int j = n - 1; j >= 0; j--) {
-                int sum = (num1.charAt(i) - '0') * (num2.charAt(j) - '0') + arr[i + j + 1];
+                int sum = arr[i + j + 1] + (num1.charAt(i) - '0') * (num2.charAt(j) - '0');
                 arr[i + j + 1] = sum % 10;
                 arr[i + j] += sum / 10;
             }
@@ -21,14 +21,11 @@ public class LeetCode43 {
         while (index < arr.length && arr[index] == 0) {
             index++;
         }
-        if (index == arr.length) {
-            return "0";
-        }
         StringBuilder sb = new StringBuilder();
         while (index < arr.length) {
             sb.append(arr[index]);
             index++;
         }
-        return sb.toString();
+        return sb.isEmpty() ? "0" : sb.toString();
     }
 }

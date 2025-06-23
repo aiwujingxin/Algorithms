@@ -9,9 +9,6 @@ import java.util.*;
 public class LeetCode581 {
 
     public int findUnsortedSubarray(int[] nums) {
-        if (nums == null || nums.length == 0) {
-            return 0;
-        }
         int n = nums.length;
         int left = n;
         Stack<Integer> stack = new Stack<>();
@@ -29,9 +26,6 @@ public class LeetCode581 {
             }
             stack.push(i);
         }
-        if (right == left) {
-            return 0;
-        }
-        return right - left > 0 ? right - left + 1 : 0;
+        return right > left ? right - left + 1 : 0;
     }
 }

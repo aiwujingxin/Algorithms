@@ -14,10 +14,9 @@ public class LeetCode32 {
         int max = 0;
         for (int i = 0; i < n; i++) {
             if (s.charAt(i) == ')') {
-                if (i > 0 && s.charAt(i - 1) == '(') {
-                    dp[i] = 2 + (i - 2 >= 0 ? dp[i - 2] : 0);
-                } else if (i > 0 && i - dp[i - 1] - 1 >= 0 && s.charAt(i - dp[i - 1] - 1) == '(') {
-                    dp[i] = 2 + dp[i - 1] + (i - dp[i - 1] - 2 >= 0 ? dp[i - dp[i - 1] - 2] : 0);
+                int p = i - dp[i - 1] - 1;
+                if (p >= 0 && s.charAt(p) == '(') {
+                    dp[i] = dp[i - 1] + 2 + (p - 1 >= 0 ? dp[p - 1] : 0);
                 }
             }
             max = Math.max(max, dp[i]);
@@ -27,19 +26,54 @@ public class LeetCode32 {
 
     public int longestValidParentheses_stack(String s) {
         Stack<Integer> stack = new Stack<>();
-        int res = 0;
+        int max = 0;
         for (int i = 0; i < s.length(); i++) {
-            if (s.charAt(i) == '(') {
+            char c = s.charAt(i);
+            if (c == '(') {
                 stack.push(i);
             } else {
-                if (!stack.isEmpty() && s.charAt(stack.peek()) == '(') {
-                    stack.pop();
-                    res = Math.max(res, i - (stack.isEmpty() ? -1 : stack.peek()));
-                } else {
+                if (stack.isEmpty() || s.charAt(stack.peek()) != '(') {
                     stack.push(i);
+                } else {
+                    stack.pop();
+                    max = Math.max(i - (stack.isEmpty() ? -1 : stack.peek()), max);
                 }
             }
         }
-        return res;
+        return max;
+    }
+
+    public int longestValidParentheses_twopoint(String s) {
+        int max = 0;
+        int left = 0, right = 0;
+        // 左 → 右 扫描
+        for (int i = 0; i < s.length(); i++) {
+            if (s.charAt(i) == '(') {
+                left++;
+            } else {
+                right++;
+            }
+            if (left == right) {
+                max = Math.max(max, 2 * right);
+            } else if (right > left) {
+                left = right = 0;
+            }
+        }
+
+        left = right = 0;
+        // 右 → 左 扫描（反向补充）
+        for (int i = s.length() - 1; i >= 0; i--) {
+            if (s.charAt(i) == '(') {
+                left++;
+            } else {
+                right++;
+            }
+            if (left == right) {
+                max = Math.max(max, 2 * left);
+            } else if (left > right) {
+                left = right = 0;
+            }
+        }
+        return max;
     }
 }

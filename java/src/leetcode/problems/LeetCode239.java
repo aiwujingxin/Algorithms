@@ -9,9 +9,6 @@ import java.util.PriorityQueue;
 public class LeetCode239 {
 
     public int[] maxSlidingWindow(int[] nums, int k) {
-        if (nums == null || nums.length == 0) {
-            return new int[]{};
-        }
         PriorityQueue<int[]> queue = new PriorityQueue<>((o1, o2) -> {
             if (o1[1] == o2[1]) {
                 return o1[0] - o2[0];
@@ -30,7 +27,6 @@ public class LeetCode239 {
             while (!queue.isEmpty() && queue.peek()[0] < i - k + 1) {
                 queue.poll();
             }
-            res[i - k + 1] = queue.peek()[1];
         }
         return res;
     }

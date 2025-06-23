@@ -3,22 +3,31 @@ package leetcode.problems;
 /**
  * @author wujingxinit@outlook.com
  * @date 2024/1/9 00:35
+ * @description 利用了 数值范围的单调性（即 <= mid 的数字个数是否超过 mid），从而可以用二分查找逼近答案。
  */
 public class LeetCode287 {
 
     public int findDuplicate(int[] nums) {
         int n = nums.length;
-        for (int i = 0; i < n; i++) {
-            while (nums[i] > 0 && nums[i] <= n && nums[i] != nums[nums[i] - 1]) {
-                swap(nums, i, nums[i] - 1);
+        int l = 1, r = n - 1;
+        while (l < r) {
+            int mid = (l + r) >> 1;
+            if (check(mid, nums)) {
+                l = mid + 1;
+            } else {
+                r = mid;
             }
         }
-        return nums[n - 1];
+        return l;
     }
 
-    private void swap(int[] nums, int i, int j) {
-        int temp = nums[i];
-        nums[i] = nums[j];
-        nums[j] = temp;
+    private boolean check(int mid, int[] nums) {
+        int cnt = 0;
+        for (int num : nums) {
+            if (num <= mid) {
+                cnt++;
+            }
+        }
+        return cnt <= mid;
     }
 }

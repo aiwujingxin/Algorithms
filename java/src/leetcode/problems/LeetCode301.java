@@ -9,60 +9,60 @@ import java.util.*;
 public class LeetCode301 {
 
     public List<String> removeInvalidParentheses(String s) {
-        HashSet<String> res = new HashSet<>();
+        List<String> result = new ArrayList<>();
         if (check(s)) {
-            List<String> list = new ArrayList<>();
-            list.add(s);
-            return list;
+            result.add(s);
+            return result;
         }
         Queue<String> queue = new LinkedList<>();
-        HashSet<String> visited = new HashSet<>();
+        HashSet<String> set = new HashSet<>();
         queue.add(s);
-        visited.add(s);
         while (!queue.isEmpty()) {
             int size = queue.size();
             for (int i = 0; i < size; i++) {
-                String node = queue.poll();
-                for (int index = 0; index < node.length(); index++) {
-                    if (node.charAt(index) >= 'a' && node.charAt(index) <= 'z') {
+                String cur = queue.poll();
+                List<String> nexts = getNext(cur);
+                for (String next : nexts) {
+                    if (set.contains(next)) {
                         continue;
                     }
-                    String ss = node.substring(0, index) + node.substring(index + 1, node.length());
-                    if (check(ss)) {
-                        res.add(ss);
-                    } else {
-                        if (visited.contains(ss)) {
-                            continue;
-                        }
-                        visited.add(ss);
-                        queue.add(ss);
+                    set.add(next);
+                    if (check(next)) {
+                        result.add(next);
                     }
+                    queue.add(next);
                 }
             }
-            if (!res.isEmpty()) {
-                return new ArrayList<>(res);
+            if (!result.isEmpty()) {
+                return result;
             }
         }
-        return new ArrayList<>();
+        return result;
+    }
+
+    public List<String> getNext(String cur) {
+        List<String> list = new ArrayList<>();
+        for (int i = 0; i < cur.length(); i++) {
+            if (cur.charAt(i) != '(' && cur.charAt(i) != ')') continue;
+            String next = cur.substring(0, i) + cur.substring(i + 1);
+            list.add(next);
+        }
+        return list;
     }
 
     public boolean check(String s) {
-        if (s.isEmpty()) {
-            return true;
-        }
-        int left = 0;
-        int right = 0;
+        int cnt = 0;
         for (int i = 0; i < s.length(); i++) {
             if (s.charAt(i) == '(') {
-                left++;
+                cnt++;
             }
             if (s.charAt(i) == ')') {
-                right++;
-            }
-            if (left < right) {
-                return false;
+                if (cnt == 0) {
+                    return false;
+                }
+                cnt--;
             }
         }
-        return left == right;
+        return cnt == 0;
     }
 }

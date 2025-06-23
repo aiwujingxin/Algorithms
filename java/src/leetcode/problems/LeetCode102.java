@@ -10,6 +10,7 @@ import java.util.*;
  */
 public class LeetCode102 {
     public List<List<Integer>> levelOrder(TreeNode root) {
+        if (root == null) return new ArrayList<>();
         List<List<Integer>> res = new ArrayList<>();
         Queue<TreeNode> queue = new LinkedList<>();
         queue.add(root);

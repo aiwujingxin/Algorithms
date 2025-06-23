@@ -15,12 +15,8 @@ public class LeetCode29 {
         }
         boolean sign = (dividend > 0) ^ (divisor > 0);
         int res = 0;
-        if (dividend > 0) {
-            dividend = -dividend;
-        }
-        if (divisor > 0) {
-            divisor = -divisor;
-        }
+        if (dividend > 0) dividend = -dividend;
+        if (divisor > 0) divisor = -divisor;
         while (dividend <= divisor) {
             int t = divisor;
             int cnt = 1;
