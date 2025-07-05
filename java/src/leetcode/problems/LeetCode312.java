@@ -1,11 +1,9 @@
 package leetcode.problems;
 
-import java.util.Arrays;
-
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/11/8 22:47
- * @link <a href="https://cloud.tencent.com/developer/article/1880884">dp</a>
+ * @link <a href="https://cloud.tencent.com/developer/article/1880884"></a>
  * @description dp[i][j]：戳破开区间 (i, j) 之间的气球，所能获得的最大硬币数。
  */
 public class LeetCode312 {
@@ -55,34 +53,5 @@ public class LeetCode312 {
             max = Math.max(max, dfs(l, k) + dfs(k, r) + p[l] * p[k] * p[r]);
         }
         return memo[l][r] = max;
-    }
-
-    // 斜着遍历
-    public int maxCoins_dp1(int[] nums) {
-        int[] p = new int[nums.length + 2];
-        p[0] = p[nums.length + 1] = 1;
-        for (int i = 1; i <= nums.length; i++) {
-            p[i] = nums[i - 1];
-        }
-        int n = p.length;
-        int[][] dp = new int[n][n];
-        for (int len = 2; len < n; len++) {
-            System.out.println("规模 " + len + " 时:");
-            for (int l = 1; l < n - len + 1; l++) {
-                int r = l + len - 1;
-                System.out.println("子问题 [" + l + " ~ " + r + "]");
-                // k 是要戳的气球，左闭右开区间  [l....k] [k+1....r]
-                for (int k = l; k < r; k++) {
-                    System.out.println("划分点" + "k=" + k + " dp[" + l + "]" + "[" + k + "]" + " + " + "dp[" + (k + 1) + "]" + "[" + r + "]" + " +" + " p" + "[" + (l - 1) + "]" + "*" + "p[" + k + "]" + "*" + "p[" + r + "]");
-                    dp[l][r] = Math.max(dp[l][r], dp[l][k] + dp[k + 1][r] + p[l - 1] * p[k] * p[r]);
-                }
-                System.out.println("dp[" + l + "]" + "[" + r + "] " + dp[l][r]);
-            }
-            System.out.println();
-        }
-        for (int[] d : dp) {
-            System.out.println(Arrays.toString(d));
-        }
-        return dp[1][n - 1];
     }
 }
