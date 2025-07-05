@@ -5,7 +5,7 @@ import java.util.Scanner;
 /**
  * @author wujingxinit@outlook.com
  * @date 6/7/25 22:26
- * @description 增删字母得到回文的最小花费 <a href="http://poj.org/problem?id=3280"></a>
+ * @description 增删字母得到回文的最小花费 <a href="http://poj.org/problem?id=3280">POJ3280</a>
  */
 public class MinCostPalindrome {
 

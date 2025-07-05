@@ -45,8 +45,7 @@ import java.util.Arrays;
  * LeetCode730          统计不同回文子序列
  * LeetCode664          奇怪的打印机
  * LeetCode1147         段式回文
- * LeetCode471
- * POJ3280
+ * LeetCode471          编码最短长度的字符串
  */
 public interface IntervalDP {
        /*
