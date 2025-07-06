@@ -21,8 +21,8 @@ public class LeetCode375 {
             return memo[l][r];
         }
         int ans = Integer.MAX_VALUE;
-        for (int x = l; x <= r; x++) {
-            int cur = Math.max(dfs(l, x - 1), dfs(x + 1, r)) + x;
+        for (int k = l; k <= r; k++) {
+            int cur = Math.max(dfs(l, k - 1), dfs(k + 1, r)) + k;
             ans = Math.min(ans, cur);
         }
         memo[l][r] = ans;

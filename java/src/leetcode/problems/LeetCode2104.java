@@ -5,7 +5,8 @@ import java.util.Stack;
 /**
  * @author wujingxinit@outlook.com
  * @date 2024/2/4 12:00
- * @see leetcode.problems.LeetCode907
+ * @see LeetCode907
+ * @description 区间 DP <a href="https://leetcode.cn/problems/sum-of-subarray-ranges/solutions/1308898/gong-shui-san-xie-yi-ti-san-jie-qu-jian-wn84z/"></a>
  */
 public class LeetCode2104 {
     public long subArrayRanges(int[] nums) {
@@ -59,5 +60,19 @@ public class LeetCode2104 {
             res += max - min;
         }
         return res;
+    }
+
+    public long subArrayRanges_dp(int[] nums) {
+        int n = nums.length;
+        long ans = 0;
+        for (int i = 0; i < n; i++) {
+            int min = nums[i], max = nums[i];
+            for (int j = i + 1; j < n; j++) {
+                min = Math.min(min, nums[j]);
+                max = Math.max(max, nums[j]);
+                ans += max - min;
+            }
+        }
+        return ans;
     }
 }

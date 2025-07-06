@@ -5,7 +5,7 @@ import java.util.HashMap;
 /**
  * @author wujingxinit@outlook.com
  * @date 2022/9/4 16:32
- * @description 卡特兰数
+ * @description 卡特兰数 区间DP
  */
 public class LeetCode96 {
 

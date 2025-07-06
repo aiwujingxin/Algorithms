@@ -7,30 +7,21 @@ package leetcode.problems;
  * <a href="https://www.youtube.com/watch?v=Xfk2lEByP9M">区间DP</a>
  */
 public class LeetCode1216 {
+
     public boolean isValidPalindrome(String s, int k) {
         char[] c = s.toCharArray();
         int n = c.length;
         int[][] dp = new int[n][n];
-
-        //第一重循环控制长度
-        for (int len = 2; len <= n; len++) {
-            //第二重循环控制左端点
-            for (int l = 0; l < n; l++) {
-                //计算右端点
-                int r = l + len - 1;
-                //处理越界情况
-                if (r >= n) {
-                    continue;
-                }
-                //考虑最坏情况：减小一位的字串是k回文，当前字串是k + 1回文
-                dp[l][r] = Math.min(dp[l + 1][r], dp[l][r - 1]) + 1;
-                //如果两端相等，两端各减少一
-                if (c[l] == c[r]) {
-                    dp[l][r] = Math.min(dp[l][r], dp[l + 1][r - 1]);
+        // i 倒序，j 正序
+        for (int i = n - 1; i >= 0; i--) {
+            for (int j = i + 1; j < n; j++) {
+                if (c[i] == c[j]) {
+                    dp[i][j] = dp[i + 1][j - 1];
+                } else {
+                    dp[i][j] = Math.min(dp[i + 1][j], dp[i][j - 1]) + 1;
                 }
             }
         }
-        //判断是否 小于等于 k 即可
         return dp[0][n - 1] <= k;
     }
 }

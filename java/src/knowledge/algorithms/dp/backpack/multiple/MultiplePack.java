@@ -11,6 +11,7 @@ import knowledge.algorithms.dp.backpack.lintcode.BackpackVIII;
  * @see BackpackVII
  * @see BackpackVIII
  * @see leetcode.problems.LeetCode2585
+ * LeetCode1449
  */
 public interface MultiplePack {
 

@@ -5,6 +5,7 @@ package knowledge.algorithms.dp.backpack.twocost;
  * @date 2024/2/27 16:31
  * @description 二维费用的背包问题 和 01背包很像
  * @see 1020.cpp 潜水员 最低限度
+ * LeetCode1995
  */
 public interface TwoCostPack {
 

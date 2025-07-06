@@ -1,6 +1,7 @@
 package knowledge.algorithms.dp.intervaldp;
 
 import knowledge.algorithms.dp.intervaldp.problems.*;
+import knowledge.algorithms.dp.gamedp.*;
 import leetcode.lists.lcci.*;
 import leetcode.problems.*;
 
@@ -8,44 +9,47 @@ import java.util.Arrays;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2023/11/28 23:00
+ * @date 2025/07/07 01:00
  * @description 区间DP 将一个区间划分为若干子区间，通过合并子区间的最优解，构造出整个区间的最优解。
- * <枚举方式>
- * 1) 基于两侧端点讨论的可能性展开
- * 2) 基于范围上划分点的可能性展开
- * <划分方式>
- * 分割点k: 在问题中的物理意义，明确其归属。
- * 1) 开区间: 分割点属于左子问题, 右子问题从 k+1 开始
- * 2) 闭区间: 分割点独立处理, 左右子问题不包含 k
- * <基础>
- * @see LeetCode486     预测赢家
+ * <状态转移>
+ * dp[i][j] 表示在区间 [i, j] 上的最优解（最小代价 / 最大得分 / 是否满足某种性质（如是否为回文、是否可拆分）等）
+ * (1)划分范围 : dp[i][j] = min(dp[i][j], dp[i][k] + dp[k+1][j] + cost)
+ * (2)两端递推 : dp[i][j] = dp[i+1][j-1] or dp[i][j] = min(dp[i+1][j], dp[i][j-1]) + cost
+ * <优化技巧>
+ * 前缀和  提高区间代价计算效率，如石子合并
+ * 状压    如果状态只依赖前一层，可以用一维数组滚动
+ * 三维DP  如 `removeBoxes` 中，状态是 `dp[i][j][k]`，表示 i..j 区间右侧有 k 个与 `boxes[j]` 相同颜色
+ * 记忆化  某些区间问题递归写法更自然时可用
+ * <两侧端点展开>
+ * @see LeetCode5       最长回文子串
+ * @see LeetCode516     最长回文子序列
+ * @see LeetCode664     奇怪的打印机
+ * @see LeetCode730     统计不同回文子序列
+ * @see LeetCode1216    验证回文串 III
  * @see LeetCode1312    让字符串成为回文串的最少插入次数
- * @see LeetCode1547    切棍子的最小成本
+ * @see MinDeletions    删除一个回文子序列
+ * @see LeetCode678     有效的括号字符串
+ * @see LeetCode1147    段式回文
+ * @see LeetCode2811    判断是否能拆分数组
+ * @see AddMatch        括号区间匹配
+ * <范围划分点展开>
+ * @see AcWing282       石子合并 相邻2堆
  * @see MatrixChain     矩阵链乘法
  * @see LeetCode312     戳气球
  * @see LeetCode1039    多边形三角剖分的最低得分
- * <石子合并>
- * @see AcWing282       石子合并 相邻2堆
  * @see LeetCode1000    石子合并 相邻k堆
- * @see LeetCode877     石子游戏 博弈
- * LeetCode1690         石子游戏 VII
- * <题单>
- * @see LeetCode5       最长回文子串
  * @see LeetCode87      扰乱字符
+ * @see LeetCode96      不同的二叉搜索树
  * @see LeetCode375     猜数字大小II
- * @see LeetCode516     最长回文子串
  * @see LeetCode546     移除盒子
- * @see LeetCode678     有效的括号字符串
- * @see LeetCode1216    验证回文串 III
- * @see LeetCode2811    判断是否能拆分数组
+ * @see LeetCode1547    切棍子的最小成本
+ * @see LeetCode1130    叶值的最小代价生成树
+ * @see LeetCode2104    子数组范围和
+ * @see LeetCode2312    卖木头块
  * @see AcWing283       多边形游戏
  * @see LCCI0814        布尔运算
- * LeetCode2312         卖木头块
- * LeetCode1130         叶值的最小代价生成树
- * LeetCode730          统计不同回文子序列
- * LeetCode664          奇怪的打印机
- * LeetCode1147         段式回文
- * LeetCode471          编码最短长度的字符串
+ * <博弈类>
+ * @see GameDP          博弈类DP
  */
 public interface IntervalDP {
        /*
@@ -70,7 +74,7 @@ public interface IntervalDP {
     */
 
     //1. 按区间长度递增: 斜着遍历
-    private int intervalDP1(int[] nums) {
+    private int intervalD_len(int[] nums) {
         int n = nums.length;
         int[][] dp = new int[n][n];
         for (int len = 2; len < n; len++) {         // 区间长度
@@ -85,7 +89,7 @@ public interface IntervalDP {
     }
 
     //2. 按从下向上遍历: i 倒序，j 正序
-    private int intervalDP2(int[] nums) {
+    private int interval_iter(int[] nums) {
         int n = nums.length;
         int[][] dp = new int[n][n];
         for (int i = n - 1; i >= 0; i--) {
@@ -101,33 +105,24 @@ public interface IntervalDP {
     // DFS + 记忆化
     private int intervalDFS(int[] nums) {
         int n = nums.length;
-        int[][] memo = new int[n][n]; // 初始化记忆化数组（可能需要用Integer[][]以便标记未计算）
-        for (int[] row : memo) Arrays.fill(row, -1); // 初始化为-1表示未计算
-        return dfs(nums, 0, n - 1, memo); // 处理整个区间[0, n-1]
+        int[][] memo = new int[n][n];
+        for (int[] row : memo) Arrays.fill(row, -1);
+        return dfs(nums, 0, n - 1, memo);
     }
 
-    // 递归函数：计算区间[l, r]的最优解
     private int dfs(int[] nums, int l, int r, int[][] memo) {
-        // 1. 递归终止条件
-        if (l > r) return 0; // 空区间（根据问题调整）
-        if (l == r) return nums[l]; // 单元素区间（示例值，根据问题调整）
-        // 2. 查记忆化表
+        if (l > r) return 0;
+        if (l == r) return nums[l];
         if (memo[l][r] != -1) return memo[l][r];
-        // 3. 枚举所有可能的分割点k（开区间或闭区间取决于问题）
         int res = 0;
-        for (int k = l; k < r; k++) { // 或 k <= r（如戳气球问题）
-            // 分割为子问题[l, k]和[ k+1, r]，并合并结果
-            int left = dfs(nums, l, k, memo);
-            int right = dfs(nums, k + 1, r, memo);
-            int cost = left + right + mergeCost(l, k, r, nums); // 合并代价（问题相关）
-            res = Math.max(res, cost); // 或 min，根据问题需求
+        for (int k = l; k < r; k++) {
+            int cost = dfs(nums, l, k, memo) + dfs(nums, k + 1, r, memo) + mergeCost(l, k, r, nums);
+            res = Math.max(res, cost);
         }
-        // 4. 记录结果并返回
         memo[l][r] = res;
         return res;
     }
 
-    // 合并子问题的代价（根据具体问题实现）
     private int mergeCost(int l, int k, int r, int[] nums) {
         return 0;
     }

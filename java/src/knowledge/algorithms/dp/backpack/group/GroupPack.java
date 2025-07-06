@@ -1,11 +1,14 @@
 package knowledge.algorithms.dp.backpack.group;
 
+import leetcode.problems.*;
+
 /**
  * @author wujingxinit@outlook.com
  * @date 2024/1/7 02:25
  * @description 分组背包
- * @see leetcode.problems.LeetCode1981
  * @link <a href="https://www.acwing.com/problem/content/1015/">机器分配</a>
+ * @see LeetCode1981
+ * LeetCode1155
  */
 public interface GroupPack {
 

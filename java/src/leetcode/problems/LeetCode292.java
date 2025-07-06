@@ -7,10 +7,6 @@ package leetcode.problems;
 public class LeetCode292 {
 
     public boolean canWinNim(int n) {
-        return n % 4 != 0;
-    }
-
-    public boolean canWinNim_dfs(int n) {
         Boolean[] memo = new Boolean[n + 1];
         return dfs(n, memo);
     }

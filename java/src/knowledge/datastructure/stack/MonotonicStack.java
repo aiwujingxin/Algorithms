@@ -1,5 +1,7 @@
 package knowledge.datastructure.stack;
 
+import leetcode.problems.*;
+
 import java.util.Stack;
 
 /**
@@ -14,15 +16,15 @@ import java.util.Stack;
  * 每个位置都求：
  * 0）当前位置的 左侧比当前位置的数字大，且距离最近的位置 在哪
  * 1）当前位置的 右侧比当前位置的数字大，且距离最近的位置 在哪
- * @see leetcode.problems.LeetCode739 每日温度
- * @see leetcode.problems.LeetCode84
- * @see leetcode.problems.LeetCode2104
- * @see leetcode.problems.LeetCode907
- * @see leetcode.problems.LeetCode316
+ * @see LeetCode739 每日温度
+ * @see LeetCode84
+ * @see LeetCode2104
+ * @see LeetCode907
+ * @see LeetCode316
  * 单调栈+贪心
- * @see leetcode.problems.LeetCode581
- * @see leetcode.problems.LeetCode962
- * @see leetcode.problems.LeetCode402
+ * @see LeetCode581
+ * @see LeetCode962
+ * @see LeetCode402
  */
 public class MonotonicStack {
 

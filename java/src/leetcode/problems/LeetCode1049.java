@@ -3,11 +3,8 @@ package leetcode.problems;
 /**
  * @author aiwujingxin@gmail.com
  * @date 2023/2/23 23:15
- * <a href="https://leetcode.cn/problems/last-stone-weight-ii/solution/gong-shui-san-xie-xiang-jie-wei-he-neng-jgxik/">...</a>
- * 可以转化为: <a href="https://www.lintcode.com/problem/92/description">...</a>
- * <a href="https://www.lintcode.com/problem/92/solution/17247">题解</a>
- * @description 为原来 stones 数组中的数字添加 +/− 符号，形成的“计算表达式”, 使得形成的「计算表达式」结果绝对值最小
- * -> 从 stones 数组中选择，凑成总和不超过sum/2 的最大价值
+ * @link <a href="https://leetcode.cn/problems/last-stone-weight-ii/solution/gong-shui-san-xie-xiang-jie-wei-he-neng-jgxik/">...</a>
+ * @see knowledge.algorithms.dp.backpack.lintcode.BackpackI
  */
 public class LeetCode1049 {
 

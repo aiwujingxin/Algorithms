@@ -22,58 +22,58 @@ public class LeetCode1233 {
         }
         return res;
     }
-}
 
+    static class Trie {
+        public TrieNode root;
 
-class Trie {
-    public TrieNode root;
+        public Trie() {
+            root = new TrieNode();
+        }
 
-    public Trie() {
-        root = new TrieNode();
-    }
-
-    public void insert(String word) {
-        TrieNode node = root;
-        for (String key : word.split("/")) {
-            if (key.isEmpty()) continue;
-            if (!node.children.containsKey(key)) {
-                node.children.put(key, new TrieNode(key));
+        public void insert(String word) {
+            TrieNode node = root;
+            for (String key : word.split("/")) {
+                if (key.isEmpty()) continue;
+                if (!node.children.containsKey(key)) {
+                    node.children.put(key, new TrieNode(key));
+                }
+                node = node.children.get(key);
             }
-            node = node.children.get(key);
+            node.isEnd = true;
         }
-        node.isEnd = true;
-    }
 
-    public boolean startsWith(String prefix) {
-        TrieNode node = root;
-        int len = 0;
-        String[] plist = prefix.split("/");
-        for (String key : plist) {
-            if (key.isEmpty()) continue;
-            node = node.children.get(key);
-            if (node.val != null)
-                len++;
-            if (node.isEnd) {
-                return len == plist.length - 1;
+        public boolean startsWith(String prefix) {
+            TrieNode node = root;
+            int len = 0;
+            String[] plist = prefix.split("/");
+            for (String key : plist) {
+                if (key.isEmpty()) continue;
+                node = node.children.get(key);
+                if (node.val != null)
+                    len++;
+                if (node.isEnd) {
+                    return len == plist.length - 1;
+                }
+            }
+            return false;
+        }
+
+        public static class TrieNode {
+            public String val;
+            public Map<String, TrieNode> children;
+            public boolean isEnd;
+
+            public TrieNode() {
+                this.children = new HashMap<>();
+                this.isEnd = false;
+            }
+
+            public TrieNode(String val) {
+                this.val = val;
+                this.children = new HashMap<>();
+                this.isEnd = false;
             }
         }
-        return false;
     }
 
-    public static class TrieNode {
-        public String val;
-        public Map<String, TrieNode> children;
-        public boolean isEnd;
-
-        public TrieNode() {
-            this.children = new HashMap<>();
-            this.isEnd = false;
-        }
-
-        public TrieNode(String val) {
-            this.val = val;
-            this.children = new HashMap<>();
-            this.isEnd = false;
-        }
-    }
 }
