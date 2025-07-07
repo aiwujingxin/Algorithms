@@ -30,5 +30,5 @@ import leetcode.problems.*;
  * AcWing 1083. Windy数
  * AcWing 1085. 不要62
  */
-public interface Problems {
+public interface DigitDP {
 }

@@ -26,5 +26,5 @@ import leetcode.problems.LeetCode526_dp;
  * <集合式状态压缩>
  * @see LeetCode1349
  */
-public interface Problems {
+public interface CompressDP {
 }

@@ -12,7 +12,6 @@ public class LeetCode1216 {
         char[] c = s.toCharArray();
         int n = c.length;
         int[][] dp = new int[n][n];
-        // i 倒序，j 正序
         for (int i = n - 1; i >= 0; i--) {
             for (int j = i + 1; j < n; j++) {
                 if (c[i] == c[j]) {

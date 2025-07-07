@@ -21,35 +21,35 @@ import java.util.Arrays;
  * 三维DP  如 `removeBoxes` 中，状态是 `dp[i][j][k]`，表示 i..j 区间右侧有 k 个与 `boxes[j]` 相同颜色
  * 记忆化  某些区间问题递归写法更自然时可用
  * <两侧端点展开>
- * @see LeetCode5       最长回文子串
- * @see LeetCode516     最长回文子序列
- * @see LeetCode664     奇怪的打印机
- * @see LeetCode730     统计不同回文子序列
- * @see LeetCode1216    验证回文串 III
- * @see LeetCode1312    让字符串成为回文串的最少插入次数
- * @see MinDeletions    删除一个回文子序列
- * @see LeetCode678     有效的括号字符串
- * @see LeetCode1147    段式回文
- * @see LeetCode2811    判断是否能拆分数组
- * @see AddMatch        括号区间匹配
+ * @see LeetCode5        最长回文子串
+ * @see LeetCode516      最长回文子序列
+ * @see LeetCode1312     让字符串成为回文串的最少插入次数
+ * @see LeetCode664      奇怪的打印机
+ * @see LeetCode730      统计不同回文子序列
+ * @see LeetCode1216     验证回文串 III
+ * @see LeetCode678      有效的括号字符串
+ * @see LeetCode1147     段式回文
+ * @see LeetCode2811     判断是否能拆分数组
+ * @see MinDeletions     删除一个回文子序列
+ * @see ValidParentheses 括号区间匹配
  * <范围划分点展开>
- * @see AcWing282       石子合并 相邻2堆
- * @see MatrixChain     矩阵链乘法
- * @see LeetCode312     戳气球
- * @see LeetCode1039    多边形三角剖分的最低得分
- * @see LeetCode1000    石子合并 相邻k堆
- * @see LeetCode87      扰乱字符
- * @see LeetCode96      不同的二叉搜索树
- * @see LeetCode375     猜数字大小II
- * @see LeetCode546     移除盒子
- * @see LeetCode1547    切棍子的最小成本
- * @see LeetCode1130    叶值的最小代价生成树
- * @see LeetCode2104    子数组范围和
- * @see LeetCode2312    卖木头块
- * @see AcWing283       多边形游戏
- * @see LCCI0814        布尔运算
+ * @see AcWing282        石子合并 相邻2堆
+ * @see MatrixChain      矩阵链乘法
+ * @see LeetCode312      戳气球
+ * @see LeetCode1039     多边形三角剖分的最低得分
+ * @see LeetCode1000     石子合并 相邻k堆
+ * @see LeetCode87       扰乱字符
+ * @see LeetCode96       不同的二叉搜索树
+ * @see LeetCode375      猜数字大小II
+ * @see LeetCode546      移除盒子
+ * @see LeetCode1547     切棍子的最小成本
+ * @see LeetCode1130     叶值的最小代价生成树
+ * @see LeetCode2104     子数组范围和
+ * @see LeetCode2312     卖木头块
+ * @see AcWing283        多边形游戏
+ * @see LCCI0814         布尔运算
  * <博弈类>
- * @see GameDP          博弈类DP
+ * @see GameDP           博弈类DP
  */
 public interface IntervalDP {
        /*

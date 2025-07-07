@@ -30,5 +30,5 @@ import knowledge.algorithms.dp.optimizedp.problems.*;
  * <斜率优化> 凸壳 结合二分,平衡树
  * <平行四边形优化>
  */
-public interface Problems {
+public interface OptimizeDP {
 }

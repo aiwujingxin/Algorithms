@@ -12,6 +12,7 @@ import leetcode.problems.*;
  * @see LeetCode132  分割回文串 II
  * @see LeetCode1278 分割回文串 III
  * @see LeetCode1745 分割回文串 IV
+ * @see LeetCode730  统计不同回文子序列
  * @see LeetCode336  回文对
  * @see LeetCode516  最长回文子序列
  * @see LeetCode1312 让字符串成为回文串的最少插入次数
@@ -19,7 +20,6 @@ import leetcode.problems.*;
  * @see LeetCode267  回文排列 II
  * @see LeetCode214  最短回文串
  * LeetCoe2193
- * poj3280
  */
 public interface Palindrome {
 }
