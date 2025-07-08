@@ -18,40 +18,6 @@ public class AcWing282 {
 
     static BufferedReader read = new BufferedReader(new InputStreamReader(System.in));
 
-    // 扩大长度：斜着遍历
-    public static void main1(String[] args) throws IOException {
-        String[] s1 = read.readLine().split("\\s+");
-        int n = Integer.parseInt(s1[0]);
-        n = n + 1;
-        int[][] dp = new int[n][n];
-        int[] s = new int[n];
-        String[] str = read.readLine().split("\\s+");
-        for (int i = 1; i < n; i++) {
-            s[i] = Integer.parseInt(str[i - 1]);
-        }
-        for (int i = 1; i < n; i++) {
-            s[i] += s[i - 1];
-        }
-        System.out.println(Arrays.toString(s));
-        for (int r = 2; r < n; r++) {  // 枚举规模长度
-            System.out.println("规模 " + r + " 时:");
-            for (int i = 1; i < n - r + 1; i++) {// 枚举起点
-                int j = i + r - 1;
-                System.out.println("子问题 dp[" + i + "]" + "[" + j + "]");
-                dp[i][j] = Integer.MAX_VALUE;
-                for (int k = i; k < j; k++) { // 枚举分界点
-                    System.out.println("划分点" + "k=" + k + " dp[" + i + "]" + "[" + k + "]" + " + " + "dp[" + (k + 1) + "]" + "[" + j + "]" + " +" + " (s" + "[" + j + "]" + "-" + "s[" + (i - 1) + "])");
-                    dp[i][j] = Math.min(dp[i][j], dp[i][k] + dp[k + 1][j] + s[j] - s[i - 1]);
-                }
-            }
-            System.out.println();
-        }
-        for (int[] d : dp) {
-            System.out.println(Arrays.toString(d));
-        }
-        System.out.println(dp[1][n - 1]);
-    }
-
     // 扩大坐标: 从下向上遍历i 倒序，j 正序
     public static void main(String[] args) throws IOException {
         String[] s1 = read.readLine().split("\\s+");
@@ -78,6 +44,40 @@ public class AcWing282 {
             }
         }
 
+        for (int[] d : dp) {
+            System.out.println(Arrays.toString(d));
+        }
+        System.out.println(dp[1][n - 1]);
+    }
+
+    // 扩大长度：斜着遍历
+    public static void main_len(String[] args) throws IOException {
+        String[] s1 = read.readLine().split("\\s+");
+        int n = Integer.parseInt(s1[0]);
+        n = n + 1;
+        int[][] dp = new int[n][n];
+        int[] s = new int[n];
+        String[] str = read.readLine().split("\\s+");
+        for (int i = 1; i < n; i++) {
+            s[i] = Integer.parseInt(str[i - 1]);
+        }
+        for (int i = 1; i < n; i++) {
+            s[i] += s[i - 1];
+        }
+        System.out.println(Arrays.toString(s));
+        for (int r = 2; r < n; r++) {  // 枚举规模长度
+            System.out.println("规模 " + r + " 时:");
+            for (int i = 1; i < n - r + 1; i++) {// 枚举起点
+                int j = i + r - 1;
+                System.out.println("子问题 dp[" + i + "]" + "[" + j + "]");
+                dp[i][j] = Integer.MAX_VALUE;
+                for (int k = i; k < j; k++) { // 枚举分界点
+                    System.out.println("划分点" + "k=" + k + " dp[" + i + "]" + "[" + k + "]" + " + " + "dp[" + (k + 1) + "]" + "[" + j + "]" + " +" + " (s" + "[" + j + "]" + "-" + "s[" + (i - 1) + "])");
+                    dp[i][j] = Math.min(dp[i][j], dp[i][k] + dp[k + 1][j] + s[j] - s[i - 1]);
+                }
+            }
+            System.out.println();
+        }
         for (int[] d : dp) {
             System.out.println(Arrays.toString(d));
         }

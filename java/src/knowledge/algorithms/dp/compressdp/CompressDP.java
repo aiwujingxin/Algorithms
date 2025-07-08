@@ -1,9 +1,6 @@
 package knowledge.algorithms.dp.compressdp;
 
-import leetcode.problems.LeetCode1349;
-import leetcode.problems.LeetCode1494;
-import leetcode.problems.LeetCode464;
-import leetcode.problems.LeetCode526_dp;
+import leetcode.problems.*;
 
 /**
  * @author wujingxinit@outlook.com
@@ -17,8 +14,10 @@ import leetcode.problems.LeetCode526_dp;
  * <a href="https://algo.itcharge.cn/10.Dynamic-Programming/07.State-DP/02.State-DP-List/"></a>
  * <a href="https://blog.nowcoder.net/n/fcc30eadb2b44395862194814e819315?from=nowcoder_improve"></a>
  * @see LeetCode464
+ * @see LeetCode847
  * @see LeetCode526_dp
  * @see LeetCode1494
+ * @see LeetCode2044
  * <基于连通性的状态压缩>
  * 291.cpp 蒙德里安的梦想 https://www.bilibili.com/video/BV1cv411b7EG/?spm_id_from=333.337.search-card.all.click&vd_source=8493a3e08130914836f4b3e1a5219439
  * 1064. 小国王

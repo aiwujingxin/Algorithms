@@ -1,41 +1,42 @@
-package knowledge.algorithms.dp.backpack.multiple.problems;
+package knowledge.algorithms.dp.backpack.complete.problems;
 
 import java.util.Scanner;
 
 /**
  * @author wujingxinit@outlook.com
  * @date 4/20/25 23:12
+ * @description <a href="https://acm.hdu.edu.cn/showproblem.php?pid=2069"></a>
+ * 求在不限数量使用的硬币（币值为 1, 5, 10, 25, 50）构成某个金额 N 的不同方案数。
  */
 public class HDU2069 {
 
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        int[] coins = {1, 5, 10, 25, 50};
-        int maxAmount = 250;
+    class Main {
 
-        // dp[j][k]：金额j使用k个硬币的方法数
-        int[][] dp = new int[maxAmount + 1][101];
-        dp[0][0] = 1;
-
-        for (int coin : coins) {
-            for (int j = coin; j <= maxAmount; j++) {
-                for (int k = 1; k <= 100; k++) {
-                    dp[j][k] += dp[j - coin][k - 1];
+        public static void main(String[] args) {
+            Scanner sc = new Scanner(System.in);
+            int[] coins = {1, 5, 10, 25, 50};
+            int maxAmount = 250;
+            int maxCoins = 100;
+            // dp[j][k]：金额j使用k个硬币的方法数
+            int[][] dp = new int[maxAmount + 1][maxCoins + 1];
+            dp[0][0] = 1;
+            for (int coin : coins) {
+                for (int j = coin; j <= maxAmount; j++) {
+                    for (int k = 1; k <= maxCoins; k++) {
+                        dp[j][k] += dp[j - coin][k - 1];
+                    }
                 }
             }
-        }
-
-        // 预处理结果
-        int[] result = new int[maxAmount + 1];
-        for (int j = 0; j <= maxAmount; j++) {
-            for (int k = 0; k <= 100; k++) {
-                result[j] += dp[j][k];
+            int[] ways = new int[maxAmount + 1];
+            for (int j = 0; j <= maxAmount; j++) {
+                for (int k = 0; k <= maxCoins; k++) {
+                    ways[j] += dp[j][k];
+                }
             }
-        }
-
-        while (sc.hasNext()) {
-            int N = sc.nextInt();
-            System.out.println(result[N]);
+            while (sc.hasNext()) {
+                int N = sc.nextInt();
+                System.out.println(ways[N]);
+            }
         }
     }
 

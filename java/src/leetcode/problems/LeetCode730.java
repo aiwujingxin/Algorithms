@@ -8,44 +8,32 @@ import java.util.Arrays;
  */
 public class LeetCode730 {
 
-    public int countPalindromicSubsequences(String str) {
-        int n = str.length();
-        int MOD = 1000000007;
-        char[] s = str.toCharArray();
-        long[][] dp = new long[n][n];
-        int[] last = new int[256];
-        int[] left = new int[n];
-        Arrays.fill(last, -1);
-        for (int i = 0; i < n; i++) {
-            left[i] = last[s[i]];
-            last[s[i]] = i;
-        }
-        int[] right = new int[n];
-        Arrays.fill(last, n);
+    int MOD = (int) 1e9 + 7;
+
+    public int countPalindromicSubsequences(String s) {
+        char[] cs = s.toCharArray();
+        int n = cs.length;
+        int[][] dp = new int[n][n];
+        int[] L = new int[4], R = new int[4];
+        Arrays.fill(L, -1);
         for (int i = n - 1; i >= 0; i--) {
-            right[i] = last[s[i]];
-            last[s[i]] = i;
-        }
-        for (int i = 0; i < n; i++) {
-            dp[i][i] = 1;
-        }
-        for (int i = n - 2, l, r; i >= 0; i--) {
-            for (int j = i + 1; j < n; j++) {
-                if (s[i] != s[j]) {
-                    dp[i][j] = (dp[i + 1][j] + dp[i][j - 1] - dp[i + 1][j - 1] + MOD) % MOD;
-                } else {
-                    l = right[i];
-                    r = left[j];
-                    if (l > r) {
-                        dp[i][j] = (dp[i + 1][j - 1] * 2 + 2) % MOD;
-                    } else if (l == r) {
-                        dp[i][j] = (dp[i + 1][j - 1] * 2 + 1) % MOD;
+            L[cs[i] - 'a'] = i;
+            Arrays.fill(R, -1);
+            for (int j = i; j < n; j++) {
+                R[cs[j] - 'a'] = j;
+                for (int k = 0; k < 4; k++) {
+                    if (L[k] == -1 || R[k] == -1) continue;
+                    int l = L[k], r = R[k];
+                    if (l == r) {
+                        dp[i][j] = (dp[i][j] + 1) % MOD;
+                    } else if (l == r - 1) {
+                        dp[i][j] = (dp[i][j] + 2) % MOD;
                     } else {
-                        dp[i][j] = (dp[i + 1][j - 1] * 2 - dp[l + 1][r - 1] + MOD) % MOD;
+                        dp[i][j] = (dp[i][j] + dp[l + 1][r - 1] + 2) % MOD;
                     }
                 }
             }
         }
-        return (int) dp[0][n - 1];
+        return dp[0][n - 1];
     }
 }

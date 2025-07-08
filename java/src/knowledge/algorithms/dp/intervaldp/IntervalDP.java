@@ -1,7 +1,6 @@
 package knowledge.algorithms.dp.intervaldp;
 
 import knowledge.algorithms.dp.intervaldp.problems.*;
-import knowledge.algorithms.dp.gamedp.*;
 import leetcode.lists.lcci.*;
 import leetcode.problems.*;
 
@@ -10,27 +9,14 @@ import java.util.Arrays;
 /**
  * @author wujingxinit@outlook.com
  * @date 2025/07/07 01:00
- * @description 区间DP 将一个区间划分为若干子区间，通过合并子区间的最优解，构造出整个区间的最优解。
- * <状态转移>
- * dp[i][j] 表示在区间 [i, j] 上的最优解（最小代价 / 最大得分 / 是否满足某种性质（如是否为回文、是否可拆分）等）
- * (1)划分范围 : dp[i][j] = min(dp[i][j], dp[i][k] + dp[k+1][j] + cost)
- * (2)两端递推 : dp[i][j] = dp[i+1][j-1] or dp[i][j] = min(dp[i+1][j], dp[i][j-1]) + cost
- * <优化技巧>
- * 前缀和  提高区间代价计算效率，如石子合并
- * 状压    如果状态只依赖前一层，可以用一维数组滚动
- * 三维DP  如 `removeBoxes` 中，状态是 `dp[i][j][k]`，表示 i..j 区间右侧有 k 个与 `boxes[j]` 相同颜色
- * 记忆化  某些区间问题递归写法更自然时可用
+ * @description 区间DP  dp[i][j] 表示在区间 [i, j] 上的最优解, 将一个区间划分为若干子区间，通过合并子区间的最优解，构造出整个区间的最优解。
  * <两侧端点展开>
  * @see LeetCode5        最长回文子串
  * @see LeetCode516      最长回文子序列
  * @see LeetCode1312     让字符串成为回文串的最少插入次数
+ * @see LeetCode1216     验证回文串 III
  * @see LeetCode664      奇怪的打印机
  * @see LeetCode730      统计不同回文子序列
- * @see LeetCode1216     验证回文串 III
- * @see LeetCode678      有效的括号字符串
- * @see LeetCode1147     段式回文
- * @see LeetCode2811     判断是否能拆分数组
- * @see MinDeletions     删除一个回文子序列
  * @see ValidParentheses 括号区间匹配
  * <范围划分点展开>
  * @see AcWing282        石子合并 相邻2堆
@@ -50,6 +36,8 @@ import java.util.Arrays;
  * @see LCCI0814         布尔运算
  * <博弈类>
  * @see GameDP           博弈类DP
+ * <回文类>
+ * @see PalindromeDP     回文类DP
  */
 public interface IntervalDP {
        /*

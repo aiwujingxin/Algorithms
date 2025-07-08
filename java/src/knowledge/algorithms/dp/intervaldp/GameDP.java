@@ -1,4 +1,4 @@
-package knowledge.algorithms.dp.gamedp;
+package knowledge.algorithms.dp.intervaldp;
 
 import leetcode.problems.*;
 
