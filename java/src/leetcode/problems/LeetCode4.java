@@ -14,7 +14,7 @@ public class LeetCode4 {
     public double findMedianSortedArrays(int[] nums1, int[] nums2) {
         add(nums1);
         add(nums2);
-        return (nums1.length + nums2.length) % 2 == 1 ? maxQ.peek() : ((double) minQ.peek() + maxQ.peek()) / 2;
+        return (maxQ.size() > minQ.size()) ? maxQ.peek() : (maxQ.peek() + minQ.peek()) / 2.0;
     }
 
     public void add(int[] nums) {

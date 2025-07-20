@@ -7,23 +7,21 @@ package leetcode.problems;
 public class LeetCode3 {
 
     public int lengthOfLongestSubstring(String s) {
-        int left = 0;
-        int right = 0;
+        int l = 0, r = 0, ans = 0;
         int n = s.length();
-        int max = 0;
-        int[] window = new int[128];
-        char[] chars = s.toCharArray();
-        while (right < n) {
-            char c = chars[right];
-            window[c]++;
-            while (left < right && window[c] > 1) {
-                char d = chars[left];
-                window[d]--;
-                left++;
+        int[] w = new int[128];
+        char[] ch = s.toCharArray();
+        while (r < n) {
+            char c = ch[r];
+            w[c]++;
+            while (l < r && w[c] > 1) {
+                char d = ch[l];
+                w[d]--;
+                l++;
             }
-            max = Math.max(max, right - left + 1);
-            right++;
+            ans = Math.max(ans, r - l + 1);
+            r++;
         }
-        return max;
+        return ans;
     }
 }

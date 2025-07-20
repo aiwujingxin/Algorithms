@@ -17,14 +17,14 @@ public class LeetCode43 {
                 arr[i + j] += sum / 10;
             }
         }
-        int index = 0;
-        while (index < arr.length && arr[index] == 0) {
-            index++;
+        int i = 0;
+        while (i < arr.length && arr[i] == 0) {
+            i++;
         }
         StringBuilder sb = new StringBuilder();
-        while (index < arr.length) {
-            sb.append(arr[index]);
-            index++;
+        while (i < arr.length) {
+            sb.append(arr[i]);
+            i++;
         }
         return sb.isEmpty() ? "0" : sb.toString();
     }

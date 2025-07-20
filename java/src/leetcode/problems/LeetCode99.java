@@ -10,29 +10,25 @@ import java.util.*;
  */
 public class LeetCode99 {
 
-    TreeNode x = null, y = null, pred = null;
+    TreeNode x, y, pre;
 
     public void recoverTree(TreeNode root) {
-        inorder(root);
+        dfs(root);
         int t = x.val;
         x.val = y.val;
         y.val = t;
     }
 
-    private void inorder(TreeNode root) {
-        if (root == null) {
-            return;
-        }
-        inorder(root.left);
-        if (pred != null && root.val < pred.val) {
-            y = root;
+    void dfs(TreeNode root) {
+        if (root == null) return;
+        dfs(root.left);
+        if (pre != null && root.val < pre.val) {
             if (x == null) {
-                x = pred;
-            } else {
-                return; // 找到两个节点后可提前返回
+                x = pre;
             }
-            pred = root;
-            inorder(root.right);
+            y = root;
         }
+        pre = root;
+        dfs(root.right);
     }
 }

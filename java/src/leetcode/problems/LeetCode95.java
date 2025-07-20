@@ -18,18 +18,18 @@ public class LeetCode95 {
         return dfs(1, n);
     }
 
-    private List<TreeNode> dfs(int start, int end) {
+    private List<TreeNode> dfs(int i, int j) {
         List<TreeNode> res = new ArrayList<>();
-        if (start > end) {
+        if (i > j) {
             res.add(null);
             return res;
         }
-        for (int i = start; i <= end; i++) {
-            for (TreeNode left : dfs(start, i - 1)) {
-                for (TreeNode right : dfs(i + 1, end)) {
-                    TreeNode root = new TreeNode(i);
-                    root.left = left;
-                    root.right = right;
+        for (int k = i; k <= j; k++) {
+            for (TreeNode l : dfs(i, k - 1)) {
+                for (TreeNode r : dfs(k + 1, j)) {
+                    TreeNode root = new TreeNode(k);
+                    root.left = l;
+                    root.right = r;
                     res.add(root);
                 }
             }

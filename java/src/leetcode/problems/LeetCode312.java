@@ -25,33 +25,4 @@ public class LeetCode312 {
         }
         return dp[0][n - 1];
     }
-
-    private Integer[][] memo;
-    private int[] p;
-
-    public int maxCoins_dfs(int[] nums) {
-        int n = nums.length;
-        p = new int[n + 2];
-        memo = new Integer[n + 2][n + 2];
-        p[0] = 1;
-        p[n + 1] = 1;
-        for (int i = 0; i < n; i++) {
-            p[i + 1] = nums[i];
-        }
-        return dfs(0, n + 1); // 从开区间 (0, n+1) 开始
-    }
-
-    private int dfs(int l, int r) {
-        if (r - l <= 1) {
-            return 0; // 开区间 (l, r) 内没有气球了
-        }
-        if (memo[l][r] != null) {
-            return memo[l][r];
-        }
-        int max = 0;
-        for (int k = l + 1; k < r; k++) { // k 是最后一个戳的气球
-            max = Math.max(max, dfs(l, k) + dfs(k, r) + p[l] * p[k] * p[r]);
-        }
-        return memo[l][r] = max;
-    }
 }

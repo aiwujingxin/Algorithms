@@ -6,7 +6,7 @@ import knowledge.algorithms.dp.linerdp.problems.*;
 /**
  * @author wujingxinit@outlook.com
  * @date 2024/4/13 23:37
- * @description 序列DP
+ * @description 序列DP   用前缀状态递推当前状态，在线性结构上逐步构造最优解。
  * <Base>
  * @see RodCutting      钢条切割
  * <LIS>

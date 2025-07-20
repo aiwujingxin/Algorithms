@@ -9,7 +9,7 @@ import java.util.Arrays;
 /**
  * @author wujingxinit@outlook.com
  * @date 2025/07/07 01:00
- * @description 区间DP  dp[i][j] 表示在区间 [i, j] 上的最优解, 将一个区间划分为若干子区间，通过合并子区间的最优解，构造出整个区间的最优解。
+ * @description 区间DP  将一个区间划分为若干子区间，通过合并子区间的最优解，构造出整个区间的最优解。
  * <两侧端点展开>
  * @see LeetCode5        最长回文子串
  * @see LeetCode516      最长回文子序列
@@ -18,6 +18,7 @@ import java.util.Arrays;
  * @see LeetCode664      奇怪的打印机
  * @see LeetCode730      统计不同回文子序列
  * @see ValidParentheses 括号区间匹配
+ * @see LeetCode32       最长有效括号
  * <范围划分点展开>
  * @see AcWing282        石子合并 相邻2堆
  * @see MatrixChain      矩阵链乘法
@@ -41,24 +42,13 @@ import java.util.Arrays;
  */
 public interface IntervalDP {
        /*
-      1. k 属于左子区间 : 适用于分割点k属于子问题的情况（如矩阵链乘法）。
                  [i, j]
                 /     \
-            [i, k]   [k+1, j]      <-- 枚举分割点 k，划分子区间
+            [i, k]   [k(+1), j]      <-- 枚举分割点 k，划分子区间
               / \       / \
            ...   ...  ...  ...
 
-        dp[i][j] = min/max(dp[i][k] + dp[k+1][j] + mergeCost)
-
-
-      2.  适用于分割点k独立于子问题的情况（如气球问题）。
-                 [i, j]
-                /      \
-            [i, k]    [k, j]      <-- 枚举插入点 k（k 独立于子区间）
-              / \      /  \
-           ...   ...  ...  ...
-
-        dp[i][j] = max(dp[i][k] + dp[k][j] + mergeCost)
+        dp[i][j] = min/max(dp[i][k] + dp[k(+1)][j] + cost)
     */
 
     //1. 按区间长度递增: 斜着遍历
@@ -104,11 +94,9 @@ public interface IntervalDP {
         if (memo[l][r] != -1) return memo[l][r];
         int res = 0;
         for (int k = l; k < r; k++) {
-            int cost = dfs(nums, l, k, memo) + dfs(nums, k + 1, r, memo) + mergeCost(l, k, r, nums);
-            res = Math.max(res, cost);
+            res = Math.max(res, dfs(nums, l, k, memo) + dfs(nums, k + 1, r, memo) + mergeCost(l, k, r, nums));
         }
-        memo[l][r] = res;
-        return res;
+        return memo[l][r] = res;
     }
 
     private int mergeCost(int l, int k, int r, int[] nums) {

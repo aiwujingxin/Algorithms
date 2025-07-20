@@ -16,10 +16,7 @@ public class LeetCode98 {
         if (root == null) {
             return true;
         }
-        if (max != null && root.val >= max.val) {
-            return false;
-        }
-        if (min != null && root.val <= min.val) {
+        if (max != null && root.val >= max.val || min != null && root.val <= min.val) {
             return false;
         }
         return isValidBST(root.left, min, root) && isValidBST(root.right, root, max);

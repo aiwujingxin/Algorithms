@@ -6,25 +6,25 @@ package leetcode.problems;
  */
 public class LeetCode29 {
 
-    public int divide(int dividend, int divisor) {
-        if (divisor == 1) {
-            return dividend;
+    public int divide(int a, int b) {
+        if (b == 1) {
+            return a;
         }
-        if (dividend == Integer.MIN_VALUE && divisor == -1) {
+        if (a == Integer.MIN_VALUE && b == -1) {
             return Integer.MAX_VALUE;
         }
-        boolean sign = (dividend > 0) ^ (divisor > 0);
+        boolean sign = (a > 0) ^ (b > 0);
         int res = 0;
-        if (dividend > 0) dividend = -dividend;
-        if (divisor > 0) divisor = -divisor;
-        while (dividend <= divisor) {
-            int t = divisor;
+        if (a > 0) a = -a;
+        if (b > 0) b = -b;
+        while (a <= b) {
+            int t = b;
             int cnt = 1;
-            while (dividend - t <= t) {
-                t = t * 2;
-                cnt = cnt * 2;
+            while (a - t <= t) {
+                t <<= 1;
+                cnt <<= 1;
             }
-            dividend -= cnt * divisor;
+            a -= cnt * b;
             res += cnt;
         }
         return sign ? -res : res;

@@ -11,15 +11,15 @@ public class LeetCode91 {
         int n = s.length();
         if (n == 0 || s.charAt(0) == '0') return 0;
         int[] dp = new int[n + 1];
-        char[] chars = s.toCharArray();
+        char[] ch = s.toCharArray();
         dp[0] = 1;
-        dp[1] = chars[0] == '0' ? 0 : 1; // 第一个字符不能是0
+        dp[1] = ch[0] == '0' ? 0 : 1; // 第一个字符不能是0
         for (int i = 2; i <= n; i++) {
-            if (chars[i - 1] != '0') {
-                dp[i] += dp[i - 1];
+            if (ch[i - 1] != '0') {
+                dp[i] = dp[i - 1];
             }
-            int num = (chars[i - 2] - '0') * 10 + (chars[i - 1] - '0');
-            if (chars[i - 2] != '0' && num >= 10 && num <= 26) {
+            int num = (ch[i - 2] - '0') * 10 + (ch[i - 1] - '0');
+            if (ch[i - 2] != '0' && num >= 10 && num <= 26) {
                 dp[i] += dp[i - 2];
             }
         }

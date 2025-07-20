@@ -9,16 +9,16 @@ public class LeetCode75 {
     public void sortColors(int[] nums) {
         int p0 = 0;
         int p2 = nums.length - 1;
-        int index = 0;
-        while (index <= p2) { // 不能越界
-            if (nums[index] == 0) {
-                swap(nums, index, p0);
+        int i = 0;
+        while (i <= p2) { // 不能越界
+            if (nums[i] == 0) {
+                swap(nums, i, p0);
                 p0++;
-                index++; // index才可以++
-            } else if (nums[index] == 1) {
-                index++;
-            } else if (nums[index] == 2) {
-                swap(nums, index, p2);
+                i++; // index才可以++
+            } else if (nums[i] == 1) {
+                i++;
+            } else if (nums[i] == 2) {
+                swap(nums, i, p2);
                 p2--;
             }
         }

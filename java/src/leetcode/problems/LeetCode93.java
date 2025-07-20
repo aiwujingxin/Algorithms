@@ -15,20 +15,20 @@ public class LeetCode93 {
         return res;
     }
 
-    private void backtrack(String s, int index, List<String> list, List<String> res) {
+    private void backtrack(String s, int i, List<String> list, List<String> res) {
         if (list.size() == 4) {
-            if (index == s.length()) {
+            if (i == s.length()) {
                 res.add(String.join(".", list));
             }
             return;
         }
-        for (int len = 1; len <= 3 && index + len <= s.length(); len++) {
-            String seg = s.substring(index, index + len);
+        for (int l = 1; l <= 3 && i + l <= s.length(); l++) {
+            String seg = s.substring(i, i + l);
             if (seg.length() > 1 && seg.startsWith("0") || Integer.parseInt(seg) > 255) {
                 continue;
             }
             list.add(seg);
-            backtrack(s, index + len, list, res);
+            backtrack(s, i + l, list, res);
             list.remove(list.size() - 1);
         }
     }

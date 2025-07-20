@@ -7,18 +7,18 @@ package leetcode.problems;
 public class LeetCode7 {
 
     public int reverse(int x) {
-        int res = 0;
+        int r = 0;
         while (x != 0) {
             int t = x % 10;
+            if (r > Integer.MAX_VALUE / 10 || (r == Integer.MAX_VALUE / 10 && t > 7)) {
+                return 0;
+            }
+            if (r < Integer.MIN_VALUE / 10 || (r == Integer.MIN_VALUE / 10 && t < -8)) {
+                return 0;
+            }
+            r = r * 10 + t;
             x /= 10;
-            if (res > Integer.MAX_VALUE / 10 || (res == Integer.MAX_VALUE / 10 && t > 7)) {
-                return 0;
-            }
-            if (res < Integer.MIN_VALUE / 10 || (res == Integer.MIN_VALUE / 10 && t < -8)) {
-                return 0;
-            }
-            res = res * 10 + t;
         }
-        return res;
+        return r;
     }
 }

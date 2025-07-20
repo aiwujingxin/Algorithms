@@ -12,7 +12,7 @@ public class LeetCode32 {
         int n = s.length();
         int[] dp = new int[n];
         int max = 0;
-        for (int i = 0; i < n; i++) {
+        for (int i = 1; i < n; i++) {
             if (s.charAt(i) == ')') {
                 int p = i - dp[i - 1] - 1;
                 if (p >= 0 && s.charAt(p) == '(') {

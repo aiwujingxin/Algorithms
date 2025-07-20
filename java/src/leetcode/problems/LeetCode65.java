@@ -7,21 +7,16 @@ package leetcode.problems;
 public class LeetCode65 {
     public boolean isNumber(String s) {
         s = s.trim();
-        if (s.isEmpty()) {
-            return false;
-        }
+        if (s.isEmpty()) return false;
         int e = s.indexOf('e') != -1 ? s.indexOf('e') : s.indexOf('E');
         if (e != -1) {
             return isValid(s.substring(0, e), false) && isValid(s.substring(e + 1), true);
-        } else {
-            return isValid(s, false);
         }
+        return isValid(s, false);
     }
 
     private boolean isValid(String s, boolean mustInt) {
-        if (s.isEmpty()) {
-            return false;
-        }
+        if (s.isEmpty()) return false;
         if (s.charAt(0) == '+' || s.charAt(0) == '-') s = s.substring(1);
         boolean hasDigit = false, hasDot = false;
         for (char c : s.toCharArray()) {
