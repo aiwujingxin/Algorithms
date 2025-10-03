@@ -11,15 +11,14 @@ public class LeetCode962 {
     public int maxWidthRamp(int[] nums) {
         Stack<Integer> stack = new Stack<>();
         for (int i = 0; i < nums.length; i++) {
-            if (stack.empty() || nums[stack.peek()] > nums[i]) {
+            if (stack.isEmpty() || nums[stack.peek()] > nums[i]) {
                 stack.push(i);
             }
         }
         int res = 0;
         for (int i = nums.length - 1; i >= 0; i--) {
             while (!stack.empty() && nums[stack.peek()] <= nums[i]) {
-                int index = stack.pop();
-                res = Math.max(res, i - index);
+                res = Math.max(res, i - stack.pop());
             }
         }
         return res;
@@ -37,7 +36,7 @@ public class LeetCode962 {
         }
         int res = 0;
         for (int i = nums.length - 1; i >= 0; i--) {
-            int index = leftBound(minArr, nums[i]);
+            int index = findL(minArr, nums[i]);
             if (minArr[index] <= nums[i]) {
                 res = Math.max(res, i - index);
             }
@@ -45,15 +44,14 @@ public class LeetCode962 {
         return res;
     }
 
-    public int leftBound(int[] nums, int target) {
+    public int findL(int[] a, int x) {
         int l = 0;
-        int r = nums.length - 1;
+        int r = a.length - 1;
         while (l < r) {
-            int mid = l + r >> 1;
-            if (nums[mid] > target) l = mid + 1;
-            else r = mid;
+            int m = l + r >> 1;
+            if (a[m] > x) l = m + 1;
+            else r = m;
         }
         return l;
     }
-
 }

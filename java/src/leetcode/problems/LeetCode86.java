@@ -9,21 +9,21 @@ import common.*;
 public class LeetCode86 {
 
     public ListNode partition(ListNode head, int x) {
-        ListNode smallDummy = new ListNode();
-        ListNode bigDummy = new ListNode();
-        ListNode small = smallDummy, big = bigDummy;
+        ListNode small = new ListNode(), big = new ListNode();
+        ListNode s = small, b = big;
         while (head != null) {
             if (head.val < x) {
-                small.next = head;
-                small = small.next;
+                s.next = head;
+                s = s.next;
             } else {
-                big.next = head;
-                big = big.next;
+                b.next = head;
+                b = b.next;
             }
             head = head.next;
         }
-        big.next = null;        // 防止链表成环
-        small.next = bigDummy.next;
-        return smallDummy.next;
+
+        b.next = null;     // 防止成环
+        s.next = big.next; // 连接两个链表
+        return small.next;
     }
 }

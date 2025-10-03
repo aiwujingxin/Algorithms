@@ -7,18 +7,18 @@ package leetcode.problems;
 public class LeetCode303 {
 
     class NumArray {
-
-        int[] presum;
+        int[] s;
 
         public NumArray(int[] nums) {
-            presum = new int[nums.length + 1];
-            for (int i = 1; i <= nums.length; i++) {
-                presum[i] = presum[i - 1] + nums[i - 1];
+            int n = nums.length;
+            s = new int[n + 1];
+            for (int i = 1; i <= n; i++) {
+                s[i] = s[i - 1] + nums[i - 1];
             }
         }
 
         public int sumRange(int left, int right) {
-            return presum[right + 1] - presum[left];
+            return s[right + 1] - s[left];
         }
     }
 }

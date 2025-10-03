@@ -12,27 +12,22 @@ public class LeetCode23 {
         return mergeKLists(lists, 0, lists.length - 1);
     }
 
-    private ListNode mergeKLists(ListNode[] lists, int lo, int hi) {
-        if (lo > hi) return null;
-        if (lo == hi) return lists[lo];
-        int mid = (lo + hi) >> 1;
-        return mergeTwoLists(mergeKLists(lists, lo, mid), mergeKLists(lists, mid + 1, hi));
+    private ListNode mergeKLists(ListNode[] lists, int l, int r) {
+        if (l > r) return null;
+        if (l == r) return lists[l];
+        int m = (l + r) >> 1;
+        return mergeTwo(mergeKLists(lists, l, m), mergeKLists(lists, m + 1, r));
     }
 
-    public ListNode mergeTwoLists(ListNode list1, ListNode list2) {
-        ListNode dummy = new ListNode();
-        ListNode cur = dummy;
-        while (list1 != null && list2 != null) {
-            if (list1.val < list2.val) {
-                cur.next = list1;
-                list1 = list1.next;
-            } else {
-                cur.next = list2;
-                list2 = list2.next;
-            }
-            cur = cur.next;
+    private ListNode mergeTwo(ListNode l1, ListNode l2) {
+        if (l1 == null) return l2;
+        if (l2 == null) return l1;
+        if (l1.val < l2.val) {
+            l1.next = mergeTwo(l1.next, l2);
+            return l1;
+        } else {
+            l2.next = mergeTwo(l1, l2.next);
+            return l2;
         }
-        cur.next = list1 != null ? list1 : list2;
-        return dummy.next;
     }
 }

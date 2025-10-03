@@ -1,29 +1,42 @@
 package knowledge.algorithms.dp.compressdp;
 
+import knowledge.algorithms.dp.compressdp.problems.*;
+import knowledge.algorithms.search.backtrack.Backtrack;
 import leetcode.problems.*;
 
 /**
  * @author wujingxinit@outlook.com
  * @date 2024/3/3 16:12
  * @description 状态压缩 DP
- * @link 题单 <a href="https://leetcode.cn/problems/maximum-students-taking-exam/solutions/2580043/jiao-ni-yi-bu-bu-si-kao-dong-tai-gui-hua-9y5k/">...</a>
- * <a href="https://leetcode.cn/problems/parallel-courses-ii/solutions/2310878/zi-ji-zhuang-ya-dpcong-ji-yi-hua-sou-suo-oxwd/"></a>
- * <a href="https://www.cnblogs.com/lfri/p/15916118.html">...</a>
- * <a href="https://blog.51cto.com/u_15127689/4060515"></a>
- * <a href="https://hezhaojiang.github.io/post/2020/2a7541d6/"></a>
- * <a href="https://algo.itcharge.cn/10.Dynamic-Programming/07.State-DP/02.State-DP-List/"></a>
- * <a href="https://blog.nowcoder.net/n/fcc30eadb2b44395862194814e819315?from=nowcoder_improve"></a>
- * @see LeetCode464
- * @see LeetCode847
- * @see LeetCode526_dp
- * @see LeetCode1494
+ * <集合式>
+ * @see LeetCode526           优美的排列
+ * @see LeetCode698           划分为k个相等的子集
+ * @see LeetCode980           不同路径 III
+ * @see LeetCode3376          破解锁的最少时间 I
+ * @see LeetCode1879          两个数组最小的异或值之和
+ * @see LeetCode2850          将石头分散到网格图的最少移动次数
+ * @see LeetCode1947          最大兼容性评分和
+ * @see LeetCode1799          N 次操作后的最大分数和
+ * @see LeetCode1494          并行课程 II
+ * @see LeetCode1723          最小的必要团队 (集合覆盖，状态压缩 DP)
+ * @see LeetCode1178          猜字谜
+ * @see LeetCode1723          最小的必要团队 (集合覆盖，状态压缩 DP)
+ * @see Backtrack             回溯之排列组合/球盒模型
+ * @see P5911                 PRZ
+ * <棋盘式>
+ * @see Acwing327             玉米田
+ * @see Acwing291             蒙德里安的梦想
+ * @see Acwing292             炮兵阵地
+ * @see LeetCode1349          参加考试的最大学生数
+ * @see SCOI2005              互不侵犯
+ * <旅行商>
+ * @see P1171                 售货员的难题
+ * @see Hdu3001               Travelling
+ * <其他>
  * @see LeetCode2044
- * <基于连通性的状态压缩>
- * 291.cpp 蒙德里安的梦想 https://www.bilibili.com/video/BV1cv411b7EG/?spm_id_from=333.337.search-card.all.click&vd_source=8493a3e08130914836f4b3e1a5219439
- * 1064. 小国王
- * 327 玉米田
- * <集合式状态压缩>
- * @see LeetCode1349
+ * @see LeetCode691           贴纸拼词
+ * 1931
+ * 953
  */
 public interface CompressDP {
 }

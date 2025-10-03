@@ -40,7 +40,7 @@ public class LeetCode51 {
             if (c[j] || p[i + j] || q[i - j + n]) {
                 continue;
             }
-            pos[i] = j;
+            pos[i] = j; // 第i行的j列放'Q'
             c[j] = p[i + j] = q[i - j + n] = true;
             backtrack(i + 1);
             c[j] = p[i + j] = q[i - j + n] = false;

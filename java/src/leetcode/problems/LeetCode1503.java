@@ -3,6 +3,7 @@ package leetcode.problems;
 /**
  * @author wujingxinit@outlook.com
  * @date 2024/3/30 14:59
+ * @description 贪心 抽象 消除具体可以方便得到贪心的策略
  */
 public class LeetCode1503 {
 

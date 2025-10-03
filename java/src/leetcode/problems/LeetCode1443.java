@@ -10,37 +10,52 @@ import java.util.List;
  */
 public class LeetCode1443 {
 
+    static class Node {
+        int val;
+        List<Node> child;
+        Boolean has;
 
-    HashMap<Integer, List<Integer>> map = new HashMap<>();
-    boolean[] visited;
-    List<Boolean> hasApple;
-
-    public int minTime(int n, int[][] edges, List<Boolean> hasApple) {
-
-        this.hasApple = hasApple;
-        for (int i = 0; i < n; i++) {
-            map.put(i, new ArrayList<>());
+        public Node(int i, boolean has) {
+            this.val = i;
+            this.has = has;
+            this.child = new ArrayList<>();
         }
-        for (int[] edge : edges) {
-            map.get(edge[0]).add(edge[1]);
-            map.get(edge[1]).add(edge[0]);
-        }
-        visited = new boolean[n];
-        return Math.max(dfsMinTime(0) - 2, 0);
     }
 
-    public int dfsMinTime(int cur) {
-        if (visited[cur]) {
-            return 0;
+    int cnt;
+    boolean[] vs;
+
+    public int minTime(int n, int[][] edges, List<Boolean> hasApple) {
+        HashMap<Integer, Node> map = new HashMap<>();
+        vs = new boolean[n];
+        for (int i = 0; i < n; i++) {
+            map.put(i, new Node(i, hasApple.get(i)));
         }
-        visited[cur] = true;
-        int res = 0;
-        for (Integer next : map.get(cur)) {
-            res += dfsMinTime(next);
+        for (int[] e : edges) {
+            Node e0 = map.get(e[0]);
+            e0.child.add(map.get(e[1]));
+            Node e1 = map.get(e[1]);
+            e1.child.add(map.get(e[0]));
         }
-        if (res != 0) {
-            return 2 + res;
+        vs[0] = true;
+        dfs(map.get(0));
+        return cnt;
+    }
+
+    public boolean dfs(Node root) {
+        if (root == null) {
+            return false;
         }
-        return hasApple.get(cur) ? 2 : 0;
+        boolean res = false;
+        for (Node ch : root.child) {
+            if (vs[ch.val])
+                continue;
+            vs[ch.val] = true;
+            boolean t = dfs(ch);
+            res |= t;
+            if (t)
+                cnt += 2;
+        }
+        return res || root.has;
     }
 }

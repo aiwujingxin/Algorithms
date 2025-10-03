@@ -12,10 +12,10 @@ public class LeetCode1319_uf {
         if (connections.length < n - 1) {
             return -1;
         }
-        UnionFind unionFind = new UnionFind(n);
-        for (int[] connection : connections) {
-            unionFind.union(connection[0], connection[1]);
+        UnionFind uf = new UnionFind(n);
+        for (int[] conn : connections) {
+            uf.union(conn[0], conn[1]);
         }
-        return unionFind.getCount() - 1;
+        return uf.getCount() - 1;
     }
 }

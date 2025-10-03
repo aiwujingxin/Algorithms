@@ -18,20 +18,15 @@ public class LeetCode24 {
         return newHead;
     }
 
-    public ListNode swapPairs_iter(ListNode head) {
-        ListNode dummy = new ListNode();
-        dummy.next = head;
-        ListNode pre = dummy;
-        while (head != null && head.next != null) {
-            ListNode first = head;
-            ListNode second = head.next;
-            // 交换这两个节点
-            pre.next = second;
-            first.next = second.next;
-            second.next = first;
-            // 更新指针，准备下一对
-            pre = first;
-            head = first.next;
+    public ListNode swapPairs_itr(ListNode head) {
+        ListNode dummy = new ListNode(0, head);
+        ListNode cur = dummy;
+        while (cur.next != null && cur.next.next != null) {
+            ListNode a = cur.next, b = cur.next.next;
+            a.next = b.next;
+            b.next = a;
+            cur.next = b;
+            cur = a;
         }
         return dummy.next;
     }

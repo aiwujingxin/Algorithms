@@ -9,7 +9,7 @@ import java.util.Scanner;
  */
 public class HDU5115 {
 
-    public class Main {
+    public static class Main {
         static final long INF = (long) 1e18;
         static long[][] dp = new long[205][205];
         static int[] a = new int[205];

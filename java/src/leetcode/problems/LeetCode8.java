@@ -8,8 +8,9 @@ public class LeetCode8 {
 
     public int myAtoi(String s) {
         s = s.trim();
+        if (s.isEmpty()) return 0;
         int i = 0, res = 0, sign = 1, n = s.length();
-        if (i < n && (s.charAt(i) == '-' || s.charAt(i) == '+')) {
+        if (s.charAt(i) == '-' || s.charAt(i) == '+') {
             sign = (s.charAt(i) == '-') ? -1 : 1;
             i++;
         }

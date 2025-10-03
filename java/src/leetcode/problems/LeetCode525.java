@@ -9,27 +9,23 @@ import java.util.HashMap;
 public class LeetCode525 {
 
     public int findMaxLength(int[] nums) {
-        if (nums == null || nums.length <= 1) {
-            return 0;
-        }
         int n = nums.length;
         for (int i = 0; i < nums.length; i++) {
             if (nums[i] == 0) {
                 nums[i] = -1;
             }
         }
-
-        int[] presum = new int[n + 1];
+        int[] s = new int[n + 1];
         for (int i = 1; i <= n; i++) {
-            presum[i] = presum[i - 1] + nums[i - 1];
+            s[i] = s[i - 1] + nums[i - 1];
         }
         int max = 0;
         HashMap<Integer, Integer> map = new HashMap<>();
         for (int i = 0; i <= n; i++) {
-            if (map.containsKey(presum[i])) {
-                max = Math.max(max, i - map.get(presum[i]));
+            if (map.containsKey(s[i])) {
+                max = Math.max(max, i - map.get(s[i]));
             } else {
-                map.put(presum[i], i);
+                map.put(s[i], i);
             }
         }
         return max;

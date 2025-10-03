@@ -1,5 +1,6 @@
 package knowledge.datastructure.graph.bipartite.impl;
 
+import knowledge.datastructure.graph.bipartite.BipartiteMatch;
 import leetcode.lists.lcp.LCP04;
 import leetcode.problems.LeetCode1349;
 
@@ -18,45 +19,38 @@ import java.util.List;
  * @see LCP04
  * @see LeetCode1349
  */
+public class Hungarian implements BipartiteMatch {
 
-public class Hungarian {
+    List<Integer>[] g; // 左部邻接：u -> 右部 v(0..n-1)
+    boolean[] vis;     // 右部访问
+    int[] match;       // 右部匹配到的左部点
 
-    List<Integer>[] graph;
-    boolean[] vis;
-    int[] match;
-
-    public int Hungarian(int n, int[][] edges) {
-        graph = new List[n];
-        for (int i = 0; i < n; i++) {
-            graph[i] = new ArrayList<>();
+    @Override
+    public int MaxMatch(int n, int[][] edges) {
+        g = new List[n];
+        for (int i = 0; i < n; i++) g[i] = new ArrayList<>();
+        for (int[] e : edges) {
+            int u = e[0], v = e[1];
+            g[u].add(v);
         }
-        for (int[] edge : edges) {
-            graph[edge[1]].add(edge[0]);
-            graph[edge[0]].add(edge[1]);
-        }
-        this.match = new int[n];    // 记录每个右部节点的匹配
-        Arrays.fill(match, -1); // 初始化为-1，表示未匹配
-        this.vis = new boolean[n];
+        match = new int[n];
+        Arrays.fill(match, -1);
+        vis = new boolean[n];
         int ans = 0;
-        for (int i = 0; i < n; i++) {
-            Arrays.fill(vis, false); // 每次寻找新的增广路径都重置访问状态
-            if (dfs(i)) {
-                ans++;
-            }
+        for (int u = 0; u < n; u++) {
+            Arrays.fill(vis, false);
+            if (dfs(u)) ans++;
         }
         return ans;
     }
 
-    // DFS寻找增广路径
     private boolean dfs(int u) {
-        for (int v : graph[u]) {
-            if (!vis[v]) {
-                vis[v] = true;
-                // 如果v没有匹配，或者匹配的节点可以找到增广路径
-                if (match[v] == -1 || dfs(match[v])) {
-                    match[v] = u; // 更新匹配关系
-                    return true;
-                }
+        for (int v : g[u]) {
+            if (vis[v]) continue;
+            vis[v] = true;
+            if (match[v] == -1 || dfs(match[v])) {
+                match[v] = u;
+                return true;
             }
         }
         return false;

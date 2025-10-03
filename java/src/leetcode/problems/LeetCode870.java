@@ -1,8 +1,6 @@
 package leetcode.problems;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.TreeSet;
+import java.util.*;
 
 /**
  * @author wujingxinit@outlook.com
@@ -10,30 +8,48 @@ import java.util.TreeSet;
  */
 public class LeetCode870 {
 
-    //https://leetcode.cn/problems/advantage-shuffle/solution/you-shi-xi-pai-by-capital-worker-jl94/
-    //若num1中有大于num2的数字，我们选择最小的大于num2的数字和其配对。
-    //若num1中没有大于num2的数字，则选择num1中最小的数字和其配对。
     public int[] advantageCount(int[] nums1, int[] nums2) {
         int n = nums1.length;
-        TreeSet<Integer> tset = new TreeSet<>();
-        Map<Integer, Integer> map = new HashMap<>();
-        for (int x : nums1) {
-            map.put(x, map.getOrDefault(x, 0) + 1);
-            tset.add(x);
-        }
-
+        int[][] arr1 = new int[n][2];
+        int[][] arr2 = new int[n][2];
+        for (int i = 0; i < n; i++) arr1[i] = new int[]{nums1[i], i};
+        for (int i = 0; i < n; i++) arr2[i] = new int[]{nums2[i], i};
+        Arrays.sort(arr1, Comparator.comparingInt(o -> o[0]));
+        Arrays.sort(arr2, Comparator.comparingInt(o -> o[0]));
         int[] ans = new int[n];
-        for (int i = 0; i < n; i++) {
-            Integer cur = tset.ceiling(nums2[i] + 1);
-            if (cur == null) {
-                cur = tset.ceiling(-1);
+        boolean[] vs = new boolean[n];
+        Arrays.fill(ans, -1);
+        int i = 0;
+        int j = 0;
+        while (i < n) {
+            if (arr1[i][0] > arr2[j][0]) {
+                ans[arr2[j][1]] = arr1[i][0];
+                vs[arr1[i][1]] = true;
+                j++;
             }
-            ans[i] = cur;
-            map.put(cur, map.get(cur) - 1);
-            if (map.get(cur) == 0) {
-                tset.remove(cur);
+            i++;
+        }
+        int x = 0;
+        int y = 0;
+        while (x < n && y < n) {
+            while (x < n && vs[x]) {
+                x++;
+            }
+            while (y < n && ans[y] != -1) {
+                y++;
+            }
+            if (y < n) {
+                ans[y] = nums1[x];
+                y++;
+                x++;
             }
         }
         return ans;
+    }
+
+    public void swap(int[] x, int i, int j) {
+        int temp = x[i];
+        x[i] = x[j];
+        x[j] = temp;
     }
 }

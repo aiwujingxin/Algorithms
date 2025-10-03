@@ -1,7 +1,7 @@
 package leetcode.problems;
 
-import java.util.LinkedList;
-import java.util.Queue;
+import knowledge.datastructure.string.match.ACAutomaton;
+import knowledge.datastructure.string.match.ACAutomaton.Node;
 
 /**
  * @author wujingxinit@outlook.com
@@ -10,56 +10,39 @@ import java.util.Queue;
 public class LeetCode1032 {
 
     class StreamChecker {
-        TrieNode root;
-        TrieNode temp;
+        private final ACAutomaton ac;
+        private Node current;
 
         public StreamChecker(String[] words) {
-            root = new TrieNode();
-            root.insert(root, words);
-            Queue<TrieNode> queue = new LinkedList<>();
-            queue.add(root);
-            while (!queue.isEmpty()) {
-                TrieNode u = queue.poll();
-                u.isEnd = (u.isEnd || u.fail.isEnd);
-                for (int i = 0; i < 26; i++) {
-                    if (u.children[i] != null) {
-                        u.children[i].fail = u.fail == null ? root : u.fail.children[i];
-                        queue.offer(u.children[i]);
-                    } else {
-                        u.children[i] = u.fail == null ? root : u.fail.children[i];
-                    }
-                }
+            ac = new ACAutomaton();
+            for (String word : words) {
+                ac.insert(word);
             }
-            temp = root;
+            ac.build();
+            current = ac.root;
         }
 
         public boolean query(char letter) {
-            temp = temp.children[letter - 'a'];
-            return temp.isEnd;
-        }
-
-        class TrieNode {
-            TrieNode[] children;
-            boolean isEnd;
-            TrieNode fail;
-
-            public TrieNode() {
-                children = new TrieNode[26];
+            int idx = letter - 'a';
+            // 关键修正：确保 current.children[idx] 不为 null
+            if (current.children[idx] == null) {
+                current = ac.root; // 回退到根节点
+                return false;
             }
-
-            public void insert(TrieNode root, String[] words) {
-                for (String word : words) {
-                    TrieNode cur = root;
-                    for (int i = 0; i < word.length(); i++) {
-                        int index = word.charAt(i) - 'a';
-                        if (cur.children[index] == null) {
-                            cur.children[index] = new TrieNode();
-                        }
-                        cur = cur.children[index];
-                    }
-                    cur.isEnd = true;
+            current = current.children[idx];
+            // 检查当前节点是否是一个单词的结尾
+            if (current.isEnd) {
+                return true;
+            }
+            // 检查失败指针链上是否有单词结尾
+            Node temp = current.fail;
+            while (temp != null && temp != ac.root) {
+                if (temp.isEnd) {
+                    return true;
                 }
+                temp = temp.fail;
             }
+            return false;
         }
     }
 }

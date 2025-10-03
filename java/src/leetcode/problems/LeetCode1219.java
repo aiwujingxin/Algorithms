@@ -6,39 +6,33 @@ package leetcode.problems;
  */
 public class LeetCode1219 {
 
-    static int[][] dirs = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}};
-    int[][] grid;
-    int m, n;
-    int ans = 0;
-
     public int getMaximumGold(int[][] grid) {
-        this.grid = grid;
-        this.m = grid.length;
-        this.n = grid[0].length;
-        for (int i = 0; i < m; ++i) {
-            for (int j = 0; j < n; ++j) {
-                if (grid[i][j] != 0) {
-                    backtrack(i, j, 0);
+        int max = 0;
+        int m = grid.length;
+        int n = grid[0].length;
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                if (grid[i][j] == 0) {
+                    continue;
                 }
+                int cnt = dfs(grid, i, j, new boolean[m][n]);
+                max = Math.max(max, cnt);
             }
         }
-        return ans;
+        return max;
     }
 
-    public void backtrack(int x, int y, int gold) {
-        gold += grid[x][y];
-        ans = Math.max(ans, gold);
-
-        int rec = grid[x][y];
-        grid[x][y] = 0;
-
-        for (int d = 0; d < 4; ++d) {
-            int nx = x + dirs[d][0];
-            int ny = y + dirs[d][1];
-            if (nx >= 0 && nx < m && ny >= 0 && ny < n && grid[nx][ny] > 0) {
-                backtrack(nx, ny, gold);
-            }
+    public int dfs(int[][] grid, int i, int j, boolean[][] vs) {
+        if (i < 0 || j < 0 || i >= grid.length || j >= grid[0].length || vs[i][j] || grid[i][j] == 0) {
+            return 0;
         }
-        grid[x][y] = rec;
+        vs[i][j] = true;
+        int t = 0;
+        t = Math.max(t, dfs(grid, i + 1, j, vs));
+        t = Math.max(t, dfs(grid, i, j + 1, vs));
+        t = Math.max(t, dfs(grid, i - 1, j, vs));
+        t = Math.max(t, dfs(grid, i, j - 1, vs));
+        vs[i][j] = false;
+        return t + grid[i][j];
     }
 }

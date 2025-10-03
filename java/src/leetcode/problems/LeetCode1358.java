@@ -37,4 +37,23 @@ public class LeetCode1358 {
         }
         return res;
     }
+
+    class Solution {
+        //https://leetcode.cn/problems/number-of-substrings-containing-all-three-characters/solutions/2990226/mo-ban-yue-chang-yue-he-fa-xing-hua-dong-2g7a/
+        public int numberOfSubstrings(String S) {
+            char[] s = S.toCharArray();
+            int ans = 0;
+            int left = 0;
+            int[] cnt = new int[3];
+            for (char c : s) {
+                cnt[c - 'a']++;
+                while (cnt[0] > 0 && cnt[1] > 0 && cnt[2] > 0) {
+                    cnt[s[left] - 'a']--;
+                    left++;
+                }
+                ans += left;
+            }
+            return ans;
+        }
+    }
 }

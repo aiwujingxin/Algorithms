@@ -25,23 +25,17 @@ import leetcode.problems.*;
  */
 public interface PreSum {
 
-    // 前缀和
-    default int[] preSum(int[] nums) {
-        int n = nums.length;
-        int[] presum = new int[n + 1];
-        for (int i = 1; i <= n; i++) {
-            presum[i] = presum[i - 1] + nums[i - 1];
-        }
-        return presum;
+    default int[] preSum(int[] a) {
+        int n = a.length;
+        int[] s = new int[n + 1];
+        for (int i = 1; i <= n; i++) s[i] = s[i - 1] + a[i - 1];
+        return s;
     }
 
-    // 后缀和
-    default int[] suffix(int[] nums) {
-        int n = nums.length;
-        int[] suffix = new int[n + 1];
-        for (int i = n - 1; i >= 0; i--) {
-            suffix[i] = suffix[i + 1] + nums[i];
-        }
-        return suffix;
+    default int[] suffix(int[] a) {
+        int n = a.length;
+        int[] s = new int[n + 1];
+        for (int i = n - 1; i >= 0; i--) s[i] = s[i + 1] + a[i];
+        return s;
     }
 }

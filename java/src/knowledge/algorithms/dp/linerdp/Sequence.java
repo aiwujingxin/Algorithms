@@ -6,7 +6,7 @@ import knowledge.algorithms.dp.linerdp.problems.*;
 /**
  * @author wujingxinit@outlook.com
  * @date 2024/4/13 23:37
- * @description 序列DP   用前缀状态递推当前状态，在线性结构上逐步构造最优解。
+ * @description 线性DP   用前缀状态递推当前状态，在线性结构上逐步构造最优解。
  * <Base>
  * @see RodCutting      钢条切割
  * <LIS>
@@ -21,6 +21,7 @@ import knowledge.algorithms.dp.linerdp.problems.*;
  * @see LeetCode204     计数质数
  * @see LeetCode279     完全平方数
  * @see LeetCode2770    达到末尾下标所需的最大跳跃次数
+ * @see LeetCode926     将字符串翻转到单调递增
  * <LCS>
  * @see LeetCode1143    最长公共子序列
  * @see LeetCode72      编辑距离
@@ -38,6 +39,8 @@ import knowledge.algorithms.dp.linerdp.problems.*;
  * @see LeetCode1312    让字符串成为回文串的最少插入次数
  * @see LeetCode1458    两个子序列的最大点积
  * @see LeetCode1771    由子序列构造的最长回文串的长度
+ * @see LeetCode3628    插入一个字母的最大子序列数
+ * @see LeetCode3290    最高乘法得分
  * <LCIS>
  * Acwing272            最长公共上升子序列
  * @see LeetCode1713    得到子序列的最少操作次数 LCS->LIS
@@ -52,6 +55,7 @@ import knowledge.algorithms.dp.linerdp.problems.*;
  * LeetCode1201         丑数III
  * <其他>
  * @see LeetCode91      解码方法
+ * @see LeetCode392     判断子序列
  */
 public interface Sequence {
 }

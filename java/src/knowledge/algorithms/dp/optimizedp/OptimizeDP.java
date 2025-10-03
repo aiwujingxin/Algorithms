@@ -1,6 +1,6 @@
 package knowledge.algorithms.dp.optimizedp;
 
-import knowledge.algorithms.dp.backpack.multiple.*;
+import knowledge.algorithms.dp.backpack.multiple.problems.Multiple_dq;
 import leetcode.problems.*;
 import leetcode.problems.LeetCode2926_BITree;
 import knowledge.algorithms.dp.optimizedp.problems.*;

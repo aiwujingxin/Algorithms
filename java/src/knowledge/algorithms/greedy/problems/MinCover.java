@@ -14,7 +14,7 @@ import java.util.Comparator;
 public class MinCover {
 
     public int minCover(int[][] lines, int n) {
-        Arrays.sort(lines, (o1, o2) -> o1[0] - o2[0]); // 按左端点升序排序
+        Arrays.sort(lines, Comparator.comparingInt(o -> o[0])); // 按左端点升序排序
         int count = 0;
         int currentStart = 0;
         int index = 0;

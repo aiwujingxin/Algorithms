@@ -1,10 +1,12 @@
 package leetcode.problems;
 
+import knowledge.algorithms.dp.backpack.lintcode.problems.BackpackI;
+
 /**
  * @author aiwujingxin@gmail.com
  * @date 2023/2/23 23:15
  * @link <a href="https://leetcode.cn/problems/last-stone-weight-ii/solution/gong-shui-san-xie-xiang-jie-wei-he-neng-jgxik/">...</a>
- * @see knowledge.algorithms.dp.backpack.lintcode.BackpackI
+ * @see BackpackI
  */
 public class LeetCode1049 {
 

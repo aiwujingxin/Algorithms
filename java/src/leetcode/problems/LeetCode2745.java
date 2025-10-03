@@ -7,6 +7,6 @@ package leetcode.problems;
 public class LeetCode2745 {
 
     public int longestString(int x, int y, int z) {
-        return 0;
+        return (Math.min(x, y) * 2 + z + (x != y ? 1 : 0)) * 2;
     }
 }

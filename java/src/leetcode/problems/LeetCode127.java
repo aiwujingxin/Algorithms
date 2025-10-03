@@ -18,14 +18,14 @@ public class LeetCode127 {
         }
         Queue<String> queue = new LinkedList<>();
         queue.add(beginWord);
-        int step = 0;
+        int step = 1;
         HashSet<String> set = new HashSet<>();
         while (!queue.isEmpty()) {
             int size = queue.size();
             for (int i = 0; i < size; i++) {
                 String cur = queue.poll();
                 if (Objects.equals(cur, endWord)) {
-                    return step + 1;
+                    return step;
                 }
                 if (set.contains(cur)) {
                     continue;
@@ -57,4 +57,5 @@ public class LeetCode127 {
         }
         return list;
     }
+
 }

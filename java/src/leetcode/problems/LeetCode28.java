@@ -1,40 +1,27 @@
 package leetcode.problems;
 
 
+import knowledge.datastructure.string.hash.StringHash;
 import knowledge.datastructure.string.search.impl.KMP;
 import knowledge.datastructure.string.search.impl.RabinKarp;
 
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/10/23 16:02
+ * @see StringHash
+ * @see KMP
+ * @see RabinKarp
  */
 public class LeetCode28 {
-    //https://leetcode.com/problems/find-the-index-of-the-first-occurrence-in-a-string/discuss/2268683/Java-or-Using-KMP
 
-    public int strStr(String haystack, String needle) {
-        if (haystack.length() < needle.length()) {
-            return -1;
-        }
-        for (int s = 0; s <= haystack.length() - needle.length(); s++) {
-            int e = s;
-            for (int j = 0; j < needle.length(); j++) {
-                if (needle.charAt(j) != haystack.charAt(e)) {
-                    break;
-                }
-                e++;
-            }
-            if (e - s == needle.length()) {
-                return s;
-            }
+    public int strStr(String h, String n) {
+        int m = h.length(), l = n.length();
+        if (m < l) return -1;
+        for (int i = 0; i <= m - l; i++) {
+            int j = 0;
+            while (j < l && h.charAt(i + j) == n.charAt(j)) j++;
+            if (j == l) return i;
         }
         return -1;
-    }
-
-    public int strStr_kmp(String haystack, String needle) {
-        return new KMP().strStr(haystack, needle);
-    }
-
-    public int strStr_RabinKarp(String haystack, String needle) {
-        return new RabinKarp().strStr(haystack, needle);
     }
 }

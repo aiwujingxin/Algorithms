@@ -8,19 +8,24 @@ package knowledge.datastructure.queue;
 @SuppressWarnings("unchecked")
 public class MyQueue<E> {
 
-    private int head = 0, tail = 0, size = 0;
-    private final E[] data;
+    private final E[] q;
+    private int h = 0;
+    private int t = 0;  // 从0开始
+    private int size = 0;  // 元素计数
+    private final int n;
 
-    public MyQueue(int capacity) {
-        data = (E[]) new Object[capacity];
+    @SuppressWarnings("unchecked")
+    public MyQueue(int n) {
+        this.n = n;
+        this.q = (E[]) new Object[n];
     }
 
     public void add(E value) {
-        if (size == data.length) {
+        if (isFull()) {
             throw new RuntimeException("Queue is full");
         }
-        data[tail] = value;
-        tail = (tail + 1) % data.length;
+        q[t] = value;
+        t = (t + 1) % n;
         size++;
     }
 
@@ -28,22 +33,22 @@ public class MyQueue<E> {
         if (isEmpty()) {
             return null;
         }
-        E value = data[head];
-        head = (head + 1) % data.length;
+        E value = q[h];
+        h = (h + 1) % n;
         size--;
         return value;
     }
 
     public E peek() {
-        return isEmpty() ? null : data[head];
-    }
-
-    public E last() {
-        return isEmpty() ? null : data[(tail - 1 + data.length) % data.length];
+        return isEmpty() ? null : q[h];
     }
 
     public boolean isEmpty() {
         return size == 0;
+    }
+
+    public boolean isFull() {
+        return size == n;
     }
 
     public int size() {

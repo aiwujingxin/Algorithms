@@ -1,5 +1,8 @@
 package knowledge.algorithms.dp.backpack.twocost;
 
+import knowledge.algorithms.dp.backpack.twocost.problems.TwoCost_dp_2d;
+import knowledge.algorithms.dp.backpack.twocost.problems.TwoCost_dp_3d;
+
 /**
  * @author wujingxinit@outlook.com
  * @date 2024/2/26 01:06

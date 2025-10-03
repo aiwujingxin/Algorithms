@@ -6,27 +6,18 @@ package leetcode.problems;
  */
 public class LeetCode6 {
 
-    public String convert(String s, int numRows) {
-        if (s.isEmpty() || numRows == 1) {
-            return s;
+    public String convert(String s, int n) {
+        if (n == 1 || s.length() <= n) return s;
+        StringBuilder[] rows = new StringBuilder[n];
+        for (int i = 0; i < n; i++) rows[i] = new StringBuilder();
+        int d = -1;
+        for (int i = 0, r = 0; i < s.length(); i++) {
+            rows[r].append(s.charAt(i));
+            if (r == 0 || r == n - 1) d = -d;
+            r += d;
         }
-        StringBuilder[] rows = new StringBuilder[numRows];
-        for (int i = 0; i < numRows; i++) {
-            rows[i] = new StringBuilder();
-        }
-        int curRow = 0;
-        boolean flag = false;
-        for (int i = 0; i < s.length(); i++) {
-            rows[curRow].append(s.charAt(i));
-            if (curRow == 0 || curRow == numRows - 1) {
-                flag = !flag;
-            }
-            curRow += flag ? 1 : -1;
-        }
-        StringBuilder sb = new StringBuilder();
-        for (StringBuilder row : rows) {
-            sb.append(row);
-        }
-        return sb.toString();
+        StringBuilder ans = new StringBuilder();
+        for (StringBuilder row : rows) ans.append(row);
+        return ans.toString();
     }
 }

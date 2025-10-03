@@ -11,9 +11,6 @@ import java.util.*;
 public class LeetCode2471 {
 
     public int minimumOperations(TreeNode root) {
-        if (root == null) {
-            return 0;
-        }
         Queue<TreeNode> queue = new LinkedList<>();
         queue.add(root);
         int res = 0;

@@ -63,11 +63,10 @@ public class LeetCode126 {
 
     public void backtrack(List<List<String>> res, LinkedList<String> path, String cur, String endWord, Map<String, List<String>> graph) {
         if (cur.equals(endWord)) {
-            res.add(new LinkedList<>(path));
+            res.add(new ArrayList<>(path));
             return;
         }
-        List<String> nexts = graph.get(cur);
-        for (String next : nexts) {
+        for (String next : graph.get(cur)) {
             path.addFirst(next);
             backtrack(res, path, next, endWord, graph);
             path.removeFirst();

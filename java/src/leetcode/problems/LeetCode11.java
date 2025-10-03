@@ -10,8 +10,10 @@ public class LeetCode11 {
         int l = 0, r = h.length - 1, max = 0;
         while (l < r) {
             max = Math.max(max, (r - l) * Math.min(h[l], h[r]));
-            if (h[l] < h[r]) l++;
-            else r--;
+            if (h[l] < h[r])
+                l++;
+            else
+                r--;
         }
         return max;
     }

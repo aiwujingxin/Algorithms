@@ -1,5 +1,7 @@
 package leetcode.problems;
 
+import knowledge.datastructure.string.match.Trie;
+
 import java.util.List;
 
 /**
@@ -30,41 +32,5 @@ public class LeetCode2781 {
             left--;
         }
         return max;
-    }
-
-    static class TrieNode {
-        TrieNode[] children = new TrieNode[26];
-        boolean isEnd;
-    }
-
-    static class Trie {
-
-        TrieNode root = new TrieNode();
-
-        public void insert(String s) {
-            TrieNode cur = root;
-            for (int i = 0; i < s.length(); i++) {
-                if (cur.children[s.charAt(i) - 'a'] == null) {
-                    cur.children[s.charAt(i) - 'a'] = new TrieNode();
-                }
-                cur = cur.children[s.charAt(i) - 'a'];
-            }
-            cur.isEnd = true;
-        }
-
-        public int contains(String s, int left, int right) {
-            TrieNode cur = root;
-            int index;
-            for (index = left; index <= right; index++) {
-                if (cur.children[s.charAt(index) - 'a'] == null) {
-                    return -1;
-                }
-                cur = cur.children[s.charAt(index) - 'a'];
-                if (cur.isEnd) {
-                    return index;
-                }
-            }
-            return -1;
-        }
     }
 }

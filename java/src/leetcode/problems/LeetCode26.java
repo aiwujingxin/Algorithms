@@ -7,15 +7,15 @@ package leetcode.problems;
 public class LeetCode26 {
 
     public int removeDuplicates(int[] nums) {
-        int right = 1;
-        int left = 1;
-        while (right < nums.length) {
-            if (nums[right] != nums[left - 1]) {
-                nums[left] = nums[right];
-                left++;
+        int r = 1;
+        int l = 1;
+        while (r < nums.length) {
+            if (nums[r] != nums[l - 1]) {
+                nums[l] = nums[r];
+                l++;
             }
-            right++;
+            r++;
         }
-        return left;
+        return l;
     }
 }

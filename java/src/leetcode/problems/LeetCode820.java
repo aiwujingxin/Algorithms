@@ -47,8 +47,5 @@ public class LeetCode820 {
 
     static class TrieNode {
         TrieNode[] children = new TrieNode[26];
-
-        public TrieNode() {
-        }
     }
 }

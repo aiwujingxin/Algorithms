@@ -1,7 +1,5 @@
 package leetcode.problems;
 
-import java.util.*;
-
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/11/10 12:44
@@ -9,41 +7,20 @@ import java.util.*;
 public class LeetCode76 {
 
     public String minWindow(String s, String t) {
-        int left = 0;
-        int right = 0;
-        int cnt = 0;
-        int n = s.length();
-        HashSet<Character> set = new HashSet<>();
-        int[] sArr = new int[256];
-        int[] tArr = new int[256];
-        for (int i = 0; i < t.length(); i++) {
-            tArr[t.charAt(i) - 'A']++;
-            set.add(t.charAt(i));
-        }
-        int target = set.size();
-        int l = 0;
-        int len = Integer.MAX_VALUE;
-        while (right < n) {
-            char c = s.charAt(right);
-            sArr[c - 'A']++;
-            if (sArr[c - 'A'] == tArr[c - 'A']) {
-                cnt++;
-            }
-            while (left <= right && cnt == target) {
-                if (len > right - left + 1) {
-                    len = right - left + 1;
-                    l = left;
+        int[] need = new int[128];
+        for (char c : t.toCharArray()) need[c]++;
+        int left = 0, right = 0, count = t.length();
+        int len = Integer.MAX_VALUE, start = 0;
+        while (right < s.length()) {
+            if (need[s.charAt(right++)]-- > 0) count--;
+            while (count == 0) {
+                if (right - left < len) {
+                    len = right - left;
+                    start = left;
                 }
-
-                char d = s.charAt(left);
-                if (sArr[d - 'A'] == tArr[d - 'A']) {
-                    cnt--;
-                }
-                sArr[d - 'A']--;
-                left++;
+                if (need[s.charAt(left++)]++ == 0) count++;
             }
-            right++;
         }
-        return len == Integer.MAX_VALUE ? "" : s.substring(l, l + len);
+        return len == Integer.MAX_VALUE ? "" : s.substring(start, start + len);
     }
 }

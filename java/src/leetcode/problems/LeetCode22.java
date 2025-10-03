@@ -14,19 +14,19 @@ public class LeetCode22 {
         return res;
     }
 
-    private void backtrack(int left, int right, int n, List<String> res, StringBuilder sb) {
+    private void backtrack(int l, int r, int n, List<String> res, StringBuilder sb) {
         if (sb.length() == n * 2) {
             res.add(sb.toString());
             return;
         }
-        if (left < n) {
+        if (l < n) {
             sb.append("(");
-            backtrack(left + 1, right, n, res, sb);
+            backtrack(l + 1, r, n, res, sb);
             sb.deleteCharAt(sb.length() - 1);
         }
-        if (right < left) {
+        if (r < l) {
             sb.append(")");
-            backtrack(left, right + 1, n, res, sb);
+            backtrack(l, r + 1, n, res, sb);
             sb.deleteCharAt(sb.length() - 1);
         }
     }

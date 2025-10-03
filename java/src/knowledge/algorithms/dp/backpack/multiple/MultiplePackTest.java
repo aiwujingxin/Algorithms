@@ -1,5 +1,7 @@
 package knowledge.algorithms.dp.backpack.multiple;
 
+import knowledge.algorithms.dp.backpack.multiple.problems.*;
+
 /**
  * @author wujingxinit@outlook.com
  * @date 2024/2/25 23:53

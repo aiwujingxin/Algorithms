@@ -1,15 +1,11 @@
 package leetcode.problems;
 
-import java.util.Arrays;
-
 /**
  * @author wujingxinit@outlook.com
  * @date 2024/3/4 00:33
- * @description 枚举子集
+ * @description 枚举子集 <a href="https://leetcode.cn/problems/maximum-students-taking-exam/solutions/2580043/jiao-ni-yi-bu-bu-si-kao-dong-tai-gui-hua-9y5k/"></a>
  */
 public class LeetCode1349 {
-
-    //https://leetcode.cn/problems/maximum-students-taking-exam/solutions/2580043/jiao-ni-yi-bu-bu-si-kao-dong-tai-gui-hua-9y5k/
 
     public int maxStudents(char[][] seats) {
         int m = seats.length;
@@ -22,32 +18,26 @@ public class LeetCode1349 {
                 }
             }
         }
-
-        int[][] memo = new int[m][1 << n];
-        for (int[] row : memo) {
-            Arrays.fill(row, -1); // -1 表示没有计算过
-        }
-        return dfs(m - 1, a[m - 1], memo, a);
-    }
-
-    private int dfs(int i, int j, int[][] memo, int[] a) {
-        if (memo[i][j] != -1) { // 之前计算过
-            return memo[i][j];
-        }
-        if (i == 0) {
-            if (j == 0) { // 递归边界
-                return 0;
-            }
+        int[][] dp = new int[m][1 << n];
+        for (int j = 1; j < (1 << n); j++) {
             int lb = j & -j;
-            return memo[i][j] = dfs(i, j & ~(lb * 3), memo, a) + 1; // 记忆化
+            dp[0][j] = dp[0][j & ~(lb * 3)] + 1;
         }
-        int res = dfs(i - 1, a[i - 1], memo, a); // 第 i 排空着
-        for (int s = j; s > 0; s = (s - 1) & j) { // 枚举 j 的子集 s
-            if ((s & (s >> 1)) == 0) { // s 没有连续的 1
-                int t = a[i - 1] & ~(s << 1 | s >> 1); // 去掉不能坐人的位置
-                res = Math.max(res, dfs(i - 1, t, memo, a) + Integer.bitCount(s));
+        for (int i = 1; i < m; i++) {                           // 阶段
+            for (int j = a[i]; j > 0; j = (j - 1) & a[i]) {     // 状态 枚举 a[i] 的子集 j
+                // 第 i 排空着
+                dp[i][j] = dp[i - 1][a[i - 1]];
+                for (int k = j; k > 0; k = (k - 1) & j) {       // 决策 枚举 j 的子集 k
+                    // k 没有连续的 1
+                    if ((k & (k >> 1)) == 0) {
+                        // 去掉不能坐人的位置
+                        int t = a[i - 1] & ~(k << 1 | k >> 1);
+                        dp[i][j] = Math.max(dp[i][j], dp[i - 1][t] + dp[0][k]);
+                    }
+                }
             }
+            dp[i][0] = dp[i - 1][a[i - 1]];
         }
-        return memo[i][j] = res; // 记忆化
+        return dp[m - 1][a[m - 1]];
     }
 }

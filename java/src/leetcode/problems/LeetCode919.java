@@ -3,6 +3,7 @@ package leetcode.problems;
 import common.TreeNode;
 
 import java.util.ArrayDeque;
+import java.util.LinkedList;
 import java.util.Queue;
 
 /**
@@ -14,43 +15,42 @@ public class LeetCode919 {
 
     class CBTInserter {
 
-        Queue<TreeNode> candidate;
+        Queue<TreeNode> queue;
+
         TreeNode root;
 
         public CBTInserter(TreeNode root) {
-
-            this.candidate = new ArrayDeque<>();
             this.root = root;
-
-            Queue<TreeNode> queue = new ArrayDeque<>();
-            queue.offer(root);
-
-            while (!queue.isEmpty()) {
-                TreeNode node = queue.poll();
+            queue = new LinkedList<>();
+            Queue<TreeNode> q = new LinkedList<>();
+            q.add(root);
+            while (!q.isEmpty()) {
+                TreeNode node = q.poll();
+                if (node.left == null || node.right == null) {
+                    queue.add(node);
+                }
                 if (node.left != null) {
-                    queue.offer(node.left);
+                    q.add(node.left);
                 }
                 if (node.right != null) {
-                    queue.offer(node.right);
-                }
-                if (!(node.left != null && node.right != null)) {
-                    candidate.offer(node);
+                    q.add(node.right);
                 }
             }
         }
 
         public int insert(int val) {
-            TreeNode child = new TreeNode(val);
-            TreeNode node = candidate.peek();
-            int ret = node.val;
-            if (node.left == null) {
-                node.left = child;
-            } else {
-                node.right = child;
-                candidate.poll();
+            TreeNode node = new TreeNode(val);
+            if (queue.peek().left == null) {
+                queue.peek().left = node;
+                queue.add(node);
+                return queue.peek().val;
             }
-            candidate.offer(child);
-            return ret;
+            if (queue.peek().right == null) {
+                queue.peek().right = node;
+                queue.add(node);
+                return queue.poll().val;
+            }
+            return -1;
         }
 
         public TreeNode get_root() {

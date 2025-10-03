@@ -1,6 +1,6 @@
 package leetcode.problems;
 
-import knowledge.mathematics.impl.Prime;
+import knowledge.mathematics.MathUtil;
 
 /**
  * @author wujingxinit@outlook.com
@@ -50,7 +50,7 @@ public class LeetCode459 {
             if (s.length() % i != 0) {
                 continue;
             }
-            if (!Prime.isPrime(i)) {
+            if (!MathUtil.isPrime(i)) {
                 continue;
             }
             // 分成i段，每段长len

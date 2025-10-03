@@ -3,52 +3,46 @@ package leetcode.problems;
 /**
  * @author wujingxinit@outlook.com
  * @date 2024/1/22 21:20
+ * @description 多留一个空间 区分满和空的判断
  */
 public class LeetCode622 {
 
     class MyCircularQueue {
-
-        int capacity, head, size, tail;
-        int[] nums;
+        int[] q;
+        int h, t, n;
 
         public MyCircularQueue(int k) {
-            this.capacity = k;
-            this.nums = new int[capacity];
+            n = k + 1;
+            q = new int[n];
         }
 
-        public boolean enQueue(int value) {
-            if (isFull()) {
-                return false;
-            }
-            nums[tail++] = value;
-            tail %= capacity;
-            size++;
+        public boolean enQueue(int val) {
+            if (isFull()) return false;
+            q[t] = val;
+            t = (t + 1) % n;
             return true;
         }
 
         public boolean deQueue() {
-            if (isEmpty()) {
-                return false;
-            }
-            head = (head + 1) % capacity;
-            size--;
+            if (isEmpty()) return false;
+            h = (h + 1) % n;
             return true;
         }
 
         public int Front() {
-            return isEmpty() ? -1 : nums[head];
+            return isEmpty() ? -1 : q[h];
         }
 
         public int Rear() {
-            return isEmpty() ? -1 : nums[(tail - 1 + capacity) % capacity];
+            return isEmpty() ? -1 : q[(t - 1 + n) % n];
         }
 
         public boolean isEmpty() {
-            return size == 0;
+            return h == t;
         }
 
         public boolean isFull() {
-            return size == capacity;
+            return (t + 1) % n == h;
         }
     }
 }

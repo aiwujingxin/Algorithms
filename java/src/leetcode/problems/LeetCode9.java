@@ -7,11 +7,11 @@ package leetcode.problems;
 public class LeetCode9 {
 
     public boolean isPalindrome(int x) {
-        int rx = 0, ox = x;
-        while (x > 0) {
-            rx = rx * 10 + x % 10;
-            x /= 10;
+        int r = 0, t = x;
+        while (t > 0) {
+            r = r * 10 + x % 10;
+            t /= 10;
         }
-        return rx == ox;
+        return r == x;
     }
 }

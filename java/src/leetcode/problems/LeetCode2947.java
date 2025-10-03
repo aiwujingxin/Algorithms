@@ -6,17 +6,16 @@ package leetcode.problems;
  */
 public class LeetCode2947 {
 
-    public int beautifulSubstrings(String s, int k) {
-        int n = s.length();
-        int[] presum = new int[n + 1];
-        for (int i = 1; i < n + 1; i++) {
-            presum[i] = presum[i - 1] + ("aeiou".indexOf(s.charAt(i - 1)) >= 0 ? 1 : 0);
+    public int beautifulSubstrings(String str, int k) {
+        int n = str.length();
+        int[] s = new int[n + 1];
+        for (int i = 1; i <= n; i++) {
+            s[i] = s[i - 1] + ("aeiou".indexOf(str.charAt(i - 1)) >= 0 ? 1 : 0);
         }
-
         int ans = 0;
-        for (int i = 1; i < presum.length; i++) {
+        for (int i = 1; i < s.length; i++) {
             for (int j = 0; j < i; j++) {
-                int d = presum[i] - presum[j];
+                int d = s[i] - s[j];
                 if ((i - j) % 2 == 0 && d == (i - j) / 2 && d * d % k == 0) {
                     ans++;
                 }

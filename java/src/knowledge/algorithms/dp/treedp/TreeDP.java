@@ -23,7 +23,6 @@ import leetcode.problems.*;
  * @see LeetCode1448        好节点的数量
  * @see LeetCode2378        选择边以最大化得分
  * @see LeetCode968         监控二叉树
- * @see LeetCode1289        下降路径最小和 II
  * @see LeetCode1519        子树中标签相同的节点数
  * @see LeetCode1617        统计子树中城市之间最大距离
  * @see LeetCode2477        到达首都的最少油耗

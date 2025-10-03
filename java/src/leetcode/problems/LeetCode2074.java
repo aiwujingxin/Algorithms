@@ -9,40 +9,29 @@ import common.ListNode;
 public class LeetCode2074 {
 
     public ListNode reverseEvenLengthGroups(ListNode head) {
-        if (head == null) {
-            return null;
-        }
-        int groupLen = 1;
         ListNode dummy = new ListNode();
         dummy.next = head;
         ListNode cur = dummy;
-        while (cur != null) {
+        int length = 1;
+        while (cur.next != null) {
             ListNode tail = cur;
-            int len = 0;
-            for (int i = 0; i < groupLen; i++) {
+            int count = 0;
+            for (int i = 0; i < length && tail.next != null; i++) {
                 tail = tail.next;
-                len++;
-                if (tail == null) {
-                    if (len % 2 == 0) {
-                        ListNode start = cur.next;
-                        cur.next = reverse(start, null);
-                    }
-                    return dummy.next;
-                }
+                count++;
             }
-            if (groupLen % 2 == 0) {
+            if (count % 2 == 0) {
                 ListNode start = cur.next;
                 ListNode next = tail.next;
-                reverse(start, tail.next);
-                cur.next = tail;
+                cur.next = reverse(start, next);
                 start.next = next;
-                cur = start;
+                cur = start; // cur移动到反转后组的尾部
             } else {
-                cur = tail;
+                cur = tail; // 奇数组不反转，直接跳过
             }
-            groupLen++;
+            length++;
         }
-        return head;
+        return dummy.next;
     }
 
     public ListNode reverse(ListNode head, ListNode tail) {

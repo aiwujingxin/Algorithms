@@ -7,22 +7,17 @@ package leetcode.problems;
 public class LeetCode392 {
 
     public boolean isSubsequence(String s, String t) {
-        int n = s.length(), m = t.length();
-        int i = 0, j = 0;
-        while (i < n && j < m) {
-            if (s.charAt(i) == t.charAt(j)) {
-                i++;
-            }
-            j++;
+        int i = 0;
+        for (char c : t.toCharArray()) {
+            if (i < s.length() && s.charAt(i) == c) i++;
         }
-        return i == n;
+        return i == s.length();
     }
 
     public boolean isSubsequence_dp(String s, String t) {
         int m = s.length();
         int n = t.length();
         boolean[][] dp = new boolean[m + 1][n + 1];
-
         for (int i = 0; i <= t.length(); i++) {
             dp[0][i] = true;
         }
@@ -38,5 +33,4 @@ public class LeetCode392 {
         }
         return dp[m][n];
     }
-
 }

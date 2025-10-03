@@ -11,7 +11,7 @@ import java.util.Objects;
 public class LCR17 {
 
     public String minWindow(String s, String t) {
-        if (s == null || s.isEmpty()) {
+        if (s.isEmpty()) {
             return "";
         }
         if (s.length() < t.length()) {
@@ -31,7 +31,7 @@ public class LCR17 {
         int valid = 0;
         int target = set.size();
         while (right < s.length()) {
-            sArr.put(s.charAt(right), sArr.getOrDefault(s.charAt(right), 0) + 1);
+            sArr.merge(s.charAt(right), 1, Integer::sum);
             if (Objects.equals(sArr.get(s.charAt(right)), tArr.get(s.charAt(right)))) {
                 valid++;
             }
@@ -44,7 +44,7 @@ public class LCR17 {
                 if (Objects.equals(sArr.get(d), tArr.getOrDefault(d, 0))) {
                     valid--;
                 }
-                sArr.put(d, sArr.getOrDefault(d, 0) - 1);
+                sArr.merge(s.charAt(d), -1, Integer::sum);
                 left++;
             }
             right++;

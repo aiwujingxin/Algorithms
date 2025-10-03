@@ -26,9 +26,31 @@ public class LeetCode4 {
             }
             if (maxQ.size() < minQ.size()) {
                 maxQ.add(minQ.poll());
-            } else if (minQ.size() + 1 < maxQ.size()) {
+            }
+            if (maxQ.size() > minQ.size() + 1) {
                 minQ.add(maxQ.poll());
             }
         }
+    }
+
+    public double findMedianSortedArrays_bs(int[] A, int[] B) {
+        if (A.length > B.length) return findMedianSortedArrays_bs(B, A);
+        int m = A.length, n = B.length, h = (m + n + 1) / 2;
+        int l = 0, r = m;
+        while (l <= r) {
+            int i = (l + r) / 2, j = h - i;
+            int al = i == 0 ? Integer.MIN_VALUE : A[i - 1];
+            int ar = i == m ? Integer.MAX_VALUE : A[i];
+            int bl = j == 0 ? Integer.MIN_VALUE : B[j - 1];
+            int br = j == n ? Integer.MAX_VALUE : B[j];
+            if (al <= br && bl <= ar) {
+                return ((m + n) % 2 == 1) ? Math.max(al, bl) : (Math.max(al, bl) + Math.min(ar, br)) / 2.0;
+            } else if (al > br) {
+                r = i - 1;
+            } else {
+                l = i + 1;
+            }
+        }
+        return -1;
     }
 }

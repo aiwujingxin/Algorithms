@@ -8,39 +8,61 @@ import java.util.*;
  */
 public class LeetCode2115 {
 
+    HashSet<String> recipeSet;
+    HashSet<String> supplieSet;
+    HashMap<String, Boolean> cache;
+    HashMap<String, List<String>> recipeMap;
+
     public List<String> findAllRecipes(String[] recipes, List<List<String>> ingredients, String[] supplies) {
-        Map<String, List<String>> graph = new HashMap<>();
-        Map<String, Integer> indegree = new HashMap<>();
-        for (int i = 0; i < recipes.length; i++) {
-            for (String ingredient : ingredients.get(i)) {
-                graph.putIfAbsent(ingredient, new ArrayList<>());
-                graph.get(ingredient).add(recipes[i]);
-                indegree.put(recipes[i], indegree.getOrDefault(recipes[i], 0) + 1);
+        int n = recipes.length;
+        recipeSet = new HashSet<>();
+        supplieSet = new HashSet<>();
+        cache = new HashMap<>();
+        recipeMap = new HashMap<>();
+        for (int i = 0; i < n; i++) {
+            recipeSet.add(recipes[i]);
+            recipeMap.put(recipes[i], ingredients.get(i));
+        }
+        Collections.addAll(supplieSet, supplies);
+        List<String> list = new ArrayList<>();
+
+        for (String recipe : recipes) {
+            if (check(recipe, new HashSet<>())) {
+                list.add(recipe);
             }
         }
-        HashSet<String> recipeSet = new HashSet<>(Arrays.asList(recipes));
-        List<String> res = new ArrayList<>();
+        return list;
+    }
 
-        Queue<String> queue = new LinkedList<>(Arrays.asList(supplies));
-
-        while (!queue.isEmpty()) {
-            String cur = queue.poll();
-            if (recipeSet.contains(cur)) {
-                res.add(cur);
-            }
-            if (graph.get(cur) == null) {
-                continue;
-            }
-            for (String next : graph.get(cur)) {
-                if (indegree.containsKey(next)) {
-                    indegree.put(next, indegree.get(next) - 1);
+    public boolean check(String recipe, HashSet<String> vs) {
+        if (cache.get(recipe) != null) {
+            return cache.get(recipe);
+        }
+        for (String ingre : recipeMap.get(recipe)) {
+            // 1. recipe
+            if (recipeSet.contains(ingre)) {
+                if (cache.get(ingre) != null) {
+                    if (cache.get(ingre) == false) {
+                        return false;
+                    }
+                } else {
+                    if (vs.contains(ingre)) {
+                        return false;
+                    }
+                    vs.add(ingre);
+                    boolean res = check(ingre, vs);
+                    cache.put(ingre, res);
+                    if (!res) {
+                        cache.put(recipe, res);
+                        return false;
+                    }
                 }
-                if (indegree.get(next) == 0) {
-                    queue.add(next);
+            } else { // 2. supplie
+                if (!supplieSet.contains(ingre)) {
+                    return false;
                 }
             }
         }
-        return res;
-
+        return true;
     }
 }

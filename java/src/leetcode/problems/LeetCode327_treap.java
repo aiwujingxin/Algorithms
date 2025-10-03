@@ -19,9 +19,9 @@ public class LeetCode327_treap {
         TreapTree treap = new TreapTree();
         int ret = 0;
         for (long x : preSum) {
-            long numLeft = treap.lowerBound(x - upper);
+            long numLeft = treap.getNextOrEq(x - upper);
             long rankLeft = (numLeft == Long.MAX_VALUE ? (int) (treap.getSize() + 1) : treap.getRankByKey(numLeft));
-            long numRight = treap.upperBound(x - lower);
+            long numRight = treap.getNext(x - lower);
             long rankRight = (numRight == Long.MAX_VALUE ? (int) treap.getSize() : treap.getRankByKey(numRight) - 1);
             ret += (int) (rankRight - rankLeft + 1);
             treap.insert(x);

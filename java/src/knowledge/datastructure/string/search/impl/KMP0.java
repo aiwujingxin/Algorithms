@@ -14,7 +14,7 @@ public class KMP0 implements Search {
         int m = pattern.length();
         int i = 0; // index for text
         int j = 0; // index for pattern
-        int[] next = makePrefix(pattern);
+        int[] next = next(pattern);
         while (i < n) {
             if (pattern.charAt(j) == text.charAt(i)) {
                 i++;
@@ -31,9 +31,8 @@ public class KMP0 implements Search {
         return -1;
     }
 
-    //prefix[i]表示对应的部分匹配值, s[i - prefix[i]] : i] == s[0: prefix[i]]
-    //"前缀"和"后缀"的最长的共有元素的长度。
-    public int[] makePrefix(String pattern) {
+    //next[i]表示对应的部分匹配值, s[i - next[i]] : i] == s[0: next[i]]
+    public int[] next(String pattern) {
         int m = pattern.length();
         int[] next = new int[m];
         int len = 0;

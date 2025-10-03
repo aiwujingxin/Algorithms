@@ -12,20 +12,15 @@ public class LeetCode2522 {
         long sum = 0;
         for (int i = 0; i < n; i++) {
             int num = s.charAt(i) - '0';
-            if (sum * 10 + num > k) {
+            if (num > k) {
+                return -1;
+            }
+            sum = sum * 10 + num;
+            if (sum > k) {
                 cnt++;
                 sum = num;
-                if (sum > k) {
-                    return -1;
-                }
-            } else {
-                sum = sum * 10 + num;
             }
         }
-        if (sum > k) {
-            return -1;
-        }
-        cnt++;
-        return cnt;
+        return cnt + 1;
     }
 }

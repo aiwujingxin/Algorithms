@@ -17,8 +17,6 @@ public class LeetCode71 {
                 stack.push(dir);
             }
         }
-        StringBuilder sb = new StringBuilder();
-        while (!stack.isEmpty()) sb.insert(0, "/" + stack.pop());
-        return sb.isEmpty() ? "/" : sb.toString();
+        return "/" + String.join("/", stack);
     }
 }

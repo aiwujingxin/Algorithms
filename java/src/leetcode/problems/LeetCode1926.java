@@ -8,51 +8,39 @@ import java.util.*;
  */
 public class LeetCode1926 {
 
-    int[][] di = new int[][]{{-1, 0}, {1, 0}, {0, -1}, {0, 1}};
-
     public int nearestExit(char[][] maze, int[] entrance) {
-
-        if (maze == null || maze.length == 0) {
-            return 0;
-        }
-        if (maze[entrance[0]][entrance[1]] == '+') {
-            return -1;
-        }
-        int res = Integer.MAX_VALUE;
+        int m = maze.length;
+        int n = maze[0].length;
+        boolean[][] vis = new boolean[m][n];
+        int[][] dirs = new int[][]{{0, 1}, {0, -1}, {1, 0}, {-1, 0}};
         Queue<int[]> queue = new LinkedList<>();
-        HashSet<String> visited = new HashSet<>();
-        boolean flag = false;
-        queue.add(new int[]{entrance[0], entrance[1], 0});
-        visited.add(entrance[0] + "," + entrance[1]);
+        queue.add(entrance);
+        vis[entrance[0]][entrance[1]] = true;
+        int step = 0;
         while (!queue.isEmpty()) {
-            int[] pi = queue.poll();
-
-            List<int[]> nexts = getNexts(pi, visited, maze);
-
-            for (int[] next : nexts) {
-                if (next[0] == 0 || next[0] == maze.length - 1
-                        || next[1] == 0 || next[1] == maze[0].length - 1) {
-                    flag = true;
-                    res = Math.min(res, next[2]);
-                } else {
-                    queue.add(next);
-                    visited.add(next[0] + "," + next[1]);
+            int size = queue.size();
+            for (int i = 0; i < size; i++) {
+                int[] node = queue.poll();
+                int x = node[0];
+                int y = node[1];
+                if ((x == 0 || x == m - 1 || y == 0 || y == n - 1) && x * 100 + y != entrance[0] * 100 + entrance[1]) {
+                    return step;
+                }
+                for (int[] dir : dirs) {
+                    int nx = x + dir[0];
+                    int ny = y + dir[1];
+                    if (nx < 0 || ny < 0 || nx >= m || ny >= n) {
+                        continue;
+                    }
+                    if (maze[nx][ny] == '+' || vis[nx][ny]) {
+                        continue;
+                    }
+                    queue.add(new int[]{nx, ny});
+                    vis[nx][ny] = true;
                 }
             }
+            step++;
         }
-        return flag ? res : -1;
-    }
-
-    private List<int[]> getNexts(int[] pi, HashSet<String> set, char[][] mat) {
-        List<int[]> list = new ArrayList<>();
-        for (int[] d : di) {
-            int x = pi[0] + d[0];
-            int y = pi[1] + d[1];
-            if (x < 0 || y < 0 || x > mat.length - 1 || y > mat[0].length - 1 || mat[x][y] == '+' || set.contains(x + "," + y)) {
-                continue;
-            }
-            list.add(new int[]{x, y, pi[2] + 1});
-        }
-        return list;
+        return -1;
     }
 }

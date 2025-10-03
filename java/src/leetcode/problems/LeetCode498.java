@@ -10,9 +10,6 @@ import java.util.List;
 public class LeetCode498 {
 
     public int[] findDiagonalOrder(int[][] mat) {
-        if (mat == null || mat.length == 0) {
-            return new int[]{};
-        }
         List<Point> list = new ArrayList<>();
         for (int i = 0; i < mat.length; i++) {
             for (int j = 0; j < mat.length; j++) {

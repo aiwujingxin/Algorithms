@@ -1,6 +1,7 @@
 package leetcode.problems;
 
 import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @author wujingxinit@outlook.com
@@ -9,26 +10,17 @@ import java.util.HashMap;
 public class LeetCode904 {
 
     public int totalFruit(int[] fruits) {
-        if (fruits == null || fruits.length == 0) {
-            return 0;
-        }
-        int n = fruits.length;
-        HashMap<Integer, Integer> map = new HashMap<>();
-        int left = 0;
-        int right = 0;
-        int ans = 0;
-        while (right < n) {
-            map.put(fruits[right], map.getOrDefault(fruits[right], 0) + 1);
-            while (map.size() > 2 && left < right) {
-                map.put(fruits[left], map.get(fruits[left]) - 1);
-                if (map.get(fruits[left]) == 0) {
-                    map.remove(fruits[left]);
-                }
+        Map<Integer, Integer> map = new HashMap<>();
+        int left = 0, max = 0;
+        for (int right = 0; right < fruits.length; right++) {
+            map.merge(fruits[right], 1, Integer::sum);
+            while (map.size() > 2) {
+                map.merge(fruits[left], -1, Integer::sum);
+                if (map.get(fruits[left]) == 0) map.remove(fruits[left]);
                 left++;
             }
-            ans = Math.max(right - left + 1, ans);
-            right++;
+            max = Math.max(max, right - left + 1);
         }
-        return ans;
+        return max;
     }
 }

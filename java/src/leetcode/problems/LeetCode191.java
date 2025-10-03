@@ -7,11 +7,6 @@ package leetcode.problems;
 public class LeetCode191 {
 
     public int hammingWeight(int i) {
-        int c = 0;
-        while (i > 0) {
-            i -= (i & -i);
-            c++;
-        }
-        return c;
+        return Integer.bitCount(i);
     }
 }

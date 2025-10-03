@@ -8,42 +8,20 @@ package leetcode.problems;
  */
 public class LeetCode464 {
 
-    private Boolean[] memo;
-    private int maxChoosableInteger;
-    private int desiredTotal;
-
-    public boolean canIWin(int maxChoosableInteger, int desiredTotal) {
-        memo = new Boolean[1 << maxChoosableInteger + 1];
-        this.maxChoosableInteger = maxChoosableInteger;
-        this.desiredTotal = desiredTotal;
-        if (this.maxChoosableInteger >= this.desiredTotal) {
-            return true;
-        }
-        if (this.maxChoosableInteger * (this.maxChoosableInteger + 1) / 2 < this.desiredTotal) {
-            return false;
-        }
-        return dfs(0, 0);
+    public boolean canIWin(int max, int target) {
+        if (max >= target) return true;
+        if (max * (max + 1) / 2 < target) return false;
+        return dfs(0, 0, max, target, new Boolean[1 << (max + 1)]);
     }
 
-    private Boolean dfs(int status, int sum) {
-        if (sum >= desiredTotal) {
-            memo[status] = false;
-            return false;
-        }
-        if (memo[status] != null) {
-            return memo[status];
-        }
-        for (int i = 1; i <= maxChoosableInteger; i++) {
-            if (((status >> i) & 1) == 1) {
-                continue;
-            }
-            int next = status | (1 << i);
-            if ((sum + i >= desiredTotal || !dfs(next, sum + i))) {
-                memo[status] = true;
-                return true;
+    private boolean dfs(int used, int sum, int max, int target, Boolean[] memo) {
+        if (memo[used] != null) return memo[used];
+        for (int i = 1; i <= max; i++) {
+            if ((used & (1 << i)) != 0) continue;
+            if (sum + i >= target || !dfs(used | (1 << i), sum + i, max, target, memo)) {
+                return memo[used] = true;
             }
         }
-        memo[status] = false;
-        return false;
+        return memo[used] = false;
     }
 }

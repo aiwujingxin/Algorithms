@@ -1,6 +1,8 @@
 package leetcode.problems;
 
 
+import knowledge.datastructure.string.hash.DoubleStringHash;
+import knowledge.datastructure.string.hash.StringHash;
 import knowledge.datastructure.string.search.impl.KMP;
 
 /**
@@ -15,21 +17,38 @@ public class LeetCode1392 {
         return s.substring(0, next[n]);
     }
 
-    public String longestPrefix_RabinKarp(String s) {
+    public String longestPrefix_hash_TEL(String s) {
         int n = s.length();
-        long prefix = 0, suffix = 0;
-        long base = 31, mod = 1000000007, mul = 1;
-        int happy = 0;
-        for (int i = 1; i < n; ++i) {
-            prefix = (prefix * base + (s.charAt(i - 1) - 'a')) % mod;
-            suffix = (suffix + (s.charAt(n - i) - 'a') * mul) % mod;
-            if (prefix == suffix) {
-                if (s.substring(0, i).equals(s.substring(s.length() - i))) {
-                    happy = i;
+        StringHash sh = new StringHash(s);
+        int maxLen = 0;
+        // 检查所有可能的前缀后缀对
+        for (int len = 1; len < n; len++) {
+            // 前缀: s[0:len]
+            // 后缀: s[n-len:n]
+            long prefixHash = sh.getHash(0, len);
+            long suffixHash = sh.getHash(n - len, n);
+            if (prefixHash == suffixHash) {
+                // 可选：再次验证防止哈希冲突
+                if (s.substring(0, len).equals(s.substring(n - len))) {
+                    maxLen = len;
                 }
             }
-            mul = mul * base % mod;
         }
-        return s.substring(0, happy);
+        return s.substring(0, maxLen);
+    }
+
+    public String longestPrefix_d_hash(String s) {
+        int n = s.length();
+        DoubleStringHash sh = new DoubleStringHash(s);
+        int maxLen = 0;
+        for (int len = 1; len < n; len++) {
+            long[] prefix = sh.getHash(0, len);
+            long[] suffix = sh.getHash(n - len, n);
+            if (prefix[0] == suffix[0] && prefix[1] == suffix[1]) {
+                maxLen = len;
+            }
+        }
+        return s.substring(0, maxLen);
     }
 }
+

@@ -21,9 +21,9 @@ public class BubbleSort implements Sort {
     }
 
     private void swap(int[] nums, int i, int j) {
-        int temp = nums[j];
+        int t = nums[j];
         nums[j] = nums[i];
-        nums[i] = temp;
+        nums[i] = t;
     }
 }
 

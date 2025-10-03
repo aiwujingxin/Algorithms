@@ -1,96 +1,46 @@
 package knowledge.datastructure.heap;
 
-import java.util.*;
+import knowledge.datastructure.graph.mst.MinSpanningTree;
+import knowledge.datastructure.graph.shortestpath.ShortestPath;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2024/5/2 23:18
+ * @date 2023/12/26 23:16
+ * @description 优先队列 PriorityQueue
+ * <解决问题>
+ * 最（K）小（大）值查找：通过使用最小（大）优先队列，可以快速找到一组元素中的最小（大）值。这在一些排序问题中非常有用，例如找到数组中的最小（大）k个元素。
+ * 任务调度：在任务调度问题中，任务具有不同的优先级和执行时间。通过使用优先队列，可以按照优先级调度任务，确保高优先级的任务先执行。
+ * 图算法：在一些图算法中，如最短路径算法（Dijkstra算法）、最小生成树算法（Prim算法、Kruskal算法）等，优先队列可以用来选择下一个要处理的顶点或边。
+ * 哈夫曼编码：哈夫曼编码是一种用于数据压缩的技术。在哈夫曼编码中，通过使用优先队列来构建最优的编码树，以便实现高效的数据压缩。
+ * 搜索算法：在一些搜索算法中，如A*算法，优先队列可以用来选择下一个要扩展的节点，以便找到最优解。
+ * <排序>
+ * @see knowledge.algorithms.sort.HeapSort
+ * @see knowledge.algorithms.sort.TopK
+ * @see leetcode.problems.LeetCode4
+ * @see leetcode.problems.LeetCode239
+ * @see leetcode.problems.LeetCode373
+ * @see leetcode.problems.LeetCode378
+ * @see leetcode.problems.LeetCode786
+ * @see leetcode.problems.LeetCode355
+ * @see leetcode.problems.LeetCode347
+ * @see leetcode.problems.LeetCode692
+ * <贪心>
+ * @see knowledge.algorithms.greedy.Greedy
+ * <任务调度>
+ * @see leetcode.problems.LeetCode253
+ * <图问题>
+ * @see ShortestPath
+ * @see MinSpanningTree
  */
-public class DualHeap {
+public interface DualHeap<T> {
 
-    // 大根堆，维护较小的一半元素
-    private PriorityQueue<Integer> small;
-    // 小根堆，维护较大的一半元素
-    private PriorityQueue<Integer> large;
-    // 哈希表，记录「延迟删除」的元素，key 为元素，value 为需要删除的次数
-    private Map<Integer, Integer> delayed;
+    void add(T element);
 
-    private int k;
-    // small 和 large 当前包含的元素个数，需要扣除被「延迟删除」的元素
-    private int smallSize, largeSize;
+    void remove(T element);
 
-    public DualHeap(int k) {
-        this.small = new PriorityQueue<>(Comparator.reverseOrder());
-        this.large = new PriorityQueue<>(Comparator.naturalOrder());
-        this.delayed = new HashMap<>();
-        this.k = k;
-        this.smallSize = 0;
-        this.largeSize = 0;
-    }
+    int size();
 
-    public double getMedian() {
-        return (k & 1) == 1 ? small.peek() : ((double) small.peek() + large.peek()) / 2;
-    }
+    boolean isEmpty();
 
-    public void insert(int num) {
-        if (small.isEmpty() || num <= small.peek()) {
-            small.offer(num);
-            ++smallSize;
-        } else {
-            large.offer(num);
-            ++largeSize;
-        }
-        makeBalance();
-    }
-
-    public void erase(int num) {
-        delayed.put(num, delayed.getOrDefault(num, 0) + 1);
-        if (num <= small.peek()) {
-            --smallSize;
-            if (num == small.peek()) {
-                prune(small);
-            }
-        } else {
-            --largeSize;
-            if (num == large.peek()) {
-                prune(large);
-            }
-        }
-        makeBalance();
-    }
-
-    // 不断地弹出 heap 的堆顶元素，并且更新哈希表
-    private void prune(PriorityQueue<Integer> heap) {
-        while (!heap.isEmpty()) {
-            int num = heap.peek();
-            if (delayed.containsKey(num)) {
-                delayed.put(num, delayed.get(num) - 1);
-                if (delayed.get(num) == 0) {
-                    delayed.remove(num);
-                }
-                heap.poll();
-            } else {
-                break;
-            }
-        }
-    }
-
-    // 调整 small 和 large 中的元素个数，使得二者的元素个数满足要求
-    private void makeBalance() {
-        if (smallSize > largeSize + 1) {
-            // small 比 large 元素多 2 个
-            large.offer(small.poll());
-            --smallSize;
-            ++largeSize;
-            // small 堆顶元素被移除，需要进行 prune
-            prune(small);
-        } else if (smallSize < largeSize) {
-            // large 比 small 元素多 1 个
-            small.offer(large.poll());
-            ++smallSize;
-            --largeSize;
-            // large 堆顶元素被移除，需要进行 prune
-            prune(large);
-        }
-    }
+    void clear();
 }

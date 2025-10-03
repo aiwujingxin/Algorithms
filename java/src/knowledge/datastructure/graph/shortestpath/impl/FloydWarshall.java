@@ -2,7 +2,7 @@ package knowledge.datastructure.graph.shortestpath.impl;
 
 import knowledge.datastructure.graph.shortestpath.ShortestPath;
 
-import java.util.*;
+import java.util.Arrays;
 
 /**
  * @author aiwujingxin@gmail.com
@@ -19,13 +19,8 @@ public class FloydWarshall implements ShortestPath {
 
     private int[][] floyd(int n, int[][] edges) {
         int[][] dist = new int[n][n];
-        for (int[] d : dist) {
-            Arrays.fill(d, INF);
-        }
-        // self
-        for (int i = 0; i < n; i++) {
-            dist[i][i] = 0;
-        }
+        for (int[] d : dist) Arrays.fill(d, INF);
+        for (int i = 0; i < n; i++) dist[i][i] = 0;
         for (int[] edge : edges) {
             dist[edge[0]][edge[1]] = edge[2];
         }
@@ -33,9 +28,7 @@ public class FloydWarshall implements ShortestPath {
         for (int k = 0; k < n; k++) { // 枚举每个跳板
             for (int i = 0; i < n; i++) {
                 for (int j = 0; j < n; j++) {
-                    if (dist[i][k] + dist[k][j] < dist[i][j]) {
-                        dist[i][j] = dist[i][k] + dist[k][j];
-                    }
+                    dist[i][j] = Math.min(dist[i][j], dist[i][k] + dist[k][j]);
                 }
             }
         }

@@ -3,14 +3,12 @@ package leetcode.problems;
 /**
  * @author wujingxinit@outlook.com
  * @date 2024/3/6 15:00
+ * @description  DP 可以进行空间压缩
  */
 public class LeetCode2320 {
 
     public int countHousePlacements(int n) {
-        if (n == 1) {
-            return 4;
-        }
-        int mod = 1000000007;
+        int mod = 1_000_000_007;
         long[][] dp = new long[n + 1][2];
         dp[1][0] = 1;
         dp[1][1] = 1;

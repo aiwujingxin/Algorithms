@@ -2,6 +2,8 @@ package knowledge.algorithms.sort;
 
 import leetcode.problems.*;
 
+import java.util.Random;
+
 /**
  * @author wujingxinit@outlook.com
  * @date 2024/1/9 21:08
@@ -22,10 +24,30 @@ public class QuickSelect implements TopK {
 
     public int quickSelect(int[] nums, int lo, int hi, int k) {
         if (lo > hi) return -1;
-        int index = new QuickSort().partition(nums, lo, hi);
+        int index = partition(nums, lo, hi);
         int rank = index + 1;
         if (rank == k) return nums[index];
         if (rank > k) return quickSelect(nums, lo, index - 1, k);
         return quickSelect(nums, index + 1, hi, k);
+    }
+
+    public int partition(int[] nums, int i, int j) {
+        int ri = new Random().nextInt(j - i + 1) + i;
+        swap(nums, i, ri);
+        int pi = nums[i];
+        while (i < j) {
+            while (i < j && nums[j] <= pi) j--;
+            nums[i] = nums[j];
+            while (i < j && nums[i] >= pi) i++;
+            nums[j] = nums[i];
+        }
+        nums[i] = pi;
+        return i;
+    }
+
+    public void swap(int[] nums, int i, int j) {
+        int t = nums[i];
+        nums[i] = nums[j];
+        nums[j] = t;
     }
 }

@@ -7,13 +7,12 @@ package leetcode.problems;
 public class LeetCode1292 {
 
     public int maxSideLength(int[][] mat, int threshold) {
-        //二分查找
         int m = mat.length;
         int n = mat[0].length;
-        int[][] prefix = new int[m + 1][n + 1];
+        int[][] s = new int[m + 1][n + 1];
         for (int i = 1; i <= m; ++i) {
             for (int j = 1; j <= n; ++j) {
-                prefix[i][j] = prefix[i - 1][j] + prefix[i][j - 1] - prefix[i - 1][j - 1] + mat[i - 1][j - 1];
+                s[i][j] = s[i - 1][j] + s[i][j - 1] - s[i - 1][j - 1] + mat[i - 1][j - 1];
             }
         }
 
@@ -23,9 +22,7 @@ public class LeetCode1292 {
             boolean flag = false;
             for (int i = 1; i + mid <= m + 1; ++i) {
                 for (int j = 1; j + mid <= n + 1; ++j) {
-                    int temp =
-                            prefix[i + mid - 1][j + mid - 1] - prefix[i + mid - 1][j - 1] - prefix[i - 1][j + mid - 1]
-                                    + prefix[i - 1][j - 1];
+                    int temp = s[i + mid - 1][j + mid - 1] - s[i + mid - 1][j - 1] - s[i - 1][j + mid - 1] + s[i - 1][j - 1];
                     if (temp <= threshold) {
                         flag = true;
                         break;

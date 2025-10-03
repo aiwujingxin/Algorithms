@@ -14,7 +14,7 @@ import java.util.*;
  */
 public class ACAutomaton {
 
-    private static Node root;
+    public Node root;
 
     public ACAutomaton() {
         root = new Node('\0');
@@ -87,27 +87,16 @@ public class ACAutomaton {
         return sb.toString();
     }
 
-    static class Node {
-        char ch;
-        Node pa;
-        Node fail;
-        Node[] children;
-        boolean isEnd;
+    public static class Node {
+        public char ch;
+        public Node pa;
+        public Node fail;
+        public Node[] children;
+        public boolean isEnd;
 
         Node(char ch) {
             this.ch = ch;
             this.children = new Node[26];
         }
-    }
-
-    public static void main(String[] args) {
-        ACAutomaton acAutomaton = new ACAutomaton();
-        String[] strs = new String[]{"e", "he", "her", "she", "shr", "son"};
-        for (String s : strs) {
-            acAutomaton.insert(s);
-        }
-        acAutomaton.build();
-        String text2 = "yasherhshe";
-        System.out.println("在文本 '" + text2 + "' 中找到的匹配:" + acAutomaton.query(text2));
     }
 }

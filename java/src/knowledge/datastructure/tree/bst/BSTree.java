@@ -5,6 +5,7 @@ import common.TreeNode;
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/1/4 15:49
+ * @description 二叉搜索树
  * @see leetcode.problems.LeetCode98 检查一个树是否是二叉搜索树
  * @see leetcode.problems.LeetCode99 根据递增排序的序列生成二权搜索树
  * @see leetcode.problems.LeetCode701 插入

@@ -13,20 +13,20 @@ public class LeetCode29 {
         if (a == Integer.MIN_VALUE && b == -1) {
             return Integer.MAX_VALUE;
         }
-        boolean sign = (a > 0) ^ (b > 0);
-        int res = 0;
+        boolean s = (a > 0) ^ (b > 0);
+        int r = 0;
         if (a > 0) a = -a;
         if (b > 0) b = -b;
         while (a <= b) {
             int t = b;
-            int cnt = 1;
+            int c = 1;
             while (a - t <= t) {
                 t <<= 1;
-                cnt <<= 1;
+                c <<= 1;
             }
-            a -= cnt * b;
-            res += cnt;
+            a -= c * b;
+            r += c;
         }
-        return sign ? -res : res;
+        return s ? -r : r;
     }
 }

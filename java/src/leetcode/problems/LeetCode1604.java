@@ -9,33 +9,23 @@ import java.util.*;
 public class LeetCode1604 {
 
     public List<String> alertNames(String[] keyName, String[] keyTime) {
-        int n = keyName.length;
-        HashMap<String, List<Integer>> map = new HashMap<>();
-        for (int i = 0; i < n; i++) {
-            List<Integer> times = map.getOrDefault(keyName[i], new ArrayList<>());
-            times.add(getTime(keyTime[i]));
-            map.put(keyName[i], times);
+        Map<String, List<Integer>> map = new HashMap<>();
+        for (int i = 0; i < keyName.length; i++) {
+            map.computeIfAbsent(keyName[i], k -> new ArrayList<>()).add(getTime(keyTime[i]));
         }
         List<String> names = new ArrayList<>();
-
         for (Map.Entry<String, List<Integer>> entry : map.entrySet()) {
             List<Integer> times = entry.getValue();
-            times.sort(Comparator.comparingInt(o -> o));
+            Collections.sort(times);
             for (int i = 2; i < times.size(); i++) {
-                if (times.get(i) - times.get(i - 2) <= 3600 && times.get(i) - times.get(i - 2) >= 0) {
+                if (times.get(i) - times.get(i - 2) <= 3600) {
                     names.add(entry.getKey());
                     break;
                 }
             }
         }
-        names.sort((o1, o2) -> {
-            if (o1.length() == o2.length()) {
-                return o1.compareTo(o2);
-            }
-            return o1.length() - o2.length();
-        });
+        Collections.sort(names);
         return names;
-
     }
 
     private Integer getTime(String s) {

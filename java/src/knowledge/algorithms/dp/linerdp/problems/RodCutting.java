@@ -9,35 +9,27 @@ import java.util.Arrays;
 public class RodCutting {
 
     public static void cutRod(int[] prices, int n) {
-        int[] dp = new int[n + 1];      // 存储最大价值
-        int[] cutPos = new int[n + 1];  // 记录最优切割点
-
-        dp[0] = 0;  // 长度为0的钢条价值为0
-
-        // 自底向上计算
+        int[] f = new int[n + 1];  // 存储最大价值
+        int[] g = new int[n + 1];  // 记录最优切割点
+        f[0] = 0;                  // 长度为0的钢条价值为0
         for (int j = 1; j <= n; j++) {
             int maxVal = Integer.MIN_VALUE;
             for (int i = 1; i <= j; i++) {
-                if (prices[i - 1] + dp[j - i] > maxVal) {
-                    maxVal = prices[i - 1] + dp[j - i];
-                    cutPos[j] = i;  // 记录长度为j时的最优第一刀
+                if (prices[i - 1] + f[j - i] > maxVal) {
+                    maxVal = prices[i - 1] + f[j - i];
+                    g[j] = i;
                 }
             }
-            dp[j] = maxVal;
+            f[j] = maxVal;
         }
-
-        // 输出结果
-        System.out.println("最大价值: " + dp[n]);
+        System.out.println("最大价值: " + f[n]);
         System.out.print("切割方案: ");
-
-        // 通过cutPos数组重构切割方案
         int remaining = n;
         while (remaining > 0) {
-            System.out.print(cutPos[remaining] + " ");
-            remaining -= cutPos[remaining];
+            System.out.print(g[remaining] + " ");
+            remaining -= g[remaining];
         }
     }
-
 
     public int cutRodMemo(int[] prices, int n) {
         int[] memo = new int[n + 1];
@@ -48,7 +40,6 @@ public class RodCutting {
     private int dfs(int[] prices, int n, int[] memo) {
         if (memo[n] >= 0) return memo[n];
         if (n == 0) return 0;
-
         int maxVal = Integer.MIN_VALUE;
         for (int i = 1; i <= n; i++) {
             maxVal = Math.max(maxVal, prices[i - 1] + dfs(prices, n - i, memo));

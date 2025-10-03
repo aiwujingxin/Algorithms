@@ -1,9 +1,6 @@
 package knowledge.algorithms.dp.linerdp;
 
-import leetcode.problems.LeetCode120;
-import leetcode.problems.LeetCode62;
-import leetcode.problems.LeetCode63;
-import leetcode.problems.LeetCode64;
+import leetcode.problems.*;
 
 /**
  * @author wujingxinit@outlook.com
@@ -13,6 +10,9 @@ import leetcode.problems.LeetCode64;
  * @see LeetCode62    不同路径
  * @see LeetCode63    不同路径II
  * @see LeetCode64    最小路径和
+ * @see LeetCode1289  下降路径最小和 II
+ * @see LeetCode2304  网格中的最小路径代价
+ * @see LeetCode1277  统计全为 1 的正方形子矩阵
  */
 public interface MatrixPath {
 }

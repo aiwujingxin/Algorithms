@@ -22,13 +22,13 @@ public class LeetCode93 {
             }
             return;
         }
-        for (int l = 1; l <= 3 && i + l <= s.length(); l++) {
-            String seg = s.substring(i, i + l);
+        for (int len = 1; len <= 3 && i + len <= s.length(); len++) {
+            String seg = s.substring(i, i + len);
             if (seg.length() > 1 && seg.startsWith("0") || Integer.parseInt(seg) > 255) {
                 continue;
             }
             list.add(seg);
-            backtrack(s, i + l, list, res);
+            backtrack(s, i + len, list, res);
             list.remove(list.size() - 1);
         }
     }

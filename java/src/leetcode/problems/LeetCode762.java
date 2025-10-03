@@ -1,6 +1,6 @@
 package leetcode.problems;
 
-import knowledge.mathematics.impl.Prime;
+import knowledge.mathematics.MathUtil;
 
 /**
  * @author wujingxinit@outlook.com
@@ -11,7 +11,7 @@ public class LeetCode762 {
     public int countPrimeSetBits(int left, int right) {
         int ans = 0;
         for (int i = left; i <= right; ++i) {
-            if (Prime.isPrime(hammingWeight(i))) {
+            if (MathUtil.isPrime(hammingWeight(i))) {
                 ans++;
             }
         }

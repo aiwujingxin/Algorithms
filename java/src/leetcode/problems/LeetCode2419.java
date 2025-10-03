@@ -13,9 +13,8 @@ public class LeetCode2419 {
         }
         int maxLength = 0;
         int currLength = 0;
-        int n = nums.length;
-        for (int i = 0; i < n; i++) {
-            if (nums[i] == maxVal) {
+        for (int num : nums) {
+            if (num == maxVal) {
                 currLength++;
                 maxLength = Math.max(maxLength, currLength);
             } else {

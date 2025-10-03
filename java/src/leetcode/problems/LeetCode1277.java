@@ -7,9 +7,6 @@ package leetcode.problems;
 public class LeetCode1277 {
 
     public int countSquares(int[][] matrix) {
-        if (matrix == null || matrix.length == 0) {
-            return 0;
-        }
         int m = matrix.length;
         int n = matrix[0].length;
         int cnt = 0;

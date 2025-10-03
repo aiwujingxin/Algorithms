@@ -11,16 +11,14 @@ public class LeetCode455 {
     public int findContentChildren(int[] g, int[] s) {
         Arrays.sort(g);
         Arrays.sort(s);
-        int m = g.length, n = s.length;
-        int count = 0;
-        for (int i = 0, j = 0; i < m && j < n; i++, j++) {
-            while (j < n && g[i] > s[j]) {
-                j++;
+        int i = 0, j = 0, res = 0;
+        while (i < g.length && j < s.length) {
+            if (s[j] >= g[i]) {
+                res++;
+                i++;
             }
-            if (j < n) {
-                count++;
-            }
+            j++;
         }
-        return count;
+        return res;
     }
 }

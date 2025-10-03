@@ -8,22 +8,18 @@ import knowledge.datastructure.adv.UnionFind;
  */
 public class LeetCode990 {
     public boolean equationsPossible(String[] equations) {
-        // 26 个英文字母
         UnionFind uf = new UnionFind(26);
-        // 先让相等的字母形成连通分量
-        for (String eq : equations) {
-            if (eq.charAt(1) == '=') {
-                char x = eq.charAt(0);
-                char y = eq.charAt(3);
+        for (String e : equations) {
+            if (e.charAt(1) == '=') {
+                char x = e.charAt(0);
+                char y = e.charAt(3);
                 uf.union(x - 'a', y - 'a');
             }
         }
-        // 检查不等关系是否打破相等关系的连通性
-        for (String eq : equations) {
-            if (eq.charAt(1) == '!') {
-                char x = eq.charAt(0);
-                char y = eq.charAt(3);
-                // 如果相等关系成立，就是逻辑冲突
+        for (String e : equations) {
+            if (e.charAt(1) == '!') {
+                char x = e.charAt(0);
+                char y = e.charAt(3);
                 if (uf.isConnected(x - 'a', y - 'a'))
                     return false;
             }

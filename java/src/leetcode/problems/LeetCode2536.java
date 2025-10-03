@@ -11,7 +11,7 @@ public class LeetCode2536 {
 
     public int[][] rangeAddQueries(int n, int[][] queries) {
         int[][] nums = new int[n][n];
-        PreDiff.PreDiff_2D diff = new PreDiff.PreDiff_2D(nums);
+        PreDiff.PreDiff2D diff = new PreDiff.PreDiff2D(nums);
         for (int[] q : queries) {
             diff.update(q[0], q[1], q[2], q[3], 1);
         }

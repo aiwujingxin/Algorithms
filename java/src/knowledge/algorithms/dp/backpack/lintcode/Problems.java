@@ -1,5 +1,7 @@
 package knowledge.algorithms.dp.backpack.lintcode;
 
+import knowledge.algorithms.dp.backpack.lintcode.problems.*;
+
 /**
  * @author wujingxinit@outlook.com
  * @date 2024/2/28 17:49

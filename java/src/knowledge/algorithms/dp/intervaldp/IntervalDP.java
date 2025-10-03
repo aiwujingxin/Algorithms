@@ -1,7 +1,10 @@
 package knowledge.algorithms.dp.intervaldp;
 
-import knowledge.algorithms.dp.intervaldp.problems.*;
-import leetcode.lists.lcci.*;
+import knowledge.algorithms.dp.intervaldp.problems.AcWing282;
+import knowledge.algorithms.dp.intervaldp.problems.AcWing283;
+import knowledge.algorithms.dp.intervaldp.problems.MatrixChain;
+import knowledge.algorithms.dp.intervaldp.problems.ValidParentheses;
+import leetcode.lists.lcci.LCCI0814;
 import leetcode.problems.*;
 
 import java.util.Arrays;

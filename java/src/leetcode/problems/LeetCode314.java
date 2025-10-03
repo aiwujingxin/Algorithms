@@ -11,14 +11,10 @@ import java.util.*;
 public class LeetCode314 {
 
     public List<List<Integer>> verticalOrder(TreeNode root) {
-        if (root == null) {
-            return new ArrayList<>();
-        }
         Queue<STreeNode> queue = new LinkedList<>();
         Map<Integer, List<STreeNode>> map = new TreeMap<>();
         STreeNode sroot = new STreeNode(root, 0, 0);
         queue.add(sroot);
-
         List<STreeNode> list = map.getOrDefault(sroot.row, new ArrayList<>());
         list.add(sroot);
         map.put(sroot.row, list);
@@ -27,16 +23,12 @@ public class LeetCode314 {
             if (node.node.left != null) {
                 STreeNode left = new STreeNode(node.node.left, node.row + 1, node.col - 1);
                 queue.add(left);
-                List<STreeNode> _list = map.getOrDefault(left.col, new ArrayList<>());
-                _list.add(left);
-                map.put(left.col, _list);
+                map.computeIfAbsent(left.col, k -> new ArrayList<>()).add(left);
             }
             if (node.node.right != null) {
                 STreeNode right = new STreeNode(node.node.right, node.row + 1, node.col + 1);
                 queue.add(right);
-                List<STreeNode> _list = map.getOrDefault(right.col, new ArrayList<>());
-                _list.add(right);
-                map.put(right.col, _list);
+                map.computeIfAbsent(right.col, k -> new ArrayList<>()).add(right);
             }
         }
         List<List<Integer>> lists = new ArrayList<>();

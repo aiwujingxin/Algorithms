@@ -7,14 +7,9 @@ package leetcode.problems;
 public class LeetCode693 {
 
     public boolean hasAlternatingBits(int n) {
-        int t = n & 1;
-        n >>= 1;
-        while (n > 0) {
-            if ((t ^ (n & 1)) == 0) {
+        for (int i = 1; i < Integer.SIZE - Integer.numberOfLeadingZeros(n); i++) {
+            if (((n >> i & 1) ^ (n >> (i - 1) & 1)) == 0)
                 return false;
-            }
-            t = n & 1;
-            n >>= 1;
         }
         return true;
     }

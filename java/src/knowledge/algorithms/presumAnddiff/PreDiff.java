@@ -7,93 +7,68 @@ import leetcode.problems.*;
  * @date 2024/1/23 15:52
  * @description 差分数组 差分数组的前缀和就是原数组
  * <一维>
- * @see LeetCode370  区间加法
- * @see LeetCode1094 拼车
- * @see LeetCode1109 航班预订统计
- * @see LeetCode798  得分最高的最小轮调
- * @see LeetCode995  K 连续位的最小翻转次数
+ * @see LeetCode370   区间加法
+ * @see LeetCode1094  拼车
+ * @see LeetCode1109  航班预订统计
+ * @see LeetCode798   得分最高的最小轮调
+ * @see LeetCode995   K 连续位的最小翻转次数
+ * @see LeetCode3355  零数组变换 I
  * <二维>
  * @see LeetCode2536
  * @see LeetCode2132
  */
 public interface PreDiff {
 
-    class PreDiff_1D {
+    class PreDiff1D {
+        int[] d;
 
-        int[] diff;
-
-        public PreDiff_1D(int[] nums) {
-            diff = nums.clone();
-            for (int i = nums.length - 1; i > 0; i--) {
-                diff[i] -= nums[i - 1];
-            }
+        PreDiff1D(int[] a) {
+            d = a.clone();
+            for (int i = 1; i < a.length; i++) d[i] -= a[i - 1];
         }
 
-        public void update(int i, int j, int val) {
-            diff[i] += val;
-            if (j + 1 < diff.length) diff[j + 1] -= val;
+        void update(int l, int r, int v) {
+            d[l] += v;
+            if (r + 1 < d.length) d[r + 1] -= v;
         }
 
-        public int[] result() {
-            for (int i = 1; i < diff.length; i++) {
-                diff[i] += diff[i - 1];
-            }
-            return diff;
+        int[] result() {
+            for (int i = 1; i < d.length; i++) d[i] += d[i - 1];
+            return d;
         }
     }
 
 
-    class PreDiff_2D {
-        final int[][] diff;
-        int m;
-        int n;
+    class PreDiff2D {
+        int[][] d;
+        int m, n;
 
-        public PreDiff_2D(int[][] nums) {
-            m = nums.length;
-            n = nums[0].length;
-            diff = new int[m][n];
-            diff[0][0] = nums[0][0];
-            for (int i = 1; i < m; i++) {
-                diff[i][0] = nums[i][0] - nums[i - 1][0];
-            }
-            for (int i = 1; i < n; i++) {
-                diff[0][i] = nums[0][i] - nums[0][i - 1];
-            }
-            for (int i = 1; i < m; i++) {
-                for (int j = 1; j < n; j++) {
-                    diff[i][j] = nums[i][j] - nums[i - 1][j] - nums[i][j - 1] + nums[i - 1][j - 1];
-                }
-            }
+        public PreDiff2D(int[][] a) {
+            m = a.length;
+            n = a[0].length;
+            d = new int[m + 1][n + 1]; // 差分数组
+            for (int i = 0; i < m; i++)
+                for (int j = 0; j < n; j++)
+                    update(i, j, i, j, a[i][j]); // 初始化差分
         }
 
-        public void update(int r1, int c1, int r2, int c2, int k) {
-            diff[r1][c1] += k;
-            if (c2 + 1 < n) {
-                diff[r1][c2 + 1] -= k;
-            }
-            if (r2 + 1 < m) {
-                diff[r2 + 1][c1] -= k;
-            }
-            if (r2 + 1 < m && c2 + 1 < n) {
-                diff[r2 + 1][c2 + 1] += k;
-            }
+        public void update(int x1, int y1, int x2, int y2, int v) {
+            d[x1][y1] += v;
+            d[x2 + 1][y1] -= v;
+            d[x1][y2 + 1] -= v;
+            d[x2 + 1][y2 + 1] += v;
         }
 
         public int[][] result() {
-            int[][] ans = new int[m][n];
-            ans[0][0] = diff[0][0];
-            for (int i = 1; i < m; i++) {
-                ans[i][0] += ans[i - 1][0] + diff[i][0];
-            }
-            for (int i = 1; i < n; i++) {
-                ans[0][i] += ans[0][i - 1] + diff[0][i];
-            }
-            for (int i = 1; i < m; i++) {
-                for (int j = 1; j < n; j++) {
-                    ans[i][j] = ans[i][j] + ans[i][j - 1] + ans[i - 1][j] - ans[i - 1][j - 1] + diff[i][j];
+            int[][] res = new int[m][n];
+            for (int i = 0; i < m; i++)
+                for (int j = 0; j < n; j++) {
+                    if (i > 0) d[i][j] += d[i - 1][j];
+                    if (j > 0) d[i][j] += d[i][j - 1];
+                    if (i > 0 && j > 0) d[i][j] -= d[i - 1][j - 1];
+                    res[i][j] = d[i][j];
                 }
-            }
-            return ans;
+            return res;
         }
     }
 }

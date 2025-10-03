@@ -1,7 +1,7 @@
 package knowledge.algorithms.dp.backpack.multiple;
 
-import knowledge.algorithms.dp.backpack.lintcode.BackpackVII;
-import knowledge.algorithms.dp.backpack.lintcode.BackpackVIII;
+import knowledge.algorithms.dp.backpack.lintcode.problems.BackpackVII;
+import knowledge.algorithms.dp.backpack.lintcode.problems.BackpackVIII;
 
 /**
  * @author wujingxinit@outlook.com

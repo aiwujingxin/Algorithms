@@ -2,7 +2,10 @@ package knowledge.datastructure.graph.bipartite.impl;
 
 import knowledge.datastructure.graph.bipartite.BipartiteGraph;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Queue;
 
 /**
  * @author wujingxinit@outlook.com
@@ -26,10 +29,8 @@ public class BipartiteGraph_bfs implements BipartiteGraph {
         }
         this.colors = new int[n];
         for (int i = 0; i < n; i++) {
-            if (colors[i] == 0) {
-                if (!bfs(i)) {
-                    return false;
-                }
+            if (colors[i] == 0 && !bfs(i)) {
+                return false;
             }
         }
         return true;
@@ -38,12 +39,12 @@ public class BipartiteGraph_bfs implements BipartiteGraph {
     private boolean bfs(int s) {
         Queue<Integer> q = new LinkedList<>();
         q.add(s);
-        colors[s] = 0;
+        colors[s] = 1;
         while (!q.isEmpty()) {
             int u = q.poll();
             for (int v : graph[u]) {
                 if (colors[v] == 0) {
-                    colors[v] = 3 - colors[u];
+                    colors[v] = -colors[u];
                     q.add(v);
                 } else if (colors[v] == colors[u]) {
                     return false;

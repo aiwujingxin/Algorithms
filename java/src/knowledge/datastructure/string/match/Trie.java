@@ -6,6 +6,12 @@ package knowledge.datastructure.string.match;
  */
 public class Trie {
 
+    public static class Node {
+        public Node[] children = new Node[26];
+        public boolean isEnd = false;
+        public int cnt;
+    }
+
     public Node root;
 
     public Trie() {
@@ -21,6 +27,7 @@ public class Trie {
             node = node.children[c - 'a'];
         }
         node.isEnd = true;
+        node.cnt++;
     }
 
     public boolean search(String word) {
@@ -43,11 +50,6 @@ public class Trie {
             node = node.children[c - 'a'];
         }
         return true;
-    }
-
-    public static class Node {
-        public Node[] children = new Node[26];
-        public boolean isEnd = false;
     }
 
     public String findRoot(String word) {
@@ -83,5 +85,42 @@ public class Trie {
             }
         }
         return false;
+    }
+
+    public int contains(String s, int left, int right) {
+        Node cur = root;
+        int index;
+        for (index = left; index <= right; index++) {
+            if (cur.children[s.charAt(index) - 'a'] == null) {
+                return -1;
+            }
+            cur = cur.children[s.charAt(index) - 'a'];
+            if (cur.isEnd) {
+                return index;
+            }
+        }
+        return -1;
+    }
+
+    int cnt;
+
+    public int searchSubSeq(String word) {
+        dfs(word, 0, root);
+        return cnt;
+    }
+
+    public void dfs(String word, int index, Node node) {
+        if (node.cnt > 0) {
+            cnt += node.cnt;
+        }
+        for (int i = 0; i < node.children.length; i++) {
+            Node next = node.children[i];
+            if (next != null) {
+                int indexOf = word.indexOf(i + 'a', index);
+                if (indexOf != -1) {
+                    dfs(word, indexOf + 1, next);
+                }
+            }
+        }
     }
 }

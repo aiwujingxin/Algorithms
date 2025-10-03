@@ -13,41 +13,38 @@ public class LeetCode767 {
         for (char ch : S.toCharArray()) {
             count.put(ch, count.getOrDefault(ch, 0) + 1);
         }
-        PriorityQueue<Node> pq = new PriorityQueue<>(
-                (a, b) -> b.num - a.num
-        );
+        PriorityQueue<Node> pq = new PriorityQueue<>((a, b) -> b.num - a.num);
         for (Map.Entry<Character, Integer> entry : count.entrySet()) {
             pq.add(new Node(entry.getKey(), entry.getValue()));
         }
-        StringBuilder result = new StringBuilder();
-        while (!pq.isEmpty()) {
-            int k = Math.min(2, pq.size());
-            List<Node> temp = new ArrayList<>();
-            for (int i = 0; i < k; i++) {
-                Node entry = pq.poll();
-                char ch = entry.c;
-                int num = entry.num;
-                result.append(ch);
-                num--;
-                if (num != 0) {
-                    temp.add(new Node(ch, num));
-                }
-            }
-            if (k < 2 && !temp.isEmpty()) {
+        StringBuilder sb = new StringBuilder();
+        while (pq.size() > 1) {
+            Node first = pq.poll();
+            Node second = pq.poll();
+            sb.append(first.c);
+            sb.append(second.c);
+            if (--first.num > 0) pq.add(first);
+            if (--second.num > 0) pq.add(second);
+        }
+        // 处理剩下的一个字符
+        if (!pq.isEmpty()) {
+            Node last = pq.poll();
+            if (last.num > 1) {
                 return "";
             }
-            pq.addAll(temp);
+            sb.append(last.c);
         }
-        return result.toString();
+        return sb.toString();
     }
 
     static class Node {
         char c;
         int num;
 
-        public Node(char c, int num) {
+        Node(char c, int num) {
             this.c = c;
             this.num = num;
         }
     }
+
 }

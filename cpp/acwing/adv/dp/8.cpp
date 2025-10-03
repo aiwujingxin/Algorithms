@@ -14,6 +14,6 @@ signed main () {
     for (int i = 1; i <= n; i ++)
         for (int j = V; j >= v[i]; j --)
             for (int k = M; k >= m[i]; k --)
-                f[j][k] = max (f[j - v[i]][k - m[i]] + w[i], f[j][k]);//动态转移方程，01 背包的思路
+                f[j][k] = max (f[j][k], f[j - v[i]][k - m[i]] + w[i]);//动态转移方程，01 背包的思路
     cout << f[V][M];
 }

@@ -14,9 +14,9 @@ public class LCP68 {
         int right = 0;
         int ans = 0;
         while (right < flowers.length) {
-            map.put(flowers[right], map.getOrDefault(flowers[right], 0) + 1);
+            map.merge(flowers[right], 1, Integer::sum);
             while (map.get(flowers[right]) > cnt) {
-                map.put(flowers[left], map.get(flowers[left]) - 1);
+                map.merge(flowers[left], -1, Integer::sum);
                 left++;
             }
             ans += right - left + 1;

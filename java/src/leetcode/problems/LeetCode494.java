@@ -1,9 +1,11 @@
 package leetcode.problems;
 
+import knowledge.algorithms.dp.backpack.lintcode.problems.BackpackV;
+
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/12/6 13:50
- * @see knowledge.algorithms.dp.backpack.lintcode.BackpackV
+ * @see BackpackV
  */
 public class LeetCode494 {
 

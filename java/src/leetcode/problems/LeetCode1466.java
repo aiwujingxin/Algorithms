@@ -1,8 +1,6 @@
 package leetcode.problems;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
+import java.util.*;
 
 /**
  * @author aiwujingxin@gmail.com
@@ -10,40 +8,28 @@ import java.util.List;
  */
 public class LeetCode1466 {
 
-    List<Integer>[] incoming, outgoing;
-    HashSet<Integer> visited;
-    int ans;
-
     public int minReorder(int n, int[][] connections) {
-        ans = 0;
-        incoming = new ArrayList[n];
-        outgoing = new ArrayList[n];
+        List<int[]>[] graph = new List[n];
         for (int i = 0; i < n; i++) {
-            incoming[i] = new ArrayList();
-            outgoing[i] = new ArrayList();
+            graph[i] = new ArrayList<>();
         }
-        for (int[] edge : connections) {
-            incoming[edge[1]].add(edge[0]);
-            outgoing[edge[0]].add(edge[1]);
+        for (int[] conn : connections) {
+            int u = conn[0], v = conn[1];
+            graph[u].add(new int[]{v, 1}); // 1 表示原始方向
+            graph[v].add(new int[]{u, 0}); // 0 表示反向
         }
-        visited = new HashSet<>();
-        dfs(0);
-        return ans;
+        boolean[] visited = new boolean[n];
+        return dfs(graph, 0, visited);
     }
 
-    void dfs(int v) {
-        visited.add(v);
-        for (int i : outgoing[v]) {
-            if (!visited.contains(i)) {
-                ans++;
-                dfs(i);
-            }
+    private int dfs(List<int[]>[] graph, int u, boolean[] visited) {
+        visited[u] = true;
+        int count = 0;
+        for (int[] v : graph[u]) {
+            if (visited[v[0]]) continue;
+            // 如果是从当前节点指向邻居节点的原始方向边，需要反转
+            count += v[1] + dfs(graph, v[0], visited);
         }
-
-        for (int i : incoming[v]) {
-            if (!visited.contains(i)) {
-                dfs(i);
-            }
-        }
+        return count;
     }
 }

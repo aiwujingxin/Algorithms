@@ -10,9 +10,6 @@ import java.util.List;
 public class LeetCode763 {
 
     public List<Integer> partitionLabels(String s) {
-        if (s == null || s.isEmpty()) {
-            return new ArrayList<>();
-        }
         int[] freq = new int[26];
         for (int i = 0; i < s.length(); i++) {
             freq[s.charAt(i) - 'a']++;

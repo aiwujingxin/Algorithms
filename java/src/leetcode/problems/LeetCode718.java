@@ -27,7 +27,7 @@ public class LeetCode718 {
         return max;
     }
 
-    int mod = 1000000009;
+    int mod = 1_000_000_007;
     int base = 113;
 
     public int findLength_RabinKarp(int[] A, int[] B) {
@@ -50,7 +50,7 @@ public class LeetCode718 {
         }
         Set<Long> set = new HashSet<>();
         set.add(hashA);
-        long mul = qPow(base, len - 1);
+        long mul = pow(base, len - 1);
         for (int i = len; i < A.length; i++) {
             hashA = ((hashA - A[i - len] * mul % mod + mod) % mod * base + A[i]) % mod;
             set.add(hashA);
@@ -72,15 +72,15 @@ public class LeetCode718 {
     }
 
     // 使用快速幂计算 x^n % mod 的值
-    public long qPow(long x, long n) {
-        long ret = 1;
+    public long pow(long x, long n) {
+        long r = 1;
         while (n != 0) {
             if ((n & 1) != 0) {
-                ret = ret * x % mod;
+                r = r * x % mod;
             }
             x = x * x % mod;
             n >>= 1;
         }
-        return ret;
+        return r;
     }
 }

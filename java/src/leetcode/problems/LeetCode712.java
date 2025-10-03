@@ -16,13 +16,11 @@ public class LeetCode712 {
             dp[0][j] = dp[0][j - 1] + s2.codePointAt(j - 1);
         }
         for (int i = 1; i <= m; i++) {
-            int code1 = s1.codePointAt(i - 1);
             for (int j = 1; j <= n; j++) {
-                int code2 = s2.codePointAt(j - 1);
-                if (code1 == code2) {
+                if (s1.charAt(i - 1) == s2.charAt(j - 1)) {
                     dp[i][j] = dp[i - 1][j - 1];
                 } else {
-                    dp[i][j] = Math.min(dp[i - 1][j] + code1, dp[i][j - 1] + code2);
+                    dp[i][j] = Math.min(dp[i - 1][j] + s1.codePointAt(i - 1), dp[i][j - 1] + s2.codePointAt(j - 1));
                 }
             }
         }

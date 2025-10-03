@@ -15,13 +15,9 @@ public class LeetCode1020 {
         for (int i = 0; i < m; i++) {
             for (int j = 0; j < n; j++) {
                 if ((i == 0 || j == 0 || i == m - 1 || j == n - 1) && grid[i][j] == 1) {
-                    System.out.println("i " + i + " j " + j);
                     dfs(grid, i, 0, 2);
                 }
             }
-        }
-        for (int[] g : grid) {
-            System.out.println(Arrays.toString(g));
         }
         int cnt = 0;
         for (int i = 0; i < m; i++) {

@@ -1,5 +1,7 @@
 package leetcode.problems;
 
+import java.util.Arrays;
+
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/7/18 22:38
@@ -10,9 +12,7 @@ public class LeetCode1289 {
         int n = grid.length;
         int[][] d = new int[n][n];
         for (int i = 0; i < n; i++) {
-            for (int j = 0; j < n; j++) {
-                d[i][j] = Integer.MAX_VALUE;
-            }
+            Arrays.fill(d[i], Integer.MAX_VALUE);
         }
         for (int i = 0; i < n; i++) {
             d[0][i] = grid[0][i];

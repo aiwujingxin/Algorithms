@@ -15,12 +15,8 @@ public class LeetCode44 {
         boolean[][] dp = new boolean[m + 1][n + 1];
         dp[0][0] = true;
         // 初始化 p 为空串匹配 s 的情况（只可能是连续的 '*'）
-        for (int j = 1; j <= n; j++) {
-            if (p[j - 1] == '*') {
-                dp[0][j] = dp[0][j - 1];
-            } else {
-                break;
-            }
+        for (int j = 1; j <= n && p[j - 1] == '*'; j++) {
+            dp[0][j] = true;
         }
         for (int i = 1; i <= m; i++) {
             for (int j = 1; j <= n; j++) {

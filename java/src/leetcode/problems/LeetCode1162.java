@@ -10,14 +10,9 @@ import java.util.Queue;
  */
 public class LeetCode1162 {
 
-    //https://leetcode.com/problems/as-far-from-land-as-possible/discuss/360996/A-very-typical-O(v)-BFS-JAVA-17-ms-faster-than-100.00
     int[][] directions = new int[][]{{-1, 0}, {1, 0}, {0, -1}, {0, 1}};
 
     public int maxDistance(int[][] grid) {
-        if (grid == null || grid.length == 0 || grid[0].length == 0) {
-            return -1;
-        }
-
         boolean[][] visited = new boolean[grid.length][grid[0].length];
         Queue<int[]> queue = new ArrayDeque<>();
         for (int i = 0; i < grid.length; i++) {

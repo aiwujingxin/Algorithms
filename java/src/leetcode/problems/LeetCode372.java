@@ -9,8 +9,8 @@ public class LeetCode372 {
     public int superPow(int a, int[] b) {
         a %= 1337;
         int res = 1;
-        for (int i = 0; i < b.length; i++) {
-            res = myPow(res, 10) * myPow(a, b[i]) % 1337;
+        for (int j : b) {
+            res = myPow(res, 10) * myPow(a, j) % 1337;
         }
         return res;
     }

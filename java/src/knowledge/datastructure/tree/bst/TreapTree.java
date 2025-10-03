@@ -1,6 +1,7 @@
 package knowledge.datastructure.tree.bst;
 
-import leetcode.problems.*;
+import leetcode.problems.LeetCode327_treap;
+import leetcode.problems.LeetCode480_treap;
 
 import java.util.Random;
 
@@ -10,16 +11,21 @@ import java.util.Random;
  * @description 平衡二叉搜索树 Treap树
  * @see LeetCode480_treap
  * @see LeetCode327_treap
+ * Treap 是一种随机化的二叉搜索树，通过为每个节点分配一个随机的优先级，
+ * 在维持二叉搜索树性质的同时，使得树结构在期望上保持平衡。
+ * - BST 性质: 对于任意节点，其左子树所有节点的值 < 该节点的值 < 其右子树所有节点的值。
+ * - Heap 性质: 对于任意节点，其优先级 > 其子节点的优先级 (这是一个最大堆)。
  */
-
 public class TreapTree {
-
     private static final long INF = 0x3f3f3f3f3f3f3f3fL;
     private static final Random random = new Random();
     private Node root = null;
 
     private static class Node {
-        long key, priority, cnt, size;
+        long key;      // 节点的值 (BST性质)
+        long priority; // 随机优先级 (Heap性质)
+        long cnt;      // 相同键值的节点数量
+        long size;     // 以该节点为根的子树的大小 (包括重复节点)
         Node left, right;
 
         Node(long key) {
@@ -37,60 +43,34 @@ public class TreapTree {
         root = remove(root, key);
     }
 
-    public long lowerBound(long key) {
-        Node node = root;
-        long res = Long.MAX_VALUE;
-        while (node != null) {
-            if (node.key >= key) {
-                res = node.key;
-                node = node.left;
+    public Node search(long key) {
+        Node current = root;
+        while (current != null) {
+            if (key < current.key) {
+                current = current.left;
+            } else if (key > current.key) {
+                current = current.right;
             } else {
-                node = node.right;
+                return current;
             }
         }
-        return res;
-    }
-
-    public long upperBound(long key) {
-        Node node = root;
-        long res = Long.MAX_VALUE;
-        while (node != null) {
-            if (node.key > key) {
-                res = node.key;
-                node = node.left;
-            } else {
-                node = node.right;
-            }
-        }
-        return res;
+        return null;
     }
 
     public long getPre(long key) {
-        Node node = root;
-        long res = -INF;
-        while (node != null) {
-            if (node.key < key) {
-                res = node.key;
-                node = node.right;
-            } else {
-                node = node.left;
-            }
-        }
-        return res;
+        return findPredecessor(key, false);
+    }
+
+    public long getPreOrEq(long key) {
+        return findPredecessor(key, true);
     }
 
     public long getNext(long key) {
-        Node node = root;
-        long res = INF;
-        while (node != null) {
-            if (node.key > key) {
-                res = node.key;
-                node = node.left;
-            } else {
-                node = node.right;
-            }
-        }
-        return res;
+        return findSuccessor(key, false);
+    }
+
+    public long getNextOrEq(long key) {
+        return findSuccessor(key, true);
     }
 
     public long getSize() {
@@ -106,6 +86,33 @@ public class TreapTree {
     }
 
     // ================= 内部方法 =================
+    private long findPredecessor(long key, boolean allowEqual) {
+        Node node = root;
+        long result = Long.MIN_VALUE;
+        while (node != null) {
+            if (allowEqual ? (node.key <= key) : node.key < key) {
+                result = node.key;
+                node = node.right;
+            } else {
+                node = node.left;
+            }
+        }
+        return result;
+    }
+
+    private long findSuccessor(long key, boolean allowEqual) {
+        Node node = root;
+        long result = Long.MAX_VALUE;
+        while (node != null) {
+            if (allowEqual ? (node.key >= key) : (node.key > key)) {
+                result = node.key;
+                node = node.left;
+            } else {
+                node = node.right;
+            }
+        }
+        return result;
+    }
 
     private Node insert(Node node, long key) {
         if (node == null) return new Node(key);
@@ -157,9 +164,7 @@ public class TreapTree {
     }
 
     private void pushUp(Node node) {
-        node.size = node.cnt +
-                (node.left != null ? node.left.size : 0) +
-                (node.right != null ? node.right.size : 0);
+        node.size = node.cnt + getSize(node.left) + getSize(node.right);
     }
 
     private long getSize(Node node) {

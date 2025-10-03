@@ -22,12 +22,6 @@ public class LeetCode2447 {
     }
 
     public int gcd(int a, int b) {
-        if (b == 0) {
-            return a;
-        }
-        if (a < b) {
-            return gcd(b, a);
-        }
-        return gcd(b, a % b);
+        return b == 0 ? a : gcd(b, a % b);
     }
 }

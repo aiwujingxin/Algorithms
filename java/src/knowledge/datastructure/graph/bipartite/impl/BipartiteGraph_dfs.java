@@ -25,22 +25,20 @@ public class BipartiteGraph_dfs implements BipartiteGraph {
         }
         colors = new int[n];
         for (int i = 0; i < n; i++) {
-            if (colors[i] == 0) {
-                if (!dfs(i, 1)) {
-                    return false;
-                }
+            if (colors[i] == 0 && !dfs(i, 1)) {
+                return false;
             }
         }
         return true;
     }
 
     private boolean dfs(int u, int c) {
+        if (colors[u] != 0) {
+            return colors[u] == c;
+        }
         colors[u] = c;
         for (int v : graph[u]) {
-            if (colors[v] == c) {
-                return false;
-            }
-            if (colors[v] == 0 && !dfs(v, 3 - c)) {
+            if (!dfs(v, -c)) {
                 return false;
             }
         }

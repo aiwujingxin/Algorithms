@@ -12,10 +12,11 @@ import knowledge.algorithms.sort.*;
  * (2)单调性: 避免多次冗余扫描 时间复杂度一般是O(n) (1) 对于一个序列，用两个指针维护一段区间 (2) 对于两个序列，维护某种次序，比如归并排序中合并两个有序序列的操作
  * <模拟>
  * @see LeetCode75
+ * @see LeetCode838     推多米诺
  * <滑动窗口>
- * @see SlidingWindow  滑动窗口
+ * @see SlidingWindow   滑动窗口
  * <快慢指针>
- * @see IndexingSort 原址排序
+ * @see IndexingSort    原址排序
  * @see LeetCode26
  * @see LeetCode27
  * @see LeetCode80

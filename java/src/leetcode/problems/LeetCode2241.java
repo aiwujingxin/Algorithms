@@ -24,25 +24,25 @@ public class LeetCode2241 {
 
         public int[] withdraw(int amount) {
             int index = n - 1;
-            int[] cnt = new int[n];
+            int[] ans = new int[n];
             while (amount > 0 && index >= 0) {
-                while (amount >= nums[index] && banknotesCount[index] - cnt[index] >= 1) {
-                    int temp = nums[index];
-                    int t = 1;
-                    while (amount - temp >= temp && (banknotesCount[index] - t >= t + cnt[index])) {
-                        temp = temp * 2;
-                        t = t * 2;
+                while (amount >= nums[index] && banknotesCount[index] - ans[index] > 0) {
+                    int d = nums[index];
+                    int c = 1;
+                    while (amount - d >= d && (banknotesCount[index] - 2 * c >= ans[index])) {
+                        d = d * 2;
+                        c = c * 2;
                     }
-                    amount -= nums[index] * t;
-                    cnt[index] += t;
+                    amount -= nums[index] * c;
+                    ans[index] += c;
                 }
                 index--;
             }
             if (amount == 0) {
-                for (int i = 0; i < cnt.length; i++) {
-                    banknotesCount[i] -= cnt[i];
+                for (int i = 0; i < ans.length; i++) {
+                    banknotesCount[i] -= ans[i];
                 }
-                return cnt;
+                return ans;
             }
             return new int[]{-1};
         }

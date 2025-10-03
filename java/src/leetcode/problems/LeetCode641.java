@@ -7,68 +7,54 @@ package leetcode.problems;
 public class LeetCode641 {
 
     class MyCircularDeque {
-
-        int head, tail, size, capacity;
-        int[] nums;
+        int[] q;
+        int h, t, n;
 
         public MyCircularDeque(int k) {
-            this.capacity = k;
-            this.nums = new int[capacity];
+            n = k + 1;
+            q = new int[n];
         }
 
-        public boolean insertLast(int value) {
-            if (isFull()) {
-                return false;
-            }
-            nums[tail++] = value;
-            tail %= capacity;
-            size++;
+        public boolean insertFront(int val) {
+            if (isFull()) return false;
+            h = (h - 1 + n) % n;
+            q[h] = val;
+            return true;
+        }
+
+        public boolean insertLast(int val) {
+            if (isFull()) return false;
+            q[t] = val;
+            t = (t + 1) % n;
             return true;
         }
 
         public boolean deleteFront() {
-            if (isEmpty()) {
-                return false;
-            }
-            head = (head + 1) % capacity;
-            size--;
+            if (isEmpty()) return false;
+            h = (h + 1) % n;
             return true;
         }
-
-        public boolean insertFront(int value) {
-            if (isFull()) {
-                return false;
-            }
-            head = (head + capacity - 1) % capacity;
-            nums[head] = value;
-            size++;
-            return true;
-        }
-
 
         public boolean deleteLast() {
-            if (isEmpty()) {
-                return false;
-            }
-            tail = (tail - 1 + capacity) % capacity;
-            size--;
+            if (isEmpty()) return false;
+            t = (t - 1 + n) % n;
             return true;
         }
 
         public int getFront() {
-            return isEmpty() ? -1 : nums[head];
+            return isEmpty() ? -1 : q[h];
         }
 
         public int getRear() {
-            return isEmpty() ? -1 : nums[(tail - 1 + capacity) % capacity];
+            return isEmpty() ? -1 : q[(t - 1 + n) % n];
         }
 
         public boolean isEmpty() {
-            return size == 0;
+            return h == t;
         }
 
         public boolean isFull() {
-            return size == capacity;
+            return (t + 1) % n == h;
         }
     }
 }
