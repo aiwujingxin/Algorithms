@@ -5,10 +5,7 @@ import knowledge.algorithms.search.dfsAndBfs.problems.EightPuzzle_astar3;
 import knowledge.algorithms.search.dfsAndBfs.problems.MazeProblem_astar;
 import leetcode.problems.LeetCode752_astar;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.PriorityQueue;
+import java.util.*;
 import java.util.function.BiFunction;
 import java.util.function.Function;
 import java.util.function.ToDoubleBiFunction;
@@ -26,29 +23,24 @@ import java.util.function.ToIntBiFunction;
  */
 public class AStar<T> {
 
-    private record N<T>(T s, int f) implements Comparable<N<T>> {
-        public int compareTo(N<T> o) {
-            return Integer.compare(f, o.f);
-        }
-    }
-
-    public int search(T st, T ed, Function<T, List<Map.Entry<T, Integer>>> nb, BiFunction<T, T, Integer> h) {
+    public int search(T s, T e, Function<T, List<Map.Entry<T, Integer>>> ne, BiFunction<T, T, Integer> h) {
+        // 存储从起始节点到该节点的最短路径代价
         Map<T, Integer> g = new HashMap<>();
-        PriorityQueue<N<T>> pq = new PriorityQueue<>();
-        g.put(st, 0);
-        pq.add(new N<>(st, h.apply(st, ed)));
+        // Map.Entry<T, Integer> 其中 T 是状态，Integer 是该状态的代价（或估算的优先级 f = g + h）
+        PriorityQueue<Map.Entry<T, Integer>> pq = new PriorityQueue<>(Comparator.comparingInt(Map.Entry::getValue));
+        g.put(s, 0);
+        pq.add(new AbstractMap.SimpleEntry<>(s, h.apply(s, e)));
         while (!pq.isEmpty()) {
-            N<T> n = pq.poll();
-            T s = n.s;
-            int gs = g.get(s);
-            if (s.equals(ed)) return gs;
-            if (n.f > gs + h.apply(s, ed)) continue;
-            for (var e : nb.apply(s)) {
-                T ns = e.getKey();
-                int ng = gs + e.getValue();
-                if (ng < g.getOrDefault(ns, Integer.MAX_VALUE)) {
-                    g.put(ns, ng);
-                    pq.add(new N<>(ns, ng + h.apply(ns, ed)));
+            Map.Entry<T, Integer> cur = pq.poll();
+            T u = cur.getKey();
+            int cost = g.get(u);
+            if (u.equals(e)) return cost;
+            for (var v : ne.apply(u)) {
+                T next = v.getKey();
+                int newCost = cost + v.getValue();
+                if (newCost < g.getOrDefault(next, Integer.MAX_VALUE)) {
+                    g.put(next, newCost);
+                    pq.add(new AbstractMap.SimpleEntry<>(next, newCost + h.apply(next, e)));
                 }
             }
         }

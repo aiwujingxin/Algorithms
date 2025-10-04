@@ -16,10 +16,10 @@ import java.util.function.Predicate;
  * @see EightPuzzle_ida         八数码
  */
 public class IDAStar<T> {
-    // --- 行为注入 ---
-    private final Function<T, Integer> h; // 启发函数 (h-value)
-    private final Predicate<T> isGoal;    // 目标判断
-    private final Function<T, Collection<T>> getNeighbors; // 后继生成
+    private final Function<T, Integer> h;
+    private final Predicate<T> isGoal;
+    private final Function<T, Collection<T>> getNeighbors;
+    private List<T> finalPath;
 
     public IDAStar(Function<T, Integer> heuristic, Predicate<T> goalTest, Function<T, Collection<T>> successorFunc) {
         this.h = heuristic;
@@ -27,74 +27,34 @@ public class IDAStar<T> {
         this.getNeighbors = successorFunc;
     }
 
-    /**
-     * 启动 IDA* 搜索。
-     *
-     * @param start 初始状态。
-     * @return 最优路径列表，如果无解则返回 null。
-     */
     public List<T> solve(T start) {
         int bound = h.apply(start);
-        Deque<T> path = new LinkedList<>();
-        while (true) {
-            SearchResult<T> result = search(path, start, 0, bound);
-            if (result.isSuccess()) {
-                return result.path; // 成功找到解
-            }
-            if (result.nextBound == Integer.MAX_VALUE) {
-                return null; // 搜索空间已耗尽，无解
-            }
-            bound = result.nextBound; // 更新 bound，开始新一轮迭代
+        while (finalPath == null) {
+            int nextBound = search(new LinkedList<>(), start, 0, bound);
+            if (nextBound == -1) return finalPath;           // 找到路径
+            if (nextBound == Integer.MAX_VALUE) return null; // 搜索结束
+            bound = nextBound;                               // 更新 bound
         }
+        return null;                                         // 理论上不会执行到这里
     }
 
-    /**
-     * 递归的、有界限的深度优先搜索。
-     *
-     * @param path  当前路径
-     * @param node  当前节点/状态
-     * @param g     从起点到当前节点的实际代价
-     * @param bound 当前迭代的 f(n) 上限
-     * @return SearchResult 对象，包含路径或下一轮的 bound。
-     */
-    private SearchResult<T> search(Deque<T> path, T node, int g, int bound) {
+    private int search(Deque<T> path, T node, int g, int bound) {
+        int f = g + h.apply(node);
+        if (f > bound) return f;                        // 剪枝，返回新的 bound
         path.addLast(node);
-        try { // 使用 try-finally 确保 path.removeLast() 总能被执行
-            int f = g + h.apply(node);
-            if (f > bound) {
-                return SearchResult.failure(f); // 剪枝，并返回新的 bound 候选
+        if (isGoal.test(node)) {
+            finalPath = new ArrayList<>(path);          // 保存路径
+            return -1;                                  // 成功信号
+        }
+        int minNextBound = Integer.MAX_VALUE;
+        for (T neighbor : getNeighbors.apply(node)) {
+            if (!path.contains(neighbor)) {             // 避免回头路
+                int result = search(path, neighbor, g + 1, bound);
+                if (result == -1) return -1;            // 找到路径
+                minNextBound = Math.min(minNextBound, result); // 更新最小 bound
             }
-            if (isGoal.test(node)) {
-                return SearchResult.success(new ArrayList<>(path)); // 找到解
-            }
-            int minNextBound = Integer.MAX_VALUE;
-            for (T neighbor : getNeighbors.apply(node)) {
-                if (!path.contains(neighbor)) {
-                    SearchResult<T> result = search(path, neighbor, g + 1, bound);
-                    if (result.isSuccess()) {
-                        return result; // 找到解，直接层层返回
-                    }
-                    minNextBound = Math.min(minNextBound, result.nextBound);
-                }
-            }
-            return SearchResult.failure(minNextBound); // 返回当前分支下的最小 nextBound
-        } finally {
-            path.removeLast(); // 无论如何，退出当前递归层时都执行回溯
         }
-    }
-
-    // --- 内部辅助类，用于封装搜索结果 ---
-    private record SearchResult<T>(List<T> path, int nextBound) {
-        static <T> SearchResult<T> success(List<T> path) {
-            return new SearchResult<>(path, -1);
-        }
-
-        static <T> SearchResult<T> failure(int nextBound) {
-            return new SearchResult<>(null, nextBound);
-        }
-
-        boolean isSuccess() {
-            return path != null;
-        }
+        path.removeLast(); // 回溯
+        return minNextBound;
     }
 }

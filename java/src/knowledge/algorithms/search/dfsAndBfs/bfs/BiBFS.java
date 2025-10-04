@@ -21,23 +21,22 @@ import java.util.function.Function;
  */
 public class BiBFS<T> {
 
-    public int search(T start, T end, Function<T, List<T>> getNeighbors) {
-        if (start.equals(end)) return 0;
-        Queue<T> qs = new LinkedList<>();
-        Map<T, Integer> ds = new HashMap<>();
-        Queue<T> qe = new LinkedList<>();
-        Map<T, Integer> de = new HashMap<>();
-        qs.add(start);
-        ds.put(start, 0);
-        qe.add(end);
-        de.put(end, 0);
-        while (!qs.isEmpty() && !qe.isEmpty()) {
+    public int search(T s, T e, Function<T, List<T>> getNeighbors) {
+        if (s.equals(e)) return 0;
+        Queue<T> q1 = new LinkedList<>();
+        Map<T, Integer> d1 = new HashMap<>();
+        Queue<T> q2 = new LinkedList<>();
+        Map<T, Integer> d2 = new HashMap<>();
+        q1.add(s);
+        d1.put(s, 0);
+        q2.add(e);
+        d2.put(e, 0);
+        while (!q1.isEmpty() && !q2.isEmpty()) {
             int ans;
-            // 总是扩展节点数较少的一侧
-            if (qs.size() <= qe.size()) {
-                ans = expand(qs, ds, de, getNeighbors);
+            if (q1.size() <= q2.size()) { // 总是扩展节点数较少的一侧
+                ans = expand(q1, d1, d2, getNeighbors);
             } else {
-                ans = expand(qe, de, ds, getNeighbors);
+                ans = expand(q2, d2, d1, getNeighbors);
             }
             if (ans != -1) {
                 return ans;
