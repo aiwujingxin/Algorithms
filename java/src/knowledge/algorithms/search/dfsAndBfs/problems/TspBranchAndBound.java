@@ -8,6 +8,7 @@ import java.util.Scanner;
 /**
  * @author wujingxinit@outlook.com
  * @date 9/28/25 11:51
+ * @description 分支限界法解决旅行商问题(TSP)
  */
 
 public class TspBranchAndBound {

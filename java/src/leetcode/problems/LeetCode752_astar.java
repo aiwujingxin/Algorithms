@@ -14,13 +14,8 @@ public class LeetCode752_astar {
 
     public int openLock(String[] deadends, String target) {
         String startState = "0000";
-        if (startState.equals(target)) {
-            return 0;
-        }
         Set<String> deadSet = new HashSet<>(Arrays.asList(deadends));
-        if (deadSet.contains(startState)) {
-            return -1;
-        }
+        if (deadSet.contains(startState)) return -1;
         // 1. 定义 getNeighbors 函数
         Function<String, List<Map.Entry<String, Integer>>> getNeighbors = (currentState) -> {
             List<Map.Entry<String, Integer>> neighbors = new ArrayList<>();
@@ -56,7 +51,7 @@ public class LeetCode752_astar {
             return totalDistance;
         };
         // 3. 创建 A* 实例并调用
-        AStar<String> solver = new AStar<>();
-        return solver.search(startState, target, getNeighbors, heuristic);
+        Integer res = new AStar().search(startState, target, getNeighbors, heuristic, 0, Integer::sum);
+        return res == null ? -1 : res;
     }
 }
