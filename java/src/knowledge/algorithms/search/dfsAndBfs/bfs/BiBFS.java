@@ -1,7 +1,7 @@
 package knowledge.algorithms.search.dfsAndBfs.bfs;
 
 import knowledge.algorithms.search.dfsAndBfs.problems.EightPuzzle_2bfs;
-import knowledge.algorithms.search.dfsAndBfs.problems.HDU1401_solitaire;
+import knowledge.algorithms.search.dfsAndBfs.problems.HDU1401;
 import leetcode.problems.*;
 
 import java.util.*;
@@ -17,7 +17,7 @@ import java.util.function.Function;
  * @see LeetCode752_2bfs
  * @see LeetCode773_2bfs
  * @see LeetCode2571_2bfs
- * @see HDU1401_solitaire
+ * @see HDU1401
  */
 public class BiBFS<T> {
 

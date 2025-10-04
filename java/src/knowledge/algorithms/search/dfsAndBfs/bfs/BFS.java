@@ -29,9 +29,6 @@ import knowledge.datastructure.tree.traverse.LevelOrder;
  * @see LayeredBFS            分层图
  * @see ZeroOneBFS            0-1BFS  无权图最短路径
  * @see SPFA                  SPFA    带负权边的单源最短路
- * Dial’s algorithm（桶 Dijkstra）
- * 双向Dijkstra.双向 A*
- * 多源 A* / 多目标变体
  * <题目>
  * @see 864
  * @see 818

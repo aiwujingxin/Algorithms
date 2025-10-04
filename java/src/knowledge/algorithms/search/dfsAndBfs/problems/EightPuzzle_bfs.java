@@ -2,7 +2,10 @@ package knowledge.algorithms.search.dfsAndBfs.problems;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-import java.util.*;
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.Map;
+import java.util.Queue;
 
 /**
  * @author wujingxinit@outlook.com
@@ -11,6 +14,17 @@ import java.util.*;
  * @link <a href="https://www.acwing.com/solution/content/29725/"></a>
  */
 public class EightPuzzle_bfs {
+
+    public static void main(String[] args) throws Exception {
+        BufferedReader sc = new BufferedReader(new InputStreamReader(System.in));
+        String[] q = sc.readLine().split(" ");
+        StringBuilder start = new StringBuilder();//因为输入问题所以不能直接给一个字符串
+        for (String s : q) {
+            start.append(s);
+        }
+        String end = "12345678x";
+        System.out.println(bfs(start.toString(), end));//从开始状态到结束状态要多少次交换
+    }
 
     static int bfs(String start, String end) {
         Queue<String> q = new LinkedList<>();//存储所有状态
@@ -42,17 +56,6 @@ public class EightPuzzle_bfs {
             }
         }
         return -1;
-    }
-
-    public static void main(String[] args) throws Exception {
-        BufferedReader sc = new BufferedReader(new InputStreamReader(System.in));
-        String[] q = sc.readLine().split(" ");
-        StringBuilder start = new StringBuilder();//因为输入问题所以不能直接给一个字符串
-        for (String s : q) {
-            start.append(s);
-        }
-        String end = "12345678x";
-        System.out.println(bfs(start.toString(), end));//从开始状态到结束状态要多少次交换
     }
 
     static void swap(char[] c, int a, int b) {//用于交换值来变换状态

@@ -15,6 +15,53 @@ public class EightPuzzle_astar3 {
 
     private static final int[] FACTORIAL = {1, 1, 2, 6, 24, 120, 720, 5040, 40320};
 
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int[] startArray = new int[9];
+        String[] input = sc.nextLine().split(" ");
+        for (int i = 0; i < 9; i++) {
+            startArray[i] = input[i].equals("x") ? 0 : Integer.parseInt(input[i]);
+        }
+        sc.close();
+        if (!isSolvable(startArray)) {
+            System.out.println(-1);
+            return;
+        }
+        // 状态 T 是 Integer (康托编码)
+        Integer startState = cantor(startArray);
+        Integer goalState = cantor(new int[]{1, 2, 3, 4, 5, 6, 7, 8, 0});
+        // 1. 定义 getNeighbors 函数
+        Function<Integer, List<Map.Entry<Integer, Integer>>> getNeighbors = (currentCode) -> {
+            List<Map.Entry<Integer, Integer>> neighbors = new ArrayList<>();
+            int[] currentState = decantor(currentCode);
+            int zeroIndex = -1;
+            for (int i = 0; i < 9; i++) if (currentState[i] == 0) zeroIndex = i;
+            int zx = zeroIndex % 3, zy = zeroIndex / 3;
+            int[][] DIR = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}};
+            for (int[] d : DIR) {
+                int nx = zx + d[1], ny = zy + d[0];
+                if (nx >= 0 && nx < 3 && ny >= 0 && ny < 3) {
+                    int[] neighborArray = currentState.clone();
+                    int neighborIndex = ny * 3 + nx;
+                    neighborArray[zeroIndex] = neighborArray[neighborIndex];
+                    neighborArray[neighborIndex] = 0;
+                    neighbors.add(new AbstractMap.SimpleEntry<>(cantor(neighborArray), 1));
+                }
+            }
+            return neighbors;
+        };
+        // 2. 定义 heuristic 函数
+        // 注意：这里的第二个参数 endState (目标康托码) 实际上没用到，因为曼哈顿距离是和固定的目标棋盘比较
+        BiFunction<Integer, Integer, Integer> heuristic = (currentCode, endCode) -> {
+            int[] currentState = decantor(currentCode);
+            return calculateManhattanDistance(currentState);
+        };
+        // 3. 创建 A* 实例并调用
+        AStar<Integer> solver = new AStar<>();
+        int steps = solver.search(startState, goalState, getNeighbors, heuristic);
+        System.out.println(steps);
+    }
+
     // --- 康托展开/逆康托展开/启发函数 辅助方法 ---
     private static int cantor(int[] state) {
         int result = 0;
@@ -72,52 +119,5 @@ public class EightPuzzle_astar3 {
             }
         }
         return inversions % 2 == 0;
-    }
-
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        int[] startArray = new int[9];
-        String[] input = sc.nextLine().split(" ");
-        for (int i = 0; i < 9; i++) {
-            startArray[i] = input[i].equals("x") ? 0 : Integer.parseInt(input[i]);
-        }
-        sc.close();
-        if (!isSolvable(startArray)) {
-            System.out.println(-1);
-            return;
-        }
-        // 状态 T 是 Integer (康托编码)
-        Integer startState = cantor(startArray);
-        Integer goalState = cantor(new int[]{1, 2, 3, 4, 5, 6, 7, 8, 0});
-        // 1. 定义 getNeighbors 函数
-        Function<Integer, List<Map.Entry<Integer, Integer>>> getNeighbors = (currentCode) -> {
-            List<Map.Entry<Integer, Integer>> neighbors = new ArrayList<>();
-            int[] currentState = decantor(currentCode);
-            int zeroIndex = -1;
-            for (int i = 0; i < 9; i++) if (currentState[i] == 0) zeroIndex = i;
-            int zx = zeroIndex % 3, zy = zeroIndex / 3;
-            int[][] DIR = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}};
-            for (int[] d : DIR) {
-                int nx = zx + d[1], ny = zy + d[0];
-                if (nx >= 0 && nx < 3 && ny >= 0 && ny < 3) {
-                    int[] neighborArray = currentState.clone();
-                    int neighborIndex = ny * 3 + nx;
-                    neighborArray[zeroIndex] = neighborArray[neighborIndex];
-                    neighborArray[neighborIndex] = 0;
-                    neighbors.add(new AbstractMap.SimpleEntry<>(cantor(neighborArray), 1));
-                }
-            }
-            return neighbors;
-        };
-        // 2. 定义 heuristic 函数
-        // 注意：这里的第二个参数 endState (目标康托码) 实际上没用到，因为曼哈顿距离是和固定的目标棋盘比较
-        BiFunction<Integer, Integer, Integer> heuristic = (currentCode, endCode) -> {
-            int[] currentState = decantor(currentCode);
-            return calculateManhattanDistance(currentState);
-        };
-        // 3. 创建 A* 实例并调用
-        AStar<Integer> solver = new AStar<>();
-        int steps = solver.search(startState, goalState, getNeighbors, heuristic);
-        System.out.println(steps);
     }
 }

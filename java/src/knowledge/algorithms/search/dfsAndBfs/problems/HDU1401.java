@@ -14,7 +14,7 @@ import java.util.function.Function;
  * @description <a href="https://vjudge.net/problem/HDU-1401"></a>
  */
 
-public class HDU1401_solitaire {
+public class HDU1401 {
     // 棋子移动规则的偏移量
     private static final int[] dr = {-1, 2, 0, 0}; // 行变化: 上1, 下2, 左0, 右0
     private static final int[] dc = {0, 0, -1, 2}; // 列变化: 上0, 下0, 左1, 右2

@@ -1,10 +1,10 @@
 package knowledge.algorithms.search.dfsAndBfs.problems;
 
+import knowledge.algorithms.search.dfsAndBfs.bfs.AStar;
+
 import java.util.*;
 import java.util.function.BiFunction;
 import java.util.function.Function;
-
-import knowledge.algorithms.search.dfsAndBfs.bfs.AStar;
 
 /**
  * @author wujingxinit@outlook.com
@@ -64,31 +64,51 @@ public class MazeProblem_astar {
         return -1;
     }
 
+    /**
+     * 使用 A* 算法计算网格中的最短距离。
+     * 状态由 int[]{x, y} 数组表示。
+     *
+     * @param grid    二维网格，1 表示可通行，0 表示障碍物。
+     * @param startX  起点 x 坐标。
+     * @param startY  起点 y 坐标。
+     * @param targetX 终点 x 坐标。
+     * @param targetY 终点 y 坐标。
+     * @return 最短距离，如果不可达则返回 -1。
+     */
     public static int minDistance(int[][] grid, int startX, int startY, int targetX, int targetY) {
-        if (grid[startX][startY] == 0 || grid[targetX][targetY] == 0) return -1;
-        Coordinate start = new Coordinate(startX, startY);
-        Coordinate end = new Coordinate(targetX, targetY);
-        int n = grid.length, m = grid[0].length;
+        // 检查起点和终点是否有效
+        if (grid[startX][startY] == 0 || grid[targetX][targetY] == 0) {
+            return -1;
+        }
+        // 1. 使用 int[] 数组表示起点和终点
+        int[] start = new int[]{startX, startY};
+        int[] end = new int[]{targetX, targetY};
+        int n = grid.length;
+        int m = grid[0].length;
         int[] dx = {-1, 1, 0, 0};
         int[] dy = {0, 0, -1, 1};
-        // 定义 getNeighbors
-        Function<Coordinate, List<Map.Entry<Coordinate, Integer>>> getNeighbors = (current) -> {
-            List<Map.Entry<Coordinate, Integer>> neighbors = new ArrayList<>();
+        // 2. 定义 getNeighbors，输入和输出都使用 int[]
+        Function<int[], List<Map.Entry<int[], Integer>>> getNeighbors = (current) -> {
+            List<Map.Entry<int[], Integer>> neighbors = new ArrayList<>();
             for (int i = 0; i < 4; i++) {
-                int newX = current.x + dx[i], newY = current.y + dy[i];
+                int newX = current[0] + dx[i];
+                int newY = current[1] + dy[i];
                 if (newX >= 0 && newX < n && newY >= 0 && newY < m && grid[newX][newY] == 1) {
-                    neighbors.add(new AbstractMap.SimpleEntry<>(new Coordinate(newX, newY), 1));
+                    // 每个邻居的移动代价为 1
+                    neighbors.add(new AbstractMap.SimpleEntry<>(new int[]{newX, newY}, 1));
                 }
             }
             return neighbors;
         };
-        // 定义 heuristic
-        BiFunction<Coordinate, Coordinate, Integer> heuristic = (current, goal) ->
-                Math.abs(current.x - goal.x) + Math.abs(current.y - goal.y);
-        // 创建 AStar<Coordinate> 实例并调用
-        AStar<Coordinate> solver = new AStar<>();
-        int result = solver.search(start, end, getNeighbors, heuristic);
-        return result == -1 ? -1 : result + 1;
+        // 3. 定义 heuristic，输入为 int[]
+        // (可以直接使用我们之前定义的 Heuristic.MANHATTAN)
+        BiFunction<int[], int[], Integer> heuristic = (current, goal) ->
+                Math.abs(current[0] - goal[0]) + Math.abs(current[1] - goal[1]);
+        // 4. 创建 AStar<int[]> 实例并调用
+        // 注意：AStar 算法的实现必须能正确处理数组的 equals 和 hashCode
+        AStar<int[]> solver = new AStar<>();
+        // A* 返回的是边的数量（即步数），如果需要返回节点数量，则需要 +1
+        return solver.search(start, end, getNeighbors, heuristic);
     }
 
     // A*算法

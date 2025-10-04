@@ -3,7 +3,6 @@ package knowledge.algorithms.search.dfsAndBfs.problems;
 import knowledge.algorithms.search.dfsAndBfs.bfs.AStar;
 
 import java.util.*;
-import java.util.Scanner;
 import java.util.function.BiFunction;
 import java.util.function.Function;
 
@@ -12,25 +11,6 @@ import java.util.function.Function;
  * @date 9/18/25 16:54
  */
 public class EightPuzzle_astar2 {
-
-    /**
-     * 检查八数码问题是否有解。
-     * 通过计算两个状态的逆序对数量，如果它们的奇偶性相同，则有解。
-     */
-    private static boolean isSolvable(String start) {
-        // 移除 '0' (空格) 后再计算逆序对
-        int inversions = 0;
-        String s = start.replace("0", "");
-        for (int i = 0; i < s.length(); i++) {
-            for (int j = i + 1; j < s.length(); j++) {
-                if (s.charAt(i) > s.charAt(j)) {
-                    inversions++;
-                }
-            }
-        }
-        // 对于 3x3 的情况，逆序对为偶数才有解
-        return inversions % 2 == 0;
-    }
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
@@ -89,5 +69,24 @@ public class EightPuzzle_astar2 {
         // 5. 输出结果
         System.out.println(steps);
         sc.close();
+    }
+
+    /**
+     * 检查八数码问题是否有解。
+     * 通过计算两个状态的逆序对数量，如果它们的奇偶性相同，则有解。
+     */
+    private static boolean isSolvable(String start) {
+        // 移除 '0' (空格) 后再计算逆序对
+        int inversions = 0;
+        String s = start.replace("0", "");
+        for (int i = 0; i < s.length(); i++) {
+            for (int j = i + 1; j < s.length(); j++) {
+                if (s.charAt(i) > s.charAt(j)) {
+                    inversions++;
+                }
+            }
+        }
+        // 对于 3x3 的情况，逆序对为偶数才有解
+        return inversions % 2 == 0;
     }
 }
