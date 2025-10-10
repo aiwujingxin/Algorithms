@@ -9,6 +9,7 @@ public class Complete_backtrack implements CompletePack {
     int ans;
 
     public int backPack(int[] C, int[] W, int V) {
+        ans = 0;
         backtrack(0, C, W, V, 0, 0);
         return ans;
     }
@@ -21,8 +22,10 @@ public class Complete_backtrack implements CompletePack {
             ans = Math.max(ans, CV);
             return;
         }
-
-        // 选当前物品，可以选择0次～多次
+        if (C[index] == 0) { // 安全处理 零重量且正价值会导致答案无上界
+            backtrack(index + 1, C, W, V, CW, CV);
+            return;
+        }
         for (int i = 0; i <= (V - CW) / C[index]; i++) {
             backtrack(index + 1, C, W, V, CW + i * C[index], CV + i * W[index]);
         }

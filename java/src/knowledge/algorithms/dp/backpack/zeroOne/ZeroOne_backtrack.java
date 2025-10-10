@@ -11,6 +11,7 @@ public class ZeroOne_backtrack implements ZeroOnePack {
 
     @Override
     public int backPack(int[] C, int[] W, int V) {
+        ans = 0;
         backtrack(0, C, W, V, 0, 0);
         return ans;
     }
@@ -28,7 +29,6 @@ public class ZeroOne_backtrack implements ZeroOnePack {
         if (cw + C[i] <= V) { // 可行性约束函数
             backtrack(i + 1, C, W, V, cw + C[i], cv + W[i]);
         }
-        //todo 限定函数
         backtrack(i + 1, C, W, V, cw, cv);
     }
 }

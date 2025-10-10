@@ -9,34 +9,18 @@ import java.util.List;
  */
 public class LeetCode241 {
 
-    public List<Integer> diffWaysToCompute(String expression) {
-        if (expression == null || expression.isEmpty()) {
-            return new ArrayList<>();
-        }
+    public List<Integer> diffWaysToCompute(String s) {
         List<Integer> res = new ArrayList<>();
-        for (int i = 0; i < expression.length(); i++) {
-            char c = expression.charAt(i);
-            if (c == '+' || c == '-' || c == '*') {
-                List<Integer> left = diffWaysToCompute(expression.substring(0, i));
-                List<Integer> right = diffWaysToCompute(expression.substring(i + 1));
-                for (Integer l : left) {
-                    for (Integer r : right) {
-                        if (c == '+') {
-                            res.add(l + r);
-                        }
-                        if (c == '-') {
-                            res.add(l - r);
-                        }
-                        if (c == '*') {
-                            res.add(l * r);
-                        }
+        for (int i = 0; i < s.length(); i++) {
+            char c = s.charAt(i);
+            if ("+-*".indexOf(c) >= 0) {
+                for (int l : diffWaysToCompute(s.substring(0, i))) {
+                    for (int r : diffWaysToCompute(s.substring(i + 1))) {
+                        res.add(c == '+' ? l + r : c == '-' ? l - r : l * r);
                     }
                 }
             }
         }
-        if (res.isEmpty()) {
-            res.add(Integer.parseInt(expression));
-        }
-        return res;
+        return res.isEmpty() ? List.of(Integer.valueOf(s)) : res;
     }
 }

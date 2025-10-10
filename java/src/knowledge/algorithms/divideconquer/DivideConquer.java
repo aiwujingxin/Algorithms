@@ -3,6 +3,7 @@ package knowledge.algorithms.divideconquer;
 import knowledge.algorithms.sort.*;
 import leetcode.lists.lcci.LCCI0806;
 import leetcode.problems.LeetCode23;
+import leetcode.problems.LeetCode241;
 import leetcode.problems.LeetCode324;
 import leetcode.problems.LeetCode932;
 
@@ -17,6 +18,7 @@ import leetcode.problems.LeetCode932;
  * @see MergeSort
  * @see QuickSort
  * @see LeetCode23
+ * @see LeetCode241     为运算表达式设计优先级
  * @see LeetCode324
  * @see LeetCode932
  */
