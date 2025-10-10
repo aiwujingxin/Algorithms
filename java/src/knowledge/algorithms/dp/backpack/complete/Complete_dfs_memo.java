@@ -16,15 +16,15 @@ public class Complete_dfs_memo implements CompletePack {
     public int backPack(int[] C, int[] W, int V) {
         this.C = C;
         this.W = W;
-        memo = new int[C.length][V + 1];
+        memo = new int[C.length + 1][V + 1];
         for (int[] row : memo) Arrays.fill(row, -1);
-        return dfs(0, V);
+        return dfs(C.length - 1, V);
     }
 
     private int dfs(int i, int j) {
-        if (i >= C.length || j <= 0) return 0;
+        if (i < 0 || j <= 0) return 0;
         if (memo[i][j] != -1) return memo[i][j];
-        if (j < C[i]) return memo[i][j] = dfs(i + 1, j);
-        return memo[i][j] = Math.max(dfs(i + 1, j), dfs(i, j - C[i]) + W[i]);
+        if (j < C[i]) return memo[i][j] = dfs(i - 1, j);
+        return memo[i][j] = Math.max(dfs(i - 1, j), dfs(i, j - C[i]) + W[i]);
     }
 }
