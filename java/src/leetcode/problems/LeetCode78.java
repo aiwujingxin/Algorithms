@@ -23,7 +23,7 @@ public class LeetCode78 {
         for (int i = start; i < nums.length; i++) {
             list.add(nums[i]);
             backtrack(nums, i + 1, res, list);
-            list.remove(list.size() - 1);
+            list.removeLast();
         }
     }
 
@@ -61,7 +61,7 @@ public class LeetCode78 {
         track.add(nums[i]);
         backtrack(nums, i + 1);
         // 撤销选择
-        track.remove(track.size() - 1);
+        track.removeLast();
 
         // 不选
         backtrack(nums, i + 1);

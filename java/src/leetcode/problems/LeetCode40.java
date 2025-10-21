@@ -28,7 +28,7 @@ public class LeetCode40 {
             }
             list.add(nums[i]);
             backtrack(nums, i + 1, res, list, target - nums[i]);
-            list.remove(list.size() - 1);
+            list.removeLast();
         }
     }
 }

@@ -1,5 +1,7 @@
 package knowledge.datastructure.adv;
 
+import leetcode.problems.*;
+
 import java.util.TreeMap;
 import java.util.TreeSet;
 
@@ -11,21 +13,20 @@ import java.util.TreeSet;
  * @see TreeMap
  * @see TreeSet
  * <题目>
- * @see leetcode.problems.LeetCode220
- * @see leetcode.problems.LeetCode315_bitTree
- * @see leetcode.problems.LeetCode730
- * @see leetcode.problems.LeetCode480
- * @see leetcode.problems.LeetCode715
- * @see leetcode.problems.LeetCode352
- * @see leetcode.problems.LeetCode683
- * @see leetcode.problems.LeetCode855
- * @see leetcode.problems.LeetCode729
- * @see leetcode.problems.LeetCode846
- * @see leetcode.problems.LeetCode1094
- * @see leetcode.problems.LeetCode2349
- * @see leetcode.problems.LeetCode3607
- * @see leetcode.problems.LeetCode716
- * @see leetcode.problems.LeetCode314
+ * @see LeetCode220
+ * @see LeetCode730
+ * @see LeetCode480
+ * @see LeetCode715
+ * @see LeetCode352
+ * @see LeetCode683
+ * @see LeetCode855
+ * @see LeetCode729
+ * @see LeetCode846
+ * @see LeetCode1094
+ * @see LeetCode2349
+ * @see LeetCode3607
+ * @see LeetCode716
+ * @see LeetCode314
  */
 public class BSTree {
     /*

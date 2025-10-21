@@ -1,6 +1,8 @@
 package leetcode.problems;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.TreeSet;
 
 /**
  * @author wujingxinit@outlook.com
@@ -8,31 +10,28 @@ import java.util.*;
  */
 public class LeetCode1054 {
     public int[] rearrangeBarcodes(int[] barcodes) {
-        Map<Integer, Integer> cnt = new HashMap<>();
-        for (int x : barcodes) {
-            cnt.put(x, cnt.getOrDefault(x, 0) + 1);
+        int n = barcodes.length;
+        HashMap<Integer, Integer> map = new HashMap<>();
+        for (int b : barcodes) {
+            map.merge(b, 1, Integer::sum);
         }
-        PriorityQueue<int[]> pq = new PriorityQueue<>((a, b) -> b[1] - a[1]);
-        for (Map.Entry<Integer, Integer> entry : cnt.entrySet()) {
-            pq.add(new int[]{entry.getKey(), entry.getValue()});
+        TreeSet<int[]> pq = new TreeSet<>((o1, o2) -> o2[1] - o1[1]);
+        for (Map.Entry<Integer, Integer> e : map.entrySet()) {
+            pq.add(new int[]{e.getKey(), e.getValue()});
         }
-        List<Integer> res = new ArrayList<>();
-        while (!pq.isEmpty()) {
-            if (pq.size() < 2 && pq.peek()[1] > 1) {
-                return new int[]{};
-            }
-            List<int[]> temp = new ArrayList<>();
-            int len = pq.size();
-            for (int i = 0; i < Math.min(2, len); i++) {
-                int[] entry = pq.poll();
-                res.add(entry[0]);
-                entry[1]--;
-                if (entry[1] != 0) {
-                    temp.add(entry);
-                }
-            }
-            pq.addAll(temp);
+        int idx = 0;
+        int[] ans = new int[n];
+        while (idx < n) {
+            int[] f = pq.pollFirst();
+            ans[idx++] = f[0];
+            if (pq.isEmpty()) return ans;
+            int[] s = pq.pollFirst();
+            ans[idx++] = s[0];
+            f[1]--;
+            s[1]--;
+            if (f[1] != 0) pq.add(f);
+            if (s[1] != 0) pq.add(s);
         }
-        return res.stream().mapToInt(i -> i).toArray();
+        return ans;
     }
 }

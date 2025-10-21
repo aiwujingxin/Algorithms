@@ -34,7 +34,7 @@ public class Multiple_dq implements MultiplePack {
                         q.pollLast();
                     }
                     q.addLast(k);
-                    if (!q.isEmpty() && q.getFirst() < k - m * c) {
+                    if (q.getFirst() < k - m * c) {
                         q.pollFirst();
                     }
                     if (!q.isEmpty()) {

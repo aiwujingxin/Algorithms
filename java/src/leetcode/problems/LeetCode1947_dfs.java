@@ -2,33 +2,38 @@ package leetcode.problems;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 9/24/25 17:46
+ * @date 10/15/25 11:29
  */
 public class LeetCode1947_dfs {
 
-    private int maxScore = 0;
+    Integer[][] memo;
 
     public int maxCompatibilitySum(int[][] students, int[][] mentors) {
         int m = students.length;
-        boolean[] used = new boolean[m];
-        dfs(students, mentors, used, 0, 0);
-        return maxScore;
-    }
-
-    private void dfs(int[][] students, int[][] mentors, boolean[] used, int studentIdx, int currentScore) {
-        if (studentIdx == students.length) {
-            maxScore = Math.max(maxScore, currentScore);
-            return;
-        }
-
-        for (int i = 0; i < mentors.length; i++) {
-            if (!used[i]) {
-                used[i] = true;
-                int score = calculateScore(students[studentIdx], mentors[i]);
-                dfs(students, mentors, used, studentIdx + 1, currentScore + score);
-                used[i] = false;
+        int[][] score = new int[m][m];
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < m; j++) {
+                score[i][j] = calculateScore(students[i], mentors[j]);
             }
         }
+        memo = new Integer[m][1 << m];
+        return backtrack(0, 0, score, m);
+    }
+
+    private int backtrack(int i, int mask, int[][] score, int m) {
+        if (i == m) return 0;
+        if (memo[i][mask] != null) return memo[i][mask];
+        int maxScore = 0;
+        // 尝试为当前学生分配每一个可用的导师
+        for (int mentorIdx = 0; mentorIdx < m; mentorIdx++) {
+            if ((mask & (1 << mentorIdx)) == 0) {  // 检查导师是否已被使用
+                int currentScore = score[i][mentorIdx];
+                int remainingScore = backtrack(i + 1, mask | (1 << mentorIdx), score, m);
+                maxScore = Math.max(maxScore, currentScore + remainingScore);
+            }
+        }
+        memo[i][mask] = maxScore;
+        return maxScore;
     }
 
     private int calculateScore(int[] student, int[] mentor) {

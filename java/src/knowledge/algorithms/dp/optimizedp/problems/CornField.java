@@ -11,7 +11,7 @@ import java.io.StreamTokenizer;
 /**
  * @author wujingxinit@outlook.com
  * @date 2024/10/4 14:30
- * @description 制定区间+1,求最长不下降子序列长度
+ * @description 方伯伯的玉米田 制定区间+1,求最长不下降子序列长度
  * @link <a href="https://www.luogu.com.cn/problem/P3287"></a>
  */
 

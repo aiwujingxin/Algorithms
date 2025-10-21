@@ -22,7 +22,7 @@ public class LeetCode77 {
         for (int i = start; i <= n; i++) {
             list.add(i);
             backtrack(i + 1, n, res, k, list);
-            list.remove(list.size() - 1);
+            list.removeLast();
         }
     }
 }

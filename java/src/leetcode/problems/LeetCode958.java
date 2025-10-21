@@ -12,14 +12,9 @@ import java.util.Queue;
 public class LeetCode958 {
 
     public boolean isCompleteTree(TreeNode root) {
-        if (root == null) {
-            return true;
-        }
         Queue<TreeNode> queue = new LinkedList<>();
         queue.add(root);
-
         TreeNode pre = root;
-
         while (!queue.isEmpty()) {
             int size = queue.size();
             for (int i = 0; i < size; i++) {
@@ -31,12 +26,11 @@ public class LeetCode958 {
                     queue.add(node.left);
                 }
                 pre = node.left;
-                if (node.right != null) {
-                    queue.add(node.right);
-                }
-
                 if (node.right != null && pre == null) {
                     return false;
+                }
+                if (node.right != null) {
+                    queue.add(node.right);
                 }
                 pre = node.right;
             }

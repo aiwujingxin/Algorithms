@@ -11,16 +11,16 @@ import java.util.Map;
  */
 public class LCR111 {
 
-    Map<String, Map<String, Double>> gragh;
+    Map<String, Map<String, Double>> graph;
 
     public double[] calcEquation(List<List<String>> equations, double[] values, List<List<String>> queries) {
-        gragh = new HashMap<>();
+        graph = new HashMap<>();
         for (int i = 0; i < equations.size(); i++) {
             List<String> equation = equations.get(i);
-            gragh.putIfAbsent(equation.get(0), new HashMap<>());
-            gragh.get(equation.get(0)).put(equation.get(1), values[i]);
-            gragh.putIfAbsent(equation.get(1), new HashMap<>());
-            gragh.get(equation.get(1)).put(equation.get(0), 1 / values[i]);
+            graph.putIfAbsent(equation.get(0), new HashMap<>());
+            graph.get(equation.get(0)).put(equation.get(1), values[i]);
+            graph.putIfAbsent(equation.get(1), new HashMap<>());
+            graph.get(equation.get(1)).put(equation.get(0), 1 / values[i]);
         }
         double[] res = new double[queries.size()];
 
@@ -31,14 +31,14 @@ public class LCR111 {
     }
 
     private double dfs(String start, String target, HashSet<String> visited) {
-        if (!gragh.containsKey(start)) {
+        if (!graph.containsKey(start)) {
             return -1;
         }
-        if (gragh.get(start).containsKey(target)) {
-            return gragh.get(start).get(target);
+        if (graph.get(start).containsKey(target)) {
+            return graph.get(start).get(target);
         }
         visited.add(start);
-        for (Map.Entry<String, Double> entry : gragh.get(start).entrySet()) {
+        for (Map.Entry<String, Double> entry : graph.get(start).entrySet()) {
             if (visited.contains(entry.getKey())) {
                 continue;
             }

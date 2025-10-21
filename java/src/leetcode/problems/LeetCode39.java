@@ -25,7 +25,7 @@ public class LeetCode39 {
             if (target - candidates[i] < 0) continue;
             list.add(candidates[i]);
             backtrack(candidates, i, res, list, target - candidates[i]);
-            list.remove(list.size() - 1);
+            list.removeLast();
         }
     }
 }
