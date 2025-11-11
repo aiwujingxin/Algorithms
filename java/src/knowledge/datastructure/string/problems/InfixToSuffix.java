@@ -1,4 +1,4 @@
-package knowledge.datastructure.string.bignumber.impl;
+package knowledge.datastructure.string.problems;
 
 import java.util.ArrayList;
 import java.util.HashMap;

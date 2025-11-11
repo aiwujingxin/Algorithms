@@ -7,25 +7,18 @@ import common.TreeNode;
  * @date 2023/7/25 23:52
  */
 public class LeetCode1372 {
-    int ans = 0;
+    int max = 0;
 
     public int longestZigZag(TreeNode root) {
-        if (root == null) {
-            return 0;
-        }
         dfs(root);
-        return ans;
+        return max;
     }
 
-    private int[] dfs(TreeNode root) {
-        if (root == null) {
-            return new int[]{-1, -1};
-        }
-        int[] leftRes = dfs(root.left);
-        int[] rightRes = dfs(root.right);
-        int left = leftRes[1] + 1;
-        int right = rightRes[0] + 1;
-        ans = Math.max(ans, Math.max(left, right));
-        return new int[]{left, right};
+    public int[] dfs(TreeNode root) {
+        if (root == null) return new int[2];
+        int[] left = dfs(root.left);
+        int[] right = dfs(root.right);
+        max = Math.max(Math.max(left[1], right[0]), max);
+        return new int[]{left[1] + 1, right[0] + 1};
     }
 }

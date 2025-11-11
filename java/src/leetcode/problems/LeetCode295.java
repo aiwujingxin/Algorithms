@@ -1,6 +1,7 @@
 package leetcode.problems;
 
-import java.util.*;
+import java.util.PriorityQueue;
+import java.util.Queue;
 
 /**
  * @author wujingxinit@outlook.com
@@ -10,31 +11,21 @@ public class LeetCode295 {
 
     class MedianFinder {
 
-        PriorityQueue<Integer> minQ = new PriorityQueue<>();
-        PriorityQueue<Integer> maxQ = new PriorityQueue<>((o1, o2) -> o2 - o1);
-
-        public MedianFinder() {
-
-        }
+        Queue<Integer> L = new PriorityQueue<>((a, b) -> b - a); // 最大堆
+        Queue<Integer> R = new PriorityQueue<>();                             // 最小堆
 
         public void addNum(int num) {
-            if (minQ.isEmpty() || num < minQ.peek()) {
-                maxQ.add(num);
+            if (L.size() == R.size()) {
+                R.add(num);
+                L.add(R.poll());
             } else {
-                minQ.add(num);
-            }
-            if (minQ.size() > maxQ.size() + 1) {
-                maxQ.add(minQ.poll());
-            } else if (maxQ.size() > minQ.size()) {
-                minQ.add(maxQ.poll());
+                L.add(num);
+                R.add(L.poll());
             }
         }
 
         public double findMedian() {
-            if (minQ.size() == maxQ.size()) {
-                return ((double) minQ.peek() + maxQ.peek()) / 2;
-            }
-            return (double) minQ.peek();
+            return (L.size() > R.size() ? L.peek() : (L.peek() + R.peek()) / 2.0);
         }
     }
 }

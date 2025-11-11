@@ -1,6 +1,6 @@
 package leetcode.problems;
 
-import knowledge.mathematics.MathUtil;
+import knowledge.mathematics.impl.MathUtil;
 
 import java.util.Arrays;
 import java.util.Comparator;

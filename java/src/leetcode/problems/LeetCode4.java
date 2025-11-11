@@ -1,6 +1,7 @@
 package leetcode.problems;
 
-import java.util.*;
+import java.util.PriorityQueue;
+import java.util.Queue;
 
 /**
  * @author wujingxinit@outlook.com
@@ -8,27 +9,23 @@ import java.util.*;
  */
 public class LeetCode4 {
 
-    Queue<Integer> minQ = new PriorityQueue<>();
-    Queue<Integer> maxQ = new PriorityQueue<>((o1, o2) -> o2 - o1);
+    Queue<Integer> L = new PriorityQueue<>((a, b) -> b - a);
+    Queue<Integer> R = new PriorityQueue<>();
 
     public double findMedianSortedArrays(int[] nums1, int[] nums2) {
         add(nums1);
         add(nums2);
-        return (maxQ.size() > minQ.size()) ? maxQ.peek() : (maxQ.peek() + minQ.peek()) / 2.0;
+        return (L.size() > R.size()) ? L.peek() : (L.peek() + R.peek()) / 2.0;
     }
 
     public void add(int[] nums) {
         for (int num : nums) {
-            if (maxQ.isEmpty() || num <= maxQ.peek()) {
-                maxQ.add(num);
+            if (L.size() == R.size()) {
+                R.add(num);
+                L.add(R.poll());
             } else {
-                minQ.add(num);
-            }
-            if (maxQ.size() < minQ.size()) {
-                maxQ.add(minQ.poll());
-            }
-            if (maxQ.size() > minQ.size() + 1) {
-                minQ.add(maxQ.poll());
+                L.add(num);
+                R.add(L.poll());
             }
         }
     }

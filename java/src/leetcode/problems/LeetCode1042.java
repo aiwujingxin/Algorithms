@@ -1,8 +1,6 @@
 package leetcode.problems;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 /**
  * @author wujingxinit@outlook.com
@@ -10,28 +8,47 @@ import java.util.List;
  */
 public class LeetCode1042 {
 
+    List<Integer>[] graph;
+    int[] ans;
+
     public int[] gardenNoAdj(int n, int[][] paths) {
-        HashMap<Integer, List<Integer>> map = new HashMap<>();
-        for (int i = 0; i < n; i++) {
-            map.put(i, new ArrayList<>());
+        graph = new List[n + 1];
+        ans = new int[n];
+        for (int i = 0; i < n + 1; i++) {
+            graph[i] = new ArrayList<>();
         }
-        for (int[] path : paths) {
-            map.get(path[0] - 1).add(path[1] - 1);
-            map.get(path[1] - 1).add(path[0] - 1);
+        for (int[] p : paths) {
+            graph[p[0]].add(p[1]);
+            graph[p[1]].add(p[0]);
         }
-        int[] ans = new int[n];
-        for (int i = 0; i < n; i++) {
-            boolean[] set = new boolean[5];
-            for (int next : map.get(i)) {
-                set[ans[next]] = true;
+        for (int i = 1; i <= n; i++) {
+            if (ans[i - 1] == 0) {
+                bfs(i);
             }
-            for (int color = 1; color <= 4; color++) {
-                if (!set[color]) {
-                    ans[i] = color;
-                    break;
+            ans[i - 1] = cal(ans[i - 1]) + 1;
+        }
+        return ans;
+    }
+
+    public void bfs(int cur) {
+        Queue<Integer> q = new LinkedList<>();
+        HashSet<Integer> set = new HashSet<>();
+        q.add(cur);
+        set.add(cur);
+        while (!q.isEmpty()) {
+            int node = q.poll();
+            int index = cal(ans[node - 1]);
+            for (int ch : graph[node]) {
+                ans[ch - 1] |= 1 << index;
+                if (!set.contains(ch)) {
+                    q.add(ch);
+                    set.add(ch);
                 }
             }
         }
-        return ans;
+    }
+
+    public int cal(int num) {
+        return Integer.numberOfTrailingZeros(~num);
     }
 }

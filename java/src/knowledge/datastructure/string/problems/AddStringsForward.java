@@ -1,4 +1,4 @@
-package leetcode.interview;
+package knowledge.datastructure.string.problems;
 
 import java.math.BigInteger;
 import java.util.Random;
@@ -10,8 +10,7 @@ import java.util.Random;
 public class AddStringsForward {
 
     /**
-     * 【最终正确修复版 v3】从左到右计算等长字符串的和。
-     * 这个版本修复了因前导零导致结果不一致的问题。
+     * 从左到右计算等长字符串的和。
      *
      * @param a 第一个数字字符串
      * @param b 第二个数字字符串

@@ -1,6 +1,6 @@
 package leetcode.problems;
 
-import java.util.Arrays;
+import java.util.*;
 
 /**
  * @author wujingxinit@outlook.com
@@ -8,42 +8,53 @@ import java.util.Arrays;
  */
 public class LeetCode2359 {
 
+    List<Integer>[] graph;
+
     public int closestMeetingNode(int[] edges, int node1, int node2) {
         int n = edges.length;
-        // 点 node1 和 node2 到其它所有点的最短路径
-        int[] dist1 = getDist(edges, node1);
-        int[] dist2 = getDist(edges, node2);
-        int ans = -1, min = Integer.MAX_VALUE;
-        // 遍历可选择的「中间点」
+        graph = new List[n];
         for (int i = 0; i < n; i++) {
-            // 分别为 node1 和 node2 到 i 的最短路径
-            int d1 = dist1[i], d2 = dist2[i];
-            // 如果有一方到不了，则跳过
-            if (d1 == -1 || d2 == -1) {
+            graph[i] = new ArrayList<>();
+        }
+        for (int i = 0; i < n; i++) {
+            graph[i].add(edges[i]);
+        }
+        int[] d1 = new int[n];
+        Arrays.fill(d1, -1);
+        int[] d2 = new int[n];
+        Arrays.fill(d2, -1);
+        bfs(d1, node1);
+        bfs(d2, node2);
+        int d = Integer.MAX_VALUE;
+        int res = -1;
+        for (int i = 0; i < n; i++) {
+            if (d1[i] == -1 || d2[i] == -1)
                 continue;
-            }
-            int max = Math.max(d1, d2);
-            if (max < min) {
-                min = max;
-                ans = i;
+            int t = Math.max(d1[i], d2[i]);
+            if (t < d) {
+                res = i;
+                d = t;
             }
         }
-        return ans;
+        return res;
     }
 
-    // 求点 s 到其它所有点的最短路径
-    private int[] getDist(int[] edges, int s) {
-        int d = 0;
-        int[] dist = new int[edges.length];
-        Arrays.fill(dist, -1);
-        while (s != -1) {
-            // 已经访问，考虑「环」的存在
-            if (dist[s] != -1) {
-                break;
+    public void bfs(int[] d, int node) {
+        Queue<Integer> q = new LinkedList<>();
+        q.add(node);
+        int step = 0;
+        while (!q.isEmpty()) {
+            int size = q.size();
+            for (int i = 0; i < size; i++) {
+                int cur = q.poll();
+                d[cur] = step;
+                for (int ch : graph[cur]) {
+                    if (ch != -1 && d[ch] == -1) {
+                        q.add(ch);
+                    }
+                }
             }
-            dist[s] = d++;
-            s = edges[s];
+            step++;
         }
-        return dist;
     }
 }

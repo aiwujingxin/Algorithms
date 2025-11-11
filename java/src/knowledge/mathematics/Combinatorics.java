@@ -17,6 +17,7 @@ import java.util.Map;
  * @see LeetCode78      子集
  * @see LeetCode90      子集 II（含重复元素）
  * @see LeetCode357     计数数字序列（无重复）
+ * @see LeetCode1359    有效的快递序列数目
  * <多重集组合 / 重复选择>
  * @see LeetCode39      组合总和
  * @see LeetCode40      组合总和 II
@@ -39,7 +40,7 @@ import java.util.Map;
  * @see LeetCode2348    全 0 子数组的数目
  */
 
-public interface Comb {
+public interface Combinatorics {
 
     /*
      * 普通贡献：直接 (i+1)*(n-i)

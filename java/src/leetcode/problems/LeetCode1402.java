@@ -13,10 +13,10 @@ public class LeetCode1402 {
         int max = 0;
         for (int cnt = 1; cnt < n; cnt++) {
             int score = cal(satisfaction, cnt);
-            if(score <=0) break;
+            if (score <= 0) break;
             max = Math.max(score, max);
         }
-        return Math.max(max, 0);
+        return max;
     }
 
     public int cal(int[] satisfaction, int cnt) {

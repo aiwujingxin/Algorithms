@@ -12,13 +12,15 @@ import java.util.PriorityQueue;
 public class LeetCode2406 {
 
     public int minGroups(int[][] intervals) {
-        Arrays.sort(intervals, Comparator.comparingInt(o -> o[0]));
+        Arrays.sort(intervals, Comparator.comparingInt(a -> a[0]));
         PriorityQueue<Integer> pq = new PriorityQueue<>();
-        for (int[] interval : intervals) {
-            if (!pq.isEmpty() && pq.peek() < interval[0]) {
-                pq.poll();
+        for (int[] p : intervals) {
+            if (!pq.isEmpty() && pq.peek() < p[0]) {
+                int last = pq.poll();
+                pq.add(Math.max(last, p[1]));
+            } else {
+                pq.add(p[1]);
             }
-            pq.add(interval[1]);
         }
         return pq.size();
     }

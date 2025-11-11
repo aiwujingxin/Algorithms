@@ -1,5 +1,7 @@
 package leetcode.problems;
 
+import knowledge.mathematics.impl.MathUtil;
+
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/11/16 17:04
@@ -7,24 +9,11 @@ package leetcode.problems;
 public class LeetCode372 {
 
     public int superPow(int a, int[] b) {
-        a %= 1337;
-        int res = 1;
+        int mod = 1337;
+        long res = 1;
         for (int j : b) {
-            res = myPow(res, 10) * myPow(a, j) % 1337;
+            res = MathUtil.modPow(res, 10, mod) * MathUtil.modPow(a, j, mod) % mod;
         }
-        return res;
-    }
-
-    public int myPow(int x, int n) {
-        int res = 1;
-        x %= 1337;
-        while (n > 0) {
-            if ((n & 1) == 1) {
-                res = res * x % 1337;
-            }
-            x = (x * x) % 1337;
-            n >>= 1;
-        }
-        return res;
+        return (int) res;
     }
 }

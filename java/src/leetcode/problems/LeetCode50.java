@@ -12,43 +12,51 @@ public class LeetCode50 {
             a = -a;
             x = 1 / x;
         }
-        return dfs(x, a);
+        return modPow(x, a);
     }
 
-    private double dfs(double x, long n) {
-        if (n == 0) return 1;
-        double half = dfs(x, n / 2);
-        return n % 2 == 0 ? half * half : half * half * x;
-    }
-
-    // 尾递归
-    public double myPow_dfs2(double x, int n) {
-        return pow(x, n, 1);
-    }
-
-    private double pow(double x, long a, double r) {
-        if (a < 0) {
-            a = -a;
-            x = 1 / x;
-        }
-        if (a == 0) return r;
-        return (a % 2 == 1) ? pow(x * x, a / 2, r * x) : pow(x * x, a / 2, r);
-    }
-
-    public double myPow_itr(double x, int n) {
-        long a = n;
-        if (a < 0) {
-            a = -a;
-            x = 1 / x;
-        }
+    public double modPow(double a, long b) {
         double res = 1;
-        while (a > 0) {
-            if ((a & 1) == 1) {
-                res *= x;
-            }
-            x *= x;
-            a >>= 1;
+        while (b > 0) {
+            if ((b & 1) != 0) res *= a;
+            a *= a;
+            b >>= 1;
         }
         return res;
+    }
+
+    class Solution_dfs {
+
+        public double myPow(double x, int n) {
+            long a = n;
+            if (a < 0) {
+                a = -a;
+                x = 1 / x;
+            }
+            return dfs(x, a);
+        }
+
+        private double dfs(double x, long n) {
+            if (n == 0) return 1;
+            double h = dfs(x, n / 2);
+            return n % 2 == 0 ? h * h : h * h * x;
+        }
+    }
+
+    class Solution_dfs2 {
+        // 尾递归
+        public double myPow(double x, int n) {
+            long a = n;
+            if (a < 0) {
+                a = -a;
+                x = 1 / x;
+            }
+            return dfs(x, a, 1);
+        }
+
+        private double dfs(double x, long a, double r) {
+            if (a == 0) return r;
+            return (a % 2 == 1) ? dfs(x * x, a / 2, r * x) : dfs(x * x, a / 2, r);
+        }
     }
 }

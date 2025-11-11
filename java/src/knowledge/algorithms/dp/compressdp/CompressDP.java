@@ -8,6 +8,8 @@ import leetcode.problems.*;
  * @author wujingxinit@outlook.com
  * @date 2024/3/3 16:12
  * @description 状态压缩 DP
+ * <位运算>
+ * @see knowledge.algorithms.bit.BIT
  * <集合式>
  * @see LeetCode526           优美的排列
  * @see LeetCode698           划分为k个相等的子集

@@ -7,21 +7,21 @@ package leetcode.lists.lcr;
 public class LCR134 {
 
     public double myPow(double x, int n) {
-        double res = myPowH(x, n);
-        return n < 0 ? 1 / res : res;
+        long a = n;
+        if (a < 0) {
+            a = -a;
+            x = 1 / x;
+        }
+        return myPowH(x, a);
     }
 
-    private double myPowH(double x, int n) {
-        if (n == 0) {
-            return 1;
+    private double myPowH(double a, long b) {
+        double res = 1;
+        while (b > 0) {
+            if ((b & 1) == 1) res *= a;
+            a *= a;
+            b >>= 1;
         }
-        if (n == 1) {
-            return x;
-        }
-        if (n % 2 == 0) {
-            return myPowH(x * x, n / 2);
-        } else {
-            return myPowH(x * x, n / 2) * x;
-        }
+        return res;
     }
 }

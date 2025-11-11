@@ -38,9 +38,9 @@ public class ZeroOne_path implements ZeroOnePack {
                 v -= C[i - 1];
             }
         }
+        System.out.println("一种 选择的物品编号为:" + selected);
         List<List<Integer>> result = new ArrayList<>();
         backtrack(N, V, C, W, dp, new ArrayList<>(), result);
-        System.out.println("一种 选择的物品编号为:" + selected);
         System.out.println("All种 选择的物品编号为:" + result);
         System.out.println("方案的总数:" + cnt[N][V]);
         return dp[N][V];
@@ -56,7 +56,7 @@ public class ZeroOne_path implements ZeroOnePack {
         if (w >= weight[i - 1] && dp[i][w] == dp[i - 1][w - weight[i - 1]] + value[i - 1]) {
             path.add(i - 1); // 添加物品编号
             backtrack(i - 1, w - weight[i - 1], weight, value, dp, path, result);
-            path.remove(path.size() - 1); // 回溯
+            path.removeLast(); // 回溯
         }
         // 再尝试“不选当前物品”
         if (dp[i][w] == dp[i - 1][w]) {

@@ -8,9 +8,9 @@ import leetcode.problems.*;
  * @description 区间
  * @see LeetCode56      合并区间
  * @see LeetCode57      插入区间
- * @see LeetCode56      合并区间
- * @see LeetCode57      插入区间
  * @see LeetCode763     划分字母区间
+ * @see LeetCode2406    将区间分为最少组数
+ * @see LeetCode2580    统计将重叠区间合并成组的方案数
  * @see LeetCode3169    无需开会的工作日
  * @see LeetCode3394    判断网格图能否被切割成块
  * @see LeetCode2963    统计好分割方案的数目

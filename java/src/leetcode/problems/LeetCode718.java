@@ -1,5 +1,7 @@
 package leetcode.problems;
 
+import knowledge.mathematics.impl.MathUtil;
+
 import java.util.HashSet;
 import java.util.Set;
 
@@ -50,7 +52,7 @@ public class LeetCode718 {
         }
         Set<Long> set = new HashSet<>();
         set.add(hashA);
-        long mul = pow(base, len - 1);
+        long mul = MathUtil.modPow(base, len - 1, 1);
         for (int i = len; i < A.length; i++) {
             hashA = ((hashA - A[i - len] * mul % mod + mod) % mod * base + A[i]) % mod;
             set.add(hashA);
@@ -69,18 +71,5 @@ public class LeetCode718 {
             }
         }
         return false;
-    }
-
-    // 使用快速幂计算 x^n % mod 的值
-    public long pow(long x, long n) {
-        long r = 1;
-        while (n != 0) {
-            if ((n & 1) != 0) {
-                r = r * x % mod;
-            }
-            x = x * x % mod;
-            n >>= 1;
-        }
-        return r;
     }
 }

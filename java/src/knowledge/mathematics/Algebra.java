@@ -1,11 +1,14 @@
 package knowledge.mathematics;
 
+import knowledge.mathematics.impl.MathUtil;
 import leetcode.problems.*;
 
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/12/21 22:06
- * @description 代数
+ * @description 数论
+ * <基础>
+ * @see MathUtil
  * <同余定理> (preSum[i]−preSum[j]) mod k==0 ⟺ (preSum[i] mod k) == (preSum[j] mod k)
  * @see LeetCode523
  * @see LeetCode974

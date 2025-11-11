@@ -1,17 +1,11 @@
 package knowledge.datastructure.heap;
 
-import knowledge.algorithms.sort.HeapSelect;
-import knowledge.algorithms.sort.HeapSort;
-
 import java.util.Arrays;
 
 /**
  * @author wujingxinit@outlook.com
  * @date 2022/7/23 16:33
  * @description MaxHeap 最大堆
- * <a href="https://github.com/labuladong/fucking-algorithm/blob/master/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%B3%BB%E5%88%97/%E4%BA%8C%E5%8F%89%E5%A0%86%E8%AF%A6%E8%A7%A3%E5%AE%9E%E7%8E%B0%E4%BC%98%E5%85%88%E7%BA%A7%E9%98%9F%E5%88%97.md">...</a>
- * @see HeapSort
- * @see HeapSelect
  */
 public class MaxHeap<E extends Comparable<E>> implements DualHeap<E> {
 

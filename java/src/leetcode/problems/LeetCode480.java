@@ -1,5 +1,6 @@
 package leetcode.problems;
 
+import java.util.Comparator;
 import java.util.TreeSet;
 
 /**
@@ -8,78 +9,52 @@ import java.util.TreeSet;
  */
 public class LeetCode480 {
 
-    TreeSet<Integer> maxSet;
-    TreeSet<Integer> minSet;
-
     int[] nums;
+    TreeSet<Integer> L;  // 大顶堆（按值降序，索引降序）
+    TreeSet<Integer> R;  // 小顶堆（按值升序，索引升序）
 
     public double[] medianSlidingWindow(int[] nums, int k) {
-        int len = nums.length;
         this.nums = nums;
-        double[] result = new double[len - k + 1];
-        if (k == 1) {
-            for (int i = 0; i < len; i++) {
-                result[i] = nums[i];
+        int n = nums.length;
+        Comparator<Integer> cmp = (i, j) -> {
+            if (nums[i] != nums[j]) {
+                return Integer.compare(nums[i], nums[j]);
             }
-            return result;
-        }
-        maxSet = new TreeSet<>((o1, o2) -> {
-            if (nums[o1] == nums[o2]) {
-                return Integer.compare(o2, o1);
-            }
-            return Integer.compare(nums[o2], nums[o1]);
-
-        });
-        minSet = new TreeSet<>((o1, o2) -> {
-            if (nums[o1] == nums[o2]) {
-                return Integer.compare(o1, o2);
-            }
-            return Integer.compare(nums[o1], nums[o2]);
-        });
-
-        for (int i = 0; i < len; i++) {
-            if (i >= k) {
-                remove(i - k);
-            }
+            return Integer.compare(i, j);
+        };
+        R = new TreeSet<>(cmp);
+        L = new TreeSet<>(cmp.reversed());
+        double[] ans = new double[n - k + 1];
+        for (int i = 0; i < k; i++) add(i);
+        ans[0] = median();
+        for (int i = k; i < n; i++) {
+            remove(i - k);
             add(i);
-            if (i >= k - 1) {
-                result[i - (k - 1)] = getMid();
-            }
+            ans[i - k + 1] = median();
         }
-        return result;
+        return ans;
     }
 
     private void add(int idx) {
-        if (maxSet.isEmpty() || nums[maxSet.first()] >= nums[idx]) {
-            maxSet.add(idx);
-        } else {
-            minSet.add(idx);
-        }
-        if (maxSet.size() > minSet.size() + 1) {
-            minSet.add(maxSet.pollFirst());
-        } else if (maxSet.size() < minSet.size()) {
-            maxSet.add(minSet.pollFirst());
-        }
+        L.add(idx);
+        R.add(L.pollFirst());
+        balance();
     }
 
     private void remove(int idx) {
-        if (minSet.contains(idx)) {
-            minSet.remove(idx);
-            if (maxSet.size() > minSet.size() + 1) {
-                minSet.add(maxSet.pollFirst());
-            }
-        } else {
-            maxSet.remove(idx);
-            if (maxSet.size() < minSet.size()) {
-                maxSet.add(minSet.pollFirst());
-            }
-        }
+        if (!L.remove(idx)) R.remove(idx);
+        balance();
     }
 
-    private double getMid() {
-        if (maxSet.size() == minSet.size()) {
-            return ((double) nums[maxSet.first()] + nums[minSet.first()]) / 2;
+    private void balance() {
+        while (L.size() < R.size()) L.add(R.pollFirst());
+        while (L.size() > R.size() + 1) R.add(L.pollFirst());
+    }
+
+    private double median() {
+        if (L.size() == R.size()) {
+            return ((double) nums[L.first()] + nums[R.first()]) / 2.0;
         }
-        return nums[maxSet.first()];
+        return nums[L.first()];
     }
 }
