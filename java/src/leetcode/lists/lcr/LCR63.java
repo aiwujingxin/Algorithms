@@ -1,7 +1,7 @@
 package leetcode.lists.lcr;
 
 
-import knowledge.datastructure.string.match.Trie;
+import knowledge.datastructure.string.trie.Trie;
 
 import java.util.List;
 

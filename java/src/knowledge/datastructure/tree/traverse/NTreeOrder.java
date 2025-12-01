@@ -1,8 +1,7 @@
 package knowledge.datastructure.tree.traverse;
 
 import common.TreeNode;
-import knowledge.datastructure.tree.DFS;
-import knowledge.datastructure.tree.Iteration;
+import knowledge.datastructure.tree.Tree;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -13,21 +12,19 @@ import java.util.Queue;
  * @author wujingxinit@outlook.com
  * @date 2023/8/1 13:01
  */
-public class NTreeOrder implements Iteration, DFS {
+public class NTreeOrder implements Tree.Iteration, Tree.DFS {
 
-    @Override
-    public List<Integer> DFS(TreeNode root) {
+    public List<Integer> dfs(TreeNode root) {
         List<Integer> list = new ArrayList<>();
         for (TreeNode child : root.children) {
             // 前序位置需要的操作
-            DFS(child);
+            dfs(child);
             // 后序位置需要的操作
         }
         return list;
     }
 
-    @Override
-    public List<Integer> Iteration(TreeNode root) {
+    public List<Integer> iteration(TreeNode root) {
         List<Integer> list = new ArrayList<>();
         Queue<TreeNode> queue = new LinkedList<>();
         queue.add(root);

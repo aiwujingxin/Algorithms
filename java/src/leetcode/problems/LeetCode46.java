@@ -30,7 +30,7 @@ public class LeetCode46 {
             used[i] = true;
             list.add(nums[i]);
             backtrack(nums, list, res, used);
-            list.remove(list.size() - 1);
+            list.removeLast();
             used[i] = false;
         }
     }

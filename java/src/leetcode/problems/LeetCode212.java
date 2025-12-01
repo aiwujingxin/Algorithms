@@ -1,7 +1,7 @@
 package leetcode.problems;
 
 
-import knowledge.datastructure.string.match.Trie;
+import knowledge.datastructure.string.trie.Trie;
 
 import java.util.ArrayList;
 import java.util.HashSet;

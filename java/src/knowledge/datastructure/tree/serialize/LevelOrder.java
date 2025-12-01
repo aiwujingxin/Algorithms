@@ -1,7 +1,7 @@
 package knowledge.datastructure.tree.serialize;
 
 import common.TreeNode;
-import knowledge.datastructure.tree.Serialize;
+import knowledge.datastructure.tree.Tree;
 
 import java.util.LinkedList;
 import java.util.Queue;
@@ -14,7 +14,7 @@ import java.util.Queue;
 public class LevelOrder {
     //https://leetcode.cn/problems/serialize-and-deserialize-binary-tree/solution/297-er-cha-shu-de-xu-lie-hua-yu-fan-xu-l-647c/
     // Encodes a tree to a single string.
-    public class Codec implements Serialize {
+    public class Codec implements Tree.Serialize {
 
         String COMMA = ",";
         String NULL = "null";

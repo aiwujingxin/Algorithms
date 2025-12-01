@@ -28,16 +28,12 @@ public class LeetCode47 {
             return;
         }
         for (int i = 0; i < nums.length; i++) {
-            if (i > 0 && nums[i] == nums[i - 1] && !used[i - 1]) {
-                continue;
-            }
-            if (used[i]) {
-                continue;
-            }
+            if (i > 0 && nums[i] == nums[i - 1] && !used[i - 1]) continue;
+            if (used[i]) continue;
             used[i] = true;
             path.add(nums[i]);
             backtrack(nums, path, res, used);
-            path.remove(path.size() - 1);
+            path.removeLast();
             used[i] = false;
         }
     }

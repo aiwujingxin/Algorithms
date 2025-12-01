@@ -10,6 +10,7 @@ package knowledge.algorithms.binarylifting;
  * @see leetcode.problems.LeetCode50
  * @see leetcode.problems.LeetCode29
  * @see leetcode.problems.LeetCode2241
+ * @see leetcode.problems.LeetCode1220
  */
 public interface BinaryLifting {
 }

@@ -2,37 +2,40 @@ package leetcode.problems;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2023/2/12 16:15
- * <a href="https://leetcode.cn/problems/largest-1-bordered-square/solution/java-dong-tai-gui-hua-by-resolmi/">...</a>
+ * @date 2025/11/26 16:15
  */
 public class LeetCode1139 {
-    // 前缀和
+    int[][] s;
+
     public int largest1BorderedSquare(int[][] grid) {
         int m = grid.length;
         int n = grid[0].length;
-        //dp[i][j][0]: i,j左边连续的1的个数
-        //dp[i][j][1]: i,j上边连续的1的个数
-        int[][][] dp = new int[m + 1][n + 1][2];
+        s = new int[m + 1][n + 1];
         for (int i = 1; i <= m; i++) {
             for (int j = 1; j <= n; j++) {
-                if (grid[i - 1][j - 1] == 1) {
-                    dp[i][j][0] = 1 + dp[i][j - 1][0];
-                    dp[i][j][1] = 1 + dp[i - 1][j][1];
-                }
+                s[i][j] = s[i][j - 1] + s[i - 1][j] - s[i - 1][j - 1] + grid[i - 1][j - 1];
             }
         }
-        int res = 0;
-        for (int i = 1; i <= m; i++) {
-            for (int j = 1; j <= n; j++) {
-                //最短的那条边不一定是合法的边长，如果该边长不合法就需要缩减边长，直到找到合法的
-                for (int side = Math.min(dp[i][j][0], dp[i][j][1]); side >= 1; side--) {
-                    if (dp[i][j - side + 1][1] >= side && dp[i - side + 1][j][0] >= side) {
-                        res = Math.max(res, side);
-                        break; //更短的就没必要考虑了
+        int ans = 0;
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                int len = Math.min(m - 1 - i, n - 1 - j);
+                while (len >= 0) {
+                    if (sumRegion(i, j, i, j + len) == len + 1 &&
+                            sumRegion(i, j, i + len, j) == len + 1 &&
+                            sumRegion(i, j + len, i + len, j + len) == len + 1 &&
+                            sumRegion(i + len, j, i + len, j + len) == len + 1) {
+                        ans = Math.max((len + 1) * (len + 1), ans);
+                        break;
                     }
+                    len--;
                 }
             }
         }
-        return res * res;
+        return ans;
+    }
+
+    public int sumRegion(int r1, int c1, int r2, int c2) {
+        return s[r2 + 1][c2 + 1] - s[r1][c2 + 1] - s[r2 + 1][c1] + s[r1][c1];
     }
 }

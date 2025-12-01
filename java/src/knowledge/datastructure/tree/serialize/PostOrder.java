@@ -1,7 +1,7 @@
 package knowledge.datastructure.tree.serialize;
 
 import common.TreeNode;
-import knowledge.datastructure.tree.Serialize;
+import knowledge.datastructure.tree.Tree;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -12,7 +12,7 @@ import java.util.Arrays;
  */
 public class PostOrder {
 
-    public class Codec implements Serialize {
+    public class Codec implements Tree.Serialize {
 
         String COMMA = ",";
         String NULL = "null";

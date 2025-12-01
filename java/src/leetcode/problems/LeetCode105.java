@@ -1,6 +1,6 @@
 package leetcode.problems;
 
-import common.*;
+import common.TreeNode;
 
 /**
  * @author wujingxinit@outlook.com
@@ -12,19 +12,17 @@ public class LeetCode105 {
         return buildTree(preorder, 0, preorder.length - 1, inorder, 0, inorder.length - 1);
     }
 
-    public TreeNode buildTree(int[] preorder, int ps, int pe, int[] inorder, int is, int ie) {
-        if (ps > pe || is > ie) {
-            return null;
+    public TreeNode buildTree(int[] p, int ps, int pe, int[] in, int is, int ie) {
+        if (ps > pe || is > ie) return null;
+        TreeNode root = new TreeNode(p[ps]);
+        int i = is;
+        int len = 0;
+        while (i < ie && in[i] != p[ps]) {
+            i++;
+            len++;
         }
-        int rootVal = preorder[ps];
-        TreeNode root = new TreeNode(rootVal);
-        int index = is;
-        while (index <= ie && inorder[index] != rootVal) {
-            index++;
-        }
-        int leftSize = index - is;
-        root.left = buildTree(preorder, ps + 1, ps + leftSize, inorder, is, index - 1);
-        root.right = buildTree(preorder, ps + leftSize + 1, pe, inorder, index + 1, ie);
+        root.left = buildTree(p, ps + 1, ps + len, in, is, i - 1);
+        root.right = buildTree(p, ps + len + 1, pe, in, i + 1, ie);
         return root;
     }
 }

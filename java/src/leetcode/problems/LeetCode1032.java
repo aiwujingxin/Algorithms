@@ -1,7 +1,7 @@
 package leetcode.problems;
 
-import knowledge.datastructure.string.match.ACAutomaton;
-import knowledge.datastructure.string.match.ACAutomaton.Node;
+import knowledge.datastructure.string.trie.ACAutomaton;
+import knowledge.datastructure.string.trie.ACAutomaton.Node;
 
 /**
  * @author wujingxinit@outlook.com

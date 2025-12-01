@@ -1,8 +1,10 @@
-package knowledge.datastructure.string.match;
+package knowledge.datastructure.string.trie;
 
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/9/25 21:55
+ * @description 主要用于处理一组字符串的共同前缀问题。
+ * - Trie (字典树/前缀树)：高效地存储和查询字符串集合。常用于词频统计、输入法提示等。
  */
 public class Trie {
 

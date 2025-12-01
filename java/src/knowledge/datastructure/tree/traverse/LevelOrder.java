@@ -1,7 +1,7 @@
 package knowledge.datastructure.tree.traverse;
 
 import common.TreeNode;
-import knowledge.datastructure.tree.Iteration;
+import knowledge.datastructure.tree.Tree;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -12,10 +12,10 @@ import java.util.Queue;
  * @author wujingxinit@outlook.com
  * @date 2022/9/7 12:01
  */
-public class LevelOrder implements Iteration {
+public class LevelOrder implements Tree.Iteration {
 
     @Override
-    public List<Integer> Iteration(TreeNode root) {
+    public List<Integer> iteration(TreeNode root) {
         if (root == null) {
             return new ArrayList<>();
         }

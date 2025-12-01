@@ -43,7 +43,6 @@ public class LeetCode934 {
                     if (t == -1) {
                         continue;
                     }
-                    System.out.println(" i " + i + " j " + j + " t " + t);
                     res = Math.min(res, t);
                 }
             }

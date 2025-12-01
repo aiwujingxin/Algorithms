@@ -1,16 +1,11 @@
-package knowledge.datastructure.string.search.impl;
-
-import knowledge.datastructure.string.search.Search;
+package knowledge.datastructure.string.hash;
 
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/6/7 00:09
- * @see leetcode.problems.LeetCode1044
- * @see leetcode.problems.LeetCode187
- * @see leetcode.problems.LeetCode28
- * @see leetcode.problems.LeetCode718
+ * @description RabinKarp  Rabin-Karp 算法：通过滚动哈希将字符串比较转化为整数比较，从而加速匹配。平均时间复杂度 O(N+M)。
  */
-public class RabinKarp implements Search {
+public class RabinKarp implements knowledge.datastructure.string.String.Match {
 
     public int strStr(String txt, String pat) {
         int n = pat.length();

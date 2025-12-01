@@ -47,5 +47,5 @@ import leetcode.problems.*;
  * @see LeetCode109  有序链表转换二叉搜索树
  * @see LeetCode114  二叉树展开为链表
  */
-public interface Problem {
+public interface LinkedList {
 }

@@ -38,6 +38,8 @@ import java.util.Arrays;
  * @see LeetCode2312     卖木头块
  * @see AcWing283        多边形游戏
  * @see LCCI0814         布尔运算
+ * <长度展开>
+ * @see LeetCode1638     统计只差一个字符的子串数目
  * <博弈类>
  * @see GameDP           博弈类DP
  * <回文类>

@@ -1,7 +1,7 @@
 package knowledge.datastructure.tree.serialize;
 
 import common.TreeNode;
-import knowledge.datastructure.tree.Serialize;
+import knowledge.datastructure.tree.Tree;
 import leetcode.problems.LeetCode449;
 
 import java.util.ArrayList;
@@ -14,7 +14,7 @@ import java.util.List;
  */
 public class BSTCodec {
 
-    public class Codec implements Serialize {
+    public class Codec implements Tree.Serialize {
 
         String COMMA = ",";
 

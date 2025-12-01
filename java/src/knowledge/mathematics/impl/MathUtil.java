@@ -82,11 +82,11 @@ public class MathUtil {
     }
 
     public static long[][] multiply(long[][] A, long[][] B, long MOD) {
-        int N = A.length;
-        long[][] C = new long[N][N];
-        for (int i = 0; i < N; i++) {
-            for (int j = 0; j < N; j++) {
-                for (int k = 0; k < N; k++) {
+        int r = A.length, c = B[0].length, z = B.length;
+        long[][] C = new long[r][c];
+        for (int i = 0; i < r; i++) {
+            for (int j = 0; j < c; j++) {
+                for (int k = 0; k < z; k++) {
                     C[i][j] = (C[i][j] + A[i][k] * B[k][j]) % MOD;
                 }
             }
@@ -128,7 +128,6 @@ public class MathUtil {
 
 
     // ==================== 1.5 素数 ====================
-
 
 
     // ==================== 1.6 素数 ====================
@@ -218,6 +217,7 @@ public class MathUtil {
     }
 
     // ==================== 数学扩展 ====================
+
     /**
      * 整除判断
      */

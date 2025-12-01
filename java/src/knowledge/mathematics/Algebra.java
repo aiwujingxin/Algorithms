@@ -3,6 +3,9 @@ package knowledge.mathematics;
 import knowledge.mathematics.impl.MathUtil;
 import leetcode.problems.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/12/21 22:06
@@ -52,4 +55,21 @@ import leetcode.problems.*;
  * @see LeetCode365     水壶问题
  */
 public interface Algebra {
+
+    /**
+     * 求一个数的所有因子 遍历到sqrt(n)
+     */
+    static List<Integer> findFactors(int n) {
+        List<Integer> factors = new ArrayList<>();
+        for (int i = 1; i <= Math.sqrt(n); i++) {
+            if (n % i == 0) {
+                factors.add(i);
+                if (i != n / i) {
+                    factors.add(n / i);
+                }
+            }
+        }
+        factors.sort(Integer::compareTo);
+        return factors;
+    }
 }

@@ -1,4 +1,4 @@
-package knowledge.datastructure.string.match;
+package knowledge.datastructure.string.trie;
 
 import leetcode.problems.LeetCode1032;
 
@@ -7,7 +7,8 @@ import java.util.*;
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/6/6 23:48
- * @description AC自动机 多模式字符串匹配算法. 在Trie树上构建两类边 回跳边和转移边. 扫描主串匹配
+ * @description AC自动机 多模式字符串匹配算法. Trie树与KMP思想的结合。用于在一个文本串中同时查找多个模式串。是多模式匹配的标准解决方案。
+ * 原理 在Trie树上构建两类边 回跳边和转移边. 扫描主串匹配
  * @link <a href="https://www.youtube.com/watch?v=D2jwopA4-P0"></a>
  * 时间复杂度 O(n+m)
  * @see LeetCode1032

@@ -1,9 +1,9 @@
 package leetcode.problems;
 
 
-import knowledge.datastructure.string.hash.DoubleStringHash;
+import knowledge.datastructure.string.hash.DStringHash;
 import knowledge.datastructure.string.hash.StringHash;
-import knowledge.datastructure.string.search.impl.KMP;
+import knowledge.datastructure.string.kmp.KMP;
 
 /**
  * @author wujingxinit@outlook.com
@@ -39,7 +39,7 @@ public class LeetCode1392 {
 
     public String longestPrefix_d_hash(String s) {
         int n = s.length();
-        DoubleStringHash sh = new DoubleStringHash(s);
+        DStringHash sh = new DStringHash(s);
         int maxLen = 0;
         for (int len = 1; len < n; len++) {
             long[] prefix = sh.getHash(0, len);

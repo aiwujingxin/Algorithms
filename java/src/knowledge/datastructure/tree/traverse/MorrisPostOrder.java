@@ -1,7 +1,7 @@
 package knowledge.datastructure.tree.traverse;
 
 import common.TreeNode;
-import knowledge.datastructure.tree.Iteration;
+import knowledge.datastructure.tree.Tree;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,16 +10,17 @@ import java.util.List;
  * @author wujingxinit@outlook.com
  * @date 2023/12/27 21:48
  */
-public class MorrisPostOrder implements Iteration {
+public class MorrisPostOrder implements Tree.Iteration {
 
     List<Integer> list = new ArrayList<>();
 
-    public List<Integer> Iteration(TreeNode head) {
+    @Override
+    public List<Integer> iteration(TreeNode head) {
         if (head == null) {
             return new ArrayList<>();
         }
         TreeNode cur = head;
-        TreeNode mostRight = null;
+        TreeNode mostRight;
         while (cur != null) {
             mostRight = cur.left;
             if (mostRight != null) {

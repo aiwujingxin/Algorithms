@@ -1,7 +1,7 @@
 package knowledge.datastructure.tree.traverse;
 
 import common.TreeNode;
-import knowledge.datastructure.tree.Iteration;
+import knowledge.datastructure.tree.Tree;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,7 +11,7 @@ import java.util.List;
  * @date 2023/12/27 21:40
  * @description Morris中顺遍历
  */
-public class MorrisInOrder implements Iteration {
+public class MorrisInOrder implements Tree.Iteration {
 
     public static void main(String[] args) {
         // Creating a sample binary tree
@@ -22,10 +22,11 @@ public class MorrisInOrder implements Iteration {
         root.left.right = new TreeNode(5);
         MorrisInOrder morris = new MorrisInOrder();
         System.out.println("In-order traversal using Morris Traversal:");
-        System.out.println(morris.Iteration(root));
+        System.out.println(morris.iteration(root));
     }
 
-    public List<Integer> Iteration(TreeNode root) {
+    @Override
+    public List<Integer> iteration(TreeNode root) {
         if (root == null) {
             return new ArrayList<>();
         }

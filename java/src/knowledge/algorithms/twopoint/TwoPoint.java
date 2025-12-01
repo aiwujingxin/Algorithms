@@ -1,5 +1,6 @@
 package knowledge.algorithms.twopoint;
 
+import knowledge.datastructure.list.LinkedList;
 import leetcode.problems.*;
 import knowledge.algorithms.sort.*;
 
@@ -22,7 +23,7 @@ import knowledge.algorithms.sort.*;
  * @see LeetCode80
  * @see LeetCode283
  * @see LeetCode922
- * @see knowledge.datastructure.list.Problem  链表
+ * @see LinkedList  链表
  * <对撞指针> 本质: 利用排除法, 减少一次遍历的时间
  * @see LeetCode11
  * @see LeetCode15 三数之和

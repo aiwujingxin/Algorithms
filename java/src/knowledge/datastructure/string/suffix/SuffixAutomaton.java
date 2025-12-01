@@ -6,6 +6,7 @@ import java.util.*;
  * @author wujingxinit@outlook.com
  * @date 11/9/24 06:47
  * @description Suffix Automaton (SAM) for a single string.
+ * 一个能接受字符串所有子串的最小确定有限状态自动机。结构精简，功能极其强大。
  * - build in O(n) with extend(char)
  * - contains(pattern)
  * - countOccurrences(pattern) after prepareOccurrence()

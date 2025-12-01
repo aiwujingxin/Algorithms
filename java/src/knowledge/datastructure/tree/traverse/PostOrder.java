@@ -1,8 +1,7 @@
 package knowledge.datastructure.tree.traverse;
 
 import common.TreeNode;
-import knowledge.datastructure.tree.DFS;
-import knowledge.datastructure.tree.Iteration;
+import knowledge.datastructure.tree.Tree;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,23 +12,21 @@ import java.util.Stack;
  * @date 2022/9/7 11:50
  * <a href="https://zhuanlan.zhihu.com/p/80578741"></a>
  */
-public class PostOrder implements Iteration, DFS {
+public class PostOrder implements Tree.Iteration, Tree.DFS {
 
     List<Integer> list = new ArrayList<>();
 
-    @Override
-    public List<Integer> DFS(TreeNode root) {
+    public List<Integer> dfs(TreeNode root) {
         if (root == null) {
             return new ArrayList<>();
         }
-        DFS(root.left);
-        DFS(root.right);
+        dfs(root.left);
+        dfs(root.right);
         list.add(root.val);
         return list;
     }
 
-    @Override
-    public List<Integer> Iteration(TreeNode root) {
+    public List<Integer> iteration(TreeNode root) {
         if (root == null) {
             return new ArrayList<>();
         }

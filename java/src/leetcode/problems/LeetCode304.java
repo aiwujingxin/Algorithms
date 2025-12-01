@@ -7,7 +7,7 @@ package leetcode.problems;
  */
 public class LeetCode304 {
 
-    class NumMatrix {
+    static class NumMatrix {
 
         int[][] s;
 

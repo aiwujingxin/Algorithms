@@ -19,10 +19,6 @@ public class LeetCode1755 {
 
         List<Long> leftSum = getSum(left);
         List<Long> rightSum = getSum(right);
-        System.out.println(left);
-        System.out.println(leftSum);
-        System.out.println(right);
-        System.out.println(rightSum);
         long res = Integer.MAX_VALUE;
         for (long a : leftSum) {
             long target = goal - a;
