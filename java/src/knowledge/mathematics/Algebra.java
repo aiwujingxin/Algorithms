@@ -1,10 +1,6 @@
 package knowledge.mathematics;
 
-import knowledge.mathematics.impl.MathUtil;
 import leetcode.problems.*;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * @author wujingxinit@outlook.com
@@ -34,12 +30,13 @@ import java.util.List;
  * <方程>
  * @see LeetCode829     连续整数求和
  * <质数与因数>
- * @see LeetCode204
- * @see LeetCode762
- * @see LeetCode2521
- * @see LeetCode459
- * @see LeetCode2507
+ * @see MathUtil.Sieve  筛法计算质数
+ * @see LeetCode204     计数质数
  * @see LeetCode254     因数
+ * @see LeetCode459     重复的子字符串
+ * @see LeetCode762     二进制表示中质数个计算置位
+ * @see LeetCode2521    数组乘积中的不同质因数数目
+ * @see LeetCode2507    使用质因数之和替换后可以取到的最小值
  * <平方数>
  * @see LeetCode319
  * <阶乘>
@@ -55,21 +52,4 @@ import java.util.List;
  * @see LeetCode365     水壶问题
  */
 public interface Algebra {
-
-    /**
-     * 求一个数的所有因子 遍历到sqrt(n)
-     */
-    static List<Integer> findFactors(int n) {
-        List<Integer> factors = new ArrayList<>();
-        for (int i = 1; i <= Math.sqrt(n); i++) {
-            if (n % i == 0) {
-                factors.add(i);
-                if (i != n / i) {
-                    factors.add(n / i);
-                }
-            }
-        }
-        factors.sort(Integer::compareTo);
-        return factors;
-    }
 }

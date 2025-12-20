@@ -38,7 +38,6 @@ public class LeetCode3557 {
             list.add(i);
             map.put(s.charAt(i), list);
         }
-        System.out.println(map);
         // 对每个字符做一次查找
         for (int i = 0; i < n - 3; i++) { // 至少长度4
             char c = s.charAt(i);

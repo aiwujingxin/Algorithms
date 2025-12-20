@@ -11,13 +11,10 @@ package knowledge.datastructure.string.hash;
  */
 public class StringHash {
 
-    private static final long BASE = 131;    // 进制基数（通常取质数）
-    private static final long MOD = (long) 1e9 + 7; // 模数
-
-    private final long[] hash;     // 前缀哈希数组
-    private final long[] power;    // 存储 base 的幂次
-
-    private final String s;
+    long BASE = 131;
+    final long[] hash;
+    final long[] power;
+    final String s;
 
     public StringHash(String s) {
         this.s = s;
@@ -25,25 +22,23 @@ public class StringHash {
         hash = new long[n + 1];
         power = new long[n + 1];
         power[0] = 1;
-        hash[0] = 0;
         for (int i = 1; i <= n; i++) {
-            power[i] = (power[i - 1] * BASE) % MOD;
-            hash[i] = (hash[i - 1] * BASE + s.charAt(i - 1)) % MOD;
+            power[i] = power[i - 1] * BASE;
+            hash[i] = hash[i - 1] * BASE + s.charAt(i - 1);
         }
     }
 
-    // 获取子串 s[l, r] 的哈希值（左闭右开区间）
     public long getHash(int l, int r) {
-        return (hash[r] - hash[l] * power[r - l] % MOD + MOD) % MOD;
+        return hash[r] - hash[l] * power[r - l];
     }
 
     public long getUpdatedHash(int l, int r, int k, char c) {
         int len = r - l;
         long oldH = getHash(l, r);
         char oldC = s.charAt(l + k);
-        long diff = (c - oldC + MOD) % MOD;
+        long diff = (c - oldC);
         long p_pow = power[len - 1 - k];
-        return (oldH + diff * p_pow) % MOD;
+        return oldH + diff * p_pow;
     }
 
     public int strStr(String text, String pat) {

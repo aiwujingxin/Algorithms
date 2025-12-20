@@ -13,8 +13,10 @@ public class LeetCode204 {
         for (int i = 2; i < n; i++) {
             if (!notPrime[i]) {
                 cnt++;
-                for (int j = i * 2; j < n; j += i) {
-                    notPrime[j] = true;
+                if ((long) i * i <= n) {
+                    for (int j = i * i; j < n; j += i) {
+                        notPrime[j] = true;
+                    }
                 }
             }
         }

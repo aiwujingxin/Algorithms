@@ -1,14 +1,15 @@
-package knowledge.mathematics.impl;
+package knowledge.mathematics;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 
 /**
  * @author wujingxinit@outlook.com
  * @date 11/5/25 05:09
  * @description MathUtil
- * @see leetcode.problems.LeetCode50
- * @see leetcode.problems.LeetCode372
  */
 public class MathUtil {
 
@@ -127,13 +128,29 @@ public class MathUtil {
     }
 
 
-    // ==================== 1.5 素数 ====================
-
-
-    // ==================== 1.6 素数 ====================
+    // ==================== 1.5 因子 ====================
 
     /**
-     * 判断是否为质数 (√n 检查)
+     * 求一个数的所有因子 遍历到sqrt(n)
+     */
+    static List<Integer> findFactors(int n) {
+        List<Integer> factors = new ArrayList<>();
+        for (int i = 1; i <= Math.sqrt(n); i++) {
+            if (n % i == 0) {
+                factors.add(i);
+                if (i != n / i) {
+                    factors.add(n / i);
+                }
+            }
+        }
+        factors.sort(Integer::compareTo);
+        return factors;
+    }
+
+    // ==================== 1.6 质数 ====================
+
+    /**
+     * 判断是否为质数 (√n)
      */
     public static boolean isPrime(long n) {
         if (n < 2) return false;
@@ -163,33 +180,88 @@ public class MathUtil {
     public static Set<Integer> getPrimeFactors(int n) {
         Set<Integer> s = new HashSet<>();
         for (int i = 2; i * i <= n; i++) {
-            if (n % i == 0) {
+            while (n % i == 0) {
                 s.add(i);
-                while (n % i == 0) n /= i;
+                n /= i;
             }
         }
         if (n > 1) s.add(n);
         return s;
     }
 
-    /**
-     * 线性筛求质数列表
-     */
-    public static List<Integer> primeSieve(int n) {
-        boolean[] isPrime = new boolean[n + 1];
-        Arrays.fill(isPrime, true);
-        isPrime[0] = isPrime[1] = false;
-        List<Integer> primes = new ArrayList<>();
-        for (int i = 2; i <= n; i++) {
-            if (isPrime[i]) {
-                primes.add(i);
-                for (long j = (long) i * i; j <= n; j += i)
-                    isPrime[(int) j] = false;
+    public static class Sieve {
+        /**
+         * 埃氏筛 (Eratosthenes Sieve) - 优化版
+         * 时间复杂度: O(N log log N)
+         */
+        public static class EratosthenesSieve {
+            public static boolean[] notPrime;
+
+            public static void sieve(int n) {
+                notPrime = new boolean[n + 1];
+                notPrime[0] = notPrime[1] = true;
+                for (int i = 2; i * i <= n; i++) {
+                    if (!notPrime[i]) {
+                        if ((long) i * i <= n) {
+                            for (int j = i * i; j <= n; j += i) {
+                                notPrime[j] = true;
+                            }
+                        }
+                    }
+                }
             }
         }
-        return primes;
-    }
 
+        /**
+         * 线性筛 (Euler Sieve) - 真正的线性复杂度
+         * 时间复杂度: O(N)
+         */
+        public static class EulerSieve {
+            public static boolean[] isNotPrime;
+            public static int[] primes;
+            public static int primeCount;
+
+            public static void sieve(int n) {
+                primeCount = 0;
+                isNotPrime = new boolean[n + 1];
+                primes = new int[n + 1];
+                isNotPrime[0] = true;
+                isNotPrime[1] = true;
+                for (int i = 2; i <= n; i++) {
+                    if (!isNotPrime[i]) {
+                        primes[primeCount++] = i;
+                    }
+                    for (int j = 0; j < primeCount && i * primes[j] <= n; j++) {
+                        isNotPrime[i * primes[j]] = true;
+                        if (i % primes[j] == 0) {
+                            break;
+                        }
+                    }
+                }
+            }
+
+            /**
+             * 欧拉筛 (线性筛) - 获取 n 以内的所有质数
+             * 时间复杂度: O(N)
+             */
+            public static List<Integer> getPrimes(int n) {
+                boolean[] notPrime = new boolean[n + 1];
+                notPrime[0] = notPrime[1] = true;
+                List<Integer> primes = new ArrayList<>();
+                for (int i = 2; i <= n; i++) {
+                    if (!notPrime[i]) {
+                        primes.add(i);
+                    }
+                    for (int p : primes) {
+                        if ((long) i * p > n) break;
+                        notPrime[i * p] = true;
+                        if (i % p == 0) break;
+                    }
+                }
+                return primes;
+            }
+        }
+    }
 
     // ==================== 3 组合 & 排列 ====================
 

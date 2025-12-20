@@ -11,6 +11,8 @@ public class BigDecimalSub {
         boolean isNum2Negative = num2.startsWith("-");
         String positiveNum1 = isNum1Negative ? num1.substring(1) : num1;
         String positiveNum2 = isNum2Negative ? num2.substring(1) : num2;
+        positiveNum1 = sub(positiveNum1);
+        positiveNum2 = sub(positiveNum2);
         // 情况1: a - (-b)  =>  a + b
         if (!isNum1Negative && isNum2Negative) {
             return BigDecimalAdd.addStrings(positiveNum1, positiveNum2);
@@ -134,5 +136,13 @@ public class BigDecimalSub {
             if (num1.charAt(i) < num2.charAt(i)) return -1;
         }
         return 0; // 完全相等
+    }
+
+    private static String sub(String s) {
+        int index = 0;
+        while (index < s.length() && s.charAt(index) == '0') {
+            index++;
+        }
+        return s.substring(index);
     }
 }

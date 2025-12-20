@@ -8,6 +8,16 @@ import leetcode.problems.*;
  * @author wujingxinit@outlook.com
  * @date 2023/8/31 01:29
  * @description 位运算
+ * <操作符>
+ * ＆	都是1, 则为1，否则为0. 参与的数越多，结果越小
+ * |	都是0, 则为0，否则为1. 参与的数越多，结果越大
+ * ^	相同,  则为0，否则为1.
+ * 〜	按位取反 0变成1，1变成0
+ * <与>
+ * @see LeetCode2275     按位与结果大于零的最长组合
+ * @see LeetCode2419     按位与最大的最长子数组
+ * @see LeetCode2871     将数组分割成最多数目的子数组
+ * @see LeetCode2401     最长优雅子数组
  * <基础操作>
  * @see LeetCode67       二进制求和
  * @see LeetCode136      只出现一次的数字
@@ -36,14 +46,12 @@ import leetcode.problems.*;
  * @see LeetCode89       格雷编码
  * @see LeetCode1017     负二进制转换
  * @see LeetCode1558     得到目标数组的最少函数调用次数
- * <与>
- * @see LeetCode2275     按位与结果大于零的最长组合
- * @see LeetCode2419     按位与最大的最长子数组
  */
 public interface BIT {
 
     // 位掩码 0x55555555    （二进制  0101010101⋯01）
     // 位掩码 ~0x55555555   （二进制  1010101010⋯10）
+    // 位掩码 a = -1;       （二进制  111...1111111）和任何数 AND 都等于那个数
 
     // 取最低位 1
     static int lowbit(int x) {
@@ -72,6 +80,26 @@ public interface BIT {
 
     static boolean isPowerOfFour(int x) {
         return x > 0 && (x & (x - 1)) == 0 && (x & 0x55555555) > 0;
+    }
+
+    // 提取某一位 (从低位 0 开始)
+    static int getBit(int x, int i) {
+        return (x >> i) & 1;
+    }
+
+    // 设置某一位为 1
+    static int setBit(int x, int i) {
+        return x | (1 << i);
+    }
+
+    // 清除某一位
+    static int clearBit(int x, int i) {
+        return x & ~(1 << i);
+    }
+
+    // 翻转某一位
+    static int toggleBit(int x, int i) {
+        return x ^ (1 << i);
     }
 
     // 计算二进制 1 的个数
@@ -105,23 +133,11 @@ public interface BIT {
         return res;
     }
 
-    // 提取某一位 (从低位 0 开始)
-    static int getBit(int x, int i) {
-        return (x >> i) & 1;
-    }
-
-    // 设置某一位为 1
-    static int setBit(int x, int i) {
-        return x | (1 << i);
-    }
-
-    // 清除某一位
-    static int clearBit(int x, int i) {
-        return x & ~(1 << i);
-    }
-
-    // 翻转某一位
-    static int toggleBit(int x, int i) {
-        return x ^ (1 << i);
+    static int[] cal(int num) {
+        int[] a = new int[32];
+        for (int i = 0; i < 32; i++) {
+            a[i] = (num >> i) & 1;
+        }
+        return a;
     }
 }

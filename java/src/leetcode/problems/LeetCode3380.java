@@ -42,9 +42,6 @@ public class LeetCode3380 {
             rowColSet[x].add(y);
             rowColList[x].add(y);
         }
-        for (int i = 0; i < n; i++) {
-            if (!colRowSet[i].isEmpty()) System.out.println(" i " + i + " set " + colRowSet[i]);
-        }
         int ans = 0;
         for (int i = 0; i < n; i++) {
             HashSet<Integer> block = new HashSet<>();

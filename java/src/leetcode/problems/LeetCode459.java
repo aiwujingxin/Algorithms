@@ -1,6 +1,7 @@
 package leetcode.problems;
 
-import knowledge.mathematics.impl.MathUtil;
+import knowledge.datastructure.string.kmp.KMP;
+import knowledge.mathematics.MathUtil;
 
 /**
  * @author wujingxinit@outlook.com
@@ -40,6 +41,15 @@ public class LeetCode459 {
             k += len;
         }
         return k == s.length();
+    }
+
+
+    public boolean repeatedSubstringPattern_kmp(String s) {
+        int n = s.length();
+        int[] nx = new KMP().next(s.toCharArray());
+        int lps = nx[n - 1];        // 最长前后缀长度
+        // 如果 lps > 0 且 n 可以被 (n - lps) 整除，则可由重复子串组成
+        return lps > 0 && n % (n - lps) == 0;
     }
 
     public boolean repeatedSubstringPattern_opt(String s) {

@@ -1,6 +1,6 @@
 package leetcode.problems;
 
-import knowledge.mathematics.impl.MathUtil;
+import knowledge.mathematics.MathUtil;
 
 /**
  * @author wujingxinit@outlook.com

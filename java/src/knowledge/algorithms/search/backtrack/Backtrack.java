@@ -47,7 +47,6 @@ import leetcode.problems.*;
  * @see LeetCode131     分割回文串
  * @see LeetCode140     单词拆分II
  * @see LeetCode212     单词搜索II
- * @see LeetCode254     因子的组合
  * @see LeetCode491     非递减子序列
  * @see LeetCode282     给表达式添加运算符
  * @see LeetCode113     路径总和II
@@ -66,6 +65,7 @@ import leetcode.problems.*;
  * <剪枝>
  * @see LeetCode996_bk  平方数组的数目
  * @see LeetCode2048    下一个更大的数值平衡数
+ * @see LeetCode254     因子的组合
  */
 public interface Backtrack {
     /*

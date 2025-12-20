@@ -7,11 +7,10 @@ import java.util.List;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2023/8/11 18:05
+ * @date 12/2/25 15:25
  */
 public class LeetCode1530 {
-
-    int ans = 0;
+    int ans;
     int distance;
 
     public int countPairs(TreeNode root, int distance) {
@@ -20,36 +19,37 @@ public class LeetCode1530 {
         return ans;
     }
 
-    public List<Integer> dfs(TreeNode node) {
-        List<Integer> list = new ArrayList<>();
-        if (node == null) {
-            return list;
+    private List<Integer> dfs(TreeNode root) {
+        if (root == null) {
+            return null;
         }
-        if (node.left == null && node.right == null) {
-            list.add(0);
-            return list;
+        if (root.left == null && root.right == null) {
+            return List.of(1);
         }
-        List<Integer> left = dfs(node.left);
-        List<Integer> right = dfs(node.right);
-        for (int v : left) {
-            if (v + 1 >= distance) {
-                continue;
-            }
-            list.add(v + 1);
-        }
-        for (int v : right) {
-            if (v + 1 >= distance) {
-                continue;
-            }
-            list.add(v + 1);
-        }
-        for (int l : left) {
-            for (int r : right) {
-                if (l + r + 2 <= distance) {
-                    ans++;
+        List<Integer> left = dfs(root.left);
+        List<Integer> right = dfs(root.right);
+        if (left != null && right != null) {
+            for (Integer l : left) {
+                for (Integer r : right) {
+                    if (l + r <= distance) {
+                        ans++;
+                    }
                 }
             }
         }
-        return list;
+        List<Integer> res = new ArrayList<>();
+        if (left != null) {
+            for (Integer l : left) {
+                l++;
+                res.add(l);
+            }
+        }
+        if (right != null) {
+            for (Integer r : right) {
+                r++;
+                res.add(r);
+            }
+        }
+        return res;
     }
 }

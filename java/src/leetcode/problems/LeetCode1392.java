@@ -13,22 +13,18 @@ public class LeetCode1392 {
 
     public String longestPrefix(String s) {
         int n = s.length();
-        int[] next = new KMP().next(s);
-        return s.substring(0, next[n]);
+        int[] next = new KMP().next(s.toCharArray());
+        return s.substring(0, next[n - 1]);
     }
 
     public String longestPrefix_hash_TEL(String s) {
         int n = s.length();
         StringHash sh = new StringHash(s);
         int maxLen = 0;
-        // 检查所有可能的前缀后缀对
         for (int len = 1; len < n; len++) {
-            // 前缀: s[0:len]
-            // 后缀: s[n-len:n]
-            long prefixHash = sh.getHash(0, len);
-            long suffixHash = sh.getHash(n - len, n);
-            if (prefixHash == suffixHash) {
-                // 可选：再次验证防止哈希冲突
+            long prefix = sh.getHash(0, len);
+            long suffix = sh.getHash(n - len, n);
+            if (prefix == suffix) {
                 if (s.substring(0, len).equals(s.substring(n - len))) {
                     maxLen = len;
                 }

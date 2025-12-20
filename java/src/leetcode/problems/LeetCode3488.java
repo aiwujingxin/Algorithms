@@ -20,7 +20,6 @@ public class LeetCode3488 {
             list.add(i);
             map.put(num, list);
         }
-        System.out.println(map);
         List<Integer> ans = new ArrayList<>();
         for (int index : queries) {
             int num = nums[index];

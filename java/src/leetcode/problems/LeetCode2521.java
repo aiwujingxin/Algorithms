@@ -1,6 +1,6 @@
 package leetcode.problems;
 
-import knowledge.mathematics.impl.MathUtil;
+import knowledge.mathematics.MathUtil;
 
 import java.util.HashSet;
 import java.util.Set;

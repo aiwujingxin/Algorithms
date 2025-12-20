@@ -10,27 +10,21 @@ public class LeetCode3031 {
 
     public int minimumTimeToInitialState(String word, int k) {
         int n = word.length();
-        int[] pi = new KMP().next(word);
+        int[] pi = new KMP().next(word.toCharArray());
+        // 预处理：标记所有 border 长度
+        boolean[] isBorderLen = new boolean[n + 1];
+        int border = pi[n - 1]; // 从最长的 border 开始
+        while (border > 0) {
+            isBorderLen[border] = true;
+            border = pi[border - 1]; // 正确的 0-based 回退
+        }
+        isBorderLen[0] = true; // 删光也算前缀
         // 遍历 t，检查 word[t*k:] 是否是前缀
         for (int t = 1; t * k <= n; t++) {
-            int start = t * k;
-            if (isPrefix(word, start, pi)) {
+            if (isBorderLen[n - t * k]) {
                 return t;
             }
         }
         return (n + k - 1) / k;
-    }
-
-    // 检查 word[start:] 是否是 word 的前缀
-    private boolean isPrefix(String word, int start, int[] pi) {
-        int n = word.length();
-        int len = n - start;
-        // KMP border 只能从 pi[n] 不断回溯
-        int border = pi[n];
-        while (border > 0) {
-            if (border == len) return true;
-            border = pi[border];
-        }
-        return len == 0; // 特殊情况：完全删光
     }
 }
