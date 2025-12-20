@@ -1,8 +1,6 @@
 package knowledge.mathematics;
 
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 
@@ -13,28 +11,9 @@ import java.util.Set;
  */
 public class MathUtil {
 
-    // ==================== 常量定义 ====================
     public static final long MOD = 1_000_000_007L;  // 默认模数 (需为质数)
-    public static final int MAX_N = 100_000;        // 阶乘预处理上限
 
-    private static final long[] fact = new long[MAX_N + 1];
-    private static final long[] invFact = new long[MAX_N + 1];
-
-    static {
-        initFactorials();
-    }
-
-    // ==================== 预处理：阶乘 & 逆元 ====================
-    private static void initFactorials() {
-        fact[0] = 1;
-        for (int i = 1; i <= MAX_N; i++) fact[i] = fact[i - 1] * i % MOD;
-        invFact[MAX_N] = modPow(fact[MAX_N], MOD - 2, MOD);
-        for (int i = MAX_N; i > 0; i--) invFact[i - 1] = invFact[i] * i % MOD;
-    }
-
-    // ==================== 1 数论 ==========================
-
-    // ================== 1.1 安全模运算 ====================
+    // ================== 2.1 模运算 ====================
     public static long safeAdd(long a, long b, long mod) {
         return (a + b) % mod;
     }
@@ -51,7 +30,7 @@ public class MathUtil {
         return (x % m + m) % m;
     }
 
-    // ================== 1.2. 快速幂 / 模逆元 ====================
+    // ================== 2.2 快速幂 ====================
     // 快速幂 (a^b % mod)
     public static long modPow(long a, long b, long mod) {
         long res = 1;
@@ -95,6 +74,26 @@ public class MathUtil {
         return C;
     }
 
+    // ==================== 2.3 GCD , LCM ====================
+    public static long gcd(long a, long b) {
+        return b == 0 ? a : gcd(b, a % b);
+    }
+
+    public static long lcm(long a, long b) {
+        return a / gcd(a, b) * b;
+    }
+
+    // ==================== 2.4 扩展欧几里得算法 ====================
+
+    /**
+     * 扩展欧几里得算法: 返回 [g, x, y] 使 ax + by = g
+     */
+    public static long[] extendedGcd(long a, long b) {
+        if (b == 0) return new long[]{a, 1, 0};
+        long[] r = extendedGcd(b, a % b);
+        return new long[]{r[0], r[2], r[1] - (a / b) * r[2]};
+    }
+
     // 模逆元 (费马小定理，mod 为质数)
     public static long modInverse(long a, long mod) {
         return modPow(a, mod - 2, mod);
@@ -107,47 +106,9 @@ public class MathUtil {
         return (r[1] % mod + mod) % mod;
     }
 
-    // ==================== 1.3 GCD / LCM ====================
-    public static long gcd(long a, long b) {
-        return b == 0 ? a : gcd(b, a % b);
-    }
+    // ==================== 2.5 同余与逆元 ====================
 
-    public static long lcm(long a, long b) {
-        return a / gcd(a, b) * b;
-    }
-
-    // ==================== 1.4 扩展欧几里得算法 ====================
-
-    /**
-     * 扩展欧几里得算法: 返回 [g, x, y] 使 ax + by = g
-     */
-    public static long[] extendedGcd(long a, long b) {
-        if (b == 0) return new long[]{a, 1, 0};
-        long[] r = extendedGcd(b, a % b);
-        return new long[]{r[0], r[2], r[1] - (a / b) * r[2]};
-    }
-
-
-    // ==================== 1.5 因子 ====================
-
-    /**
-     * 求一个数的所有因子 遍历到sqrt(n)
-     */
-    static List<Integer> findFactors(int n) {
-        List<Integer> factors = new ArrayList<>();
-        for (int i = 1; i <= Math.sqrt(n); i++) {
-            if (n % i == 0) {
-                factors.add(i);
-                if (i != n / i) {
-                    factors.add(n / i);
-                }
-            }
-        }
-        factors.sort(Integer::compareTo);
-        return factors;
-    }
-
-    // ==================== 1.6 质数 ====================
+    // ==================== 2.6 质数 ====================
 
     /**
      * 判断是否为质数 (√n)
@@ -189,81 +150,23 @@ public class MathUtil {
         return s;
     }
 
-    public static class Sieve {
-        /**
-         * 埃氏筛 (Eratosthenes Sieve) - 优化版
-         * 时间复杂度: O(N log log N)
-         */
-        public static class EratosthenesSieve {
-            public static boolean[] notPrime;
-
-            public static void sieve(int n) {
-                notPrime = new boolean[n + 1];
-                notPrime[0] = notPrime[1] = true;
-                for (int i = 2; i * i <= n; i++) {
-                    if (!notPrime[i]) {
-                        if ((long) i * i <= n) {
-                            for (int j = i * i; j <= n; j += i) {
-                                notPrime[j] = true;
-                            }
-                        }
-                    }
-                }
-            }
-        }
-
-        /**
-         * 线性筛 (Euler Sieve) - 真正的线性复杂度
-         * 时间复杂度: O(N)
-         */
-        public static class EulerSieve {
-            public static boolean[] isNotPrime;
-            public static int[] primes;
-            public static int primeCount;
-
-            public static void sieve(int n) {
-                primeCount = 0;
-                isNotPrime = new boolean[n + 1];
-                primes = new int[n + 1];
-                isNotPrime[0] = true;
-                isNotPrime[1] = true;
-                for (int i = 2; i <= n; i++) {
-                    if (!isNotPrime[i]) {
-                        primes[primeCount++] = i;
-                    }
-                    for (int j = 0; j < primeCount && i * primes[j] <= n; j++) {
-                        isNotPrime[i * primes[j]] = true;
-                        if (i % primes[j] == 0) {
-                            break;
-                        }
-                    }
-                }
-            }
-
-            /**
-             * 欧拉筛 (线性筛) - 获取 n 以内的所有质数
-             * 时间复杂度: O(N)
-             */
-            public static List<Integer> getPrimes(int n) {
-                boolean[] notPrime = new boolean[n + 1];
-                notPrime[0] = notPrime[1] = true;
-                List<Integer> primes = new ArrayList<>();
-                for (int i = 2; i <= n; i++) {
-                    if (!notPrime[i]) {
-                        primes.add(i);
-                    }
-                    for (int p : primes) {
-                        if ((long) i * p > n) break;
-                        notPrime[i * p] = true;
-                        if (i % p == 0) break;
-                    }
-                }
-                return primes;
-            }
-        }
-    }
 
     // ==================== 3 组合 & 排列 ====================
+    public static final int MAX_N = 100_000;        // 阶乘预处理上限
+    private static final long[] fact = new long[MAX_N + 1];
+    private static final long[] invFact = new long[MAX_N + 1];
+
+    static {
+        initFactorials();
+    }
+
+    // ==================== 预处理：阶乘 & 逆元 ====================
+    private static void initFactorials() {
+        fact[0] = 1;
+        for (int i = 1; i <= MAX_N; i++) fact[i] = fact[i - 1] * i % MOD;
+        invFact[MAX_N] = modPow(fact[MAX_N], MOD - 2, MOD);
+        for (int i = MAX_N; i > 0; i--) invFact[i - 1] = invFact[i] * i % MOD;
+    }
 
     /**
      * C(n, k) = n! / (k! * (n - k)!) % MOD
@@ -281,7 +184,7 @@ public class MathUtil {
         return fact[n] * invFact[n - k] % MOD;
     }
 
-    // 斐波那契数列第 n 项
+    // 斐波那契数列第 n 项 - 快速幂
     public static long fibonacci(int n, long mod) {
         if (n <= 1) return n;
         long[][] T = {{1, 1}, {1, 0}};
@@ -290,32 +193,14 @@ public class MathUtil {
 
     // ==================== 数学扩展 ====================
 
-    /**
-     * 整除判断
-     */
-    public static boolean divides(long a, long b) {
-        return b % a == 0;
-    }
-
-    /**
-     * 判断是否为幂
-     */
+    // 判断是否为幂
     public static boolean isPowerOf(long n, long base) {
         if (n < 1 || base < 2) return false;
         while (n % base == 0) n /= base;
         return n == 1;
     }
 
-    /**
-     * 模意义下的加法链 (a + b + c + ... % mod)
-     */
-    public static long modSum(long[] arr, long mod) {
-        long sum = 0;
-        for (long x : arr) sum = (sum + x) % mod;
-        return sum;
-    }
-
-    // ==================== 取整函数 ====================
+    // 取整函数
     public static long ceilDiv(long a, long b) {
         return (a + b - 1) / b;
     }

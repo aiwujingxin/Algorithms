@@ -1,6 +1,7 @@
 package leetcode.problems;
 
 import knowledge.mathematics.MathUtil;
+import knowledge.mathematics.impl.Sieve;
 
 /**
  * @author wujingxinit@outlook.com
@@ -9,11 +10,11 @@ import knowledge.mathematics.MathUtil;
 public class LeetCode3618 {
 
     public long splitArray(int[] nums) {
-        MathUtil.Sieve.EratosthenesSieve.sieve(nums.length);
+        Sieve.EratosthenesSieve.initPrimes(nums.length);
         long a = 0;
         long b = 0;
         for (int i = 0; i < nums.length; i++) {
-            if (MathUtil.Sieve.EratosthenesSieve.notPrime[i]) {
+            if (Sieve.EratosthenesSieve.notPrime[i]) {
                 b += nums[i];
             } else {
                 a += nums[i];

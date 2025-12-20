@@ -1,6 +1,7 @@
 package leetcode.problems;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author wujingxinit@outlook.com
@@ -9,17 +10,28 @@ import java.util.*;
 public class LeetCode119 {
 
     public List<Integer> getRow(int rowIndex) {
-        List<Integer> list = new ArrayList<>();
-        list.add(1);
+        List<Integer> res = new ArrayList<>();
+        res.add(1);
         for (int i = 1; i <= rowIndex; i++) {
-            List<Integer> next = new ArrayList<>();
-            next.add(1);
+            List<Integer> cur = new ArrayList<>();
+            cur.add(1);
             for (int j = 1; j < i; j++) {
-                next.add(list.get(j - 1) + list.get(j));
+                cur.add(res.get(j - 1) + res.get(j));
             }
-            next.add(1);
-            list = next;
+            cur.add(1);
+            res = cur;
         }
-        return list;
+        return res;
+    }
+
+    // C(n,k)=C(n,k−1)×(n−k+1)/k
+    public List<Integer> getRow_(int rowIndex) {
+        List<Integer> row = new ArrayList<>();
+        long val = 1;
+        for (int k = 0; k <= rowIndex; k++) {
+            row.add((int) val);
+            val = val * (rowIndex - k) / (k + 1);
+        }
+        return row;
     }
 }

@@ -48,7 +48,6 @@ import leetcode.problems.*;
  * @see LeetCode224         基本计算器 "(1+(4+5+2)-3)+(6+8)"
  * @see LeetCode772         基本计算器 III  "2*(5+5*2)/3+(6/2+8)"
  * @see LeetCode241         为运算表达式设计优先级
- * @see LeetCode166         分数到小数
  * <字符串解析>
  * @see LeetCode8           字符串转换整数 (atoi)
  * @see LeetCode65          有效数字
