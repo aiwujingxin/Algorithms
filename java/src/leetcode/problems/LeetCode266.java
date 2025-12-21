@@ -10,7 +10,7 @@ import java.util.Map;
 public class LeetCode266 {
 
     public boolean canPermutePalindrome(String s) {
-        if (s == null || s.length() == 0) {
+        if (s.isEmpty()) {
             return true;
         }
         Map<Character, Integer> map = new HashMap<>();
