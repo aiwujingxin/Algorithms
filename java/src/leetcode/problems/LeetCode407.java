@@ -11,6 +11,8 @@ public class LeetCode407 {
 
     public int trapRainWater(int[][] heights) {
         int m = heights.length, n = heights[0].length;
+        // 最小堆，按照高度从小到大排序
+        // int[] 存储 {row, col, height}
         PriorityQueue<int[]> queue = new PriorityQueue<>((o1, o2) -> o1[2] - o2[2]);
         boolean[][] visited = new boolean[m][n];
         for (int i = 0; i < m; i++) {
@@ -29,17 +31,14 @@ public class LeetCode407 {
             int x = node[0], y = node[1], h = node[2];
             for (int[] d : dirs) {
                 int nx = x + d[0], ny = y + d[1];
-                if (nx < 0 || nx >= m || ny < 0 || ny >= n) {
+                if (nx < 0 || nx >= m || ny < 0 || ny >= n || visited[nx][ny]) {
                     continue;
                 }
-                if (visited[nx][ny]) {
-                    continue;
-                }
+                visited[nx][ny] = true;
                 if (h > heights[nx][ny]) {
                     ans += h - heights[nx][ny];
                 }
                 queue.add(new int[]{nx, ny, Math.max(heights[nx][ny], h)});
-                visited[nx][ny] = true;
             }
         }
         return ans;

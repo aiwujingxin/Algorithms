@@ -27,13 +27,12 @@ public class LeetCode2471 {
                     queue.add(node.right);
                 }
             }
-            res += minimumOperations(arr);
+            res += minSwaps(arr);
         }
         return res;
     }
 
-
-    public int minimumOperations(int[] nums) {
+    public int minSwaps(int[] nums) {
         int cnt = 0, n = nums.length;
         int[] sorted = Arrays.copyOf(nums, n);
         Arrays.sort(sorted);

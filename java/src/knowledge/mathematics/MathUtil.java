@@ -200,17 +200,80 @@ public class MathUtil {
         return n == 1;
     }
 
-    // 取整函数
+    /**
+     * 向上取整除法 (Ceiling Division)
+     * 计算 a / b 的结果，如果有余数则向上进位。
+     * 适用于正整数场景。
+     */
     public static long ceilDiv(long a, long b) {
+        if (b == 0) throw new ArithmeticException("除数不能为0");
         return (a + b - 1) / b;
     }
 
+    /**
+     * 向上取整到 k 的倍数
+     */
     public static int upToMultiple(int x, int k) {
+        if (k == 0) return x;
         return (int) ceilDiv(x, k) * k;
     }
 
+    /**
+     * 向下取整到 k 的倍数
+     */
     public static int downToMultiple(int x, int k) {
+        if (k == 0) return x;
         return (x / k) * k;
     }
 
+    /**
+     * 等差数列求和 - 公式 1 (已知首项、末项)
+     * Sn = n(a1 + an) / 2
+     */
+    public static long sumArithmeticWithLast(long firstTerm, long lastTerm, long count) {
+        return count * (firstTerm + lastTerm) / 2;
+    }
+
+    /**
+     * 等差数列求和 - 公式 2 (已知首项、公差)
+     * Sn = n*a1 + n(n-1)d / 2
+     */
+    public static long sumArithmeticWithDiff(long firstTerm, long diff, long count) {
+        return count * firstTerm + (count * (count - 1) * diff) / 2;
+    }
+
+    /**
+     * 等比数列求和
+     * Sn = a1 * (1 - q^n) / (1 - q)
+     */
+    public static double sumGeometric(double firstTerm, double ratio, int count) {
+        if (count < 0) return 0;
+        // 特殊情况：公比为 1，直接乘
+        if (Math.abs(ratio - 1.0) < 1e-9) { // 使用 epsilon 处理浮点数比较
+            return count * firstTerm;
+        }
+        return firstTerm * (1 - Math.pow(ratio, count)) / (1 - ratio);
+    }
+
+    /**
+     * 计算阶乘 (Factorial)
+     */
+    public static long factorial(int n) {
+        if (n < 0) throw new IllegalArgumentException("负数没有阶乘");
+        if (n > 20) throw new ArithmeticException("结果溢出 long 类型范围，请使用 BigInteger");
+        if (n == 0 || n == 1) return 1;
+        long result = 1;
+        for (int i = 2; i <= n; i++) {
+            result *= i;
+        }
+        return result;
+    }
+
+    /**
+     * 计算两点间距离
+     * 使用 Math.hypot 可以防止中间计算过程中的平方溢出
+     */
+    public static double getDistance(double x1, double y1, double x2, double y2) {
+        return Math.hypot(x2 - x1, y2 - y1);
+    }
 }

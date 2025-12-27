@@ -8,7 +8,7 @@ import java.util.PriorityQueue;
  * @author wujingxinit@outlook.com
  * @date 2023/5/29 21:59
  */
-public class LeetCode1514_Dijkstra {
+public class LeetCode1514_Dij {
 
     //https://leetcode.com/problems/path-with-maximum-probability/solutions/2440627/java-dijkstra-algorithm/
 

@@ -26,7 +26,7 @@ import leetcode.lists.lcp.*;
  * @see LeetCode743             网络延迟时间
  * <单源最短路>
  * @see LeetCode1334_shortPath  阈值距离内邻居最少的城市
- * @see LeetCode1514_Dijkstra
+ * @see LeetCode1514_Dij
  * @see LeetCode1786
  * @see LeetCode1976
  * @see LeetCode2045

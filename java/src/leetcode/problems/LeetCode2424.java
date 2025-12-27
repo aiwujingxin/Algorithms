@@ -27,14 +27,18 @@ public class LeetCode2424 {
         }
 
         public int longest() {
-            int l = 0;
-            int r = n;
-            while (l < r) {
-                int m = l + r + 1 >> 1;
-                if (bitTree.sum(m) - bitTree.sum(0) < m) r = m - 1;
-                else l = m;
+            int left = 0;
+            int right = n;
+            while (left < right) {
+                int mid = left + right + 1 >> 1;
+                int sum = bitTree.sum(mid) - bitTree.sum(0);
+                if (sum < mid) {
+                    right = mid - 1;
+                } else {
+                    left = mid;
+                }
             }
-            return l;
+            return left;
         }
     }
 

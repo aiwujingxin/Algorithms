@@ -26,7 +26,7 @@ public class BITree_Max {
         long res = Long.MIN_VALUE;
         while (i > 0) {
             res = Math.max(res, tree[i]);
-            i &= i - 1;
+            i -= i & -i;
         }
         return res;
     }

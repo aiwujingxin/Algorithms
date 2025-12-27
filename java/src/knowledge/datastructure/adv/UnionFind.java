@@ -13,13 +13,16 @@ import leetcode.problems.*;
  * @see LeetCode1319_uf       连通网络的操作次数
  * @see LeetCode2492_uf       两个城市间路径的最小分数
  * @see LeetCode2685          统计完全连通分量的数量
- * @see LeetCode765           情侣牵手
  * @see LeetCode827           最大人工岛
  * @see LeetCode947_uf        移除最多的同行或同列石头
  * @see LeetCode990           等式方程的可满足性
  * @see LeetCode839           相似字符串组
  * @see LeetCode2316          统计无向图中无法互相到达点对数
  * @see LeetCode2424          最长上传前缀
+ * <置换群>
+ * @see LeetCode3551          数位和排序需要的最小交换次数
+ * @see LeetCode765           情侣牵手
+ * @see LeetCode2471          逐层排序二叉树所需的最少操作数目
  */
 public class UnionFind {
 

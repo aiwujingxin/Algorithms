@@ -20,7 +20,7 @@ public class LeetCode2926 {
                 b[i] = nums[i] - i;
             }
             Arrays.sort(b);
-            BITree_Max t = new BITree_Max(b.length + 1);
+            BITree_Max t = new BITree_Max(b.length);
             for (int i = 0; i < n; i++) {
                 // j 为 nums[i]-i 离散化后的值（从 1 开始）
                 int j = Arrays.binarySearch(b, nums[i] - i) + 1;

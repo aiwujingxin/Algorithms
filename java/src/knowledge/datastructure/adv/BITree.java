@@ -1,6 +1,6 @@
 package knowledge.datastructure.adv;
 
-import leetcode.lists.lcr.*;
+import leetcode.lists.lcr.LCR170_bitTree;
 import leetcode.problems.*;
 
 /**
@@ -28,6 +28,9 @@ import leetcode.problems.*;
  * @see LeetCode1375
  * @see LeetCode1649
  * @see LeetCode2424
+ * <变种>
+ * @see BITree_Max
+ * @see BITree_RangeMax
  */
 public class BITree {
     int[] tree;
