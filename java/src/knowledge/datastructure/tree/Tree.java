@@ -40,6 +40,7 @@ import java.util.List;
  * <LCA>
  * @see LeetCode235     二叉搜索树的最近公共祖先
  * @see LeetCode236     二叉树的最近公共祖先
+ * @see LeetCode865     具有所有最深节点的最小子树
  * @see LeetCode1123    最深叶节点的最近公共祖先
  * <子树>
  * @see LeetCode572     另一棵树的子树

@@ -3,7 +3,7 @@ package leetcode.problems;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Objects;
+import java.util.Map;
 
 /**
  * @author wujingxinit@outlook.com
@@ -12,39 +12,30 @@ import java.util.Objects;
 public class LeetCode30 {
 
     public List<Integer> findSubstring(String s, String[] words) {
-        int wordLen = words[0].length();
-        int n = words.length;
-        List<Integer> list = new ArrayList<>();
-        HashMap<String, Integer> tMap = new HashMap<>();
-        for (String word : words) {
-            tMap.put(word, tMap.getOrDefault(word, 0) + 1);
-        }
-        int target = tMap.size();
-        for (int i = 0; i < wordLen; i++) {
-            int left = i;
-            int right = i;
-            int cnt = 0;
-            HashMap<String, Integer> sMap = new HashMap<>();
-            while (right + wordLen <= s.length()) {
-                String c = s.substring(right, right + wordLen);
-                sMap.put(c, sMap.getOrDefault(c, 0) + 1);
-                if (Objects.equals(tMap.get(c), sMap.get(c))) {
-                    cnt++;
+        List<Integer> res = new ArrayList<>();
+        Map<String, Integer> counts = new HashMap<>();
+        for (String w : words) counts.merge(w, 1, Integer::sum);
+        int num = words.length;
+        int len = words[0].length();
+        int max = len * (num - 1);
+        int target = counts.size();
+        for (int i = 0; i < len; i++) {
+            Map<String, Integer> window = new HashMap<>();
+            int left = i, right = i, valid = 0;
+            while (right + len <= s.length()) {
+                String w = s.substring(right, right + len);
+                window.merge(w, 1, Integer::sum);
+                if (window.get(w).equals(counts.get(w))) valid++;
+                if (right - left == max) {
+                    if (valid == target) res.add(left);
+                    String d = s.substring(left, left + len);
+                    if (window.get(d).equals(counts.get(d))) valid--;
+                    window.merge(d, -1, Integer::sum);
+                    left += len;
                 }
-                while (right - left >= wordLen * (n - 1)) {
-                    if (right - left == wordLen * (n - 1) && cnt == target) {
-                        list.add(left);
-                    }
-                    String d = s.substring(left, left + wordLen);
-                    if (Objects.equals(tMap.get(d), sMap.get(d))) {
-                        cnt--;
-                    }
-                    sMap.put(d, sMap.get(d) - 1);
-                    left += wordLen;
-                }
-                right += wordLen;
+                right += len;
             }
         }
-        return list;
+        return res;
     }
 }

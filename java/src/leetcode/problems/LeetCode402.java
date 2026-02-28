@@ -1,5 +1,8 @@
 package leetcode.problems;
 
+import java.util.ArrayDeque;
+import java.util.Deque;
+
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/11/27 15:02
@@ -8,25 +11,25 @@ package leetcode.problems;
 public class LeetCode402 {
 
     public String removeKdigits(String num, int k) {
-        if (num.length() <= k) {
-            return "0";
-        }
-        StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < num.length(); i++) {
-            while (!sb.isEmpty() && sb.charAt(sb.length() - 1) > num.charAt(i) && k > 0) {
-                sb.deleteCharAt(sb.length() - 1);
+        Deque<Character> stack = new ArrayDeque<>();
+        for (char digit : num.toCharArray()) {
+            while (!stack.isEmpty() && k > 0 && stack.peek() > digit) {
+                stack.pop();
                 k--;
             }
-            sb.append(num.charAt(i));
+            stack.push(digit);
         }
-        int index = 0;
-        while (index < sb.length() && sb.charAt(index) == '0') {
-            index++;
+        for (int i = 0; i < k; i++) {
+            stack.pop();
         }
-        String result = sb.substring(index);
-        if (k > 0) {
-            result = result.substring(0, Math.max(0, result.length() - k));
+        StringBuilder sb = new StringBuilder();
+        while (!stack.isEmpty()) {
+            sb.append(stack.pop());
         }
-        return result.isEmpty() ? "0" : result;
+        sb.reverse();
+        while (sb.length() > 1 && sb.charAt(0) == '0') {
+            sb.deleteCharAt(0);
+        }
+        return sb.isEmpty() ? "0" : sb.toString();
     }
 }

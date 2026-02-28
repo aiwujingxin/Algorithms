@@ -12,9 +12,7 @@ import java.util.List;
 public class LeetCode95 {
 
     public List<TreeNode> generateTrees(int n) {
-        if (n == 0) {
-            return new ArrayList<>();
-        }
+        if (n == 0) return new ArrayList<>();
         return dfs(1, n);
     }
 

@@ -19,7 +19,7 @@ public class LeetCode496 {
         Arrays.fill(res, -1);
         Stack<Integer> stack = new Stack<>();
         for (int i = nums2.length - 1; i >= 0; i--) {
-            while (!stack.isEmpty() && nums2[i] >= nums2[stack.peek()]) {
+            while (!stack.isEmpty() && nums2[stack.peek()] <= nums2[i]) {
                 stack.pop();
             }
             if (map.containsKey(nums2[i])) {

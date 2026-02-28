@@ -1,5 +1,8 @@
 package leetcode.problems;
 
+import java.util.ArrayDeque;
+import java.util.Deque;
+
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/12/18 18:11
@@ -24,17 +27,41 @@ public class LeetCode42 {
         return ans;
     }
 
-    public int trap_dp(int[] h) {
-        int n = h.length, res = 0;
-        int[] l = new int[n], r = new int[n];
-        int lm = 0, rm = 0;
-        for (int i = 0; i < n; i++) {
-            l[i] = lm = Math.max(lm, h[i]);
+    class Solution_DP {
+
+        public int trap(int[] h) {
+            int n = h.length, res = 0;
+            int[] l = new int[n], r = new int[n];
+            int lm = 0, rm = 0;
+            for (int i = 0; i < n; i++) {
+                l[i] = lm = Math.max(lm, h[i]);
+            }
+            for (int i = n - 1; i >= 0; i--) {
+                r[i] = rm = Math.max(rm, h[i]);
+                res += Math.min(l[i], r[i]) - h[i];
+            }
+            return res;
         }
-        for (int i = n - 1; i >= 0; i--) {
-            r[i] = rm = Math.max(rm, h[i]);
-            res += Math.min(l[i], r[i]) - h[i];
+    }
+
+    class Solution_Stack {
+
+        public int trap(int[] height) {
+            Deque<Integer> stack = new ArrayDeque<>();
+            int n = height.length;
+            int ans = 0;
+            for (int i = 0; i < n; i++) {
+                while (!stack.isEmpty() && height[i] > height[stack.peek()]) {
+                    int top = stack.pop();
+                    if (stack.isEmpty()) break;
+                    int left = stack.peek();
+                    int w = i - left - 1;
+                    int h = Math.min(height[i], height[left]) - height[top];
+                    ans += w * h;
+                }
+                stack.push(i);
+            }
+            return ans;
         }
-        return res;
     }
 }

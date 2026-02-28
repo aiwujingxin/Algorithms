@@ -1,6 +1,7 @@
 package leetcode.problems;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -13,13 +14,13 @@ public class LeetCode118 {
         List<List<Integer>> res = new ArrayList<>();
         res.add(List.of(1));
         for (int i = 1; i < numRows; i++) {
-            List<Integer> cur = new ArrayList<>();
-            cur.add(1);
+            List<Integer> row = new ArrayList<>();
+            row.add(1);
             for (int j = 1; j < i; j++) {
-                cur.add(res.get(i - 1).get(j - 1) + res.get(i - 1).get(j));
+                row.add(res.get(i - 1).get(j - 1) + res.get(i - 1).get(j));
             }
-            cur.add(1);
-            res.add(cur);
+            row.add(1);
+            res.add(row);
         }
         return res;
     }

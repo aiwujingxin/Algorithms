@@ -9,9 +9,8 @@ import java.util.List;
  */
 public class LeetCode54 {
 
-    public int[][] dirs = new int[][]{{0, 1}, {1, 0}, {0, -1}, {-1, 0}}; // 右下左上
-
     public List<Integer> spiralOrder(int[][] matrix) {
+        int[][] dirs = new int[][]{{0, 1}, {1, 0}, {0, -1}, {-1, 0}};
         int m = matrix.length;
         int n = matrix[0].length;
         int dir = 0;

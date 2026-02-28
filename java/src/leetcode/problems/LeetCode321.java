@@ -1,7 +1,5 @@
 package leetcode.problems;
 
-import java.util.Stack;
-
 /**
  * @author aiwujingxin@gmail.com
  * @date 2023/11/17 00:06
@@ -10,65 +8,74 @@ import java.util.Stack;
 public class LeetCode321 {
 
     public int[] maxNumber(int[] nums1, int[] nums2, int k) {
-        int[] res = new int[0];
-        for (int i = 0; i <= nums1.length && i <= k; i++) {
-            int j = k - i;
-            if (j >= 0 && j <= nums2.length) {
-                int[] ints = merge(subMaxNumber(nums1, i), subMaxNumber(nums2, j));
-                if (compare(ints, 0, res, 0)) {
-                    res = ints;
-                }
+        int m = nums1.length;
+        int n = nums2.length;
+        int[] maxResult = new int[k];
+        int start = Math.max(0, k - n);
+        int end = Math.min(k, m);
+        for (int i = start; i <= end; i++) {
+            int[] sub1 = getMaxSubsequence(nums1, i);
+            int[] sub2 = getMaxSubsequence(nums2, k - i);
+            int[] merged = merge(sub1, sub2);
+            if (compare(merged, 0, maxResult, 0) > 0) {
+                maxResult = merged;
             }
         }
-        return res;
+        return maxResult;
     }
 
-    public boolean compare(int[] nums1, int index1, int[] nums2, int index2) {
-        int x = nums1.length, y = nums2.length;
-        while (index1 < x && index2 < y) {
-            int difference = nums1[index1] - nums2[index2];
-            if (difference != 0) {
-                return difference > 0;
-            }
-            index1++;
-            index2++;
-        }
-        return (x - index1) - (y - index2) > 0;
-    }
-
-    private int[] merge(int[] nums1, int[] nums2) {
-        int[] result = new int[nums1.length + nums2.length];
-        int index = 0;
-        int p1 = 0;
-        int p2 = 0;
-        while (index < nums1.length + nums2.length) {
-            if (compare(nums1, p1, nums2, p2)) {
-                result[index++] = nums1[p1++];
-            } else {
-                result[index++] = nums2[p2++];
-            }
-        }
-        return result;
-    }
-
-    public int[] subMaxNumber(int[] nums, int len) {
-        int k = nums.length - len; //转化为移除k个数字得到最大值
-        Stack<Integer> stack = new Stack<>();
+    // 1. 单调栈求长度为 k 的最大子序列
+    private int[] getMaxSubsequence(int[] nums, int k) {
+        int[] stack = new int[k];
+        int top = -1; // 栈顶指针
+        int drop = nums.length - k; // 允许丢弃的元素个数
         for (int num : nums) {
-            while (k > 0 && !stack.isEmpty() && stack.peek() < num) {
-                stack.pop();
-                k--;
+            // 当栈不空，且当前元素大于栈顶，且还有丢弃额度时，弹出栈顶
+            while (top >= 0 && stack[top] < num && drop > 0) {
+                top--;
+                drop--;
             }
-            stack.push(num);
+            if (top < k - 1) {
+                top++;
+                stack[top] = num;
+            } else {
+                drop--; // 栈满了，当前元素只能丢弃
+            }
         }
-        for (int i = 0; i < k; i++) {
-            stack.pop();
+        return stack;
+    }
+
+    // 2. 合并两个子序列
+    private int[] merge(int[] sub1, int[] sub2) {
+        int x = sub1.length, y = sub2.length;
+        if (x == 0) return sub2;
+        if (y == 0) return sub1;
+        int mergeLen = x + y;
+        int[] merged = new int[mergeLen];
+        int i = 0, j = 0;
+        for (int k = 0; k < mergeLen; k++) {
+            // 如果 sub1 字典序大于 sub2，选 sub1[i]，否则选 sub2[j]
+            if (compare(sub1, i, sub2, j) > 0) {
+                merged[k] = sub1[i++];
+            } else {
+                merged[k] = sub2[j++];
+            }
         }
-        int[] result = new int[stack.size()];
-        int index = 0;
-        for (int num : stack) {
-            result[index++] = num;
+        return merged;
+    }
+
+    // 3. 比较两个数组（或其后缀）的字典序
+    // 返回值 > 0 表示 nums1 > nums2
+    private int compare(int[] nums1, int i, int[] nums2, int j) {
+        int x = nums1.length, y = nums2.length;
+        while (i < x && j < y) {
+            int diff = nums1[i] - nums2[j];
+            if (diff != 0) return diff;
+            i++;
+            j++;
         }
-        return result;
+        // 如果前缀相同，长度长的更大（虽然在本题merge逻辑中，长度其实是剩余长度）
+        // 这里的逻辑主要服务于 merge 中的贪心选择
+        return (x - i) - (y - j);
     }
 }

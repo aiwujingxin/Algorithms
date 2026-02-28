@@ -1,6 +1,7 @@
 package leetcode.problems;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -10,18 +11,16 @@ import java.util.List;
 public class LeetCode119 {
 
     public List<Integer> getRow(int rowIndex) {
-        List<Integer> res = new ArrayList<>();
-        res.add(1);
+        Integer[] row = new Integer[rowIndex + 1];
+        Arrays.fill(row, 0);
+        row[0] = 1;
         for (int i = 1; i <= rowIndex; i++) {
-            List<Integer> cur = new ArrayList<>();
-            cur.add(1);
-            for (int j = 1; j < i; j++) {
-                cur.add(res.get(j - 1) + res.get(j));
+            // 关键点：从后往前加，避免旧值被覆盖
+            for (int j = i; j >= 1; j--) {
+                row[j] += row[j - 1];
             }
-            cur.add(1);
-            res = cur;
         }
-        return res;
+        return Arrays.asList(row);
     }
 
     // C(n,k)=C(n,k−1)×(n−k+1)/k

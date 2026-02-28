@@ -13,9 +13,7 @@ public class LeetCode17 {
     List<String> res = new ArrayList<>();
 
     public List<String> letterCombinations(String digits) {
-        if (digits.isEmpty()) {
-            return res;
-        }
+        if (digits.isEmpty()) return res;
         backtrack(digits, 0, new StringBuilder());
         return res;
     }

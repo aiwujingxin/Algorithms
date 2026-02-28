@@ -1,13 +1,14 @@
 package knowledge.algorithms.dp.memoization;
 
 import knowledge.algorithms.dp.memoization.problems.P1048;
+import leetcode.problems.LeetCode3286;
 
 /**
  * @author wujingxinit@outlook.com
  * @date 8/17/25 23:17
  * @description 用缓存保存递归过程中已经计算过的状态，避免重复计算，从而将指数级递归优化为多项式或线性复杂度
  * @see P1048
- * @see leetcode.problems.LeetCode3286
+ * @see LeetCode3286
  * <方法一>
  * 1. 把这道题的 dp 状态和方程写出来
  * 2. 根据它们写出 dfs 函数

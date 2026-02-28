@@ -11,23 +11,22 @@ import java.util.List;
 public class LeetCode40 {
 
     public List<List<Integer>> combinationSum2(int[] candidates, int target) {
-        Arrays.sort(candidates);
         List<List<Integer>> res = new ArrayList<>();
-        backtrack(candidates, 0, res, new ArrayList<>(), target);
+        Arrays.sort(candidates);
+        bk(res, candidates, 0, 0, target, new ArrayList<>());
         return res;
     }
 
-    private void backtrack(int[] nums, int start, List<List<Integer>> res, List<Integer> list, int target) {
-        if (target == 0) {
+    public void bk(List<List<Integer>> res, int[] c, int start, int sum, int target, List<Integer> list) {
+        if (sum > target) return;
+        if (sum == target) {
             res.add(new ArrayList<>(list));
             return;
         }
-        for (int i = start; i < nums.length; i++) {
-            if (i > start && nums[i - 1] == nums[i] || target - nums[i] < 0) {
-                continue;
-            }
-            list.add(nums[i]);
-            backtrack(nums, i + 1, res, list, target - nums[i]);
+        for (int i = start; i < c.length; i++) {
+            if (i > start && c[i] == c[i - 1]) continue;
+            list.add(c[i]);
+            bk(res, c, i + 1, sum + c[i], target, list);
             list.removeLast();
         }
     }

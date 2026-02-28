@@ -1,6 +1,6 @@
 package leetcode.problems;
 
-import common.*;
+import common.ListNode;
 
 /**
  * @author wujingxinit@outlook.com
@@ -10,12 +10,13 @@ public class LeetCode83 {
 
     public ListNode deleteDuplicates(ListNode head) {
         ListNode cur = head;
-        while (cur != null && cur.next != null) {
-            if (cur.val == cur.next.val) {
-                cur.next = cur.next.next;
-            } else {
-                cur = cur.next;
+        while (cur != null) {
+            ListNode t = cur.next;
+            while (t != null && t.val == cur.val) {
+                t = t.next;
             }
+            cur.next = t;
+            cur = t;
         }
         return head;
     }

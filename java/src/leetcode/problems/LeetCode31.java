@@ -18,13 +18,13 @@ public class LeetCode31 {
         reverse(nums, i + 1, n - 1);
     }
 
-    private void reverse(int[] nums, int i, int j) {
-        while (i < j) swap(nums, i++, j--);
+    private void reverse(int[] a, int i, int j) {
+        while (i < j) swap(a, i++, j--);
     }
 
-    private void swap(int[] nums, int i, int j) {
-        int tmp = nums[i];
-        nums[i] = nums[j];
-        nums[j] = tmp;
+    private void swap(int[] a, int i, int j) {
+        int t = a[i];
+        a[i] = a[j];
+        a[j] = t;
     }
 }

@@ -1,6 +1,6 @@
 package leetcode.problems;
 
-import common.*;
+import common.ListNode;
 
 /**
  * @author wujingxinit@outlook.com
@@ -11,9 +11,7 @@ public class LeetCode25 {
     public ListNode reverseKGroup(ListNode head, int k) {
         ListNode tail = head;
         for (int i = 0; i < k; i++) {
-            if (tail == null) {
-                return head;
-            }
+            if (tail == null) return head;
             tail = tail.next;
         }
         ListNode newHead = reverse(head, tail);
@@ -21,35 +19,33 @@ public class LeetCode25 {
         return newHead;
     }
 
-    private ListNode reverse(ListNode head, ListNode tail) {
-        ListNode cur = head;
-        ListNode pre = null;
-        while (cur != tail) {
-            ListNode next = cur.next;
-            cur.next = pre;
-            pre = cur;
-            cur = next;
+    private ListNode reverse(ListNode h, ListNode t) {
+        ListNode c = h;
+        ListNode p = null;
+        while (c != t) {
+            ListNode n = c.next;
+            c.next = p;
+            p = c;
+            c = n;
         }
-        return pre;
+        return p;
     }
 
     public ListNode reverseKGroup_itr(ListNode head, int k) {
-        ListNode dummy = new ListNode(0, head);
-        ListNode cur = dummy;
-        while (cur.next != null) {
-            ListNode tail = cur;
-            int count = 0;
-            for (int i = 0; i < k && tail.next != null; i++) {
-                tail = tail.next;
-                count++;
+        ListNode d = new ListNode(0, head);
+        ListNode c = d;
+        while (true) {
+            ListNode t = c;
+            for (int i = 0; i < k && t != null; i++) {
+                t = t.next;
             }
-            if (count < k) return dummy.next;
-            ListNode start = cur.next;
-            ListNode next = tail.next;
-            cur.next = reverse(start, next);
-            start.next = next;
-            cur = start;
+            if (t == null) break;
+            ListNode s = c.next;
+            ListNode e = t.next;
+            c.next = reverse(s, e);
+            s.next = e;
+            c = s;
         }
-        return dummy.next;
+        return d.next;
     }
 }

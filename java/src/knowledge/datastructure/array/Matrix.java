@@ -9,6 +9,7 @@ package knowledge.datastructure.array;
  * @see leetcode.problems.LeetCode885
  * @see leetcode.problems.LeetCode498
  * @see leetcode.problems.LeetCode3446
+ * @see leetcode.problems.LeetCode1424
  */
 public interface Matrix {
 }

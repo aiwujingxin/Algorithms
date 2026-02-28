@@ -4,7 +4,10 @@ import knowledge.algorithms.search.dfsAndBfs.problems.EightPuzzle_astar;
 import knowledge.algorithms.search.dfsAndBfs.problems.MazeProblem;
 import leetcode.problems.LeetCode752_astar;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.PriorityQueue;
 import java.util.function.*;
 
 /**
@@ -24,9 +27,8 @@ public class AStar {
      * @param <C> 代价（权重）的类型。例如Integer, Double, 或自定义的数值类型。以便比较路径代价的优劣。
      * @param s   搜索的起始状态 (Start)。
      * @param e   搜索的目标状态 (End)。
-     * @param n   邻居函数 (Neighbors)。输入一个状态，返回一个列表，Map.Entry}，包含邻居状态 及其对应的转移代价。
-     * @param h   启发函数 (Heuristic)。一个双参数函数，输入当前状态 和目标状态，
-     *            返回一个从当前状态到目标状态的估计代价。这是 A* 算法的核心。
+     * @param n   邻居函数 (Neighbors)。输入一个状态，返回一个邻居列表,包含状态T和代价C。
+     * @param h   启发函数 (Heuristic)。输入当前状态 和目标状态，返回一个从当前状态到目标状态的估计代价。这是 A* 算法的核心。
      * @param z   代价类型的“零”值。由于泛型无法直接表示数值零，需要调用者显式提供。
      * @param a   代价类型的“加法”操作。一个二元操作符，定义了两个代价 如何相加。
      * @return 如果找到路径，则返回从起点到终点的最小总代价；如果不可达，则返回null。
@@ -35,21 +37,17 @@ public class AStar {
         Map<T, C> g = new HashMap<>();
         PriorityQueue<Map.Entry<T, C>> pq = new PriorityQueue<>(Map.Entry.comparingByValue());
         g.put(s, z);
-        pq.add(new AbstractMap.SimpleEntry<>(s, h.apply(s, e)));
+        pq.add(Map.entry(s, h.apply(s, e)));
         while (!pq.isEmpty()) {
-            Map.Entry<T, C> cur = pq.poll();
-            T u = cur.getKey();
-            C cost = g.get(u);
-            if (cost.compareTo(g.get(u)) > 0) {
-                continue;
-            }
-            if (u.equals(e)) return cost;
-            for (var v : n.apply(u)) {
-                T next = v.getKey();
-                C newCost = a.apply(cost, v.getValue());
-                if (g.get(next) == null || newCost.compareTo(g.get(next)) < 0) {
-                    g.put(next, newCost);
-                    pq.add(new AbstractMap.SimpleEntry<>(next, a.apply(newCost, h.apply(next, e))));
+            T u = pq.poll().getKey();
+            C d = g.get(u);
+            if (u.equals(e)) return d;
+            for (var edge : n.apply(u)) {
+                T v = edge.getKey();
+                C dv = a.apply(d, edge.getValue());
+                if (g.get(v) == null || dv.compareTo(g.get(v)) < 0) {
+                    g.put(v, dv);
+                    pq.add(Map.entry(v, a.apply(dv, h.apply(v, e))));
                 }
             }
         }

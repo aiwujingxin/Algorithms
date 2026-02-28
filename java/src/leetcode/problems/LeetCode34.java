@@ -7,9 +7,7 @@ package leetcode.problems;
 public class LeetCode34 {
 
     public int[] searchRange(int[] nums, int target) {
-        if (nums.length == 0) {
-            return new int[]{-1, -1};
-        }
+        if (nums.length == 0) return new int[]{-1, -1};
         return new int[]{findL(nums, target), findR(nums, target)};
     }
 

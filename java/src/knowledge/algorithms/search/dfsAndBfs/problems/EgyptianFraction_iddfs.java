@@ -67,7 +67,7 @@ public class EgyptianFraction_iddfs {
             if (dfs(newNumerator, newDenominator, remainingDepth - 1, (int) nextDenominator + 1, result)) {
                 return true;
             }
-            result.remove(result.size() - 1); // 回溯
+            result.removeLast(); // 回溯
         }
     }
 

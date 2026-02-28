@@ -7,20 +7,33 @@ package leetcode.problems;
 public class LeetCode76 {
 
     public String minWindow(String s, String t) {
-        int[] need = new int[128];
-        for (char c : t.toCharArray()) need[c]++;
-        int left = 0, right = 0, count = t.length();
-        int len = Integer.MAX_VALUE, start = 0;
+        int[] sArr = new int[256], tArr = new int[256];
+        int target = 0;
+        for (char c : t.toCharArray()) {
+            if (tArr[c] == 0) target++;
+            tArr[c]++;
+        }
+        int left = 0;
+        int right = 0;
+        int valid = 0;
+        int start = 0;
+        int minLen = Integer.MAX_VALUE;
         while (right < s.length()) {
-            if (need[s.charAt(right++)]-- > 0) count--;
-            while (count == 0) {
-                if (right - left < len) {
-                    len = right - left;
+            char c = s.charAt(right);
+            sArr[c]++;
+            if (sArr[c] == tArr[c]) valid++;
+            while (valid == target) {
+                if (right - left + 1 < minLen) {
+                    minLen = right - left + 1;
                     start = left;
                 }
-                if (need[s.charAt(left++)]++ == 0) count++;
+                char d = s.charAt(left);
+                if (sArr[d] == tArr[d]) valid--;
+                sArr[d]--;
+                left++;
             }
+            right++;
         }
-        return len == Integer.MAX_VALUE ? "" : s.substring(start, start + len);
+        return minLen == Integer.MAX_VALUE ? "" : s.substring(start, start + minLen);
     }
 }

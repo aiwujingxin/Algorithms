@@ -1,5 +1,6 @@
 package knowledge.mathematics;
 
+import knowledge.algorithms.search.dfsAndBfs.problems.EightPuzzle_astar;
 import knowledge.mathematics.impl.Sieve;
 import leetcode.problems.*;
 
@@ -26,25 +27,28 @@ import leetcode.problems.*;
  * <GCD LCM>
  * @see LeetCode2447
  * <阶乘>
- * @see LeetCode172     阶乘后的零
- * @see LeetCode793     阶乘函数后 K 个零
+ * @see LeetCode172             阶乘后的零
+ * @see LeetCode793             阶乘函数后 K 个零
  * <水塘抽样>
- * @see LeetCode384     随机化
+ * @see LeetCode384             随机化
  * @see LeetCode398
  * @see LeetCode382
  * @see LeetCode528
  * @see LeetCode497
  * <方程>
- * @see LeetCode829     连续整数求和
+ * @see LeetCode829             连续整数求和
  * <其他>
- * @see LeetCode400     第 N 位数字
- * @see LeetCode60      排列序列
- * @see LeetCode319     灯泡开关
+ * @see LeetCode400             第 N 位数字
+ * @see LeetCode60              排列序列
+ * @see LeetCode319             灯泡开关
  * * <贝祖定理>
- * @see LeetCode365     水壶问题
+ * @see LeetCode365             水壶问题
  * * <约瑟夫环>
  * @see LeetCode390
  * @see LeetCode1823
+ * <康托展开>
+ * @see LeetCode60              排列序列
+ * @see EightPuzzle_astar
  */
 public interface Algebra {
 }

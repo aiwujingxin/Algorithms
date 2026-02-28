@@ -10,11 +10,11 @@ public class LeetCode75 {
         int p0 = 0;
         int p2 = nums.length - 1;
         int i = 0;
-        while (i <= p2) { // 不能越界
+        while (i <= p2) {
             if (nums[i] == 0) {
                 swap(nums, i, p0);
                 p0++;
-                i++; // index才可以++
+                i++;
             } else if (nums[i] == 1) {
                 i++;
             } else if (nums[i] == 2) {

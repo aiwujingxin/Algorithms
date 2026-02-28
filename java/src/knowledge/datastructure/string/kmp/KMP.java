@@ -1,5 +1,7 @@
 package knowledge.datastructure.string.kmp;
 
+import leetcode.problems.*;
+
 /**
  * @author aiwujingxin@gmail.com
  * @date 2024/10/29 01:55
@@ -7,11 +9,12 @@ package knowledge.datastructure.string.kmp;
  * 利用失配时的信息（next数组）避免指针回溯，实现线性时间匹配。时间复杂度 O(N+M)。
  * 时间复杂度 O(n+m)
  * @link <a href="https://www.ruanyifeng.com/blog/2013/05/Knuth%E2%80%93Morris%E2%80%93Pratt_algorithm.html">讲解</a>
- * @see leetcode.problems.LeetCode28
- * @see leetcode.problems.LeetCode214
- * @see leetcode.problems.LeetCode495
- * @see leetcode.problems.LeetCode1392
- * @see leetcode.problems.LeetCode3031
+ * @see LeetCode28
+ * @see LeetCode214
+ * @see LeetCode495
+ * @see LeetCode1392
+ * @see LeetCode3031
+ * @see LeetCode1967
  */
 
 public class KMP implements knowledge.datastructure.string.String.Match {

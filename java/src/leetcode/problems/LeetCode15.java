@@ -1,6 +1,8 @@
 package leetcode.problems;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * @author wujingxinit@outlook.com
@@ -17,9 +19,11 @@ public class LeetCode15 {
             while (l < r) {
                 int sum = nums[i] + nums[l] + nums[r];
                 if (sum == 0) {
-                    res.add(Arrays.asList(nums[i], nums[l++], nums[r--]));
-                    while (l < r && nums[l] == nums[l - 1]) l++;
-                    while (l < r && nums[r] == nums[r + 1]) r--;
+                    res.add(Arrays.asList(nums[i], nums[l], nums[r]));
+                    while (l < r && nums[l + 1] == nums[l]) l++;
+                    while (l < r && nums[r - 1] == nums[r]) r--;
+                    l++;
+                    r--;
                 } else if (sum < 0) l++;
                 else r--;
             }

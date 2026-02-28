@@ -18,7 +18,7 @@ public class LeetCode50 {
     public double modPow(double a, long b) {
         double res = 1;
         while (b > 0) {
-            if ((b & 1) != 0) res *= a;
+            if ((b & 1) == 1) res *= a;
             a *= a;
             b >>= 1;
         }

@@ -15,10 +15,10 @@ public class LeetCode56 {
         Arrays.sort(nums, Comparator.comparingInt(o -> o[0]));
         List<int[]> res = new ArrayList<>();
         for (int[] cur : nums) {
-            if (res.isEmpty() || cur[0] > res.get(res.size() - 1)[1]) {
+            if (res.isEmpty() || cur[0] > res.getLast()[1]) {
                 res.add(cur);
             } else {
-                res.get(res.size() - 1)[1] = Math.max(res.get(res.size() - 1)[1], cur[1]);
+                res.getLast()[1] = Math.max(res.getLast()[1], cur[1]);
             }
         }
         return res.toArray(new int[res.size()][]);

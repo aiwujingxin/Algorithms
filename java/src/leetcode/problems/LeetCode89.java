@@ -6,7 +6,7 @@ import java.util.List;
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/12/25 00:24
- * @description 对称性构造
+ * @description 打表找规律, 对称性构造
  */
 public class LeetCode89 {
     public List<Integer> grayCode(int n) {

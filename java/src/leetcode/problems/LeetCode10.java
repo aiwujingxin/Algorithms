@@ -3,7 +3,6 @@ package leetcode.problems;
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/10/24 11:46
- * @link <a href="https://www.youtube.com/watch?v=qWxLyexGW1k"></a>
  */
 public class LeetCode10 {
 

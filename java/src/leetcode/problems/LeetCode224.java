@@ -1,57 +1,33 @@
 package leetcode.problems;
 
-import java.util.LinkedList;
-import java.util.Queue;
-import java.util.Stack;
-
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/11/3 15:33
  */
 public class LeetCode224 {
 
+    int i = 0;
+
     public int calculate(String s) {
-        Queue<Character> queue = new LinkedList<>();
-        for (char c : s.toCharArray()) {
-            queue.add(c);
-        }
-        return dfs(queue);
+        return dfs(s);
     }
 
-    private int dfs(Queue<Character> queue) {
-        Stack<Integer> stack = new Stack<>();
-        char perSign = '+';
-        int num = 0;
-        while (!queue.isEmpty()) {
-            char c = queue.poll();
+    private int dfs(String s) {
+        int res = 0, num = 0, sign = 1;
+        while (i < s.length()) {
+            char c = s.charAt(i++);
             if (Character.isDigit(c)) {
-                num = 10 * num + (c - '0');
-            }
-            // 遇到左括号开始递归计算 num
-            if (c == '(') {
-                num = dfs(queue);
-            }
-            if ((!Character.isDigit(c) && c != ' ') || queue.isEmpty()) {
-                switch (perSign) {
-                    case '+':
-                        stack.push(num);
-                        break;
-                    case '-':
-                        stack.push(-num);
-                        break;
-                }
+                num = num * 10 + (c - '0');
+            } else if (c == '(') {
+                num = dfs(s);       // 递归处理括号
+            } else if (c == ')') {
+                break;              // 结束当前层级
+            } else if (c == '+' || c == '-') {
+                res += sign * num;  // 结算上一段
                 num = 0;
-                perSign = c;
-            }
-            // 遇到右括号返回递归结果
-            if (c == ')') {
-                break;
+                sign = (c == '+') ? 1 : -1;
             }
         }
-        int res = 0;
-        while (!stack.isEmpty()) {
-            res += stack.pop();
-        }
-        return res;
+        return res + sign * num;   // 结算最后一段
     }
 }

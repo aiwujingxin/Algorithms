@@ -31,8 +31,8 @@ import leetcode.problems.*;
  * @see LeetCode473     火柴拼正方形
  * * <子集组合>
  * @see LeetCode77      元素无重不可复选
- * @see LeetCode40      元素重复不可复选
  * @see LeetCode39      元素无重可复选
+ * @see LeetCode40      元素重复不可复选
  * <球盒模型>
  * @see LeetCode698_bk  划分为k个相等的子集
  * @see LeetCode1723    完成所有工作的最短时间

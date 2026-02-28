@@ -6,7 +6,6 @@ import common.TreeNode;
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/7/14 16:04
- * @see LeetCode236
  */
 public class LeetCode865 {
 

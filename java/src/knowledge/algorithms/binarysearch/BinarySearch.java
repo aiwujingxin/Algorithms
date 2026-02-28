@@ -6,23 +6,27 @@ import leetcode.problems.*;
  * @author wujingxinit@outlook.com
  * @date 2022/9/14 14:27
  * @description 二分查找
- * <基础>
- * @see LeetCode704 704. 二分查找
- * @see LeetCode34 34. 在排序数组中查找元素的第一个和最后一个位置
- * @see LeetCode35 35. 搜索插入位置
- * @see LeetCode33 33. 搜索旋转排序数组
- * @see LeetCode81 81. 搜索旋转排序数组 II
- * <find>
- * @see LeetCode153 寻找旋转排序数组中的最小值
- * @see LeetCode154 寻找旋转排序数组中的最小值II
- * @see LeetCode162 寻找峰值
- * @see LeetCode268 丢失的数字
- * @see LeetCode852 山脉数组的峰顶索引
- * @see LeetCode367 有效的完全平方数
- * @see LeetCode1855 下标对中的最大距离
- * <find k>
- * @see LeetCode1539 1539. 第 k 个缺失的正整数
- * @see LeetCode719 719. 找出第 K 小的数对距离
+ * <本质> 区间的二段性（Bisection）
+ * 数组不一定要整体有序（如旋转数组、山脉数组），只要能构造出某种性质，使得 mid 的一侧肯定不包含目标值，即可二分。
+ * 二分查找的本质是通过满足特定单调性的 check 逻辑，在每一轮迭代中可靠地排除掉一半不包含答案的搜索区间
+ * 从而将解空间对数级压缩至边界收敛。
+ * <整数>
+ * @see LeetCode704     二分查找
+ * @see LeetCode34      在排序数组中查找元素的第一个和最后一个位置
+ * @see LeetCode35      搜索插入位置
+ * @see LeetCode33      搜索旋转排序数组
+ * @see LeetCode81      搜索旋转排序数组 II
+ * @see LeetCode153     寻找旋转排序数组中的最小值
+ * @see LeetCode154     寻找旋转排序数组中的最小值II
+ * @see LeetCode162     寻找峰值
+ * @see LeetCode268     丢失的数字
+ * @see LeetCode852     山脉数组的峰顶索引
+ * @see LeetCode367     有效的完全平方数
+ * @see LeetCode1855    下标对中的最大距离
+ * @see LeetCode1539    第 k 个缺失的正整数
+ * @see LeetCode719     找出第 K 小的数对距离
+ * <浮点数>
+ * @see LeetCode3453    分割正方形 I
  */
 public interface BinarySearch {
 

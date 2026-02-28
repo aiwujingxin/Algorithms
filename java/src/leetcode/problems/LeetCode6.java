@@ -10,11 +10,12 @@ public class LeetCode6 {
         if (n == 1 || s.length() <= n) return s;
         StringBuilder[] rows = new StringBuilder[n];
         for (int i = 0; i < n; i++) rows[i] = new StringBuilder();
-        int d = -1;
-        for (int i = 0, r = 0; i < s.length(); i++) {
+        int d = 1;
+        int r = 0;
+        for (int i = 0; i < s.length(); i++) {
             rows[r].append(s.charAt(i));
-            if (r == 0 || r == n - 1) d = -d;
             r += d;
+            if (r == 0 || r == n - 1) d = -d;
         }
         StringBuilder ans = new StringBuilder();
         for (StringBuilder row : rows) ans.append(row);

@@ -13,7 +13,7 @@ public class LeetCode45 {
         for (int i = 0; i < nums.length - 1; i++) {
             nextMax = Math.max(nextMax, i + nums[i]); // nextMax是每到一个点都需要算的
             if (i == end) {
-                step++;// 当到 i 到 end 时，后继乏力，则需要跳跃
+                step++;         // 当到 i 到 end 时，后继乏力，则需要跳跃
                 end = nextMax;  // 但max可以放宽到的由之前得到的nextMax，到nextMax之前都不需要跳跃
             }
         }

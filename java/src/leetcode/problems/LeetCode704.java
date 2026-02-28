@@ -11,15 +11,9 @@ public class LeetCode704 {
         int r = nums.length - 1;
         while (l <= r) {
             int mid = l + r >> 1;
-            int num = nums[mid];
-            if (num == target) {
-                return mid;
-            }
-            if (num > target) {
-                r = mid - 1;
-            } else {
-                l = mid + 1;
-            }
+            if (nums[mid] == target) return mid;
+            if (nums[mid] > target) r = mid - 1;
+            else l = mid + 1;
         }
         return -1;
     }

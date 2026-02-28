@@ -1,6 +1,7 @@
 package leetcode.problems;
 
-import java.util.*;
+import java.util.ArrayDeque;
+import java.util.Deque;
 
 /**
  * @author wujingxinit@outlook.com
@@ -9,28 +10,27 @@ import java.util.*;
 public class LeetCode316 {
 
     public String removeDuplicateLetters(String s) {
-        if (s == null || s.isEmpty()) return "";
-        Stack<Character> stack = new Stack<>();
+        int n = s.length();
         int[] freq = new int[26];
-        boolean[] visited = new boolean[26];
-        for (char c : s.toCharArray()) {
-            freq[c - 'a']++;
+        for (int i = 0; i < s.length(); i++) {
+            freq[s.charAt(i) - 'a']++;
         }
-        for (char c : s.toCharArray()) {
-            freq[c - 'a']--;
-            if (visited[c - 'a']) {
-                continue;
+        Deque<Character> stack = new ArrayDeque<>();
+        boolean[] vis = new boolean[26];
+        for (int i = 0; i < n; i++) {
+            int idx = s.charAt(i) - 'a';
+            freq[idx]--;
+            if (vis[idx]) continue;
+            while (!stack.isEmpty() && stack.peek() > s.charAt(i) && freq[stack.peek() - 'a'] > 0) {
+                vis[stack.pop() - 'a'] = false;
             }
-            while (!stack.isEmpty() && c < stack.peek() && freq[stack.peek() - 'a'] > 0) {
-                visited[stack.pop() - 'a'] = false;
-            }
-            stack.push(c);
-            visited[c - 'a'] = true;
+            stack.push(s.charAt(i));
+            vis[idx] = true;
         }
         StringBuilder sb = new StringBuilder();
-        for (char c : stack) {
-            sb.append(c);
+        while (!stack.isEmpty()) {
+            sb.append(stack.pop());
         }
-        return sb.toString();
+        return sb.reverse().toString();
     }
 }

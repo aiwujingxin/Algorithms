@@ -8,13 +8,15 @@ import leetcode.problems.*;
  * @description 滑动窗口 一个比较常用的双指针，所以单独拿出来整理 详细见《滑动窗口.xmind》
  * 用一对指针在序列上动态维护一个连续区间，使每次只增减边界元素，从而高效地处理区间问题，避免重复遍历整个区间
  * <定长窗口>
+ * @see LeetCode438    找到字符串中所有字母异位词
+ * @see LeetCode567    字符串的排列
  * @see LeetCode1297   子串的最大出现次数
  * @see LeetCode1100   长度为 K 的无重复字符子串
+ * @see LeetCode1004   最大连续1的个数 III
  * @see LeetCode1151   最少交换次数来组合所有的 1
  * <不定长窗口>
- * @see LeetCode3      无重复字符的最长子串
  * * <最长窗口>
- * @see LeetCode3
+ * @see LeetCode3      无重复字符的最长子串
  * @see LeetCode30
  * * <最短窗口>
  * @see LeetCode76     最小覆盖子串
@@ -32,6 +34,7 @@ import leetcode.problems.*;
  * @see LeetCode3306   元音辅音字符串计数 II
  * <转换窗口>
  * @see LeetCode2779
+ * @see LeetCode2962
  */
 public interface SlidingWindow {
 

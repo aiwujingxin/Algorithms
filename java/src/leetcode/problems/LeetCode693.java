@@ -13,4 +13,9 @@ public class LeetCode693 {
         }
         return true;
     }
+
+    public boolean hasAlternatingBits_O1(int n) {
+        int a = n ^ (n >> 1);
+        return (a & (a + 1)) == 0;
+    }
 }

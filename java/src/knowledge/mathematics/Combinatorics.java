@@ -1,5 +1,7 @@
 package knowledge.mathematics;
 
+import knowledge.mathematics.impl.CatalanNumber;
+import knowledge.mathematics.impl.PascalsTriangle;
 import leetcode.problems.*;
 
 import java.util.HashMap;
@@ -31,6 +33,9 @@ import java.util.Map;
  * @see LeetCode470     Rand10() 使用 Rand7()
  * <卡塔兰数>
  * @see LeetCode96      不同的二叉搜索树
+ * @see CatalanNumber   卡塔兰数
+ * <杨辉三角形>
+ * @see PascalsTriangle 杨辉三角形
  * <贡献计数法>
  * // 出现在多少个子串里？ (i + 1) * (n - i)
  * @see LeetCode2063    所有子字符串中的元音

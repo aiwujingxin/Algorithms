@@ -9,24 +9,24 @@ import common.ListNode;
 public class LeetCode24 {
 
     public ListNode swapPairs(ListNode head) {
-        if (head == null || head.next == null) {
-            return head;
-        }
-        ListNode newHead = head.next;
-        head.next = swapPairs(newHead.next);
-        newHead.next = head;
-        return newHead;
+        if (head == null || head.next == null) return head;
+        ListNode next = head.next;
+        head.next = swapPairs(next.next);
+        next.next = head;
+        return next;
     }
 
     public ListNode swapPairs_itr(ListNode head) {
-        ListNode dummy = new ListNode(0, head);
-        ListNode cur = dummy;
-        while (cur.next != null && cur.next.next != null) {
-            ListNode a = cur.next, b = cur.next.next;
-            a.next = b.next;
-            b.next = a;
-            cur.next = b;
-            cur = a;
+        ListNode dummy = new ListNode();
+        dummy.next = head;
+        ListNode c = dummy;
+        while (c.next != null && c.next.next != null) {
+            ListNode f = c.next;
+            ListNode s = c.next.next;
+            f.next = s.next;
+            s.next = f;
+            c.next = s;
+            c = f;
         }
         return dummy.next;
     }

@@ -31,6 +31,7 @@ import leetcode.problems.*;
  * @see LeetCode371      两整数之和
  * @see LeetCode405      数字转换为十六进制数
  * @see LeetCode1680     连接连续二进制数字
+ * @see LeetCode693      交替位二进制数
  * <进阶掩码应用>
  * @see CompressDP       状压DP
  * @see BITree           树状数组 (lowbit 应用)

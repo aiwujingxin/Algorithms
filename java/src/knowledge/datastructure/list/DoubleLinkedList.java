@@ -24,8 +24,8 @@ public class DoubleLinkedList {
     public void addFirst(Node node) {
         node.next = head.next;
         node.prev = head;
-        head.next.prev = node;
         head.next = node;
+        node.next.prev = node;
         size++;
     }
 
@@ -39,20 +39,16 @@ public class DoubleLinkedList {
     }
 
     public Node removeFirst() {
-        if (isEmpty()) {
-            return null;
-        }
-        Node ele = head.next;
-        head = head.next;
-        head.prev = tail;
-        size--;
-        return ele;
+        if (isEmpty()) return null;
+        Node first = head.next;
+        remove(first);
+        return first;
     }
 
     public Node removeLast() {
+        if (isEmpty()) return null;
         Node last = tail.prev;
         remove(last);
-        size--;
         return last;
     }
 

@@ -1,6 +1,7 @@
 package leetcode.problems;
 
-import java.util.Stack;
+import java.util.ArrayDeque;
+import java.util.Deque;
 
 /**
  * @author wujingxinit@outlook.com
@@ -8,41 +9,52 @@ import java.util.Stack;
  */
 public class LeetCode1504 {
 
-    public int numSubmat(int[][] array) {
-        int res = 0;
-        int[] height = new int[array[0].length];
-        for (int[] ints : array) {
-            for (int j = 0; j < height.length; j++) {
-                height[j] = ints[j] == 0 ? 0 : height[j] + 1;
+    public int numSubmat(int[][] mat) {
+        int n = mat[0].length;
+        int totalRectangles = 0;
+        int[] height = new int[n];
+        for (int[] row : mat) {
+            for (int j = 0; j < n; j++) {
+                height[j] += row[j];
             }
-            res += sum(height);
+            totalRectangles += countRowRectangles(height);
         }
-        return res;
+        return totalRectangles;
     }
 
-    public int sum(int[] height) {
-        int num = 0;
-        Stack<Integer> stack = new Stack<>();
-        for (int i = 0; i < height.length; i++) {
-            while (!stack.isEmpty() && height[stack.peek()] >= height[i]) {
-                int index = stack.pop();
-                int left = stack.isEmpty() ? -1 : stack.peek();
-                int right = i;
-                int len = right - left - 1;
-                int H = height[index] - Math.max(left == -1 ? 0 : height[left], height[right]);
-                num += ((len * (len + 1)) / 2) * H;
+    // 时间复杂度：O(N)
+    private int countRowRectangles(int[] heights) {
+        int n = heights.length;
+        int sum = 0;
+        int[] dp = new int[n];
+        Deque<Integer> stack = new ArrayDeque<>();
+        for (int i = 0; i < n; i++) {
+            while (!stack.isEmpty() && heights[stack.peek()] >= heights[i]) {
+                stack.pop();
+            }
+            if (stack.isEmpty()) {
+                dp[i] = heights[i] * (i + 1);
+            } else {
+                int preIndex = stack.peek();
+                dp[i] = dp[preIndex] + heights[i] * (i - preIndex);
             }
             stack.push(i);
+            sum += dp[i];
         }
+        return sum;
+    }
 
-        while (!stack.isEmpty()) {
-            int index = stack.pop();
-            int left = stack.isEmpty() ? -1 : stack.peek();
-            int right = height.length - 1;
-            int len = right - left;
-            int H = height[index] - Math.max(left == -1 ? 0 : height[left], 0);
-            num += ((len * (len + 1)) / 2) * H;
+    // 时间复杂度：O(N^2)
+    public int countRowRectanglesForce(int[] heights) {
+        int n = heights.length;
+        int ans = 0;
+        for (int i = 0; i < n; i++) { //  i 是矩形的【左边界】
+            int min_h = heights[i];
+            for (int j = i; j < n; j++) {  // j 是矩形的【右边界】，从左往右找
+                min_h = Math.min(min_h, heights[j]);
+                ans += min_h;
+            }
         }
-        return num;
+        return ans;
     }
 }

@@ -7,18 +7,14 @@ package leetcode.problems;
 public class LeetCode922 {
 
     public int[] sortArrayByParityII(int[] nums) {
-        int even = 0, odd = 1;
-        while (even < nums.length && odd < nums.length) {
-            if (nums[even] % 2 == 0) {
-                even += 2; // even 找错误的偶数位
-            } else if (nums[odd] % 2 == 1) {
-                odd += 2;// odd 找错误的奇数位
-            } else {
-                int temp = nums[even];
-                nums[even] = nums[odd];
-                nums[odd] = temp;
-                even += 2;
-                odd += 2;
+        int i = 0, j = 1, n = nums.length;
+        while (i < n && j < n) {
+            while (i < n && nums[i] % 2 == 0) i += 2;
+            while (j < n && nums[j] % 2 == 1) j += 2;
+            if (i < n && j < n) {
+                int tmp = nums[i];
+                nums[i] = nums[j];
+                nums[j] = tmp;
             }
         }
         return nums;

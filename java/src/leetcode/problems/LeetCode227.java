@@ -1,7 +1,5 @@
 package leetcode.problems;
 
-import java.util.*;
-
 /**
  * @author wujingxinit@outlook.com
  * @date 2024/4/26 10:50
@@ -9,48 +7,30 @@ import java.util.*;
 public class LeetCode227 {
 
     public int calculate(String s) {
-        if (s == null || s.isEmpty()) {
-            return 0;
-        }
-        s = s.trim();
-        if (s.isEmpty()) {
-            return 0;
-        }
+        int res = 0, lastNum = 0, num = 0;
+        char sign = '+';
         int n = s.length();
-        char preSign = '+';
-        int num = 0;
-        Stack<Integer> stack = new Stack<>();
-        for (int i = 0; i < s.length(); i++) {
+        for (int i = 0; i < n; i++) {
             char c = s.charAt(i);
-            if (c == ' ') {
-                continue;
-            }
             if (Character.isDigit(c)) {
-                num = num * 10 + c - '0';
+                num = num * 10 + (c - '0');
             }
-            if (!Character.isDigit(c) || i == n - 1) {
-                switch (preSign) {
-                    case '+':
-                        stack.push(num);
-                        break;
-                    case '-':
-                        stack.push(-num);
-                        break;
-                    case '/':
-                        stack.push(stack.pop() / num);
-                        break;
-                    case '*':
-                        stack.push(stack.pop() * num);
-                        break;
+            if ((!Character.isDigit(c) && c != ' ') || i == n - 1) {
+                if (sign == '+') {
+                    res += lastNum;
+                    lastNum = num;
+                } else if (sign == '-') {
+                    res += lastNum;
+                    lastNum = -num;
+                } else if (sign == '*') {
+                    lastNum *= num;
+                } else if (sign == '/') {
+                    lastNum /= num;
                 }
-                preSign = c;
+                sign = c;
                 num = 0;
             }
         }
-        int sum = 0;
-        while (!stack.isEmpty()) {
-            sum += stack.pop();
-        }
-        return sum;
+        return res + lastNum;
     }
 }

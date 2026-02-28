@@ -1,6 +1,6 @@
 package leetcode.problems;
 
-import common.*;
+import common.ListNode;
 
 /**
  * @author wujingxinit@outlook.com
@@ -11,15 +11,13 @@ public class LeetCode19 {
     public ListNode removeNthFromEnd(ListNode head, int n) {
         ListNode dummy = new ListNode();
         dummy.next = head;
-        ListNode fast = dummy, slow = dummy;
-        for (int i = 0; i <= n; i++) {
-            fast = fast.next;
+        ListNode f = dummy, s = dummy;
+        for (int i = 0; i <= n; i++) f = f.next;
+        while (f != null) {
+            f = f.next;
+            s = s.next;
         }
-        while (fast != null) {
-            fast = fast.next;
-            slow = slow.next;
-        }
-        slow.next = slow.next.next;
+        s.next = s.next.next;
         return dummy.next;
     }
 }

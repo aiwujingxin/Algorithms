@@ -8,18 +8,15 @@ public class LeetCode85 {
 
     public int maximalRectangle(char[][] matrix) {
         int n = matrix[0].length;
-        int res = 0;
-        int[] heights = new int[n];
+        int max = 0;
+        int[] h = new int[n];
         for (char[] row : matrix) {
             for (int j = 0; j < n; j++) {
-                if (row[j] == '1') {
-                    heights[j]++;
-                } else {
-                    heights[j] = 0;
-                }
+                if (row[j] == '1') h[j]++;
+                else h[j] = 0;
             }
-            res = Math.max(res, new LeetCode84().largestRectangleArea(heights));
+            max = Math.max(max, new LeetCode84().largestRectangleArea(h));
         }
-        return res;
+        return max;
     }
 }

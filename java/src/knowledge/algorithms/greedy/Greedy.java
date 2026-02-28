@@ -4,6 +4,7 @@ import knowledge.algorithms.greedy.problems.MaxActivity;
 import knowledge.algorithms.greedy.problems.MinCover;
 import knowledge.datastructure.graph.mst.impl.Prim;
 import knowledge.datastructure.graph.shortestpath.impl.Dijkstra;
+import knowledge.datastructure.stack.MonotonicStack;
 import leetcode.problems.*;
 
 import java.util.ArrayDeque;
@@ -100,10 +101,7 @@ import java.util.PriorityQueue;
  * * <单调栈> (保留字典序最小/最大)
  * 策略：维护一个单调序列，当新元素破坏单调性且仍有删除额度时，果断删除栈顶元素（反悔）。
  * 本质：通过局部删除逆序对，保证留下的序列在整体上具有最优的字典序结构。
- * @see LeetCode402         移掉 K 位数字 (核心)
- * @see LeetCode321         拼接最大数 (双栈合并)
- * @see LeetCode316         去除重复字母
- * @see LeetCode1081        不同字符的最小子序列
+ * @see MonotonicStack
  * * <括号与计数>
  * 策略：维护一个可能的平衡值区间 [min, max]，利用贪心缩放区间范围。
  * 本质：利用括号匹配的抵消性质，将匹配问题转化为数值区间的可行性判定。

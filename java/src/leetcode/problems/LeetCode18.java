@@ -22,9 +22,11 @@ public class LeetCode18 {
                 while (l < r) {
                     long sum = (long) nums[i] + nums[j] + nums[l] + nums[r];
                     if (sum == target) {
-                        res.add(Arrays.asList(nums[i], nums[j], nums[l++], nums[r--]));
+                        res.add(Arrays.asList(nums[i], nums[j], nums[l], nums[r]));
                         while (l < r && nums[l] == nums[l - 1]) l++;
                         while (l < r && nums[r] == nums[r + 1]) r--;
+                        l++;
+                        r--;
                     } else if (sum < target) l++;
                     else r--;
                 }

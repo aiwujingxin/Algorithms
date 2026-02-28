@@ -30,24 +30,32 @@ public class LeetCode4 {
         }
     }
 
-    public double findMedianSortedArrays_bs(int[] A, int[] B) {
-        if (A.length > B.length) return findMedianSortedArrays_bs(B, A);
-        int m = A.length, n = B.length, h = (m + n + 1) / 2;
-        int l = 0, r = m;
-        while (l <= r) {
-            int i = (l + r) / 2, j = h - i;
-            int al = i == 0 ? Integer.MIN_VALUE : A[i - 1];
-            int ar = i == m ? Integer.MAX_VALUE : A[i];
-            int bl = j == 0 ? Integer.MIN_VALUE : B[j - 1];
-            int br = j == n ? Integer.MAX_VALUE : B[j];
-            if (al <= br && bl <= ar) {
-                return ((m + n) % 2 == 1) ? Math.max(al, bl) : (Math.max(al, bl) + Math.min(ar, br)) / 2.0;
-            } else if (al > br) {
-                r = i - 1;
-            } else {
-                l = i + 1;
+    class Solution_bs {
+
+        public double findMedianSortedArrays(int[] A, int[] B) {
+            if (A.length > B.length) return findMedianSortedArrays(B, A);
+            int m = A.length;
+            int n = B.length;
+            // 搜索空间 [0,m]
+            int l = 0;
+            int r = m;
+            int leftTotal = (m + n + 1) / 2;
+            int MIN = Integer.MIN_VALUE;
+            int MAX = Integer.MAX_VALUE;
+            while (l <= r) {
+                int i = l + r >> 1;
+                int j = leftTotal - i;
+                int L1 = i == 0 ? MIN : A[i - 1];
+                int R1 = i == m ? MAX : A[i];
+                int L2 = j == 0 ? MIN : B[j - 1];
+                int R2 = j == n ? MAX : B[j];
+                if (L1 <= R2 && L2 <= R1) {
+                    if ((m + n) % 2 == 1) return Math.max(L1, L2);
+                    return (Math.max(L1, L2) + Math.min(R1, R2)) / 2.0;
+                } else if (L1 > R2) r = i - 1;
+                else l = i + 1;
             }
+            return -1;
         }
-        return -1;
     }
 }

@@ -1,7 +1,5 @@
 package leetcode.problems;
 
-import java.util.LinkedList;
-import java.util.Queue;
 import java.util.Stack;
 
 /**
@@ -10,29 +8,26 @@ import java.util.Stack;
  */
 public class LeetCode772 {
 
+    int i = 0;
+
     public int calculate(String s) {
-        Queue<Character> queue = new LinkedList<>();
-        for (char c : s.toCharArray()) {
-            queue.add(c);
-        }
-        return dfs(queue);
+        return dfs(s);
     }
 
-    private int dfs(Queue<Character> queue) {
+    private int dfs(String s) {
         Stack<Integer> stack = new Stack<>();
-        char preSign = '+';
         int num = 0;
-        while (!queue.isEmpty()) {
-            char c = queue.poll();
+        char sign = '+';
+        while (i < s.length()) {
+            char c = s.charAt(i++);
             if (Character.isDigit(c)) {
-                num = 10 * num + (c - '0');
+                num = num * 10 + (c - '0');
             }
-            // 遇到左括号开始递归计算 num
             if (c == '(') {
-                num = dfs(queue);
+                num = dfs(s);
             }
-            if ((!Character.isDigit(c) && c != ' ') || queue.isEmpty()) {
-                switch (preSign) {
+            if ((!Character.isDigit(c) && c != ' ') || i == s.length()) {
+                switch (sign) {
                     case '+':
                         stack.push(num);
                         break;
@@ -46,17 +41,15 @@ public class LeetCode772 {
                         stack.push(stack.pop() / num);
                         break;
                 }
+                if (c == ')') break; // 返回当前括号层级的结果
                 num = 0;
-                preSign = c;
+                sign = c;
             }
-            // 遇到右括号返回递归结果
-            if (c == ')') {
-                break;
-            }
+            i++;
         }
         int res = 0;
-        while (!stack.isEmpty()) {
-            res += stack.pop();
+        for (int val : stack) {
+            res += val;
         }
         return res;
     }

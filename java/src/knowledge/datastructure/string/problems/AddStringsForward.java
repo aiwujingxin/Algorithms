@@ -11,11 +11,38 @@ public class AddStringsForward {
 
     /**
      * 从左到右计算等长字符串的和。
-     *
-     * @param a 第一个数字字符串
-     * @param b 第二个数字字符串
-     * @return 两数之和的字符串
      */
+    public static String calculate(String a, String b) {
+        if (a == null || b == null || a.length() != b.length()) return "";
+        int n = a.length();
+        StringBuilder sb = new StringBuilder(n + 1);
+        int carryLike = 0;
+        int pending9 = 0;
+        for (int i = 0; i < n; i++) {
+            int sum = (a.charAt(i) - '0') + (b.charAt(i) - '0');
+            if (sum == 9) {
+                pending9++;
+                continue;
+            }
+            if (sum < 9) {
+                sb.append(carryLike);
+                while (pending9-- > 0) sb.append('9');
+                pending9 = 0;
+                carryLike = sum;
+            } else {
+                sb.append(carryLike + 1);
+                while (pending9-- > 0) sb.append('0');
+                pending9 = 0;
+                carryLike = sum - 10;
+            }
+        }
+        sb.append(carryLike);
+        while (pending9-- > 0) sb.append('9');
+        int k = 0;
+        while (k < sb.length() - 1 && sb.charAt(k) == '0') k++;
+        return sb.substring(k);
+    }
+
     public static String addEqualLength(String a, String b) {
         int n = a.length();
         if (n == 0) {
@@ -111,7 +138,7 @@ public class AddStringsForward {
             String a = generateRandomNumberString(len, rand);
             String b = generateRandomNumberString(len, rand);
             // 分别用两个方法计算结果
-            String myResult = addEqualLength(a, b);
+            String myResult = calculate(a, b);
             String oracleResult = oracleSolution(a, b);
             // 比对结果
             if (!myResult.equals(oracleResult)) {

@@ -18,8 +18,8 @@ public class LeetCode392 {
         int m = s.length();
         int n = t.length();
         boolean[][] dp = new boolean[m + 1][n + 1];
-        for (int i = 0; i <= t.length(); i++) {
-            dp[0][i] = true;
+        for (int j = 0; j <= n; j++) {
+            dp[0][j] = true;
         }
         //s的前i个字符 是否是 t的前j个字符的子序列
         for (int i = 1; i <= m; i++) {

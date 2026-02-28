@@ -10,12 +10,9 @@ public class LeetCode69 {
         long l = 0;
         long r = x;
         while (l < r) {
-            long mid = l + r >> 1;
-            if (mid * mid < x) l = mid + 1;
-            else r = mid;
-        }
-        if (l * l > x) {
-            return (int) l - 1;
+            long m = l + r + 1 >> 1;
+            if (m * m > x) r = m - 1;
+            else l = m;
         }
         return (int) l;
     }

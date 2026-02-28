@@ -10,25 +10,22 @@ import java.util.Stack;
 public class LeetCode503 {
 
     public int[] nextGreaterElements(int[] nums) {
-        if (nums == null || nums.length == 0) {
-            return new int[]{};
-        }
         int n = nums.length;
         int[] res = new int[n];
+        int[] arr = new int[n * 2];
+        for (int i = 0; i < n; i++) {
+            arr[i] = nums[i];
+            arr[i + n] = nums[i];
+        }
         Arrays.fill(res, -1);
         Stack<Integer> stack = new Stack<>();
-        for (int i = 0; i < n; i++) {
-            while (!stack.isEmpty() && nums[stack.peek()] < nums[i]) {
+        for (int i = 0; i < arr.length; i++) {
+            while (!stack.isEmpty() && arr[stack.peek()] < arr[i]) {
                 int index = stack.pop();
-                res[index] = nums[i];
+                if (index < n - 1)
+                    res[index] = arr[i];
             }
             stack.push(i);
-        }
-        for (int i = 0; i < n; i++) {
-            while (!stack.isEmpty() && nums[stack.peek()] < nums[i]) {
-                int index = stack.pop();
-                res[index] = nums[i];
-            }
         }
         return res;
     }
