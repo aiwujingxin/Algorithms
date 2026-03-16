@@ -7,7 +7,7 @@ import java.util.*;
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/9/3 15:49
- * @description 拓扑排序求最短路. 根据拓扑排序次序来对带权重的有向无环图进行边的松弛操作.
+ * @description 拓扑排序求 带权重的有向无环图 最短路。根据拓扑排序次序来对带权重的有向无环图进行边的松弛操作.
  * @link 算法导论 P381
  */
 public class TopoOrder implements ShortestPath {

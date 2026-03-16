@@ -1,7 +1,7 @@
 package leetcode.problems;
 
 
-import knowledge.datastructure.graph.bipartite.impl.BiGraph_bfs;
+import knowledge.datastructure.graph.bipartite.impl.BiGraphBFS;
 
 /**
  * @author wujingxinit@outlook.com
@@ -12,7 +12,7 @@ public class LeetCode886 {
 
     public boolean possibleBipartition(int n, int[][] dislikes) {
 //        return new BipartiteGraph_dfs().isBipartite(n + 1, dislikes);
-        return new BiGraph_bfs().isBipartite(n + 1, dislikes);
+        return new BiGraphBFS().isBipartite(n + 1, dislikes);
     }
 }
 

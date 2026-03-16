@@ -1,5 +1,6 @@
 package knowledge.datastructure.graph.connectivity;
 
+import knowledge.datastructure.graph.connectivity.components.Components;
 import knowledge.datastructure.graph.connectivity.directed.DirectedGraph;
 import knowledge.datastructure.graph.connectivity.hascycle.HasCycle;
 import knowledge.datastructure.graph.connectivity.undirected.UnDirectedGraph;
@@ -8,6 +9,7 @@ import knowledge.datastructure.graph.connectivity.undirected.UnDirectedGraph;
  * @author wujingxinit@outlook.com
  * @date 3/17/26 00:22
  * @see HasCycle
+ * @see Components
  * @see DirectedGraph
  * @see UnDirectedGraph
  */

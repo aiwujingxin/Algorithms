@@ -1,6 +1,6 @@
 package leetcode.problems;
 
-import knowledge.algorithms.search.dfsAndBfs.bfs.BiBFS;
+import knowledge.algorithms.search.bfs.BiBFS;
 
 import java.util.*;
 import java.util.HashSet;

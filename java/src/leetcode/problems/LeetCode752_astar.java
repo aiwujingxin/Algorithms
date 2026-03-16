@@ -1,6 +1,6 @@
 package leetcode.problems;
 
-import knowledge.algorithms.search.dfsAndBfs.bfs.AStar;
+import knowledge.algorithms.search.bfs.AStar;
 
 import java.util.*;
 import java.util.function.BiFunction;

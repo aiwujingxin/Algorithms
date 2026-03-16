@@ -1,6 +1,6 @@
 package knowledge.mathematics;
 
-import knowledge.algorithms.search.dfsAndBfs.problems.EightPuzzle_astar;
+import knowledge.algorithms.search.problems.EightPuzzle_astar;
 import knowledge.mathematics.impl.Sieve;
 import leetcode.problems.*;
 

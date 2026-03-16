@@ -1,16 +1,18 @@
 package knowledge.algorithms.search;
 
+import knowledge.algorithms.search.bfs.BFS;
+import knowledge.algorithms.search.dfs.DFS;
+
 /**
  * @author wujingxinit@outlook.com
- * @date 2024/4/10 01:50
+ * @date 2026/03/17 02:35
  * @description 搜索算法
- * @see knowledge.algorithms.search.dfsAndBfs.dfs      深搜（DFS/记忆化/剪枝）
- * @see knowledge.algorithms.search.dfsAndBfs.bfs      广搜（BFS/多源/双向/topo/A* ）
- * @see knowledge.algorithms.search.backtrack          回溯
- * @see knowledge.datastructure.graph.shortestpath     最短路(0-1 BFS / Dijkstra / SPFA / Bellman-Ford / 分层图）
+ * @see DFS     深度优先搜索
+ * @see BFS     广度优先搜索
  * <本质>
- * 搜索的统一思想，是在适当建模的状态图表示（压缩/编码）上，以“前沿维持 + 剪枝/松弛 + ”两大杠杆，配合最契合权重与启发的容器与顺序设计，
- * 在展开尽可能少的节点前提下，构造出一条从起点到目标的可行或最优解路径。
+ * 搜索的统一思想是在适当建模的【状态空间图】中，以“前沿维护”与“剪枝/启发”为两大核心杠杆，
+ * 配合最契合边权与启发信息的容器（数据结构）与展开顺序，在遍历尽可能少节点的前提下，
+ * 构造出一条从起点到目标的可行解或最优解路径。
  * <核心>
  * 1. 状态空间图  状态 S、转移 T、目标 G、约束 C、代价函数 cost
  * 2. 数据结构    以队列/双端队列/桶/堆/栈等维持“代价非降”的搜索前沿，匹配边权与启发结构。

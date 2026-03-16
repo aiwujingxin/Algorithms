@@ -1,7 +1,7 @@
 package knowledge.algorithms.dp.compressdp;
 
 import knowledge.algorithms.dp.compressdp.problems.*;
-import knowledge.algorithms.search.backtrack.Backtrack;
+import knowledge.algorithms.search.dfs.Backtrack;
 import leetcode.problems.*;
 
 /**
