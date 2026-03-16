@@ -1,7 +1,5 @@
 package knowledge.datastructure.graph.connectivity.directed;
 
-import knowledge.datastructure.graph.connectivity.DirectedGraph;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;

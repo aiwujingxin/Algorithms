@@ -1,7 +1,11 @@
-package knowledge.algorithms.search.dfsAndBfs.dfs;
+package knowledge.algorithms.search.dfsAndBfs;
 
 import knowledge.algorithms.dp.memoization.DFSMemo;
-import knowledge.datastructure.graph.topological.impl.Topological_dfs;
+import knowledge.algorithms.dp.treedp.TreeDP;
+import knowledge.algorithms.search.dfsAndBfs.dfs.IDAStar;
+import knowledge.algorithms.search.dfsAndBfs.dfs.IDDFS;
+import knowledge.datastructure.graph.connectivity.Connectivity;
+import knowledge.datastructure.graph.topological.impl.Topo_dfs;
 import knowledge.datastructure.tree.Tree;
 
 /**
@@ -15,16 +19,16 @@ import knowledge.datastructure.tree.Tree;
  * 排序：通过启发式地安排分支探索顺序，争取尽早找到好解，从而赋能更强的最优性剪枝。
  * 加深：通过迭代加深的方式，融合DFS的空间优势与BFS的最短路径保证。
  * <遍历>
- * @see Tree.DFS            树的遍历
+ * @see Tree.DFS      树的遍历
  * <搜索>
- * @see IDDFS                                       迭代加深
- * @see IDAStar                                     IDA*
+ * @see IDDFS         迭代加深
+ * @see IDAStar       IDA*
  * <图>
- * @see knowledge.datastructure.graph.connectivity  连通性
- * @see Topological_dfs                             拓扑排序
+ * @see Connectivity  连通性
+ * @see Topo_dfs      拓扑排序
  * <DP>
- * @see knowledge.algorithms.dp.treedp.TreeDP       树形DP
- * @see DFSMemo                                     记忆化搜索
+ * @see DFSMemo       记忆化搜索
+ * @see TreeDP        树形DP
  */
 public interface DFS {
 }

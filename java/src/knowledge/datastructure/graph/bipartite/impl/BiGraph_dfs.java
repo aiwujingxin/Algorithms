@@ -9,7 +9,7 @@ import java.util.List;
  * @author wujingxinit@outlook.com
  * @date 2023/6/19 23:31
  */
-public class BipartiteGraph_dfs implements BipartiteGraph {
+public class BiGraph_dfs implements BipartiteGraph {
 
     List<Integer>[] graph;
     int[] colors;

@@ -12,7 +12,7 @@ import java.util.Queue;
  * @date 2023/6/19 23:23
  */
 
-public class BipartiteGraph_bfs implements BipartiteGraph {
+public class BiGraph_bfs implements BipartiteGraph {
 
     List<Integer>[] graph;
 

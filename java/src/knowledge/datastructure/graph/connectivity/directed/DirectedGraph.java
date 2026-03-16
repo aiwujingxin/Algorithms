@@ -1,7 +1,4 @@
-package knowledge.datastructure.graph.connectivity;
-
-import knowledge.datastructure.graph.connectivity.directed.Kosaraju;
-import knowledge.datastructure.graph.connectivity.directed.Tarjan;
+package knowledge.datastructure.graph.connectivity.directed;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -11,7 +11,7 @@ import java.util.Queue;
  * @author wujingxinit@outlook.com
  * @date 2023/8/31 18:17
  */
-public class Topological_bfs implements Topological {
+public class Topo_bfs implements Topological {
 
     public int[] findOrder(int n, int[][] edges) {
         List<Integer>[] g = new List[n];

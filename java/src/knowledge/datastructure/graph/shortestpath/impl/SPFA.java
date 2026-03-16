@@ -7,7 +7,8 @@ import java.util.*;
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/5/29 21:40
- * @description SPFA 队列版Bellman-Ford
+ * @description SPFA: 队列优化的Bellman-Ford
+ * <核心思想>只有当一个点的最短距离被更新了，它的邻居节点的距离才有可能被更新。
  * 时间复杂度 O(E), 最坏情况下 O(V*E)
  * 空间复杂度为O(V)。
  */

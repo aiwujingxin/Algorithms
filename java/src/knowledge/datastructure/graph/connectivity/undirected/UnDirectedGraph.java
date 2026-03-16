@@ -1,6 +1,4 @@
-package knowledge.datastructure.graph.connectivity;
-
-import knowledge.datastructure.graph.connectivity.undirected.*;
+package knowledge.datastructure.graph.connectivity.undirected;
 
 /**
  * @author wujingxinit@outlook.com

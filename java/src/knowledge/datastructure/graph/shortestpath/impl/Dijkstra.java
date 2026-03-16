@@ -20,9 +20,7 @@ public class Dijkstra implements ShortestPath {
 
     public int[] shortestPath(int n, int[][] edges, int s) {
         this.graph = new List[n];
-        for (int i = 0; i < n; i++) {
-            graph[i] = new ArrayList<>();
-        }
+        Arrays.setAll(graph, i -> new ArrayList<>());
         for (int[] e : edges) {
             graph[e[0]].add(new int[]{e[1], e[2]});
             graph[e[1]].add(new int[]{e[0], e[2]});
@@ -33,7 +31,10 @@ public class Dijkstra implements ShortestPath {
         Queue<int[]> pq = new PriorityQueue<>(Comparator.comparingInt(o -> o[1]));
         pq.add(new int[]{s, 0});
         while (!pq.isEmpty()) {
-            int u = pq.poll()[0];
+            int[] cur = pq.poll();
+            int u = cur[0], dist = cur[1];
+            // 如果弹出的节点距离已经大于当前记录的最短距离，说明是过期数据，直接跳过
+            if (dist > d[u]) continue;
             for (int[] edge : graph[u]) {
                 int v = edge[0];
                 int w = edge[1];

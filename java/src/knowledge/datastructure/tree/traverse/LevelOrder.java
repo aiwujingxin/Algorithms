@@ -16,19 +16,16 @@ public class LevelOrder implements Tree.Iteration {
 
     @Override
     public List<Integer> iteration(TreeNode root) {
-        if (root == null) {
-            return new ArrayList<>();
-        }
         List<Integer> list = new ArrayList<>();
-        Queue<TreeNode> queue = new LinkedList<>();
-        queue.add(root);
-        while (!queue.isEmpty()) {
-            TreeNode node = queue.poll();
+        Queue<TreeNode> q = new LinkedList<>();
+        q.add(root);
+        while (!q.isEmpty()) {
+            TreeNode node = q.poll();
             if (node.left != null) {
-                queue.add(node.left);
+                q.add(node.left);
             }
             if (node.right != null) {
-                queue.add(node.right);
+                q.add(node.right);
             }
         }
         return list;
