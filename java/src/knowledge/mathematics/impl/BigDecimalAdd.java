@@ -1,11 +1,8 @@
 package knowledge.mathematics.impl;
 
-import leetcode.problems.LeetCode415;
-
 /**
  * @author wujingxinit@outlook.com
  * @date 11/11/25 22:12
- * @see LeetCode415 加
  */
 public class BigDecimalAdd {
 

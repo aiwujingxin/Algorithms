@@ -36,7 +36,6 @@ import java.util.Stack;
  * @see LeetCode2420    找到所有好索引（左右非递增/非递减）
  * @see LeetCode2012    数组美丽值
  * @see LeetCode2909    元素和最小的山形三元组（类似左右最小）
- * @see LeetCode238     除自身以外数组的乘积
  * @see LeetCode3350    检测相邻递增子数组 II
  */
 public class MonotonicStack {

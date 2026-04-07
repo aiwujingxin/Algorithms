@@ -33,27 +33,32 @@ public class LeetCode4 {
     class Solution_bs {
 
         public double findMedianSortedArrays(int[] A, int[] B) {
-            if (A.length > B.length) return findMedianSortedArrays(B, A);
             int m = A.length;
             int n = B.length;
-            // 搜索空间 [0,m]
+            if (n < m) {
+                return findMedianSortedArrays(B, A);
+            }
+            int totalLen = m + n;
+            int half = (m + n) / 2;
             int l = 0;
             int r = m;
-            int leftTotal = (m + n + 1) / 2;
-            int MIN = Integer.MIN_VALUE;
-            int MAX = Integer.MAX_VALUE;
             while (l <= r) {
-                int i = l + r >> 1;
-                int j = leftTotal - i;
-                int L1 = i == 0 ? MIN : A[i - 1];
-                int R1 = i == m ? MAX : A[i];
-                int L2 = j == 0 ? MIN : B[j - 1];
-                int R2 = j == n ? MAX : B[j];
+                int c1 = l + r >> 1;
+                int c2 = half - c1;
+                int L1 = c1 == 0 ? Integer.MIN_VALUE : A[c1 - 1];
+                int R1 = c1 == m ? Integer.MAX_VALUE : A[c1];
+                int L2 = c2 == 0 ? Integer.MIN_VALUE : B[c2 - 1];
+                int R2 = c2 == n ? Integer.MAX_VALUE : B[c2];
                 if (L1 <= R2 && L2 <= R1) {
-                    if ((m + n) % 2 == 1) return Math.max(L1, L2);
-                    return (Math.max(L1, L2) + Math.min(R1, R2)) / 2.0;
-                } else if (L1 > R2) r = i - 1;
-                else l = i + 1;
+                    if (totalLen % 2 == 0) {
+                        return ((double) Math.max(L1, L2) + Math.min(R1, R2)) / 2;
+                    }
+                    return Math.min(R1, R2);
+                } else if (L1 > R2) {
+                    r = c1 - 1;
+                } else {
+                    l = c1 + 1;
+                }
             }
             return -1;
         }

@@ -1,20 +1,25 @@
 package knowledge.algorithms.search.bfs;
 
+import leetcode.problems.LeetCode1162;
+import leetcode.problems.LeetCode1765;
+import leetcode.problems.LeetCode542;
+import leetcode.problems.LeetCode994;
+
 import java.util.LinkedList;
 import java.util.Queue;
 
 /**
  * @author wujingxinit@outlook.com
  * @date 3/17/26 00:04
+ * @see LeetCode542       01 矩阵
+ * @see LeetCode994       腐烂的橘子
+ * @see LeetCode1162      地图分析
+ * @see LeetCode1765      最高的水域
  */
 public class MultiBFS {
 
-    int[][] dirs = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}};
-
-    /**
-     * 计算网格中所有空地(0)到最近源点(1)的最短距离
-     */
     public int[][] multiSourceBfs(int[][] grid) {
+        int[][] dirs = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}};
         int m = grid.length, n = grid[0].length;
         int[][] dist = new int[m][n];
         Queue<int[]> q = new LinkedList<>();
@@ -33,10 +38,8 @@ public class MultiBFS {
         while (!q.isEmpty()) {
             int[] curr = q.poll();
             int r = curr[0], c = curr[1];
-
             for (int[] d : dirs) {
                 int nr = r + d[0], nc = c + d[1];
-                // 如果越界，或者已经访问过（dist != -1），跳过
                 if (nr < 0 || nr >= m || nc < 0 || nc >= n || dist[nr][nc] != -1) {
                     continue;
                 }

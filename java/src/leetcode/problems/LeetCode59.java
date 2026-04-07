@@ -6,23 +6,22 @@ package leetcode.problems;
  */
 public class LeetCode59 {
 
-    public int[][] dirs = {{0, 1}, {1, 0}, {0, -1}, {-1, 0}}; // 右下左上
-
     public int[][] generateMatrix(int n) {
-        int[][] ans = new int[n][n];
+        int[][] dirs = {{0, 1}, {1, 0}, {0, -1}, {-1, 0}}; // 右下左上
         int dir = 0;
         int x = 0;
         int y = 0;
+        int[][] mat = new int[n][n];
         for (int i = 1; i <= n * n; i++) {
-            ans[x][y] = i;
+            mat[x][y] = i;
             int nx = x + dirs[dir][0];
             int ny = y + dirs[dir][1];
-            if (nx < 0 || nx >= n || ny < 0 || ny >= n || ans[nx][ny] != 0) {
+            if (nx < 0 || nx >= n || ny < 0 || ny >= n || mat[nx][ny] != 0) {
                 dir = (dir + 1) % 4;
             }
             x += dirs[dir][0];
             y += dirs[dir][1];
         }
-        return ans;
+        return mat;
     }
 }

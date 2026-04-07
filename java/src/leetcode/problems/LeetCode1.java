@@ -1,6 +1,7 @@
 package leetcode.problems;
 
 import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @author wujingxinit@outlook.com
@@ -9,7 +10,7 @@ import java.util.HashMap;
 public class LeetCode1 {
 
     public int[] twoSum(int[] nums, int target) {
-        HashMap<Integer, Integer> map = new HashMap<>();
+        Map<Integer, Integer> map = new HashMap<>();
         for (int i = 0; i < nums.length; i++) {
             if (map.containsKey(target - nums[i])) {
                 return new int[]{i, map.get(target - nums[i])};

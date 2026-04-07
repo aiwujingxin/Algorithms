@@ -15,9 +15,7 @@ public class LeetCode2096 {
         StringBuilder sb1 = new StringBuilder();
         find(lowest_root, startValue, sb1);
         StringBuilder ans = new StringBuilder();
-        for (int i = 0; i < path.length(); i++) {
-            ans.append("U");
-        }
+        ans.repeat("U", path.length());
         // 3. 由lowest_root到t, 为L or R
         path = "";
         StringBuilder sb2 = new StringBuilder();

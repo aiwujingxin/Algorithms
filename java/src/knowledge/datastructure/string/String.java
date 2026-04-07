@@ -1,5 +1,6 @@
 package knowledge.datastructure.string;
 
+import knowledge.algorithms.dp.intervaldp.PalindromeDP;
 import knowledge.datastructure.string.hash.DStringHash;
 import knowledge.datastructure.string.hash.RabinKarp;
 import knowledge.datastructure.string.hash.StringHash;
@@ -35,6 +36,7 @@ import leetcode.problems.*;
  * @see SuffixAutomaton
  * @see SuffixTree
  * <字符串回文>
+ * @see PalindromeDP
  * @see Manacher
  * <动态规划>
  * @see LeetCode1638

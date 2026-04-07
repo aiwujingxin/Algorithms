@@ -6,7 +6,6 @@ package leetcode.problems;
  */
 public class LeetCode289 {
 
-    //copy
     public void gameOfLife(int[][] board) {
         int[] neighbors = {0, 1, -1};
 

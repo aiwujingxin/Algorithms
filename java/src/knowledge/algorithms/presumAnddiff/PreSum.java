@@ -5,37 +5,47 @@ import leetcode.problems.*;
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/12/22 10:45
- * @description 前缀和
- * 解决问题：
- * 1.区间求和：通过使用前缀和，可以在常数时间内计算出数组中任意区间的元素之和。
- * 2.子数组和为特定值：在一个给定的数组中，找到和为特定值的子数组。通过计算前缀和，可以将这个问题转化为在前缀和数组中查找两个位置，使得它们之间的元素之和等于特定值。
- * 有时需要将原数组转化成[0,1] 或者[-1,1]后，方便利用前缀和求解满足条件的区间。
- * <一维>
- * @see LeetCode303
- * <二维>
- * @see LeetCode304
- * @see LeetCode1314
- * @see LeetCode1292
- * <应用>
- * @see LeetCode560
- * @see LeetCode974
- * @see LeetCode523
- * @see LeetCode525
- * @see LeetCode2947
+ * @description 前缀和 (Prefix Sum) 算法模板
+ * <本质>
+ * 1. 空间换时间：通过 O(N) 的预处理，实现 O(1) 的区间查询。
+ * 2. 区间问题单点化：将求区间 [i, j] 的状态，转化为求端点 j 和端点 i-1 的状态差（或状态运算）。
+ * 3. 差分数组的逆运算：对差分数组求前缀和，即可还原出原数组。
+ * <解决问题>
+ * 1. 区间求和/区间异或：快速计算数组/矩阵中任意区间的元素之和或异或和。
+ * 2. 子数组满足特定条件：将“子数组和为K”转化为寻找“两个前缀和的差为K”。
+ * <技巧与踩坑点>
+ * 1. 哨兵节点 (n+1 技巧)：前缀和数组长度通常设为 n+1，令 preSum[0] = 0，完美解决区间包含下标 0 时的越界特判问题。
+ * 2. 空间优化 (滚动变量)：如果题目只关心“当前前缀和”与“历史前缀和”的关系（如配合 HashMap），无需开辟数组，用一个 int 变量维护当前和即可，空间复杂度降为 O(1)。
+ * 3. 同余定理防负数：在处理取模问题时（如被 K 整除），Java 中的负数取模仍为负数。必须使用 `(sum % K + K) % K` 来保证余数为正。
+ * 4. 状态转换：将原数组转化成 [0,1] 或者 [-1,1]（例如：奇数视作1，偶数视作0；或者求0和1数量相等的子数组）。
+ * 5. 异或前缀和：利用 a ^ a = 0 的性质，区间 [i, j] 的异或和等于 preXor[j+1] ^ preXor[i]（加减法变成了异或）。
+ * 6. 树上前缀和：在树的 DFS 遍历中携带前缀和，利用回溯思想，在退出节点时从 HashMap 中撤销当前节点的前缀和状态。
+ * <基础>
+ * @see LeetCode303     区域和检索
+ * @see LeetCode304     二维区域和检索
+ * <哈希表>
+ * @see LeetCode560     和为 K 的子数组 (前缀和+哈希表求次数)
+ * @see LeetCode974     和可被 K 整除的子数组 (同余定理: preSum[i]%K == preSum[j]%K)
+ * @see LeetCode523     连续的子数组和 (同余定理求长度)
+ * @see LeetCode525     连续数组 (将0转为-1，求和为0的最长子数组)
+ * @see LeetCode1248    统计「优美子数组」 (奇数转1，偶数转0，转化为和为K的子数组)
+ * @see LeetCode437     路径总和 III (树上前缀和 + 回溯恢复现场)
+ * <前缀异或>
+ * @see LeetCode1310    子数组异或查询 (利用 x ^ x = 0 的性质)
+ * <二分 单调队列>
+ * @see LeetCode209     长度最小的子数组 (正数数组，前缀和单调递增，可结合二分)
+ * @see LeetCode862     和至少为 K 的最短子数组 (包含负数，前缀和不再单调，需用单调队列)
+ * <前后缀分解>
+ * @see LeetCode238     除自身以外数组的乘积 一维
+ * @see LeetCode2906    构造乘积矩阵        二维
+ * <二维前缀>
+ * @see LeetCode1314    矩阵区域和
+ * @see LeetCode1292    元素和小于等于阈值的正方形的最大边长
+ * <差分数组>
+ * @see LeetCode1109    航班预订统计
+ * @see LeetCode1094    拼车
+ * <其他综合>
+ * @see LeetCode2947    统计美丽子字符串 I
  */
-public interface PreSum {
-
-    default int[] preSum(int[] a) {
-        int n = a.length;
-        int[] s = new int[n + 1];
-        for (int i = 1; i <= n; i++) s[i] = s[i - 1] + a[i - 1];
-        return s;
-    }
-
-    default int[] suffix(int[] a) {
-        int n = a.length;
-        int[] s = new int[n + 1];
-        for (int i = n - 1; i >= 0; i--) s[i] = s[i + 1] + a[i];
-        return s;
-    }
+public class PreSum {
 }

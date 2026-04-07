@@ -31,7 +31,7 @@ public class LeetCode1248 {
         return res;
     }
 
-    public int numberOfSubarrays_sd(int[] nums, int k) {
+    public int numberOfSubarrays_presum(int[] nums, int k) {
         HashMap<Integer, Integer> map = new HashMap<>();
         int cnt = 0;
         int s = 0;

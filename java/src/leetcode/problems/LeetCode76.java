@@ -8,31 +8,31 @@ public class LeetCode76 {
 
     public String minWindow(String s, String t) {
         int[] sArr = new int[256], tArr = new int[256];
-        int target = 0;
+        int need = 0;
         for (char c : t.toCharArray()) {
-            if (tArr[c] == 0) target++;
+            if (tArr[c] == 0) need++;
             tArr[c]++;
         }
-        int left = 0;
-        int right = 0;
+        int l = 0;
+        int r = 0;
         int valid = 0;
         int start = 0;
         int minLen = Integer.MAX_VALUE;
-        while (right < s.length()) {
-            char c = s.charAt(right);
+        while (r < s.length()) {
+            char c = s.charAt(r);
             sArr[c]++;
             if (sArr[c] == tArr[c]) valid++;
-            while (valid == target) {
-                if (right - left + 1 < minLen) {
-                    minLen = right - left + 1;
-                    start = left;
+            while (valid == need) {
+                if (r - l + 1 < minLen) {
+                    minLen = r - l + 1;
+                    start = l;
                 }
-                char d = s.charAt(left);
+                char d = s.charAt(l);
                 if (sArr[d] == tArr[d]) valid--;
                 sArr[d]--;
-                left++;
+                l++;
             }
-            right++;
+            r++;
         }
         return minLen == Integer.MAX_VALUE ? "" : s.substring(start, start + minLen);
     }

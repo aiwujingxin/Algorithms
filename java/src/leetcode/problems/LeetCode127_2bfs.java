@@ -2,7 +2,10 @@ package leetcode.problems;
 
 import knowledge.algorithms.search.bfs.BiBFS;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 import java.util.function.Function;
 
 /**
@@ -14,23 +17,21 @@ public class LeetCode127_2bfs {
     public int ladderLength(String beginWord, String endWord, List<String> wordList) {
         if (beginWord.equals(endWord)) return 0;
         Set<String> wordSet = new HashSet<>(wordList);
-        if (!wordSet.contains(endWord)) {
-            return 0;
-        }
+        if (!wordSet.contains(endWord)) return 0;
         Function<String, List<String>> getNeighbors = (word) -> {
             List<String> neighbors = new ArrayList<>();
             char[] chars = word.toCharArray();
             for (int i = 0; i < chars.length; i++) {
-                char oldChar = chars[i];
+                char t = chars[i];
                 for (char c = 'a'; c <= 'z'; c++) {
-                    if (c == oldChar) continue;
+                    if (c == t) continue;
                     chars[i] = c;
-                    String newWord = new String(chars);
-                    if (wordSet.contains(newWord)) {
-                        neighbors.add(newWord);
+                    String s = new String(chars);
+                    if (wordSet.contains(s)) {
+                        neighbors.add(s);
                     }
                 }
-                chars[i] = oldChar;
+                chars[i] = t;
             }
             return neighbors;
         };

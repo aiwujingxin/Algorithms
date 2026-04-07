@@ -31,6 +31,8 @@ import leetcode.problems.*;
  * 前缀和
  * @see LeetCode304         二维区域和检索 - 矩阵不可变
  * @see LeetCode363         矩形区域不超过 K 的最大数值和
+ * 面积
+ * @see LeetCode939         最小面积矩形
  * <圆>
  * @see LeetCode2249
  * <三角形>

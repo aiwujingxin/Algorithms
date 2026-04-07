@@ -30,7 +30,7 @@ public class LeetCode131 {
             if (dp[index][i]) {
                 list.add(s.substring(index, i + 1));
                 backtrack(s, dp, i + 1, res, list);
-                list.remove(list.size() - 1);
+                list.removeLast();
             }
         }
     }

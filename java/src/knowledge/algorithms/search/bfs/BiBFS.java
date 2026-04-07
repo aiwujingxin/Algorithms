@@ -21,7 +21,7 @@ import java.util.function.Function;
  */
 public class BiBFS<T> {
 
-    public int search(T s, T e, Function<T, List<T>> getNeighbors) {
+    public int search(T s, T e, Function<T, List<T>> n) {
         if (s.equals(e)) return 0;
         Queue<T> q1 = new LinkedList<>();
         Map<T, Integer> d1 = new HashMap<>();
@@ -34,9 +34,9 @@ public class BiBFS<T> {
         while (!q1.isEmpty() && !q2.isEmpty()) {
             int ans;
             if (q1.size() <= q2.size()) { // 总是扩展节点数较少的一侧
-                ans = expand(q1, d1, d2, getNeighbors);
+                ans = expand(q1, d1, d2, n);
             } else {
-                ans = expand(q2, d2, d1, getNeighbors);
+                ans = expand(q2, d2, d1, n);
             }
             if (ans != -1) {
                 return ans;
@@ -45,12 +45,12 @@ public class BiBFS<T> {
         return -1;
     }
 
-    private int expand(Queue<T> q, Map<T, Integer> s, Map<T, Integer> t, Function<T, List<T>> f) {
+    private int expand(Queue<T> q, Map<T, Integer> s, Map<T, Integer> t, Function<T, List<T>> n) {
         int size = q.size();
         for (int i = 0; i < size; i++) {
             T u = q.poll();
             int d = s.get(u);
-            for (T v : f.apply(u)) {
+            for (T v : n.apply(u)) {
                 if (t.containsKey(v)) {
                     return d + 1 + t.get(v);
                 }

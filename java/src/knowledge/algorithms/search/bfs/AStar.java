@@ -2,6 +2,7 @@ package knowledge.algorithms.search.bfs;
 
 import knowledge.algorithms.search.problems.EightPuzzle_astar;
 import knowledge.algorithms.search.problems.MazeProblem;
+import leetcode.problems.LeetCode127_star;
 import leetcode.problems.LeetCode752_astar;
 
 import java.util.HashMap;
@@ -20,6 +21,7 @@ import java.util.function.*;
  * @see MazeProblem
  * @see EightPuzzle_astar
  * @see LeetCode752_astar
+ * @see LeetCode127_star
  */
 public class AStar {
     /**
@@ -54,10 +56,6 @@ public class AStar {
         return null;
     }
 
-    /**
-     * @author wujingxinit@outlook.com
-     * @date 10/5/25 02:38
-     */
     public static class H {
         // 曼哈顿距离 (4方向网格)
         public static final ToIntBiFunction<P, P> MANHATTAN = (a, b) -> Math.abs(a.x() - b.x()) + Math.abs(a.y() - b.y());
