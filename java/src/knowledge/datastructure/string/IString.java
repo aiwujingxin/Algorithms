@@ -1,11 +1,11 @@
 package knowledge.datastructure.string;
 
 import knowledge.algorithms.dp.intervaldp.PalindromeDP;
+import knowledge.algorithms.dp.linerdp.Sequence;
 import knowledge.datastructure.string.hash.DStringHash;
-import knowledge.datastructure.string.hash.RabinKarp;
 import knowledge.datastructure.string.hash.StringHash;
-import knowledge.datastructure.string.kmp.KMP;
 import knowledge.datastructure.string.manacher.Manacher;
+import knowledge.datastructure.string.match.StringMatch;
 import knowledge.datastructure.string.problems.InfixToSuffix;
 import knowledge.datastructure.string.problems.NumberToChinese;
 import knowledge.datastructure.string.suffix.SuffixArray;
@@ -21,28 +21,25 @@ import leetcode.problems.*;
  * @author wujingxinit@outlook.com
  * @date 11/9/24 06:36
  * @description 字符串 & 相关的问题
- * <字符串匹配>
- * @see KMP
- * @see RabinKarp
- * <字符串哈希>
+ * <哈希>
  * @see StringHash
  * @see DStringHash
- * @see RabinKarp
- * <前缀结构>
+ * <匹配>
+ * @see StringMatch
+ * <前缀>
  * @see Trie
  * @see ACAutomaton
- * <后缀结构>
+ * <后缀>
  * @see SuffixArray
  * @see SuffixAutomaton
  * @see SuffixTree
- * <字符串回文>
- * @see PalindromeDP
+ * <回文>
+ * @see LeetCode5
  * @see Manacher
  * <动态规划>
- * @see LeetCode1638
- * @see LeetCode72
- * @see LeetCode1143
- * <字符串计算>
+ * @see PalindromeDP
+ * @see Sequence
+ * <计算>
  * @see InfixToSuffix       中缀转后缀
  * @see BigDecimal          高精度
  * @see LeetCode150         逆波兰表达式求值 ["2","1","+","3","*"] => ((2 + 1) * 3) = 9
@@ -50,7 +47,7 @@ import leetcode.problems.*;
  * @see LeetCode224         基本计算器 "(1+(4+5+2)-3)+(6+8)"
  * @see LeetCode772         基本计算器 III  "2*(5+5*2)/3+(6/2+8)"
  * @see LeetCode241         为运算表达式设计优先级
- * <字符串解析>
+ * <解析>
  * @see LeetCode8           字符串转换整数 (atoi)
  * @see LeetCode65          有效数字
  * @see LeetCode273         整数转换英文表示
@@ -61,7 +58,7 @@ import leetcode.problems.*;
  * @see LCCI0814            布尔运算
  * @see LeetCode7           整数反转
  * 1106                     解析布尔表达式
- * <括号问题>
+ * <括号>
  * @see LeetCode32
  * @see LeetCode921
  * @see LeetCode1541
@@ -72,14 +69,5 @@ import leetcode.problems.*;
  * @see LeetCode440
  * @see LeetCode1985
  */
-public interface String {
-    /**
-     * @author wujingxinit@outlook.com
-     * @date 2023/8/30 22:17
-     * @description 字符串匹配
-     */
-    interface Match {
-
-        int strStr(java.lang.String txt, java.lang.String pat);
-    }
+public interface IString {
 }

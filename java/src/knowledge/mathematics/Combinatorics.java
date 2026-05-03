@@ -32,8 +32,9 @@ import java.util.Map;
  * <概率相关 / 随机>
  * @see LeetCode470     Rand10() 使用 Rand7()
  * <卡塔兰数>
- * @see LeetCode96      不同的二叉搜索树
  * @see CatalanNumber   卡塔兰数
+ * @see LeetCode96      不同的二叉搜索树
+ * @see LeetCode22      括号生成
  * <杨辉三角形>
  * @see PascalsTriangle 杨辉三角形
  * <贡献计数法>

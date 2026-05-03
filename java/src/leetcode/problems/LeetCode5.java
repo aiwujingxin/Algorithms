@@ -28,21 +28,23 @@ public class LeetCode5 {
     class Solution_Center {
 
         public String longestPalindrome(String s) {
-            int l = 0;
-            int r = 0;
+            int start = 0;
+            int end = 0;
+            int maxLen = 0;
             for (int i = 0; i < s.length(); i++) {
-                int len1 = check(s, i, i);
-                int len2 = check(s, i, i + 1);
-                int len = Math.max(len1, len2);
-                if (len > r - l + 1) {
-                    l = i - (len - 1) / 2;
-                    r = i + len / 2;
+                int l1 = cal(s, i, i);
+                int l2 = cal(s, i, i + 1);
+                int max = Math.max(l1, l2);
+                if (max > maxLen) {
+                    maxLen = max;
+                    start = i - (max - 1) / 2;
+                    end = i + max / 2;
                 }
             }
-            return s.substring(l, r + 1);
+            return s.substring(start, end + 1);
         }
 
-        public int check(String s, int i, int j) {
+        public int cal(String s, int i, int j) {
             while (i >= 0 && j < s.length() && s.charAt(i) == s.charAt(j)) {
                 i--;
                 j++;

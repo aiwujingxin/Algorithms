@@ -19,6 +19,26 @@ public class LeetCode25 {
         return newHead;
     }
 
+    public ListNode reverseKGroup_itr(ListNode head, int k) {
+        ListNode dummy = new ListNode(0);
+        dummy.next = head;
+        ListNode pre = dummy;
+        ListNode cur = dummy;
+        while (cur.next != null) {
+            for (int i = 0; i < k && cur != null; i++) {
+                cur = cur.next;
+            }
+            if (cur == null) break;
+            ListNode start = pre.next;
+            ListNode nextGHead = cur.next;
+            pre.next = reverse(start, nextGHead);
+            start.next = nextGHead;
+            pre = start;
+            cur = start;
+        }
+        return dummy.next;
+    }
+
     private ListNode reverse(ListNode h, ListNode t) {
         ListNode c = h;
         ListNode p = null;
@@ -31,21 +51,4 @@ public class LeetCode25 {
         return p;
     }
 
-    public ListNode reverseKGroup_itr(ListNode head, int k) {
-        ListNode d = new ListNode(0, head);
-        ListNode c = d;
-        while (true) {
-            ListNode t = c;
-            for (int i = 0; i < k && t != null; i++) {
-                t = t.next;
-            }
-            if (t == null) break;
-            ListNode s = c.next;
-            ListNode e = t.next;
-            c.next = reverse(s, e);
-            s.next = e;
-            c = s;
-        }
-        return d.next;
-    }
 }

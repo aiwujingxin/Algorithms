@@ -1,4 +1,4 @@
-package knowledge.datastructure.string.kmp;
+package knowledge.datastructure.string.match;
 
 import leetcode.problems.*;
 
@@ -17,18 +17,18 @@ import leetcode.problems.*;
  * @see LeetCode1967
  */
 
-public class KMP implements knowledge.datastructure.string.String.Match {
+public class KMP implements knowledge.datastructure.string.match.StringMatch {
 
     public int strStr(String text, String pattern) {
-        int n = text.length();
-        int m = pattern.length();
+        int m = text.length();
+        int n = pattern.length();
         char[] s = text.toCharArray();
         char[] p = pattern.toCharArray();
         int[] nxt = next(p);
-        for (int i = 0, j = 0; i < n; i++) {
+        for (int i = 0, j = 0; i < m; i++) {
             while (j > 0 && s[i] != p[j]) j = nxt[j - 1];
             if (s[i] == p[j]) j++;
-            if (j == m) return i - m + 1;
+            if (j == n) return i - n + 1;
         }
         return -1;
     }

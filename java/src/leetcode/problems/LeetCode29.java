@@ -24,4 +24,22 @@ public class LeetCode29 {
         }
         return s ? -r : r;
     }
+
+    class Solution_BEST {
+        public int divide(int a, int b) {
+            if (a == Integer.MIN_VALUE && b == -1) return Integer.MAX_VALUE;
+            if (a == Integer.MIN_VALUE && b == 1) return Integer.MIN_VALUE;
+            boolean s = (a > 0) ^ (b > 0);
+            if (a > 0) a = -a;
+            if (b > 0) b = -b;
+            int r = 0;
+            for (int i = 30; i >= 0; i--) {
+                if (b >= (Integer.MIN_VALUE >> i) && a <= (b << i)) {
+                    a -= (b << i);
+                    r += (1 << i);
+                }
+            }
+            return s ? -r : r;
+        }
+    }
 }

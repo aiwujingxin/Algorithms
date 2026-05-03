@@ -1,100 +1,37 @@
 package knowledge.datastructure.string.problems;
 
 import java.math.BigInteger;
+import java.util.Arrays;
 import java.util.Random;
 
 /**
  * @author wujingxinit@outlook.com
  * @date 9/18/25 01:50
+ * @description 从左到右计算等长字符串的和
  */
 public class AddStringsForward {
 
-    /**
-     * 从左到右计算等长字符串的和。
-     */
     public static String calculate(String a, String b) {
-        if (a == null || b == null || a.length() != b.length()) return "";
-        int n = a.length();
-        StringBuilder sb = new StringBuilder(n + 1);
-        int carryLike = 0;
-        int pending9 = 0;
-        for (int i = 0; i < n; i++) {
+        int[] res = new int[a.length() + 1];
+        int index = 0; // 记录最近一个和不为9的索引
+        for (int i = 0; i < a.length(); i++) {
             int sum = (a.charAt(i) - '0') + (b.charAt(i) - '0');
-            if (sum == 9) {
-                pending9++;
-                continue;
-            }
-            if (sum < 9) {
-                sb.append(carryLike);
-                while (pending9-- > 0) sb.append('9');
-                pending9 = 0;
-                carryLike = sum;
-            } else {
-                sb.append(carryLike + 1);
-                while (pending9-- > 0) sb.append('0');
-                pending9 = 0;
-                carryLike = sum - 10;
+            res[i + 1] = sum % 10;
+            if (sum != 9) {
+                if (sum > 9) {
+                    res[index]++; // 最左侧进位
+                    Arrays.fill(res, index + 1, i + 1, 0); // 填充数字9->0
+                }
+                index = i + 1;
             }
         }
-        sb.append(carryLike);
-        while (pending9-- > 0) sb.append('9');
-        int k = 0;
-        while (k < sb.length() - 1 && sb.charAt(k) == '0') k++;
-        return sb.substring(k);
-    }
-
-    public static String addEqualLength(String a, String b) {
-        int n = a.length();
-        if (n == 0) {
-            return "";
+        int start = 0;
+        while (start < res.length - 1 && res[start] == 0) start++;
+        StringBuilder sb = new StringBuilder(res.length - start);
+        for (int i = start; i < res.length; i++) {
+            sb.append(res[i]);
         }
-        // 特殊情况：如果两个输入都是"0"，直接返回"0"
-        if (n == 1 && a.equals("0") && b.equals("0")) {
-            return "0";
-        }
-        StringBuilder result = new StringBuilder(n + 1);
-        int pendingNines = 0;
-        for (int i = 0; i < n; i++) {
-            int digitA = a.charAt(i) - '0';
-            int digitB = b.charAt(i) - '0';
-            int sum = digitA + digitB;
-            if (sum < 9) {
-                for (int k = 0; k < pendingNines; k++) {
-                    result.append('9');
-                }
-                pendingNines = 0;
-                result.append(sum);
-            } else if (sum > 9) {
-                int len = result.length();
-                while (len > 0 && result.charAt(len - 1) == '9') {
-                    result.setCharAt(len - 1, '0');
-                    len--;
-                }
-                if (len == 0) {
-                    result.insert(0, '1');
-                } else {
-                    result.setCharAt(len - 1, (char) (result.charAt(len - 1) + 1));
-                }
-                for (int k = 0; k < pendingNines; k++) {
-                    result.append('0');
-                }
-                pendingNines = 0;
-                result.append(sum % 10);
-            } else { // sum == 9
-                pendingNines++;
-            }
-        }
-        for (int k = 0; k < pendingNines; k++) {
-            result.append('9');
-        }
-        String finalResult = result.toString();
-        // 【关键修复】: 处理前导零
-        // 找到第一个非'0'字符的索引
-        int firstNonZero = 0;
-        while (firstNonZero < finalResult.length() - 1 && finalResult.charAt(firstNonZero) == '0') {
-            firstNonZero++;
-        }
-        return finalResult.substring(firstNonZero);
+        return sb.toString();
     }
 
 

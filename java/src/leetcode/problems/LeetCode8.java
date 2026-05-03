@@ -15,57 +15,47 @@ public class LeetCode8 {
         if (s.charAt(i) == '+' || s.charAt(i) == '-') {
             sign = s.charAt(i++) == '-' ? -1 : 1;
         }
-        int res = 0;
-        int limit = Integer.MAX_VALUE / 10;
-        while (i < n) {
+        int ans = 0;
+        for (; i < n; i++) {
             char c = s.charAt(i);
             if (c < '0' || c > '9') break;
             int d = c - '0';
-            if (res > limit || res == limit && d > 7) {
+            if (ans > (Integer.MAX_VALUE - d) / 10) {
                 return sign == 1 ? Integer.MAX_VALUE : Integer.MIN_VALUE;
             }
-            res = res * 10 + d;
-            i++;
+            ans = ans * 10 + d;
         }
-        return sign * res;
+        return sign * ans;
     }
 
     class Solution_DFA {
 
         public int myAtoi(String s) {
             int state = 0, sign = 1, ans = 0;
-            int limit = Integer.MAX_VALUE / 10; // 提前算出除以 10 的阈值
-            // 状态转移表 (DFA)
-            // 行代表：状态 (0:初始, 1:已遇符号 2:数字, 3:结束)
-            // 列代表：字符 (0:空格, 1:正负号    2:数字, 3:其他字符)
-            int[][] table = {
-                    /* 状态/字符*/   /* 空格(0) */  /* 符号(1) */  /* 数字(2) */  /* 其他(3) */
-                    /* 0: start */    {0, 1, 2, 3},
-                    /* 1: signed */   {3, 3, 2, 3},
-                    /* 2: in_num */   {3, 3, 2, 3},
-                    /* 3: end */      {3, 3, 3, 3}};
-
-            for (int i = 0; i < s.length(); i++) {
-                char c = s.charAt(i);
-                int col = getColumn(c);
-                state = table[state][col];
-                if (state == 2) {
+            int[][] DFA = {
+                    /*空格 符号 数字 其他 */
+                    {0, 1, 2, 3}, // init
+                    {3, 3, 2, 3}, // sign
+                    {3, 3, 2, 3}, // num
+                    {3, 3, 3, 3}  // end
+            };
+            for (char c : s.toCharArray()) {
+                state = DFA[state][getInputType(c)];
+                if (state == 3) break; // 遇到结束状态直接退出，避免无意义的遍历
+                if (state == 1) {
+                    sign = c == '+' ? 1 : -1;
+                } else if (state == 2) {
                     int d = c - '0';
-                    if (ans > limit || (ans == limit && d > 7)) {
+                    if (ans > (Integer.MAX_VALUE - d) / 10) {
                         return sign == 1 ? Integer.MAX_VALUE : Integer.MIN_VALUE;
                     }
                     ans = ans * 10 + d;
-                } else if (state == 1) {
-                    sign = c == '+' ? 1 : -1;
-                } else if (state == 3) {
-                    break;
                 }
             }
             return sign * ans;
         }
 
-        // 获取字符对应的列索引
-        private int getColumn(char c) {
+        private int getInputType(char c) {
             if (c == ' ') return 0;
             if (c == '+' || c == '-') return 1;
             if (c >= '0' && c <= '9') return 2;

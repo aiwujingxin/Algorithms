@@ -1,6 +1,7 @@
 package leetcode.problems;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author wujingxinit@outlook.com
@@ -28,6 +29,17 @@ public class LeetCode22 {
             sb.append(")");
             backtrack(l, r + 1, n, res, sb);
             sb.deleteCharAt(sb.length() - 1);
+        }
+    }
+
+    class Solution {
+        public int countParenthesis(int n) {
+            long ans = 1; // C_0 = 1
+            for (int i = 1; i <= n; i++) {
+                // 利用卡特兰数递推公式：C_i = C_{i-1} * (4i - 2) / (i + 1)
+                ans = ans * (4L * i - 2) / (i + 1);
+            }
+            return (int) ans;
         }
     }
 }

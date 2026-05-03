@@ -22,9 +22,7 @@ public class LeetCode752 {
             int levelSize = queue.size();
             for (int i = 0; i < levelSize; i++) {
                 String current = queue.poll();
-                if (current.equals(target)) {
-                    return steps;
-                }
+                if (target.equals(current)) return steps;
                 for (String neighbor : getNexts(current)) {
                     if (!visited.contains(neighbor) && !deadSet.contains(neighbor)) {
                         visited.add(neighbor);

@@ -10,10 +10,10 @@ public class LeetCode24 {
 
     public ListNode swapPairs(ListNode head) {
         if (head == null || head.next == null) return head;
-        ListNode next = head.next;
-        head.next = swapPairs(next.next);
-        next.next = head;
-        return next;
+        ListNode newHead = head.next;
+        head.next = swapPairs(newHead.next);
+        newHead.next = head;
+        return newHead;
     }
 
     public ListNode swapPairs_itr(ListNode head) {
@@ -21,12 +21,12 @@ public class LeetCode24 {
         dummy.next = head;
         ListNode c = dummy;
         while (c.next != null && c.next.next != null) {
-            ListNode f = c.next;
-            ListNode s = c.next.next;
-            f.next = s.next;
-            s.next = f;
-            c.next = s;
-            c = f;
+            ListNode a = c.next;
+            ListNode b = c.next.next;
+            a.next = b.next;
+            b.next = a;
+            c.next = b;
+            c = a;
         }
         return dummy.next;
     }

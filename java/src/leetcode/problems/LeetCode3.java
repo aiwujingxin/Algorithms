@@ -1,7 +1,6 @@
 package leetcode.problems;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.Arrays;
 
 /**
  * @author wujingxinit@outlook.com
@@ -31,19 +30,19 @@ public class LeetCode3 {
     class Solution_opt {
 
         public int lengthOfLongestSubstring(String s) {
-            int n = s.length();
-            int ans = 0;
-            Map<Character, Integer> map = new HashMap<>();
-            int l = 0;
-            for (int r = 0; r < n; r++) {
-                char c = s.charAt(r);
-                if (map.containsKey(c)) {
-                    l = Math.max(map.get(c) + 1, l);
+            int[] index = new int[128];
+            Arrays.fill(index, -1);
+            int j = -1;
+            int max = 0;
+            for (int i = 0; i < s.length(); i++) {
+                char c = s.charAt(i);
+                if (index[c] != -1) {
+                    j = Math.max(j, index[c]);
                 }
-                ans = Math.max(ans, r - l + 1);
-                map.put(c, r);
+                max = Math.max(i - j, max);
+                index[c] = i;
             }
-            return ans;
+            return max;
         }
     }
 }

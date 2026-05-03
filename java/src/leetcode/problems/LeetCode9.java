@@ -1,5 +1,7 @@
 package leetcode.problems;
 
+import java.util.Arrays;
+
 /**
  * @author wujingxinit@outlook.com
  * @date 2024/4/9 10:56
@@ -13,6 +15,7 @@ public class LeetCode9 {
             t /= 10;
         }
         return r == x;
+
     }
 
     class Solution_Best {

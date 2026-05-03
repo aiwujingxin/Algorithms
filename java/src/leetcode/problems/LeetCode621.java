@@ -46,28 +46,20 @@ public class LeetCode621 {
         return res;
     }
 
-    //https://www.youtube.com/watch?v=siNqiP6tk94&t=302s
-    // 1) 关键是最多的任务 2) 最多的任务有几个?maxCountSame个
-    // A _ _ _ _ _ A _ _ _ _ _ A....
-    // (n+1)*(maxCount - 1) + maxCountSame
-    // 3) 比较 整个长度
     public int leastInterval_greedy(char[] tasks, int n) {
-        int[] freq = new int[26];
-        for (char task : tasks) {
-            freq[task - 'A']++;
-        }
+        int[] counts = new int[26];
         int maxCount = 0;
-        int maxCountSame = 0;
-        for (int num : freq) {
-            if (num > maxCount) {
-                maxCount = num;
-                maxCountSame = 1;
-            } else if (num == maxCount) {
-                maxCountSame++;
+        for (char task : tasks) {
+            counts[task - 'A']++;
+            maxCount = Math.max(maxCount, counts[task - 'A']);
+        }
+        int maxCountTasks = 0;
+        for (int count : counts) {
+            if (count == maxCount) {
+                maxCountTasks++;
             }
         }
-        int res = (maxCount - 1) * (n + 1) + maxCountSame;
-        return Math.max(res, tasks.length);
+        int minTime = (maxCount - 1) * (n + 1) + maxCountTasks;
+        return Math.max(tasks.length, minTime);
     }
-
 }

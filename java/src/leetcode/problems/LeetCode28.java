@@ -3,7 +3,7 @@ package leetcode.problems;
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/10/23 16:02
- * @see knowledge.datastructure.string.String.Match
+ * @see knowledge.datastructure.string.match.StringMatch
  */
 public class LeetCode28 {
 

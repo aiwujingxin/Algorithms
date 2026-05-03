@@ -1,6 +1,6 @@
 package leetcode.problems;
 
-import knowledge.datastructure.string.hash.RabinKarp;
+import knowledge.datastructure.string.match.RabinKarp;
 
 import java.util.*;
 
