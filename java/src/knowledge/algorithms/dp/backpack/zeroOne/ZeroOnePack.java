@@ -13,7 +13,10 @@ import leetcode.problems.*;
  * @see LeetCode494     目标和  01背包组合数
  * @see LeetCode474     一和零
  * @see LeetCode1049    最后一块石头的重量II 转化
+ * <恰好装满型>
  * @see LeetCode2915    和为目标值的最长子序列的长度
+ * @see LeetCode3877    达到目标异或值的最少删除次数
+ * @see LeetCode3946    购买最多物品数目 I
  */
 public interface ZeroOnePack {
     /**

@@ -37,7 +37,7 @@ public class LeetCode3286 {
             for (int i = 0; i < m; i++) {
                 Arrays.fill(costs[i], Integer.MAX_VALUE);
             }
-            costs[0][0] = grid.get(0).get(0);
+            costs[0][0] = grid.getFirst().getFirst();
             PriorityQueue<int[]> pq = new PriorityQueue<>(Comparator.comparingInt(a -> a[2]));
             pq.add(new int[]{0, 0, costs[0][0]});
             while (!pq.isEmpty()) {
@@ -79,7 +79,7 @@ public class LeetCode3286 {
                     int nx = ux + dir[0], ny = uy + dir[1];
                     if (nx < 0 || nx >= m || ny < 0 || ny >= n) continue;
                     int w = g[nx][ny];
-                    if (dist[ux][uy] - w <= 0) continue; // 走不过去
+                    if (w > dist[ux][uy]) continue; // 走不过去
                     // 只有当新的剩余健康更大时，才“松弛”
                     if (dist[ux][uy] - w > dist[nx][ny]) {
                         dist[nx][ny] = dist[ux][uy] - w;

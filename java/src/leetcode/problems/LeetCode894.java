@@ -12,30 +12,27 @@ import java.util.List;
  */
 public class LeetCode894 {
 
-
-    //https://leetcode.cn/problems/all-possible-full-binary-trees/solution/cu-su-yi-dong-chun-di-gui-gen-zhao-di-gu-7zok/
-
     public List<TreeNode> allPossibleFBT(int n) {
-        List<TreeNode> allTrees = new ArrayList<>();
-        if (n == 1) {
-            allTrees.add(new TreeNode(0));
-            return allTrees;
+        List<TreeNode> result = new ArrayList<>();
+        if (n % 2 == 0) {
+            return result;
         }
-
-        // 获取子问题结果，这道题的子问题，就是下面这个循环里的嘛
-        for (int i = 1; i < n - 1; i += 2) {
-            List<TreeNode> leftTrees = allPossibleFBT(i);
-            List<TreeNode> rightTrees = allPossibleFBT(n - i - 1);
-            // 拿到当前子结果，计算当前问题的结果
-            for (TreeNode left : leftTrees) {
-                for (TreeNode right : rightTrees) {
-                    TreeNode curRoot = new TreeNode(0);
-                    curRoot.left = left;
-                    curRoot.right = right;
-                    allTrees.add(curRoot);
+        if (n == 1) {
+            result.add(new TreeNode(0));
+            return result;
+        }
+        for (int i = 1; i < n; i += 2) {
+            List<TreeNode> leftRes = allPossibleFBT(i);
+            List<TreeNode> rightRes = allPossibleFBT(n - 1 - i);
+            for (TreeNode left : leftRes) {
+                for (TreeNode right : rightRes) {
+                    TreeNode root = new TreeNode(0);
+                    root.left = left;
+                    root.right = right;
+                    result.add(root);
                 }
             }
         }
-        return allTrees;
+        return result;
     }
 }

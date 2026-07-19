@@ -3,22 +3,23 @@ package leetcode.problems;
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/11/17 16:38
+ * @see LeetCode1798
  */
 public class LeetCode330 {
 
     public int minPatches(int[] nums, int n) {
-        int cunt = 0;
-        long miss = 1;
-        int length = nums.length, index = 0;
-        while (miss <= n) {
-            if (index < length && nums[index] <= miss) {
-                miss += nums[index];
-                index++;
+        int patches = 0;
+        long reach = 0;
+        int i = 0;
+        while (reach < n) {
+            if (i < nums.length && nums[i] <= reach + 1) {
+                reach += nums[i];
+                i++;
             } else {
-                miss *= 2;
-                cunt++;
+                reach += reach + 1;  // 补充 reach + 1，覆盖范围翻倍加一
+                patches++;
             }
         }
-        return cunt;
+        return patches;
     }
 }

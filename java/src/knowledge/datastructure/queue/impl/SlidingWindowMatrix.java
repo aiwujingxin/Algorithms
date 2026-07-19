@@ -50,6 +50,41 @@ public class SlidingWindowMatrix {
         return result;
     }
 
+    // V2: 降维 + 双端队列 (内存优化版)
+    public static int[][] maxSlidingWindowMatrix_v2_optimized(int[][] mat, int a, int b) {
+        if (mat == null || mat.length < a || mat[0].length < b || a <= 0 || b <= 0) return new int[0][0];
+        int m = mat.length, n = mat[0].length;
+        int tempCols = n - b + 1;
+        int[][] tempMatrix = new int[m][tempCols];
+
+        // 1. 对每一行做 1D 滑动窗口
+        for (int i = 0; i < m; i++) {
+            tempMatrix[i] = maxSlidingWindow1D_Deque(mat[i], b);
+        }
+
+        int resRows = m - a + 1;
+        int[][] result = new int[resRows][tempCols];
+
+        // 2. 对 tempMatrix 的每一列做 1D 滑动窗口 (直接操作，不拷贝数组)
+        Deque<Integer> dq = new ArrayDeque<>();
+        for (int j = 0; j < tempCols; j++) {
+            dq.clear(); // 复用同一个队列
+            for (int i = 0; i < m; i++) {
+                // 剔除过期元素
+                if (!dq.isEmpty() && dq.peekFirst() <= i - a) dq.pollFirst();
+                // 维护单调递减 (这里用 <= 更好，前面讨论过)
+                while (!dq.isEmpty() && tempMatrix[dq.peekLast()][j] <= tempMatrix[i][j]) dq.pollLast();
+                // 入队
+                dq.offerLast(i);
+                // 记录结果
+                if (i >= a - 1) {
+                    result[i - a + 1][j] = tempMatrix[dq.peekFirst()][j];
+                }
+            }
+        }
+        return result;
+    }
+
     // V3: 降维 + 分块预处理
     public static int[][] maxSlidingWindowMatrix_v3(int[][] mat, int a, int b) {
         if (mat == null || mat.length < a || mat[0].length < b || a <= 0 || b <= 0) return new int[0][0];
@@ -73,15 +108,14 @@ public class SlidingWindowMatrix {
     // --- 辅助方法 ---
     // V2 使用的1D解法
     private static int[] maxSlidingWindow1D_Deque(int[] nums, int k) {
-        if (nums.length < k || k <= 0) return new int[0];
         int n = nums.length;
+        Deque<Integer> dq = new ArrayDeque<>();
         int[] result = new int[n - k + 1];
-        Deque<Integer> deque = new ArrayDeque<>();
         for (int i = 0; i < n; i++) {
-            if (!deque.isEmpty() && deque.peekFirst() <= i - k) deque.pollFirst();
-            while (!deque.isEmpty() && nums[deque.peekLast()] < nums[i]) deque.pollLast();
-            deque.offerLast(i);
-            if (i >= k - 1) result[i - k + 1] = nums[deque.peekFirst()];
+            if (!dq.isEmpty() && dq.peekFirst() <= i - k) dq.pollFirst();
+            while (!dq.isEmpty() && nums[dq.peekLast()] < nums[i]) dq.pollLast();
+            dq.offerLast(i);
+            if (i >= k - 1) result[i - k + 1] = nums[dq.peekFirst()];
         }
         return result;
     }
@@ -156,10 +190,12 @@ public class SlidingWindowMatrix {
                 int[][] res1 = maxSlidingWindowMatrix_v1(mat, a, b);
                 int[][] res2 = maxSlidingWindowMatrix_v2(mat, a, b);
                 int[][] res3 = maxSlidingWindowMatrix_v3(mat, a, b);
+                int[][] res4 = maxSlidingWindowMatrix_v2_optimized(mat, a, b);
                 // 两两比较
                 boolean v2_ok = areMatricesEqual(res1, res2);
                 boolean v3_ok = areMatricesEqual(res1, res3);
-                if (!v2_ok || !v3_ok) {
+                boolean v4_ok = areMatricesEqual(res1, res4);
+                if (!v2_ok || !v3_ok || !v4_ok) {
                     success = false;
                     System.out.println("噢！出错了！");
                     System.out.println("-----------------------------------------");
@@ -176,6 +212,10 @@ public class SlidingWindowMatrix {
                         System.out.println("\n[错误] V3 (Blocking) 的结果不一致:");
                         printMatrix(res3);
                     }
+                    if (!v4_ok) {
+                        System.out.println("\n[错误] V4 (Deque) 的结果不一致:");
+                        printMatrix(res4);
+                    }
                     System.out.println("-----------------------------------------");
                     break;
                 }
@@ -185,7 +225,7 @@ public class SlidingWindowMatrix {
             }
             long endTime = System.currentTimeMillis();
             if (success) {
-                System.out.println("\n太棒了！V2 和 V3 通过了所有 " + testTimes + " 次测试！");
+                System.out.println("\n太棒了！通过了所有 " + testTimes + " 次测试！");
                 System.out.printf("总耗时: %.2f 秒\n", (endTime - startTime) / 1000.0);
             }
             System.out.println("对拍测试结束。");

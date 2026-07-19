@@ -28,7 +28,7 @@ import knowledge.datastructure.tree.Tree;
  * @see LimitBFS              瓶颈图/限制图 (二分答案+BFS / Min-Max路径)
  * <BFS-图论 (显式图)>
  * * <最短路>
- * @see ZeroOneBFS            0-1 BFS     (双端队列，处理边权为0/1的图)
+ * @see BFS01            0-1 BFS     (双端队列，处理边权为0/1的图)
  * @see Dijkstra              Dijkstra    (优先队列，处理非负权图)
  * @see SPFA                  SPFA        (普通队列，处理带负权边的图)
  * @see TopoOrder             拓扑最短路    (基于入度队列，针对DAG)

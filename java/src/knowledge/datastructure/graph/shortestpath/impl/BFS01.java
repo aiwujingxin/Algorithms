@@ -1,10 +1,9 @@
 package knowledge.datastructure.graph.shortestpath.impl;
 
 import knowledge.datastructure.graph.shortestpath.ShortestPath;
+import leetcode.problems.LeetCode3286;
 
 import java.util.*;
-
-import leetcode.problems.*;
 
 /**
  * @author wujingxinit@outlook.com
@@ -12,7 +11,7 @@ import leetcode.problems.*;
  * @description 0-1 BFS 在边权仅为 0 或 1 的非负权图上，用双端队列模拟 Dijkstra 的松弛过程，实现按“代价非降序”推进的最短路搜索。
  * @see LeetCode3286
  */
-public class ZeroOneBFS implements ShortestPath {
+public class BFS01 implements ShortestPath {
 
     static final int INF = 0x3f3f3f3f;
 
@@ -39,8 +38,11 @@ public class ZeroOneBFS implements ShortestPath {
                 int nd = du + w;
                 if (nd < dist[v]) {
                     dist[v] = nd;
-                    if (w == 0) dq.addFirst(v);
-                    else dq.addLast(v);
+                    if (w == 0) {
+                        dq.addFirst(v);
+                    } else {
+                        dq.addLast(v);
+                    }
                 }
             }
         }

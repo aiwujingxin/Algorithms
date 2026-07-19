@@ -1,56 +1,41 @@
 package leetcode.problems;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/9/1 15:01
+ * @description 记忆化搜索
+ * 如果没有 memo，计算每个节点都需要遍历整棵依赖树
+ * 节点0: 需要遍历 0->1->2->3->...
+ * 节点1: 需要遍历 1->2->3->...
+ * 节点2: 需要遍历 2->3->...
+ * 导致大量重复计算
  */
 public class LeetCode851_dfs {
 
-    //https://leetcode.cn/problems/loud-and-rich/solutions/1158560/javashen-du-you-xian-sou-su-sou-suo-ji-l-rqgh/?envType=daily-question&envId=2023-09-01
-    int[] ans;
-    int[] quiet;
-    Map<Integer, List<Integer>> map = new HashMap<>();
-    boolean[] v;
-
     public int[] loudAndRich(int[][] richer, int[] quiet) {
         int n = quiet.length;
-        this.quiet = quiet;
-        ans = new int[n];
-        v = new boolean[n];
-
-        Arrays.fill(ans, -1);
-        for (int i = 0; i < n; i++) {
-            map.put(i, new ArrayList<>());
-        }
-        // 反向建图
-        int[] degree = new int[n];
-        for (int[] r : richer) {
-            map.get(r[1]).add(r[0]);
-            degree[r[0]]++;
-        }
-        for (int i = 0; i < n; i++) {
-            if (degree[i] == 0) {
-                dfs(i);
-            }
-        }
-        return ans;
+        List<Integer>[] graph = new List[n];
+        for (int i = 0; i < n; i++) graph[i] = new ArrayList<>();
+        for (int[] pair : richer) graph[pair[1]].add(pair[0]);
+        int[] memo = new int[n];
+        Arrays.fill(memo, -1);
+        int[] result = new int[n];
+        for (int i = 0; i < n; i++) result[i] = dfs(i, graph, quiet, memo);
+        return result;
     }
 
-    private int dfs(int u) {
-        if (v[u]) {//如果已经求过了
-            return ans[u];
+    private int dfs(int person, List<Integer>[] graph, int[] quiet, int[] memo) {
+        if (memo[person] != -1) return memo[person];
+        int min = person;
+        for (int richer : graph[person]) {
+            int candidate = dfs(richer, graph, quiet, memo);
+            if (quiet[candidate] < quiet[min]) min = candidate;
         }
-        int min = u;//当前结点的安静度
-        for (int next : map.get(u)) {
-            int t = dfs(next);//相邻结点子树下最安静的
-            if (quiet[t] < quiet[min]) {
-                min = t;
-            }
-        }
-        v[u] = true;
-        ans[u] = min;
+        memo[person] = min;
         return min;
     }
 }

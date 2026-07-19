@@ -19,7 +19,7 @@ import leetcode.lists.lcp.*;
  * @see Johnson             O(V^E * V^2 logV)   适合稀疏图中的所有点对最短路径问题,包含负权边无负权回路
  * @see SPFA                O(E),最坏O(V * E)    有负权边的图，无负权回路
  * @see AStar               O(E)                启发式搜索
- * @see ZeroOneBFS          O(V + E)            适合边权为1或无权重图的最短路径
+ * @see BFS01               O(V + E)            适合边权为1或无权重图的最短路径
  * @see LayeredBFS          O(V + E)            分层图
  * @see TopoOrder           O(V + E)            DAG中的最短路径问题
  * <模版题>

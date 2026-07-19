@@ -6,11 +6,6 @@ package leetcode.problems;
  */
 public class LeetCode3573 {
 
-
-    public static void main(String[] args) {
-        System.out.println(new LeetCode3573().maximumProfit(new int[]{1, 7, 9, 8, 2}, 2));
-    }
-
     public long maximumProfit(int[] prices, int K) {
         int n = prices.length;
         long[][] dp = new long[K + 1][4];

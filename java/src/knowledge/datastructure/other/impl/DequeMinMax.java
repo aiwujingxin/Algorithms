@@ -2,8 +2,8 @@ package knowledge.datastructure.other.impl;
 
 import knowledge.datastructure.other.MinMaxContainer;
 
+import java.util.ArrayDeque;
 import java.util.Deque;
-import java.util.LinkedList;
 
 /**
  * @author wujingxinit@outlook.com
@@ -11,39 +11,35 @@ import java.util.LinkedList;
  */
 
 public class DequeMinMax implements MinMaxContainer {
-    private Deque<Integer> maxDeque = new LinkedList<>();
-    private Deque<Integer> minDeque = new LinkedList<>();
+    // 替换为 ArrayDeque，CPU 缓存友好，无节点分配开销
+    private final Deque<Integer> max = new ArrayDeque<>();
+    private final Deque<Integer> min = new ArrayDeque<>();
 
     public void insert(int x) {
-        while (!maxDeque.isEmpty() && x > maxDeque.peekLast()) {
-            maxDeque.pollLast();
+        while (!max.isEmpty() && x >= max.peekLast()) {
+            max.pollLast();
         }
-        maxDeque.offerLast(x);
-
-        while (!minDeque.isEmpty() && x < minDeque.peekLast()) {
-            minDeque.pollLast();
+        max.addLast(x);
+        while (!min.isEmpty() && x <= min.peekLast()) {
+            min.pollLast();
         }
-        minDeque.offerLast(x);
+        min.addLast(x);
     }
 
     public void remove(int x) {
-        if (!maxDeque.isEmpty() && x == maxDeque.peekFirst()) {
-            maxDeque.pollFirst();
-        }
-        if (!minDeque.isEmpty() && x == minDeque.peekFirst()) {
-            minDeque.pollFirst();
-        }
+        if (!max.isEmpty() && x > max.peekFirst()) max.pollFirst();
+        if (!min.isEmpty() && x < min.peekFirst()) min.pollFirst();
     }
 
     public int getMin() {
-        return minDeque.peekFirst();
+        return min.peekFirst();
     }
 
     public int getMax() {
-        return maxDeque.peekFirst();
+        return max.peekFirst();
     }
 
     public boolean isEmpty() {
-        return maxDeque.isEmpty();
+        return max.isEmpty();
     }
 }

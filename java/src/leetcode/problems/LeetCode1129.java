@@ -9,46 +9,50 @@ import java.util.*;
  */
 public class LeetCode1129 {
 
-    // 最短路径
     public int[] shortestAlternatingPaths(int n, int[][] redEdges, int[][] blueEdges) {
-        final int RED = 0, BLUE = 1;
-        List<Integer>[][] adjacentArr = new List[n][2];
+        List<int[]>[] graph = new List[n];
         for (int i = 0; i < n; i++) {
-            adjacentArr[i][RED] = new ArrayList<>();
-            adjacentArr[i][BLUE] = new ArrayList<>();
+            graph[i] = new ArrayList<>();
         }
-        for (int[] redEdge : redEdges) {
-            adjacentArr[redEdge[0]][RED].add(redEdge[1]);
+        for (int[] edge : redEdges) {
+            graph[edge[0]].add(new int[]{edge[1], 0});
         }
-        for (int[] blueEdge : blueEdges) {
-            adjacentArr[blueEdge[0]][BLUE].add(blueEdge[1]);
+        for (int[] edge : blueEdges) {
+            graph[edge[0]].add(new int[]{edge[1], 1});
         }
-        int[][] distances = new int[n][2];
-        for (int i = 1; i < n; i++) {
-            Arrays.fill(distances[i], Integer.MAX_VALUE);
-        }
-        Queue<int[]> queue = new ArrayDeque<>();
-        queue.offer(new int[]{0, RED});
-        queue.offer(new int[]{0, BLUE});
+        int[] ans = new int[n];
+        Arrays.fill(ans, Integer.MAX_VALUE);
+        ans[0] = 0;
+        boolean[][] visited = new boolean[n][2];
+        Queue<int[]> queue = new LinkedList<>();
+        queue.offer(new int[]{0, 0, 0});
+        queue.offer(new int[]{0, 0, 1});
+        visited[0][0] = true;
+        visited[0][1] = true;
         while (!queue.isEmpty()) {
-            int[] nodeColor = queue.poll();
-            int node = nodeColor[0], color = nodeColor[1];
-            int distance = distances[node][color];
-            int nextColor = color ^ 1;
-            int nextDistance = distance + 1;
-            List<Integer> adjacent = adjacentArr[node][nextColor];
-            for (int next : adjacent) {
-                if (nextDistance < distances[next][nextColor]) {
-                    distances[next][nextColor] = nextDistance;
-                    queue.offer(new int[]{next, nextColor});
+            int[] curr = queue.poll();
+            int node = curr[0];
+            int dist = curr[1];
+            int prevColor = curr[2];
+            for (int[] edge : graph[node]) {
+                int nextNode = edge[0];
+                int edgeColor = edge[1];
+                if (edgeColor == prevColor) {
+                    continue;
                 }
+                if (visited[nextNode][edgeColor]) {
+                    continue;
+                }
+                ans[nextNode] = Math.min(ans[nextNode], dist + 1);
+                visited[nextNode][edgeColor] = true;
+                queue.offer(new int[]{nextNode, dist + 1, edgeColor});
             }
         }
-        int[] answer = new int[n];
         for (int i = 0; i < n; i++) {
-            int distance = Math.min(distances[i][RED], distances[i][BLUE]);
-            answer[i] = distance != Integer.MAX_VALUE ? distance : -1;
+            if (ans[i] == Integer.MAX_VALUE) {
+                ans[i] = -1;
+            }
         }
-        return answer;
+        return ans;
     }
 }

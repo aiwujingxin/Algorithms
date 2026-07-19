@@ -10,25 +10,24 @@ import java.util.List;
 public class LeetCode1424 {
 
     public int[] findDiagonalOrder(List<List<Integer>> nums) {
+        // 存储为 [y, val, sum]
         List<int[]> list = new ArrayList<>();
-        int count = 0;
         for (int i = 0; i < nums.size(); i++) {
-            for (int j = 0; j < nums.get(i).size(); j++) {
-                list.add(new int[]{i, i + j, nums.get(i).get(j)});
-                count++;
+            List<Integer> row = nums.get(i);
+            for (int j = 0; j < row.size(); j++) {
+                list.add(new int[]{j, row.get(j), i + j});
             }
         }
-        list.sort((o1, o2) -> {
-            if (o1[1] == o2[1]) {
-                return o2[0] - o1[0];
+        list.sort((a, b) -> {
+            if (a[2] != b[2]) {
+                return a[2] - b[2];
             }
-            return o1[1] - o2[1];
+            return a[0] - b[0];
         });
-
-        int[] res = new int[count];
+        int[] result = new int[list.size()];
         for (int i = 0; i < list.size(); i++) {
-            res[i] = list.get(i)[2];
+            result[i] = list.get(i)[1];
         }
-        return res;
+        return result;
     }
 }

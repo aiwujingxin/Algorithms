@@ -12,7 +12,6 @@ import leetcode.problems.*;
  * @see LeetCode684_uf        冗余连接
  * @see LeetCode1319_uf       连通网络的操作次数
  * @see LeetCode2492_uf       两个城市间路径的最小分数
- * @see LeetCode2685          统计完全连通分量的数量
  * @see LeetCode827           最大人工岛
  * @see LeetCode947_uf        移除最多的同行或同列石头
  * @see LeetCode990           等式方程的可满足性

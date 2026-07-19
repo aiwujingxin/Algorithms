@@ -13,7 +13,7 @@ import leetcode.problems.*;
  * @see LeetCode1297   子串的最大出现次数
  * @see LeetCode1100   长度为 K 的无重复字符子串
  * @see LeetCode1004   最大连续1的个数 III
- * @see LeetCode1151   最少交换次数来组合所有的 1
+ * @see LeetCode424    替换后的最长重复字符
  * <不定长窗口>
  * * <最长窗口>
  * @see LeetCode3      无重复字符的最长子串
@@ -35,6 +35,7 @@ import leetcode.problems.*;
  * <转换窗口>
  * @see LeetCode2779
  * @see LeetCode2962
+ * @see LeetCode1151   最少交换次数来组合所有的 1
  */
 public interface SlidingWindow {
 
