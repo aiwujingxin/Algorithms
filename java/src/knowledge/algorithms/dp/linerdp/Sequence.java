@@ -1,7 +1,7 @@
 package knowledge.algorithms.dp.linerdp;
 
+import knowledge.algorithms.dp.linerdp.problems.RodCutting;
 import leetcode.problems.*;
-import knowledge.algorithms.dp.linerdp.problems.*;
 
 /**
  * @author wujingxinit@outlook.com

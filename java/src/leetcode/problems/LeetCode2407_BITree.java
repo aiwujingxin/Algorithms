@@ -1,6 +1,6 @@
 package leetcode.problems;
 
-import knowledge.datastructure.adv.BITree_RangeMax;
+import knowledge.datastructure.adv.impl.BITree_RangeMax;
 
 /**
  * @author wujingxinit@outlook.com

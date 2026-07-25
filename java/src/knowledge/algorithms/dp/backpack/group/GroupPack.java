@@ -1,6 +1,6 @@
 package knowledge.algorithms.dp.backpack.group;
 
-import leetcode.problems.*;
+import leetcode.problems.LeetCode1981;
 
 /**
  * @author wujingxinit@outlook.com

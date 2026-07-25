@@ -1,6 +1,6 @@
 package knowledge.algorithms.dp.linerdp.problems;
 
-import knowledge.datastructure.adv.BITree_Max;
+import knowledge.datastructure.adv.impl.BITree_Max;
 
 import java.io.BufferedReader;
 import java.io.IOException;

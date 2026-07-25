@@ -26,7 +26,7 @@ public class LeetCode93 {
             if (sub.length() > 1 && s.charAt(index) == '0' || num > 255) continue;
             list.add(sub);
             backtrack(res, s, i, list);
-            list.removeLast();
+            list.remove(list.size() - 1);
         }
     }
 }

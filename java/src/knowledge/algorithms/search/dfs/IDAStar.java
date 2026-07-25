@@ -54,7 +54,7 @@ public class IDAStar<T> {
                 minNextBound = Math.min(minNextBound, result); // 更新最小 bound
             }
         }
-        path.removeLast(); // 回溯
+        path.remove(path.size() - 1); // 回溯
         return minNextBound;
     }
 }

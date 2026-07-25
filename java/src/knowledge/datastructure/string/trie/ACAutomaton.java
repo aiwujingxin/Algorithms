@@ -2,7 +2,10 @@ package knowledge.datastructure.string.trie;
 
 import leetcode.problems.LeetCode1032;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Queue;
 
 /**
  * @author wujingxinit@outlook.com

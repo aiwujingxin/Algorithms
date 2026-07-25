@@ -1,6 +1,6 @@
 package leetcode.problems;
 
-import knowledge.algorithms.sort.QuickSelect;
+import knowledge.algorithms.sort.selection.QuickSelect;
 
 import java.util.*;
 

@@ -4,7 +4,7 @@ package knowledge.datastructure.string.match;
  * @author wujingxinit@outlook.com
  * @date 5/3/26 17:30
  */
-public class BoyerMoore implements knowledge.datastructure.string.match.StringMatch  {
+public class BoyerMoore implements knowledge.datastructure.string.match.StringMatch {
 
     public int strStr(String haystack, String needle) {
         int n = haystack.length();

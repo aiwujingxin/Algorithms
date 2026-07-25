@@ -1,9 +1,9 @@
 package knowledge.datastructure.graph.bipartite;
 
-import knowledge.datastructure.graph.bipartite.impl.MaxFlow;
 import knowledge.datastructure.graph.bipartite.impl.HopcroftKarp;
 import knowledge.datastructure.graph.bipartite.impl.Hungarian;
 import knowledge.datastructure.graph.bipartite.impl.KM;
+import knowledge.datastructure.graph.bipartite.impl.MaxFlow;
 
 import java.util.ArrayList;
 import java.util.List;

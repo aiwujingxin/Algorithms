@@ -1,9 +1,9 @@
 package knowledge.datastructure.graph.shortestpath;
 
-import knowledge.algorithms.search.bfs.*;
+import knowledge.algorithms.search.bfs.AStar;
 import knowledge.datastructure.graph.shortestpath.impl.*;
+import leetcode.lists.lcp.LCP35;
 import leetcode.problems.*;
-import leetcode.lists.lcp.*;
 
 /**
  * @author wujingxinit@outlook.com

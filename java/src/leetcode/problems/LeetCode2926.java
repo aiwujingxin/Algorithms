@@ -1,7 +1,7 @@
 package leetcode.problems;
 
-import knowledge.datastructure.adv.BITree_Max;
-import knowledge.datastructure.adv.BITree_RangeMax;
+import knowledge.datastructure.adv.impl.BITree_Max;
+import knowledge.datastructure.adv.impl.BITree_RangeMax;
 
 import java.util.Arrays;
 

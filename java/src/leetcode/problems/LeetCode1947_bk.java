@@ -40,7 +40,7 @@ public class LeetCode1947_bk {
             used[i] = true;
             list.add(students[i]);
             backtrack(list, used);
-            list.removeLast();
+            list.remove(list.size() - 1);
             used[i] = false;
         }
     }

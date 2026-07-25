@@ -21,7 +21,7 @@ public class LeetCode1238 {
 
     private boolean backtrack(int n, int current, List<Integer> result, boolean[] visited, int total) {
         if (result.size() == total) {
-            return Integer.bitCount(result.getFirst() ^ result.getLast()) == 1;
+            return Integer.bitCount(result.get(0) ^ result.get(result.size() - 1)) == 1;
         }
         for (int i = 0; i < n; i++) {
             int next = current ^ (1 << i);
@@ -31,7 +31,7 @@ public class LeetCode1238 {
                 if (backtrack(n, next, result, visited, total)) {
                     return true;
                 }
-                result.removeLast();
+                result.remove(result.size() - 1);
                 visited[next] = false;
             }
         }

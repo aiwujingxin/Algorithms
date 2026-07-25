@@ -1,7 +1,7 @@
 package leetcode.problems;
 
-import knowledge.algorithms.sort.QuickSelect;
-import knowledge.algorithms.sort.QuickSort;
+import knowledge.algorithms.sort.selection.QuickSelect;
+import knowledge.algorithms.sort.comparison.QuickSort;
 
 import java.util.HashSet;
 import java.util.Set;

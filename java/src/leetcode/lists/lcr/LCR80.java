@@ -25,7 +25,7 @@ public class LCR80 {
         for (int i = start; i <= n; i++) {
             track.addLast(i);
             backtrack(i + 1, n, k);
-            track.removeLast();
+            track.remove(track.size() - 1);
         }
     }
 }

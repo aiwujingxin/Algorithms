@@ -1,6 +1,6 @@
 package knowledge.datastructure.graph.connectivity.components;
 
-import knowledge.datastructure.adv.UnionFind;
+import knowledge.datastructure.adv.impl.UnionFind;
 
 /**
  * @author wujingxinit@outlook.com

@@ -30,7 +30,7 @@ public class LeetCode716 {
         }
 
         public int pop() {
-            Node node = list.removeLast();
+            Node node = list.remove(list.size() - 1);
             List<Node> nodes = treeMap.get(node.val);
             int x = nodes.remove(nodes.size() - 1).val;
             if (nodes.isEmpty()) {
@@ -40,7 +40,7 @@ public class LeetCode716 {
         }
 
         public int top() {
-            return list.getLast().val;
+            return list.get(list.size() - 1).val;
         }
 
         public int peekMax() {

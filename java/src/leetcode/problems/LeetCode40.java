@@ -27,7 +27,7 @@ public class LeetCode40 {
             if (i > start && c[i] == c[i - 1]) continue;
             list.add(c[i]);
             bk(res, c, i + 1, sum + c[i], target, list);
-            list.removeLast();
+            list.remove(list.size() - 1);
         }
     }
 }

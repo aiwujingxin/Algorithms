@@ -230,7 +230,7 @@ public class SuffixTree {
         for (SuffixTreeNode child : node.children.values()) {
             pathStack.addLast(new int[]{child.start, child.end});
             leaves += dfsForLRSWithPath(child, pathStack, res);
-            pathStack.removeLast();
+            pathStack.remove(pathStack.size() - 1);
         }
         if (node != root && leaves >= 2) {
             // 计算从根到当前节点路径总长度与“路径起点”

@@ -3,8 +3,6 @@ package knowledge.algorithms.greedy.problems;
 import java.util.Arrays;
 import java.util.Comparator;
 
-import leetcode.problems.*;
-
 /**
  * @author wujingxinit@outlook.com
  * @date 4/16/25 00:21

@@ -1,6 +1,6 @@
 package leetcode.problems;
 
-import knowledge.datastructure.adv.SegTree;
+import knowledge.datastructure.adv.impl.SegTree;
 
 /**
  * @author wujingxinit@outlook.com
@@ -19,11 +19,11 @@ public class LeetCode307_segtree {
         }
 
         public void update(int index, int val) {
-            tree.update(index, val, 0, 0, n - 1);
+            tree.update(index, val);
         }
 
         public int sumRange(int left, int right) {
-            return tree.queryTree(left, right, 0, 0, n - 1);
+            return tree.query(left, right);
         }
     }
 }

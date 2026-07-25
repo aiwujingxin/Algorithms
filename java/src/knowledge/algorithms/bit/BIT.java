@@ -1,7 +1,10 @@
 package knowledge.algorithms.bit;
 
 import knowledge.algorithms.dp.compressdp.CompressDP;
-import knowledge.datastructure.adv.BITree;
+import knowledge.datastructure.adv.impl.BITree;
+import knowledge.datastructure.adv.impl.BITree2D;
+import knowledge.datastructure.adv.impl.BITreeRange;
+import knowledge.datastructure.adv.impl.BITreeValue;
 import leetcode.problems.*;
 
 /**
@@ -35,7 +38,11 @@ import leetcode.problems.*;
  * @see LeetCode645      错误的集合
  * @see LeetCode3215     用偶数异或设置位计数三元组 II
  * <BITree>
- * @see BITree           树状数组
+ * @see BITree           树状数组 (单点改 + 前缀和查)
+ * @see BITree2D         二维树状数组 (单点改 + 矩形和查)
+ * @see BITreeRange      区间改区间查树状数组 (差分双 BIT)
+ * @see BITreeValue      权值树状数组 (第 K 小 / 逆序对)
+ * @see XorBasis         线性基 (子集异或最大/最小/第 K 小)
  * <Trie树>
  * @see LeetCode421      数组中两个数的最大异或值
  * @see LeetCode1707     与数组中元素的最大异或值

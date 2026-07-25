@@ -2,7 +2,10 @@ package knowledge.datastructure.graph.mst.impl;
 
 import knowledge.datastructure.graph.mst.MinSpanningTree;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
 
 /**
  * @author aiwujingxin@gmail.com

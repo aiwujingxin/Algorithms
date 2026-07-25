@@ -13,7 +13,7 @@ import knowledge.datastructure.string.suffix.SuffixAutomaton;
 import knowledge.datastructure.string.suffix.SuffixTree;
 import knowledge.datastructure.string.trie.ACAutomaton;
 import knowledge.datastructure.string.trie.Trie;
-import knowledge.mathematics.BigDecimal;
+import knowledge.mathematics.bigdecimal.BigDecimal;
 import leetcode.lists.lcci.LCCI0814;
 import leetcode.problems.*;
 

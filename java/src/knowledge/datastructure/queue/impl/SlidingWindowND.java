@@ -11,6 +11,7 @@ public class SlidingWindowND {
 
     /**
      * 三维滑动窗口最大值
+     *
      * @param mat 三维矩阵 (d1 x d2 x d3)
      * @param w1  窗口维度1
      * @param w2  窗口维度2
@@ -63,6 +64,7 @@ public class SlidingWindowND {
         }
         return result;
     }
+
     // 假设 maxSlidingWindow1D 已经实现 (可以使用 Deque 或分块法)
     public static int[] maxSlidingWindow1D(int[] nums, int k) {
         // 边界条件检查

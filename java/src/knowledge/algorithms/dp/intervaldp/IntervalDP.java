@@ -1,5 +1,6 @@
 package knowledge.algorithms.dp.intervaldp;
 
+import knowledge.algorithms.dp.gamedp.GameDP;
 import knowledge.algorithms.dp.intervaldp.problems.AcWing282;
 import knowledge.algorithms.dp.intervaldp.problems.AcWing283;
 import knowledge.algorithms.dp.intervaldp.problems.MatrixChain;

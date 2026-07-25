@@ -33,7 +33,7 @@ public class LeetCode47 {
             used[i] = true;
             path.add(nums[i]);
             backtrack(nums, path, res, used);
-            path.removeLast();
+            path.remove(path.size() - 1);
             used[i] = false;
         }
     }

@@ -1,6 +1,6 @@
 package leetcode.problems;
 
-import knowledge.datastructure.adv.BITree;
+import knowledge.datastructure.adv.impl.BITree;
 
 import java.util.*;
 

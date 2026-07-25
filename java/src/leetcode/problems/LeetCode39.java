@@ -24,7 +24,7 @@ public class LeetCode39 {
         for (int i = start; i < c.length; i++) {
             list.add(c[i]);
             bk(res, c, i, sum + c[i], target, list);
-            list.removeLast();
+            list.remove(list.size() - 1);
         }
     }
 }

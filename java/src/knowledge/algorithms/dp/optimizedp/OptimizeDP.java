@@ -33,8 +33,12 @@ import leetcode.problems.*;
  * @see LeetCode2463_SegTree  最小移动总距离
  * @see TheBakery
  * <公式优化>
- * * <斜率优化> 凸壳, 结合二分,平衡树
- * * <平行四边形优化>
+ * * <斜率优化> 凸壳 (Convex Hull Trick)，结合单调队列 / 二分 / 平衡树
+ * @see SlopeOptimization    斜率优化 (下凸壳 + 单调队列, 玩具装箱)
+ * * <决策单调性 / 分治优化>
+ * @see DecisionMonotonicity 决策单调性分治优化 (opt[i] 单调, O(n log n))
+ * * <平行四边形优化 / 四边形不等式>
+ * @see knowledge.algorithms.dp.intervaldp.problems.AcWing282 石子合并 (决策单调性 opt[][] 优化)
  */
 public interface OptimizeDP {
 }

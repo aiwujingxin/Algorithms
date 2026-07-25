@@ -1,6 +1,7 @@
 package knowledge.algorithms.search.problems;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author wujingxinit@outlook.com
@@ -67,7 +68,7 @@ public class EgyptianFraction_iddfs {
             if (dfs(newNumerator, newDenominator, remainingDepth - 1, (int) nextDenominator + 1, result)) {
                 return true;
             }
-            result.removeLast(); // 回溯
+            result.remove(result.size() - 1); // 回溯
         }
     }
 

@@ -18,6 +18,7 @@ import knowledge.datastructure.tree.Tree;
  * 加深：通过迭代加深的方式，融合DFS的空间优势与BFS的最短路径保证。
  * <搜索>
  * @see Tree.DFS      树的遍历
+ * @see FloodFill     Flood Fill 网格连通块 (递归 + 迭代栈)
  * @see IDDFS         迭代加深
  * @see IDAStar       IDA*
  * <回溯>

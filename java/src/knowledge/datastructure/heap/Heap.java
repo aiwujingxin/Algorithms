@@ -1,9 +1,9 @@
 package knowledge.datastructure.heap;
 
 import knowledge.algorithms.greedy.Greedy;
-import knowledge.algorithms.sort.HeapSelect;
-import knowledge.algorithms.sort.HeapSort;
-import knowledge.algorithms.sort.TopK;
+import knowledge.algorithms.sort.comparison.HeapSort;
+import knowledge.algorithms.sort.selection.HeapSelect;
+import knowledge.algorithms.sort.selection.TopK;
 import knowledge.datastructure.graph.mst.impl.Prim;
 import knowledge.datastructure.graph.shortestpath.impl.Dijkstra;
 import leetcode.problems.*;

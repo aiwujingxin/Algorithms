@@ -2,7 +2,8 @@ package knowledge.datastructure.graph.eulergraph.impl;
 
 import knowledge.datastructure.graph.eulergraph.EulerGraph;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author wujingxinit@outlook.com

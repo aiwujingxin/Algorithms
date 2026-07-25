@@ -6,6 +6,8 @@ import leetcode.problems.*;
  * @author wujingxinit@outlook.com
  * @date 2023/12/5 00:27
  * @description 树形DP: 在树的结构上，以“子问题合并父问题”的方式自底向上递归解决问题的动态规划方法。 换根 DP = 树形 DP + 根节点在变化时的状态转移技巧。
+ * <相关模板>
+ * @see knowledge.algorithms.dp.backpack.depend.DependPack_treedp 树上背包 (树形依赖背包)
  * <题目>
  * @see LeetCode124         二叉树中的最大路径和
  * @see LeetCode298         二叉树中的最长连续序列

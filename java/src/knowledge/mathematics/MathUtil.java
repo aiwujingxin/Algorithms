@@ -1,54 +1,73 @@
 package knowledge.mathematics;
 
+import knowledge.mathematics.algebra.util.NumberTheory;
+import knowledge.mathematics.combinatorics.util.CombinatoricsUtil;
+import knowledge.mathematics.geometry.util.ComputationalGeometry;
+
 import java.util.HashSet;
 import java.util.Set;
-
 
 /**
  * @author wujingxinit@outlook.com
  * @date 11/5/25 05:09
- * @description MathUtil
+ * @description 数学算法通用工具箱
+ * <使用边界>
+ * @see ComputationalGeometry
+ * @see NumberTheory
+ * @see CombinatoricsUtil
  */
-public class MathUtil {
+public final class MathUtil {
 
-    public static final long MOD = 1_000_000_007L;  // 默认模数 (需为质数)
+    public static final long MOD = 1_000_000_007L;
 
     // ================== 2.1 模运算 ====================
     public static long safeAdd(long a, long b, long mod) {
-        return (a + b) % mod;
+        return a >= mod - b ? a - (mod - b) : a + b;
     }
 
     public static long safeSub(long a, long b, long mod) {
-        return (a - b + mod) % mod;
+        return a >= b ? a - b : mod - (b - a);
     }
 
+    /**
+     * 倍增法计算 a * b mod mod，避免 a * b 溢出 long。
+     * 时间复杂度 O(log |b|)。
+     */
     public static long safeMul(long a, long b, long mod) {
-        return (a % mod) * (b % mod) % mod;
-    }
-
-    public static long safeMod(long x, long m) {
-        return (x % m + m) % m;
+        long result = 0;
+        while (b > 0) {
+            if ((b & 1) != 0) {
+                result = safeAdd(result, a, mod);
+            }
+            a = safeAdd(a, a, mod);
+            b >>>= 1;
+        }
+        return result;
     }
 
     // ================== 2.2 快速幂 ====================
-    // 快速幂 (a^b % mod)
+
+    /**
+     * 快速幂 a^exponent mod mod，时间复杂度 O(log exponent)。
+     */
     public static long modPow(long a, long b, long mod) {
-        long res = 1;
-        a %= mod;
+        long res = 1 % mod;
         while (b > 0) {
-            if ((b & 1) != 0) res = (res * a) % mod;
-            a = (a * a) % mod;
-            b >>= 1;
+            if ((b & 1) != 0) res = safeMul(res, a, mod);
+            a = safeMul(a, a, mod);
+            b >>>= 1;
         }
         return res;
     }
 
-    // 矩阵快速幂
+    /**
+     * 方阵快速幂，时间复杂度 O(n^3 log exponent)。
+     */
     public static long[][] matPow(long[][] base, int b, long mod) {
         int n = base.length;
         long[][] result = new long[n][n];
         for (int i = 0; i < n; i++) {
-            result[i][i] = 1; // 初始化为单位矩阵
+            result[i][i] = 1 % mod;
         }
         long[][] temp = base;
         while (b > 0) {
@@ -67,7 +86,7 @@ public class MathUtil {
         for (int i = 0; i < r; i++) {
             for (int j = 0; j < c; j++) {
                 for (int k = 0; k < z; k++) {
-                    C[i][j] = (C[i][j] + A[i][k] * B[k][j]) % MOD;
+                    C[i][j] = safeAdd(C[i][j], safeMul(A[i][k], B[k][j], MOD), MOD);
                 }
             }
         }
@@ -76,11 +95,18 @@ public class MathUtil {
 
     // ==================== 2.3 GCD , LCM ====================
     public static long gcd(long a, long b) {
-        return b == 0 ? a : gcd(b, a % b);
+        a = Math.abs(a);
+        b = Math.abs(b);
+        while (b != 0) {
+            long remainder = a % b;
+            a = b;
+            b = remainder;
+        }
+        return a;
     }
 
     public static long lcm(long a, long b) {
-        return a / gcd(a, b) * b;
+        return Math.abs(a / gcd(a, b) * b);
     }
 
     // ==================== 2.4 扩展欧几里得算法 ====================
@@ -89,7 +115,6 @@ public class MathUtil {
      * 扩展欧几里得算法: 返回 [g, x, y] 使 ax + by = g
      */
     public static long[] extendedGcd(long a, long b) {
-        if (b == 0) return new long[]{a, 1, 0};
         long[] r = extendedGcd(b, a % b);
         return new long[]{r[0], r[2], r[1] - (a / b) * r[2]};
     }
@@ -116,7 +141,7 @@ public class MathUtil {
     public static boolean isPrime(long n) {
         if (n < 2) return false;
         if (n % 2 == 0) return n == 2;
-        for (long i = 3; i * i <= n; i += 2)
+        for (long i = 3; i <= n / i; i += 2)
             if (n % i == 0) return false;
         return true;
     }
@@ -126,7 +151,7 @@ public class MathUtil {
      */
     public static Set<Integer> getFactors(int n) {
         Set<Integer> s = new HashSet<>();
-        for (int i = 1; i * i <= n; i++) {
+        for (int i = 1; i <= n / i; i++) {
             if (n % i == 0) {
                 s.add(i);
                 s.add(n / i);
@@ -140,7 +165,7 @@ public class MathUtil {
      */
     public static Set<Integer> getPrimeFactors(int n) {
         Set<Integer> s = new HashSet<>();
-        for (int i = 2; i * i <= n; i++) {
+        for (int i = 2; i <= n / i; i++) {
             while (n % i == 0) {
                 s.add(i);
                 n /= i;
@@ -150,9 +175,8 @@ public class MathUtil {
         return s;
     }
 
-
     // ==================== 3 组合 & 排列 ====================
-    public static final int MAX_N = 100_000;        // 阶乘预处理上限
+    public static final int MAX_N = 100_000; // 阶乘预处理上限
     private static final long[] fact = new long[MAX_N + 1];
     private static final long[] invFact = new long[MAX_N + 1];
 
@@ -206,23 +230,20 @@ public class MathUtil {
      * 适用于正整数场景。
      */
     public static long ceilDiv(long a, long b) {
-        if (b == 0) throw new ArithmeticException("除数不能为0");
-        return (a + b - 1) / b;
+        return a / b + (a % b == 0 ? 0 : 1);
     }
 
     /**
      * 向上取整到 k 的倍数
      */
     public static int upToMultiple(int x, int k) {
-        if (k == 0) return x;
-        return (int) ceilDiv(x, k) * k;
+        return (int) (ceilDiv(x, k) * k);
     }
 
     /**
      * 向下取整到 k 的倍数
      */
     public static int downToMultiple(int x, int k) {
-        if (k == 0) return x;
         return (x / k) * k;
     }
 
@@ -247,7 +268,6 @@ public class MathUtil {
      * Sn = a1 * (1 - q^n) / (1 - q)
      */
     public static double sumGeometric(double firstTerm, double ratio, int count) {
-        if (count < 0) return 0;
         // 特殊情况：公比为 1，直接乘
         if (Math.abs(ratio - 1.0) < 1e-9) { // 使用 epsilon 处理浮点数比较
             return count * firstTerm;
@@ -259,8 +279,6 @@ public class MathUtil {
      * 计算阶乘 (Factorial)
      */
     public static long factorial(int n) {
-        if (n < 0) throw new IllegalArgumentException("负数没有阶乘");
-        if (n > 20) throw new ArithmeticException("结果溢出 long 类型范围，请使用 BigInteger");
         if (n == 0 || n == 1) return 1;
         long result = 1;
         for (int i = 2; i <= n; i++) {

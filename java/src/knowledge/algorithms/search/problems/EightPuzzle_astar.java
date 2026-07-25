@@ -93,7 +93,7 @@ public class EightPuzzle_astar {
         }
     }
 
-    public class Main_Cantor{
+    public class Main_Cantor {
 
         private static final int[] FACTORIAL = {1, 1, 2, 6, 24, 120, 720, 5040, 40320};
 

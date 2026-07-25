@@ -13,7 +13,9 @@ public class LeetCode12 {
         for (int i = 0; i < signs.length; i++) {
             int t = num / values[i];
             if (t > 0) {
-                sb.repeat(signs[i], t);
+                for (int j = 0; j < t; j++) {
+                    sb.append(signs[i]);
+                }
                 num -= t * values[i];
             }
             if (num == 0) break;

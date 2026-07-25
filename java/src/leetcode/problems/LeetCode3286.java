@@ -37,7 +37,7 @@ public class LeetCode3286 {
             for (int i = 0; i < m; i++) {
                 Arrays.fill(costs[i], Integer.MAX_VALUE);
             }
-            costs[0][0] = grid.getFirst().getFirst();
+            costs[0][0] = grid.get(0).get(0);
             PriorityQueue<int[]> pq = new PriorityQueue<>(Comparator.comparingInt(a -> a[2]));
             pq.add(new int[]{0, 0, costs[0][0]});
             while (!pq.isEmpty()) {

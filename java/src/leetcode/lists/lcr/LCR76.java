@@ -1,6 +1,6 @@
 package leetcode.lists.lcr;
 
-import knowledge.algorithms.sort.QuickSelect;
+import knowledge.algorithms.sort.selection.QuickSelect;
 
 /**
  * @author wujingxinit@outlook.com

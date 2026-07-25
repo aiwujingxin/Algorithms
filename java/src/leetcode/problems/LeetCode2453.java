@@ -23,11 +23,11 @@ public class LeetCode2453 {
             if (entry.getValue().size() > max) {
                 max = entry.getValue().size();
                 mod = entry.getKey();
-                value = entry.getValue().getFirst();
+                value = entry.getValue().get(0);
             } else if (entry.getValue().size() == max) {
-                if (entry.getValue().getFirst() < value) {
+                if (entry.getValue().get(0) < value) {
                     mod = entry.getKey();
-                    value = entry.getValue().getFirst();
+                    value = entry.getValue().get(0);
                 }
             }
         }

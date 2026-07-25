@@ -6,7 +6,7 @@ package knowledge.datastructure.string.hash;
  * @description 字符串双 hash 值
  * @see leetcode.problems.LeetCode2261
  */
-public class DStringHash{
+public class DStringHash {
     public static final long BASE1 = 131, BASE2 = 13331;
     public static final long MOD1 = (long) 1e9 + 7, MOD2 = (long) 1e9 + 9;
     private final String originalString;

@@ -1,6 +1,6 @@
 package leetcode.problems;
 
-import knowledge.mathematics.impl.BigDecimalSub;
+import knowledge.mathematics.bigdecimal.impl.BigDecimalSub;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,7 +27,7 @@ public class LeetCode1894 {
                 if (backtrack(s, list, j, num)) {
                     return true;
                 }
-                list.removeLast();
+                list.remove(list.size() - 1);
             }
         }
         return false;

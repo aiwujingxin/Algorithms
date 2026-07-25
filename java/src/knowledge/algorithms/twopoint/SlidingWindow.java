@@ -1,12 +1,19 @@
 package knowledge.algorithms.twopoint;
 
+import knowledge.algorithms.twopoint.impl.slidingwindow.*;
 import leetcode.problems.*;
 
 /**
  * @author wujingxinit@outlook.com
- * @date 2023/6/1 16:51
- * @description 滑动窗口 一个比较常用的双指针，所以单独拿出来整理 详细见《滑动窗口.xmind》
- * 用一对指针在序列上动态维护一个连续区间，使每次只增减边界元素，从而高效地处理区间问题，避免重复遍历整个区间
+ * @date 2026/07/26
+ * @description 滑动窗口 (Sliding Window) 专题索引与模板导航。详细见《滑动窗口.xmind》
+ * 用一对指针在序列上动态维护一个连续区间，使每次只增减边界元素，从而高效地处理区间问题，避免重复遍历整个区间。
+ * <核心模板>
+ * @see FixedSlidingWindow            定长窗口模板 (窗口大小固定为 K)
+ * @see VariableSlidingWindowLongest  求最长的不定长窗口模板 (求满足条件的最大窗口)
+ * @see VariableSlidingWindowShortest 求最短的不定长窗口模板 (求满足条件的最小窗口)
+ * @see ExactSlidingWindow            恰好窗口模板 (转化为 atMost(K) - atMost(K-1))
+ * @see MonotonicQueueSlidingWindow   单调队列窗口模板 (O(1) 获取窗口内极值)
  * <定长窗口>
  * @see LeetCode438    找到字符串中所有字母异位词
  * @see LeetCode567    字符串的排列
@@ -17,7 +24,7 @@ import leetcode.problems.*;
  * <不定长窗口>
  * * <最长窗口>
  * @see LeetCode3      无重复字符的最长子串
- * @see LeetCode30
+ * @see LeetCode30     串联所有单词的子串
  * * <最短窗口>
  * @see LeetCode76     最小覆盖子串
  * @see LeetCode209    长度最小的子数组
@@ -33,29 +40,9 @@ import leetcode.problems.*;
  * @see LeetCode1248   统计「优美子数组」
  * @see LeetCode3306   元音辅音字符串计数 II
  * <转换窗口>
- * @see LeetCode2779
- * @see LeetCode2962
+ * @see LeetCode2779   数组的最大美丽值
+ * @see LeetCode2962   统计最大元素出现至少 K 次的子数组
  * @see LeetCode1151   最少交换次数来组合所有的 1
  */
 public interface SlidingWindow {
-
-    /*
-    public int sd() {
-        int l = 0;
-        int r = 0;
-        int res = 0;
-        Window window = new Window();
-        while (r < n) {
-            window.add(a[r]);
-            while (check(window)) { // 窗口不满足题意，则需要缩小 left:
-                res = min(res, right - left + 1); // 最小窗口
-                window.delete(a[l]);
-                l++;
-            }
-            // 退出 while时，意味着window是满足题意的  // 最大窗口
-            res = max(res, right - left + 1);
-            r++;
-        }
-        return res;
-     */
 }

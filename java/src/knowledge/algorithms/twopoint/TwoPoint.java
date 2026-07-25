@@ -1,11 +1,13 @@
 package knowledge.algorithms.twopoint;
 
 import knowledge.algorithms.sort.IndexingSort;
+import knowledge.algorithms.twopoint.impl.*;
 import knowledge.datastructure.list.LinkedList;
 import leetcode.problems.*;
 
 /**
- * @date 2023/11/7 00:37
+ * @author wujingxinit@outlook.com
+ * @date 2026/07/26
  * @description 双指针 (Two Pointers) 算法体系索引
  * <核心思想>
  * 双指针不仅仅是一种代码技巧，更是一种"降低搜索空间"的思维方式。
@@ -15,6 +17,10 @@ import leetcode.problems.*;
  * (2) 单调性博弈: 利用有序性，避免多次冗余扫描
  * <对撞指针>
  * 本质：利用单调性或贪心策略，每次移动排除掉"绝对不可能"的解。
+ * @see OppositePointers 相向双指针基础模板
+ * @see ThreeSumTemplate 降维与去重 (三数之和模板)
+ * @see ContainerWater   对撞指针求容量 (盛水容器 / 接雨水)
+ * @see DutchFlag        荷兰国旗三路划分 (颜色分类)
  * @see LeetCode167     两数之和 II - 输入有序数组 (基础)
  * @see LeetCode15      三数之和 (降维: 定一动二 + 去重技巧)
  * @see LeetCode16      最接近的三数之和
@@ -27,6 +33,8 @@ import leetcode.problems.*;
  * @see LeetCode42      接雨水 (积存: 当前位置能装多少水，取决于左右两边最高挡板的较小值)
  * @see LeetCode977     有序数组的平方 (逆向归并: 利用绝对值两头大中间小的几何特征)
  * <快慢指针>
+ * @see FastSlowPointers 快慢指针模板 (原地归位/移除元素)
+ * @see CycleDetection   快慢指针判环模板 (Floyd 判圈算法)
  * @see IndexingSort    原址排序
  * @see LeetCode26      删除有序数组中的重复项
  * @see LeetCode27      移除元素
@@ -38,6 +46,8 @@ import leetcode.problems.*;
  * <滑动窗口>
  * @see SlidingWindow   滑动窗口专题
  * <双序列指针>
+ * @see TwoSequencePointers 双序列指针合并与匹配模板
+ * @see MergeTwoPointers 归并双指针 (正向合并 / 逆向原地归并 / 有序平方)
  * @see LeetCode88      合并两个有序数组 (逆向双指针技巧)
  * @see LeetCode21      合并两个有序链表
  * @see LeetCode392     判断子序列 (贪心匹配: 能配就配，不能配主串后移)

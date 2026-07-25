@@ -18,7 +18,7 @@ public class LeetCode254 {
         if (num < n) {
             list.add(num);
             res.add(new ArrayList<>(list));
-            list.removeLast();
+            list.remove(list.size() - 1);
         }
         // opt start
         // opt i * i <= num
@@ -26,7 +26,7 @@ public class LeetCode254 {
             if (num % i == 0) {
                 list.add(i);
                 backtrack(num / i, i, n, list, res);
-                list.removeLast();
+                list.remove(list.size() - 1);
             }
         }
     }

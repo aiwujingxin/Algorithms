@@ -1,6 +1,6 @@
 package knowledge.algorithms.dp.intervaldp.problems;
 
-import java.util.*;
+import java.util.Scanner;
 
 /**
  * @author wujingxinit@outlook.com

@@ -36,7 +36,7 @@ public class IDDFS<T> {
                 }
             }
         }
-        path.removeLast(); // 回溯
+        path.remove(path.size() - 1); // 回溯
         return false;
     }
 }

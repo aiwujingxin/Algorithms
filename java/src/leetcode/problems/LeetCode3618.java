@@ -1,7 +1,6 @@
 package leetcode.problems;
 
-import knowledge.mathematics.MathUtil;
-import knowledge.mathematics.impl.Sieve;
+import knowledge.mathematics.algebra.impl.Sieve;
 
 /**
  * @author wujingxinit@outlook.com

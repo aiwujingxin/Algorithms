@@ -1,6 +1,6 @@
 package knowledge.datastructure.string.suffix;
 
-import java.util.*;
+import java.util.Arrays;
 
 /**
  * @author wujingxinit@outlook.com

@@ -1,7 +1,6 @@
 package knowledge.datastructure.graph.bipartite.impl;
 
 import knowledge.datastructure.graph.bipartite.BipartiteMatch;
-import knowledge.datastructure.graph.networkflow.impl.FordFulkerson;
 import knowledge.datastructure.graph.networkflow.impl.ISAP;
 import leetcode.problems.LeetCode1349;
 

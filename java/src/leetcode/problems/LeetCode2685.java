@@ -1,7 +1,7 @@
 package leetcode.problems;
 
 
-import knowledge.datastructure.adv.UnionFind;
+import knowledge.datastructure.adv.impl.UnionFind;
 
 import java.util.ArrayList;
 import java.util.HashMap;

@@ -2,7 +2,10 @@ package knowledge.datastructure.other.impl;
 
 import knowledge.datastructure.other.MinMaxContainer;
 
-import java.util.*;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.PriorityQueue;
 
 /**
  * @author wujingxinit@outlook.com
