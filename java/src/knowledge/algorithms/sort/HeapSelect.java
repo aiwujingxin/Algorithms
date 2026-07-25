@@ -1,6 +1,8 @@
 package knowledge.algorithms.sort;
 
-import knowledge.datastructure.heap.MaxHeap;
+import knowledge.datastructure.heap.TopKHeap;
+
+import java.util.Comparator;
 
 /**
  * @author wujingxinit@outlook.com
@@ -10,13 +12,10 @@ public class HeapSelect implements TopK {
 
     @Override
     public int findKthLargest(int[] nums, int k) {
-        MaxHeap<Integer> pq = new MaxHeap<>(nums.length + 1);
+        TopKHeap<Integer> topK = new TopKHeap<>(k, Comparator.naturalOrder());
         for (int num : nums) {
-            pq.push(num);
-            if (pq.size() > k) {
-                pq.pop();
-            }
+            topK.offer(num);
         }
-        return pq.peek();
+        return topK.getKth();
     }
 }

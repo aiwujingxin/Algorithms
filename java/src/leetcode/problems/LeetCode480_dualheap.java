@@ -1,6 +1,6 @@
 package leetcode.problems;
 
-import knowledge.datastructure.heap.*;
+import knowledge.datastructure.heap.MidDualHeap;
 
 /**
  * @author wujingxinit@outlook.com
@@ -9,7 +9,7 @@ import knowledge.datastructure.heap.*;
 public class LeetCode480_dualheap {
 
     public double[] medianSlidingWindow(int[] nums, int k) {
-        MedianDualHeap<Integer> dh = new MedianDualHeap<>(k);
+        MidDualHeap<Integer> dh = new MidDualHeap<>();
         for (int i = 0; i < k; ++i) {
             dh.add(nums[i]);
         }
