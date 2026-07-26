@@ -1,6 +1,6 @@
 package knowledge.algorithms.divideconquer;
 
-import leetcode.lists.lcci.LCCI0806;
+import leetcode.problems.lists.lcci.LCCI0806;
 import leetcode.problems.LeetCode23;
 import leetcode.problems.LeetCode241;
 import leetcode.problems.LeetCode324;

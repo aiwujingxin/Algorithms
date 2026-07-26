@@ -5,7 +5,7 @@ package offerII
  * @date 2023/1/18 18:52
  */
 
-//https://leetcode.com/problems/short-encoding-of-words/solutions/125784/trie-solution/
+//https://leetcode.com/problems/short-encoding-of-words/solutions/125784/trie-leetcode.solution/
 //后缀字典树
 func minimumLengthEncoding(words []string) int {
 	type TrieNode struct {

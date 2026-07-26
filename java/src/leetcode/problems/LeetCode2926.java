@@ -1,7 +1,7 @@
 package leetcode.problems;
 
-import knowledge.datastructure.adv.impl.BITree_Max;
-import knowledge.datastructure.adv.impl.BITree_RangeMax;
+import knowledge.datastructure.adv.BIT.BITreeMax;
+import knowledge.datastructure.adv.BIT.BITreeRangeMax;
 
 import java.util.Arrays;
 
@@ -20,7 +20,7 @@ public class LeetCode2926 {
                 b[i] = nums[i] - i;
             }
             Arrays.sort(b);
-            BITree_Max t = new BITree_Max(b.length);
+            BITreeMax t = new BITreeMax(b.length);
             for (int i = 0; i < n; i++) {
                 // j 为 nums[i]-i 离散化后的值（从 1 开始）
                 int j = Arrays.binarySearch(b, nums[i] - i) + 1;
@@ -42,14 +42,14 @@ public class LeetCode2926 {
         for (int i = 0; i < n; i++) {
             if (i == 0 || sorted[i] != sorted[i - 1]) sorted[m++] = sorted[i];
         }
-        BITree_RangeMax fw = new BITree_RangeMax(m);
+        BITreeRangeMax fw = new BITreeRangeMax(m);
         long ans = Long.MIN_VALUE;
         for (int i = 0; i < n; i++) {
             int j = findL(sorted, m, key[i]) + 1; // 1-based
             long best = fw.rangeMax(1, j); // 前缀最大
             if (best < 0) best = 0;
             long f = best + nums[i];
-            fw.updateMax(j, f);
+            fw.update(j, f);
             ans = Math.max(ans, f);
         }
         return ans;

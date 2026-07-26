@@ -1,6 +1,6 @@
 package topinterview
 
-//https://leetcode.com/problems/divide-two-integers/solutions/1194818/succinct-go-solution-faster-than-100/
+//https://leetcode.com/problems/divide-two-integers/solutions/1194818/succinct-go-leetcode.solution-faster-than-100/
 func divide(dividend int, divisor int) int {
 	if dividend == (-2<<30) && divisor == -1 {
 		return (2 << 30) - 1

@@ -1,6 +1,6 @@
 package hot100
 
-//https://leetcode.com/problems/sort-list/solutions/46754/golang-concise-solution-using-merge-sort/
+//https://leetcode.com/problems/sort-list/solutions/46754/golang-concise-leetcode.solution-using-merge-sort/
 func sortList(head *ListNode) *ListNode {
 	if head == nil || head.Next == nil {
 		return head

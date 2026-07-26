@@ -1,6 +1,12 @@
 package knowledge.datastructure.adv;
 
-import knowledge.datastructure.adv.impl.*;
+import knowledge.datastructure.adv.BIT.BITree;
+import knowledge.datastructure.adv.BIT.BITree2D;
+import knowledge.datastructure.adv.BIT.BITreeKth;
+import knowledge.datastructure.adv.BIT.BITreeMax;
+import knowledge.datastructure.adv.BIT.BITreeRange;
+import knowledge.datastructure.adv.BIT.BITreeRangeMax;
+import knowledge.datastructure.adv.segtree.*;
 
 /**
  * @author wujingxinit@outlook.com
@@ -10,8 +16,11 @@ import knowledge.datastructure.adv.impl.*;
  * @see UnionFind                 并查集基础模板 (路径压缩 + 按秩合并)
  * <树状数组 (Binary Indexed Tree / Fenwick Tree)>
  * @see BITree                    树状数组基础 (单点修改、前缀和查询)
- * @see BITree_Max                树状数组 (维护前缀最大值)
- * @see BITree_RangeMax           树状数组 (维护任意区间最大值)
+ * @see BITree2D                  二维树状数组 (单点修改、矩形和查询)
+ * @see BITreeRange               双树状数组 (区间修改、区间和查询)
+ * @see BITreeKth                 权值树状数组 (排名、第 K 小)
+ * @see BITreeMax                 树状数组 (维护前缀最大值)
+ * @see BITreeRangeMax            树状数组 (维护任意区间最大值)
  * <线段树 (Segment Tree)>
  * @see SegTree                   基础线段树 (单点修改、区间查询)
  * @see LazySegmentTree           带懒标记的线段树 (支持区间修改、区间查询)

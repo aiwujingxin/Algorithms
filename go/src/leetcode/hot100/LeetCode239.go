@@ -2,7 +2,7 @@ package hot100
 
 //another deque : https://leetcode.com/problems/sliding-window-maximum/solutions/771937/golang-use-container-list-as-deque/
 
-//https://leetcode.com/problems/sliding-window-maximum/solutions/65939/golang-solution-using-slice-as-deque/
+//https://leetcode.com/problems/sliding-window-maximum/solutions/65939/golang-leetcode.solution-using-slice-as-deque/
 func maxSlidingWindow(nums []int, k int) []int {
 	length := len(nums)
 	if length == 0 {

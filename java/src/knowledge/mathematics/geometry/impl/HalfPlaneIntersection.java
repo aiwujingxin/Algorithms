@@ -20,7 +20,9 @@ public class HalfPlaneIntersection {
 
     private static final double EPS = 1e-9;
 
-    /** 有向直线：点 (px,py) + 方向向量 (dx,dy)，其左侧为半平面。 */
+    /**
+     * 有向直线：点 (px,py) + 方向向量 (dx,dy)，其左侧为半平面。
+     */
     public static class Line {
         double px, py, dx, dy, angle;
 

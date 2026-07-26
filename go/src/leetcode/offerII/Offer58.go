@@ -7,7 +7,7 @@ import "fmt"
  * @date 2023/2/1 16:19
  */
 
-// MyCalendar https://leetcode.cn/problems/fi9suh/solution/jian-zhi-offer-ii-058golangqie-pian-er-f-wftr/
+// MyCalendar https://leetcode.cn/problems/fi9suh/leetcode.solution/jian-zhi-offer-ii-058golangqie-pian-er-f-wftr/
 // redblacktree https://leetcode.cn/problems/fi9suh/solutions/1072156/hong-hei-shu-by-scorix-0ko2/
 type AVLNode struct {
 	Left, Right *AVLNode    // 表示指向左孩子和右孩子

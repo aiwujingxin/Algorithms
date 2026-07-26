@@ -1,6 +1,6 @@
 package knowledge.algorithms.dp.digitdp;
 
-import leetcode.lists.lcci.LCCI1706;
+import leetcode.problems.lists.lcci.LCCI1706;
 import leetcode.problems.*;
 
 /**

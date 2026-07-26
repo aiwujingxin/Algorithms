@@ -5,7 +5,7 @@ import common.TreeNode;
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/8/29 00:15
- * @see leetcode.lists.lcr.LCR143
+ * @see leetcode.problems.lists.lcr.LCR143
  */
 public class LeetCode572 {
 

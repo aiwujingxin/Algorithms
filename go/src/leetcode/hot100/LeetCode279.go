@@ -2,7 +2,7 @@ package hot100
 
 //https://leetcode.com/problems/perfect-squares/solutions/337921/go-o-n-3-2-dp/
 
-//https://leetcode.cn/problems/perfect-squares/solution/gong-shui-san-xie-xiang-jie-wan-quan-bei-nqes/
+//https://leetcode.cn/problems/perfect-squares/leetcode.solution/gong-shui-san-xie-xiang-jie-wan-quan-bei-nqes/
 func numSquares(n int) int {
 	if n == 0 {
 		return 0

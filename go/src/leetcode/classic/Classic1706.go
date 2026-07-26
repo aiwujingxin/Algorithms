@@ -5,7 +5,7 @@ import "strconv"
 /**
  * @Author: jingxinwu
  * @Date: 2023/2/26 21:02
- * https://leetcode.cn/problems/number-of-2s-in-range-lcci/solution/by-endlesscheng-x4mf/
+ * https://leetcode.cn/problems/number-of-2s-in-range-lcci/leetcode.solution/by-endlesscheng-x4mf/
  */
 
 func numberOf2sInRange(n int) int {

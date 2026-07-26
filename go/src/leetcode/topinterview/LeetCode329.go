@@ -1,7 +1,7 @@
 package topinterview
 
 //https://leetcode.com/problems/longest-increasing-path-in-a-matrix/solutions/2054922/java-3-approaches-dfs-bfs-memoization-dfs/
-//https://leetcode.cn/problems/longest-increasing-path-in-a-matrix/solution/tong-ge-lai-shua-ti-la-yi-ti-si-jie-bfs-agawl/
+//https://leetcode.cn/problems/longest-increasing-path-in-a-matrix/leetcode.solution/tong-ge-lai-shua-ti-la-yi-ti-si-jie-bfs-agawl/
 
 //https://leetcode.com/problems/longest-increasing-path-in-a-matrix/solutions/775043/both-dfs-and-bfs-solutions/
 

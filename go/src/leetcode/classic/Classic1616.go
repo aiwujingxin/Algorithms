@@ -6,7 +6,7 @@ import "math"
  * @Author: jingxinwu
  * @Date: 2023/2/13 22:42
  */
-//https://leetcode.cn/problems/sub-sort-lcci/solution/1ms-by-15066212pp-3bf0/
+//https://leetcode.cn/problems/sub-sort-lcci/leetcode.solution/1ms-by-15066212pp-3bf0/
 
 func subSort(array []int) []int {
 	n := len(array)

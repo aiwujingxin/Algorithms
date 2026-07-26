@@ -1,5 +1,7 @@
 package knowledge.datastructure.other.impl;
 
+import leetcode.problems.LeetCode480_treeset;
+
 import java.util.*;
 
 /**
@@ -17,7 +19,7 @@ import java.util.*;
  * @see knowledge.datastructure.heap.AbstractDualHeap  对顶堆 + 懒删除(数组实现,常数小)
  * @see TreeMapMinMax  int 特化的最值容器
  * @see leetcode.problems.LeetCode220  [H] 存在重复元素 III (滑动窗口 + 邻近查询)
- * @see leetcode.problems.LeetCode480  [H] 滑动窗口中位数 (TreeSet 对顶写法)
+ * @see LeetCode480_treeset  [H] 滑动窗口中位数 (TreeSet 对顶写法)
  * @see leetcode.problems.LeetCode1438 [M] 绝对差不超过限制的最长连续子数组 (窗口最值)
  */
 public class TreeMultiset<E> {

@@ -1,6 +1,6 @@
 package knowledge.datastructure.graph.connectivity.hascycle;
 
-import knowledge.datastructure.adv.impl.UnionFind;
+import knowledge.datastructure.adv.UnionFind;
 
 /**
  * @author wujingxinit@outlook.com

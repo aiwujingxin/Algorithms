@@ -1,7 +1,7 @@
 package leetcode.problems;
 
-import knowledge.datastructure.adv.impl.BITree;
-import knowledge.datastructure.adv.impl.UnionFind;
+import knowledge.datastructure.adv.BIT.BITree;
+import knowledge.datastructure.adv.UnionFind;
 
 import java.util.HashMap;
 import java.util.Map;

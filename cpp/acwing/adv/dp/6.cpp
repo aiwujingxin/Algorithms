@@ -1,4 +1,4 @@
-//https://www.acwing.com/solution/content/6500/
+//https://www.acwing.com/leetcode.solution/content/6500/
 #include <iostream>
 #include <cstring>
 

@@ -1,6 +1,6 @@
 package topinterview
 
-//https://leetcode.com/problems/wiggle-sort-ii/solutions/956983/golang-quick-select-median-3-partition-solution/
+//https://leetcode.com/problems/wiggle-sort-ii/solutions/956983/golang-quick-select-median-3-partition-leetcode.solution/
 
 /**
 *利用快速筛选法求出排序后的数组中 nums[mid]，然后我们利用快排的 quickSelectPartition 方法将将原数组分为三部分：

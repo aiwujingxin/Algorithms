@@ -7,7 +7,7 @@ import (
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/2/10 16:47
- * https://leetcode.cn/problems/re-space-lcci/solution/jian-dan-dp-trieshu-bi-xu-miao-dong-by-sweetiee/
+ * https://leetcode.cn/problems/re-space-lcci/leetcode.solution/jian-dan-dp-trieshu-bi-xu-miao-dong-by-sweetiee/
  */
 
 func respace(dictionary []string, sentence string) int {
@@ -40,7 +40,7 @@ func respace(dictionary []string, sentence string) int {
 }
 
 // =====V2
-// https://leetcode.cn/problems/re-space-lcci/solution/cong-bao-li-ru-shou-you-hua-yi-ji-triezi-dian-shu-/
+// https://leetcode.cn/problems/re-space-lcci/leetcode.solution/cong-bao-li-ru-shou-you-hua-yi-ji-triezi-dian-shu-/
 func respaceDP(dictionary []string, sentence string) (res int) {
 	dp := make([]int, len(sentence)+1)
 	for i := 1; i < len(sentence)+1; i++ {

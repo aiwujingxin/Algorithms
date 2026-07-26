@@ -8,7 +8,7 @@ package knowledge.algorithms.dp.gamedp;
  * Nim 博弈：n 堆石子每次任取一堆拿任意个，先手必胜当且仅当所有堆异或和 ≠ 0。
  * Bash 博弈：1 堆 n 个，每次拿 1~m 个，先手必败当且仅当 n % (m+1) == 0。
  * Wythoff 博弈：2 堆，每次从一堆拿任意个或从两堆拿相同个，
- *   必败态为 (⌊kφ⌋, ⌊kφ²⌋)，φ=(1+√5)/2，即两堆差 d 对应较小堆 ⌊d·φ⌋。
+ * 必败态为 (⌊kφ⌋, ⌊kφ²⌋)，φ=(1+√5)/2，即两堆差 d 对应较小堆 ⌊d·φ⌋。
  * @see SpragueGrundy SG 函数通用解法
  */
 public class NimGame {

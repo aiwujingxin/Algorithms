@@ -4,7 +4,7 @@ package classic
  * @Author: jingxinwu
  * @Date: 2023/2/21 22:04
  */
-func masterMind(solution string, guess string) []int {
+func masterMind(leetcode.solution string, guess string) []int {
 	total, hit := 0, 0
 	intMap := make([]int, 26)
 	for i := 0; i < 4; i++ {
@@ -12,12 +12,12 @@ func masterMind(solution string, guess string) []int {
 	}
 
 	for i := 0; i < 4; i++ {
-		if solution[i] == guess[i] {
+		if leetcode.solution[i] == guess[i] {
 			hit++
 		}
-		if intMap[solution[i]-'A'] > 0 {
+		if intMap[leetcode.solution[i]-'A'] > 0 {
 			total++
-			intMap[solution[i]-'A']--
+			intMap[leetcode.solution[i]-'A']--
 		}
 	}
 	return []int{hit, total - hit}

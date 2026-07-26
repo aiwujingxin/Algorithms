@@ -1,6 +1,6 @@
 package leetcode.problems;
 
-import knowledge.datastructure.adv.impl.BITree;
+import knowledge.datastructure.adv.BIT.BITree;
 
 /**
  * @author jingxinwu

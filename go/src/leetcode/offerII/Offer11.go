@@ -7,7 +7,7 @@ import "math"
  * @date 2023/1/13 13:53
  */
 
-//https://leetcode.cn/problems/A1NYOS/solution/chang-jian-zi-shu-zu-wen-ti-tong-yong-ji-v0n4/
+//https://leetcode.cn/problems/A1NYOS/leetcode.solution/chang-jian-zi-shu-zu-wen-ti-tong-yong-ji-v0n4/
 
 func findMaxLength(nums []int) int {
 	mp := make(map[int]int)

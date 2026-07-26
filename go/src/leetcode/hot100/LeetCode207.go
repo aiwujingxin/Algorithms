@@ -51,7 +51,7 @@ func getAdjListAndInDegreeArr(numCourses int, prerequisites [][]int) ([][]int, [
 	return adjList, inDegreeArr
 }
 
-//https://leetcode.com/problems/course-schedule/solutions/1338075/golang-solution-using-topological-sort/
+//https://leetcode.com/problems/course-schedule/solutions/1338075/golang-leetcode.solution-using-topological-sort/
 func canFinish_V2(numCourses int, prerequisites [][]int) bool {
 	degree := make([]int, numCourses)
 	adList := map[int][]int{}

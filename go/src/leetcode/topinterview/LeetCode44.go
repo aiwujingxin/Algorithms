@@ -2,7 +2,7 @@ package topinterview
 
 import "math"
 
-//https://leetcode.com/problems/wildcard-matching/solutions/1625997/gk-s-python-solution-recursive-dfs-iterative-dp/
+//https://leetcode.com/problems/wildcard-matching/solutions/1625997/gk-s-python-leetcode.solution-recursive-dfs-iterative-dp/
 func isMatch(s string, p string) bool {
 
 	dp := make([][]int, len(s)+1)

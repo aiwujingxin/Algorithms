@@ -1,6 +1,6 @@
 package knowledge.datastructure.graph.shortestpath.impl;
 
-import leetcode.lists.lcp.LCP35_layer;
+import leetcode.problems.lists.lcp.LCP35_layer;
 import leetcode.problems.LeetCode1293_layer;
 import leetcode.problems.LeetCode1928_layer;
 import leetcode.problems.LeetCode787_layer;

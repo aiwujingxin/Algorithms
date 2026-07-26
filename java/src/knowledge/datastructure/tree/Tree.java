@@ -1,7 +1,7 @@
 package knowledge.datastructure.tree;
 
 import common.TreeNode;
-import leetcode.lists.lcr.LCR143;
+import leetcode.problems.lists.lcr.LCR143;
 import leetcode.problems.*;
 
 import java.util.List;

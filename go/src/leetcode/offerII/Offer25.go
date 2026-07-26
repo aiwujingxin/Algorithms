@@ -3,7 +3,7 @@ package offerII
 /**
  * @author wujingxinit@outlook.com
  * @date 2023/2/1 17:46
- * https://leetcode.com/problems/add-two-numbers-ii/solutions/1280249/golang-solution-no-reverse-recursion-easy-to-understand-o-max-n1-n2/
+ * https://leetcode.com/problems/add-two-numbers-ii/solutions/1280249/golang-leetcode.solution-no-reverse-recursion-easy-to-understand-o-max-n1-n2/
  */
 
 func addTwoNumbers(n1 *ListNode, n2 *ListNode) *ListNode {

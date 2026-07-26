@@ -1,6 +1,6 @@
 package hot100
 
-// LRUCache https://leetcode.com/problems/lru-cache/solutions/448713/golang-solution-using-hashmap-and-double-linked-list/
+// LRUCache https://leetcode.com/problems/lru-cache/solutions/448713/golang-leetcode.solution-using-hashmap-and-double-linked-list/
 type LRUCache struct {
 	capacity int
 	cache    map[int]*CacheNode

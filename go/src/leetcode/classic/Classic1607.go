@@ -5,7 +5,7 @@ package classic
  * @date 2023/2/3 17:13
  */
 
-//https://leetcode.cn/problems/maximum-lcci/solution/ji-jian-you-fu-hao-zheng-shu-wei-yi-fa-by-taichira/
+//https://leetcode.cn/problems/maximum-lcci/leetcode.solution/ji-jian-you-fu-hao-zheng-shu-wei-yi-fa-by-taichira/
 func maximum(a int, b int) int {
 	//整数右移高位补0,负数右移高位补1
 	//a>b,ret>0,temp&1=0

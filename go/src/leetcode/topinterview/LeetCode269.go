@@ -4,7 +4,7 @@ package topinterview
  * @author wujingxinit@outlook.com
  * @date 2022/12/27 14:18
  */
-//https://leetcode.cn/problems/alien-dictionary/solution/kan-cheng-you-ya-de-golangjie-fa-by-deer-8laf/
+//https://leetcode.cn/problems/alien-dictionary/leetcode.solution/kan-cheng-you-ya-de-golangjie-fa-by-deer-8laf/
 
 func alienOrder(words []string) string {
 	// 邻接表

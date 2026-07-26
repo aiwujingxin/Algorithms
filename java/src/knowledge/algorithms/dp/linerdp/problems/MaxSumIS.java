@@ -1,6 +1,6 @@
 package knowledge.algorithms.dp.linerdp.problems;
 
-import knowledge.datastructure.adv.impl.BITree_Max;
+import knowledge.datastructure.adv.BIT.BITreeMax;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -99,7 +99,7 @@ public class MaxSumIS {
 
             // --- 2. 动态规划 + 树状数组 ---
             // 树状数组的大小为去重后的元素个数
-            BITree_Max bit = new BITree_Max(uniqueCount);
+            BITreeMax bit = new BITreeMax(uniqueCount);
             long ans = 0;
 
             for (int i = 0; i < n; i++) {

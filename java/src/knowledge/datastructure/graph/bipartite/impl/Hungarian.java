@@ -1,7 +1,7 @@
 package knowledge.datastructure.graph.bipartite.impl;
 
 import knowledge.datastructure.graph.bipartite.BipartiteMatch;
-import leetcode.lists.lcp.LCP04;
+import leetcode.problems.lists.lcp.LCP04;
 import leetcode.problems.LeetCode1349;
 
 import java.util.ArrayList;

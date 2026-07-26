@@ -12,7 +12,6 @@ package knowledge.algorithms.dp.probabilitydp;
  * <核心>
  * 期望常需解方程（自环时移项）。掷骰子到达终点的期望步数是最小原型。
  * @see knowledge.mathematics.probability.impl.IndicatorExpectation 指示器 + 期望线性性
- * @see knowledge.algorithms.dp.DP 动态规划总纲
  */
 public class ExpectationDP {
 

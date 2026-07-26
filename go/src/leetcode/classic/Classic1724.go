@@ -5,7 +5,7 @@ import "math"
 /**
  * @Author: jingxinwu
  * @Date: 2023/2/27 21:47
- * https://leetcode.cn/problems/max-submatrix-lcci/solution/zui-da-zi-ju-zhen-da-liang-tu-pian-zhu-s-cc13/
+ * https://leetcode.cn/problems/max-submatrix-lcci/leetcode.solution/zui-da-zi-ju-zhen-da-liang-tu-pian-zhu-s-cc13/
  */
 
 func getMaxMatrix(matrix [][]int) []int {

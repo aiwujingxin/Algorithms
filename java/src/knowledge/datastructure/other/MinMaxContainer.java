@@ -8,7 +8,7 @@ package knowledge.datastructure.other;
  * - TreeSet / TreeMap（基于平衡二叉树，O(log n)）
  * - 双堆 + Lazy 删除（最大堆 / 最小堆结合 HashMap）
  * - SegmentTreeMinMax（基于线段树 + 离散化，适合大规模数据）
- * 
+ * <p>
  * <概率与哈希结构>
  * @see SkipList            跳表 (Redis等中间件核心结构，O(log N) 均摊插入查询)
  */

@@ -35,19 +35,25 @@ public class SparseTable {
         }
     }
 
-    /** 区间 [l, r] 的最小值。 */
+    /**
+     * 区间 [l, r] 的最小值。
+     */
     public int queryMin(int l, int r) {
         int j = log2(r - l + 1);
         return Math.min(stMin[l][j], stMin[r - (1 << j) + 1][j]);
     }
 
-    /** 区间 [l, r] 的最大值。 */
+    /**
+     * 区间 [l, r] 的最大值。
+     */
     public int queryMax(int l, int r) {
         int j = log2(r - l + 1);
         return Math.max(stMax[l][j], stMax[r - (1 << j) + 1][j]);
     }
 
-    /** 区间 [l, r] 的最大公约数。 */
+    /**
+     * 区间 [l, r] 的最大公约数。
+     */
     public int queryGcd(int l, int r) {
         int j = log2(r - l + 1);
         return gcd(stGcd[l][j], stGcd[r - (1 << j) + 1][j]);

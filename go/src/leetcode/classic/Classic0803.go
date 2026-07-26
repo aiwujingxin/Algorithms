@@ -3,7 +3,7 @@ package classic
 /**
  * @Author: jingxinwu
  * @Date: 2023/2/25 20:09
- * https://leetcode.cn/problems/magic-index-lcci/solution/shou-hua-tu-jie-er-fen-cha-zhao-de-bian-chong-xia-/
+ * https://leetcode.cn/problems/magic-index-lcci/leetcode.solution/shou-hua-tu-jie-er-fen-cha-zhao-de-bian-chong-xia-/
  */
 
 func findMagicIndex(nums []int) int {

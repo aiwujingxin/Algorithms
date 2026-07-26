@@ -3,7 +3,7 @@ package classic
 /**
  * @Author: jingxinwu
  * @Date: 2023/2/25 15:24
- * https://leetcode.cn/problems/rank-from-stream-lcci/solution/by-mumuxinfei-m9sm/
+ * https://leetcode.cn/problems/rank-from-stream-lcci/leetcode.solution/by-mumuxinfei-m9sm/
  */
 
 type StreamRank struct {

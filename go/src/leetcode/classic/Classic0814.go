@@ -9,7 +9,7 @@ import (
  * @date 2023/2/8 18:21
  * @description 区间DP
 	https://www.youtube.com/watch?v=Xfk2lEByP9M 20min
-	https://leetcode.cn/problems/boolean-evaluation-lcci/solution/java-fen-zhi-ji-yi-hua-di-gui-lei-si-yu-241-ti-241/
+	https://leetcode.cn/problems/boolean-evaluation-lcci/leetcode.solution/java-fen-zhi-ji-yi-hua-di-gui-lei-si-yu-241-ti-241/
 */
 
 func countEval(s string, result int) int {

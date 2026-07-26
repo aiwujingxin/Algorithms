@@ -1,6 +1,6 @@
 package leetcode.problems;
 
-import knowledge.datastructure.adv.impl.SegTree;
+import knowledge.datastructure.adv.segtree.SegTree;
 
 /**
  * @author wujingxinit@outlook.com

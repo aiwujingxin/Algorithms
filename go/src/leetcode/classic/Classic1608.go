@@ -5,7 +5,7 @@ import "strings"
 /**
  * @Author: jingxinwu
  * @Date: 2023/2/27 22:01
- * https://leetcode.cn/problems/english-int-lcci/solution/zheng-shu-de-ying-yu-biao-shi-by-leetcod-oven/
+ * https://leetcode.cn/problems/english-int-lcci/leetcode.solution/zheng-shu-de-ying-yu-biao-shi-by-leetcod-oven/
  */
 
 var (

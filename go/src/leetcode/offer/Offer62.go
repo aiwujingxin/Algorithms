@@ -6,7 +6,7 @@ package offer
  */
 
 // https://leetcode.cn/problems/elimination-game/
-// https://leetcode.cn/problems/yuan-quan-zhong-zui-hou-sheng-xia-de-shu-zi-lcof/solution/jian-zhi-offer-62-yuan-quan-zhong-zui-ho-dcow/
+// https://leetcode.cn/problems/yuan-quan-zhong-zui-hou-sheng-xia-de-shu-zi-lcof/leetcode.solution/jian-zhi-offer-62-yuan-quan-zhong-zui-ho-dcow/
 // 约瑟夫环
 // 动态规划
 func lastRemaining(n int, m int) int {

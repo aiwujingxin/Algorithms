@@ -32,7 +32,7 @@ func multiSearch(big string, smalls []string) [][]int {
 }
 
 // V2
-// https://leetcode.cn/problems/multi-search-lcci/solution/go-yu-yan-hou-zhui-shu-zu-by-endlesscheng/
+// https://leetcode.cn/problems/multi-search-lcci/leetcode.solution/go-yu-yan-hou-zhui-shu-zu-by-endlesscheng/
 func multiSearchV2(big string, smalls []string) [][]int {
 	sa := suffixarray.New([]byte(big))
 	pos := make([][]int, 0, len(smalls))

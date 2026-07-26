@@ -7,7 +7,7 @@ import (
 /**
  * @Author: jingxinwu
  * @Date: 2023/2/27 21:58
- * https://leetcode.cn/problems/word-rectangle-lcci/solution/bfs-trie-by-dongbixibi/
+ * https://leetcode.cn/problems/word-rectangle-lcci/leetcode.solution/bfs-trie-by-dongbixibi/
  */
 
 type TrieNode struct {

@@ -10,7 +10,7 @@ import (
  * @date 2022/12/26 19:12
  */
 
-//https://leetcode.com/problems/the-skyline-problem/solutions/61232/golang-heap-solution/
+//https://leetcode.com/problems/the-skyline-problem/solutions/61232/golang-heap-leetcode.solution/
 
 func getSkyline(buildings [][]int) [][]int {
 	points := make([]*RoofPoint, len(buildings)*2)

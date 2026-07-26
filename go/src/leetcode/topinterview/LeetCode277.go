@@ -1,6 +1,6 @@
 package topinterview
 
-func solution(knows func(a int, b int) bool) func(n int) int {
+func leetcode.solution(knows func(a int, b int) bool) func(n int) int {
 	return func(n int) int {
 		celebrity := 0
 		for i := 1; i < n; i++ {
