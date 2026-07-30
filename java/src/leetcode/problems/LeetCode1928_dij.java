@@ -6,7 +6,7 @@ import java.util.*;
  * @author aiwujingxin@gmail.com
  * @date 2022/6/27 19:56
  */
-public class LeetCode1928 {
+public class LeetCode1928_dij {
 
     public int minCost(int maxTime, int[][] edges, int[] passingFees) {
         int n = passingFees.length;

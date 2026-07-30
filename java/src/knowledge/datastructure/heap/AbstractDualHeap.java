@@ -32,7 +32,7 @@ import java.util.PriorityQueue;
  * @see LeetCode4    [H] 寻找两个正序数组的中位数
  * @see LeetCode295  [H] 数据流的中位数 (对顶堆均分)
  * @see LeetCode480_dualheap [H] 滑动窗口中位数 (对顶堆 + 延迟删除)
- * @see LeetCode2653 [M] 滑动子数组的美丽值 (滑动窗口第 k 小)
+ * @see LeetCode2653_heap [M] 滑动子数组的美丽值 (滑动窗口第 k 小)
  * @see LeetCode703  [E] 数据流中的第 K 大元素 (无删除,单堆即可)
  * @see LeetCode3321 [H] 计算子数组的 x-sum II (分区统计扩展)
  */

@@ -7,7 +7,7 @@ import java.util.PriorityQueue;
  * @date 2023/7/4 00:37
  */
 
-public class LeetCode2653 {
+public class LeetCode2653_heap {
 
     public int[] getSubarrayBeauty(int[] nums, int k, int x) {
         int n = nums.length;

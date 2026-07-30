@@ -9,33 +9,31 @@ public class BITreeKth {
 
     private final int[] tree;
     private final int n;
-    private final int highBit;
 
     public BITreeKth(int n) {
         this.n = n;
         tree = new int[n + 1];
-        highBit = Integer.highestOneBit(n);
     }
 
-    public void add(int v, int delta) {
-        for (int i = v; i <= n; i += i & -i) tree[i] += delta;
+    public void add(int x, int delta) {
+        for (int i = x; i <= n; i += i & -i) tree[i] += delta;
     }
 
-    public int countLE(int v) {
+    public int sum(int x) {
         int ans = 0;
-        for (int i = v; i > 0; i -= i & -i) ans += tree[i];
+        for (int i = x; i > 0; i -= i & -i) ans += tree[i];
         return ans;
     }
 
     public int kthSmallest(int k) {
-        int pos = 0;
-        for (int step = highBit; step > 0; step >>= 1) {
-            int next = pos + step;
+        int idx = 0;
+        for (int bitMask = Integer.highestOneBit(n); bitMask > 0; bitMask >>= 1) {
+            int next = idx + bitMask;
             if (next <= n && tree[next] < k) {
-                pos = next;
                 k -= tree[next];
+                idx = next;
             }
         }
-        return pos + 1;
+        return idx + 1;
     }
 }

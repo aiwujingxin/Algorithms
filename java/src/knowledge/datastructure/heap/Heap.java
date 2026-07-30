@@ -78,7 +78,6 @@ import leetcode.problems.*;
  * @see Prim              最小生成树(点扩展 + 小顶堆)
  * @see LeetCode407  [H] 接雨水 II (最低围墙优先,木桶效应)
  * @see LeetCode778  [H] 水位上升的泳池中游泳 (路径瓶颈最小化)
- * @see LeetCode787  [M] K 站中转内最便宜的航班 (带层数限制的最短路)
  * @see LeetCode1631 [M] 最小体力消耗路径 (最小化路径最大边)
  * @see LeetCode2290 [H] 到达角落需移除障碍物的最小数目 (0-1 边权,堆/双端队列)
  * <VII. 模拟>

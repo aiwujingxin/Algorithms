@@ -58,15 +58,11 @@ import leetcode.problems.*;
  * @see LeetCode994       [M] 腐烂的橘子
  * @see LeetCode1162      [M] 地图分析
  * @see LeetCode1765      [M] 地图中的最高点
- * <IV. 状态压缩 / 分层图 BFS>
+ * <IV. 状态压缩>
  * 建模:当附加资源影响未来转移时，将 (位置, 资源状态) 作为新节点，不能只按位置去重。
  * 本质:把原图提升为“位置图 × 状态图”的乘积图，再在扩展后的图上求最短路。
  * @see StateBFS          位掩码状态 BFS 模板
- * @see LayeredBFS        分层图编码与带权搜索
- * @see LeetCode847       [H] 访问所有节点的最短路径
- * @see LeetCode864       [H] 获取所有钥匙的最短路径
- * @see LeetCode1293      [H] 网格中的最短路径
- * @see LeetCode787       [M] K 站中转内最便宜的航班
+ * @see StateDijkstra     分层图编码与带权搜索
  * <V. A* 启发式搜索>
  * 建模:f = g + h，g 为已走代价，h 为到目标的乐观估价，优先扩展 f 最小状态。
  * 本质:在保持最优性的前提下，用问题知识减少与目标无关的扩展；h=0 时退化为 Dijkstra。
