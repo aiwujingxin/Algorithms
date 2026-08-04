@@ -11,87 +11,79 @@ public class LeetCode3286 {
     int[][] dirs = new int[][]{{0, 1}, {1, 0}, {-1, 0}, {0, -1}};
 
     public boolean findSafeWalk(List<List<Integer>> grid, int health) {
-        int m = grid.size();
-        int n = grid.get(0).size();
-        boolean[][] vs = new boolean[m][n];
+        int m = grid.size(), n = grid.get(0).size();
         Boolean[][][] memo = new Boolean[m][n][health + 1];
-        return dfs(grid, 0, 0, m, n, health, vs, memo);
+        return dfs(grid, 0, 0, m, n, health, memo);
     }
 
-    public boolean dfs(List<List<Integer>> grid, int i, int j, int m, int n, int health, boolean[][] vs, Boolean[][][] memo) {
-        if (i == m - 1 && j == n - 1 && health > grid.get(i).get(j)) return true;
-        if (i < 0 || j < 0 || i >= m || j >= n || vs[i][j] || health <= 0) return false;
-        if (memo[i][j][health] != null) return memo[i][j][health];
-        vs[i][j] = true;
+    boolean dfs(List<List<Integer>> grid, int i, int j, int m, int n, int health, Boolean[][][] memo) {
+        if (i < 0 || j < 0 || i >= m || j >= n) return false;
+        int h = health - grid.get(i).get(j);            // 踩进(i,j)后的剩余血
+        if (h <= 0) return false;                       // 血耗尽,走不通
+        if (i == m - 1 && j == n - 1) return true;      // 活着到终点
+        if (memo[i][j][h] != null) return memo[i][j][h]; // 命中:计算中占位 或 已确定
+        memo[i][j][h] = false;                          // ★ 占位:绕回本状态视为走不通(替代 vs)
         boolean res = false;
-        for (int[] dir : dirs) res |= dfs(grid, i + dir[0], j + dir[1], m, n, health - grid.get(i).get(j), vs, memo);
-        vs[i][j] = false;
-        memo[i][j][health] = res;
+        for (int[] d : dirs)
+            if (dfs(grid, i + d[0], j + d[1], m, n, h, memo)) {
+                res = true;
+                break;
+            }
+        memo[i][j][h] = res;                            // 回填真值
         return res;
     }
 
-    class Solution_dij {
-        public boolean findSafeWalk(List<List<Integer>> grid, int health) {
-            int m = grid.size(), n = grid.get(0).size();
-            int[][] costs = new int[m][n];
-            for (int i = 0; i < m; i++) {
-                Arrays.fill(costs[i], Integer.MAX_VALUE);
-            }
-            costs[0][0] = grid.get(0).get(0);
-            PriorityQueue<int[]> pq = new PriorityQueue<>(Comparator.comparingInt(a -> a[2]));
-            pq.add(new int[]{0, 0, costs[0][0]});
-            while (!pq.isEmpty()) {
-                int[] cell = pq.poll();
-                int i = cell[0], j = cell[1];
-                for (int[] dir : dirs) {
-                    int ni = i + dir[0], nj = j + dir[1];
-                    if (ni >= 0 && ni < m && nj >= 0 && nj < n && costs[i][j] + grid.get(ni).get(nj) < costs[ni][nj]) {
-                        costs[ni][nj] = costs[i][j] + grid.get(ni).get(nj);
-                        pq.add(new int[]{ni, nj, costs[ni][nj]});
-                    }
+    public boolean findSafeWalk_dij(List<List<Integer>> grid, int health) {
+        int m = grid.size(), n = grid.get(0).size();
+        int[][] cost = new int[m][n];
+        for (int[] r : cost) Arrays.fill(r, Integer.MAX_VALUE);
+        cost[0][0] = grid.get(0).get(0);
+        // 元素: {x, y, 累计cost}, 按cost小根堆
+        PriorityQueue<int[]> q = new PriorityQueue<>((a, b) -> a[2] - b[2]);
+        q.add(new int[]{0, 0, cost[0][0]});
+        while (!q.isEmpty()) {
+            int[] t = q.poll();
+            int x = t[0], y = t[1], c = t[2];
+            if (c > cost[x][y]) continue;                   // 惰性跳过过时副本
+            for (int d = 0; d < 4; d++) {
+                int nx = x + dirs[d][0], ny = y + dirs[d][1];
+                if (nx < 0 || ny < 0 || nx >= m || ny >= n) continue;
+                int nc = c + grid.get(nx).get(ny);
+                if (nc < cost[nx][ny]) {
+
+                    cost[nx][ny] = nc;
+
+                    q.add(new int[]{nx, ny, nc});           // ★ 每次都 offer,堆 O(logV) 重排
                 }
             }
-            return costs[m - 1][n - 1] < health;
         }
+        return cost[m - 1][n - 1] < health;
     }
 
-    class Solution_01bfs {
-        public boolean findSafeWalk_01bfs(List<List<Integer>> grid, int health) {
-            int m = grid.size(), n = grid.get(0).size();
-            int[][] g = new int[m][n];
-            for (int i = 0; i < m; i++) {
-                for (int j = 0; j < n; j++) g[i][j] = grid.get(i).get(j);
-            }
-            // dist 记录到达 (i,j) 的最大剩余健康；初始化为 -1 表示未到达
-            int[][] dist = new int[m][n];
-            for (int i = 0; i < m; i++) {
-                Arrays.fill(dist[i], -1);
-            }
-            Deque<int[]> dq = new ArrayDeque<>();
-            dist[0][0] = health - g[0][0];
-            dq.addFirst(new int[]{0, 0});
-            while (!dq.isEmpty()) {
-                int[] u = dq.pollFirst();
-                int ux = u[0], uy = u[1];
-                // 到终点即可返回
-                if (ux == m - 1 && uy == n - 1) return true;
-                for (int[] dir : dirs) {
-                    int nx = ux + dir[0], ny = uy + dir[1];
-                    if (nx < 0 || nx >= m || ny < 0 || ny >= n) continue;
-                    int w = g[nx][ny];
-                    if (w > dist[ux][uy]) continue; // 走不过去
-                    // 只有当新的剩余健康更大时，才“松弛”
-                    if (dist[ux][uy] - w > dist[nx][ny]) {
-                        dist[nx][ny] = dist[ux][uy] - w;
-                        if (g[nx][ny] == 0) {
-                            dq.addFirst(new int[]{nx, ny});
-                        } else {
-                            dq.addLast(new int[]{nx, ny});
-                        }
-                    }
+    public boolean findSafeWalk_01bfs(List<List<Integer>> grid, int health) {
+        int m = grid.size(), n = grid.get(0).size();
+        int[][] cost = new int[m][n];
+        for (int[] r : cost) Arrays.fill(r, Integer.MAX_VALUE);
+        cost[0][0] = grid.get(0).get(0);
+        // 元素只存 {x, y},cost 查表即可
+        Deque<int[]> q = new ArrayDeque<>();
+        q.add(new int[]{0, 0});
+        while (!q.isEmpty()) {
+            int[] t = q.poll();
+            int x = t[0], y = t[1], c = cost[x][y];
+            for (int d = 0; d < 4; d++) {
+                int nx = x + dirs[d][0], ny = y + dirs[d][1];
+                if (nx < 0 || ny < 0 || nx >= m || ny >= n) continue;
+                int nc = c + grid.get(nx).get(ny);
+                if (nc < cost[nx][ny]) {
+                    cost[nx][ny] = nc;
+
+                    // BFS 01  权0→同档,插队头  权1→下一档,插队尾
+                    if (grid.get(nx).get(ny) == 0) q.addFirst(new int[]{nx, ny});
+                    else q.addLast(new int[]{nx, ny});
                 }
             }
-            return false;
         }
+        return cost[m - 1][n - 1] < health;
     }
 }
